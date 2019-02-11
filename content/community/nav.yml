@@ -1,24 +1,24 @@
-- title: Community Resources
+- title: منابع جامعه
   items:
     - id: support
-      title: Support
+      title: پشتیبانی
     - id: courses
-      title: Courses
+      title: دوره‌های آموزشی
     - id: examples
-      title: Examples
+      title: مثال‌ها
     - id: meetups
-      title: Meetups
+      title: گردهمایی‌ها
     - id: conferences
-      title: Conferences
+      title: کنفرانس‌ها
     - id: articles
-      title: Articles
+      title: مقالات
     - id: podcasts
-      title: Podcasts
+      title: پادکست‌ها
     - id: videos
       title: Videos
     - id: external-resources
-      title: External Resources
-- title: Tools
+      title: منابع خارجی
+- title: ابزارها
   items:
     - id: debugging-tools
       title: Debugging

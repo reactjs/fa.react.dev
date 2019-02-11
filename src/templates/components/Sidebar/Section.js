@@ -49,7 +49,7 @@ class Section extends React.Component {
             {section.title}
             <ChevronSvg
               cssProps={{
-                marginLeft: 7,
+                marginRight: 7,
                 transform: isActive ? 'rotateX(180deg)' : 'rotateX(0deg)',
                 transition: 'transform 0.2s ease',
 

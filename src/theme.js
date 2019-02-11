@@ -138,17 +138,17 @@ const sharedStyles = {
       flexDirection: 'column',
 
       [media.between('small', 'sidebarFixed')]: {
-        borderLeft: '1px solid #ececec',
-        marginLeft: 80,
+        borderRight: '1px solid #ececec',
+        marginRight: 80,
       },
 
       [media.between('small', 'largerSidebar')]: {
         flex: '0 0 200px',
-        marginLeft: 80,
+        marginRight: 80,
       },
 
       [media.between('small', 'medium')]: {
-        marginLeft: 40,
+        marginRight: 40,
       },
 
       [media.greaterThan('largerSidebar')]: {
@@ -157,7 +157,7 @@ const sharedStyles = {
 
       [media.greaterThan('sidebarFixed')]: {
         position: 'fixed',
-        right: 0,
+        left: 0,
         width: 300,
         zIndex: 2,
       },
@@ -181,6 +181,10 @@ const sharedStyles = {
 
   markdown: {
     lineHeight: '25px',
+
+    '& pre[class*="gatsby-code-"], & code[class*="gatsby-code-"], & code[class*="gatsby-code-"] *, & pre.prism-code, & pre.prism-code *, & .react-live, & .react-live *': {
+      direction: 'ltr !important',
+    },
 
     '& .gatsby-highlight': {
       marginTop: 25,
@@ -262,7 +266,6 @@ const sharedStyles = {
 
     '& h1': {
       lineHeight: 1.2,
-
       [media.size('xsmall')]: {
         fontSize: 30,
       },
@@ -335,7 +338,7 @@ const sharedStyles = {
       marginTop: 20,
       fontSize: 16,
       color: colors.text,
-      paddingLeft: 20,
+      paddingRight: 20,
 
       '& p, & p:first-of-type': {
         fontSize: 16,
@@ -371,9 +374,9 @@ const sharedStyles = {
 
     '& blockquote': {
       backgroundColor: hex2rgba('#ffe564', 0.3),
-      borderLeftColor: colors.note,
-      borderLeftWidth: 9,
-      borderLeftStyle: 'solid',
+      borderRightColor: colors.note,
+      borderRightWidth: 9,
+      borderRightStyle: 'solid',
       padding: '20px 45px 20px 26px',
       marginBottom: 30,
       marginTop: 20,

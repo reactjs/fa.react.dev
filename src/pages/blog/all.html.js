@@ -37,12 +37,12 @@ const AllBlogPosts = ({data, location}: Props) => (
             css={{
               display: 'flex',
               flexWrap: 'wrap',
-              marginLeft: -40,
+              marginRight: -40,
             }}>
             {data.allMarkdownRemark.edges.map(({node}) => (
               <li
                 css={{
-                  paddingLeft: 40,
+                  paddingRight: 40,
                   paddingTop: 40,
                   borderTop: '1px dotted #ececec',
                   paddingBottom: 40,

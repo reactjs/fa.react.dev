@@ -1,41 +1,41 @@
-- title: Installation
+- title: راه‌اندازی
   items:
     - id: getting-started
-      title: Getting Started
+      title: شروع
     - id: add-react-to-a-website
-      title: Add React to a Website
+      title: اضافه‌کردن react به وبسایت
     - id: create-a-new-react-app
-      title: Create a New React App
+      title: ساخت یک اپ ری‌اکت جدید
     - id: cdn-links
-      title: CDN Links
-- title: Main Concepts
+      title: لینک‌های CDN
+- title: مفاهیم پایه
   isOrdered: true
   items:
     - id: hello-world
       title: Hello World
     - id: introducing-jsx
-      title: Introducing JSX
+      title: معرفی JSX
     - id: rendering-elements
-      title: Rendering Elements
+      title: رندرکردن المان‌ها
     - id: components-and-props
-      title: Components and Props
+      title: کامپوننت‌ها و پراپ‌ها
     - id: state-and-lifecycle
-      title: State and Lifecycle
+      title: Stateها و چرخه‌ی حیات
     - id: handling-events
-      title: Handling Events
+      title: کنترل رخدادها
     - id: conditional-rendering
-      title: Conditional Rendering
+      title: رندرشدن شرطی
     - id: lists-and-keys
-      title: Lists and Keys
+      title: لیست‌ها و کلیدها
     - id: forms
-      title: Forms
+      title: فرم‌ها
     - id: lifting-state-up
       title: Lifting State Up
     - id: composition-vs-inheritance
       title: Composition vs Inheritance
     - id: thinking-in-react
-      title: Thinking In React
-- title: Advanced Guides
+      title: تفکر در ری‌اکت
+- title: راهنمای پیشرفته
   items:
     - id: accessibility
       title: Accessibility
@@ -62,7 +62,7 @@
     - id: react-without-es6
       title: React Without ES6
     - id: react-without-jsx
-      title: React Without JSX
+      title: ری‌اکت بدون JSX
     - id: reconciliation
       title: Reconciliation
     - id: refs-and-the-dom
@@ -76,9 +76,9 @@
     - id: typechecking-with-proptypes
       title: Typechecking With PropTypes
     - id: uncontrolled-components
-      title: Uncontrolled Components
+      title: کامپوننت‌های کنترل‌نشده
     - id: web-components
-      title: Web Components
+      title: کامپوننت‌های وب
 - title: API Reference
   items:
     - id: react-api
@@ -101,28 +101,28 @@
     - id: test-renderer
       title: Test Renderer
     - id: javascript-environment-requirements
-      title: JS Environment Requirements
+      title: نیازمندی‌های محیطی JS
     - id: glossary
-      title: Glossary
-- title: Hooks (New)
+      title: واژه‌نامه
+- title: Hooks (جدید)
   isOrdered: true
   items:
       - id: hooks-intro
-        title: Introducing Hooks
+        title: معرفی‌ هوک‌ها
       - id: hooks-overview
-        title: Hooks at a Glance
+        title: نگاه اجمالی به هوک‌ها
       - id: hooks-state
-        title: Using the State Hook
+        title: استفاده از State Hook
       - id: hooks-effect
-        title: Using the Effect Hook
+        title: استفاده از Effect Hook
       - id: hooks-rules
         title: Rules of Hooks
       - id: hooks-custom
-        title: Building Your Own Hooks
+        title: هوک مخصوص خود را بسازید
       - id: hooks-reference
-        title: Hooks API Reference
+        title: مرجع API هوک‌ها
       - id: hooks-faq
-        title: Hooks FAQ
+        title: پرسش و پاسخ‌های متداول هوک‌ها
 - title: Contributing
   items:
   - id: how-to-contribute
@@ -133,7 +133,7 @@
     title: Implementation Notes
   - id: design-principles
     title: Design Principles
-- title: FAQ
+- title: پرسش و پاسخ‌های متداول
   items:
     - id: faq-ajax
       title: AJAX and APIs

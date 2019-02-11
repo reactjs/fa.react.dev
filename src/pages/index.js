@@ -323,11 +323,11 @@ const CtaItem = ({children, primary = false}) => (
       width: '50%',
 
       [media.between('small', 'large')]: {
-        paddingLeft: 20,
+        paddingRight: 20,
       },
 
       [media.greaterThan('xlarge')]: {
-        paddingLeft: 40,
+        paddingRight: 40,
       },
 
       '&:first-child': {

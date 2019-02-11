@@ -25,6 +25,10 @@ const prismColors = {
   operator: '#fc929e',
 };
 
+css.global('*', {
+  direction: 'rtl',
+});
+
 css.global('.gatsby-highlight', {
   background: colors.dark,
   color: colors.white,

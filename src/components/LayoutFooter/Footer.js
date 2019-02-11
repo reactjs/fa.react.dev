@@ -36,14 +36,14 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
           flexWrap: 'wrap',
 
           [media.between('small', 'medium')]: {
-            paddingRight: layoutHasSidebar ? 240 : null,
+            paddingLeft: layoutHasSidebar ? 240 : null,
           },
 
           [media.between('large', 'largerSidebar')]: {
-            paddingRight: layoutHasSidebar ? 280 : null,
+            paddingLeft: layoutHasSidebar ? 280 : null,
           },
           [media.between('largerSidebar', 'sidebarFixed', true)]: {
-            paddingRight: layoutHasSidebar ? 380 : null,
+            paddingLeft: layoutHasSidebar ? 380 : null,
           },
         }}>
         <div
@@ -56,11 +56,11 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
             },
             [media.greaterThan('xlarge')]: {
               width: 'calc(100% / 3 * 2)',
-              paddingLeft: 40,
+              paddingRight: 40,
             },
           }}>
           <FooterNav layoutHasSidebar={layoutHasSidebar}>
-            <MetaTitle onDark={true}>Docs</MetaTitle>
+            <MetaTitle onDark={true}>مستندات</MetaTitle>
             {sectionListDocs.map(section => {
               const defaultItem = section.items[0];
               return (
@@ -73,7 +73,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
             })}
           </FooterNav>
           <FooterNav layoutHasSidebar={layoutHasSidebar}>
-            <MetaTitle onDark={true}>Channels</MetaTitle>
+            <MetaTitle onDark={true}>کانال‌ها</MetaTitle>
             <ExternalFooterLink
               href="https://github.com/facebook/react"
               target="_blank"
@@ -90,7 +90,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
               href="https://discuss.reactjs.org"
               target="_blank"
               rel="noopener">
-              Discussion Forum
+              فروم
             </ExternalFooterLink>
             <ExternalFooterLink
               href="https://discord.gg/0ZcbPKXt5bZjGY5n"
@@ -102,7 +102,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
               href="https://dev.to/t/react"
               target="_blank"
               rel="noopener">
-              DEV Community
+              جامعه دولوپرها
             </ExternalFooterLink>
             <ExternalFooterLink
               href="https://www.facebook.com/react"
@@ -178,6 +178,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
             css={{
               color: colors.subtleOnDark,
               paddingTop: 15,
+              direction: 'ltr',
             }}>
             Copyright © 2018 Facebook Inc.
           </p>

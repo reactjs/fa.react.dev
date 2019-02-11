@@ -1,11 +1,11 @@
 ---
 id: hooks-intro
-title: Introducing Hooks
+title: معرفی Hookها
 permalink: docs/hooks-intro.html
 next: hooks-overview.html
 ---
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+<em>Hook</em>ها قابلیتی جدید در React 16.8 هستند. آنها امکان استفاده از state و دیگر قابلیت‌های react را بدون نیاز به نوشتن کلاس به شما می‌دهند.
 
 ```js{4,5}
 import React, { useState } from 'react';
@@ -25,88 +25,92 @@ function Example() {
 }
 ```
 
-This new function `useState` is the first "Hook" we'll learn about, but this example is just a teaser. Don't worry if it doesn't make sense yet!
+تابع جدید ‪<code>‬useState‪</code>‬ اولین ‪"‬Hook‪"‬ای است که یاد می‌گیریم، البته این مثال تنها یک نمایش اجمالی است‫.‬ در صورتی که آن را در نیافتید نگران نباشید‫!‬
 
-**You can start learning Hooks [on the next page](/docs/hooks-overview.html).** On this page, we'll continue by explaining why we're adding Hooks to React and how they can help you write great applications.
+<b>شما می‌توانید برای  شروع یادگیری Hookها از <a href="/docs/hooks-overview.html">صفحه‌ی بعد</a> شروع کنید.</b>
+ در این صفحه، ما به ذکر دلایلمان برای افزودن هوک‌ها به react و اینکه آن‌ها چگونه می‌توانند به شما کمک کنند تا برنامه‌های خوبی بنویسید، می‌پردازیم.
 
->Note
+>نکته
 >
->React 16.8.0 is the first release to support Hooks. When upgrading, don't forget to update all packages, including React DOM. React Native will support Hooks in the next stable release.
+>ری‌اکت ۱۶.۸.۰ اولین نسخه منتشر شده است که از هوک‌ها پشتیبانی می‌کند. هنگام ارتقاع، فراموش نکنید همه‌ی پکیج‌ها شامل React DOM را آپدیت نمایید. React Native در نسخه‌ی بعدی پایدار از هوک‌ها پشتیبانی خواهد کرد. 
 
-## Video Introduction {#video-introduction}
 
-At React Conf 2018, Sophie Alpert and Dan Abramov introduced Hooks, followed by Ryan Florence demonstrating how to refactor an application to use them. Watch the video here:
+## معرفی ویدیویی {#video-introduction}
+
+در کنفرانس ۲۰۱۸ react، سوفیا آلپرت(Sophie Alpert) و دن آبرامف(Dan Abramov) هوک‌ها را معرفی کردند. بعد از آن رایان فلورنس (Ryan Florence) نشان داد که چگونه می‌توان به منظور استفاده از آنها[هوک‌ها] یک اپلیکیشن را بازنویسی‪(‬refactor‪)‬ کرد. ویدیوی زیر را ببینید:
 
 <br>
 
 <iframe width="650" height="366" src="//www.youtube.com/embed/dpw9EHDh2bM" frameborder="0" allowfullscreen></iframe>
 
-## No Breaking Changes {#no-breaking-changes}
+## بدون ایجاد خلل در دیگر قسمت‌ها {#no-breaking-changes}
 
-Before we continue, note that Hooks are:
+قبل از اینکه ادامه دهیم، توجه کنید که هوک‌ها:
 
-* **Completely opt-in.** You can try Hooks in a few components without rewriting any existing code. But you don't have to learn or use Hooks right now if you don't want to.
-* **100% backwards-compatible.** Hooks don't contain any breaking changes.
-* **Available now.** Hooks are now available with the release of v16.8.0.
+* **کاملا اختیاری.** شما می‌توانید هوک‌ها را  بدون نیاز به دوباره نوشتن کدهای قبلی، در چند کامپوننت جدید امتحان کنید. ولی شما در صورت عدم تمایل،‌ مجبور به فراگیریی یا استفاده از هوک‌ها کنید.
+* **۱۰۰٪‌ سازگاری با قبل.** هوک‌ها با دیگر قسمت‌‌ها سازگار می‌باشد.
+* **قابل استفاده از هم‌اکنون.** هوک ها هم اکنون از نسخه‌ی ۱۶.۸.۰ قابل استفاده هستند.
 
-**There are no plans to remove classes from React.** You can read more about the gradual adoption strategy for Hooks in the [bottom section](#gradual-adoption-strategy) of this page.
+**هیچ برنامه‌ای برای حذف کلاس‌ها از ری‌اکت وجود ندارد.** شما می‌توانید برای مطالعه‌ی بیشتر در رابطه با راهکار‌‌های تطبیق تدریجی با هوک‌ها از [بخش پایین](#gradual-adoption-strategy) همین صفحه استفاده کنید.
 
-**Hooks don't replace your knowledge of React concepts.** Instead, Hooks provide a more direct API to the React concepts you already know: props, state, context, refs, and lifecycle. As we will show later, Hooks also offer a new powerful way to combine them.
+**هوک‌ها جایگزینی برای دانش و فهم شما از ری‌اکت نیستند.** در عوض، هوک‌ها یک رابط برنامه‌ی کاربردی ‪(‬API‪)‬ صریح‌تر برای مفاهیم ری‌اکتی که از قبل می‌دانید فراهم می‌کنند: props ،state ،context ،ref و lifecycle. همان‌طور که بعدا نشان خواهیم داد، هوک‌ها روشی جدید و قدرتمند برای تلفیق آن‌ها ارایه می‌کنند.
 
-**If you just want to start learning Hooks, feel free to [jump directly to the next page!](/docs/hooks-overview.html)** You can also keep reading this page to learn more about why we're adding Hooks, and how we're going to start using them without rewriting our applications.
+**اگر هم‌اکنون می‌خواهید یادگیری هوک‌ها را شروع کنید، [مستقیم به صفحه‌ی بعد بروید!](/docs/hooks-overview.html)** البته می‌توانید مطالعه‌ی این صفحه را ادامه دهید و با دلایلی که هوک‌ها را به ری‌اکت اضافه کردیم و اینکه چگونه بدون بازنویسی اپلیکیشن‌های قبلی از آن‌ها استفاده خواهیم کرد، آشنا شوید.
 
-## Motivation {#motivation}
+## انگیزه {#motivation}
 
-Hooks solve a wide variety of seemingly unconnected problems in React that we've encountered over five years of writing and maintaining tens of thousands of components. Whether you're learning React, use it daily, or even prefer a different library with a similar component model, you might recognize some of these problems.
+هوک‌ها پاسخی به مسایل متوعی در ری‌اکت‌اند که به ظاهر غیرمرتبط هستند. مسایلی که ما در طول ۵ سال گذشته  و نوشتن و نگه‌داری از ده ها هزار کامپوننت به آن‌ها برخورده‌ایم. چه شما  در حال یادگیری ری‌اکت هستید، چه از آن بطور روزانه استفاده می‌کنید، یا حتی استفاده از یک کتابخانه‌ی دیگر با مدل کامپوننت‌های مشابه را ترجیح می‌دهید، ممکن است با برخی از این مسایل آشنا باشید. 
 
-### It's hard to reuse stateful logic between components {#its-hard-to-reuse-stateful-logic-between-components}
+### استفاده‌ی مجدد از منطق دارای state در بین کامپوننت‌ها دشوار است {#its-hard-to-reuse-stateful-logic-between-components}
 
-React doesn't offer a way to "attach" reusable behavior to a component (for example, connecting it to a store). If you've worked with React for a while, you may be familiar with patterns like [render props](/docs/render-props.html) and [higher-order components](/docs/higher-order-components.html) that try to solve this. But these patterns require you to restructure your components when you use them, which can be cumbersome and make code harder to follow. If you look at a typical React application in React DevTools, you will likely find a "wrapper hell" of components surrounded by layers of providers, consumers, higher-order components, render props, and other abstractions. While we could [filter them out in DevTools](https://github.com/facebook/react-devtools/pull/503), this points to a deeper underlying problem: React needs a better primitive for sharing stateful logic.
+ری‌اکت راهی برای ‪"‬چسباندن‪"‬ یک رفتار  قابل استفاده‌ی مجدد یه یک کامپوننت را فراهم نمی‌کند (برای مثال اتصال به یک store). اگر شما مدتی با ری‌اکت کار کرده باشید، ممکن است با الگوهایی مانند [render props](/docs/render-props.html) و [higher-order components](/docs/higher-order-components.html) آشنا باشید که سعی در حل این مسیله دارند.  اما این الگوها شما را مجبور به تغییر ساختار مجدد کامپوننتتان هنگام استفاده‌ از آن‌ها می‌کنند، که این مسیله می‌تواند مایه‌ی زحمت و سخت‌تر شدن فهم کد باشد. اگر به یک اپلیکیشن ری‌اکت نوعی در React DevTools نگاه کنید، احتمالا با "wrapper hell"ای از کامپوننت‌ها مواجه می‌شوید. کامپوننت‌هایی که با لایه‌هایی از providerها، consumerها، HOCها، render props و دیگر کامپوننت‌هایی که به تجرید کمک می‌کنند، احاطه شده‌اند.  در حالی که ما می‌توانیم [آن‌ها را در DevTools فیلتر کنیم](https://github.com/facebook/react-devtools/pull/503)، این [مشکل] به یک مسیله‌ی بنیادین اشاره دارد: ری‌اکت باید عناصری ابتدایی برای به اشتراک گذاری منطق دارای state فراهم کند.
 
-With Hooks, you can extract stateful logic from a component so it can be tested independently and reused. **Hooks allow you to reuse stateful logic without changing your component hierarchy.** This makes it easy to share Hooks among many components or with the community.
+با استفاده از هوک‌ها، شما می‌توانید بخش منطق دارای state را از یک کامپوننت استخراج کنید، بطوری که بطور مستقل بتواند مورد آزمایش و استفاده‌ی مجدد قرار گیرد. **هوک ها به شما اجازه می‌دهند که بدون ایجاد تغییر در سلسله مراتب کامپوننت‌هایتان، از منطق دارای state مجددا استفاده نمایید.** این کار باعث تسهیل در به اشتراک‌گذاری هوک‌ها بین کامپوننت‌های مختلف یا بین جامعه‪]‬ی ری‌اکت‪[‬ می‌شود.
 
-We'll discuss this more in [Building Your Own Hooks](/docs/hooks-custom.html).
+ما در این رابطه بیشتر در  [هوک مخصوص خود را بسازید](/docs/hooks-custom.html) بحث خواهیم کرد.
 
-### Complex components become hard to understand {#complex-components-become-hard-to-understand}
+### فهم کامپوننت‌های پیچیده دشوارتر می‌شود {#complex-components-become-hard-to-understand}
 
-We've often had to maintain components that started out simple but grew into an unmanageable mess of stateful logic and side effects. Each lifecycle method often contains a mix of unrelated logic. For example, components might perform some data fetching in `componentDidMount` and `componentDidUpdate`. However, the same `componentDidMount` method might also contain some unrelated logic that sets up event listeners, with cleanup performed in `componentWillUnmount`. Mutually related code that changes together gets split apart, but completely unrelated code ends up combined in a single method. This makes it too easy to introduce bugs and inconsistencies.
+ما معمولا مجبور به نگه‌داری از کامپوننت‌هایی بودیم که در بدو شروع ساده بودند اما تبدیل به یک وضع آشفته‌ی غیرقابل مهار از منطق‌های دارای state و side effectها شدند. هر lifecycle متشکل از مخلوطی از منطق‌های غیر مرتبط است. برای مثال، یک کامپوننت ممکن است  در`componentDidMount` و `componentDidUpdate` به دریافت داده بپردازد. درحالی‌که همان تابع می‌تواند دارای منطقی غیر مرتبط باشد که به اضافه کردن event listenerها می‌پردازد، و در متد `componentWillUnmount` آن‌ها [event listenerها] را پاکسازی (cleanup) می‌کند. کدهایی که متقابلا به هم مرتبط هستند [مثل اضافه و پاک‌سازی event listener]  از یکدیگر جدا هستند، ولی کدهایی که کاملا غیر مرتبط‌اند [اضافه کردنevent listener و دریافت داده] در یک متد نوشته می‌شوند. که این  احتمال خطا و باگ  و ناسازگاری را بیشتر می‌کند. 
 
-In many cases it's not possible to break these components into smaller ones because the stateful logic is all over the place. It's also difficult to test them. This is one of the reasons many people prefer to combine React with a separate state management library. However, that often introduces too much abstraction, requires you to jump between different files, and makes reusing components more difficult.
+در بسیاری از موارد امکان این وجود ندارد که بتوانیم این کامپوننت‌ها را به اجزای کوچکتر تقسیم کنیم، زیرا منطق دارای state در همه جا وجود دارد. همچنین تست کردن آن‌ها دشوار است. این یکی از دلایلی است که بسیاری از افراد ترجیح می‌دهند تا ری‌اکت را با یک کتابخانه‌ی مدیریت state دیگری ترکیب کنند. اگرچه، معمولا باعث اضافه‌شدن مقدار زیادی تجرید می‌شود و  شما را مجبور می‌کند بین تعداد زیادی از فایل‌ها جابه‌جا شوید که خود باعث مشکل‌تر شدن استفاده‌ی مجدد از کامپوننت‌ها می‌گردد.
 
-To solve this, **Hooks let you split one component into smaller functions based on what pieces are related (such as setting up a subscription or fetching data)**, rather than forcing a split based on lifecycle methods. You may also opt into managing the component's local state with a reducer to make it more predictable.
+برای حل این مسیله، **هوک‌ها به شما اجازه می‌دهند یک کامپوننت را به توابع کوچکتری تقسیم کنید که مبنای آن ارتباط اجزایشان است (مثلا اضافه کردن یک اشتراک ‪(‬subscription‪)‬ یا دریافت داده)**، نه تقسیم بر اساس متدهای lifecycle‪.‬ همچنین می‌توانید برای  مدیریت state محلی از یک reducer کمک بگیرید تا بیشتر مطابق با پیش‌بینی شما باشد.
 
-We'll discuss this more in [Using the Effect Hook](/docs/hooks-effect.html#tip-use-multiple-effects-to-separate-concerns).
+در این باره در 
+[استفاده از Effect Hook](/docs/hooks-effect.html#tip-use-multiple-effects-to-separate-concerns) بیشتر بحث خواهیم کرد.
 
-### Classes confuse both people and machines {#classes-confuse-both-people-and-machines}
+### کلاس‌ها هم انسان و هم کامپیوتر را گیج می‌کنند {#classes-confuse-both-people-and-machines}
 
-In addition to making code reuse and code organization more difficult, we've found that classes can be a large barrier to learning React. You have to understand how `this` works in JavaScript, which is very different from how it works in most languages. You have to remember to bind the event handlers. Without unstable [syntax proposals](https://babeljs.io/docs/en/babel-plugin-transform-class-properties/), the code is very verbose. People can understand props, state, and top-down data flow perfectly well but still struggle with classes. The distinction between function and class components in React and when to use each one leads to disagreements even between experienced React developers.
+علاوه بر دشوار کردن قابلیت استفاده مجدد از کد و نظم آن، دریافتیم که کلاس‌ها می‌توانند مانع بزرگی در یادگیری ری‌اکت باشند. شما باید یادبگیرید که  `this` چگونه در جاوااسکریپت کار می‌کند، که با نحوه‌ی کار کردش در اکثر زبان‌ها بسیار متفاوت است. شما باید به یاد داشته باشید تا event handlerها را bind کنید. بدون [syntax proposals](https://babeljs.io/docs/en/babel-plugin-transform-class-properties/)، کد بسیار طولانی خواهد بود. آدم‌ها می‌توانند props، state، و جریان بالا به پایین داده را کاملا دریابند ولی هنوز  با کلاس‌ها کلنجار بروند. برتری کامپوننت از جنس تابع یا کلاس در ری‌اکت و موارد استفاده از آن‌ها باعث اختلاف نظر است، حتی در میان دولوپرهای با تجربه‌ی ری‌اکت.
 
-Additionally, React has been out for about five years, and we want to make sure it stays relevant in the next five years. As [Svelte](https://svelte.technology/), [Angular](https://angular.io/), [Glimmer](https://glimmerjs.com/), and others show, [ahead-of-time compilation](https://en.wikipedia.org/wiki/Ahead-of-time_compilation) of components has a lot of future potential. Especially if it's not limited to templates. Recently, we've been experimenting with [component folding](https://github.com/facebook/react/issues/7323) using [Prepack](https://prepack.io/), and we've seen promising early results. However, we found that class components can encourage unintentional patterns that make these optimizations fall back to a slower path. Classes present issues for today's tools, too. For example, classes don't minify very well, and they make hot reloading flaky and unreliable. We want to present an API that makes it more likely for code to stay on the optimizable path.
+بعلاوه، ری‌اکت ۵ سال است که عرضه شده است، و ما می‌خواهیم در ۵ سال آینده مطرح باشد. همانطور که [Svelte](https://svelte.technology/)، [Angular](https://angular.io/)،[Glimmer](https://glimmerjs.com/)و دیگران نشان می‌دهند، [کامپایل پیش از موعد](https://en.wikipedia.org/wiki/Ahead-of-time_compilation) کامپوننت‌ها، پتانسیل قابلیت‌های زیادی را دارد. بالاخص اگر به تمپلت‌ها مححدود نباشد. ما اخیرا  با
+[component folding](https://github.com/facebook/react/issues/7323) بوسیله‌ی [Prepack](https://prepack.io/)‌ ‌آزمایشاتی را انجام دادیم که شاهد نتایج  سریع و امیدوارکننده  بوده‌ایم‫.‬ اگرچه دریافتیم که کامپوننت‌های کلاسی می‌توانند ناخواسته باعث افزایش الگوهایی می‌شوند که چنین بهینه‌سازی‌هایی را بدتر می‌کنند‫.‬  کلاس‌ها برای ابزارهای امروزی نیز مشکلاتی ایجاد می‌کنند‫.‬ برای مثال، کلاس‌ها به خوبی کم‌حجم(minify) نمی‌شوند، آن‌ها با عث می‌شوند تا hot reloading شکننده و نامطمین شود‫.‬ ما می‌خواهیم APIای را ارایه دهیم که به کد امکان بهینه‌سازی شدن بیشتری بدهد‫.‬
 
-To solve these problems, **Hooks let you use more of React's features without classes.** Conceptually, React components have always been closer to functions. Hooks embrace functions, but without sacrificing the practical spirit of React. Hooks provide access to imperative escape hatches and don't require you to learn complex functional or reactive programming techniques.
+برای حل این مشکلات، **هوک‌ها به شما اجازه می‌دهند تا از بیشتر قابلیت‌های ری‌اکت بدون کلاس‌ها بهره ببرید.** مفهوما، همیشه کامپوننت‌های ری‌اکت بیشتر به توابع نزدیک‌تر بوده‌اند. هوک‌ها بدون آنکه روح کاربردی ری‌اکت را فداکند، توابع را شامل می‌شوند. هوک‌ها امکان دسترسی به راههای ‌فرار دستوری می‌دهند و شما را مجبور به یادگیری تکنیک‌های پیچیده‌ی توابع یا برنامه‌نویسی ری‌اکتیو نمی‌کند.
 
->Examples
+>مثال‌ها
 >
->[Hooks at a Glance](/docs/hooks-overview.html) is a good place to start learning Hooks.
+>[نگاه اجمالی به هوک‌](/docs/hooks-overview.html) نقطه‌ی شروع مناسبی برای یادگیری Hookهاست.
 
-## Gradual Adoption Strategy {#gradual-adoption-strategy}
+## استراتژی تطبیق تدریجی{#gradual-adoption-strategy}
 
->**TLDR: There are no plans to remove classes from React.**
+>**خلاصه: هیچ برنامه‌ای برای حذف کلاس ها از ری‌اکت وجود ندارد‫.‬.**
 
-We know that React developers are focused on shipping products and don't have time to look into every new API that's being released. Hooks are very new, and it might be better to wait for more examples and tutorials before considering learning or adopting them.
+ما می‌دانیم که دولوپرهای ری‌اکت بر روی عرضه‌ی محصولات تمرکز دارند و وقتی برای نگاه کردن و مطالعه‌ی هر  API جدیدی را که منتشر می‌شود، ندارند. هوک‌ها بسیار جدید هستند، و شاید برای یادگیری و بهره‌گیری از آن‌ها بهتر باشد تا برای مثال‌ها و آموزش‌های بیشتر صبر کنید.
 
-We also understand that the bar for adding a new primitive to React is extremely high. For curious readers, we have prepared a [detailed RFC](https://github.com/reactjs/rfcs/pull/68) that dives into motivation with more details, and provides extra perspective on the specific design decisions and related prior art.
+همچنین اطلاع داریم که انتظارات برای اضافه کردن دستورات پایه‌ی جدید به ری‌اکت بسیار بالاست. ما برای خواننده‌های کنجکاو یک [RFC با جزییات](https://github.com/reactjs/rfcs/pull/68) آماده کرده‌ایم که با عمق بیشتری به انگیزه‌ها می‌پردازد، و دید  بیشتری بر تصصمیمات جزیی تصمیم‌گیری‌ها و  تصمیمات مرتبط قبلی فراهم می‌کند.  
 
-**Crucially, Hooks work side-by-side with existing code so you can adopt them gradually.** We are sharing this experimental API to get early feedback from those in the community who are interested in shaping the future of React — and we will iterate on Hooks in the open.
+‫**‬اساسا، هوک ها در کنار کدهای نوشته‌شده از قبل کار خواهند کرد، پس شما می‌توانید بصورت تدریجی از آن‌ها بهره گیرید** ما این API آزمایشی را برای این به اشتراک  می‌گذاریم تا بتوانیم از بازخوردهای افراد در جامعه که برای شکل دادن به آینده‌ی ری‌اکت مشتاق هستند بهره گیریم. — and we will iterate on Hooks in the open.
 
-Finally, there is no rush to migrate to Hooks. We recommend avoiding any "big rewrites", especially for existing, complex class components. It takes a bit of a mindshift to start "thinking in Hooks". In our experience, it's best to practice using Hooks in new and non-critical components first, and ensure that everybody on your team feels comfortable with them. After you give Hooks a try, please feel free to [send us feedback](https://github.com/facebook/react/issues/new), positive or negative.
+در انتها، هیچ عجله‌ای برای مهاجرت به هوک‌ها وجود ندارد. ما پیشنهاد می‌کنیم از هرگونه ‪"‬بازنویسی بزرگ‪"‬ بپرهیزید، مخصوصا برای کامپوننت‌های کلاسی موجود و پیچیده. برای ‪"‬تفکر مبتنی بر هوک‌ها‪"‬ مقداری تامل نیاز است.  تجربه‌ی ما این است که ابتدا بهترین کار تمرین و کار با هوک‌ها در کامپوننت‌های جدید و غیرحیاتی است، و اطمینان بخشیدن از اینکه همه‌ی افراد تیم شما با آن‌ها ارتباط برقرار کرده‌اند. بعد از اینکه هوک‌ها را امتحان کردید، لطفا[بازخوردهای خود را برای ما بفرستید](https://github.com/facebook/react/issues/new) ، چه مثبت و چه منفی.
 
-We intend for Hooks to cover all existing use cases for classes, but **we will keep supporting class components for the foreseeable future.** At Facebook, we have tens of thousands of components written as classes, and we have absolutely no plans to rewrite them. Instead, we are starting to use Hooks in the new code side by side with classes.
+قصد ما بر این است که هوک‌ها همه‌ی موارد استفاده‌ی کلاس‌ها را شامل شوند، اما **ما از کامپوننت‌های کلاسی تا آینده‌ی در دیدرس پشتیبانی خواهیم کرد.** در فیسبوک، ما ده ها هزار کامپوننتی که با کلاس نوشته شده‌اند داریم، و قطعا هیچ برنامه‌ای برای بازنویسی آن‌ها نداریم. در عوض، ما استفاده از هوک‌ها را در کدهای جدید در کنار کلاس‌ها شروع می‌کنیم.
 
-## Frequently Asked Questions {#frequently-asked-questions}
+## سوالات متداول {#frequently-asked-questions}
 
-We've prepared a [Hooks FAQ page](/docs/hooks-faq.html) that answers the most common questions about Hooks.
+ما یک [صفحه پرسش و پاسخ متداول از hookها](/docs/hooks-faq.html) فراهم کرده ایم که  اکثر سوالات رایج در مورد هوک‌ها را پاسخ‌ می‌دهد.
 
-## Next Steps {#next-steps}
+## قدم بعدی {#next-steps}
 
-By the end of this page, you should have a rough idea of what problems Hooks are solving, but many details are probably unclear. Don't worry! **Let's now go to [the next page](/docs/hooks-overview.html) where we start learning about Hooks by example.**
+تا به اینجا، شما باید یک ایده‌ی کلی درباره‌ی اینکه هوک‌ها چه مسایلی را حل می‌کنند داشته باشید، البته بسیاری از جزییات احتمالا روشن نیست. نگران نباشید! **به[صفحه‌ی بعدی](/docs/hooks-overview.html) می‌رویم، جایی که یادگیری هوک‌ها را با استفاده از مثال شروع خواهیم کرد.**

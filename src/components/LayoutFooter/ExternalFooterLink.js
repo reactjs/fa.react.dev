@@ -22,6 +22,7 @@ const ExternalFooterLink = ({children, href, target, rel}: Props) => (
   <a
     css={{
       lineHeight: 2,
+      textAlign: 'right',
       ':hover': {
         color: colors.brand,
       },
@@ -34,7 +35,7 @@ const ExternalFooterLink = ({children, href, target, rel}: Props) => (
       cssProps={{
         verticalAlign: -2,
         display: 'inline-block',
-        marginLeft: 5,
+        marginRight: 5,
         color: colors.subtle,
       }}
     />

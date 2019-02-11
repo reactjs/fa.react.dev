@@ -26,21 +26,21 @@ const NavigationFooter = ({next, prev, location}) => {
           halign="space-between"
           css={{
             [media.between('small', 'medium')]: {
-              paddingRight: 240,
+              paddingLeft: 240,
             },
 
             [media.between('large', 'largerSidebar')]: {
-              paddingRight: 280,
+              paddingLeft: 280,
             },
 
             [media.between('largerSidebar', 'sidebarFixed', true)]: {
-              paddingRight: 380,
+              paddingLeft: 380,
             },
           }}>
           <Flex basis="50%" type="li">
             {prev && (
               <div>
-                <SecondaryLabel>Previous article</SecondaryLabel>
+                <SecondaryLabel>مقاله‌ی قبلی</SecondaryLabel>
                 <div
                   css={{
                     paddingTop: 10,
@@ -58,10 +58,10 @@ const NavigationFooter = ({next, prev, location}) => {
               basis="50%"
               type="li"
               css={{
-                textAlign: 'right',
+                textAlign: 'left',
               }}>
               <div>
-                <SecondaryLabel>Next article</SecondaryLabel>
+                <SecondaryLabel>مقاله‌ی بعدی</SecondaryLabel>
                 <div
                   css={{
                     paddingTop: 10,

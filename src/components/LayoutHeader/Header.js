@@ -31,7 +31,7 @@ const Header = ({location}: {location: Location}) => (
       <div
         css={{
           display: 'flex',
-          flexDirection: 'row',
+          // flexDirection: 'row',
           alignItems: 'center',
           height: 60,
           [media.between('small', 'large')]: {
@@ -44,7 +44,7 @@ const Header = ({location}: {location: Location}) => (
         <Link
           css={{
             display: 'flex',
-            marginRight: 10,
+            marginLeft: 10,
             height: '100%',
             alignItems: 'center',
             color: colors.brand,
@@ -66,7 +66,7 @@ const Header = ({location}: {location: Location}) => (
           <span
             css={{
               color: 'inherit',
-              marginLeft: 10,
+              marginRight: 10,
               fontWeight: 700,
               fontSize: 20,
               lineHeight: '20px',
@@ -93,7 +93,8 @@ const Header = ({location}: {location: Location}) => (
         <nav
           css={{
             display: 'flex',
-            flexDirection: 'row',
+            flexDirection: 'row-reverse',
+            justifyContent: 'flex-end',
             alignItems: 'stretch',
             overflowX: 'auto',
             overflowY: 'hidden',
@@ -115,30 +116,30 @@ const Header = ({location}: {location: Location}) => (
           }}>
           <HeaderLink
             isActive={location.pathname.includes('/docs/')}
-            title="Docs"
+            title="مستندات"
             to="/docs/getting-started.html"
           />
           <HeaderLink
             isActive={location.pathname.includes('/tutorial/')}
-            title="Tutorial"
+            title="آموزش"
             to="/tutorial/tutorial.html"
           />
           <HeaderLink
             isActive={location.pathname.includes('/community/')}
-            title="Community"
+            title="جامعه"
             to="/community/support.html"
           />
           <HeaderLink
             isActive={location.pathname.includes('/blog')}
-            title="Blog"
+            title="وبلاگ"
             to="/blog/"
           />
         </nav>
 
         <DocSearch />
-
         <div
           css={{
+            display: 'flex',
             [media.lessThan('medium')]: {
               display: 'none',
             },
@@ -168,7 +169,7 @@ const Header = ({location}: {location: Location}) => (
           <a
             css={{
               padding: '5px 10px',
-              marginLeft: 10,
+              marginRight: 10,
               whiteSpace: 'nowrap',
               ...fonts.small,
 
@@ -188,7 +189,7 @@ const Header = ({location}: {location: Location}) => (
             GitHub
             <ExternalLinkSvg
               cssProps={{
-                marginLeft: 5,
+                marginRight: 5,
                 verticalAlign: -2,
                 color: colors.subtle,
               }}
