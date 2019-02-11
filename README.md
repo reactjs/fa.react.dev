@@ -5,7 +5,7 @@
 </p>
 
 <p dir="rtl">
-این مخزن (repo) با هدف توسعه اسناد ری‌اکت به زبان فارسی، از <a href="https://github.com/reactjs/reactjs.org">reactjs/reactjs.org</a> فورک (fork) شده‌است و هر روز با نسخه اصلی همگام‌سازی می‌شود.
+این مخزن کد (repo) با هدف توسعه اسناد ری‌اکت به زبان فارسی، از <a href="https://github.com/reactjs/reactjs.org">reactjs/reactjs.org</a> انشعاب (fork) گرفته‌است و پیوسته با نسخه اصلی همگام‌سازی می‌شود.
 </p>
 
 <p dir="rtl">
@@ -58,20 +58,20 @@
 <h3 dir="rtl">نصب</h3>
 
 ```bash
-# 1. Clone the repo
+# 1. یک کپی از مخزن کد بگیرید
 git clone git@github.com:reactjs/fa.reactjs.org.git
 
-# 2. Go into the project root
+# 2. به شاخه اصلی پروژه بروید
 cd fa.reactjs.org
 
-# 3. Install the website's npm dependencies
+# 3. وابستگی‌های npm سایت را نصب کنید
 yarn
 ```
 
 <h3 dir="rtl">اجرا</h3>
 
 ```bash
-# Start the hot-reloading development server (powered by Gatsby)
+# سرور توسعه با قابلیت بارگذاری خودکار را اجرا کنید (قدرت گرفته از Gatsby)
 yarn dev
 ```
 
@@ -82,7 +82,7 @@ yarn dev
 <h3 dir="rtl">سوالی دارید؟</h3>
 
 ‌<p dir="rtl">
-اگر سوالی دارید با نگاه‌دارندگان تماس بگیرید یا <a href="https://github.com/reactjs/fa.reactjs.org/issues/new">یک مورد (issue) جدید</a> ثبت کنید!
+اگر سوالی دارید با نگاه‌دارندگان تماس بگیرید یا <a href="https://github.com/reactjs/fa.reactjs.org/issues/new">یک موضوع (issue) جدید</a> ثبت کنید!
 </p>
 
 <h2 dir="rtl">نگاه‌دارندگان</h2>
