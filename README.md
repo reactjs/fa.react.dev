@@ -5,7 +5,7 @@
 </p>
 
 <p dir="rtl">
-این رپو (repo) با هدف توسعه اسناد ری‌اکت به زبان فارسی، از <a href="https://github.com/reactjs/reactjs.org">reactjs/reactjs.org</a> فورک (fork) شده‌است و هر روز با نسخه اصلی همگام‌سازی می‌شود.
+این مخزن (repo) با هدف توسعه اسناد ری‌اکت به زبان فارسی، از <a href="https://github.com/reactjs/reactjs.org">reactjs/reactjs.org</a> فورک (fork) شده‌است و هر روز با نسخه اصلی همگام‌سازی می‌شود.
 </p>
 
 <p dir="rtl">
