@@ -18,6 +18,7 @@ import ossLogoPng from 'images/oss_logo.png';
 
 const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
   <footer
+    dir="rtl"
     css={{
       backgroundColor: colors.darker,
       color: colors.white,

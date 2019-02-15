@@ -21,7 +21,7 @@ export default class HTML extends React.Component {
           <link rel="icon" href="/favicon.ico" />
           {this.props.headComponents}
         </head>
-        <body {...this.props.bodyAttributes} dir="rtl">
+        <body {...this.props.bodyAttributes}>
           <div
             id="___gatsby"
             dangerouslySetInnerHTML={{__html: this.props.body}}
