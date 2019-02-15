@@ -255,7 +255,7 @@ class Home extends Component {
                 }}
               />
               <section css={sectionStyles}>
-                <div id="examples" dir="ltr">
+                <div id="examples">
                   {examples.edges.map(({node}, index) => {
                     const snippet = code[node.fileAbsolutePath];
                     return (
