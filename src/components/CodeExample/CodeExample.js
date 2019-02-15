@@ -47,7 +47,7 @@ class CodeExample extends Component {
 
               '& p': {
                 marginTop: 15,
-                marginRight: 40,
+                marginLeft: 40,
                 lineHeight: 1.7,
 
                 [media.greaterThan('xlarge')]: {
