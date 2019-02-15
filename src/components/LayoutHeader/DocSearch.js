@@ -105,7 +105,7 @@ class DocSearch extends Component<{}, State> {
           }}
           id="algolia-doc-search"
           type="search"
-          placeholder="بحث الوثائق"
+          placeholder="Search docs"
           aria-label="Search docs"
         />
       </form>
