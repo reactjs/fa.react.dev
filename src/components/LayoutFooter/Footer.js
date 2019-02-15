@@ -36,14 +36,14 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
           flexWrap: 'wrap',
 
           [media.between('small', 'medium')]: {
-            paddingRight: layoutHasSidebar ? 240 : null,
+            paddingLeft: layoutHasSidebar ? 240 : null,
           },
 
           [media.between('large', 'largerSidebar')]: {
-            paddingRight: layoutHasSidebar ? 280 : null,
+            paddingLeft: layoutHasSidebar ? 280 : null,
           },
           [media.between('largerSidebar', 'sidebarFixed', true)]: {
-            paddingRight: layoutHasSidebar ? 380 : null,
+            paddingLeft: layoutHasSidebar ? 380 : null,
           },
         }}>
         <div
@@ -56,11 +56,11 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
             },
             [media.greaterThan('xlarge')]: {
               width: 'calc(100% / 3 * 2)',
-              paddingLeft: 40,
+              paddingRight: 40,
             },
           }}>
           <FooterNav layoutHasSidebar={layoutHasSidebar}>
-            <MetaTitle onDark={true}>Docs</MetaTitle>
+            <MetaTitle onDark={true}>الوثائق</MetaTitle>
             {sectionListDocs.map(section => {
               const defaultItem = section.items[0];
               return (
@@ -73,7 +73,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
             })}
           </FooterNav>
           <FooterNav layoutHasSidebar={layoutHasSidebar}>
-            <MetaTitle onDark={true}>Channels</MetaTitle>
+            <MetaTitle onDark={true}>القنوات</MetaTitle>
             <ExternalFooterLink
               href="https://github.com/facebook/react"
               target="_blank"
@@ -118,7 +118,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
             </ExternalFooterLink>
           </FooterNav>
           <FooterNav layoutHasSidebar={layoutHasSidebar}>
-            <MetaTitle onDark={true}>Community</MetaTitle>
+            <MetaTitle onDark={true}> مجتمع المطورين</MetaTitle>
             {sectionListCommunity.map(section => (
               <FooterLink
                 to={`/community/${section.items[0].id}.html`}
@@ -128,7 +128,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
             ))}
           </FooterNav>
           <FooterNav layoutHasSidebar={layoutHasSidebar}>
-            <MetaTitle onDark={true}>More</MetaTitle>
+            <MetaTitle onDark={true}>المزيد</MetaTitle>
             <FooterLink to="/tutorial/tutorial.html">Tutorial</FooterLink>
             <FooterLink to="/blog/">Blog</FooterLink>
             <FooterLink to="/acknowledgements.html">
@@ -143,9 +143,11 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
           </FooterNav>
         </div>
         <section
+          dir="ltr"
           css={{
             paddingTop: 40,
             display: 'block !important', // Override 'Installation' <style> specifics
+            paddingLeft: 40,
 
             [media.greaterThan('xlarge')]: {
               width: 'calc(100% / 3)',
@@ -179,7 +181,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
               color: colors.subtleOnDark,
               paddingTop: 15,
             }}>
-            Copyright © 2018 Facebook Inc.
+            © 2018 Facebook Inc. جميع الحقوق محفوظة
           </p>
         </section>
       </div>
