@@ -39,7 +39,9 @@ const ButtonLink = ({children, type, ...rest}) => {
   return (
     <Link {...rest} css={[style, typeStyle]}>
       {children}
-      {type === 'secondary' && <ArrowSvg cssProps={{marginLeft: 10}} />}
+      {type === 'secondary' && (
+        <ArrowSvg cssProps={{marginRight: 10, transform: 'rotate(180deg)'}} />
+      )}
     </Link>
   );
 };
