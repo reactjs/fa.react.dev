@@ -198,6 +198,10 @@ const sharedStyles = {
       },
     },
 
+    '& .gatsby-code-text': {
+      direction: 'ltr',
+    },
+
     '& a:not(.anchor):not(.gatsby-resp-image-link)': linkStyle,
 
     '& > p:first-child': {
