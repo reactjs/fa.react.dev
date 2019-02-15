@@ -62,7 +62,6 @@ const Header = ({location}: {location: Location}) => (
             },
           }}
           to="/">
-          <img src={logoSvg} alt="" height="20" />
           <span
             css={{
               color: 'inherit',
@@ -88,6 +87,7 @@ const Header = ({location}: {location: Location}) => (
             }}>
             React
           </span>
+          <img src={logoSvg} alt="" height="20" />
         </Link>
 
         <nav
@@ -115,22 +115,22 @@ const Header = ({location}: {location: Location}) => (
           }}>
           <HeaderLink
             isActive={location.pathname.includes('/docs/')}
-            title="Docs"
+            title="الوثائق"
             to="/docs/getting-started.html"
           />
           <HeaderLink
             isActive={location.pathname.includes('/tutorial/')}
-            title="Tutorial"
+            title="الدليل التطبيقي"
             to="/tutorial/tutorial.html"
           />
           <HeaderLink
             isActive={location.pathname.includes('/community/')}
-            title="Community"
+            title=" مجتمع المطورين"
             to="/community/support.html"
           />
           <HeaderLink
             isActive={location.pathname.includes('/blog')}
-            title="Blog"
+            title="المدونة"
             to="/blog/"
           />
         </nav>
@@ -146,29 +146,10 @@ const Header = ({location}: {location: Location}) => (
               width: 'calc(100% / 6)',
             },
           }}>
-          <Link
-            css={{
-              padding: '5px 10px',
-              whiteSpace: 'nowrap',
-              ...fonts.small,
-
-              ':hover': {
-                color: colors.brand,
-              },
-
-              ':focus': {
-                outline: 0,
-                backgroundColor: colors.lighter,
-                borderRadius: 15,
-              },
-            }}
-            to="/versions">
-            v{version}
-          </Link>
           <a
             css={{
               padding: '5px 10px',
-              marginLeft: 10,
+              marginRight: 10,
               whiteSpace: 'nowrap',
               ...fonts.small,
 
@@ -194,6 +175,25 @@ const Header = ({location}: {location: Location}) => (
               }}
             />
           </a>
+          <Link
+            css={{
+              padding: '5px 10px',
+              whiteSpace: 'nowrap',
+              ...fonts.small,
+
+              ':hover': {
+                color: colors.brand,
+              },
+
+              ':focus': {
+                outline: 0,
+                backgroundColor: colors.lighter,
+                borderRadius: 15,
+              },
+            }}
+            to="/versions">
+            v{version}
+          </Link>
         </div>
       </div>
     </Container>
