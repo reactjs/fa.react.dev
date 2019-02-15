@@ -182,7 +182,13 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
               color: colors.subtleOnDark,
               paddingTop: 15,
             }}>
-            © 2018 Facebook Inc. جميع الحقوق محفوظة
+            © 2018 Facebook Inc.{' '}
+            <span
+              css={{
+                display: layoutHasSidebar ? 'none' : 'inline-block',
+              }}>
+              جميع الحقوق محفوظة
+            </span>
           </p>
         </section>
       </div>
