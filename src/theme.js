@@ -138,7 +138,7 @@ const sharedStyles = {
       flexDirection: 'column',
 
       [media.between('small', 'sidebarFixed')]: {
-        borderLeft: '1px solid #ececec',
+        borderRight: '1px solid #ececec',
         marginRight: 80,
       },
 
@@ -157,7 +157,7 @@ const sharedStyles = {
 
       [media.greaterThan('sidebarFixed')]: {
         position: 'fixed',
-        right: 0,
+        left: 0,
         width: 300,
         zIndex: 2,
       },

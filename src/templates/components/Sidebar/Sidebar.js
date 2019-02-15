@@ -38,11 +38,11 @@ class Sidebar extends Component {
         halign="stretch"
         css={{
           width: '100%',
-          paddingLeft: 20,
+          paddingRight: 20,
           position: 'relative',
 
           [media.greaterThan('largerSidebar')]: {
-            paddingLeft: 40,
+            paddingRight: 40,
           },
 
           [media.lessThan('small')]: {
