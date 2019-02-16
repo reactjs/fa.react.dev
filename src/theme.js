@@ -242,7 +242,7 @@ const sharedStyles = {
       background: hex2rgba(colors.note, 0.2),
       color: colors.text,
       direction: 'ltr',
-      display: 'inline',
+      display: 'inline-block',
     },
 
     '& p > code, & li > code, & p > a > code, & li > a > code': {
