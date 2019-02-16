@@ -198,10 +198,6 @@ const sharedStyles = {
       },
     },
 
-    '& .gatsby-code-text': {
-      direction: 'ltr',
-    },
-
     '& a:not(.anchor):not(.gatsby-resp-image-link)': linkStyle,
 
     '& > p:first-child': {
@@ -245,6 +241,8 @@ const sharedStyles = {
     '& p > code, & li > code': {
       background: hex2rgba(colors.note, 0.2),
       color: colors.text,
+      direction: 'ltr',
+      display: 'inline',
     },
 
     '& p > code, & li > code, & p > a > code, & li > a > code': {
