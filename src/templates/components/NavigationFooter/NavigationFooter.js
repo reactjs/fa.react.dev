@@ -26,15 +26,15 @@ const NavigationFooter = ({next, prev, location}) => {
           halign="space-between"
           css={{
             [media.between('small', 'medium')]: {
-              paddingRight: 240,
+              paddingLeft: 240,
             },
 
             [media.between('large', 'largerSidebar')]: {
-              paddingRight: 280,
+              paddingLeft: 280,
             },
 
             [media.between('largerSidebar', 'sidebarFixed', true)]: {
-              paddingRight: 380,
+              paddingLeft: 380,
             },
           }}>
           <Flex basis="50%" type="li">
