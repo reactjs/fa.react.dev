@@ -138,17 +138,17 @@ const sharedStyles = {
       flexDirection: 'column',
 
       [media.between('small', 'sidebarFixed')]: {
-        borderLeft: '1px solid #ececec',
-        marginLeft: 80,
+        borderRight: '1px solid #ececec',
+        marginRight: 80,
       },
 
       [media.between('small', 'largerSidebar')]: {
         flex: '0 0 200px',
-        marginLeft: 80,
+        marginRight: 80,
       },
 
       [media.between('small', 'medium')]: {
-        marginLeft: 40,
+        marginRight: 40,
       },
 
       [media.greaterThan('largerSidebar')]: {
@@ -157,7 +157,7 @@ const sharedStyles = {
 
       [media.greaterThan('sidebarFixed')]: {
         position: 'fixed',
-        right: 0,
+        left: 0,
         width: 300,
         zIndex: 2,
       },
@@ -189,6 +189,7 @@ const sharedStyles = {
       marginBottom: 25,
       paddingLeft: 15,
       paddingRight: 15,
+      direction: 'ltr',
 
       [media.lessThan('small')]: {
         marginLeft: -20,
@@ -240,6 +241,8 @@ const sharedStyles = {
     '& p > code, & li > code': {
       background: hex2rgba(colors.note, 0.2),
       color: colors.text,
+      direction: 'ltr',
+      display: 'inline-block',
     },
 
     '& p > code, & li > code, & p > a > code, & li > a > code': {
@@ -335,7 +338,7 @@ const sharedStyles = {
       marginTop: 20,
       fontSize: 16,
       color: colors.text,
-      paddingLeft: 20,
+      paddingRight: 20,
 
       '& p, & p:first-of-type': {
         fontSize: 16,
@@ -352,7 +355,7 @@ const sharedStyles = {
       },
 
       '& ol, & ul': {
-        marginLeft: 20,
+        marginRight: 20,
         marginTop: 10,
       },
     },
@@ -371,10 +374,10 @@ const sharedStyles = {
 
     '& blockquote': {
       backgroundColor: hex2rgba('#ffe564', 0.3),
-      borderLeftColor: colors.note,
-      borderLeftWidth: 9,
-      borderLeftStyle: 'solid',
-      padding: '20px 45px 20px 26px',
+      borderRightColor: colors.note,
+      borderRightWidth: 9,
+      borderRightStyle: 'solid',
+      padding: '20px 26px 20px 45px',
       marginBottom: 30,
       marginTop: 20,
       marginLeft: -30,
