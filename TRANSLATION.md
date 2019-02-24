@@ -40,10 +40,74 @@
     </tr>
     <tr>
       <td dir="ltr">
+        component
+      </td>
+      <td>
+        کامپوننت
+      </td>
+    </tr>
+        <tr>
+      <td dir="ltr">
+        data
+      </td>
+      <td>
+        داده
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        feature
+      </td>
+      <td>
+        قابلیت
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
         function
       </td>
       <td>
         تابع
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        plugin
+      </td>
+      <td>
+        پلاگین
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        render
+      </td>
+      <td>
+        رندر
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        template
+      </td>
+      <td>
+        قالب
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        UI
+      </td>
+      <td>
+        رابط کاربری
+      </td>
+    </tr>
+        <tr>
+      <td dir="ltr">
+        user
+      </td>
+      <td>
+        کاربر
       </td>
     </tr>
   </tbody>
@@ -63,12 +127,42 @@
   <tbody dir="ltr">
     <tr>
       <td>
+        event delegation
+      </td>
+    </tr>
+    <tr>
+      <td>
+        event handler
+      </td>
+    </tr>
+    <tr>
+      <td>
+        HTML
+      </td>
+    </tr>
+     <tr>
+      <td>
+        JSX
+      </td>
+    </tr>
+    <tr>
+      <td>
         props
       </td>
     </tr>
     <tr>
       <td>
+        REPL
+      </td>
+    </tr>
+    <tr>
+      <td>
         state
+      </td>
+    </tr>
+        <tr>
+      <td>
+        XML
       </td>
     </tr>
   </tbody>
