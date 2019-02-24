@@ -59,7 +59,7 @@
 
 ```bash
 # 1. یک کپی از مخزن کد بگیرید
-git clone git@github.com:reactjs/fa.reactjs.org.git
+git clone https://github.com/reactjs/fa.reactjs.org.git
 
 # 2. به شاخه اصلی پروژه بروید
 cd fa.reactjs.org
