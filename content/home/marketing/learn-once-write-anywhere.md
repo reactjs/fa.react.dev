@@ -1,8 +1,8 @@
 ---
-title: Learn Once, Write Anywhere
+title: یک‌بار یاد بگیرید، همه‌جا استفاده‌کنید
 order: 2
 ---
 
-We don't make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code.
+ما پیش‌فرضی درباره دیگر تکنولوژی‌های به‌کاررفته در پروژه شما نداریم، بنابراین می توانید قابلیت‌های جدید را با ری‌اکت بسازید.
 
-React can also render on the server using Node and power mobile apps using [React Native](https://facebook.github.io/react-native/).
+ری‌اکت روی سرور و همچنین به‌وسیله [ری‌اکت نیتیو](https://facebook.github.io/react-native/). روی اپ موبایل هم رندر می‌شود.
