@@ -85,7 +85,7 @@ yarn dev
 اگر سوالی دارید با نگاه‌دارندگان تماس بگیرید یا <a href="https://github.com/reactjs/fa.reactjs.org/issues/new">یک موضوع (issue) جدید</a> ثبت کنید!
 </p>
 
-<h2 dir="rtl">مشارکت‌کنندگان</h2>
+<h2 dir="rtl">نگاه‌دارندگان</h2>
 
 <ul>
   <li>
