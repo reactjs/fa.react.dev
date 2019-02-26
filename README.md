@@ -48,7 +48,7 @@
     <a href="https://git-scm.com/downloads">Git</a>
   </li>
   <li>
-    <a href="https://nodejs.org/en/">Node.js</a> نسخه ۸ (بعد از ۸.۴.۰)
+    <a href="https://nodejs.org/en/">Node.js</a> نسخه ۸ (۸.۴.۰ به بالا)
   </li>
     <li>
     <a href="https://yarnpkg.com/lang/en/docs/install/">Yarn</a>
@@ -59,12 +59,12 @@
 
 ```bash
 # 1. یک کپی از مخزن کد بگیرید
-git clone git@github.com:reactjs/fa.reactjs.org.git
+git clone https://github.com/reactjs/fa.reactjs.org.git
 
 # 2. به شاخه اصلی پروژه بروید
 cd fa.reactjs.org
 
-# 3. وابستگی‌های npm سایت را نصب کنید
+# 3. وابستگی‌های npm پروژه را نصب کنید
 yarn
 ```
 
