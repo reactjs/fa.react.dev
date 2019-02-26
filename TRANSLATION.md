@@ -160,7 +160,12 @@
         state
       </td>
     </tr>
-        <tr>
+    <tr>
+      <td>
+        view
+      </td>
+    </tr>
+    <tr>
       <td>
         XML
       </td>
