@@ -1,8 +1,8 @@
 ---
-title: Declarative
+title: خود توصیف کننده
 order: 0
 ---
 
-React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.
+ری‌اکت ساختن رابط‌کاربری پویا را ساده می‌کند. برای هر وضعیت برنامه خود یک view ساده طراحی کنید و هربار که داده‌های شما تغییر می‌کند، ری‌اکت به صورت بهینه‌‌ای، فقط کامپوننت‌های مربوطه را به‌روز رسانی و رندر می‌کند.
 
-Declarative views make your code more predictable and easier to debug.
+viewهای خود توصیف کننده کد شما رو قابل پیش‌بینی و یافتن اشکال را آسان‌تر می‌کند.
