@@ -102,14 +102,14 @@ const activeLinkCss = {
 const activeLinkBefore = {
   width: 4,
   height: 25,
-  borderLeft: `4px solid ${colors.brand}`,
-  paddingLeft: 16,
+  borderRight: `4px solid ${colors.brand}`,
+  paddingRight: 16,
   position: 'absolute',
-  left: 0,
+  right: 0,
   marginTop: -3,
 
   [media.greaterThan('largerSidebar')]: {
-    left: 15,
+    right: 15,
   },
 };
 

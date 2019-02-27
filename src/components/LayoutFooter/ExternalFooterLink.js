@@ -34,7 +34,7 @@ const ExternalFooterLink = ({children, href, target, rel}: Props) => (
       cssProps={{
         verticalAlign: -2,
         display: 'inline-block',
-        marginLeft: 5,
+        marginRight: 5,
         color: colors.subtle,
       }}
     />

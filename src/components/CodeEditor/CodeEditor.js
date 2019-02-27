@@ -71,6 +71,7 @@ class CodeEditor extends Component {
     return (
       <LiveProvider code={showJSX ? code : compiledES6} mountStylesheet={false}>
         <div
+          dir="ltr"
           css={{
             [media.greaterThan('medium')]: {
               display: 'flex',
