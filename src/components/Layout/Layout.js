@@ -39,7 +39,8 @@ class Template extends Component<Props> {
           display: 'flex',
           flexDirection: 'column',
           minHeight: 'calc(100vh - 40px)',
-        }}>
+        }}
+        dir="rtl">
         <Header location={location} />
         <Flex
           direction="column"
