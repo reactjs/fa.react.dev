@@ -1,6 +1,6 @@
 ---
 id: rendering-elements
-title: Rendering Elements
+title: رندر شدن المان‌ها
 permalink: docs/rendering-elements.html
 redirect_from:
   - "docs/displaying-data.html"
@@ -8,68 +8,70 @@ prev: introducing-jsx.html
 next: components-and-props.html
 ---
 
-Elements are the smallest building blocks of React apps.
+المان‌ها (elements) کوچک‌ترین جزء تشکیل‌دهنده برنامه‌های ری‌اکتی هستند.
 
-An element describes what you want to see on the screen:
+یک المان آن‌ چیزی را که شما می‌خواهید روی صفحه ببینید نمایش می‌دهد:
 
 ```js
 const element = <h1>Hello, world</h1>;
 ```
 
-Unlike browser DOM elements, React elements are plain objects, and are cheap to create. React DOM takes care of updating the DOM to match the React elements.
+برخلاف المان‌های ‌DOM مرورگر، المان‌های ری‌اکت اشیاء ساده‌ای هستند که ایجاد آن‌ها هزینه چندانی ندارد. وظیفه DOM ری‌اکت به‌روز رسانی DOM [مرورگر] است و اطمینان از این‌که دقیقا با المان‌های ری‌اکت یکسان باشد.
 
->**Note:**
+>**یادداشت:**
 >
->One might confuse elements with a more widely known concept of "components". We will introduce components in the [next section](/docs/components-and-props.html). Elements are what components are "made of", and we encourage you to read this section before jumping ahead.
+>ممکن است بعضی‌ها المان‌ها را با "کامپوننت‌ها" (مفهومی که بیشتر جا افتاده‌است.) اشتباه بگیرند. ما کامپوننت‌ها را در [بخش بعدی](/docs/components-and-props.html) معرفی خواهیم‌کرد. المان‌ها اجزائی هستند که کامپوننت‌ها از آن ساخته می‌شوند و ما به شما پیشنهاد می‌کنیم که پیش از رفتن به بخش بعدی، حتما اینجا را مطالعه کنید.
 
-## Rendering an Element into the DOM {#rendering-an-element-into-the-dom}
+## رندر شدن یک المان درون DOM {#rendering-an-element-into-the-dom}
 
-Let's say there is a `<div>` somewhere in your HTML file:
+فرض کنید یک `<div>` جایی در فایل HTML شما قرار دارد:
 
 ```html
 <div id="root"></div>
 ```
 
-We call this a "root" DOM node because everything inside it will be managed by React DOM.
+ما این المان‌ را یک DOM node "ریشه" نامگذاری می‌کنیم، به این دلیل‌ که هر چیزی که داخل آن قرار گیرد، توسط ری‌اکت DOM مدیریت می‌شود.
 
-Applications built with just React usually have a single root DOM node. If you are integrating React into an existing app, you may have as many isolated root DOM nodes as you like.
+برنامه‌هایی که با فقط با ری‌اکت ساخته می‌شوند، معمولا فقط یک DOM node دارند. اگر ری‌اکت را به یک برنامه موجود اضافه کنید، می‌توانید هر تعدادی از DOM node که بخواهید داشته‌باشید.
 
-To render a React element into a root DOM node, pass both to `ReactDOM.render()`:
+تابع `ReactDOM.render()` یک المان ری‌اکت را درون یک DOM node رندر می‌کند:
+
 
 `embed:rendering-elements/render-an-element.js`
 
-[](codepen://rendering-elements/render-an-element)
+[با CodePen امتحان کنید](codepen://rendering-elements/render-an-element)
 
-It displays "Hello, world" on the page.
+این کد توی صفحه "Hello, world" را نمایش می‌دهد.
 
-## Updating the Rendered Element {#updating-the-rendered-element}
+## به‌روز‌رسانی المان رندر شده {#updating-the-rendered-element}
 
-React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object). Once you create an element, you can't change its children or attributes. An element is like a single frame in a movie: it represents the UI at a certain point in time.
+المان‌های ری‌اکت [تغییر ناپدیر](https://en.wikipedia.org/wiki/Immutable_object) هستند. زمانی که یک المان ری‌اکت را ایجاد می‌کنید، دیگر قادر به تغییر فرزندان و خصوصیات آن نخواهید بود. یک المان را مانند یک فریم از یک فیلم تصور کنید که UI را در یک نقطه زمانی مشخص نشان می‌دهد.
 
-With our knowledge so far, the only way to update the UI is to create a new element, and pass it to `ReactDOM.render()`.
+با اطلاعاتی که تا این‌جا به‌دست آورده‌ایم، تنها راه به‌روز رسانی UI این است که یک المان جدید ساخته و آن را به تابع `ReactDOM.render()` بدهیم.
 
-Consider this ticking clock example:
+
+این مثال ساعت را درنظر بگیرید:
 
 `embed:rendering-elements/update-rendered-element.js`
 
-[](codepen://rendering-elements/update-rendered-element)
+[با CodePen امتحان کنید](codepen://rendering-elements/update-rendered-element)
 
-It calls `ReactDOM.render()` every second from a [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) callback.
+در این مثال تابع `ReactDOM.render()` هربار توسط callback تابع [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) فراخوانی می‌شود.
 
->**Note:**
+>**یادداشت:**
 >
->In practice, most React apps only call `ReactDOM.render()` once. In the next sections we will learn how such code gets encapsulated into [stateful components](/docs/state-and-lifecycle.html).
+> در عمل، بیشتر برنامه‌های ری‌اکت فقط یک دفعه `ReactDOM.render()` را فراخوانی می‌کنند. در بخش‌های بعدی یاد می‌گیریم که چگونه چنین کد‌هایی به صورت [کامپوننت‌های دارای state](/docs/state-and-lifecycle.html) کپسوله می‌شوند.
 >
->We recommend that you don't skip topics because they build on each other.
+> از آن‌جا که هر بخش با استناد به موضوع‌های پیشین نوشته‌ شده‌است، پیشنهاد می‌کنیم به‌ترتیب پیش بروید.
 
-## React Only Updates What's Necessary {#react-only-updates-whats-necessary}
+## ری‌اکت تنها چیز‌هایی که نیاز‌ هست را به‌روز رسانی می‌کند {#react-only-updates-whats-necessary}
 
-React DOM compares the element and its children to the previous one, and only applies the DOM updates necessary to bring the DOM to the desired state.
+DOM ری‌اکت المان موردنظر و فرزندانش را با حالت پیشین آن مقایسه می‌کند و تنها به‌روز رسانی‌های مورد نیاز را اعمال می‌کند تا ‌DOM را به وضعیت موردنظر برساند.
 
-You can verify by inspecting the [last example](codepen://rendering-elements/update-rendered-element) with the browser tools:
+برای اطمینان، [مثال قبلی](codepen://rendering-elements/update-rendered-element) را با استفاده از ابزار توسعه‌دهندگان مرورگر بررسی کنید:
 
 ![DOM inspector showing granular updates](../images/docs/granular-dom-updates.gif)
 
-Even though we create an element describing the whole UI tree on every tick, only the text node whose contents has changed gets updated by React DOM.
+با وجود این‌که ما هر ثانیه یک المان جدید که توصیف‌کننده کل UI است را ایجاد می‌کنیم، فقط متن nodeی که تغییر کرده‌است توسط ری‌اکت DOM به‌روز‌رسانی می‌شود.
 
-In our experience, thinking about how the UI should look at any given moment rather than how to change it over time eliminates a whole class of bugs.
+براساس تجربه ما، تفکر درباره این‌که UI در یک زمان مشخص چگونه باشد، به جای این‌که چگونه آن را تغییر دهیم، از دسته‌ای از خطا‌ها پیش‌گیری می‌کند.
