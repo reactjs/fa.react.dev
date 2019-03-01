@@ -24,6 +24,14 @@
   <tbody>
     <tr>
       <td dir="ltr">
+        breaking change
+      </td>
+      <td>
+        تغییر مخرب
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
         bug
       </td>
       <td>
@@ -72,10 +80,26 @@
     </tr>
     <tr>
       <td dir="ltr">
+        hook
+      </td>
+      <td>
+        هوک
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
         plugin
       </td>
       <td>
         پلاگین
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        react
+      </td>
+      <td>
+        ری‌اکت
       </td>
     </tr>
     <tr>
@@ -127,6 +151,36 @@
   <tbody dir="ltr">
     <tr>
       <td>
+        abstraction
+      </td>
+    </tr>
+    <tr>
+      <td>
+        API
+      </td>
+    </tr>
+    <tr>
+      <td>
+        bind
+      </td>
+    </tr>
+    <tr>
+      <td>
+        consumer
+      </td>
+    </tr>
+    <tr>
+      <td>
+        context
+      </td>
+    </tr>
+    <tr>
+      <td>
+        DOM
+      </td>
+    </tr>
+    <tr>
+      <td>
         event delegation
       </td>
     </tr>
@@ -137,12 +191,27 @@
     </tr>
     <tr>
       <td>
+        event listener
+      </td>
+    </tr>
+    <tr>
+      <td>
+        hot reloading
+      </td>
+    </tr>
+    <tr>
+      <td>
         HTML
       </td>
     </tr>
-     <tr>
+    <tr>
       <td>
         JSX
+      </td>
+    </tr>
+    <tr>
+      <td>
+        lifecycle
       </td>
     </tr>
     <tr>
@@ -152,7 +221,27 @@
     </tr>
     <tr>
       <td>
+        provider
+      </td>
+    </tr>
+    <tr>
+      <td>
+        refs
+      </td>
+    </tr>
+    <tr>
+      <td>
+        reducer
+      </td>
+    </tr>
+    <tr>
+      <td>
         REPL
+      </td>
+    </tr>
+    <tr>
+      <td>
+        RFC
       </td>
     </tr>
     <tr>
@@ -160,7 +249,17 @@
         state
       </td>
     </tr>
-        <tr>
+    <tr>
+      <td>
+        store
+      </td>
+    </tr>
+    <tr>
+      <td>
+        view
+      </td>
+    </tr>
+    <tr>
       <td>
         XML
       </td>
