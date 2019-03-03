@@ -68,7 +68,7 @@ const element = <h1>Hello, world</h1>;
 
 DOM ری‌اکت المان موردنظر و فرزندانش را با حالت پیشین آن مقایسه می‌کند و تنها به‌روز رسانی‌های مورد نیاز را اعمال می‌کند تا ‌DOM را به وضعیت موردنظر برساند.
 
-برای اطمینان، [مثال قبلی](codepen://rendering-elements/update-rendered-element) را با استفاده از ابزار توسعه‌دهندگان مرورگر بررسی کنید:
+برای اطمینان، [مثال قبلی](codepen://rendering-elements/update-rendered-element) را با استفاده از ابزارهای مرورگر بررسی کنید:
 
 ![DOM inspector showing granular updates](../images/docs/granular-dom-updates.gif)
 
