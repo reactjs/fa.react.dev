@@ -58,7 +58,7 @@ const element = <h1>Hello, world</h1>;
 
 در این مثال تابع `ReactDOM.render()` هربار توسط callback تابع [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) فراخوانی می‌شود.
 
->**یادداشت:**
+>**نکته:**
 >
 > در عمل، بیشتر برنامه‌های ری‌اکت فقط یک دفعه `ReactDOM.render()` را فراخوانی می‌کنند. در بخش‌های بعدی یاد می‌گیریم که چگونه چنین کد‌هایی به صورت [کامپوننت‌های دارای state](/docs/state-and-lifecycle.html) کپسوله می‌شوند.
 >
