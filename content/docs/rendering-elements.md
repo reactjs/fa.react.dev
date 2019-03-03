@@ -41,7 +41,7 @@ const element = <h1>Hello, world</h1>;
 
 [با CodePen امتحان کنید](codepen://rendering-elements/render-an-element)
 
-این کد توی صفحه "Hello, world" را نمایش می‌دهد.
+این کد روی صفحه "Hello, world" را نمایش می‌دهد.
 
 ## به‌روز‌رسانی المان رندر شده {#updating-the-rendered-element}
 
