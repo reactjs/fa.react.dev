@@ -34,7 +34,7 @@ const element = <h1>Hello, world</h1>;
 
 برنامه‌هایی که فقط با ری‌اکت ساخته می‌شوند، معمولا فقط یک DOM node دارند. اگر ری‌اکت را به یک برنامه موجود اضافه کنید، می‌توانید هر تعدادی از DOM node های ریشه‌ی ایزوله که بخواهید داشته‌باشید.
 
-تابع `ReactDOM.render()` یک المان ری‌اکت را درون یک DOM node رندر می‌کند:
+برای رندر کردن یه المان ری‌اکت درون یه DOM node ریشه، هر دو را به `ReactDOM.render()` بدهید
 
 
 `embed:rendering-elements/render-an-element.js`
