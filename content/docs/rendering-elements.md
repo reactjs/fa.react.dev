@@ -56,7 +56,7 @@ const element = <h1>Hello, world</h1>;
 
 [با CodePen امتحان کنید](codepen://rendering-elements/update-rendered-element)
 
-در این مثال تابع `ReactDOM.render()` هربار توسط callback تابع [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) فراخوانی می‌شود.
+در این مثال تابع `ReactDOM.render()` هربار توسط callback تابع [`()setInterval`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) فراخوانی می‌شود.
 
 >**نکته:**
 >
