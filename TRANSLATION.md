@@ -62,6 +62,15 @@
         داده
       </td>
     </tr>
+     </tr>
+        <tr>
+      <td dir="ltr">
+        element
+      </td>
+      <td>
+        المنت
+      </td>
+    </tr>
     <tr>
       <td dir="ltr">
         feature
