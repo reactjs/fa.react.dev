@@ -1,14 +1,18 @@
 ---
 id: lists-and-keys
-title: Lists and Keys
+title: لیست ها و کلید ها
 permalink: docs/lists-and-keys.html
 prev: conditional-rendering.html
 next: forms.html
 ---
 
-First, let's review how you transform lists in JavaScript.
+ابتدا بیاید بررسی کنیم چگونه در جاوااسکریپت  لیست ها را تغییر میدهند.
 
-Given the code below, we use the [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) function to take an array of `numbers` and double their values. We assign the new array returned by `map()` to the variable `doubled` and log it:
+به کد زیر دقت کنید،ما از تابع[`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) استفاده میکنیم  تا آرایه ی `numbers` را گرفته و  مقادیرش را دوبرابر کند.  
+
+
+آرایه ی جدیدی که توسط `map()` برگشته را به متغیر `doubled`اختصاص میدهیم و آن را چاپ میکنیم.
+
 
 ```javascript{2}
 const numbers = [1, 2, 3, 4, 5];
@@ -16,13 +20,13 @@ const doubled = numbers.map((number) => number * 2);
 console.log(doubled);
 ```
 
-This code logs `[2, 4, 6, 8, 10]` to the console.
+این کد آرایه ی`[2, 4, 6, 8, 10]` را چاپ میکند.
 
-In React, transforming arrays into lists of [elements](/docs/rendering-elements.html) is nearly identical.
+در ری اکت هم تغییر آرایه ها به لیست [elements](/docs/rendering-elements.html) تقریبا یکسان است. 
 
-### Rendering Multiple Components {#rendering-multiple-components}
+### رندر کردن چندین کامپوننت {#rendering-multiple-components}
 
-You can build collections of elements and [include them in JSX](/docs/introducing-jsx.html#embedding-expressions-in-jsx) using curly braces `{}`.
+میتوانید با استفاده از آکولاد`{}`، مجموعه ای از المنت ها را بسازید و [آن ها را در JSX درج کنید](/docs/introducing-jsx.html#embedding-expressions-in-jsx) .
 
 Below, we loop through the `numbers` array using the JavaScript [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) function. We return a `<li>` element for each item. Finally, we assign the resulting array of elements to `listItems`:
 
