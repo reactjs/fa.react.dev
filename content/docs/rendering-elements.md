@@ -1,6 +1,6 @@
 ---
 id: rendering-elements
-title: رندر شدن المنت‌ها
+title: رندر کردن المنت‌ها
 permalink: docs/rendering-elements.html
 redirect_from:
   - "docs/displaying-data.html"
