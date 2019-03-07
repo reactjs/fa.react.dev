@@ -81,9 +81,9 @@ state مشابه props است، اما خصوصی است و کاملا توسط 
 
 1. یک [کلاس ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) بسازید، با همان نام که از `React.Component` ارث می‌برد.
 
-2. یک متود خالی با نام `render()` به آن اضافه کنید.
+2. یک متد خالی با نام `render()` به آن اضافه کنید.
 
-3. بدنه تابع را به متود `render()` منتقل کنید.
+3. بدنه تابع را به متد `render()` منتقل کنید.
 
 4. در بدنه `render()` به‌جای `props`، `this.props` بنویسید.
 
@@ -331,28 +331,28 @@ ReactDOM.render(
 برای مثال، این کار باعث رندر مجدد یک کامپوننت نمی‌شود:
 
 ```js
-// Wrong
+// اشتباه
 this.state.comment = 'Hello';
 ```
 
 به جای آن از `setState()` استفاده کنید:
 
 ```js
-// Correct
+// درست
 this.setState({comment: 'Hello'});
 ```
 تنها جایی که شما می‌توانید `this.state` را [مستقیم] مقدار‌دهی کنید، سازنده [کلاس] است.
 
-### به‌روز رسانی state ممکن است ناهمزمان باشد {#state-updates-may-be-asynchronous}
+### به‌روز رسانی state ممکن است غیرهمزمان باشد {#state-updates-may-be-asynchronous}
 
 ممکن است ری‌اکت برای بهبود عملکرد، فراخوانی چند باره `setState()` را در یک به‌روز رسانی انجام دهد.
 
-از آن‌جا که ممکن است `this.props` و `this.state` به صورت ناهمزمان به‌روز ‌رسانی شوند، برای محاسبه وضعیت بعدی نباید روی مقادیر آن‌ها حساب کنید.
+از آن‌جا که ممکن است `this.props` و `this.state` به صورت غیرهمزمان به‌روز ‌رسانی شوند، برای محاسبه وضعیت بعدی نباید روی مقادیر آن‌ها حساب کنید.
 
 برای مثال، این کد ممکن است در به‌روز رسانی شمارنده دچار اشکال شود:
 
 ```js
-// Wrong
+// اشتباه
 this.setState({
   counter: this.state.counter + this.props.increment,
 });
@@ -361,7 +361,7 @@ this.setState({
 برای حل آن، شکل دوم تابع `setState()` را استفاده کنید که به جای یک شیء، یک تابع به عنوان ورودی می‌پذیرد. آن تابع هم state قبلی را به عنوان ورودی اول، و props مربوط به زمانی که تعییرات اعمال شده‌است را به عنوان ورودی دوم دریافت می‌کند.
 
 ```js
-// Correct
+// درست
 this.setState((state, props) => ({
   counter: state.counter + props.increment
 }));
@@ -370,7 +370,7 @@ this.setState((state, props) => ({
 در بالا ما از [تابع arrow](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) استفاده کرده‌ایم، اما با تابع معمولی هم کار می‌کند:
 
 ```js
-// Correct
+// درست
 this.setState(function(state, props) {
   return {
     counter: state.counter + props.increment
