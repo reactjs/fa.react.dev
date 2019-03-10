@@ -127,7 +127,7 @@ class EssayForm extends React.Component {
 
 ## تگ select {#the-select-tag}
 
-در HTML، تگ `<select>` یک منو کشویی نمایش ‌می‌دهد. برای مثال، کد HTML زیر یک منو کشویی از طعم‌های مختلف نمایش ‌می‌دهد:
+در HTML، تگ `<select>` یک لیست کشویی می‌سازد. برای مثال، کد HTML زیر یک لیست کشویی از طعم‌ها می‌سازد:
 
 ```html
 <select>
