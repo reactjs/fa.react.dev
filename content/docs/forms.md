@@ -1,6 +1,6 @@
 ---
 id: forms
-title: Forms
+title: فرم‌ها
 permalink: docs/forms.html
 prev: lists-and-keys.html
 next: lifting-state-up.html
@@ -9,7 +9,7 @@ redirect_from:
   - "docs/forms-zh-CN.html"
 ---
 
-HTML form elements work a little bit differently from other DOM elements in React, because form elements naturally keep some internal state. For example, this form in plain HTML accepts a single name:
+المنت‌های فرم HTML در نحوه‌ی کارکرد با المنت‌های دیگر DOM در ری‌اکت تفاوت جزیی دارند، به این دلیل که المنت‌های فرم به صورت طبیعی مقداری state درونی ‌نگه‌داری ‌می‌کنند. برای مثال، این فرم که ‌به‌صورت HTML ساده نوشته شده است تنها یک نام دریافت ‌می‌کند:
 
 ```html
 <form>
@@ -21,15 +21,15 @@ HTML form elements work a little bit differently from other DOM elements in Reac
 </form>
 ```
 
-This form has the default HTML form behavior of browsing to a new page when the user submits the form. If you want this behavior in React, it just works. But in most cases, it's convenient to have a JavaScript function that handles the submission of the form and has access to the data that the user entered into the form. The standard way to achieve this is with a technique called "controlled components".
+این فرم رفتار پیش فرض فرم HTML  که کاربر پس از ثبت فرم به صفحه‌‌ی جدید انتقال پیدا ‌می‌کند را داراست . اگر این رفتار را در ری‌اکت ‌می‌خواهید نیاز به انجام هیچ تغییری ندارید. اما در بیشتر موارد، مناسب است که یک تابع جاوااسکریپت داشته‌باشیم که ثبت فرم را انجام می‌دهد و به داده‌هایی که کاربر در فرم وارد کرده است دسترسی دارد. روش استاندارد پیاده سازی این رفتار تکنیکی به نام "کامپوننت‌های کنترل‌شده" ‌می‌باشد.
 
-## Controlled Components {#controlled-components}
+## کامپوننت‌های کنترل‌شده {#controlled-components}
 
-In HTML, form elements such as `<input>`, `<textarea>`, and `<select>` typically maintain their own state and update it based on user input. In React, mutable state is typically kept in the state property of components, and only updated with [`setState()`](/docs/react-component.html#setstate).
+در HTML، المنت‌های فرم مانند `<input>`, `<textarea>` و `<select>` , معمولا وضعیت داده وارد شده را در خود نگه ‌می‌دارند و بر اساس ورودی کاربر آن را به‌روز رسانی ‌می‌کنند. در ری‌اکت، معمولا وضعیت قابل‌تغییر در state کامپوننت‌ها ‌نگه‌داری ‌می‌شود، و فقط از طریق متد [`setState()`](/docs/react-component.html#setstate) به‌روز رسانی می‌شود.
 
-We can combine the two by making the React state be the "single source of truth". Then the React component that renders a form also controls what happens in that form on subsequent user input. An input form element whose value is controlled by React in this way is called a "controlled component".
+ما ‌می‌توانیم با قرار دادن قابلیت state کامپوننت در ری‌اکت به عنوان "تنها منبع حقیقت" [single source of truth] این دو را با هم ترکیب کنیم. آنگاه کامپوننت ری‌اکتی که فرم را رندر می‌کند، مشخص کننده نحوه عملکرد فرم در قبال ورودی کاربر نیز ‌می‌باشد. یک المنت فرم ورودی داده که مقدارش توسط ری‌اکت به این صورت کنترل ‌می‌شود را "کامپوننت کنترل‌شده" ‌می‌نامند.
 
-For example, if we want to make the previous example log the name when it is submitted, we can write the form as a controlled component:
+به عنوان مثال، اگر بخواهیم در مثال قبل در زمان ثبت فرم، نام نمایش داده شود، ‌می‌توانیم فرم را ‌به‌صورت یک کامپوننت کنترل‌شده بنویسیم:
 
 ```javascript{4,10-12,24}
 class NameForm extends React.Component {
@@ -64,11 +64,11 @@ class NameForm extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/VmmPgp?editors=0010)
+[**کد را در CodePen امتحان کنید**](https://codepen.io/gaearon/pen/VmmPgp?editors=0010)
 
-Since the `value` attribute is set on our form element, the displayed value will always be `this.state.value`, making the React state the source of truth. Since `handleChange` runs on every keystroke to update the React state, the displayed value will update as the user types.
+از آن‌جایی که خصوصیت value روی المنت فرم ما قرار گرفته‌است، مقدار نمایش داده‌شده همیشه `this.state.value` که باعث ‌می‌شود state ری‌اکت به عنوان منبع ‌نگه‌داری داده و وضعیت ‌باشد. از آن‌جایی که `handleChange` با هر فشردن کلید برای به‌روز رسانی state ری‌اکت اجرا می‌شود، مقدار نمایش داده‌شده هم با تایپ کردن کاربر به‌روز‌رسانی خواهد شد.
 
-With a controlled component, every state mutation will have an associated handler function. This makes it straightforward to modify or validate user input. For example, if we wanted to enforce that names are written with all uppercase letters, we could write `handleChange` as:
+در یک کامپوننت کنترل‌شده، هر تغییر state یک تابع handler مرتبط خواهد داشت. این باعث سر راست شدن تغییر یا اعتبارسنجی ورودی کاربر خواهد شد. به عنوان مثال، اگر ما می‌خواستیم نوشتن نام‌ها را با حروف بزرگ اجباری کنیم، می توانستیم `handleChange` را به این صورت بنویسیم:
 
 ```javascript{2}
 handleChange(event) {
@@ -76,9 +76,9 @@ handleChange(event) {
 }
 ```
 
-## The textarea Tag {#the-textarea-tag}
+## تگ textarea {#the-textarea-tag}
 
-In HTML, a `<textarea>` element defines its text by its children:
+در HTML، یک المنت `<textarea>` مقدارش را بر اساس فرزندانش [متن بین تگ باز و بسته این المنت] تعریف می‌کند:
 
 ```html
 <textarea>
@@ -86,7 +86,7 @@ In HTML, a `<textarea>` element defines its text by its children:
 </textarea>
 ```
 
-In React, a `<textarea>` uses a `value` attribute instead. This way, a form using a `<textarea>` can be written very similarly to a form that uses a single-line input:
+در عوض در ری‌اکت، تگ `<textarea>` از خصوصیت `value` برای این کار استفاده ‌می‌کند. با این روش، فر‌می‌ که دارای المنت `<textarea>` هست را ‌می‌توان خیلی شبیه به یک فرم با ورودی‌های تک‌خطی نوشت: 
 
 ```javascript{4-6,12-14,26}
 class EssayForm extends React.Component {
@@ -123,11 +123,11 @@ class EssayForm extends React.Component {
 }
 ```
 
-Notice that `this.state.value` is initialized in the constructor, so that the text area starts off with some text in it.
+توجه کنید که `this.state.value` در تابع سازنده کلاس (constructor) مقدار دهی اولیه ‌می‌شود، بنابراین در ابتدا textarea با متنی درون آن نمایش داده می‌شود.
 
-## The select Tag {#the-select-tag}
+## تگ select {#the-select-tag}
 
-In HTML, `<select>` creates a drop-down list. For example, this HTML creates a drop-down list of flavors:
+در HTML، تگ `<select>` یک لیست کشویی می‌سازد. برای مثال، این HTML یک لیست کشویی از طعم‌ها را می‌سازد:
 
 ```html
 <select>
@@ -138,7 +138,7 @@ In HTML, `<select>` creates a drop-down list. For example, this HTML creates a d
 </select>
 ```
 
-Note that the Coconut option is initially selected, because of the `selected` attribute. React, instead of using this `selected` attribute, uses a `value` attribute on the root `select` tag. This is more convenient in a controlled component because you only need to update it in one place. For example:
+توجه کنید که ابتدا گزینه Coconut  به خاطر خصوصیت `selected` انتخاب شده است. ری‌اکت به جای استفاده از خصوصیت `selected`، از خصوصیت `value` در تگ `select` ریشه استفاده ‌می‌کند. این روش در کامپوننت‌های کنترل‌شده راحت‌تر است زیرا شما تنها نیاز به به‌روزرسانی آن در یک مکان دارید. برای مثال:
 
 ```javascript{4,10-12,24}
 class FlavorForm extends React.Component {
@@ -178,33 +178,33 @@ class FlavorForm extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/JbbEzX?editors=0010)
+[**کد را در CodePen امتحان کنید**](https://codepen.io/gaearon/pen/JbbEzX?editors=0010)
 
-Overall, this makes it so that `<input type="text">`, `<textarea>`, and `<select>` all work very similarly - they all accept a `value` attribute that you can use to implement a controlled component.
+در کل، این نوع ساختار باعث ‌می‌شود که `<input type="text">`, `<textarea>` و `<select>`، همگی بسیار مشابه کار کنند. همگی یک خصوصیت `value` دریافت ‌می‌کنند که ‌می‌توانید با استفاده از آن کامپوننت کنترل‌شده را پیاده سازی کنید.
 
-> Note
+> نکته
 >
-> You can pass an array into the `value` attribute, allowing you to select multiple options in a `select` tag:
+> شما ‌می‌توانید یک آرایه را به خصوصیت value پاس دهید که به شما اجازه انتخاب چندین گزینه در یک تگ select را می‌دهد:
 >
 >```js
 ><select multiple={true} value={['B', 'C']}>
 >```
 
-## The file input Tag {#the-file-input-tag}
+## تگ file input {#the-file-input-tag}
 
-In HTML, an `<input type="file">` lets the user choose one or more files from their device storage to be uploaded to a server or manipulated by JavaScript via the [File API](https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications).
+در HTML، یک `<input type="file">`  به کاربر اجازه می‌دهد که یک یا چند فایل را از محل ذخیره‌سازی دستگاه خود انتخاب کند تا روی سرور بارگذاری شود یا توسط  [File API](https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications) جاوااسکریپت روی آن کار شود.
 
 ```html
 <input type="file" />
 ```
 
-Because its value is read-only, it is an **uncontrolled** component in React. It is discussed together with other uncontrolled components [later in the documentation](/docs/uncontrolled-components.html#the-file-input-tag).
+به دلیل اینکه مقدار این المنت فقط قابل‌خواندن ‌می‌باشد، این المنت در ری‌اکت یک کامپوننت **کنترل‌نشده** ‌می‌باشد. در مورد این کامپوننت همراه با دیگر کامپوننت‌های کنترل‌نشده [در بخش دیگری از این اسناد](/docs/uncontrolled-components.html#the-file-input-tag) درباره آن بحث شده‌است.
 
-## Handling Multiple Inputs {#handling-multiple-inputs}
+## کار با چندین ورودی {#handling-multiple-inputs}
 
-When you need to handle multiple controlled `input` elements, you can add a `name` attribute to each element and let the handler function choose what to do based on the value of `event.target.name`.
+زمانی که نیاز دارید چند فیلد ورودی `input` کنترل‌شده به کار ببرید، ‌می‌توانید یک خصوصیت `name` برای هر یک از المنت‌ها تعریف کنید و اجازه دهید که تابع handler بر اساس مقدار event.target.name تصمیم بگیرد که چه کاری انجام دهد.
 
-For example:
+برای مثال:
 
 ```javascript{15,18,28,37}
 class Reservation extends React.Component {
@@ -254,9 +254,9 @@ class Reservation extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/wgedvV?editors=0010)
+[**کد را در CodePen امتحان کنید**](https://codepen.io/gaearon/pen/wgedvV?editors=0010)
 
-Note how we used the ES6 [computed property name](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names) syntax to update the state key corresponding to the given input name:
+توجه داشته‌باشید که ما چگونه از قاعده نوشتن [computed property name](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names) در ES6 برای به‌روز رسانی state با کلید مرتبط با نام ورودی داده‌شده استفاده کرده‌ایم:
 
 ```js{2}
 this.setState({
@@ -264,21 +264,20 @@ this.setState({
 });
 ```
 
-It is equivalent to this ES5 code:
+معادل با این کد در ES5 است:
 
 ```js{2}
 var partialState = {};
 partialState[name] = value;
 this.setState(partialState);
 ```
+همچنین از آن جایی که `setState()` ‌به‌صورت خودکار ‌می‌تواند [تغییرات جزیی state را به درون state فعلی ادغام کند](/docs/state-and-lifecycle.html#state-updates-are-merged), ما فقط نیاز داریم آن را با بخشی که تغییر کرده‌است فراخوانی کنیم.
 
-Also, since `setState()` automatically [merges a partial state into the current state](/docs/state-and-lifecycle.html#state-updates-are-merged), we only needed to call it with the changed parts.
+## مقدار Null ورودی کنترل‌شده {#controlled-input-null-value}
 
-## Controlled Input Null Value {#controlled-input-null-value}
+قراردادن prop value روی یک [کامپوننت کنترل‌شده](/docs/forms.html#controlled-components) از تغییر ورودی توسط کاربر جلوگیری می‌کند، مگر اینکه شما بخواهید. اگر یک `value` روی ورودی قرار داده‌اید، اما هنوز قابل‌ ویرایش است، ممکن است `value` را تصادفا با `undefined` و یا `null` مقدار‌دهی کرده باشید.
 
-Specifying the value prop on a [controlled component](/docs/forms.html#controlled-components) prevents the user from changing the input unless you desire so. If you've specified a `value` but the input is still editable, you may have accidentally set `value` to `undefined` or `null`.
-
-The following code demonstrates this. (The input is locked at first but becomes editable after a short delay.)
+نمونه کد زیر این [رفتار] را نشان ‌می‌دهد. (در ابتدا فیلد ورودی قفل است اما پس از زمانی کوتاه قابل‌تغییر ‌می‌شود.)
 
 ```javascript
 ReactDOM.render(<input value="hi" />, mountNode);
@@ -289,10 +288,10 @@ setTimeout(function() {
 
 ```
 
-## Alternatives to Controlled Components {#alternatives-to-controlled-components}
+## راه‌حل‌های جایگزین کامپوننت‌های کنترل‌شده {#alternatives-to-controlled-components}
 
-It can sometimes be tedious to use controlled components, because you need to write an event handler for every way your data can change and pipe all of the input state through a React component. This can become particularly annoying when you are converting a preexisting codebase to React, or integrating a React application with a non-React library. In these situations, you might want to check out [uncontrolled components](/docs/uncontrolled-components.html), an alternative technique for implementing input forms.
+در بعضی مواقع استفاده از کامپوننت‌های کنترل‌شده میتواند خسته‌کننده باشد، چون شما می‌بایست برای هر شکلی که داده‌ها تغییر می‌کنند یک event handler بنویسید و تمام وضعیت ورودی را به یک کامپوننت ری‌اکتی انتقال دهید. این می‌تواند مخصوصا زمانی که قصد دارید کد موجودتان را به ری‌اکت تبدیل کنید، یا برنامه ری‌اکتی را با یک کتابخانه غیرری‌اکتی ادغام کنید آزار دهنده شود. در چنین شرایطی شاید بهتر باشد به [کامپوننت‌های کنترل‌نشده](/docs/uncontrolled-components.html) نگاهی بیاندازید که یک تکنیک جایگزین برای پیاده سازی فرم های ورودی ‌می‌باشد.
 
-## Fully-Fledged Solutions {#fully-fledged-solutions}
+## راه‌حل‌های تمام‌عیار {#fully-fledged-solutions}
 
-If you're looking for a complete solution including validation, keeping track of the visited fields, and handling form submission, [Formik](https://jaredpalmer.com/formik) is one of the popular choices. However, it is built on the same principles of controlled components and managing state — so don't neglect to learn them.
+اگر به دنبال یک راه‌حل کامل که شامل مواردی از قبیل اعتبار سنجی مقدار ورودی توسط کاربر، نظارت بر فیلد‌های مشاهده‌شده و کنترل نحوه ثبت فرم باشد، [Formik](https://jaredpalmer.com/formik) یکی از محبوب‌ترین گزینه‌ها ‌می‌باشد. با این حال، این راه‌حل بر اساس اصول کامپوننت‌های کنترل‌شده و مدیریت state ساخته شده است، پس از یادگیری آن غفلت نکنید.
