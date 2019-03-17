@@ -6,9 +6,9 @@ prev: conditional-rendering.html
 next: forms.html
 ---
 
-ابتدا بیاید بررسی کنیم چگونه در جاوااسکریپت  لیست ها را تغییر میدهند.
+ابتدا اجازه دهید به بررسی نحوه تبدیل لیست ها در جاوا اسکریپت بپردازیم.
 
-به کد زیر دقت کنید،ما از تابع[`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) استفاده میکنیم  تا آرایه ی `numbers` را گرفته و  مقادیرش را دوبرابر کند.  
+با توجه به کد زیر،ما از تابع[`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) استفاده میکنیم  تا آرایه ی `numbers` را گرفته و  مقادیرش را دوبرابر کند.  
 
 
 آرایه ی جدیدی که توسط `map()` برگشته را به متغیر `doubled`اختصاص میدهیم و آن را چاپ میکنیم.
@@ -22,13 +22,14 @@ console.log(doubled);
 
 این کد آرایه ی`[2, 4, 6, 8, 10]` را چاپ میکند.
 
-در ری اکت هم تغییر آرایه ها به لیست [elements](/docs/rendering-elements.html) تقریبا یکسان است. 
+در ری اکت هم تغییر آرایه ها به لیست [المنت ها](/docs/rendering-elements.html) تقریبا یکسان است. 
 
-### رندر کردن چندین کامپوننت {#rendering-multiple-components}
+### رندر کردن کامپوننت های چندگانه {#rendering-multiple-components}
 
 میتوانید با استفاده از آکولاد`{}`، مجموعه ای از المنت ها را بسازید و [آن ها را در JSX درج کنید](/docs/introducing-jsx.html#embedding-expressions-in-jsx) .
 
-Below, we loop through the `numbers` array using the JavaScript [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) function. We return a `<li>` element for each item. Finally, we assign the resulting array of elements to `listItems`:
+در قسمت زیر ما با استفاده از تابع [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)  در جاوااسکریپت،در آرایه ی `numbers`حلقه میزنیم. 
+برای هر آیتم یک `<li>` برمیگردانیم  و در نهایت  نتیجه ی آرایه ی المان ها را به `listItems` اختصاص میدهیم. :
 
 ```javascript{2-4}
 const numbers = [1, 2, 3, 4, 5];
@@ -37,7 +38,7 @@ const listItems = numbers.map((number) =>
 );
 ```
 
-We include the entire `listItems` array inside a `<ul>` element, and [render it to the DOM](/docs/rendering-elements.html#rendering-an-element-into-the-dom):
+کل آرایه ی `listItems` را درون یک المنت `<ul>` قرار میدهیم و [آن را در DOM رندر میکنیم](/docs/rendering-elements.html#rendering-an-element-into-the-dom):  
 
 ```javascript{2}
 ReactDOM.render(
@@ -46,15 +47,16 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
+[**در کدپن امتحان کنید**](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
 
-This code displays a bullet list of numbers between 1 and 5.
 
-### Basic List Component {#basic-list-component}
+این کد یک لیست گلوله ای از اعداد بین ۱ تا ۵ را نشان میدهد.
 
-Usually you would render lists inside a [component](/docs/components-and-props.html).
+###  کامپوننت لیست ساده {#basic-list-component}
 
-We can refactor the previous example into a component that accepts an array of `numbers` and outputs a list of elements.
+معمولا لیست هارا درون یک [کامپوننت](/docs/components-and-props.html) رندر میکنیم.
+
+میتوانیم مثال قبلی را طوری بیهنه سازی کنیم که یک کامپوننت  آرایه ای از `numbers` را بگیرد و لیستی از المنت هارا خروجی بدهد. 
 
 ```javascript{3-5,7,13}
 function NumberList(props) {
@@ -74,9 +76,10 @@ ReactDOM.render(
 );
 ```
 
-When you run this code, you'll be given a warning that a key should be provided for list items. A "key" is a special string attribute you need to include when creating lists of elements. We'll discuss why it's important in the next section.
+وقتی این کد را اجرا کنید، با این هشداری مواجه میشیوید که برای آیتم های لیست یک کلید لازم است.""کلید" یک  ویژگی خاص از جنس رشته است که وقتی لیست المنت درست میکنید،باید آن را include کنید. 
+در بخش بعدی دلیل اهمیت آن را توضیح میدهیم.
 
-Let's assign a `key` to our list items inside `numbers.map()` and fix the missing key issue.
+اجازه دهید به آیتم های لیستمان در `numbers.map()`،  یک `کلید` اختصاص دهیم و مشکل نبودن این کلید را حل کنیم.
 
 ```javascript{4}
 function NumberList(props) {
@@ -98,11 +101,11 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
+[**در کدپن امتحان کنید**](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
 
-## Keys {#keys}
+## کلیدها {#keys}
 
-Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a stable identity:
+کلیدها در ری اکت  به شناسایی این که کدام آیتم ها تغییر کرده اند، اضافه و یا حذف شده اند کمک میکند. کلیدها باید به المنت های داخل آرایه داده شوند تا به المنت ها یک شناسه ی ثابت بدهند. 
 
 ```js{3}
 const numbers = [1, 2, 3, 4, 5];
@@ -113,8 +116,8 @@ const listItems = numbers.map((number) =>
 );
 ```
 
-The best way to pick a key is to use a string that uniquely identifies a list item among its siblings. Most often you would use IDs from your data as keys:
-
+بهترین راه برای انتخاب یک کلید،استفاده از یک رشته است که یک لیست آیتم را در میان برادرانش به صورت یکتا تعیین میکند. 
+اغلب از ID های اطلاعات خودتان به عنوان کلید استفاده میکنید.
 ```js{2}
 const todoItems = todos.map((todo) =>
   <li key={todo.id}>
@@ -123,34 +126,35 @@ const todoItems = todos.map((todo) =>
 );
 ```
 
-When you don't have stable IDs for rendered items, you may use the item index as a key as a last resort:
+زمانی که برای آیتم های رندر شده یک شناسه ی ثابت نداشته باشید،میتوانید از شاخص آیتم به عنوان کلید برای چاره ی آخر استفاده کنید: 
 
 ```js{2,3}
 const todoItems = todos.map((todo, index) =>
   // Only do this if items have no stable IDs
+  // فقط زمانی این کار را انجام دهید که آیتم ها شناسه ی پایداری ندارند
   <li key={index}>
     {todo.text}
   </li>
 );
 ```
 
-We don't recommend using indexes for keys if the order of items may change. This can negatively impact performance and may cause issues with component state. Check out Robin Pokorny's article for an [in-depth explanation on the negative impacts of using an index as a key](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318). If you choose not to assign an explicit key to list items then React will default to using indexes as keys.
+اگر ممکن است ترتیب آیتم ها تغییر کند،پیشنهاد نمیکنیم که برای کلیدها از شاخص استفاده کنید.زیرا ممکن است تاثیر منفی ای بر عملکرد بگذارد و حتی باعث ایجاد مشکلاتی در state های کامپوننت بشود. 
+مقاله ی رابین پوکرنی را در مورد [توضیح مفصل در مورد تاثیر منفی استفاده از شاخص به عنوان یک کلید](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318) بخوانید. 
 
-Here is an [in-depth explanation about why keys are necessary](/docs/reconciliation.html#recursing-on-children) if you're interested in learning more.
+اگر علاقه مندید بیشتر بدانید مقاله ی [توضیح مفصل در مورد اینکه چرا کلید ضروری است](/docs/reconciliation.html#recursing-on-children) را بخوانید. 
 
-### Extracting Components with Keys {#extracting-components-with-keys}
+### استخراج کامپوننت ها با کلید {#extracting-components-with-keys}
 
-Keys only make sense in the context of the surrounding array.
+فقط زمانی استفاده از کلید ها درست است که از آرایه های احاطه شده استفاده میکنیم. 
 
-For example, if you [extract](/docs/components-and-props.html#extracting-components) a `ListItem` component, you should keep the key on the `<ListItem />` elements in the array rather than on the `<li>` element in the `ListItem` itself.
+برای مثال اگر یک کامپوننت لیست آیتم را[استخراج](/docs/components-and-props.html#extracting-components) کنید،بهتر است کلید را در `<ListItem />` نگاه دارید تا در `<li>` داخل خود`ListItem`  
 
-**Example: Incorrect Key Usage**
-
+**مثال: استفاده ی اشتباه از کلید**
 ```javascript{4,5,14,15}
 function ListItem(props) {
   const value = props.value;
   return (
-    // Wrong! There is no need to specify the key here:
+   // اشتباه! اینجا احتیاجی به مشخص کردن کلید نیست: 
     <li key={value.toString()}>
       {value}
     </li>
@@ -160,7 +164,7 @@ function ListItem(props) {
 function NumberList(props) {
   const numbers = props.numbers;
   const listItems = numbers.map((number) =>
-    // Wrong! The key should have been specified here:
+    // اشتباه! اینجا باید کلید مشخص میشد:
     <ListItem value={number} />
   );
   return (
@@ -177,11 +181,11 @@ ReactDOM.render(
 );
 ```
 
-**Example: Correct Key Usage**
+**مثال: استفاده ی صحیح از کلید**
 
 ```javascript{2,3,9,10}
-function ListItem(props) {
-  // Correct! There is no need to specify the key here:
+function ListItem(props) { 
+  // صحیح!اینجا احتیاجی به مشخص کردن کلید نیست:
   return <li>{props.value}</li>;
 }
 
@@ -206,13 +210,15 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
+[**در کدپن امتحان کنید**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
 
-A good rule of thumb is that elements inside the `map()` call need keys.
+یک قاعده خوب این است که المنت های داخل `map()` کلید های لازم را دارند.
 
-### Keys Must Only Be Unique Among Siblings {#keys-must-only-be-unique-among-siblings}
+###  کلیدها فقط باید در میان فرزندان یکتا باشند {#keys-must-only-be-unique-among-siblings}
 
-Keys used within arrays should be unique among their siblings. However they don't need to be globally unique. We can use the same keys when we produce two different arrays:
+کلیدهایی که در آرایه ها استفاده میشوند باید در میان فرزندانشان یکتا باشند.
+اگرچه احتیاجی نیست که به صورت عمومی یکتا باشند.
+وقتی دو نوع آرایه مختلف تولید میکنیم میتوانیم از کلید های یکسان استفاده کنیم: 
 
 ```js{2,5,11,12,19,21}
 function Blog(props) {
@@ -250,9 +256,10 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
+[**در کدپن امتحان کنید**](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
 
-Keys serve as a hint to React but they don't get passed to your components. If you need the same value in your component, pass it explicitly as a prop with a different name:
+کلیدها به عنوان یک راهنما در ری اکت استفاده میشوند،اما در کامپوننت هایتان منتقل نمیشوند.
+اگر به همان کلید در کامپوننتتان احتیاج دارید،به طور صریح آن را به عنوان یک prop با یک نام متفاوت منتقل کنید.
 
 ```js{3,4}
 const content = posts.map((post) =>
@@ -263,11 +270,11 @@ const content = posts.map((post) =>
 );
 ```
 
-With the example above, the `Post` component can read `props.id`, but not `props.key`.
+در مثال بالا، کامپوننت `Post` میتواند `props.id` را بخواند،اما `props.key` را نه.
 
-### Embedding map() in JSX {#embedding-map-in-jsx}
+### جاسازی map() در JSX  {#embedding-map-in-jsx}
 
-In the examples above we declared a separate `listItems` variable and included it in JSX:
+در مثال بالا، متغیر `listItems` را جداگانه اعلام کردیم و آن را در JSX قرار دادیم:
 
 ```js{3-6}
 function NumberList(props) {
@@ -284,7 +291,7 @@ function NumberList(props) {
 }
 ```
 
-JSX allows [embedding any expression](/docs/introducing-jsx.html#embedding-expressions-in-jsx) in curly braces so we could inline the `map()` result:
+ [جاسازی هر عبارت](/docs/introducing-jsx.html#embedding-expressions-in-jsx) JSX  را در آکولاد اجازه میدهد، به طوری که میتوانیم نتیجه ی را `map()` وارد کنیم:
 
 ```js{5-8}
 function NumberList(props) {
@@ -300,6 +307,6 @@ function NumberList(props) {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
+[**در کدپن امتحان کنید**](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
 
-Sometimes this results in clearer code, but this style can also be abused. Like in JavaScript, it is up to you to decide whether it is worth extracting a variable for readability. Keep in mind that if the `map()` body is too nested, it might be a good time to [extract a component](/docs/components-and-props.html#extracting-components).
+گاهی اوقات این کار باعث واضح تر شدن کد میشود،اما این سبک نیز می تواند بد استفاده شود. مانند جاوا اسکریپت، به شما این امکان را می دهد که تصمیم بگیرید که آیا می ارزد که یک متغیر را برای خوانایی بهتر استخراج کنید یا نه. در نظر داشته باشید که اگر بدنه `map ()` بیش از حد تو در تو قرار باشد، ممکن است زمان مناسب برای[استخراج عناصر](/docs/components-and-props.html#extracting-components)  باشد.
