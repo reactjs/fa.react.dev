@@ -54,7 +54,15 @@
         کامپوننت
       </td>
     </tr>
-        <tr>
+    <tr>
+      <td dir="ltr">
+        fragment
+      </td>
+      <td>
+        فرگمنت
+      </td>
+    </tr>
+    <tr>
       <td dir="ltr">
         data
       </td>
@@ -72,10 +80,26 @@
     </tr>
     <tr>
       <td dir="ltr">
+        node
+      </td>
+      <td>
+        نود
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
         function
       </td>
       <td>
         تابع
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        method
+      </td>
+      <td>
+        متد
       </td>
     </tr>
     <tr>
@@ -132,6 +156,142 @@
       </td>
       <td>
         کاربر
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        reference
+      </td>
+      <td>
+        مرجع
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        higher-level-components
+      </td>
+      <td>
+        کامپوننت‌های سطح بالا
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        top-level
+      </td>
+      <td>
+        تراز بالا
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        forward
+      </td>
+      <td>
+        فوروارد
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        ansestor
+      </td>
+      <td>
+        اجداد
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        document
+      </td>
+      <td>
+        سند
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        lifecycle
+      </td>
+      <td>
+        چرخه‌ حیات
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        epaque
+      </td>
+      <td>
+        غیرشفاف
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        fetch
+      </td>
+      <td>
+        واکشی
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        dynamic
+      </td>
+      <td>
+        پویا
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        slice
+      </td>
+      <td>
+        قطعه‌قطعه سازی
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        split
+      </td>
+      <td>
+        بخش‌بندی
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        use case
+      </td>
+      <td>
+        مورد کاربرد
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        scenario
+      </td>
+      <td>
+        سناریو
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        overview
+      </td>
+      <td>
+        بررسی اجمالی
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        attach
+      </td>
+      <td>
+        اتصال
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        argument
+      </td>
+      <td>
+        آرگومان
       </td>
     </tr>
   </tbody>
@@ -211,7 +371,12 @@
     </tr>
     <tr>
       <td>
-        lifecycle
+        helper
+      </td>
+    </tr>
+    <tr>
+      <td>
+        legacy
       </td>
     </tr>
     <tr>
@@ -262,6 +427,37 @@
     <tr>
       <td>
         XML
+      </td>
+    </tr>
+    <tr>
+      <td>
+        lazy
+      </td>
+    </tr>
+    <tr>
+      <td>
+        import
+      </td>
+    </tr>
+    <tr>
+      <td>
+        loading indicator
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        attribute
+      </td>
+      <td>
+        صفت
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        property
+      </td>
+      <td>
+        ویژگی
       </td>
     </tr>
   </tbody>
