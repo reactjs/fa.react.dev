@@ -7,11 +7,7 @@ next: forms.html
 ---
 
 ابتدا اجازه دهید به بررسی نحوه تبدیل لیست‌ها در جاوا‌اسکریپت بپردازیم.
-
-با توجه به کد زیر، ما از تابع[`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) استفاده می‌کنیم  تا آرایه‌ی `numbers` را گرفته و مقادیرش را دو برابر کند.  
-
-
-آرایه‌ی جدیدی که توسط `map()` برگشته را به متغیر `doubled`اختصاص می‌دهیم و آن را چاپ می‌کنیم.
+با توجه به کد زیر، ما از تابع[`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) استفاده می‌کنیم  تا آرایه‌ی `numbers` را گرفته و مقادیرش را دو برابر کند. آرایه‌ی جدیدی که توسط `map()` برگشته را به متغیر `doubled`اختصاص می‌دهیم و آن را چاپ می‌کنیم.
 
 
 ```javascript{2}
@@ -20,13 +16,13 @@ const doubled = numbers.map((number) => number * 2);
 console.log(doubled);
 ```
 
-این کد آرایه‌ی`[2, 4, 6, 8, 10]` را چاپ می‌کند.
+این کد آرایه `[2, 4, 6, 8, 10]` را در کنسول چاپ می‌کند.
 
-در ری‌اکت هم تغییر آرایه‌ها به لیست [المنت ها](/docs/rendering-elements.html) تقریبا یکسان است. 
+در ری‌اکت تبدیل آرایه‌ها به لیستی از[المنت ها](/docs/rendering-elements.html) به صورت مشابه انجام می‌شود.
 
 ### رندر کردن کامپوننت‌های چندگانه {#rendering-multiple-components}
 
-می‌توانید با استفاده از آکولاد`{}`، مجموعه‌ای از المنت‌ها را بسازید و [آن‌ها را در JSX درج کنید](/docs/introducing-jsx.html#embedding-expressions-in-jsx).
+می‌توانید با استفاده از آکولاد `{}`، مجموعه‌ای از المنت‌ها را بسازید و [آن‌ها را در JSX درج کنید](/docs/introducing-jsx.html#embedding-expressions-in-jsx).
 
 در قسمت زیر ما با استفاده از تابع [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)  در جاوا‌اسکریپت، در آرایه‌ی `numbers`حلقه می‌زنیم. 
 برای هر آیتم یک `<li>` برمی‌گردانیم و در نهایت  نتیجه‌ی آرایه‌ی المان‌ها را به `listItems` اختصاص می‌دهیم. :
@@ -38,7 +34,7 @@ const listItems = numbers.map((number) =>
 );
 ```
 
-کل آرایه‌ی `listItems` را درون یک المنت `<ul>` قرار می‌دهیم و [آن را در DOM رندر میکنیم](/docs/rendering-elements.html#rendering-an-element-into-the-dom):  
+کل آرایه‌ی `listItems` را درون یک المنت `<ul>` قرار می‌دهیم و [آن را در DOM رندر می‌کنیم](/docs/rendering-elements.html#rendering-an-element-into-the-dom):  
 
 ```javascript{2}
 ReactDOM.render(
@@ -54,9 +50,9 @@ ReactDOM.render(
 
 ###  کامپوننت لیست ساده {#basic-list-component}
 
-معمولا لیست‌هارا درون یک [کامپوننت](/docs/components-and-props.html) رندر می‌کنیم.
+معمولا شما لیست‌ها را درون یک [کامپوننت](/docs/components-and-props.html) رندر خواهید کرد.
 
-می‌توانیم مثال قبلی را طوری بیهنه‌سازی کنیم که یک کامپوننت آرایه‌ای از `numbers` را بگیرد و لیستی از المنت‌ها را خروجی بدهد. 
+می‌توانیم مثال قبلی را طوری بیهنه‌سازی کنیم که یک کامپوننت آرایه‌ای از `numbers` را بگیرد و لیستی از المنت‌ها را باز گرداند. 
 
 ```javascript{3-5,7,13}
 function NumberList(props) {
@@ -76,10 +72,9 @@ ReactDOM.render(
 );
 ```
 
-وقتی این کد را اجرا کنید، با این هشدار مواجه می‌شوید که برای آیتم‌های لیست یک کلید لازم است. "کلید" یک ویژگی خاص از جنس رشته است که وقتی لیست المنت درست می‌کنید، باید آن را include کنید. 
-در بخش بعدی دلیل اهمیت آن را توضیح می‌دهیم.
+وقتی این کد را اجرا کنید، با این هشدار مواجه می‌شوید که برای آیتم‌های لیست یک key لازم است. “key” یک ویژگی خاص از جنس رشته است که وقتی لیستی از المنت‌ها درست می‌کنید، باید از آن استفاده کنید. در بخش بعدی دلیل اهمیت آن را توضیح می‌دهیم.
 
-اجازه دهید به آیتم‌های لیستمان در `numbers.map()`،  یک `کلید` اختصاص دهیم و مشکل نبودن این کلید را حل کنیم.
+بیاید به آیتم‌های لیست خود در `numbers.map()`،  یک `key` اختصاص دهیم و مشکل نبودن این `key` را حل کنیم.
 
 ```javascript{4}
 function NumberList(props) {
