@@ -44,4 +44,4 @@ ReactDOM.render(
 
 ## بیایید شروع کنیم! {#lets-get-started}
 
-به پایین اسکرول کنید و لینک [فصل بعدی این راهنما](/docs/introducing-jsx.html) را پیش از footer وبسایت پیدا می‌کنید.
+به پایین اسکرول کردن ادامه دهید و لینک [فصل بعدی این راهنما](/docs/introducing-jsx.html) را پیش از footer وبسایت پیدا می‌کنید.
