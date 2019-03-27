@@ -62,6 +62,14 @@
         داده
       </td>
     </tr>
+      <tr>
+      <td dir="ltr">
+        element
+      </td>
+      <td>
+        المنت
+      </td>
+    </tr>
     <tr>
       <td dir="ltr">
         feature
@@ -242,6 +250,11 @@
     <tr>
       <td>
         RFC
+      </td>
+    </tr>
+        <tr>
+      <td>
+        scope
       </td>
     </tr>
     <tr>
