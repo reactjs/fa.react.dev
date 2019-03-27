@@ -14,7 +14,7 @@ ReactDOM.render(
   document.getElementById('root')
 );
 ```
-یک عنوان را روی صفحه نمایش می‌دهد که می‌گوید: "Hello, world!"
+این مثال یک عنوان را روی صفحه نمایش می‌دهد که می‌گوید: "Hello, world!"
 
 **[روی CodePen امتحان کنید](codepen://hello-world)**
 
