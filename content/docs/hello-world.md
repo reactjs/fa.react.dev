@@ -6,7 +6,7 @@ prev: cdn-links.html
 next: introducing-jsx.html
 ---
 
-کوچکترین مثال ری‌اکت به شکل زیر است:
+کوچکترین مثال ری‌اکت شبیه این است:
 
 ```js
 ReactDOM.render(
