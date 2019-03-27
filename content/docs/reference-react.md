@@ -1,6 +1,6 @@
 ---
 id: react-api
-title: API تراز بالای ری‌اکت
+title: API سطح بالای ری‌اکت
 layout: docs
 category: Reference
 permalink: docs/react-api.html
@@ -13,13 +13,13 @@ redirect_from:
   - "docs/top-level-api-zh-CN.html"
 ---
 
-`React` نقطه‌ی ورود به کتابخانه‌ی ری‌اکت است. اگر شما React را از تگ `<script>` بارگذاری کنید، این APIهای تراز بالا از  `React` سراسری قابل دسترسی هستند. اگر شما از ES6 ‌به‌همراه npm استفاده می‌کنید، می‌توانید بنویسید `import React from 'react'`. اگر از ES5 به‌همراه npm استفاده می‌کنید، می‌توانید بنویسید `var React = require('react')`.
+`React` نقطه‌ی ورود به کتابخانه‌ی ری‌اکت است. اگر شما React را از تگ `<script>` بارگذاری کنید، این APIهای سطح بالا از  `React` گلوبال قابل دسترسی هستند. اگر شما از ES6 ‌به‌همراه npm استفاده می‌کنید، می‌توانید بنویسید `import React from 'react'`. اگر از ES5 به‌همراه npm استفاده می‌کنید، می‌توانید بنویسید `var React = require('react')`.
 
 ## بررسی اجمالی {#overview}
 
 ### کامپوننت‌ها {#components}
 
-کامپوننت‌های ری‌اکت به شما اجازه می‌دهند تا رابط کاربری را به بخش‌های مستقل با قابلیت استفاده مجدد  تقسیم کنید، و درمورد هر قسمت به صورت جداگانه فکر کنید. کامپوننت‌های ری‌اکت را می‌توان به عنوان زیرکلاسی برای `React.Component` یا `React.PureComponent` تعریف کرد.
+کامپوننت‌های ری‌اکت به شما اجازه می‌دهند تا رابط کاربری را به بخش‌های مستقل با قابلیت استفاده‌ی مجدد تقسیم کنید، و درمورد هر قسمت به صورت جداگانه فکر کنید. کامپوننت‌های ری‌اکت را می‌توان به عنوان زیرکلاسی برای `React.Component` یا `React.PureComponent` تعریف کرد.
 
  - [`React.Component`](#reactcomponent)
  - [`React.PureComponent`](#reactpurecomponent)
@@ -32,12 +32,12 @@ redirect_from:
 
 ### ایجاد المنت‌های ری‌اکت {#creating-react-elements}
 
-ما پیشنهاد می‌کنیم [استفاده از JSX](/docs/introducing-jsx.html) را برای توصیف نحوه‌ی نمایش رابط کاربری، به‌کار برید. هر المنت JSX یک قند و نبات نحوی(Syntactic) است برای صدا زدن [`()React.createElement`](#createelement). اگر شما از JSX استفاده کنید، معمولا متدهای زیر را به شکل مستقیم فراخوانی نخواهید کرد.
+ما پیشنهاد می‌کنیم برای توصیف رابط کاربری از [JSX](/docs/introducing-jsx.html) استفاده کنید. هر المنت JSX یک قند و نبات نحوی (Syntactic sugar) است برای صدا زدن [`()React.createElement`](#createelement). اگر شما از JSX استفاده کنید، معمولا متدهای زیر را به شکل مستقیم فراخوانی نخواهید کرد.
 
 - [`()createElement`](#createelement)
 - [`()createFactory`](#createfactory)
 
-برای آگاهی بیشتر از بخش [ری‌اکت یدون استفاده از JSX](/docs/react-without-jsx.html) دیدن کنید.
+برای آگاهی بیشتر از بخش [ری‌اکت بدون استفاده از JSX](/docs/react-without-jsx.html) دیدن کنید.
 
 ### تبدیل المنت‌ها {#transforming-elements}
 
@@ -104,7 +104,7 @@ class Greeting extends React.Component {
 
 ### `React.PureComponent` {#reactpurecomponent}
 
-`React.PureComponent` به [`React.Component`](#reactcomponent) شبیه است. تفاوت آن‌ها این است که [`React.Component`](#reactcomponent) تابع [`()shouldComponentUpdate`](/docs/react-component.html#shouldcomponentupdate) را پیاده‌سازی نمی‌کند، ولی `React.PureComponent` آن‌را با یک قیاس سطحی props و state پیاده‌سازی می‌کند. 
+`React.PureComponent` به [`React.Component`](#reactcomponent) شبیه است. تفاوت آن‌ها این است که [`React.Component`](#reactcomponent) تابع [`()shouldComponentUpdate`](/docs/react-component.html#shouldcomponentupdate) را پیاده‌سازی نمی‌کند، ولی `React.PureComponent` آن‌را با یک قیاس سطحی props و state پیاده‌سازی می‌کند.
 
 اگر تابع `render()` کامپوننت ری‌اکت شما، در صورت یکسان بودن props و state، خروجی یکسان تولید می‌کند، برای ارتقای کارایی در برخی از موارد می‌توانید از `React.PureComponent` استفاده کنید.
 
@@ -198,9 +198,9 @@ React.cloneElement(
 React.createFactory(type)
 ```
 
-یک تابع برمی‌گرداند که المنت‌های ری‌اکت مربوط به نوع مورد نظر را تولید می‌کند. مانند [`()React.createElement`](#createElement)، با توجه به نوع (type) داده شده. آرگومان نوع داده شده می‌تواند رشته‌ی نام یک تگ (مثل `'div'` یا `'span'`)، یک نوع [کامپوننت ری‌اکت](/docs/components-and-props.html) (کلاس یا تابع)، یا یک نوع [فرگمنت ری‌اکت](#reactfragment) باشد.
+یک تابع برمی‌گرداند که المنت‌های ری‌اکت با نوع داده شده را تولید می‌کند. مثل [`()React.createElement`](#createElement)، آرگومان نوع داده شده می‌تواند رشته‌ی نام یک تگ (مثل `'div'` یا `'span'`)، یک نوع [کامپوننت ری‌اکت](/docs/components-and-props.html) (کلاس یا تابع)، یا یک نوع [فرگمنت ری‌اکت](#reactfragment) باشد.
 
-این helper یک legacy محسوب می‌شود و ما شما را تشویق می‌کنیم که به صورت مستقیم از `React.createElement()` یا JSX استفاده کنید.
+این helper یک نوع legacy محسوب می‌شود و ما شما را تشویق می‌کنیم که به صورت مستقیم از `React.createElement()` یا JSX استفاده کنید.
 
 شما اگر از JSX استفاده کنید، معمولا `React.createFactory()` را مستقیما فراخوانی نخواهید کرد. [ری‌اکت بدون استفاده از JSX](/docs/react-without-jsx.html) را برای یادگیری بیشتر ببینید.
 
@@ -276,7 +276,7 @@ React.Children.toArray(children)
 
 ### `React.Fragment` {#reactfragment}
 
-کامپوننت `React.Fragment` به شما این توانایی را می‌دهد تا چندین    المنت را در متد `render()` باز گردانید، بدون آن‌که المنت DOM جدیدی بسازید:
+کامپوننت `React.Fragment` به شما این توانایی را می‌دهد تا چندین المنت را در متد `render()` برگردانید، بدون آن‌که المنت DOM جدیدی بسازید:
 
 ```javascript
 render() {
@@ -301,9 +301,9 @@ render() {
 `React.forwardRef` یک کامپوننت ری‌اکت ایجاد می‌کند که صفت [ref](/docs/refs-and-the-dom.html) دریافت شده را به کامپوننت زیرین در درخت فوروارد کند. این روش خیلی معمول نیست مگر در دو مورد:
 
 * [فوروارد refها به کامپوننت‌های DOM](/docs/forwarding-refs.html#forwarding-refs-to-dom-components)
-* [فوروارد refها در کامپوننت‌های سطح بالا](/docs/forwarding-refs.html#forwarding-refs-in-higher-order-components)
+* [فوروارد refها در کامپوننت‌های مرتبه‌ بالا](/docs/forwarding-refs.html#forwarding-refs-in-higher-order-components)
 
-`React.forwardRef`، یک تابع رندرکننده را به عنوان آرگومان می‌پذیرد. ری‌اکت این تابع را با `props` و `ref` به عنوان دو آرگومان صدا می‌زند. این تابع باید یک نود ری‌اکت برگرداند .
+`React.forwardRef`، یک تابع رندرکننده را به عنوان آرگومان می‌پذیرد. ری‌اکت این تابع را با `props` و `ref` به عنوان دو آرگومان صدا می‌زند. این تابع باید یک نود ری‌اکت برگرداند.
 
 `embed:reference-react-forward-ref.js`
 
@@ -320,7 +320,7 @@ render() {
 می‌توانید برای یادگیری نحوه‌ی استفاده از آن به [سند بخش‌بندی کد](/docs/code-splitting.html#reactlazy) بروید. ممکن است بخواهید [این مقاله](https://medium.com/@pomber/lazy-loading-and-preloading-components-in-react-16-6-804de091c82d) را بررسی کنید، که در مورد چگونگی استفاده از آن با جزئیاتی بیشتر توضیح داده است .
 
 ```js
-// This component is loaded dynamically
+// این کامپوننت به صورت پویا بارگذاری می‌شود
 const SomeComponent = React.lazy(() => import('./SomeComponent'));
 ```
 
@@ -335,7 +335,7 @@ const SomeComponent = React.lazy(() => import('./SomeComponent'));
 `React.Suspense` به شما اجازه می‌دهد loading indicator را مشخص کنید در حالتی که برخی کامپوننت‌های زیرین آن در درخت هنوز آماده‌ی رندر نباشند. فعلا، کامپوننت‌های با بارگذاری lazy، **تنها** مورد کاربردی است که `<React.Suspense>` از آن پشتیبانی می‌کند:
 
 ```js
-// This component is loaded dynamically
+// این کامپوننت به صورت پویا بارگذاری می‌شود
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
 
 function MyComponent() {
