@@ -82,7 +82,7 @@
 - title: مرجع API
   items:
     - id: react-api
-      title: ری‌اکت
+      title: React
       subitems:
         - id: react-component
           title: React.Component

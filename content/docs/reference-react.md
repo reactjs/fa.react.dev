@@ -1,6 +1,6 @@
 ---
 id: react-api
-title: API سطح بالای ری‌اکت
+title: API سطح بالای React
 layout: docs
 category: Reference
 permalink: docs/react-api.html
@@ -293,12 +293,12 @@ render() {
 
 ### `React.createRef` {#reactcreateref}
 
-`React.createRef` یک [ref](/docs/refs-and-the-dom.html) می‌سازد که می‌تواند با استفاده از صفت ref به المنت متصل شود.
+`React.createRef` یک [ref](/docs/refs-and-the-dom.html) می‌سازد که می‌تواند با استفاده از خصوصیت ref به المنت متصل شود.
 `embed:16-3-release-blog-post/create-ref-example.js`
 
 ### `React.forwardRef` {#reactforwardref}
 
-`React.forwardRef` یک کامپوننت ری‌اکت ایجاد می‌کند که صفت [ref](/docs/refs-and-the-dom.html) دریافت شده را به کامپوننت زیرین در درخت فوروارد کند. این روش خیلی معمول نیست مگر در دو مورد:
+`React.forwardRef` یک کامپوننت ری‌اکت ایجاد می‌کند که خصوصیت [ref](/docs/refs-and-the-dom.html) دریافت شده را به کامپوننت زیرین در درخت فوروارد کند. این روش خیلی معمول نیست مگر در دو مورد:
 
 * [فوروارد refها به کامپوننت‌های DOM](/docs/forwarding-refs.html#forwarding-refs-to-dom-components)
 * [فوروارد refها در کامپوننت‌های مرتبه‌ بالا](/docs/forwarding-refs.html#forwarding-refs-in-higher-order-components)
