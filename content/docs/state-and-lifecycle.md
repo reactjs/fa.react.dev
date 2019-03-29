@@ -72,8 +72,12 @@ ReactDOM.render(
 
 state مشابه props است، اما خصوصی است و کاملا توسط کامپوننت کنترل می‌شود.
 
+<<<<<<< HEAD
 ما [قبلا ذکر کردیم](/docs/components-and-props.html#functional-and-class-components) به کامپوننت‌هایی که به صورت کلاس تعریف می‌شوند، قابلیت‌هایی افزوده می‌شود. state داخلی دقیقا همان است: قابلیتی که فقط برای کلاس‌ها موجود است.
 
+=======
+## Converting a Function to a Class {#converting-a-function-to-a-class}
+>>>>>>> d0f2db967a38e358bd59c65e981862cdf38f3d0b
 
 ## تبدیل یک تابع به یک کلاس {#converting-a-function-to-a-class}
 
