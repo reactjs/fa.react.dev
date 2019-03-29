@@ -1,12 +1,12 @@
 ---
 id: hello-world
-title: Hello World
+title: سلام دنیا
 permalink: docs/hello-world.html
 prev: cdn-links.html
 next: introducing-jsx.html
 ---
 
-The smallest React example looks like this:
+کوچکترین مثال ری‌اکت شبیه این است:
 
 ```js
 ReactDOM.render(
@@ -14,37 +14,34 @@ ReactDOM.render(
   document.getElementById('root')
 );
 ```
+این مثال یک عنوان را روی صفحه نمایش می‌دهد که می‌گوید: "Hello, world!"
 
-It displays a heading saying "Hello, world!" on the page.
+**[روی CodePen امتحان کنید](codepen://hello-world)**
 
-[](codepen://hello-world)
-
-Click the link above to open an online editor. Feel free to make some changes, and see how they affect the output. Most pages in this guide will have editable examples like this one.
+روی لینک بالا کلیک کنید تا یک ویرایشگر آنلاین باز شود. هر تغییری که می‌خواهید اعمال کنید و تاثیر آن را بر خروجی مشاهده کنید. بیشتر صفحات در این راهنما، مثال‌های قابل ویرایشی مانند بالا دارند.
 
 
-## How to Read This Guide {#how-to-read-this-guide}
+## چگونه این راهنما را بخوانیم {#how-to-read-this-guide}
 
-In this guide, we will examine the building blocks of React apps: elements and components. Once you master them, you can create complex apps from small reusable pieces.
+در این راهنما، ما به بررسی اجزا سازنده برنامه‌های ری‌اکت یعنی: المنت‌ها و کامپوننت‌ها می‌پردازیم. زمانی که شما به آن‌ها مسلط شوید، می‌توانید برنامه‌های پیچیده را از تکه‌های کوچکتر با قابلیت استفاده مجدد بسازید.
 
->Tip
+>راهنما
 >
->This guide is designed for people who prefer **learning concepts step by step**. If you prefer to learn by doing, check out our [practical tutorial](/tutorial/tutorial.html). You might find this guide and the tutorial complementary to each other.
+>این راهنما برای افرادی طراحی شده‌است که ترجیح می‌دهند **مفاهیم را گام‌به‌گام بیاموزند**. اگر شما ترجیح می‌دهید به وسیله انجام‌دادن یاد بگیرید، به [آموزش عملی](/tutorial/tutorial.html) ما نگاهی بیاندازید. شاید این راهنما و آن آموزش برای شما مکمل یکدیگر باشند.
 
-This is the first chapter in a step-by-step guide about main React concepts. You can find a list of all its chapters in the navigation sidebar. If you're reading this from a mobile device, you can access the navigation by pressing the button in the bottom right corner of your screen.
+این اولین فصل از راهنمای گام‌به‌گام درباره مفاهیم اصلی ری‌اکت است. شما می‌توانید لیستی از تمام سرفصل‌ها را در نوار کناری مشاهده‌ کنید. اگر با موبایل درحال خواندن این راهنما هستید، با زدن دکمه در گوشه پایین سمت چپ صفحه می‌توانید به منو دسترسی پیدا کنید.
 
-Every chapter in this guide builds on the knowledge introduced in earlier chapters. **You can learn most of React by reading the “Main Concepts” guide chapters in the order they appear in the sidebar.** For example, [“Introducing JSX”](/docs/introducing-jsx.html) is the next chapter after this one.
+هر فصل در این راهنما براساس دانش معرفی‌شده در فصل‌های پیشین بنا می‌شود. **شما می‌توانید بیشتر ری‌اکت را با مطالعه فصل‌های راهنمای "مفاهیم اصلی" به ترتیبی که در نوار کناری آورده‌‌ شده است، یاد بگیرید.** برای مثال، [“مقدمه‌ای بر JSX”](/docs/introducing-jsx.html) فصل بعدی بعد از این فصل است.
 
-## Knowledge Level Assumptions {#knowledge-level-assumptions}
 
-React is a JavaScript library, and so we'll assume you have a basic understanding of the JavaScript language. **If you don't feel very confident, we recommend [going through a JavaScript tutorial](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) to check your knowledge level** and enable you to follow along this guide without getting lost. It might take you between 30 minutes and an hour, but as a result you won't have to feel like you're learning both React and JavaScript at the same time.
+## فرض‌های سطح دانش {#knowledge-level-assumptions}
 
->Note
+ری‌اکت یک کتابخانه جاوااسکریپت است، و بنابراین ما فرض می‌کنیم که شما درک پایه‌ای از زبان جاوااسکریپت دارید. **اگر خیلی مطمئن نیستید، پیشنهاد می‌کنیم [یک آموزش جاوااسکریپت را طی کنید](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) تا سطح دانش خود را بررسی کنید** و بتوانید این راهنما را بدون گمراهی دنبال کنید. این کار ممکن است برای شما بین ۳۰ دقیقه تا یک ساعت به طول بیانجامد، اما در نتیجه این حس را نخواهید داشت که [با خواندن این راهنما] ری‌اکت و جاوااسکریپت را همزمان یاد می‌گیرید.
+
+>نکته
 >
->This guide occasionally uses some of the newer JavaScript syntax in the examples. If you haven't worked with JavaScript in the last few years, [these three points](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c) should get you most of the way.
+>این راهنما در اغلب مثال‌ها از نگارش جدید جاوااسکریپت استفاده می‌کند. اگر در چند سال اخیر با جاوااسکریپت کار نکرده‌اید، [این سه مورد](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c) بیشتر موارد را به شما یاد می‌دهد.
 
+## بیایید شروع کنیم! {#lets-get-started}
 
-## Let's Get Started! {#lets-get-started}
-
-Keep scrolling down, and you'll find the link to the [next chapter of this guide](/docs/introducing-jsx.html) right before the website footer.
-
-
+به پایین اسکرول کردن ادامه دهید و لینک [فصل بعدی این راهنما](/docs/introducing-jsx.html) را پیش از footer وبسایت پیدا می‌کنید.
