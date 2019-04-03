@@ -1,6 +1,6 @@
 ---
 id: components-and-props
-title: Components and Props
+title: کامپوننت‌‌ها و prop ها
 permalink: docs/components-and-props.html
 redirect_from:
   - "docs/reusable-components.html"
@@ -16,23 +16,27 @@ prev: rendering-elements.html
 next: state-and-lifecycle.html
 ---
 
-Components let you split the UI into independent, reusable pieces, and think about each piece in isolation. This page provides an introduction to the idea of components. You can find a [detailed component API reference here](/docs/react-component.html).
+کامپوننت‌ها به شما اجازه می‌دهند رابط کاربری را به بخش‌های مستقل قابل استفاده مجدد تبدیل کنید و این بخش‌ها را به صورت مجزا در نظر بگیرید. این صفحه مقدمه‌ای برای مفهوم کامپوننت به شما ارائه می‌دهد. شما می‌توانید API مربوط به کامپوننت ها و جزییات بیشتر را در این [لینک](/docs/react-component.html) مطالعه فرمایید.
 
-Conceptually, components are like JavaScript functions. They accept arbitrary inputs (called "props") and return React elements describing what should appear on the screen.
+از لحاظ مفهومی کامپوننت‌ها همانند توابع جاوا اسکریپت هستند. آنها ورودی‌های دلخواه خود (props) را دریافت می‌کنند و المنت‌هایی از ری‌اکت را تولید می‌کنند که توصیف کننده آنچه باید روی صفحه نمایان شود است.  
 
-## Function and Class Components {#function-and-class-components}
 
-The simplest way to define a component is to write a JavaScript function:
+## کامپوننت‌هایی از جنس تابع و کلاس {#function-and-class-components}
+
+ساده‌ترین راه برای تعریف کردن یک کامپوننت، نوشتن یک تابع جاوا اسکریپت است:
+
 
 ```js
 function Welcome(props) {
   return <h1>Hello, {props.name}</h1>;
 }
 ```
+این تابع یک کامپوننت قابل قبول ری‌اکت است زیرا یک قطعه ورودی قابل پردازش (props, کوچک شده properties به معنی متعلقات) همراه با اطلاعات دریافت می‌کند و یک المنت ری‌اکت تولید می‌کند.
+به این نوع کامپوننت‌ها، «کامپوننت‌‌های تابع‌» گفته می‌شود زیرا آنها در واقعیت تابع‌هایی از جاوا اسکریپت هستند.
 
-This function is a valid React component because it accepts a single "props" (which stands for properties) object argument with data and returns a React element. We call such components "function components" because they are literally JavaScript functions.
 
-You can also use an [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) to define a component:
+
+شما همچنین می‌توانید از کلاس‌های  [کلاس‌های ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) برای تعریف کامپوننت‌ها استفاده کنید:
 
 ```js
 class Welcome extends React.Component {
@@ -42,27 +46,28 @@ class Welcome extends React.Component {
 }
 ```
 
-The above two components are equivalent from React's point of view.
+دو کامپوننت بالا از نظر ری‌اکت یکسان هستند.
 
-Classes have some additional features that we will discuss in the [next sections](/docs/state-and-lifecycle.html). Until then, we will use function components for their conciseness.
+کلاس‌ها ویژگی های منحصر بفرد دیگری نیز دارند که  [ در بخش‌های بعدی ](/docs/state-and-lifecycle.html)به آنها خواهیم پرداخت. تا آن زمان به دلیل اختصار از کامپوننت‌های تابع استفاده می‌کنیم .
 
-## Rendering a Component {#rendering-a-component}
+## رندر کردن یک کامپوننت {#rendering-a-component}
 
-Previously, we only encountered React elements that represent DOM tags:
+پیش‌تر ما فقط با المنت‌هایی از ری‌اکت مواجه شدیم که بیانگر تگ‌های DOM بودند:
 
 ```js
 const element = <div />;
 ```
+اما المنت‌ها می‌توانند بیانگر کامپوننت‌‌هایی که از توسط کاربر تعریف شده نیز باشند:
 
-However, elements can also represent user-defined components:
 
 ```js
 const element = <Welcome name="Sara" />;
 ```
 
-When React sees an element representing a user-defined component, it passes JSX attributes to this component as a single object. We call this object "props".
+زمانی که ری‌اکت با المنتی مواجه می‌شود که بیانگر یک کامپوننت تعریف شده توسط کاربر باشد، یک ورودی JSX واحد (object) را به عنوان ورودی دریافت می‌کند. ما این object را "props" می‌نامیم. 
 
-For example, this code renders "Hello, Sara" on the page:
+
+برای مثال کد زیر "Hello, Sara" را بر روی صفحه رندر می‌کند:
 
 ```js{1,5}
 function Welcome(props) {
@@ -78,24 +83,28 @@ ReactDOM.render(
 
 [](codepen://components-and-props/rendering-a-component)
 
-Let's recap what happens in this example:
+بیایید مرور کنیم که در این مثال چه اتفاقی می‌افتد:
 
-1. We call `ReactDOM.render()` with the `<Welcome name="Sara" />` element.
-2. React calls the `Welcome` component with `{name: 'Sara'}` as the props.
-3. Our `Welcome` component returns a `<h1>Hello, Sara</h1>` element as the result.
-4. React DOM efficiently updates the DOM to match `<h1>Hello, Sara</h1>`.
+۱. ما تابع `ReactDOM.render()` را با المنت `<Welcome name="Sara" />` فرا می‌خوانیم.
 
->**Note:** Always start component names with a capital letter.
+۲. ری‌اکت کامپوننت `Welcome` را به همراه `{name: 'Sara'}` که در ورودی تابع به عنوان `props` تعریف شده است را پردازش می‌کند.
+
+۳. کامپوننت `Welcome` ما در نتیجه یک المنت  تولید می‌کند که حاوی `<h1>Hello, Sara</h1>` است.
+
+۴. DOM ری‌اکت به صورت بهینه DOM را به‌روزرسانی می‌کند تا  `<h1>Hello, Sara</h1>` را نمایش دهد.
+
+>**نکته:** همیشه نام کامپوننت‌ها را با حروف بزرگ انگلیسی شروع کنید.
 >
->React treats components starting with lowercase letters as DOM tags. For example, `<div />` represents an HTML div tag, but `<Welcome />` represents a component and requires `Welcome` to be in scope.
+>ری‌اکت با کامپوننت‌هایی که با حروف کوچک انگلیسی شروع شده باشند همانند تگ‌های DOM برخورد می‌کند. برای مثال تگ `<div />` بیانگر یک تگ HTML است , اما `<Welcome />` بیانگر یک کامپوننت است و بنابرین لازم است `Welcome` در scope تابع کامپوننت ما باشد.
 >
->To learn more about the reasoning behind this convention, please read [JSX In Depth](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized).
+>برای اطلاعات بیشتر درباره این معاهده ، لطفا  [JSX In Depth](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized) را مطالعه فرمایید.
 
-## Composing Components {#composing-components}
+## طراحی کامپوننت‌ها {#composing-components}
 
-Components can refer to other components in their output. This lets us use the same component abstraction for any level of detail. A button, a form, a dialog, a screen: in React apps, all those are commonly expressed as components.
+کامپوننت‌ها می‌توانند در خروجی خود به دیگر کامپوننت‌ها اشاره کنند. این به ما اجازه می‌دهد تا یک کامپوننت را برای هر سطحی از جزییات استفاده کنیم. در برنامه‌های ری‌اکتی یک دکمه، یک فرم، یک دیالوگ، و یک صفحه همگی به صورت کامپوننت بیان می‌شوند.
 
-For example, we can create an `App` component that renders `Welcome` many times:
+برای مثال ما می‌توانیم یک کامپوننت به نام `App` بسازیم که کامپوننت `Welcome` را بارها رندر می‌کند:
+
 
 ```js{8-10}
 function Welcome(props) {
@@ -120,13 +129,14 @@ ReactDOM.render(
 
 [](codepen://components-and-props/composing-components)
 
-Typically, new React apps have a single `App` component at the very top. However, if you integrate React into an existing app, you might start bottom-up with a small component like `Button` and gradually work your way to the top of the view hierarchy.
+معمولا، پروژه‌های تازه ری‌اکت دارای یک کامپوننت `App` واحد در بالاترین سطح هستند. اما اگر شما ری‌اکت را با پروژه‌ای موجود ادغام می‌کنید، می‌توانید از سطوح پایین به بالا طراحی کنید، برای مثال از یک کامپوننت کوچک مانند `Button` شروع کنید و تدریجا تا بالای سلسله مراتب view طراحی را ادامه دهید.
 
-## Extracting Components {#extracting-components}
 
-Don't be afraid to split components into smaller components.
+## استخراج کامپوننت‌ها {#extracting-components}
 
-For example, consider this `Comment` component:
+از این که کامپوننت‌ها رو به کامپوننت‌های کوچک‌تر تبدیل کنید هراسان نباشید.
+
+برای مثال این کامپوننت `Comment` را در نظر بگیرید:
 
 ```js
 function Comment(props) {
@@ -154,11 +164,11 @@ function Comment(props) {
 
 [](codepen://components-and-props/extracting-components)
 
-It accepts `author` (an object), `text` (a string), and `date` (a date) as props, and describes a comment on a social media website.
+این کامپوننت `author` (یک object جاوا اسکریپت)، `text` (یک string)، و `date` (یک تاریخ) را به عنوان props دریافت می‌کند و یک کامنت (نظر) در یک شبکه اجتماعی توصیف می‌کند.
 
-This component can be tricky to change because of all the nesting, and it is also hard to reuse individual parts of it. Let's extract a few components from it.
+به علت آشیانه‌ای بودن، تغییر دادن این کامپوننت می‌تواند دشوار باشد، و همچنین استفاده مجدد از اجزای مستقل آن آسان نیست. بیایید چند کامپوننت را از آن استخراج کنیم تا این دشواری‌ها را رفع کنیم.
 
-First, we will extract `Avatar`:
+در ابتدا `Avatar` را استخراج می‌نماییم:
 
 ```js{3-6}
 function Avatar(props) {
@@ -171,11 +181,11 @@ function Avatar(props) {
 }
 ```
 
-The `Avatar` doesn't need to know that it is being rendered inside a `Comment`. This is why we have given its prop a more generic name: `user` rather than `author`.
+کامپوننت `Avatar` نیازی به دانستن اینکه قرار است در داخل یک کامپوننت `Comment` رندر شود ندارد. برای همین به prop آن بجای اسمی خاص نظیر `author` به آن اسمی عام نظیر `user` داده‌ایم.
 
-We recommend naming props from the component's own point of view rather than the context in which it is being used.
+ما پیشنهاد می‌کنیم که propها بدون درنظر گرفتن بستری که کامپوننت‌ها قرار است در آن استفاده شوند و از نگاه خود کامپوننت نام‌گذاری کنید.
 
-We can now simplify `Comment` a tiny bit:
+حال می‌توانیم کامپوننت `Comment` را کمی ساده کنیم:
 
 ```js{5}
 function Comment(props) {
@@ -198,7 +208,7 @@ function Comment(props) {
 }
 ```
 
-Next, we will extract a `UserInfo` component that renders an `Avatar` next to the user's name:
+سپس ما کامپوننت `UserInfo` را استخراج می‌کنیم که کامپوننت `Avatar` را در کنار اسم کاربر رندر می‌کند:
 
 ```js{3-8}
 function UserInfo(props) {
@@ -213,7 +223,7 @@ function UserInfo(props) {
 }
 ```
 
-This lets us simplify `Comment` even further:
+این به ما کمک می‌کند تا کامپوننت `Comment` را حتی بیشتر از این ساده کنیم:
 
 ```js{4}
 function Comment(props) {
@@ -233,11 +243,12 @@ function Comment(props) {
 
 [](codepen://components-and-props/extracting-components-continued)
 
-Extracting components might seem like grunt work at first, but having a palette of reusable components pays off in larger apps. A good rule of thumb is that if a part of your UI is used several times (`Button`, `Panel`, `Avatar`), or is complex enough on its own (`App`, `FeedStory`, `Comment`), it is a good candidate to be a reusable component.
+استخراج کامپوننت‌ها شاید در ابتدا به نظر کار سختی بیاید، اما داشتن یک پالت از کامپوننت‌های قابل استفاده مجدد در اپ‌های بزرگتر بسیار به کار می‌آید. به عنوان یک قانون کلی در نظر داشته باشید که اگر قسمتی از رابط کاربری شما بارها استفاده شده است (نظیر `Button`, `Panel` , `Avatar`) و یا اینکه قسمتی از رابط کاربری پیچیدگی منحصر به فرد خود را دارد (نظیر `App`, `FeedStory`, `Comment`) آن قسمت کاندیدای مناسبی برای تبدیل شدن به یک کامپوننت قابل استفاده مجدد است.
 
-## Props are Read-Only {#props-are-read-only}
+## Propها فقط قابل خواندن هستند {#props-are-read-only}
 
-Whether you declare a component [as a function or a class](#function-and-class-components), it must never modify its own props. Consider this `sum` function:
+بدون در نظر گرفتن اینکه شما یک کامپوننت را به عنوان  [یک تابع یا یک کلاس](#function-and-class-components) تعریف کرده‌اید، آن کامپوننت نباید هرگز propهای خودش را تغییر دهد.
+این تابع `sum` را در نظر بگیرید:
 
 ```js
 function sum(a, b) {
@@ -245,9 +256,9 @@ function sum(a, b) {
 }
 ```
 
-Such functions are called ["pure"](https://en.wikipedia.org/wiki/Pure_function) because they do not attempt to change their inputs, and always return the same result for the same inputs.
+اینگونه توابع  ["خالص یا pure"](https://en.wikipedia.org/wiki/Pure_function) نامیده می‌شوند زیرا سعی نمی‌کنند که ورودی خود را تغییر دهند و همیشه با ورودی‌های ثابت و مشخص خروجی‌های ثابتی را نمایش می‌دهند.
 
-In contrast, this function is impure because it changes its own input:
+در نقطه متقابل این کامپوننت "ناخالص یا impure" است زیرا ورودی خود را تغییر می‌دهد:
 
 ```js
 function withdraw(account, amount) {
@@ -255,8 +266,9 @@ function withdraw(account, amount) {
 }
 ```
 
-React is pretty flexible but it has a single strict rule:
+ری‌اکت خیلی منعطف است اما یک قانون سختگیرانه دارد:
 
-**All React components must act like pure functions with respect to their props.**
+**تمامی کامپوننت‌های ری‌اکت باید در نسبت با propهای خود همانند توابع خالص عمل کنند.**
 
-Of course, application UIs are dynamic and change over time. In the [next section](/docs/state-and-lifecycle.html), we will introduce a new concept of "state". State allows React components to change their output over time in response to user actions, network responses, and anything else, without violating this rule.
+البته رابط‌های کاربری اپ‌ها داینامیک هستند و با زمان تغییر می‌کنند. در [بخش بعدی](/docs/state-and-lifecycle.html)، ما یک مفهوم جدید به نام "state" را معرفی می‌کنیم. State به کامپوننت‌های ری‌اکت اجازه می‌دهد تا خروجی خود را با توجه به اعمال کاربر، پاسخ‌های دریافتی از شبکه، و هر چیز دیگر در زمان مورد نیاز بدون اینکه این قانون را نقض کنند تغییر دهند.
+
