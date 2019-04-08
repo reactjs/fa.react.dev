@@ -36,7 +36,7 @@ function Welcome(props) {
 
 
 
-شما همچنین می‌توانید از کلاس‌های  [کلاس‌های ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) برای تعریف کامپوننت‌ها استفاده کنید:
+شما همچنین می‌توانید از  [کلاس‌های ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) برای تعریف کامپوننت‌ها استفاده کنید:
 
 ```js
 class Welcome extends React.Component {
