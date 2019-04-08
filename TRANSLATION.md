@@ -294,6 +294,14 @@
         آرگومان
       </td>
     </tr>
+    <tr>
+      <td dir="ltr">
+        legacy
+      </td>
+      <td>
+        قدیمی
+      </td>
+    </tr>
   </tbody>
 </table>
 <h2 dir="rtl">بدون تغییر</h2>
@@ -372,11 +380,6 @@
     <tr>
       <td>
         helper
-      </td>
-    </tr>
-    <tr>
-      <td>
-        legacy
       </td>
     </tr>
     <tr>

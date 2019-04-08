@@ -32,7 +32,7 @@ redirect_from:
 
 ### ایجاد المنت‌های ری‌اکت {#creating-react-elements}
 
-ما پیشنهاد می‌کنیم برای توصیف رابط کاربری از [JSX](/docs/introducing-jsx.html) استفاده کنید. هر المنت JSX یک قند و نبات نحوی (Syntactic sugar) است برای صدا زدن [`()React.createElement`](#createelement). اگر شما از JSX استفاده کنید، معمولا متدهای زیر را به شکل مستقیم فراخوانی نخواهید کرد.
+ما پیشنهاد می‌کنیم برای توصیف رابط کاربری از [JSX](/docs/introducing-jsx.html) استفاده کنید. هر المنت JSX یک Syntactic sugar است برای صدا زدن [`()React.createElement`](#createelement). اگر از JSX استفاده کنید، معمولا متدهای زیر را به شکل مستقیم فراخوانی نخواهید کرد.
 
 - [`()createElement`](#createelement)
 - [`()createFactory`](#createfactory)
@@ -200,9 +200,9 @@ React.createFactory(type)
 
 یک تابع برمی‌گرداند که المنت‌های ری‌اکت با نوع داده شده را تولید می‌کند. مثل [`()React.createElement`](#createElement)، آرگومان نوع داده شده می‌تواند رشته‌ی نام یک تگ (مثل `'div'` یا `'span'`)، یک نوع [کامپوننت ری‌اکت](/docs/components-and-props.html) (کلاس یا تابع)، یا یک نوع [فرگمنت ری‌اکت](#reactfragment) باشد.
 
-این helper یک نوع legacy محسوب می‌شود و ما شما را تشویق می‌کنیم که به صورت مستقیم از `React.createElement()` یا JSX استفاده کنید.
+این helper یک نوع قدیمی(legacy) محسوب می‌شود و ما شما را تشویق می‌کنیم که به صورت مستقیم از `React.createElement()` یا JSX استفاده کنید.
 
-شما اگر از JSX استفاده کنید، معمولا `React.createFactory()` را مستقیما فراخوانی نخواهید کرد. [ری‌اکت بدون استفاده از JSX](/docs/react-without-jsx.html) را برای یادگیری بیشتر ببینید.
+اگر از JSX استفاده کنید، معمولا `React.createFactory()` را مستقیما فراخوانی نخواهید کرد. [ری‌اکت بدون استفاده از JSX](/docs/react-without-jsx.html) را برای یادگیری بیشتر ببینید.
 
 * * *
 
