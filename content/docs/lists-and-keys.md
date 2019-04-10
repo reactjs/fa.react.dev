@@ -285,7 +285,7 @@ function NumberList(props) {
 }
 ```
 
- [استفاده توکار هر expression ](/docs/introducing-jsx.html#embedding-expressions-in-jsx) JSX  را در آکولاد می‌دهد بنابراین می‌توان نتیجه `map()` را در خط (inline) نوشت:
+JSX اجازه [استفاده توکار هر expression ](/docs/introducing-jsx.html#embedding-expressions-in-jsx) را در آکولادها می‌دهد بنابراین می‌توان نتیجه `map()` را درخط (inline) نوشت:
  
 ```js{5-8}
 function NumberList(props) {
