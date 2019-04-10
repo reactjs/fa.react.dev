@@ -20,7 +20,7 @@ console.log(doubled);
 
 در ری‌اکت تبدیل آرایه‌ها به لیستی از [المنت‌ها](/docs/rendering-elements.html) به صورت مشابه انجام می‌شود.
 
-### رندر کردن کامپوننت‌های چندگانه {#rendering-multiple-components}
+### رندر کردن جندین کامپوننت‌ {#rendering-multiple-components}
 
 می‌توانید با استفاده از آکولاد `{}`، مجموعه‌ای از المنت‌ها را بسازید و [آن‌ها را در JSX درج کنید](/docs/introducing-jsx.html#embedding-expressions-in-jsx).
 
