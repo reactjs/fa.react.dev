@@ -24,6 +24,22 @@
   <tbody>
     <tr>
       <td dir="ltr">
+        ansestor
+      </td>
+      <td>
+        اجداد
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        attribute
+      </td>
+      <td>
+        خصوصیت
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
         breaking change
       </td>
       <td>
@@ -44,6 +60,14 @@
       </td>
       <td>
         کلاس
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        code spliting
+      </td>
+      <td>
+        جدا سازی کد
       </td>
     </tr>
     <tr>
@@ -80,10 +104,26 @@
     </tr>
     <tr>
       <td dir="ltr">
+        fragment
+      </td>
+      <td>
+        قطعه
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
         function
       </td>
       <td>
         تابع
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        higher-order
+      </td>
+      <td>
+        مرتبه بالایی
       </td>
     </tr>
     <tr>
@@ -96,10 +136,42 @@
     </tr>
     <tr>
       <td dir="ltr">
+        legacy code
+      </td>
+      <td>
+        کد قدیمی
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        lifecycle
+      </td>
+      <td>
+        چرخه حیات
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        method
+      </td>
+      <td>
+        متد
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
         plugin
       </td>
       <td>
         پلاگین
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        property
+      </td>
+      <td>
+        خصوصیت
       </td>
     </tr>
     <tr>
@@ -124,6 +196,14 @@
       </td>
       <td>
         قالب
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        top-level
+      </td>
+      <td>
+        سطح بالایی
       </td>
     </tr>
     <tr>
@@ -265,6 +345,11 @@
     <tr>
       <td>
         store
+      </td>
+    </tr>
+    <tr>
+      <td>
+        syntactic sugar
       </td>
     </tr>
     <tr>
