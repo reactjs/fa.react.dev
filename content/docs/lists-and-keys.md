@@ -7,7 +7,7 @@ next: forms.html
 ---
 
 ابتدا اجازه دهید به بررسی نحوه تبدیل لیست‌ها در جاوا‌اسکریپت بپردازیم.
-با توجه به کد زیر، ما از تابع[`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) استفاده می‌کنیم  تا آرایه‌ی `numbers` را گرفته و مقادیرش را دو برابر کند. آرایه‌ی جدیدی که توسط `map()` برگشته را به متغیر `doubled`اختصاص می‌دهیم و آن را چاپ می‌کنیم.
+با توجه به کد زیر، ما از تابع[`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) استفاده می‌کنیم  تا آرایه‌‌ای از اعداد با نام متغیر `numbers` را گرفته و مقادیرش را دو برابر کند. آرایه‌ی جدیدی که توسط `map()` برگشته را به متغیر `doubled`اختصاص می‌دهیم و آن را چاپ می‌کنیم.
 
 
 ```javascript{2}
@@ -20,11 +20,11 @@ console.log(doubled);
 
 در ری‌اکت تبدیل آرایه‌ها به لیستی از [المنت‌ها](/docs/rendering-elements.html) به صورت مشابه انجام می‌شود.
 
-### رندر کردن جندین کامپوننت‌ {#rendering-multiple-components}
+### رندر کردن چندین کامپوننت‌ {#rendering-multiple-components}
 
 می‌توانید با استفاده از آکولاد `{}`، مجموعه‌ای از المنت‌ها را بسازید و [آن‌ها را در JSX درج کنید](/docs/introducing-jsx.html#embedding-expressions-in-jsx).
 
-در قسمت زیر ما با استفاده از تابع [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)  در جاوا‌اسکریپت، بر‌روی آرایه‌ی `numbers`حلقه می‌زنیم. 
+در قسمت زیر ما با استفاده از تابع [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)  در جاوا‌اسکریپت، بر‌روی آرایه‌ای از اعداد به نام‌ `numbers`حلقه می‌زنیم. 
 برای هر آیتم یک المنت `<li>` برمی‌گردانیم و در نهایت  نتیجه‌ی آرایه‌ی المان‌ها را به `listItems` اختصاص می‌دهیم. :
 
 ```javascript{2-4}
