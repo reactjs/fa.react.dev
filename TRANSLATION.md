@@ -27,7 +27,7 @@
         ansestor
       </td>
       <td>
-        اجداد
+        جد
       </td>
     </tr>
     <tr>
