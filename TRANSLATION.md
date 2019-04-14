@@ -67,7 +67,7 @@
         code spliting
       </td>
       <td>
-        جدا سازی کد
+        تقسیم کد
       </td>
     </tr>
     <tr>
