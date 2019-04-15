@@ -27,7 +27,7 @@
         ansestor
       </td>
       <td>
-        اجداد
+        جد
       </td>
     </tr>
     <tr>
@@ -35,7 +35,7 @@
         attribute
       </td>
       <td>
-        خصوصیت
+        صفت
       </td>
     </tr>
     <tr>
@@ -67,7 +67,7 @@
         code spliting
       </td>
       <td>
-        جدا سازی کد
+        تقسیم کد
       </td>
     </tr>
     <tr>
@@ -123,7 +123,7 @@
         higher-order
       </td>
       <td>
-        مرتبه بالایی
+        مرتبه بالاتر
       </td>
     </tr>
     <tr>
@@ -139,7 +139,7 @@
         legacy code
       </td>
       <td>
-        کد قدیمی
+        کد موروثی
       </td>
     </tr>
     <tr>
@@ -171,7 +171,7 @@
         property
       </td>
       <td>
-        خصوصیت
+        ویژگی
       </td>
     </tr>
     <tr>
@@ -203,7 +203,7 @@
         top-level
       </td>
       <td>
-        سطح بالایی
+        سطح بالا
       </td>
     </tr>
     <tr>
