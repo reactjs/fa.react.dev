@@ -7,7 +7,7 @@ next: forms.html
 ---
 
 ابتدا اجازه دهید به بررسی نحوه تبدیل لیست‌ها در جاوا‌اسکریپت بپردازیم.
-با توجه به کد زیر، ما از تابع[`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) استفاده می‌کنیم  تا آرایه‌‌ای از اعداد با نام متغیر `numbers` را گرفته و مقادیرش را دو برابر کند. آرایه‌ی جدیدی که توسط `map()` برگشته را به متغیر `doubled`اختصاص می‌دهیم و آن را چاپ می‌کنیم.
+با توجه به کد زیر، ما از تابع[`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) استفاده می‌کنیم  تا آرایه‌‌ای از اعداد با نام  `numbers` را گرفته و مقادیرش را دو برابر کند. آرایه‌ی جدیدی که توسط `map()` برگشته را به متغیر `doubled`اختصاص می‌دهیم و آن را چاپ می‌کنیم.
 
 
 ```javascript{2}
@@ -24,7 +24,7 @@ console.log(doubled);
 
 می‌توانید با استفاده از آکولاد `{}`، مجموعه‌ای از المنت‌ها را بسازید و [آن‌ها را در JSX درج کنید](/docs/introducing-jsx.html#embedding-expressions-in-jsx).
 
-در قسمت زیر ما با استفاده از تابع [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)  در جاوا‌اسکریپت، بر‌روی آرایه‌ای از اعداد به نام‌ `numbers`حلقه می‌زنیم. 
+در قسمت زیر ما با استفاده از تابع [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)  در جاوا‌اسکریپت، بر‌روی آرایه‌ ی‌ `numbers`حلقه می‌زنیم. 
 برای هر آیتم یک المنت `<li>` برمی‌گردانیم و در نهایت  نتیجه‌ی آرایه‌ی المان‌ها را به `listItems` اختصاص می‌دهیم. :
 
 ```javascript{2-4}
@@ -52,7 +52,7 @@ ReactDOM.render(
 
 معمولا شما لیست‌ها را درون یک [کامپوننت](/docs/components-and-props.html) رندر خواهید کرد.
 
-می‌توانیم مثال قبلی را طوری بیهنه‌سازی کنیم که یک کامپوننت آرایه‌ای از `numbers` را بگیرد و لیستی از المنت‌ها را باز گرداند. 
+می‌توانیم مثال قبلی را طوری بیهنه‌سازی کنیم که یک کامپوننت آرایه‌ ی `numbers` را بگیرد و لیستی از المنت‌ها را باز گرداند. 
 
 ```javascript{3-5,7,13}
 function NumberList(props) {
