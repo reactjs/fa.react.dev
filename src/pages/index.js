@@ -62,7 +62,7 @@ class Home extends Component {
             <div
               css={{
                 paddingTop: 45,
-                paddingBottom: 20,
+                paddingBottom: 10,
 
                 [media.greaterThan('small')]: {
                   paddingTop: 60,
@@ -137,8 +137,11 @@ class Home extends Component {
                   </p>
                   <Flex
                     valign="center"
+                    halign="center"
                     css={{
                       paddingTop: 40,
+                      flexWrap: 'wrap',
+                      justifyContent: 'center',
 
                       [media.greaterThan('xlarge')]: {
                         paddingTop: 65,
@@ -279,10 +282,16 @@ class Home extends Component {
               background: colors.dark,
               color: colors.white,
               paddingTop: 45,
-              paddingBottom: 45,
+              paddingBottom: 25,
             }}>
             <Container>
-              <Flex valign="center">
+              <Flex
+                valign="center"
+                halign="center"
+                css={{
+                  flexWrap: 'wrap',
+                  justifyContent: 'center',
+                }}>
                 <CtaItem>
                   <ButtonLink to="/docs/getting-started.html" type="primary">
                     شروع کنید
@@ -312,8 +321,6 @@ Home.propTypes = {
 const CtaItem = ({children, primary = false}) => (
   <div
     css={{
-      width: '50%',
-
       [media.between('small', 'large')]: {
         paddingLeft: 20,
       },
@@ -323,13 +330,27 @@ const CtaItem = ({children, primary = false}) => (
       },
 
       '&:first-child': {
+<<<<<<< HEAD
         textAlign: 'left',
         paddingLeft: 15,
+=======
+        textAlign: 'right',
+        paddingRight: 7,
+        paddingLeft: 7,
+        [media.lessThan('small')]: {
+          marginBottom: 10,
+        },
+>>>>>>> 6bc6e7b1411d4befc3ecfbe45b898ca474116020
       },
 
       '&:nth-child(2)': {
+        paddingRight: 7,
+        paddingLeft: 7,
         [media.greaterThan('small')]: {
           paddingRight: 15,
+        },
+        [media.lessThan('small')]: {
+          marginBottom: 10,
         },
       },
     }}>
