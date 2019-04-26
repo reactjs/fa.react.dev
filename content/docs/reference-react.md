@@ -198,7 +198,11 @@ React.cloneElement(
 React.createFactory(type)
 ```
 
+<<<<<<< HEAD
 یک تابع برمی‌گرداند که المنت‌های ری‌اکت با نوع داده شده را تولید می‌کند. مثل [`()React.createElement`](#createElement)، آرگومان نوع داده شده می‌تواند رشته‌ی نام یک تگ (مثل `'div'` یا `'span'`)، یک نوع [کامپوننت ری‌اکت](/docs/components-and-props.html) (کلاس یا تابع)، یا یک نوع [فرگمنت ری‌اکت](#reactfragment) باشد.
+=======
+Return a function that produces React elements of a given type. Like [`React.createElement()`](#createelement), the type argument can be either a tag name string (such as `'div'` or `'span'`), a [React component](/docs/components-and-props.html) type (a class or a function), or a [React fragment](#reactfragment) type.
+>>>>>>> 4244fc646618de6bae934686f93dd04c9000d9ae
 
 این helper یک نوع قدیمی(legacy) محسوب می‌شود و ما شما را تشویق می‌کنیم که به صورت مستقیم از `React.createElement()` یا JSX استفاده کنید.
 
