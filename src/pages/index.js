@@ -330,17 +330,12 @@ const CtaItem = ({children, primary = false}) => (
       },
 
       '&:first-child': {
-<<<<<<< HEAD
         textAlign: 'left',
-        paddingLeft: 15,
-=======
-        textAlign: 'right',
         paddingRight: 7,
         paddingLeft: 7,
         [media.lessThan('small')]: {
           marginBottom: 10,
         },
->>>>>>> 4244fc646618de6bae934686f93dd04c9000d9ae
       },
 
       '&:nth-child(2)': {
