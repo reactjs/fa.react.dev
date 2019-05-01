@@ -106,7 +106,7 @@ class CodeEditor extends Component {
                 color: colors.white,
               }}>
               <MetaTitle onDark={true}>
-                Live JSX Editor
+                ویرایشگر زنده کد
                 <label
                   css={{
                     fontSize: 14,
@@ -207,7 +207,7 @@ class CodeEditor extends Component {
                   padding: '0 10px',
                   backgroundColor: colors.divider,
                 }}>
-                <MetaTitle>Result</MetaTitle>
+                <MetaTitle>نتیجه</MetaTitle>
               </div>
               <div
                 id={containerNodeID}

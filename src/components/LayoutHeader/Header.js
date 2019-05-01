@@ -62,10 +62,11 @@ const Header = ({location}: {location: Location}) => (
             },
           }}
           to="/">
+          <img src={logoSvg} alt="" height="20" />
           <span
             css={{
               color: 'inherit',
-              marginLeft: 10,
+              marginRight: 10,
               fontWeight: 700,
               fontSize: 20,
               lineHeight: '20px',
@@ -87,7 +88,6 @@ const Header = ({location}: {location: Location}) => (
             }}>
             React
           </span>
-          <img src={logoSvg} alt="" height="20" />
         </Link>
 
         <nav
@@ -122,22 +122,22 @@ const Header = ({location}: {location: Location}) => (
           }}>
           <HeaderLink
             isActive={location.pathname.includes('/docs/')}
-            title="Docs"
+            title="مستندات"
             to="/docs/getting-started.html"
           />
           <HeaderLink
             isActive={location.pathname.includes('/tutorial/')}
-            title="Tutorial"
+            title="آموزش"
             to="/tutorial/tutorial.html"
           />
           <HeaderLink
             isActive={location.pathname.includes('/blog')}
-            title="Blog"
+            title="وبلاگ"
             to="/blog/"
           />
           <HeaderLink
             isActive={location.pathname.includes('/community/')}
-            title="Community"
+            title="جامعه"
             to="/community/support.html"
           />
         </nav>

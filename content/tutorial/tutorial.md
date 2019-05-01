@@ -1,6 +1,6 @@
 ---
 id: tutorial
-title: "Tutorial: Intro to React"
+title: "آموزش: مقدمه ای به ری اکت"
 layout: tutorial
 sectionid: tutorial
 permalink: tutorial/tutorial.html
@@ -12,46 +12,44 @@ redirect_from:
   - "docs/tutorial-zh-CN.html"
 ---
 
-This tutorial doesn't assume any existing React knowledge.
+این آموزش نیازی به آشنایی قبلی با ری اکت ندارد.
 
-## Before We Start the Tutorial {#before-we-start-the-tutorial}
+## قبل از شروع {#before-we-start-the-tutorial}
+ما در این آموزش یک بازی کوچک خواهیم ساخت.**حتی اگر قصد ساخت بازی توسط ری اکت را ندارید این آموزش را امتحان کنید.** تکنیک هایی که در این آموزش عنوان خواهند شد اهمیت بالایی در درک مفاهیم ری اکت دارند.
 
-We will build a small game during this tutorial. **You might be tempted to skip it because you're not building games -- but give it a chance.** The techniques you'll learn in the tutorial are fundamental to building any React apps, and mastering it will give you a deep understanding of React.
-
->Tip
+>نکته
 >
->This tutorial is designed for people who prefer to **learn by doing**. If you prefer learning concepts from the ground up, check out our [step-by-step guide](/docs/hello-world.html). You might find this tutorial and the guide complementary to each other.
+> این آموزش مختص افرادیست که علاقه مند به **یادگیری توسط تمرین عملی** دارند. اگر قصد فراگیری از پایه مباحث ری اکت را دارید، [راهنمای قدم به قدم](/docs/hello-world.html) ما را بخوانید.
 
-The tutorial is divided into several sections:
+این آموزش به چند قسمت تقسیم میشود:
 
-* [Setup for the Tutorial](#setup-for-the-tutorial) will give you **a starting point** to follow the tutorial.
-* [Overview](#overview) will teach you **the fundamentals** of React: components, props, and state.
-* [Completing the Game](#completing-the-game) will teach you **the most common techniques** in React development.
-* [Adding Time Travel](#adding-time-travel) will give you **a deeper insight** into the unique strengths of React.
+* [آماده سازی برای آموزش](#setup-for-the-tutorial) **نقطه شروعی** ارائه خواهد کرد برای دنبال کردن این آموزش.
+* [بررسی اجمالی](#overview) **اصول** اصلی ری اکت را به شما خواهد آموخت: `component` ها، `prop` ها و `state`.
+* [تکمیل بازی](#completing-the-game) اشاره ای خواهد داشت به **تکنیک های مرسوم** توسعه ری اکت.
+* [سفر در زمان](#adding-time-travel) **بینش عمیق تری** را به قدرت های ری اکت ارائه خواهد کرد.
 
-You don't have to complete all of the sections at once to get the value out of this tutorial. Try to get as far as you can -- even if it's one or two sections.
+برای دریافت مفاهیم این آموزش لزومی به تکمیل تمام بخش ها نیست. سعی کنید تا جای ممکن پیش بروید.
 
-### What Are We Building? {#what-are-we-building}
+### چه چیزی خواهیم ساخت؟ {#what-are-we-building}
+در این آموزش یک بازی تعاملی `tic-tac-toe` میسازیم.
 
-In this tutorial, we'll show how to build an interactive tic-tac-toe game with React.
+نتیجه کار را میتوانید [اینجا](https://codepen.io/gaearon/pen/gWWZgR?editors=0010) مشاهده کنید. **ممکن است که با ترکیب ایک کد آشنایی نداشته باشید، اما جای نگرانی نیست! هدف این مقاله آموختن ساختار ری اکت و مفاهیم آن است.**
 
-You can see what we'll be building here: **[Final Result](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**. If the code doesn't make sense to you, or if you are unfamiliar with the code's syntax, don't worry! The goal of this tutorial is to help you understand React and its syntax.
+ما پیشنهاد میکنیم که بازی را قبل از شروع بررسی کنید. یکی از امکانات این بازی یک لیست در سمت راست صفحه است که تمام حرکات انجام شده در بازی را ثبت میکند.
 
-We recommend that you check out the tic-tac-toe game before continuing with the tutorial. One of the features that you'll notice is that there is a numbered list to the right of the game's board. This list gives you a history of all of the moves that have occurred in the game, and is updated as the game progresses.
+ما در این آموزش با یک قالب ساده تر شروع خواهیم کرد. مرحله بعدی آماده سازی محیط توسطه ی بازیست.
 
-You can close the tic-tac-toe game once you're familiar with it. We'll be starting from a simpler template in this tutorial. Our next step is to set you up so that you can start building the game.
-
-### Prerequisites {#prerequisites}
+### پیش نیاز ها {#prerequisites}
 
 We'll assume that you have some familiarity with HTML and JavaScript, but you should be able to follow along even if you're coming from a different programming language. We'll also assume that you're familiar with programming concepts like functions, objects, arrays, and to a lesser extent, classes.
 
 If you need to review JavaScript, we recommend reading [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript). Note that we're also using some features from ES6 -- a recent version of JavaScript. In this tutorial, we're using [arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions), [classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let), and [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) statements. You can use the [Babel REPL](babel://es5-syntax-example) to check what ES6 code compiles to.
 
-## Setup for the Tutorial {#setup-for-the-tutorial}
+## آماده سازی {#setup-for-the-tutorial}
 
 There are two ways to complete this tutorial: you can either write the code in your browser, or you can set up a local development environment on your computer.
 
-### Setup Option 1: Write Code in the Browser {#setup-option-1-write-code-in-the-browser}
+### گزینه ۱: در مرورگرتان کدنویسی کنید {#setup-option-1-write-code-in-the-browser}
 
 This is the quickest way to get started!
 
@@ -59,7 +57,7 @@ First, open this **[Starter Code](https://codepen.io/gaearon/pen/oWWQNa?editors=
 
 You can now skip the second setup option, and go to the [Overview](#overview) section to get an overview of React.
 
-### Setup Option 2: Local Development Environment {#setup-option-2-local-development-environment}
+### گزینه ۲: محیط توسعه محلی {#setup-option-2-local-development-environment}
 
 This is completely optional and not required for this tutorial!
 
@@ -116,15 +114,15 @@ We recommend following [these instructions](https://babeljs.io/docs/editors/) to
 
 </details>
 
-### Help, I'm Stuck! {#help-im-stuck}
+### کمک، من گیر کردم! {#help-im-stuck}
 
 If you get stuck, check out the [community support resources](/community/support.html). In particular, [Reactiflux Chat](https://discord.gg/0ZcbPKXt5bZjGY5n) is a great way to get help quickly. If you don't receive an answer, or if you remain stuck, please file an issue, and we'll help you out.
 
-## Overview {#overview}
+## بررسی اجمالی {#overview}
 
 Now that you're set up, let's get an overview of React!
 
-### What Is React? {#what-is-react}
+### ری اکت چیست؟ {#what-is-react}
 
 React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called "components".
 
@@ -170,7 +168,7 @@ JSX comes with the full power of JavaScript. You can put *any* JavaScript expres
 
 The `ShoppingList` component above only renders built-in DOM components like `<div />` and `<li />`. But you can compose and render custom React components too. For example, we can now refer to the whole shopping list by writing `<ShoppingList />`. Each React component is encapsulated and can operate independently; this allows you to build complex UIs from simple components.
 
-## Inspecting the Starter Code {#inspecting-the-starter-code}
+## بررسی کد شروع کننده {#inspecting-the-starter-code}
 
 If you're going to work on the tutorial **in your browser,** open this code in a new tab: **[Starter Code](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**. If you're going to work on the tutorial **locally,** instead open `src/index.js` in your project folder (you have already touched this file during the [setup](#setup-option-2-local-development-environment)).
 
@@ -184,7 +182,7 @@ By inspecting the code, you'll notice that we have three React components:
 
 The Square component renders a single `<button>` and the Board renders 9 squares. The Game component renders a board with placeholder values which we'll modify later. There are currently no interactive components.
 
-### Passing Data Through Props {#passing-data-through-props}
+### رد و بدل کردن اطلاعات بین ‍Prop ها {#passing-data-through-props}
 
 To get our feet wet, let's try passing some data from our Board component to our Square component.
 
@@ -225,7 +223,7 @@ After: You should see a number in each square in the rendered output.
 
 Congratulations! You've just "passed a prop" from a parent Board component to a child Square component. Passing props is how information flows in React apps, from parents to children.
 
-### Making an Interactive Component {#making-an-interactive-component}
+### ساخت یک Component تعاملی {#making-an-interactive-component}
 
 Let's fill the Square component with an "X" when we click it.
 First, change the button tag that is returned from the Square component's `render()` function to this:
@@ -327,7 +325,7 @@ When you call `setState` in a component, React automatically updates the child c
 
 **[View the full code at this point](https://codepen.io/gaearon/pen/VbbVLg?editors=0010)**
 
-### Developer Tools {#developer-tools}
+### ابزار مخصوص توسعه دهندگان {#developer-tools}
 
 The React Devtools extension for [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/) lets you inspect a React component tree with your browser's developer tools.
 
@@ -344,7 +342,7 @@ After installing React DevTools, you can right-click on any element on the page,
 3. Click "Change View" and then choose "Debug mode".
 4. In the new tab that opens, the devtools should now have a React tab.
 
-## Completing the Game {#completing-the-game}
+## تکمیل کردن بازی {#completing-the-game}
 
 We now have the basic building blocks for our tic-tac-toe game. To have a complete game, we now need to alternate placing "X"s and "O"s on the board, and we need a way to determine a winner.
 
