@@ -1,6 +1,6 @@
 ---
 id: dom-elements
-title: DOM Elements
+title: المنت های DOM
 layout: docs
 category: Reference
 permalink: docs/dom-elements.html
@@ -14,23 +14,25 @@ redirect_from:
   - "tips/dangerously-set-inner-html.html"
 ---
 
-React implements a browser-independent DOM system for performance and cross-browser compatibility. We took the opportunity to clean up a few rough edges in browser DOM implementations.
+ری‌اکت دارای سیستم DOM مستقل از مرورگر برای کارایی و سازگاری با مرورگر هاست.
+ از این فرصت استفاده کردیم تا مقداری زمختی های پیاده سازی DOM مرورگر را مرتب و منظم کنیم.
 
-In React, all DOM properties and attributes (including event handlers) should be camelCased. For example, the HTML attribute `tabindex` corresponds to the attribute `tabIndex` in React. The exception is `aria-*` and `data-*` attributes, which should be lowercased. For example, you can keep `aria-label` as `aria-label`.
+در ری‌اکت، تمامی ویژگی ها و صفات DOM (از جلمه event handlers) باید به صورت camelCased باشند. برای مثال، صفت HTML `tabindex` با صفت `tabIndex` در ری‌اکت مطابقت دارد. استثناهایی که وجود دارند یکی صفات `aria-*` و دیگری صفات `data-*` هستند که باید 
+با حروف کوچک نوشته بشوند. برای مثال `aria-label` همان `aria-label` باقی می‌ماند.
 
-## Differences In Attributes {#differences-in-attributes}
+## تفاوت بین صفات {#differences-in-attributes}
 
-There are a number of attributes that work differently between React and HTML:
+صفاتی وجود دارند که عملکردشون در ری‌اکت با HTML متفاوت است:
 
 ### checked {#checked}
 
-The `checked` attribute is supported by `<input>` components of type `checkbox` or `radio`. You can use it to set whether the component is checked. This is useful for building controlled components. `defaultChecked` is the uncontrolled equivalent, which sets whether the component is checked when it is first mounted.
+صفت `checked` در کامپوننت های `<input>` که از تیپ `checkbox` یا `radio` هستند قابل استفاده است. شما میتوانید از آن بدین شکل که وضعیت کامپوننت چک خورده باشد یا نه استفاده کنید. این برای ساختن کامپوننت های قابل کنترل مناسب است. معادل غیر کنترلی آن `defaultChecked` هست که فقط وضعیت چک خوردن همان اول کامپوننت را هنگام سوار شدن بر عهده دارد.
 
 ### className {#classname}
 
-To specify a CSS class, use the `className` attribute. This applies to all regular DOM and SVG elements like `<div>`, `<a>`, and others.
+برای اختصاص دادن یک کلاس CSS، از صفت `className` استفاده کنید. این در مورد همه المنت های معمول DOM و SVG مانند `<div>`، `<a>` و سایرین صدق می‌کند.
 
-If you use React with Web Components (which is uncommon), use the `class` attribute instead.
+اگر با ری‌اکت از وب کامپوننتس (که البته رایج نیست) استفاده می‌کنید، صفت `class` را مورد استفاده قرار دهید.
 
 ### dangerouslySetInnerHTML {#dangerouslysetinnerhtml}
 
@@ -48,7 +50,7 @@ function MyComponent() {
 
 ### htmlFor {#htmlfor}
 
-Since `for` is a reserved word in JavaScript, React elements use `htmlFor` instead.
+از اونجایی که `for` کلمه رزرو شده ای در جاوااسکریپت هستش، المنت های ری‌اکت از `htmlFor` استفاده میکنند.
 
 ### onChange {#onchange}
 
