@@ -1,6 +1,6 @@
 ---
 id: conditional-rendering
-title: Conditional Rendering
+title: رندر شرطی
 permalink: docs/conditional-rendering.html
 prev: handling-events.html
 next: lists-and-keys.html
@@ -8,11 +8,12 @@ redirect_from:
   - "tips/false-in-jsx.html"
 ---
 
-In React, you can create distinct components that encapsulate behavior you need. Then, you can render only some of them, depending on the state of your application.
+ در ری اکت، شما می‌توانید کامپوننت‌های مجزایی بسازید تا رفتار مورد نیاز شما را کپسوله سازی کنند. سپس می‌توانید بعضی از این کامپوننت‌ها را، بسته به state برنامه، رندر کنید .
 
-Conditional rendering in React works the same way conditions work in JavaScript. Use JavaScript operators like [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) or the [conditional operator](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) to create elements representing the current state, and let React update the UI to match them.
+رندر شرطی در ری اکت دقیقا مشابه «شرط‌ها» در جاوا‌اسکریپت کار میکند.
+از عملگر‌های جاوااسکریپت مثل کلمه کلیدی  [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) یا عملگر شرطی  [conditional operator](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) برای ایجاد المنت‌هایی که state کنونی را نشان می‌دهند، استفاده کنید و بگذارید  ری اکت UI را بروزرسانی کند تا با این شرط ها منطبق شود.
 
-Consider these two components:
+این دو کامپوننت را در نظر بگیرید:
 
 ```js
 function UserGreeting(props) {
@@ -24,7 +25,7 @@ function GuestGreeting(props) {
 }
 ```
 
-We'll create a `Greeting` component that displays either of these components depending on whether a user is logged in:
+ در ادامه ما یک کامپوننت تحت عنوان `Greeting`  می‌سازیم، که یکی از دو کامپوننت اشاره شده در بالا را بر حسب اینکه یک کاربر لاگین کرده یا خیر، نشان می‌دهد:
 
 ```javascript{3-7,11,12}
 function Greeting(props) {
@@ -36,21 +37,21 @@ function Greeting(props) {
 }
 
 ReactDOM.render(
-  // Try changing to isLoggedIn={true}:
+  //در خط زیر مقدار isLoggedIn را به true تغییر دهید‌‌(isLoggedIn={true}): 
   <Greeting isLoggedIn={false} />,
   document.getElementById('root')
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/ZpVxNq?editors=0011)
+[**کد بالا را در CodePen امتحان کنید**](https://codepen.io/gaearon/pen/ZpVxNq?editors=0011)
 
-This example renders a different greeting depending on the value of `isLoggedIn` prop.
+در مثال بالا، هر بار یک پیام خوش آمد‌گویی متفاوت بر‌اساس مقدارprop ای که `isLoggedIn` نام دارد، رندر می‌شود.  
 
-### Element Variables {#element-variables}
+### متغیر‌های المان‌ها {#element-variables}
 
-You can use variables to store elements. This can help you conditionally render a part of the component while the rest of the output doesn't change.
+برای ذخیره سازی المان‌ها می‌توان از متغیرها کمک گرفت، استفاده از این روش باعث می‌شود تا بتوان بخشی از یک کامپوننت را به‌صورت شرطی، رندر کرده در حالیکه بقیه خروجی کامپوننت تغییری نمی‌کند.
 
-Consider these two new components representing Logout and Login buttons:
+این دو کامپوننت جدید رو در نظر بگیرید که به ترتیب نمایانگر دکمه ورود (Login) و خروج (Logout) هستند.
 
 ```js
 function LoginButton(props) {
@@ -70,9 +71,10 @@ function LogoutButton(props) {
 }
 ```
 
-In the example below, we will create a [stateful component](/docs/state-and-lifecycle.html#adding-local-state-to-a-class) called `LoginControl`.
+در مثال زیر، یک [ کامپوننتstateful](/docs/state-and-lifecycle.html#adding-local-state-to-a-class) 
+ به نام`LoginControl` می‌سازیم. 
 
-It will render either `<LoginButton />` or `<LogoutButton />` depending on its current state. It will also render a `<Greeting />` from the previous example:
+این کامپوننت براساس state کنونی اش، یکی از کامپوننت‌های `<LoginButton />` یا`<LogoutButton />` را رندر می‌کند.
 
 ```javascript{20-25,29,30}
 class LoginControl extends React.Component {
@@ -116,13 +118,13 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/QKzAgB?editors=0010)
+[**این کد را در CodePen امتحان کنید**](https://codepen.io/gaearon/pen/QKzAgB?editors=0010)
 
-While declaring a variable and using an `if` statement is a fine way to conditionally render a component, sometimes you might want to use a shorter syntax. There are a few ways to inline conditions in JSX, explained below.
+در حالیکه روش تعریف یک متغیر و استفاده از عبارت شرطی `if`، یک روش خوب برای رندر شرطی است؛ گاهی ممکن است شما نیاز به یک syntax کوتاه‌تر داشته باشید. چندین روش برای شرط های خطی در JSX وجود دارد که در زیر توضیح داده شده است: 
 
-### Inline If with Logical && Operator {#inline-if-with-logical--operator}
+### If خطی بااستفاده از اپراتور && منطقی {#inline-if-with-logical--operator}
 
-You may [embed any expressions in JSX](/docs/introducing-jsx.html#embedding-expressions-in-jsx) by wrapping them in curly braces. This includes the JavaScript logical `&&` operator. It can be handy for conditionally including an element:
+شما می‌توانید هر عبارتی (شامل عملگر ‍‍‍‍`&&` منطقی در جاوااسکریپت)‌را در JSX با استفاده از یک جفت `{}`،‌استفاده کنید:‌ر.ک. [embed any expressions in JSX](/docs/introducing-jsx.html#embedding-expressions-in-jsx)؛ استفاده از این روش برای اضافه کردن یک المان به‌صورت شرطی، میتواند مفید باشد: 
 
 ```js{6-10}
 function Mailbox(props) {
@@ -146,17 +148,16 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/ozJddz?editors=0010)
+[**این کد را در CodePen امتحان کنید**](https://codepen.io/gaearon/pen/ozJddz?editors=0010)
 
-It works because in JavaScript, `true && expression` always evaluates to `expression`, and `false && expression` always evaluates to `false`.
+این روش جواب می‌دهد چرا که در جاوااسکریپت، حاصل `true && عبارت` همیشه برابر است با `عبارت` و همچنین حاصل  `false && عبارت` ‍‍ همیشه برابر است با  `false`. بنابراین اگر شرط برابر با `true` باشد، المانی که بلافاصله بعد از عملگر `&&` قرار گرفته است در خروجی نمایش داده خواهد شد و اگر حاصل شرط برابر با`false` باشد،‌ری‌اکت این عبارت را نادیده می‌گیرد. 
 
-Therefore, if the condition is `true`, the element right after `&&` will appear in the output. If it is `false`, React will ignore and skip it.
+### If-Else خطی با عملگر شرطی {#inline-if-else-with-conditional-operator}
 
-### Inline If-Else with Conditional Operator {#inline-if-else-with-conditional-operator}
+روش دیگری که برای رندر شرطی المان‌ها به‌صورت خطی استفاده می‌شود،‌استفاده از عملگر شرطی جاوااسکریپت [`condition ? true : false`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)
+ است.
 
-Another method for conditionally rendering elements inline is to use the JavaScript conditional operator [`condition ? true : false`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator).
-
-In the example below, we use it to conditionally render a small block of text.
+در مثال زیر ما از این روش استفاده می‌کنیم تا متن کوتاهی را به‌صورت شرطی رندر کنیم.
 
 ```javascript{5}
 render() {
@@ -169,7 +170,7 @@ render() {
 }
 ```
 
-It can also be used for larger expressions although it is less obvious what's going on:
+از این روش همچنین می‌توان برای عبارات شرطی طولانی‌تر استفاده نمود، اگرچه که در اینصورت کمتر مشخص است که در کد نوشته شده چه اتفاقی افتاده است:
 
 ```js{5,7,9}
 render() {
@@ -186,13 +187,14 @@ render() {
 }
 ```
 
-Just like in JavaScript, it is up to you to choose an appropriate style based on what you and your team consider more readable. Also remember that whenever conditions become too complex, it might be a good time to [extract a component](/docs/components-and-props.html#extracting-components).
+درست مثل زبان جاوااسکریپت،انتخاب اینکه کدام روش مناسب است، به نظر شما و تیم شما بستگی دارد که کدام روش برای شما خوانا‌تر است.‌همچنین این نکته را در نظر داشته باشید که هرگاه شرط‌ها بیش از انداره پیچیده شدند،بهتر است که از روش [استخراج یک کامپوننت](/docs/components-and-props.html#extracting-components) استفاده کنید. 
 
-### Preventing Component from Rendering {#preventing-component-from-rendering}
+### جلوگیری از رندر شدن یک کامپوننت {#preventing-component-from-rendering}
 
-In rare cases you might want a component to hide itself even though it was rendered by another component. To do this return `null` instead of its render output.
+گاهی پیش می‌آید که بخواهید یک کامپوننت-حتی اگر توسط یک کامپوننت دیگر رندر شده باشد- خودش را مخفی کند. برای انجام این کار، عبارت `null` را به‌جای خروجی تابع رندر کامپوننت برگردانید.
 
-In the example below, the `<WarningBanner />` is rendered depending on the value of the prop called `warn`. If the value of the prop is `false`, then the component does not render:
+در مثال زیر، کامپوننت `<WarningBanner />` بر‌اساس مقدار prop ای به‌نام `warn` رندر می‌شود. اگر مقدار این prop برابر با`false` باشد، در اینصورت این کامپوننت رندر نخواهد شد.  
+
 
 ```javascript{2-4,29}
 function WarningBanner(props) {
@@ -238,6 +240,6 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/Xjoqwm?editors=0010)
+[**این کد را در CodePen امتحان کنید**](https://codepen.io/gaearon/pen/Xjoqwm?editors=0010)
 
-Returning `null` from a component's `render` method does not affect the firing of the component's lifecycle methods. For instance `componentDidUpdate` will still be called.
+برگرداندن مقدار `null`از متد `render` یک کامپوننت، نحوه فراخوانی و اجرای متد‌های lifecycle  کامپونتت را تحت تاثیر قرار نمی‌دهد.‌برای مثال متد `componentDidUpdate` همچنان فراخوانی خواهد شد. 
