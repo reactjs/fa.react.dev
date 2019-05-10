@@ -80,6 +80,22 @@
     </tr>
     <tr>
       <td dir="ltr">
+        controlled component
+      </td>
+      <td>
+        کامپوننت کنترل‌شده
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        customized
+      </td>
+      <td>
+        سفارشی
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
         fragment
       </td>
       <td>
@@ -100,6 +116,14 @@
       </td>
       <td>
         المنت
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        event
+      </td>
+      <td>
+        رویداد/رخداد
       </td>
     </tr>
     <tr>
@@ -144,6 +168,14 @@
     </tr>
     <tr>
       <td dir="ltr">
+        inline
+      </td>
+      <td>
+        درخط
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
         legacy code
       </td>
       <td>
@@ -166,7 +198,7 @@
         متد
       </td>
     </tr>
-     <tr>
+    <tr>
       <td dir="ltr">
         node
       </td>
@@ -230,7 +262,15 @@
         رابط کاربری
       </td>
     </tr>
-        <tr>
+    <tr>
+      <td dir="ltr">
+        uncontrolled component
+      </td>
+      <td>
+        کامپوننت کنترل‌نشده
+      </td>
+    </tr>
+    <tr>
       <td dir="ltr">
         user
       </td>
@@ -484,7 +524,7 @@
         RFC
       </td>
     </tr>
-        <tr>
+    <tr>
       <td>
         scope
       </td>
@@ -501,7 +541,17 @@
     </tr>
     <tr>
       <td>
+        style
+      </td>
+    </tr>
+    <tr>
+      <td>
         syntactic sugar
+      </td>
+    </tr>
+    <tr>
+      <td>
+        timestamp
       </td>
     </tr>
     <tr>
