@@ -6,7 +6,7 @@ category: Reference
 permalink: docs/react-dom-server.html
 ---
 
-The `ReactDOMServer` object enables you to render components to static markup. Typically, it's used on a Node server:
+آبجکت `ReactDOMServer` این امکان را فراهم می‌کند تا کامپوننت های خود را به حالت استاتیک رندر کنید. این معمولا در سرور  Node استفاده می‌شود.
 
 ```js
 // ES modules
@@ -15,21 +15,23 @@ import ReactDOMServer from 'react-dom/server';
 var ReactDOMServer = require('react-dom/server');
 ```
 
-## Overview {#overview}
 
-The following methods can be used in both the server and browser environments:
+## مرور کلی{#overview}
+
+متدهای زیر هم در محیط مرورگر و هم سرور قابل استفاده هستند:
 
 - [`renderToString()`](#rendertostring)
 - [`renderToStaticMarkup()`](#rendertostaticmarkup)
 
-These additional methods depend on a package (`stream`) that is **only available on the server**, and won't work in the browser.
+این متدهای دیگر، وابسته به یک پکیج (`stream`) هستند که **فقط در سرور در دسترس است** و در مرورگر کار نخواهد کرد.
+
 
 - [`renderToNodeStream()`](#rendertonodestream)
 - [`renderToStaticNodeStream()`](#rendertostaticnodestream)
 
 * * *
 
-## Reference {#reference}
+## مرجع {#reference}
 
 ### `renderToString()` {#rendertostring}
 
@@ -37,9 +39,10 @@ These additional methods depend on a package (`stream`) that is **only available
 ReactDOMServer.renderToString(element)
 ```
 
-Render a React element to its initial HTML. React will return an HTML string. You can use this method to generate HTML on the server and send the markup down on the initial request for faster page loads and to allow search engines to crawl your pages for SEO purposes.
 
-If you call [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) on a node that already has this server-rendered markup, React will preserve it and only attach event handlers, allowing you to have a very performant first-load experience.
+یک المنت ری‌اکت را به شکل HTML اولیه اش، رندر کنید. ری‌اکت یک استرینگ HTML به شما باز خواهد گرداند. با این متد، شما HTML را در سرور ساخته و آن را با درخواست اولیه کاربر، برایش خواهید فرستاد. این باعث خواهد شد که صفحه شما سریعتر نمایش داده شود و موتورهای جستجو هم خواهند توانست برای SEO صفحات شما را واکاوی کنند.
+
+اگر [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) را روی نودی که پیشتر در سرور ساخته شده است، فراخوانی کنید، ری‌اکت آن را همانطوری که بوده حفظ خواهد کرد. در عین حال اجازه خواهد داد تا event handler ها را به آن الصاق کنید. از همین رو، بارگذاری اولیه سریع تر انجام خواهد شد.  
 
 * * *
 
@@ -49,9 +52,9 @@ If you call [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) on a node that 
 ReactDOMServer.renderToStaticMarkup(element)
 ```
 
-Similar to [`renderToString`](#rendertostring), except this doesn't create extra DOM attributes that React uses internally, such as `data-reactroot`. This is useful if you want to use React as a simple static page generator, as stripping away the extra attributes can save some bytes.
+این مشابه [`renderToString`](#rendertostring) است. با این تفاوت که DOM attribute های اضافه (از قبیل `data-reactroot`) که ری‌اکت به طور داخلی استفاده می‌کند را نخواهد ساخت. این زمانی مفید است که قصد داشته باشید از ری‌اکت صرفا برای تولید صفحات استاتیک استفاده کنید. از طرف دیگر، حذف کردن attribute های اضافه، می‌تواند حجم بایت های شما را کاهش دهد.
 
-If you plan to use React on the client to make the markup interactive, do not use this method. Instead, use [`renderToString`](#rendertostring) on the server and [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) on the client.
+اگر قصدتان این است که از ری‌اکت در سمت کاربر استفاده کنید تا HTML شما تعاملی شود، از این متد استفاده نکنید. بجایش، در سرور از [`renderToString`](#rendertostring) و در سمت کاربر از [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) استفاده کنید.
 
 * * *
 
@@ -61,15 +64,15 @@ If you plan to use React on the client to make the markup interactive, do not us
 ReactDOMServer.renderToNodeStream(element)
 ```
 
-Render a React element to its initial HTML. Returns a [Readable stream](https://nodejs.org/api/stream.html#stream_readable_streams) that outputs an HTML string. The HTML output by this stream is exactly equal to what [`ReactDOMServer.renderToString`](#rendertostring) would return. You can use this method to generate HTML on the server and send the markup down on the initial request for faster page loads and to allow search engines to crawl your pages for SEO purposes.
+یک المنت ری‌اکت را به شکل HTML اولیه اش، رندر کنید. ری‌اکت یک [Readable stream](https://nodejs.org/api/stream.html#stream_readable_streams) را به شما باز خواهد گرداند که یک استرینگ HTML را تولید می‌کند. HTML ساخته شده با این متد دقیقا همانی خواهد بود که [`ReactDOMServer.renderToString`](#rendertostring) می‌توانست به شما بدهد. با این متد، شما HTML را در سرور ساخته و آن را با درخواست اولیه کاربر، برایش خواهید فرستاد. این باعث خواهد شد که صفحه شما سریعتر نمایش داده شود و موتورهای جستجو هم خواهند توانست برای SEO صفحات شما را واکاوی کنند.
 
-If you call [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) on a node that already has this server-rendered markup, React will preserve it and only attach event handlers, allowing you to have a very performant first-load experience.
+اگر [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) را روی نودی که پیشتر در سرور ساخته شده است، فراخوانی کنید، ری‌اکت آن را همانطوری که بوده حفظ خواهد کرد. در عین حال اجازه خواهد داد تا event handler ها را به آن الصاق کنید. از همین رو، بارگذاری اولیه سریع تر انجام خواهد شد.  
 
-> Note:
+> توجه:
 >
-> Server-only. This API is not available in the browser.
+> منحصرا برای سرور! این API‌ در مرورگر کار نخواهد کرد.
 >
-> The stream returned from this method will return a byte stream encoded in utf-8. If you need a stream in another encoding, take a look at a project like [iconv-lite](https://www.npmjs.com/package/iconv-lite), which provides transform streams for transcoding text.
+>استریم باز گردانده شده از این متد، با اینگدینگ utf-8 خواهد بود. اگر به اینکدینگ  متفاوتی در استریم خود نیاز دارید، به پروژه هایی مانند [iconv-lite](https://www.npmjs.com/package/iconv-lite) سر بزنید که استریمی از نوع transform را برای تغییر اینکدینگ متن در اختیار شما قرار می‌دهد.
 
 * * *
 
@@ -79,14 +82,14 @@ If you call [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) on a node that 
 ReactDOMServer.renderToStaticNodeStream(element)
 ```
 
-Similar to [`renderToNodeStream`](#rendertonodestream), except this doesn't create extra DOM attributes that React uses internally, such as `data-reactroot`. This is useful if you want to use React as a simple static page generator, as stripping away the extra attributes can save some bytes.
+این مشابه [`renderToNodeStream`](#rendertonodestream) است. با این تفاوت که DOM attribute های اضافه (از قبیل `data-reactroot`) که ری‌اکت به طور داخلی استفاده می‌کند را نخواهد ساخت. این زمانی مفید است که قصد داشته باشید از ری‌اکت صرفا برای تولید صفحات استاتیک استفاده کنید. از طرف دیگر، حذف کردن attribute های اضافه، می‌تواند حجم بایت های شما را کاهش دهد.
 
-The HTML output by this stream is exactly equal to what [`ReactDOMServer.renderToStaticMarkup`](#rendertostaticmarkup) would return.
+HTML ساخته شده توسط این استریم دقیقا همانی است که [`ReactDOMServer.renderToStaticMarkup`](#rendertostaticmarkup) می‌توانست برای شما بسازد.
 
-If you plan to use React on the client to make the markup interactive, do not use this method. Instead, use [`renderToNodeStream`](#rendertonodestream) on the server and [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) on the client.
+اگر قصدتان این است که از ری‌اکت در سمت کاربر استفاده کنید تا HTML شما تعاملی شود، از این متد استفاده نکنید. بجایش، در سرور از [`renderToNodeStream`](#rendertonodestream) و در سمت کاربر از [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) استفاده کنید.
 
-> Note:
+> توجه:
 >
-> Server-only. This API is not available in the browser.
+> منحصرا برای سرور! این API‌ در مرورگر کار نخواهد کرد.
 >
-> The stream returned from this method will return a byte stream encoded in utf-8. If you need a stream in another encoding, take a look at a project like [iconv-lite](https://www.npmjs.com/package/iconv-lite), which provides transform streams for transcoding text.
+>استریم باز گردانده شده از این متد، با اینگدینگ utf-8 خواهد بود. اگر به اینکدینگ  متفاوتی در استریم خود نیاز دارید، به پروژه هایی مانند [iconv-lite](https://www.npmjs.com/package/iconv-lite) سر بزنید که استریمی از نوع transform را برای تغییر اینکدینگ متن در اختیار شما قرار می‌دهد.
