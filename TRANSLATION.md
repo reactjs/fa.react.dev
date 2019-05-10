@@ -288,7 +288,7 @@
     </tr>
     <tr>
       <td dir="ltr">
-        epaque
+        opaque
       </td>
       <td>
         غیرشفاف
