@@ -79,7 +79,7 @@
       title: Uncontrolled Components
     - id: web-components
       title: Web Components
-- title: API Reference
+- title: مرجع API
   items:
     - id: react-api
       title: React

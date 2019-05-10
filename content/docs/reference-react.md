@@ -1,6 +1,6 @@
 ---
 id: react-api
-title: React Top-Level API
+title: API سطح بالای React
 layout: docs
 category: Reference
 permalink: docs/react-api.html
@@ -13,43 +13,43 @@ redirect_from:
   - "docs/top-level-api-zh-CN.html"
 ---
 
-`React` is the entry point to the React library. If you load React from a `<script>` tag, these top-level APIs are available on the `React` global. If you use ES6 with npm, you can write `import React from 'react'`. If you use ES5 with npm, you can write `var React = require('react')`.
+`React` نقطه‌ی ورود به کتابخانه‌ی ری‌اکت است. اگر شما React را از تگ `<script>` بارگذاری کنید، این APIهای سطح بالا از  `React` گلوبال قابل دسترسی هستند. اگر شما از ES6 ‌به‌همراه npm استفاده می‌کنید، می‌توانید بنویسید `import React from 'react'`. اگر از ES5 به‌همراه npm استفاده می‌کنید، می‌توانید بنویسید `var React = require('react')`.
 
-## Overview {#overview}
+## مرور کلی {#overview}
 
-### Components {#components}
+### کامپوننت‌ها {#components}
 
-React components let you split the UI into independent, reusable pieces, and think about each piece in isolation. React components can be defined by subclassing `React.Component` or `React.PureComponent`.
+کامپوننت‌های ری‌اکت به شما اجازه می‌دهند تا رابط کاربری را به بخش‌های مستقل با قابلیت استفاده‌ی مجدد تقسیم کنید، و درمورد هر قسمت به صورت جداگانه فکر کنید. کامپوننت‌های ری‌اکت را می‌توان به عنوان زیرکلاسی برای `React.Component` یا `React.PureComponent` تعریف کرد.
 
  - [`React.Component`](#reactcomponent)
  - [`React.PureComponent`](#reactpurecomponent)
 
-If you don't use ES6 classes, you may use the `create-react-class` module instead. See [Using React without ES6](/docs/react-without-es6.html) for more information.
+اکر شما از کلاس‌های ES6 استفاده نمی‌کنید، می‌توانید به جای آن از  `create-react-class` استفاده کنید. بخش [ری‌اکت بدون استفاده از ES6](/docs/react-without-es6.html) را برای آگاهی بیشتر ببینید.
 
-React components can also be defined as functions which can be wrapped:
+کامپوننت‌های ری‌اکت می‌توانند به شکل تابع نیز تعریف شوند که می‌توان آن‌ها را با memo بسته‌بندی (wrap) کرد:
 
 - [`React.memo`](#reactmemo)
 
-### Creating React Elements {#creating-react-elements}
+### ایجاد المنت‌های ری‌اکت {#creating-react-elements}
 
-We recommend [using JSX](/docs/introducing-jsx.html) to describe what your UI should look like. Each JSX element is just syntactic sugar for calling [`React.createElement()`](#createelement). You will not typically invoke the following methods directly if you are using JSX.
+ما پیشنهاد می‌کنیم برای توصیف رابط کاربری از [JSX](/docs/introducing-jsx.html) استفاده کنید. هر المنت JSX یک Syntactic sugar است برای صدا زدن [`()React.createElement`](#createelement). اگر از JSX استفاده کنید، معمولا متدهای زیر را به شکل مستقیم فراخوانی نخواهید کرد.
 
-- [`createElement()`](#createelement)
-- [`createFactory()`](#createfactory)
+- [`()createElement`](#createelement)
+- [`()createFactory`](#createfactory)
 
-See [Using React without JSX](/docs/react-without-jsx.html) for more information.
+برای آگاهی بیشتر از بخش [ری‌اکت بدون استفاده از JSX](/docs/react-without-jsx.html) دیدن کنید.
 
-### Transforming Elements {#transforming-elements}
+### تبدیل المنت‌ها {#transforming-elements}
 
-`React` provides several APIs for manipulating elements:
+`React`، چندین API برای دست‌کاری کردن المنت‌ها فراهم می‌کند:
 
-- [`cloneElement()`](#cloneelement)
-- [`isValidElement()`](#isvalidelement)
+- [`()cloneElement`](#cloneelement)
+- [`()isValidElement`](#isvalidelement)
 - [`React.Children`](#reactchildren)
 
-### Fragments {#fragments}
+### فرگمنت‌ها {#fragments}
 
-`React` also provides a component for rendering multiple elements without a wrapper.
+`React` همچنین برای یک کامپوننت، امکان رندر کردن چند المنت بدون استفاده از wrapper را فراهم می‌سازد.
 
 - [`React.Fragment`](#reactfragment)
 
@@ -58,22 +58,22 @@ See [Using React without JSX](/docs/react-without-jsx.html) for more information
 - [`React.createRef`](#reactcreateref)
 - [`React.forwardRef`](#reactforwardref)
 
-### Suspense {#suspense}
+### تعلیق (Suspense) {#suspense}
 
-Suspense lets components "wait" for something before rendering. Today, Suspense only supports one use case: [loading components dynamically with `React.lazy`](/docs/code-splitting.html#reactlazy). In the future, it will support other use cases like data fetching.
+Suspense به کامپوننت‌ها اجازه می‌دهد تا قبل از رندر شدن، برای چیزی «صبر» کنند. فعلا Suspense فقط یک مورد کاربرد را پشتیبانی می‌کند: [بارگذاری پویای کامپوننت‌ها با استفاده از `React.lazy`](/docs/code-splitting.html#reactlazy). در آینده، از مورد کاربردهای دیگری چون واکشی داده (data fetching) پشتیبانی خواهد کرد.
 
 - [`React.lazy`](#reactlazy)
 - [`React.Suspense`](#reactsuspense)
 
-### Hooks {#hooks}
+### هوک‌ها {#hooks}
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class. Hooks have a [dedicated docs section](/docs/hooks-intro.html) and a separate API reference:
+*هوک‌ها* یک افزونه جدید در ری‌اکت ۱۶.۸ هستند. آن‌ها به شما این توانایی را می‌دهند که بدون نوشتن کلاس از state بهره ببرید. هوک‌ها یک [بخش توضیحات جدا](/docs/hooks-intro.html) و یک  مرجع API جدا دارند:
 
-- [Basic Hooks](/docs/hooks-reference.html#basic-hooks)
+- [هوک‌های پایه](/docs/hooks-reference.html#basic-hooks)
   - [`useState`](/docs/hooks-reference.html#usestate)
   - [`useEffect`](/docs/hooks-reference.html#useeffect)
   - [`useContext`](/docs/hooks-reference.html#usecontext)
-- [Additional Hooks](/docs/hooks-reference.html#additional-hooks)
+- [هوک‌های افزوده](/docs/hooks-reference.html#additional-hooks)
   - [`useReducer`](/docs/hooks-reference.html#usereducer)
   - [`useCallback`](/docs/hooks-reference.html#usecallback)
   - [`useMemo`](/docs/hooks-reference.html#usememo)
@@ -84,11 +84,11 @@ Suspense lets components "wait" for something before rendering. Today, Suspense 
 
 * * *
 
-## Reference {#reference}
+## مرجع {#reference}
 
 ### `React.Component` {#reactcomponent}
 
-`React.Component` is the base class for React components when they are defined using [ES6 classes](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes):
+`React.Component` کلاس پایه است برای کامپوننت‌های ری‌اکت وقتی به روش [ کلاس‌های ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) تعریف شده باشند:
 
 ```javascript
 class Greeting extends React.Component {
@@ -98,21 +98,21 @@ class Greeting extends React.Component {
 }
 ```
 
-See the [React.Component API Reference](/docs/react-component.html) for a list of methods and properties related to the base `React.Component` class.
+ [مرجع React.Component API](/docs/react-component.html) را برای لیستی از متدها و ویژگی‌های مربوط به کلاس پایه `React.Component` ببینید.
 
 * * *
 
 ### `React.PureComponent` {#reactpurecomponent}
 
-`React.PureComponent` is similar to [`React.Component`](#reactcomponent). The difference between them is that [`React.Component`](#reactcomponent) doesn't implement [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate), but `React.PureComponent` implements it with a shallow prop and state comparison. 
+`React.PureComponent` به [`React.Component`](#reactcomponent) شبیه است. تفاوت آن‌ها این است که [`React.Component`](#reactcomponent) تابع [`()shouldComponentUpdate`](/docs/react-component.html#shouldcomponentupdate) را پیاده‌سازی نمی‌کند، ولی `React.PureComponent` آن‌را با یک قیاس سطحی props و state پیاده‌سازی می‌کند.
 
-If your React component's `render()` function renders the same result given the same props and state, you can use `React.PureComponent` for a performance boost in some cases.
+اگر تابع `render()` کامپوننت ری‌اکت شما، در صورت یکسان بودن props و state، خروجی یکسان تولید می‌کند، برای ارتقای کارایی در برخی از موارد می‌توانید از `React.PureComponent` استفاده کنید.
 
-> Note
+> نکته
 >
-> `React.PureComponent`'s `shouldComponentUpdate()` only shallowly compares the objects. If these contain complex data structures, it may produce false-negatives for deeper differences. Only extend `PureComponent` when you expect to have simple props and state, or use [`forceUpdate()`](/docs/react-component.html#forceupdate) when you know deep data structures have changed. Or, consider using [immutable objects](https://facebook.github.io/immutable-js/) to facilitate fast comparisons of nested data.
+>`shouldComponentUpdate()` در `React.PureComponent` فقط به صورت سطحی (shallow) اشیاء را مقایسه می‌کند. اگر این اشیاء دارای ساختاری پیچیده باشند، ممکن است باعث رخ‌داد منفی کاذب(false-negative) برای تفاوت‌های عمیق‌تر شود. تنها زمانی `PureComponent` را extend کنید که توقع دارید state و props ساده‌ باشند، یا زمانی از [`()forceUpdate`](/docs/react-component.html#forceupdate) استفاده کنید که می‌دانید ساختار عمیق داده‌ها تغییر پیدا کرده است. و یا [داده‌های تغییرناپذیز ](https://facebook.github.io/immutable-js/) را برای تسهیل مقایسه سریع داده‌های تودرتو استفاده کنید.
 >
-> Furthermore, `React.PureComponent`'s `shouldComponentUpdate()` skips prop updates for the whole component subtree. Make sure all the children components are also "pure".
+> علاوه بر این، `shouldComponentUpdate()` در `React.PureComponent`، به‌روز شدن state و props را در کل زیردرخت کامپوننت درنظر نمی‌گیرد. پس مطمئن شوید که همه‌ی کامپوننت‌های فرزند نیز «pure» باشند.
 
 * * *
 
@@ -124,11 +124,11 @@ const MyComponent = React.memo(function MyComponent(props) {
 });
 ```
 
-`React.memo` is a [higher order component](/docs/higher-order-components.html). It's similar to [`React.PureComponent`](#reactpurecomponent) but for function components instead of classes.
+`React.memo` یک [کامپوننت مرتبه بالا](/docs/higher-order-components.html) می‌باشد. شبیه به[`React.PureComponent`](#reactpurecomponent) است ولی برای توابع به جای کلاس‌ها استفاده می‌شود.
 
-If your function component renders the same result given the same props, you can wrap it in a call to `React.memo` for a performance boost in some cases by memoizing the result. This means that React will skip rendering the component, and reuse the last rendered result.
+اگر کامپوننت تابعی شما در صورت گرفتن props یکسان، نتیجه‌ی یکسان تولید می‌کند، می‌توانید آن‌را در یک فراخوانی `React.memo`، wrap کنید تا با یادداشت‌برداری نتیجه، کارایی را بالا برید. این کار به آن معناست که ری‌اکت رندر کردن کامپوننت را در نظر نمی‌گیرد و آخرین نتایج رندرهای قبلی را درنظر می‌گیرد.
 
-By default it will only shallowly compare complex objects in the props object. If you want control over the comparison, you can also provide a custom comparison function as the second argument.
+به صورت پیش‌فرض این فقط یک مقایسه سطحی بین اشیاء موجود در شیء props انجام می‌دهد. اگر می‌خواهید خودتان این مقایسه را کنترل کنید، می‌توانید یک تابع مقایسه شخصی‌سازی شده را به عنوان آرگومان دوم به این تابع بدهید.
 
 ```javascript
 function MyComponent(props) {
@@ -144,15 +144,15 @@ function areEqual(prevProps, nextProps) {
 export default React.memo(MyComponent, areEqual);
 ```
 
-This method only exists as a **[performance optimization](/docs/optimizing-performance.html).** Do not rely on it to "prevent" a render, as this can lead to bugs.
+این روش فقط به عنوان **[بهینه‌سازی کارایی](/docs/optimizing-performance.html)** مورد استفاده است. برای «جلوگیری» از رندر، از آن استفاده نکنید، به خاطر آن‌که می‌تواند به خطا سرانجام یابد.
 
-> Note
+> نکته:
 >
-> Unlike the [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate) method on class components, the `areEqual` function returns `true` if the props are equal and `false` if the props are not equal. This is the inverse from `shouldComponentUpdate`.
+> برخلاف متد [`()shouldComponentUpdate`](/docs/react-component.html#shouldcomponentupdate) در کامپوننت‌های به شکل کلاس، تابع`areEqual` مقدار `true` را بازمی‌گرداند اگر propها یکسان باشند و `false` برمیگرداند اگر propها متفاوت باشند. این رفتاری عکس `shouldComponentUpdate`می‌باشد.
 
 * * *
 
-### `createElement()` {#createelement}
+### `()createElement` {#createelement}
 
 ```javascript
 React.createElement(
@@ -162,13 +162,13 @@ React.createElement(
 )
 ```
 
-Create and return a new [React element](/docs/rendering-elements.html) of the given type. The type argument can be either a tag name string (such as `'div'` or `'span'`), a [React component](/docs/components-and-props.html) type (a class or a function), or a [React fragment](#reactfragment) type.
+ایجاد و برگرداندن یک [المنت ری‌اکت](/docs/rendering-elements.html) جدید با توجه به نوع (type) داده شده. آرگومان نوع داده شده می‌تواند رشته‌ی نام یک تگ (مثل `'div'` یا `'span'`)، یک نوع [کامپوننت ری‌اکت](/docs/components-and-props.html) (کلاس یا تابع)، یا یک نوع [فرگمنت ری‌اکت](#reactfragment) باشد.
 
-Code written with [JSX](/docs/introducing-jsx.html) will be converted to use `React.createElement()`. You will not typically invoke `React.createElement()` directly if you are using JSX. See [React Without JSX](/docs/react-without-jsx.html) to learn more.
+کد نوشته شده با [JSX](/docs/introducing-jsx.html) تبدیل به حالتی می‌شود که از `React.createElement()` استفاده کند. شما در حالت معمول اگر از  JSX استفاده کنید به صورت مستقیم `React.createElement()` را فرا نمی‌خوانید. [ری‌اکت بدون استفاده از JSX](/docs/react-without-jsx.html) را برای یادگیری بیشتر ببینید.
 
 * * *
 
-### `cloneElement()` {#cloneelement}
+### `()cloneElement` {#cloneelement}
 
 ```
 React.cloneElement(
@@ -178,47 +178,47 @@ React.cloneElement(
 )
 ```
 
-Clone and return a new React element using `element` as the starting point. The resulting element will have the original element's props with the new props merged in shallowly. New children will replace existing children. `key` and `ref` from the original element will be preserved.
+شبیه‌سازی (clone) و برگرداندن یک `المنت` به عنوان یک نقطه شروع. المنت جدید، دارای props المنت اصلی همراه با props جدید به شکل ترکیب شده سطحی می‌باشد. فرزندان جدید جایگزین فرزندان قبلی می‌شوند. `key` و `ref` المنت اصلی محفوظ می‌مانند.
 
-`React.cloneElement()` is almost equivalent to:
+`React.cloneElement()` تقریبا برابر است با:
 
 ```js
 <element.type {...element.props} {...props}>{children}</element.type>
 ```
 
-However, it also preserves `ref`s. This means that if you get a child with a `ref` on it, you won't accidentally steal it from your ancestor. You will get the same `ref` attached to your new element.
+ گرچه، این کار `ref`ها را محفوظ نگاه می‌دارد. این یه آن معناست که اگر شما یک فرزند را با `ref` آن دریافت کنید، آن‌را به شکل اتفاقی از اجداد خود سرقت نمی‌کنید. شما `ref` یکسان متصل شده به المنت جدید خواهید داشت.
 
-This API was introduced as a replacement of the deprecated `React.addons.cloneWithProps()`.
+این API به عنوان جایگزینی برای `React.addons.cloneWithProps()` منسوخ شده معرفی شد.
 
 * * *
 
-### `createFactory()` {#createfactory}
+### `()createFactory` {#createfactory}
 
 ```javascript
 React.createFactory(type)
 ```
 
-Return a function that produces React elements of a given type. Like [`React.createElement()`](#createElement), the type argument can be either a tag name string (such as `'div'` or `'span'`), a [React component](/docs/components-and-props.html) type (a class or a function), or a [React fragment](#reactfragment) type.
+یک تابع برمی‌گرداند که المنت‌های ری‌اکت با نوع داده شده را تولید می‌کند. مثل [`()React.createElement`](#createelement)، آرگومان نوع داده شده می‌تواند رشته‌ی نام یک تگ (مثل `'div'` یا `'span'`)، یک نوع [کامپوننت ری‌اکت](/docs/components-and-props.html) (کلاس یا تابع)، یا یک نوع [فرگمنت ری‌اکت](#reactfragment) باشد.
 
-This helper is considered legacy, and we encourage you to either use JSX or use `React.createElement()` directly instead.
+این helper یک نوع قدیمی(legacy) محسوب می‌شود و ما شما را تشویق می‌کنیم که به صورت مستقیم از `React.createElement()` یا JSX استفاده کنید.
 
-You will not typically invoke `React.createFactory()` directly if you are using JSX. See [React Without JSX](/docs/react-without-jsx.html) to learn more.
+اگر از JSX استفاده کنید، معمولا `React.createFactory()` را مستقیما فراخوانی نخواهید کرد. [ری‌اکت بدون استفاده از JSX](/docs/react-without-jsx.html) را برای یادگیری بیشتر ببینید.
 
 * * *
 
-### `isValidElement()` {#isvalidelement}
+### `()isValidElement` {#isvalidelement}
 
 ```javascript
 React.isValidElement(object)
 ```
 
-Verifies the object is a React element. Returns `true` or `false`.
+بررسی میکند که آیا شیء مورد نظر، المنت ری‌اکت هست یا خیر. `true` یا `false` برمی‌گرداند.
 
 * * *
 
 ### `React.Children` {#reactchildren}
 
-`React.Children` provides utilities for dealing with the `this.props.children` opaque data structure.
+`React.Children` ابزاری برای کار با ساختمان‌داده‌ی غیرشفاف`this.props.children` فراهم می‌کند.
 
 #### `React.Children.map` {#reactchildrenmap}
 
@@ -226,11 +226,11 @@ Verifies the object is a React element. Returns `true` or `false`.
 React.Children.map(children, function[(thisArg)])
 ```
 
-Invokes a function on every immediate child contained within `children` with `this` set to `thisArg`. If `children` is an array it will be traversed and the function will be called for each child in the array. If children is `null` or `undefined`, this method will return `null` or `undefined` rather than an array.
+یک تابع روی هر فرزند immediate داخل `children` فرامی‌خواند که `this`  را به عنوان `thisArg` تنظیم می‌کند. اگر `children` یک آرایه باشد از آن میگذرد و تابع روی تک‌تک فرزند‌های درون آرایه اجرا می‌شود. اگر `children`، `null` یا `undefined` باشد، این متد به جای یک آرایه، `null` یا `undefined` برمی‌گرداند.
 
-> Note
+> نکته:
 >
-> If `children` is a `Fragment` it will be treated as a single child and not traversed.
+> اگر `children`، یک `فرگمنت` باشد به عنوان یک فرزند تنها با آن برخورد می‌شود و از آن نمی‌گذرد.
 
 #### `React.Children.forEach` {#reactchildrenforeach}
 
@@ -238,7 +238,7 @@ Invokes a function on every immediate child contained within `children` with `th
 React.Children.forEach(children, function[(thisArg)])
 ```
 
-Like [`React.Children.map()`](#reactchildrenmap) but does not return an array.
+مانند [`()React.Children.map`](#reactchildrenmap) است ولی آرایه‌ای برنمی‌گرداند.
 
 #### `React.Children.count` {#reactchildrencount}
 
@@ -246,7 +246,7 @@ Like [`React.Children.map()`](#reactchildrenmap) but does not return an array.
 React.Children.count(children)
 ```
 
-Returns the total number of components in `children`, equal to the number of times that a callback passed to `map` or `forEach` would be invoked.
+تعداد کامپوننت‌های موجود در `children` را برمی‌گرداند، برابر تعداد دفعاتی است که callback داده شده به `map` یا `forEach` فراخوانی شده است.
 
 #### `React.Children.only` {#reactchildrenonly}
 
@@ -254,11 +254,11 @@ Returns the total number of components in `children`, equal to the number of tim
 React.Children.only(children)
 ```
 
-Verifies that `children` has only one child (a React element) and returns it. Otherwise this method throws an error.
+بررسی می‌کند که آیا `children` فقط یک فرزند (المنت ری‌اکت) دارد و آن را برمی‌گرداند. در غیراین‌صورت این متد یک ارور برمی‌گرداند.
 
-> Note:
+> نکته:
 >
->`React.Children.only()` does not accept the return value of [`React.Children.map()`](#reactchildrenmap) because it is an array rather than a React element.
+>`React.Children.only()`، مقدار برگردانده شده توسط  [`()React.Children.map`](#reactchildrenmap) را قبول نمی‌کند زیرا یک آرایه است نه یک المنت ری‌اکت.
 
 #### `React.Children.toArray` {#reactchildrentoarray}
 
@@ -266,17 +266,17 @@ Verifies that `children` has only one child (a React element) and returns it. Ot
 React.Children.toArray(children)
 ```
 
-Returns the `children` opaque data structure as a flat array with keys assigned to each child. Useful if you want to manipulate collections of children in your render methods, especially if you want to reorder or slice `this.props.children` before passing it down.
+ساختمان‌ داده‌ی غیرشفاف `children` را به شکل یک آرایه‌ی مسطح با فرزندهایی که به هرکدام یک کلید اختصاص ‌داده شده برمی‌گرداند. کاربردی است اگر بخواهید مجموغه‌هایی از فرزندان را در متدهای رندر خود دستکاری کنید، مخصوصا اگر بخواهید `this.props.children` را قبل از پاس دادن به سطوح پایین‌تر، قطعه‌قطعه یا دوباره مرتب کنید.
 
-> Note:
+> نکته:
 >
-> `React.Children.toArray()` changes keys to preserve the semantics of nested arrays when flattening lists of children. That is, `toArray` prefixes each key in the returned array so that each element's key is scoped to the input array containing it.
+> `React.Children.toArray()` در فرایند مسطح‌سازی لیست فرزندان، کلیدها را تغییر می‌دهد تا معنای آرایه‌های تودرتو حفظ شود. به این معنا که، `toArray`، هر کلید را پیشوندگذاری می‌کند تا کلید هر المنت به‌‌ همان آرایه‌ی واردشده‌ای محدود شود که دارای آن کلید بوده است .
 
 * * *
 
 ### `React.Fragment` {#reactfragment}
 
-The `React.Fragment` component lets you return multiple elements in a `render()` method without creating an additional DOM element:
+کامپوننت `React.Fragment` به شما این توانایی را می‌دهد تا چندین المنت را در متد `render()` برگردانید، بدون آن‌که المنت DOM جدیدی بسازید:
 
 ```javascript
 render() {
@@ -288,55 +288,54 @@ render() {
   );
 }
 ```
-
-You can also use it with the shorthand `<></>` syntax. For more information, see [React v16.2.0: Improved Support for Fragments](/blog/2017/11/28/react-v16.2.0-fragment-support.html).
+ همچنین می‌توانید آن را به شکل خلاصه‌ی `<></>` نمایش دهید. برای آگاهی بیشتر، [ری‌اکت نسخه‌ی 16.2.0: پشتیبانی ارتقا یافته از فرگمنت‌ها](/blog/2017/11/28/react-v16.2.0-fragment-support.html) را ببینید.
 
 
 ### `React.createRef` {#reactcreateref}
 
-`React.createRef` creates a [ref](/docs/refs-and-the-dom.html) that can be attached to React elements via the ref attribute.
+`React.createRef` یک [ref](/docs/refs-and-the-dom.html) می‌سازد که می‌تواند با استفاده از خصوصیت ref به المنت متصل شود.
 `embed:16-3-release-blog-post/create-ref-example.js`
 
 ### `React.forwardRef` {#reactforwardref}
 
-`React.forwardRef` creates a React component that forwards the [ref](/docs/refs-and-the-dom.html) attribute it receives to another component below in the tree. This technique is not very common but is particularly useful in two scenarios:
+`React.forwardRef` یک کامپوننت ری‌اکت ایجاد می‌کند که خصوصیت [ref](/docs/refs-and-the-dom.html) دریافت شده را به کامپوننت زیرین در درخت فوروارد کند. این روش خیلی معمول نیست مگر در دو مورد:
 
-* [Forwarding refs to DOM components](/docs/forwarding-refs.html#forwarding-refs-to-dom-components)
-* [Forwarding refs in higher-order-components](/docs/forwarding-refs.html#forwarding-refs-in-higher-order-components)
+* [فوروارد refها به کامپوننت‌های DOM](/docs/forwarding-refs.html#forwarding-refs-to-dom-components)
+* [فوروارد refها در کامپوننت‌های مرتبه‌ بالا](/docs/forwarding-refs.html#forwarding-refs-in-higher-order-components)
 
-`React.forwardRef` accepts a rendering function as an argument. React will call this function with `props` and `ref` as two arguments. This function should return a React node.
+`React.forwardRef`، یک تابع رندرکننده را به عنوان آرگومان می‌پذیرد. ری‌اکت این تابع را با `props` و `ref` به عنوان دو آرگومان صدا می‌زند. این تابع باید یک نود ری‌اکت برگرداند.
 
 `embed:reference-react-forward-ref.js`
 
-In the above example, React passes a `ref` given to `<FancyButton ref={ref}>` element as a second argument to the rendering function inside the `React.forwardRef` call. This rendering function passes the `ref` to the `<button ref={ref}>` element.
+در مثال بالا، ری‌اکت، `ref`  داده شده به المنت `<FancyButton ref={ref}>` را به عنوان آرگومان دوم به تابع رندرکننده صدازده‌ شده درون  `React.forwardRef` می‌دهد. این تابع رندرکننده، `ref` را به المنت `<button ref={ref}>` انتقال می‌دهد.
 
-As a result, after React attaches the ref, `ref.current` will point directly to the `<button>` DOM element instance.
+در نتیجه، بعد از این‌که ری‌اکت، ref را متصل کرد، `ref.current` مستقیما به المنت DOM مربوط به `<button>` اشاره می‌کند.
 
-For more information, see [forwarding refs](/docs/forwarding-refs.html).
+برای آگاهی بیشتر، [فوروارد refها](/docs/forwarding-refs.html) را ببینید.
 
 ### `React.lazy` {#reactlazy}
 
-`React.lazy()` lets you define a component that is loaded dynamically. This helps reduce the bundle size to delay loading components that aren't used during the initial render.
+`React.lazy()` به شما اجازه می‌دهد کامپوننتی تعریف کنید که به شکل پویا بارگذاری می‌شود. این کمک می‌کند تا حجم بسته‌ی نهایی(bundle) کاهش یابد تا بارگذاری کامپوننت‌هایی که در رندر ابتدایی استفاده نشده‌اند را به تعویق اندازد.
 
-You can learn how to use it from our [code splitting documentation](/docs/code-splitting.html#reactlazy). You might also want to check out [this article](https://medium.com/@pomber/lazy-loading-and-preloading-components-in-react-16-6-804de091c82d) explaining how to use it in more detail.
+می‌توانید برای یادگیری نحوه‌ی استفاده از آن به [سند بخش‌بندی کد](/docs/code-splitting.html#reactlazy) بروید. ممکن است بخواهید [این مقاله](https://medium.com/@pomber/lazy-loading-and-preloading-components-in-react-16-6-804de091c82d) را بررسی کنید، که در مورد چگونگی استفاده از آن با جزئیاتی بیشتر توضیح داده است .
 
 ```js
-// This component is loaded dynamically
+// این کامپوننت به صورت پویا بارگذاری می‌شود
 const SomeComponent = React.lazy(() => import('./SomeComponent'));
 ```
 
-Note that rendering `lazy` components requires that there's a `<React.Suspense>` component higher in the rendering tree. This is how you specify a loading indicator.
+توجه کنید که کامپوننت‌های `lazy` نیازمند وجود یک کامپوننت `<React.Suspense>` در سطوح بالاتر درخت رندر هستند. این نحوه‌ی مشخص کردن یک loading indicator است.
 
-> **Note**
+> **نکته**
 >
-> Using `React.lazy`with dynamic import requires Promises to be available in the JS environment. This requires a polyfill on IE11 and below.
+> استفاده از `React.lazy`همراه با import پویا نیازمند آن است که Promiseها در محیط جاوااسکریپت قابل استفاده باشند. این نیازمند یک polyfill روی IE11 و کمتر از آن است.
 
 ### `React.Suspense` {#reactsuspense}
 
-`React.Suspense` let you specify the loading indicator in case some components in the tree below it are not yet ready to render. Today, lazy loading components is the **only** use case supported by `<React.Suspense>`:
+`React.Suspense` به شما اجازه می‌دهد loading indicator را مشخص کنید در حالتی که برخی کامپوننت‌های زیرین آن در درخت هنوز آماده‌ی رندر نباشند. فعلا، کامپوننت‌های با بارگذاری lazy، **تنها** مورد کاربردی است که `<React.Suspense>` از آن پشتیبانی می‌کند:
 
 ```js
-// This component is loaded dynamically
+// این کامپوننت به صورت پویا بارگذاری می‌شود
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
 
 function MyComponent() {
@@ -351,10 +350,10 @@ function MyComponent() {
 }
 ```
 
-It is documented in our [code splitting guide](/docs/code-splitting.html#reactlazy). Note that `lazy` components can be deep inside the `Suspense` tree -- it doesn't have to wrap every one of them. The best practice is to place `<Suspense>` where you want to see a loading indicator, but to use `lazy()` wherever you want to do code splitting.
+این قسمت در [راهنمای بخش‌بندی کد](/docs/code-splitting.html#reactlazy) توضیح داده شد‌ه‌است. توجه کنید که کامپوننت‌های `lazy` می‌توانند در اعماق یک درخت `Suspense` موجود باشند (نیازی نیست که تک‌تک آن‌ها را به این شکل wrap کنید) . بهترین تمرین این است که `<Suspense>` را جایی قرار دهید که میخواهید یک  loading indicator مشاهده کنید، اما `lazy()` را جایی قرار دهید که می‌خواهید کد را بخش‌بندی کنید.
 
-While this is not supported today, in the future we plan to let `Suspense` handle more scenarios such as data fetching. You can read about this in [our roadmap](/blog/2018/11/27/react-16-roadmap.html).
+گرچه این امکان فعلا وجود ندارد، در آینده برنامه‌ریزی کرده‌ایم که به  `Suspense` اجازه دهیم تا به سناریوهای دیگری چون واکشی داده رسیدگی کند. در این مورد می‌توانید به [نقشه‌ی راه ما](/blog/2018/11/27/react-16-roadmap.html) مراجعه کنید.
 
->Note:
+>نکته:
 >
->`React.lazy()` and `<React.Suspense>` are not yet supported by `ReactDOMServer`. This is a known limitation that will be resolved in the future.
+>`React.lazy()` و `<React.Suspense>` هنوز توسط `ReactDOMServer` پشتیبانی نمی‌شوند. این یک محدودیت شناخته شده است که در آینده برطرف خواهد شد.
