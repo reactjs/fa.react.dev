@@ -24,7 +24,7 @@
   <tbody>
     <tr>
       <td dir="ltr">
-        ansestor
+        ancestor
       </td>
       <td>
         جد
@@ -35,7 +35,7 @@
         attribute
       </td>
       <td>
-        صفت
+        خصوصیت
       </td>
     </tr>
     <tr>
@@ -268,14 +268,6 @@
       </td>
       <td>
         فوروارد
-      </td>
-    </tr>
-    <tr>
-      <td dir="ltr">
-        ansestor
-      </td>
-      <td>
-        اجداد
       </td>
     </tr>
     <tr>
@@ -535,22 +527,6 @@
     <tr>
       <td>
         loading indicator
-      </td>
-    </tr>
-    <tr>
-      <td dir="ltr">
-        attribute
-      </td>
-      <td>
-        خصوصیت
-      </td>
-    </tr>
-    <tr>
-      <td dir="ltr">
-        property
-      </td>
-      <td>
-        ویژگی
       </td>
     </tr>
   </tbody>
