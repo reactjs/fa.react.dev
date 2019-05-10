@@ -23,7 +23,7 @@ var ReactDOMServer = require('react-dom/server');
 - [`renderToString()`](#rendertostring)
 - [`renderToStaticMarkup()`](#rendertostaticmarkup)
 
-این متدهای دیگر، وابسته به پکیج (`stream`) هستند که **فقط در سرور در دسترس است** و در مرورگر کار نخواهد کرد.
+این متدهای دیگر، وابسته به یک پکیج (`stream`) هستند که **فقط در سرور در دسترس است** و در مرورگر کار نخواهد کرد.
 
 
 - [`renderToNodeStream()`](#rendertonodestream)
