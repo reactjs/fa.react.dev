@@ -1,20 +1,20 @@
 ---
 id: hooks-state
-title: Using the State Hook
+title: استفاده از هوک state
 permalink: docs/hooks-state.html
 next: hooks-effect.html
 prev: hooks-overview.html
 ---
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+*هوک‌ها* پس از انتشار نسخه‌ی 16.8 به ری‌اکت اضافه شده‌اند. آن‌ها به شما اجازه می‌دهند که از state و دیگر قابلیت های ری‌اکت بدون نوشتن کلاس استفاده کنید.
 
-The [previous page](/docs/hooks-intro.html) introduced Hooks with this example:
+در [صفحه‌ی معرفی](/docs/hooks-intro.html) از این مثال برای معرفی هوکها استفاده شد:
 
 ```js{4-5}
 import React, { useState } from 'react';
 
 function Example() {
-  // Declare a new state variable, which we'll call "count"
+  // "count" جدید به نام state تعریف کردن یک متغیر
   const [count, setCount] = useState(0);
 
   return (
@@ -28,11 +28,11 @@ function Example() {
 }
 ```
 
-We'll start learning about Hooks by comparing this code to an equivalent class example.
+ما با مقایسه این کد با یک مثال مشابه که بر پایه کلاس نوشته شده‌است، یادگیری هوک‌ها را شروع می‌کنیم.
 
-## Equivalent Class Example {#equivalent-class-example}
+## مثال کلاس مشابه {#equivalent-class-example}
 
-If you used classes in React before, this code should look familiar:
+اگر قبلا از کلاس‌ها در ری‌اکت استفاده کرده‌باشید، این کد باید برای شما آشنا باشد:
 
 ```js
 class Example extends React.Component {
@@ -56,39 +56,39 @@ class Example extends React.Component {
 }
 ```
 
-The state starts as `{ count: 0 }`, and we increment `state.count` when the user clicks a button by calling `this.setState()`. We'll use snippets from this class throughout the page.
+این state در شروع به عنوان `{ count: 0 }` تعریف شده‌است، و ما مقدار `state.count` را وقتی که کاربر روی دکمه کلیک می‌کند با استفاده از `this.setState()` افزایش می‌دهیم. ما همواره از این الگو در تمام صفحه استفاده می‌کنیم.
 
->Note
+>توجه:
 >
->You might be wondering why we're using a counter here instead of a more realistic example. This is to help us focus on the API while we're still making our first steps with Hooks.
+>شاید برای شما این سوال پیش بیاید که چرا ما استفاده از یک شمارنده(counter) را به استفاده از یک مثال واقعی‌تر ترجیح داده‌ایم. چون این به ما کمک می‌کند تا روی API تمرکز کنیم در حالی که هنوز در اول راه یادگیری هوک‌ها هستیم.
 
-## Hooks and Function Components {#hooks-and-function-components}
+## هوک‌ها و کامپوننت‌های تابعی {#hooks-and-function-components}
 
-As a reminder, function components in React look like this:
+به‌عنوان یک یادآوری، کامپوننت‌های تابعی در ری‌اکت به شکل زیر هستند:
 
 ```js
 const Example = (props) => {
-  // You can use Hooks here!
+  // شما می‌توانید از هوک‌ها در اینجا استفاده کنید!
   return <div />;
 }
 ```
 
-or this:
+یا به این شکل:
 
 ```js
 function Example(props) {
-  // You can use Hooks here!
+  // شما می‌توانید از هوک‌ها در اینجا استفاده کنید!
   return <div />;
 }
 ```
 
-You might have previously known these as "stateless components". We're now introducing the ability to use React state from these, so we prefer the name "function components".
+ شاید شما در گذشته این کامپوننت‌ها را با نام "کامپوننت‌های بدون state" می‌شناختید. ما حالا قابلیتی را معرفی می‌کنیم که با استفاده از آن می‌توانید از state ری‌اکت در این نوع کامپوننت‌ها استفاده کنید، بنابراین ما این نوع کامپوننت ها را "کامپوننت تابعی" می‌نامیم.
 
-Hooks **don't** work inside classes. But you can use them instead of writing classes.
+شما **نمی توانید** از هوک‌ها در کلاس‌ها استفاده کنید. ولی با استفاده از آن‌ها دیگر احتیاجی به نوشتن کلاس نخواهید داشت.
 
-## What's a Hook? {#whats-a-hook}
+## هوک چیست؟ {#whats-a-hook}
 
-Our new example starts by importing the `useState` Hook from React:
+مثال جدید خود را با import کردن هوک `useState` از ری‌اکت شروع می‌کنیم:
 
 ```js{1}
 import React, { useState } from 'react';
@@ -98,17 +98,17 @@ function Example() {
 }
 ```
 
-**What is a Hook?** A Hook is a special function that lets you "hook into" React features. For example, `useState` is a Hook that lets you add React state to function components. We'll learn other Hooks later.
+**هوک چیست؟** هوک یک تابع ویژه است که به شما اجازه می‌دهد از امکانات ری‌اکت استفاده کنید. برای مثال، هوک `useState` به شما این امکان را می‌دهد که از state در کامپوننت‌های تابعی استفاده کنید. هوک‌های دیگری هم وجود دارند که به یادگیری آن‌ها در آموزش‌های بعدی می‌پردازیم.
 
-**When would I use a Hook?** If you write a function component and realize you need to add some state to it, previously you had to convert it to a class. Now you can use a Hook inside the existing function component. We're going to do that right now!
+**چه زمانی می‌توانم از هوک استفاده کنم؟** اگر شما یک کامپوننت تابعی بنویسید و متوجه شوید که نیاز به استفاده از state در آن دارید، در گذشته و قبل از معرفی هوک‌ها مجبور بودید که کامپوننت خود را به کلاس کامپوننت تبدیل کنید. حالا با معرفی هوک‌ها می‌توانید هر وقت که بخواهید در کامپوننت‌های تابعی خود از state استفاده کنید. ما در ادامه این کار را انجام خواهیم داد!
 
->Note:
+>توجه:
 >
->There are some special rules about where you can and can't use Hooks within a component. We'll learn them in [Rules of Hooks](/docs/hooks-rules.html).
+>چند قانون ویژه درباره‌ این که چه جا‌هایی از کامپوننت می‌توانید یا نمی‌توانید از هوک‌ها استفاده کنید وجود دارد. که باید آن‌ها را در [قوانین هوک‌ها](/docs/hooks-rules.html) یاد بگیریم.
 
-## Declaring a State Variable {#declaring-a-state-variable}
+## تعریف کردین متغیر state {#declaring-a-state-variable}
 
-In a class, we initialize the `count` state to `0` by setting `this.state` to `{ count: 0 }` in the constructor:
+حلا قصد داریم که مقدار اولیه `count` را در درون state، عدد `0` تعریف کنیم. بدین منظور، در سازنده‌ی کلاس `this.state` را معادل `{count: 0}` تعریف می‌کنیم.
 
 ```js{4-6}
 class Example extends React.Component {
@@ -120,58 +120,58 @@ class Example extends React.Component {
   }
 ```
 
-In a function component, we have no `this`, so we can't assign or read `this.state`. Instead, we call the `useState` Hook directly inside our component:
+در یک کامپوننت تابعی، کلید واژه‌ی `this` وجود ندارد، پس ما نمی توانیم مقدار `this.state` را بخوانیم و یا مقداری را به آن اختصاص دهیم. در عوض، ما می‌توانیم از هوک `useState` به‌طور مستقیم در کامپوننت خود استفاده کنیم:
 
 ```js{4,5}
 import React, { useState } from 'react';
 
 function Example() {
-  // Declare a new state variable, which we'll call "count"
+  // "count" جدید به نام state تعریف کردن یک متغیر
   const [count, setCount] = useState(0);
 ```
 
-**What does calling `useState` do?** It declares a "state variable". Our variable is called `count` but we could call it anything else, like `banana`. This is a way to "preserve" some values between the function calls — `useState` is a new way to use the exact same capabilities that `this.state` provides in a class. Normally, variables "disappear" when the function exits but state variables are preserved by React.
+**با استفاده از `useState` چه کار‌هایی می‌توان انجام داد؟** هدف کلی آن تعریف کردن "متغیر state" است. ما در اینجا متغیری به نام `count` داریم ولی می‌توانیم نام دلخواه، مثل `banana` هم برای آن انتخاب کنیم. این یک راه برای "حفظ" برخی مقادیر میان تماس‌های تابعی است — `useState` یک راه جدید است که دقیقا امکانات مشابه `this.state` در کلاس را فراهم می‌کند. به طور معمول، مقادیر موجود در تابع پس از بسته شدن تابع از بین می‌روند ولی متغیر state پس از بسته شدن تابع هم توسط ری‌اکت حفظ می‌شود.
 
-**What do we pass to `useState` as an argument?** The only argument to the `useState()` Hook is the initial state. Unlike with classes, the state doesn't have to be an object. We can keep a number or a string if that's all we need. In our example, we just want a number for how many times the user clicked, so pass `0` as initial state for our variable. (If we wanted to store two different values in state, we would call `useState()` twice.)
+**چه چیزی را به عنوان آرگومان به `useState` پاس می‌دهیم؟** تنها آرگومانی که به هوک `useState()` می‌دهیم مقدار اولیه‌ی state است. بر خلاف کاری که در کلاس ها انجام می‌دهیم، state حتما نباید یک object باشد. اگر ما به Number یا String احتیاج داریم می توانیم state را به عنوان Number یا String تعریف کنیم. در مثال، ما فقط به یک عدد احتیاج داریم که بفهمیم کاربر چند بار کلیک کرده‌است، پس `0` را به عنوان مقدار اولیه‌ی state خود به useState پاس‌ ‌می‌دهیم. (اگر ما بخواهیم دو مقدار متفاوت را در state ذخیره کنیم، باید دوبار از `useState()` استفاده کنیم.)
 
-**What does `useState` return?** It returns a pair of values: the current state and a function that updates it. This is why we write `const [count, setCount] = useState()`. This is similar to `this.state.count` and `this.setState` in a class, except you get them in a pair. If you're not familiar with the syntax we used, we'll come back to it [at the bottom of this page](/docs/hooks-state.html#tip-what-do-square-brackets-mean).
+**`useState` چه چیزی را بر می‌گرداند؟** این هوک یک جفت آیتم را بر می‌گرداند: یک state به نام count و یک تابع برای به‌روزرسانی مقدار آن. به این دلیل است که ما آن را به صورت `const [count, setCount] = useState()` نوشته‌ایم. این مقادیر مشابه `this.state.count` و `this.setState` در کلاس کامپوننت هستند، اگر شما با این نوع syntax آشنایی ندارید، ما در  [پایین این صفحه](/docs/hooks-state.html#tip-what-do-square-brackets-mean) به آن می‌پردازیم.
 
-Now that we know what the `useState` Hook does, our example should make more sense:
+حالا که متوجه کاربرد هوک `useState` شدیم، باید مثال ما را بهتر متوجه شوید:
 
 ```js{4,5}
 import React, { useState } from 'react';
 
 function Example() {
-  // Declare a new state variable, which we'll call "count"
+  // "count" جدید به نام state تعریف کردن یک متغیر
   const [count, setCount] = useState(0);
 ```
 
-We declare a state variable called `count`, and set it to `0`. React will remember its current value between re-renders, and provide the most recent one to our function. If we want to update the current `count`, we can call `setCount`.
+ما یک متغیر state به نام `count` تعریف کرده‌ایم، و مقدار آن را برابر `0` قرار داده‌ایم. ری‌اکت مقدار این state را میان رندر کردن دوباره‌ی کامپوننت حفظ می‌کند، و جدیدترین مقدار آن را برای تابع فراهم می‌کند. اگر ما بخواهم مقدار `count` را به‌روزرسانی کنیم، می‌توانیم از `setCount` استفاده کنیم.
 
->Note
+>توجه:
 >
->You might be wondering: why is `useState` not named `createState` instead?
+>شاید براتون این سوال پیش بیاد: چرا از اسم `useState` استفاده کردیم و به جای آن از اسم  `createState` استفاده نکردیم؟
 >
->"Create" wouldn't be quite accurate because the state is only created the first time our component renders. During the next renders, `useState` gives us the current state. Otherwise it wouldn't be "state" at all! There's also a reason why Hook names *always* start with `use`. We'll learn why later in the [Rules of Hooks](/docs/hooks-rules.html).
+>استفاده از نام "Create" بسیار دقیق نخواهد بود چون یک state فقط در زمان اولین رندر یک کامپوننت ساخته می‌شود. در هنگام رندر های بعدی، `useState` فقط مقدار state را به ما می‌دهد. در غیر این صورت اگر قرار بود در هر رندر یک state با همان مقدار ساخته شود که دیگر state نبودند! یک دلیل دیگر هم وجود دارد *همیشه* نام هوک‌ها با `use` شروع می‌شود.دلیل این را هم می‌توانید در [قوانین هوک‌ها](/docs/hooks-rules.html) مطالعه کنید.
 
-## Reading State {#reading-state}
+## خواندن State {#reading-state}
 
-When we want to display the current count in a class, we read `this.state.count`:
+وقتی که ما بخواهیم مقدار شمارش فعلی را نمایش دهیم، از `this.state.count` می‌خوانیم:
 
 ```js
   <p>You clicked {this.state.count} times</p>
 ```
 
-In a function, we can use `count` directly:
+در تابع، ما می‌توانیم به طور مستقیم از `count` استفاده کنیم:
 
 
 ```js
   <p>You clicked {count} times</p>
 ```
 
-## Updating State {#updating-state}
+## به‌روزرسانی State {#updating-state}
 
-In a class, we need to call `this.setState()` to update the `count` state:
+در کلاس، ما باید با استفاده از `this.setState()` مقدار state `count` را به‌روزرسانی کنیم:
 
 ```js{1}
   <button onClick={() => this.setState({ count: this.state.count + 1 })}>
@@ -179,7 +179,7 @@ In a class, we need to call `this.setState()` to update the `count` state:
   </button>
 ```
 
-In a function, we already have `setCount` and `count` as variables so we don't need `this`:
+در تابع، ما از قبل `setCount` و `count` به عنوان یک متغیر تعریف کرد‌ایم پس دیگر احتیاج به استفاده از کلید واژه‌ی `this` نداریم:
 
 ```js{1}
   <button onClick={() => setCount(count + 1)}>
@@ -187,9 +187,9 @@ In a function, we already have `setCount` and `count` as variables so we don't n
   </button>
 ```
 
-## Recap {#recap}
+## خلاصه {#recap}
 
-Let's now **recap what we learned line by line** and check our understanding.
+حالا بیاید **خلاصه چیزهایی که یادگرفته‌ایم را خط به خط برسی کنیم** و بفهمیم چه چیزهایی یاد گرفته‌ایم.
 
 <!--
   I'm not proud of this line markup. Please somebody fix this.
@@ -212,69 +212,68 @@ Let's now **recap what we learned line by line** and check our understanding.
 14:  }
 ```
 
-* **Line 1:** We import the `useState` Hook from React. It lets us keep local state in a function component.
-* **Line 4:** Inside the `Example` component, we declare a new state variable by calling the `useState` Hook. It returns a pair of values, to which we give names. We're calling our variable `count` because it holds the number of button clicks. We initialize it to zero by passing `0` as the only `useState` argument. The second returned item is itself a function. It lets us update the `count` so we'll name it `setCount`.
-* **Line 9:** When the user clicks, we call `setCount` with a new value. React will then re-render the `Example` component, passing the new `count` value to it.
+* **خط ۱:** ما هوک `useState` را از ری‌اکت import کردیم. که به شما اجازه‌ی استفاده از state را در تابع می‌دهد.
+* **خط ۴:** در تابع کامپوننت `Example`، ما با استفاده از هوک `useState` یک متغیر state تعریف کرده‌ایم. که بر اساس اسم‌هایی که به آن می‌دهیم یک جفت آیتم را بر می‌گرداند. ما اسم متغیر خود را را `count` گذاشتیم چون مقدار تعداد کلیک‌هایی که روی دکمه می‌کنیم را در خود نگه می‌دارد. ما مقدار اولیه آن را به‌وسیله‌ی پاس دادن  `0` به عنوان آرگومان به `useState` برابر `0` قرار داده‌ایم. مقدار دومی که `useState` برمی‌گرداند یک تابع است. این تابع به شما اجازه می‌دهد که مقدار `count` را به‌روزرسانی کنید پس ما اسم آن را `setCount` می‌گذاریم.
+* **خط ۹:** وقتی که کاربر روی دکمه کلیک می‌کند، ما با استفاده از `setCount` مقدار جدید را به state `count` می‌دهیم. سپس ری‌اکت کامپوننت `Example` را دوباره رندر می‌کند، و مقدار جدید `count` را به آن پاس می‌دهد.
 
-This might seem like a lot to take in at first. Don't rush it! If you're lost in the explanation, look at the code above again and try to read it from top to bottom. We promise that once you try to "forget" how state works in classes, and look at this code with fresh eyes, it will make sense.
+حجم مطالب ممکن است باری یادگیری در اولین بار زیاد به نظر برسد. ولی عجله نکنید! اگر شما هر کدام از توضیحات را متوجه نشده‌اید، مثال بالا را دوباره بخوانید و سعی کنید یک بار دیگر مطالب را از بالا به پایین با دقت بخوانید. ما به شما این قول را می‌دهیم اگر یکبار دیگر تلاش به خواندن این مطلب بکنید "فراموش می‌کنید" که state در کلاس‌ها چگونه کار می‌کند.
 
-### Tip: What Do Square Brackets Mean? {#tip-what-do-square-brackets-mean}
+### نکته: کروشه ([]) چه کاری انجام می‌دهد؟ {#tip-what-do-square-brackets-mean}
 
-You might have noticed the square brackets when we declare a state variable:
+شاید متوجه استفاده از کروشه([]) موقع تعریف متغیر state شده‌باشید:
 
 ```js
   const [count, setCount] = useState(0);
 ```
 
-The names on the left aren't a part of the React API. You can name your own state variables:
+اسم‌های سمت چپ جزئی از API ری‌اکت نیستند. و شما می‌توانید نام دلخواه برای متغیر استفاده کنید:
 
 ```js
   const [fruit, setFruit] = useState('banana');
 ```
 
-This JavaScript syntax is called ["array destructuring"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring). It means that we're making two new variables `fruit` and `setFruit`, where `fruit` is set to the first value returned by `useState`, and `setFruit` is the second. It is equivalent to this code:
-
+این یک syntax جاوا‌اسکریپت به نام ["array destructuring"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring) است. و به این معنی که ما دو متغیر به نام‌های  `fruit` و `setFruit` را تعریف کرده‌ایم. تابع `useState` دو مقدار را باز می‌گرداند که به ترتیب به `fruit` و `setFruit` اختصاص داده می‌شوند. کد زیر مشابه همین کار را انجام می‌دهد:
 ```js
-  var fruitStateVariable = useState('banana'); // Returns a pair
-  var fruit = fruitStateVariable[0]; // First item in a pair
-  var setFruit = fruitStateVariable[1]; // Second item in a pair
+  var fruitStateVariable = useState('banana'); // یک جفت آیتم را باز می‌گرداند
+  var fruit = fruitStateVariable[0]; // آیتم اول
+  var setFruit = fruitStateVariable[1]; // آیتم دوم
 ```
 
-When we declare a state variable with `useState`, it returns a pair — an array with two items. The first item is the current value, and the second is a function that lets us update it. Using `[0]` and `[1]` to access them is a bit confusing because they have a specific meaning. This is why we use array destructuring instead.
+وقتی که ما توسط `useState` یک متغیر state تعریف می‌کنیم، `useState` یک جفت آیتم را بازمی‌گرداند — یک آرایه با دو آیتم. آیتم اول حاوی مقدار متغیر است، و آیتم دوم یک تابع برای به‌روزرسانی مقدار آن است. استفاده از `[0]` و `[1]` برای دسترسی ممکن است مقداری گمراه‌کننده باشد چون ما موقع کار با آرایه‌ از آن‌ها استفاده می‌کنیم  برای همین ما به به‌جای آن از  array destructuring استفاده می‌کنیم.
 
->Note
+>توجه:
 >
->You might be curious how React knows which component `useState` corresponds to since we're not passing anything like `this` back to React. We'll answer [this question](/docs/hooks-faq.html#how-does-react-associate-hook-calls-with-components) and many others in the FAQ section.
+>شاید کنجکاو باشید که بدانید که ری‌اکت چگونه میفهمد که هر `useState` با کدام کامپوننت مطابقت دارد در صورتی که ما هیچ چیزی مانند کلید واژه‌ی `this` را به ری‌اکت پاس نمی‌دهیم. ما به [این سوال](/docs/hooks-faq.html#how-does-react-associate-hook-calls-with-components) و سوالات دیگر در بخش پرسش و پاسخ جواب داده‌ایم.
 
-### Tip: Using Multiple State Variables {#tip-using-multiple-state-variables}
+### نکته: استفاده از چندین متغیر state {#tip-using-multiple-state-variables}
 
-Declaring state variables as a pair of `[something, setSomething]` is also handy because it lets us give *different* names to different state variables if we want to use more than one:
+تعریف کردن متغیر state به عنوان جفت `[something, setSomething]` می‌تواند برای ما مفید باشد چون به ما این امکان را می‌دهد که از اسامی *مختلف* برای نام گذاری state ها استفاده کنیم اگر بخواهیم بیشتر از یک state تعریف کینم:
 
 ```js
 function ExampleWithManyStates() {
-  // Declare multiple state variables!
+  // state تعریف کردن چندین!
   const [age, setAge] = useState(42);
   const [fruit, setFruit] = useState('banana');
   const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
 ```
 
-In the above component, we have `age`, `fruit`, and `todos` as local variables, and we can update them individually:
+در کامپوننت بالا، ما متغیر‌های `age`، `fruit` و `todos` را داریم، و می‌توانیم هر کدام را جداگانه به‌روزرسانی کنیم:
 
 ```js
   function handleOrangeClick() {
-    // Similar to this.setState({ fruit: 'orange' })
+    // this.setState({ fruit: 'orange' }) مشابه
     setFruit('orange');
   }
 ```
 
-You **don't have to** use many state variables. State variables can hold objects and arrays just fine, so you can still group related data together. However, unlike `this.setState` in a class, updating a state variable always *replaces* it instead of merging it.
+شما **مجبور نیستید** متغیرهای state زیادی تعریف کنید. چون متغیرهای state توانایی نگه‌داری object و array را هم دارد، پس می‌توانید مقدارهای مربوط به هم را به عنوان یک گروه تعریف کنید. با این حال، برخلاف `this.setState` در کلاس، به‌روزرسانی یک متغیر state همیشه به جای ترکیب کردن از *جایگزین* کردن استفاده می‌کند.
 
-We provide more recommendations on splitting independent state variables [in the FAQ](/docs/hooks-faq.html#should-i-use-one-or-many-state-variables).
+ما توصیه‌های بیشتری را درباره‌ی متغیر state [در بخش پرسش و پاسخ](/docs/hooks-faq.html#should-i-use-one-or-many-state-variables) فراهم کرده‌ایم.
 
-## Next Steps {#next-steps}
+## قدم‌های بعدی {#next-steps}
 
-On this page we've learned about one of the Hooks provided by React, called `useState`. We're also sometimes going to refer to it as the "State Hook". It lets us add local state to React function components -- which we did for the first time ever!
+در این صفحه ما یکی از هوک‌ها به نام `useStae` که توسط ری‌اکت فراهم شده‌است را یاد گرفته‌ایم. همچین ما گاهی اوقات از آن به عنوان "State Hook" یاد می‌کنیم. که به ما این امکان را می‌دهد که از state در کامپوننت تابعی استفاده‌ کنیم  -- که این امکان برای اولین بار فراهم شده‌است!
 
-We also learned a little bit more about what Hooks are. Hooks are functions that let you "hook into" React features from function components. Their names always start with `use`, and there are more Hooks we haven't seen yet.
+همچنین ما درباره‌ی هوک‌ها بیشتر یاد گرفته‌ایم. و فهمیدیم که هوک‌ها توابعی هستند که به ما امکان استفاده از امکانات ری‌اکت را در کامپوننت تابعی می‌دهند. نام آن‌ها همیشه با `use` شروع می‌شود، و هوک‌های دیگری هم وجود دارند که در آینده با آن‌ها آشنا خواهیم شد.
 
-**Now let's continue by [learning the next Hook: `useEffect`.](/docs/hooks-effect.html)** It lets you perform side effects in components, and is similar to lifecycle methods in classes.
+**حالا با [یادگیری هوک بعدی: `useEffect`](/docs/hooks-effect.html)** ادامه دهید که به شما امکانات مشابه method چرخه‌ی حیات که در کلاس کامپوننت وجود دارد را می‌دهد.
