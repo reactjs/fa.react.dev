@@ -10,7 +10,7 @@ category: Reference
 
   ## مرور کلی {#overview}
 
-`SyntheticEvent` روکشی است بر رویدادهای ذاتی خود مرورگر که در تمام مرورگر‌ها کار می‌کند. کنترل کننده‌های رویداد (event handlers) شما instance  هایی از `SyntheticEvent` دریافت خواهند شد. رابط آن همانند رویدادهای ذاتی مرورگر است و شامل `stopPropagation()` و `preventDefault()` هم هست. با این تفاوت که رویدادها در تمام مرورگر‌ها عین هم کار می‌کنند.
+`SyntheticEvent` روکشی است بر رویدادهای ذاتی خود مرورگر که در تمام مرورگر‌ها کار می‌کند. کنترل کننده‌های رویداد (event handlers) شما instance  هایی از `SyntheticEvent` دریافت خواهند کرد. رابط آن همانند رویدادهای ذاتی مرورگر است و شامل `stopPropagation()` و `preventDefault()` هم هست. با این تفاوت که رویدادها در تمام مرورگر‌ها عین هم کار می‌کنند.
 
 اگر فکر می‌کنید که در جایی باید رویداد ذاتی خود مرورگر را استفاده کنید، کافی است که `nativeEvent` را به عنوان یک attribute اضافه کنید تا به آن دسترسی یابید. هر آبجکت `SyntheticEvent`، attribute های زیر دارد:
 
@@ -33,7 +33,7 @@ string type
  
 > توجه:
 >
-> از نسخه ی 0.14، بازگشت دادن `false`  از یک کنترل کننده ی رویداد، مانع انتشار یک رویداد نمی شود. بجای آن، `e.stopPropagation()`  یا `e.preventDefault()` ، هر کدام به درخور موقعیت باید اجرا شوند.
+> از نسخه ی ۰/۱۴، بازگشت دادن `false`  از یک کنترل کننده ی رویداد، مانع انتشار یک رویداد نمی شود. بجای آن، `e.stopPropagation()`  یا `e.preventDefault()` ، هر کدام به درخور موقعیت باید اجرا شوند<div class=""></div>
 
 ###  جمع آوری رویداد (event-pooling) {#event-pooling}
 `SyntheticEvent` جمع آوری می‌شود. یعنی اینکه آبجکت `SyntheticEvent` پس از آنکه callback اش فراخوانی شد، تمام دارایی‌های خود را از دست خواهد داد و استفاده ی مجدد خواهد شد.
@@ -62,7 +62,7 @@ function onClick(event) {
 
 > توجه:
 >
-> اگر می‌خواهید که به دارایی‌های رویداد، به طور غیرهمزمان دسترسی داشته باشید باید `event.persist()` را در رویداد فراخوانی کنید. این موجب خواهد شد که رویداد سینتاتیک از روند برهم گذاری خارج شود و ارجاعات داده شده به آن رویداد در کد کاربر حفظ شود.
+> اگر می‌خواهید که به دارایی‌های رویداد، به طور غیرهمزمان دسترسی داشته باشید باید `event.persist()` را در رویداد فراخوانی کنید. این موجب خواهد شد که رویداد سینتاتیک از روند جمع‌آوری خارج شود و ارجاعات داده شده به آن رویداد در کد کاربر حفظ شود.
 
 ## رویدادهای پشتیبانی شده {#supported-events}
 
@@ -72,26 +72,26 @@ function onClick(event) {
 
 - [Clipboard Events](#clipboard-events)
 - [Composition Events](#composition-events)
-- [Keyboard Events](#keyboard-events)
-- [Focus Events](#focus-events)
-- [Form Events](#form-events)
-- [Mouse Events](#mouse-events)
-- [Pointer Events](#pointer-events)
-- [Selection Events](#selection-events)
-- [Touch Events](#touch-events)
-- [UI Events](#ui-events)
-- [Wheel Events](#wheel-events)
-- [Media Events](#media-events)
-- [Image Events](#image-events)
-- [Animation Events](#animation-events)
-- [Transition Events](#transition-events)
-- [Other Events](#other-events)
+- [رویداد‌های صفحه‌کلید (Keyboard Events)](#keyboard-events)
+- [رویداد‌های فکوس (Focus Events)](#focus-events)
+- [رویداد‌های فرم (Form Events)](#form-events)
+- [رویداد‌های ماوس (Mouse Events)](#mouse-events)
+- [رویداد‌های اشاره‌گر (Pointer Events)](#pointer-events)
+- [رویداد‌های انتخاب (Selection Events)](#selection-events)
+- [رویداد‌های لمسی (Touch Events)](#touch-events)
+- [رویداد‌های رابط کاربری (UI Events)](#ui-events)
+- [رویداد‌های اسکرول ماوس (Wheel Events)](#wheel-events)
+- [رویداد‌های مدیا (Media Events)](#media-events)
+- [رویداد‌های تصویر (Image Events)](#image-events)
+- [رویداد‌های انیمیشن (Animation Events)](#animation-events)
+- [رویداد‌های انتقال (Transition Events)](#transition-events)
+- [دیگر رویداد‌ها](#other-events)
 
 * * *
 
 ## مرجع {#reference}
 
-### Clipboard Events {#clipboard-events}
+### (Clipboard Events) {#clipboard-events}
 
 نام رویدادها
 
