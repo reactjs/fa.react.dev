@@ -124,7 +124,7 @@ string data
 
 * * *
 
-### Keyboard Events {#keyboard-events}
+### رویداد‌های صفحه‌کلید (Keyboard Events) {#keyboard-events}
 
 نام رویدادها
 
@@ -153,7 +153,7 @@ number which
 
 * * *
 
-### Focus Events {#focus-events}
+### رویداد‌های فکوس (Focus Events) {#focus-events}
 
 نام رویدادها
 
@@ -171,7 +171,7 @@ DOMEventTarget relatedTarget
 
 * * *
 
-### Form Events {#form-events}
+### رویداد‌های فرم (Form Events) {#form-events}
 
 نام رویدادها
 
@@ -182,7 +182,7 @@ onChange onInput onInvalid onSubmit
 
 * * *
 
-### Mouse Events {#mouse-events}
+### رویداد‌های ماوس (Mouse Events) {#mouse-events}
 
 نام رویدادها
 
@@ -215,7 +215,7 @@ boolean shiftKey
 
 * * *
 
-### Pointer Events {#pointer-events}
+### رویداد‌های اشاره‌گر (Pointer Events) {#pointer-events}
 
 نام رویدادها
 
@@ -252,7 +252,7 @@ boolean isPrimary
 
 * * *
 
-### Selection Events {#selection-events}
+### رویداد‌های انتخاب (Selection Events) {#selection-events}
 
 نام رویدادها
 
@@ -262,7 +262,7 @@ onSelect
 
 * * *
 
-### Touch Events {#touch-events}
+### رویداد‌های لمسی (Touch Events) {#touch-events}
 
 نام رویدادها
 
@@ -285,7 +285,7 @@ DOMTouchList touches
 
 * * *
 
-### UI Events {#ui-events}
+### رویداد‌های رابط کاربری (UI Events) {#ui-events}
 
 نام رویدادها
 
@@ -302,7 +302,7 @@ DOMAbstractView view
 
 * * *
 
-### Wheel Events {#wheel-events}
+### رویداد‌های اسکرول ماوس (Wheel Events) {#wheel-events}
 
 نام رویدادها
 
@@ -321,7 +321,7 @@ number deltaZ
 
 * * *
 
-### Media Events {#media-events}
+### رویداد‌های مدیا (Media Events) {#media-events}
 
 نام رویدادها
 
@@ -334,7 +334,7 @@ onTimeUpdate onVolumeChange onWaiting
 
 * * *
 
-### Image Events {#image-events}
+### رویداد‌های تصویر (Image Events) {#image-events}
 
 نام رویدادها
 
@@ -344,7 +344,7 @@ onLoad onError
 
 * * *
 
-### Animation Events {#animation-events}
+### رویداد‌های انیمیشن (Animation Events) {#animation-events}
 
 نام رویدادها
 
@@ -362,7 +362,7 @@ float elapsedTime
 
 * * *
 
-### Transition Events {#transition-events}
+### رویداد‌های انتقال (Transition Events) {#transition-events}
 
 نام رویدادها
 
@@ -380,7 +380,7 @@ float elapsedTime
 
 * * *
 
-### Other Events {#other-events}
+### دیگر رویداد‌ها {#other-events}
 
 نام رویدادها
 
