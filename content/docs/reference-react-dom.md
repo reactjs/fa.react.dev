@@ -6,11 +6,12 @@ category: Reference
 permalink: docs/react-dom.html
 ---
 
-If you load React from a `<script>` tag, these top-level APIs are available on the `ReactDOM` global. If you use ES6 with npm, you can write `import ReactDOM from 'react-dom'`. If you use ES5 with npm, you can write `var ReactDOM = require('react-dom')`.
+اگر ری‌اکت را از یک تگ `<script>` بارگذاری کنید، این APIهای سطح‌بالا روی `ReactDOM` به‌صورت سراسری در دسترس هستند. اگر از ES6 به‌همراه npm استفاده می‌کنید، می‌توانید `import ReactDOM from 'react-dom'` را بنویسید.
+اگر از ES5 به‌همراه npm استفاده می‌کنید می‌توانید `var ReactDOM = require('react-dom')` را بنویسید.
 
-## Overview {#overview}
+## مرور کلی {#overview}
 
-The `react-dom` package provides DOM-specific methods that can be used at the top level of your app and as an escape hatch to get outside of the React model if you need to. Most of your components should not need to use this module.
+بسته‌ی `react-dom` متدهای مختص DOM را فراهم می‌کند که در سطح بالای برنامه شما قابل استفاده و در صورت نیاز  به عنوان راه فراری برای خارج شدن از مدل ری‌اکت هستند. بیشتر کامپوننت‌های شما نباید به این ماژول نیازی داشته باشند .
 
 - [`render()`](#render)
 - [`hydrate()`](#hydrate)
@@ -18,17 +19,18 @@ The `react-dom` package provides DOM-specific methods that can be used at the to
 - [`findDOMNode()`](#finddomnode)
 - [`createPortal()`](#createportal)
 
-### Browser Support {#browser-support}
+### پشتیبانی مرورگر {#browser-support}
 
-React supports all popular browsers, including Internet Explorer 9 and above, although [some polyfills are required](/docs/javascript-environment-requirements.html) for older browsers such as IE 9 and IE 10.
 
-> Note
+ری‌اکت همه‌ی مرورگرهای متداول، از جمله Internet Explorer 9 و بالاتر از آن را پشتیبانی می‌کند، اگرچه برای مرورگرهای قدیمی‌تر مانند IE 9 و IE 10 [به polyfillهایی احتیاج دارد](/docs/javascript-environment-requirements.html).
+
+> توجه
 >
-> We don't support older browsers that don't support ES5 methods, but you may find that your apps do work in older browsers if polyfills such as [es5-shim and es5-sham](https://github.com/es-shims/es5-shim) are included in the page. You're on your own if you choose to take this path.
+> ما مرورگرهای قدیمی‌تر که متدهای ES5 را پشتیبانی نکنند، پشتیبانی نمی‌کنیم، اما احتمالا اپ‌های شما با استفاده از polyfillهایی مانند [es5-shim و es5-sham](https://github.com/es-shims/es5-shim) در صفحه، در مرورگرهای قدیمی‌تر هم کار کنند. تصمیم برای استفاده از آن‌ها با شماست.
 
 * * *
 
-## Reference {#reference}
+## مرجع {#reference}
 
 ### `render()` {#render}
 
