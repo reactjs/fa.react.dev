@@ -81,28 +81,28 @@ Remember to be mindful of user experience on slow connections. The JavaScript co
 ReactDOM.unmountComponentAtNode(container)
 ```
 
-Remove a mounted React component from the DOM and clean up its event handlers and state. If no component was mounted in the container, calling this function does nothing. Returns `true` if a component was unmounted and `false` if there was no component to unmount.
+یک کامپوننت ری‌اکت از DOM را حذف و event handlerها و state آن را پاک می‌کند. اگر کامپوننتی در کانتینر mount نشده باشد، صدازدن این تابع کاری انجام نمی‌دهد. اگر کامپوننتی unmount شده باشد `true` و اگر کامپوننتی برای unmount شدن وجود نداشته باشد `false` برمی‌گرداند.
 
 * * *
 
 ### `findDOMNode()` {#finddomnode}
 
-> Note:
+> توجه:
 >
-> `findDOMNode` is an escape hatch used to access the underlying DOM node. In most cases, use of this escape hatch is discouraged because it pierces the component abstraction. [It has been deprecated in `StrictMode`.](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
+> `findDOMNode` راه فراری برای دسترسی به نود DOM پایه‌ای بوده است. در بیشتر موارد، بهتر است از این راه فرار استفاده نشود زیرا به abstraction کامپوننت آسیب می‌زند. [در `StrictMode` منسوخ شده است.](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
 
 ```javascript
 ReactDOM.findDOMNode(component)
 ```
-If this component has been mounted into the DOM, this returns the corresponding native browser DOM element. This method is useful for reading values out of the DOM, such as form field values and performing DOM measurements. **In most cases, you can attach a ref to the DOM node and avoid using `findDOMNode` at all.**
+اگر این کامپوننت در DOM، mount شده باشد المنت DOM محلی متناظر آن در مرورگر را برمی‌گرداند. این متد برای استخراج مقادیر از DOM کاربردی است، مانند مقادیر فرم‌ها و انجام اندازه‌گیری‌ها در DOM.  **در بیشتر موارد می‌توانید یک ref به نود DOM متصل کنید و کلا از استفاده از `findDOMNode` اجتناب کنید.**
 
-When a component renders to `null` or `false`, `findDOMNode` returns `null`. When a component renders to a string, `findDOMNode` returns a text DOM node containing that value. As of React 16, a component may return a fragment with multiple children, in which case `findDOMNode` will return the DOM node corresponding to the first non-empty child.
+وقتی کامپوننتی به `null` یا `false` رندر می‌شود، `findDOMNode`، `null` برمی‌گرداند. وقتی یک کامپوننت به یک string رندر می‌شود، `findDOMNode` یک نود DOM از جنس text که شامل آن مقدار است برمی‌گرداند. در ری‌اکت ١٦، یک کامپوننت ممکن است یک فرگمنت با چندین فرزند برگرداند، در این مورد `findDOMNode` نود DOM متناظر با اولین فرزند غیرخالی را برمی‌گرداند.
 
-> Note:
+> توجه:
 >
-> `findDOMNode` only works on mounted components (that is, components that have been placed in the DOM). If you try to call this on a component that has not been mounted yet (like calling `findDOMNode()` in `render()` on a component that has yet to be created) an exception will be thrown.
+> `findDOMNode` فقط روی کامپوننت‌های mount شده کار می‌کند(یعنی کامپوننت‌هایی که در DOM قرار داده شده‌اند). اگر این تابع را روی کامپوننتی که هنوز mount نشده صدا بزنید(مثلا صدازدن `findDOMNode()` داخل `render()` روی کامپوننتی که هنوز ساخته نشده است) یک exception رخ خواهد داد.
 >
-> `findDOMNode` cannot be used on function components.
+> `findDOMNode` نمی‌تواند در کامپوننت‌های تابعی استفاده شود.
 
 * * *
 
@@ -112,4 +112,4 @@ When a component renders to `null` or `false`, `findDOMNode` returns `null`. Whe
 ReactDOM.createPortal(child, container)
 ```
 
-Creates a portal. Portals provide a way to [render children into a DOM node that exists outside the hierarchy of the DOM component](/docs/portals.html).
+یک پرتال ایجاد می‌کند. پرتال‌ها راهی برای [رندر کردن فرزندان به یک نود DOM که خارج از سلسله مراتب کامپوننت DOM وجود دارد](/docs/portals.html) ارائه می‌دهد.
