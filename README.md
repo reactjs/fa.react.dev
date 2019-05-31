@@ -104,6 +104,10 @@ yarn dev
   </li>
     <li>
     <a href="https://github.com/zahrajoulaei">@zahrajoulaei</a>
+  </li>
+   <li>
+    <a href="https://github.com/seven-deuce">@seven-deuce</a>
+  </li>
 </ul>
 
 
