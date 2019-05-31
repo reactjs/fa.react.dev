@@ -38,23 +38,22 @@ permalink: docs/react-dom.html
 ReactDOM.render(element, container[, callback])
 ```
 
-Render a React element into the DOM in the supplied `container` and return a [reference](/docs/more-about-refs.html) to the component (or returns `null` for [stateless components](/docs/components-and-props.html#functional-and-class-components)).
+یک المنت ری‌اکت را درون DOM در `container` مشخص‌شده رندر کنید و یک [مرجع](/docs/more-about-refs.html) به کامپوننت برگردانید (یا برای [کامپوننت‌های بدون state](/docs/components-and-props.html#functional-and-class-components) `null` برگردانید).
 
-If the React element was previously rendered into `container`, this will perform an update on it and only mutate the DOM as necessary to reflect the latest React element.
+اگر المنت ری‌اکت از قبل درون `container` رندر شده بود، این تابع روی آن بروزرسانی انجام می‌دهد و فقط در صورت نیاز DOM را تغییر می‌دهد تا آخرین المنت ری‌اکت را برگرداند.
 
-If the optional callback is provided, it will be executed after the component is rendered or updated.
-
-> Note:
+اگر تابع callback اختیاری ارائه شده باشد، بعد از رندر یا بروزرسانی کامپوننت اجرا خواهد شد.
+ت
+> توجه:
 >
-> `ReactDOM.render()` controls the contents of the container node you pass in. Any existing DOM elements inside are replaced when first called. Later calls use React’s DOM diffing algorithm for efficient updates.
+> `ReactDOM.render()` محتوای نود کانتینری که شما مشخص کرده‌اید را کنترل می‌کند. هرکدام از المنت‌های DOM موجود در اولین فراخوانی جایگزین می‌شوند. فراخوانی‌های بعدی از الگوریتم‌های مقایسه‌ی DOM در ری‌اکت برای بروزرسانی کارآمد استفاده می‌کنند.
 >
-> `ReactDOM.render()` does not modify the container node (only modifies the children of the container). It may be possible to insert a component to an existing DOM node without overwriting the existing children.
+> `ReactDOM.render()` نود کانتینر را تغییر نمی‌دهد (فقط فرزندان کانتینر را تغییر می‌دهد). ممکن است یک کامپوننت را، بدون بازنویسی فرزندان موجود در یک نود DOM موجود قرار دهد.
 >
-> `ReactDOM.render()` currently returns a reference to the root `ReactComponent` instance. However, using this return value is legacy
-> and should be avoided because future versions of React may render components asynchronously in some cases. If you need a reference to the root `ReactComponent` instance, the preferred solution is to attach a
-> [callback ref](/docs/more-about-refs.html#the-ref-callback-attribute) to the root element.
+> `ReactDOM.render()` در حال حاضر یک مرجع به ریشه‌ی `ReactComponent` برمی‌گرداند. اگرچه استفاده‌کردن از این مقدار قدیمی است
+> و چون نسخه‌های آینده‌ی ری‌اکت ممکن است در برخی موارد کامپوننت‌ها را به‌صورت غیرهمزمان رندر کنند، باید از آن اجتناب شود. اگر به یک مرجع به ریشه‌ی `ReactComponent` نیاز دارید، اتصال یک [callback ref](/docs/more-about-refs.html#the-ref-callback-attribute) به المنت ریشه به عنوان راه‌حل ترجیح داده می‌شود.
 >
-> Using `ReactDOM.render()` to hydrate a server-rendered container is deprecated and will be removed in React 17. Use [`hydrate()`](#hydrate) instead.
+> استفاده از `ReactDOM.render()` برای hydrateکردن یک کانتینر رندرشده در سرور منسوخ شده است و در ری‌اکت ١٧ حذف خواهد شد. به جای آن از [`hydrate()`](#hydrate) استفاده کنید.
 
 * * *
 
