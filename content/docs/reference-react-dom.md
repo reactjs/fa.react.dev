@@ -6,11 +6,12 @@ category: Reference
 permalink: docs/react-dom.html
 ---
 
-If you load React from a `<script>` tag, these top-level APIs are available on the `ReactDOM` global. If you use ES6 with npm, you can write `import ReactDOM from 'react-dom'`. If you use ES5 with npm, you can write `var ReactDOM = require('react-dom')`.
+اگر ری‌اکت را از یک تگ `<script>` بارگذاری کنید، این APIهای سطح‌بالا روی `ReactDOM` به‌صورت سراسری در دسترس هستند. اگر از ES6 به‌همراه npm استفاده می‌کنید، می‌توانید `import ReactDOM from 'react-dom'` را بنویسید.
+اگر از ES5 به‌همراه npm استفاده می‌کنید می‌توانید `var ReactDOM = require('react-dom')` را بنویسید.
 
-## Overview {#overview}
+## مرور کلی {#overview}
 
-The `react-dom` package provides DOM-specific methods that can be used at the top level of your app and as an escape hatch to get outside of the React model if you need to. Most of your components should not need to use this module.
+بسته‌ی `react-dom` متدهای مختص DOM را فراهم می‌کند که در سطح بالای برنامه شما قابل استفاده و در صورت نیاز  به عنوان راه فراری برای خارج شدن از مدل ری‌اکت هستند. بیشتر کامپوننت‌های شما نباید به این ماژول نیازی داشته باشند .
 
 - [`render()`](#render)
 - [`hydrate()`](#hydrate)
@@ -18,17 +19,18 @@ The `react-dom` package provides DOM-specific methods that can be used at the to
 - [`findDOMNode()`](#finddomnode)
 - [`createPortal()`](#createportal)
 
-### Browser Support {#browser-support}
+### پشتیبانی مرورگر {#browser-support}
 
-React supports all popular browsers, including Internet Explorer 9 and above, although [some polyfills are required](/docs/javascript-environment-requirements.html) for older browsers such as IE 9 and IE 10.
 
-> Note
+ری‌اکت همه‌ی مرورگرهای متداول، از جمله Internet Explorer 9 و بالاتر از آن را پشتیبانی می‌کند، اگرچه برای مرورگرهای قدیمی‌تر مانند IE 9 و IE 10 [به polyfillهایی احتیاج دارد](/docs/javascript-environment-requirements.html).
+
+> توجه
 >
-> We don't support older browsers that don't support ES5 methods, but you may find that your apps do work in older browsers if polyfills such as [es5-shim and es5-sham](https://github.com/es-shims/es5-shim) are included in the page. You're on your own if you choose to take this path.
+> ما مرورگرهای قدیمی‌تر که متدهای ES5 را پشتیبانی نکنند، پشتیبانی نمی‌کنیم، اما احتمالا اپ‌های شما با استفاده از polyfillهایی مانند [es5-shim و es5-sham](https://github.com/es-shims/es5-shim) در صفحه، در مرورگرهای قدیمی‌تر هم کار کنند. تصمیم برای استفاده از آن‌ها با شماست.
 
 * * *
 
-## Reference {#reference}
+## مرجع {#reference}
 
 ### `render()` {#render}
 
@@ -36,23 +38,22 @@ React supports all popular browsers, including Internet Explorer 9 and above, al
 ReactDOM.render(element, container[, callback])
 ```
 
-Render a React element into the DOM in the supplied `container` and return a [reference](/docs/more-about-refs.html) to the component (or returns `null` for [stateless components](/docs/components-and-props.html#functional-and-class-components)).
+یک المنت ری‌اکت را درون DOM در `container` مشخص‌شده رندر کنید و یک [مرجع](/docs/more-about-refs.html) به کامپوننت برگردانید (یا برای [کامپوننت‌های بدون state](/docs/components-and-props.html#functional-and-class-components) `null` برگردانید).
 
-If the React element was previously rendered into `container`, this will perform an update on it and only mutate the DOM as necessary to reflect the latest React element.
+اگر المنت ری‌اکت از قبل درون `container` رندر شده بود، این تابع روی آن بروزرسانی انجام می‌دهد و فقط در صورت نیاز DOM را تغییر می‌دهد تا آخرین المنت ری‌اکت را برگرداند.
 
-If the optional callback is provided, it will be executed after the component is rendered or updated.
-
-> Note:
+اگر تابع callback اختیاری ارائه شده باشد، بعد از رندر یا بروزرسانی کامپوننت اجرا خواهد شد.
+ت
+> توجه:
 >
-> `ReactDOM.render()` controls the contents of the container node you pass in. Any existing DOM elements inside are replaced when first called. Later calls use React’s DOM diffing algorithm for efficient updates.
+> `ReactDOM.render()` محتوای نود کانتینری که شما مشخص کرده‌اید را کنترل می‌کند. هرکدام از المنت‌های DOM موجود در اولین فراخوانی جایگزین می‌شوند. فراخوانی‌های بعدی از الگوریتم‌های مقایسه‌ی DOM در ری‌اکت برای بروزرسانی کارآمد استفاده می‌کنند.
 >
-> `ReactDOM.render()` does not modify the container node (only modifies the children of the container). It may be possible to insert a component to an existing DOM node without overwriting the existing children.
+> `ReactDOM.render()` نود کانتینر را تغییر نمی‌دهد (فقط فرزندان کانتینر را تغییر می‌دهد). ممکن است یک کامپوننت را، بدون بازنویسی فرزندان موجود در یک نود DOM موجود قرار دهد.
 >
-> `ReactDOM.render()` currently returns a reference to the root `ReactComponent` instance. However, using this return value is legacy
-> and should be avoided because future versions of React may render components asynchronously in some cases. If you need a reference to the root `ReactComponent` instance, the preferred solution is to attach a
-> [callback ref](/docs/more-about-refs.html#the-ref-callback-attribute) to the root element.
+> `ReactDOM.render()` در حال حاضر یک مرجع به ریشه‌ی `ReactComponent` برمی‌گرداند. اگرچه استفاده‌کردن از این مقدار قدیمی است
+> و چون نسخه‌های آینده‌ی ری‌اکت ممکن است در برخی موارد کامپوننت‌ها را به‌صورت غیرهمزمان رندر کنند، باید از آن اجتناب شود. اگر به یک مرجع به ریشه‌ی `ReactComponent` نیاز دارید، اتصال یک [callback ref](/docs/more-about-refs.html#the-ref-callback-attribute) به المنت ریشه به عنوان راه‌حل ترجیح داده می‌شود.
 >
-> Using `ReactDOM.render()` to hydrate a server-rendered container is deprecated and will be removed in React 17. Use [`hydrate()`](#hydrate) instead.
+> استفاده از `ReactDOM.render()` برای hydrateکردن یک کانتینر رندرشده در سرور منسوخ شده است و در ری‌اکت ١٧ حذف خواهد شد. به جای آن از [`hydrate()`](#hydrate) استفاده کنید.
 
 * * *
 
@@ -61,16 +62,15 @@ If the optional callback is provided, it will be executed after the component is
 ```javascript
 ReactDOM.hydrate(element, container[, callback])
 ```
+مانند [`render()`](#render)، اما برای hydrate کردن یک کانتینر که محتوای HTML آن توسط [`ReactDOMServer`](/docs/react-dom-server.html) رندر شده است، استفاده می‌شود. ری‌اکت برای اتصال event listenerها به markup موجود اقدام می‌کند. 
 
-Same as [`render()`](#render), but is used to hydrate a container whose HTML contents were rendered by [`ReactDOMServer`](/docs/react-dom-server.html). React will attempt to attach event listeners to the existing markup.
+ری‌اکت انتظار دارد که محتوای رندرشده بین سرور و کلاینت یکسان باشد. ری‌اکت می‌تواند تفاوت‌ها در محتوای متنی را بهبود بخشد، اما شما باید نامطابقت‌ها را به عنوان خطا تصحیح کنید. در حالت development، ری‌اکت در مورد نامطابقت‌ها در hydration هشدار می‌دهد. تضمینی وجود ندارد که تفاوت در خصوصیات در رخداد نامطابقت‌ها بهبود یابد. این امر به جهت بازدهی مهم است زیرا در بیشتر اپ‌ها، نامطابقت‌ها به ندرت اتفاق می‌افتند، و بنابراین اعتبارسنجی همه‌ی markup فوق‌العاده هزینه‌بر است.
 
-React expects that the rendered content is identical between the server and the client. It can patch up differences in text content, but you should treat mismatches as bugs and fix them. In development mode, React warns about mismatches during hydration. There are no guarantees that attribute differences will be patched up in case of mismatches. This is important for performance reasons because in most apps, mismatches are rare, and so validating all markup would be prohibitively expensive.
+اگر خصوصیت یک المنت یا محتوای متنی به طور اجتناب‌ناپذیری بین سرور و کلاینت متفاوت است(برای مثال یک timestamp)، می‌توانید با اضافه کردن `suppressHydrationWarning={true}` به المنت هشدار را غیرفعال کنید. این کار فقط تا عمق یک سطح کار می‌کند، و هدف آن ایجاد راه فرار است. بیش از حد از آن استفاده نکنید. مگر آنجایی که محتوای متنی باشد، به این شیوه ری‌اکت درجهت بهبود آن تلاش نمی‌کند، بنابراین ممکن است تا بروزرسانی بعدی متفاوت بماند.
 
-If a single element's attribute or text content is unavoidably different between the server and the client (for example, a timestamp), you may silence the warning by adding `suppressHydrationWarning={true}` to the element. It only works one level deep, and is intended to be an escape hatch. Don't overuse it. Unless it's text content, React still won't attempt to patch it up, so it may remain inconsistent until future updates.
+اگر عمدا نیاز به رندر متفاوت چیزی در سرور و کلاینت دارید، می‌توانید یک رندر دو مرحله‌ای انجام دهید. کامپوننت‌هایی که رندر متفاوت در کلاینت انجام می‌دهند می‌توانند یک متغیر state مانند `this.state.isClient` را بخوانند، که شما می‌توانید آن را در `componentDidMount()` مقداردهی `true` کنید. به این شیوه رندر اولیه محتوایی مانند سرور را رندر می‌کند، و از نامطابقت‌ها جلوگیری می‌کند، اما یک رندر اضافی دقیقا به صورت همزمان بعد از hydration اتفاق خواهد افتاد. توجه کنید که این رویکرد کامپوننت‌های شما را کندتر می‌کند زیرا باید دوبار رندر شوند، پس با احتیاط از آن استفاده کنید. 
 
-If you intentionally need to render something different on the server and the client, you can do a two-pass rendering. Components that render something different on the client can read a state variable like `this.state.isClient`, which you can set to `true` in `componentDidMount()`. This way the initial render pass will render the same content as the server, avoiding mismatches, but an additional pass will happen synchronously right after hydration. Note that this approach will make your components slower because they have to render twice, so use it with caution.
-
-Remember to be mindful of user experience on slow connections. The JavaScript code may load significantly later than the initial HTML render, so if you render something different in the client-only pass, the transition can be jarring. However, if executed well, it may be beneficial to render a "shell" of the application on the server, and only show some of the extra widgets on the client. To learn how to do this without getting the markup mismatch issues, refer to the explanation in the previous paragraph.
+مراقب تجربه کاربری برای اتصالات کند باشید. کد جاوااسکریپت ممکن است به طور قابل توجهی دیرتر از رندر اولیه HTML بارگذاری شود، پس اگر شما چیز متفاوتی در رندر کلاینت رندر کنید، انتقال آن می‌تواند نامطلوب باشد. اگرچه، اگر به درستی اجرا شود، می‌تواند برای رندر "پوسته‌ی" اپلیکیشن در سرور سودمند باشد، و فقط تعدادی از ویجت‌های اضافی را روی کلاینت نشان دهد. برای یادگیری این که چگونه این کار را بدون برخورد با نامطابقت در markup انجام دهید، به توضیحات پاراگراف قبل رجوع کنید.
 
 * * *
 
@@ -80,28 +80,28 @@ Remember to be mindful of user experience on slow connections. The JavaScript co
 ReactDOM.unmountComponentAtNode(container)
 ```
 
-Remove a mounted React component from the DOM and clean up its event handlers and state. If no component was mounted in the container, calling this function does nothing. Returns `true` if a component was unmounted and `false` if there was no component to unmount.
+یک کامپوننت ری‌اکت از DOM را حذف و event handlerها و state آن را پاک می‌کند. اگر کامپوننتی در کانتینر mount نشده باشد، صدازدن این تابع کاری انجام نمی‌دهد. اگر کامپوننتی unmount شده باشد `true` و اگر کامپوننتی برای unmount شدن وجود نداشته باشد `false` برمی‌گرداند.
 
 * * *
 
 ### `findDOMNode()` {#finddomnode}
 
-> Note:
+> توجه:
 >
-> `findDOMNode` is an escape hatch used to access the underlying DOM node. In most cases, use of this escape hatch is discouraged because it pierces the component abstraction. [It has been deprecated in `StrictMode`.](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
+> `findDOMNode` راه فراری برای دسترسی به نود DOM پایه‌ای بوده است. در بیشتر موارد، بهتر است از این راه فرار استفاده نشود زیرا به abstraction کامپوننت آسیب می‌زند. [در `StrictMode` منسوخ شده است.](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
 
 ```javascript
 ReactDOM.findDOMNode(component)
 ```
-If this component has been mounted into the DOM, this returns the corresponding native browser DOM element. This method is useful for reading values out of the DOM, such as form field values and performing DOM measurements. **In most cases, you can attach a ref to the DOM node and avoid using `findDOMNode` at all.**
+اگر این کامپوننت در DOM، mount شده باشد المنت DOM محلی متناظر آن در مرورگر را برمی‌گرداند. این متد برای استخراج مقادیر از DOM کاربردی است، مانند مقادیر فرم‌ها و انجام اندازه‌گیری‌ها در DOM.  **در بیشتر موارد می‌توانید یک ref به نود DOM متصل کنید و کلا از استفاده از `findDOMNode` اجتناب کنید.**
 
-When a component renders to `null` or `false`, `findDOMNode` returns `null`. When a component renders to a string, `findDOMNode` returns a text DOM node containing that value. As of React 16, a component may return a fragment with multiple children, in which case `findDOMNode` will return the DOM node corresponding to the first non-empty child.
+وقتی کامپوننتی به `null` یا `false` رندر می‌شود، `findDOMNode`، `null` برمی‌گرداند. وقتی یک کامپوننت به یک string رندر می‌شود، `findDOMNode` یک نود DOM از جنس text که شامل آن مقدار است برمی‌گرداند. در ری‌اکت ١٦، یک کامپوننت ممکن است یک فرگمنت با چندین فرزند برگرداند، در این مورد `findDOMNode` نود DOM متناظر با اولین فرزند غیرخالی را برمی‌گرداند.
 
-> Note:
+> توجه:
 >
-> `findDOMNode` only works on mounted components (that is, components that have been placed in the DOM). If you try to call this on a component that has not been mounted yet (like calling `findDOMNode()` in `render()` on a component that has yet to be created) an exception will be thrown.
+> `findDOMNode` فقط روی کامپوننت‌های mount شده کار می‌کند(یعنی کامپوننت‌هایی که در DOM قرار داده شده‌اند). اگر این تابع را روی کامپوننتی که هنوز mount نشده صدا بزنید(مثلا صدازدن `findDOMNode()` داخل `render()` روی کامپوننتی که هنوز ساخته نشده است) یک exception رخ خواهد داد.
 >
-> `findDOMNode` cannot be used on function components.
+> `findDOMNode` نمی‌تواند در کامپوننت‌های تابعی استفاده شود.
 
 * * *
 
@@ -111,4 +111,4 @@ When a component renders to `null` or `false`, `findDOMNode` returns `null`. Whe
 ReactDOM.createPortal(child, container)
 ```
 
-Creates a portal. Portals provide a way to [render children into a DOM node that exists outside the hierarchy of the DOM component](/docs/portals.html).
+یک پرتال ایجاد می‌کند. پرتال‌ها راهی برای [رندر کردن فرزندان به یک نود DOM که خارج از سلسله مراتب کامپوننت DOM وجود دارد](/docs/portals.html) ارائه می‌دهد.
