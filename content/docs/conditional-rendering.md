@@ -73,7 +73,7 @@ function LogoutButton(props) {
 در مثال زیر، یک [کامپوننت دارای state](https://reactjs.org/docs/state-and-lifecycle.html#adding-local-state-to-a-class) به نام `LoginControl` می‌سازیم.
 
 
-این [کامپوننت] یکی از `<LoginButton />` یا `<LogoutButton />` را براساس state کنونی رندر خواهد کرد. همچنین، یک `<Greeting />` را از مثال قبل رندر می‌کند:
+این [کامپوننت] یا `<LoginButton />` یا `<LogoutButton />` را براساس state کنونی رندر خواهد کرد. همچنین، یک `<Greeting />` از مثال را قبل رندر می‌کند:
 
 ```javascript{20-25,29,30}
 class LoginControl extends React.Component {
