@@ -155,7 +155,7 @@ ReactDOM.render(
 
 ### if-else خطی با عملگر شرطی {#inline-if-else-with-conditional-operator}
 
-روش دیگر رندر شرطی المان‌ها به‌صورت خطی،‌ استفاده از عملگر شرطی جاوااسکریپت [`condition ? true : false`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) است.
+روش دیگر رندر شرطی المنت‌ها به‌صورت خطی،‌ استفاده از عملگر شرطی جاوااسکریپت [`condition ? true : false`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) است.
 
 در مثال زیر ما از این روش استفاده می‌کنیم تا متن کوتاهی را به‌صورت شرطی رندر کنیم.
 
