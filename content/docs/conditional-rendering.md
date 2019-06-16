@@ -44,7 +44,7 @@ ReactDOM.render(
 
 [**روی CodePen امتحان کنید**](https://codepen.io/gaearon/pen/ZpVxNq?editors=0011)
 
-این مثال بر اساس مقدار prop با نام `isLoggedIn` یک [پیام] خوش‌آمد گویی متفاوت را رندر می‌کند.  
+این مثال بر اساس مقدار prop با نام `isLoggedIn` یک [پیام] خوش‌آمد گویی متفاوتی را رندر می‌کند.  
 
 ### متغیر‌های المنت {#element-variables}
 
