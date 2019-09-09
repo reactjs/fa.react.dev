@@ -245,6 +245,10 @@ class Clock extends React.Component {
   }
 ```
 
+<<<<<<< HEAD
+=======
+Note how we save the timer ID right on `this` (`this.timerID`).
+>>>>>>> 8b30ae43439818009213da86eca872a3d869c5eb
 
 
 دقت داشته‌باشید که چگونه ما شناسه تایمر را دقیقا روی `this` ذخیره می‌کنیم.
