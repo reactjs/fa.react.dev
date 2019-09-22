@@ -102,6 +102,7 @@ import("./math").then(math => {
 
 **قبل:**
 
+
 ```js
 import OtherComponent from './OtherComponent';
 
