@@ -1,44 +1,35 @@
 ---
-id: glossary
-title: Glossary of React Terms
-layout: docs
-category: Reference
-permalink: docs/glossary.html
+شناسه: واژه نامه
+عنوان: واژه نامه اصطلاحات React
+طرح: اسناد
+دسته: مرجع
+پیوند مجدد: docs/glossary.html
 
 ---
 
-## Single-page Application {#single-page-application}
+## برنامه تک صفحه ای#} برنامه تک صفحه ای}
 
-A single-page application is an application that loads a single HTML page and all the necessary assets (such as JavaScript and CSS) required for the application to run. Any interactions with the page or subsequent pages do not require a round trip to the server which means the page is not reloaded.
+یک برنامه تک صفحه ای برنامه ای است که یک صفحه HTML و تمام دارایی های لازم (مانند JavaScript و CSS) مورد نیاز برای اجرای برنامه را بارگیری می کند.  هرگونه تعامل با صفحه یا صفحات بعدی ، نیازی به سفر دور به سرور ندارد و این بدان معنی است که این صفحه بارگیری مجدد نمی شود.
 
-Though you may build a single-page application in React, it is not a requirement. React can also be used for enhancing small parts of existing websites with additional interactivity. Code written in React can coexist peacefully with markup rendered on the server by something like PHP, or with other client-side libraries. In fact, this is exactly how React is being used at Facebook.
-
+ اگرچه ممکن است یک برنامه تک صفحه ای در React بسازید ، این یک الزام نیست.  React همچنین می تواند برای تقویت قسمت های کوچک وب سایت های موجود با تعامل بیشتر استفاده شود.  کد نوشته شده در React می تواند با نشانه گذاری ارائه شده در سرور توسط چیزی مانند PHP یا سایر کتابخانه های سمت مشتری ، در صلح همزیستی کند.  در واقع ، این دقیقاً نحوه استفاده از React در Facebook است.
 ## ES6, ES2015, ES2016, etc {#es6-es2015-es2016-etc}
+این نام های اختصاری همه به جدیدترین نسخه های استاندارد مشخصات زبان ECMAScript اطلاق می شوند ، که زبان JavaScript یک اجرای آن است.  نسخه ES6 (همچنین به عنوان ES2015 نیز شناخته می شود) شامل نسخه های اضافی بسیاری به نسخه های قبلی مانند: توابع فلش ، کلاس ها ، الفبای قالب ، عبارات 'let' و 'const' می باشد.  می توانید در مورد نسخه های خاص [اینجا] (https://en.wikipedia.org/wiki/ECMAScript# نسخه های مختلف) اطلاعات بیشتری کسب کنید.
+## کامپایلرها#} کامپایلرها}
 
-These acronyms all refer to the most recent versions of the ECMAScript Language Specification standard, which the JavaScript language is an implementation of. The ES6 version (also known as ES2015) includes many additions to the previous versions such as: arrow functions, classes, template literals, `let` and `const` statements. You can learn more about specific versions [here](https://en.wikipedia.org/wiki/ECMAScript#Versions).
+یک کامپایلر جاوا اسکریپت کد JavaScript را می گیرد ، آن را تغییر می دهد و کد JavaScript را با فرمت دیگری برمی گرداند.  رایج ترین مورد استفاده این است که از syntax ES6 استفاده کنید و آنرا به نحو تبدیل کنید که مرورگرهای قدیمی قادر به تفسیر آن هستند.  [Babel] (https://babeljs.io/) کامپایلری است که معمولاً با React استفاده می شود.
+## باندلرها#} باندلرها}
 
-## Compilers {#compilers}
+باندلرها کد JavaScript و CSS را به صورت ماژول های جداگانه (اغلب صدها نفر از آنها) نوشته شده ، می گیرند و آنها را با هم در چند فایل بهینه تر برای مرورگرها ترکیب می کنند.  برخی از بسته های متداول که معمولاً در برنامه های React استفاده می شوند عبارتند از: [Webpack] (https://webpack.js.org/) و [Browserify] (http://browserify.org/).
+## مدیران بسته#} مدیران بسته}
 
-A JavaScript compiler takes JavaScript code, transforms it and returns JavaScript code in a different format. The most common use case is to take ES6 syntax and transform it into syntax that older browsers are capable of interpreting. [Babel](https://babeljs.io/) is the compiler most commonly used with React.
-
-## Bundlers {#bundlers}
-
-Bundlers take JavaScript and CSS code written as separate modules (often hundreds of them), and combine them together into a few files better optimized for the browsers. Some bundlers commonly used in React applications include [Webpack](https://webpack.js.org/) and [Browserify](http://browserify.org/).
-
-## Package Managers {#package-managers}
-
-Package managers are tools that allow you to manage dependencies in your project. [npm](https://www.npmjs.com/) and [Yarn](https://yarnpkg.com/) are two package managers commonly used in React applications. Both of them are clients for the same npm package registry.
-
+مدیران بسته ها ابزاری هستند که به شما امکان می دهند وابستگی ها را در پروژه خود مدیریت کنید.  [npm] (https://www.npmjs.com/) و [نخ] (https://yarnpkg.com/) دو مدیر بسته هستند که معمولاً در برنامه های React استفاده می شوند.  هر دوی آنها برای همان رجیستری بسته npm یک مشتری هستند.
 ## CDN {#cdn}
 
-CDN stands for Content Delivery Network. CDNs deliver cached, static content from a network of servers across the globe. 
-
+CDN مخفف Content Delivery Network است.  CDN ها محتوای ذخیره شده و استاتیک را از شبکه ای از سرورها در سراسر جهان ارائه می دهند.
 ## JSX {#jsx}
 
-JSX is a syntax extension to JavaScript. It is similar to a template language, but it has full power of JavaScript. JSX gets compiled to `React.createElement()` calls which return plain JavaScript objects called "React elements". To get a basic introduction to JSX [see the docs here](/docs/introducing-jsx.html) and find a more in-depth tutorial on JSX [here](/docs/jsx-in-depth.html).
-
-React DOM uses camelCase property naming convention instead of HTML attribute names. For example, `tabindex` becomes `tabIndex` in JSX. The attribute `class` is also written as `className` since `class` is a reserved word in JavaScript:
-
+JSX یک پسوند نحوی JavaScript است.  این شبیه به یک زبان قالب است ، اما از قدرت کامل JavaScript برخوردار است.  JSX با تماسهای 'React.createElement ()' که اشیاء ساده JavaScript را با نام "React element" برگردانده می شود ، گردآوری می شود.  برای بدست آوردن یک مقدمات اساسی در JSX [اسناد موجود در اینجا را ببینید] (/ اسناد / معرفی-jsx.html) و پیدا کردن یک آموزش عمیق تر درباره JSX [اینجا] (/ docs / jsx-in-deep.html).
+React DOM به جای اسم ویژگیهای HTML از کنوانسیون نامگذاری خاصیت camelCase استفاده می کند.  برای مثال ، "tabindex" در JSX به "tabIndex" تبدیل می شود.  ویژگی "کلاس" نیز با عنوان "className" نوشته شده است زیرا "class" یک کلمه رزرو در JavaScript است:
 ```js
 const name = 'Clementine';
 ReactDOM.render(
@@ -47,21 +38,17 @@ ReactDOM.render(
 );
 ```  
 
-## [Elements](/docs/rendering-elements.html) {#elements}
+## [Elements] (/ اسناد / rendering-element.html) {#elements}
 
-React elements are the building blocks of React applications. One might confuse elements with a more widely known concept of "components". An element describes what you want to see on the screen. React elements are immutable.
-
+ عناصر React بلوک ساختاری برنامه های React هستند.  ممکن است فرد عناصر را با مفهوم شناخته شده تری از "مؤلفه ها" اشتباه کند.  یک عنصر آنچه را که می خواهید در صفحه مشاهده کنید ، توصیف می کند.  عناصر واکنش ناپذیر هستند.
 ```js
 const element = <h1>Hello, world</h1>;
 ```
 
-Typically, elements are not used directly, but get returned from components.
+به طور معمول ، عناصر به طور مستقیم استفاده نمی شوند ، اما از اجزای آن باز می گردند.
+## [مؤلفه ها/ اسناد / مؤلفه ها- و-props.html) {# کامپوننت}
 
-## [Components](/docs/components-and-props.html) {#components}
-
-React components are small, reusable pieces of code that return a React element to be rendered to the page. The simplest version of React component is a plain JavaScript function that returns a React element:
-
-```js
+ اجزای React قطعات کوچک و قابل استفاده مجدد از کد هستند که یک عنصر React را برای ارائه به صفحه باز می گرداند.  ساده ترین نسخه از React یک عملکرد ساده JavaScript است که یک عنصر React را برمی گرداند:```js
 function Welcome(props) {
   return <h1>Hello, {props.name}</h1>;
 }
@@ -118,49 +105,49 @@ class Welcome extends React.Component {
 }
 ```
 
-### [`state`](/docs/state-and-lifecycle.html#adding-local-state-to-a-class) {#state}
+### [`state`] (/ اسناد / چرخه حالت و زندگی.html # اضافه کردن-محلی-ایالت-به-یک کلاس) {#state
 
-A component needs `state` when some data associated with it changes over time. For example, a `Checkbox` component might need `isChecked` in its state, and a `NewsFeed` component might want to keep track of `fetchedPosts` in its state.
+ وقتی برخی از داده های مرتبط با آن با گذشت زمان تغییر کنند ، یک مؤلفه به "حالت" نیاز دارد.  به عنوان مثال ، یک مؤلفه "Checkbox" ممکن است در حالت خود به "isChecked" نیاز داشته باشد ، و یک مؤلفه "NewsFeed" ممکن است بخواهد "fetchedPosts" را در وضعیت خود نگه دارد.
 
-The most important difference between `state` and `props` is that `props` are passed from a parent component, but `state` is managed by the component itself. A component cannot change its `props`, but it can change its `state`.
+ مهمترین تفاوت بین "حالت" و "props" در این است که "غرفه ها" از یک مؤلفه والدین منتقل می شوند ، اما "حالت" توسط خود مؤلفه اداره می شود.  یک مؤلفه نمی تواند "اجزای" خود را تغییر دهد ، اما می تواند "حالت" خود را تغییر دهد.
 
-For each particular piece of changing data, there should be just one component that "owns" it in its state. Don't try to synchronize states of two different components. Instead, [lift it up](/docs/lifting-state-up.html) to their closest shared ancestor, and pass it down as props to both of them.
+ برای هر قطعه خاص از تغییر داده ها ، فقط باید یک مؤلفه وجود داشته باشد که آن را در حالت "مالکیت" خود قرار دهد.  سعی نکنید حالت های دو مؤلفه مختلف را همزمان کنید.  در عوض ، [آن را بلند کنید] (/ اسناد / lift-state-up.html) به نزدیکترین جد مشترک خود ، و آن را به عنوان برتری برای هر دوی آنها منتقل کنید.
 
-## [Lifecycle Methods](/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class) {#lifecycle-methods}
+ ## [روش های چرخه زندگی] (/ اسناد / حالت-و-چرخه زندگی.html # اضافه کردن-چرخه چرخه-روشها-به-یک کلاس) {# چرخه عمر-روش}
 
-Lifecycle methods are custom functionality that gets executed during the different phases of a component. There are methods available when the component gets created and inserted into the DOM ([mounting](/docs/react-component.html#mounting)), when the component updates, and when the component gets unmounted or removed from the DOM.
+ روش های چرخه عمر عملکردی سفارشی است که در مراحل مختلف یک جزء اجرا می شود.  روشهای موجود در هنگام ایجاد و وارد شدن مؤلفه در DOM ([نصب]) (/ اسناد / واکنش-مؤلفه.html # نصب)) ، هنگام بروزرسانی این مؤلفه ، و هنگامی که مؤلفه از DOM جدا نشده یا حذف می شود.
 
- ## [Controlled](/docs/forms.html#controlled-components) vs. [Uncontrolled Components](/docs/uncontrolled-components.html)
+  ## [کنترل شده] (/ docs / form.html # کنترل شده-مؤلفه ها) در مقابل [اجزای کنترل نشده] (/ اسناد / مؤلفه های کنترل نشده.html)
 
-React has two different approaches to dealing with form inputs. 
+ React دو رویکرد متفاوت برای مقابله با ورودی های فرم دارد.
 
-An input form element whose value is controlled by React is called a *controlled component*. When a user enters data into a controlled component a change event handler is triggered and your code decides whether the input is valid (by re-rendering with the updated value). If you do not re-render then the form element will remain unchanged.
+ عنصر فرم ورودی که مقدار آن توسط React کنترل می شود ، یک مؤلفه * * کنترل شده * نام دارد.  هنگامی که کاربر داده ها را به یک جزء کنترل شده وارد می کند ، یک کنترل کننده رویداد تغییر ایجاد می شود و کد شما تصمیم می گیرد که اعتبار ورودی معتبر باشد (با ارائه مجدد با مقدار به روز شده).  اگر دوباره تسلیم نشوید ، عنصر فرم بدون تغییر باقی می ماند.
 
-An *uncontrolled component* works like form elements do outside of React. When a user inputs data into a form field (an input box, dropdown, etc) the updated information is reflected without React needing to do anything. However, this also means that you can't force the field to have a certain value.
+ یک مؤلفه * کنترل نشده * مانند عناصر فرم در خارج از React عمل می کند.  هنگامی که یک کاربر داده ها را به یک قسمت فرم (جعبه ورودی ، کشویی و غیره) وارد می کند ، اطلاعات به روز شده بدون React بدون نیاز به انجام هر کاری منعکس می شود.  با این حال ، این بدان معنی است که شما نمی توانید زمینه را مجبور به ارزش خاصی کنید.
 
-In most cases you should use controlled components.
+ در بیشتر موارد شما باید از اجزای کنترل شده استفاده کنید.
 
-## [Keys](/docs/lists-and-keys.html) {#keys}
+ ## [کلید] (/ اسناد / لیستها- و-keys.html) {# کلیدها}
 
-A "key" is a special string attribute you need to include when creating arrays of elements. Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside an array to give the elements a stable identity.
+ "کلید" یک ویژگی خاص رشته ای است که باید هنگام ایجاد آرایه عناصر در آن قرار دهید.  کلیدها به React کمک می کنند که مواردی را تغییر داده ، اضافه یا حذف شوند.  کلیدها باید به عناصر داخل یک آرایه داده شوند تا عناصر هویت پایداری داشته باشند.
 
-Keys only need to be unique among sibling elements in the same array. They don't need to be unique across the whole application or even a single component.
+ فقط کلیدها باید در بین عناصر خواهر و برادر در همان آرایه منحصر به فرد باشند.  آنها نیازی به منحصر به فرد بودن در کل برنامه یا حتی یک جزء واحد ندارند.
 
-Don't pass something like `Math.random()` to keys. It is important that keys have a "stable identity" across re-renders so that React can determine when items are added, removed, or re-ordered. Ideally, keys should correspond to unique and stable identifiers coming from your data, such as `post.id`.
+ چیزی مانند `Math.random ()» را بر روی کلیدها قرار ندهید.  این مهم است که کلیدها دارای یک "هویت پایدار" در سراسر بازخوانی شده باشند تا React بتواند تعیین کند که آیتم ها اضافه می شوند ، حذف می شوند یا دوباره سفارش می شوند.  در حالت ایده آل ، کلیدها باید با شناسه های منحصر به فرد و با ثبات از داده های شما مطابقت داشته باشند ، مانند 'post.id'.
 
-## [Refs](/docs/refs-and-the-dom.html) {#refs}
+ ## [Refs] (/ docs / refs-and-the-dom.html) {#refs
 
-React supports a special attribute that you can attach to any component. The `ref` attribute can be an object created by [`React.createRef()` function](/docs/react-api.html#reactcreateref) or a callback function, or a string (in legacy API). When the `ref` attribute is a callback function, the function receives the underlying DOM element or class instance (depending on the type of element) as its argument. This allows you to have direct access to the DOM element or component instance.
+ React از یک ویژگی خاص که می توانید به هر مؤلفه وصل کنید پشتیبانی می کند.  ویژگی "ref" می تواند یک شیء باشد که توسط تابع [`React.createRef ()" ایجاد شده است (/ docs / reag-api.html # reagcreateref) یا یک عملکرد پاسخ به تماس یا یک رشته (در API میراث).  هنگامی که ویژگی "ref" یک عملکرد برگشتی است ، تابع عنصر DOM اساسی یا نمونه کلاس (بسته به نوع عنصر) را به عنوان آرگومان دریافت می کند.  این به شما امکان می دهد تا مستقیماً به عنصر DOM یا نمونه مؤلفه دسترسی داشته باشید.
 
-Use refs sparingly. If you find yourself often using refs to "make things happen" in your app, consider getting more familiar with [top-down data flow](/docs/lifting-state-up.html).
+ از Ref refaring استفاده کنید.  اگر خود را اغلب می توانید از برنامه های "ایجاد اتفاقات" در برنامه خود استفاده کنید ، بیشتر با [جریان داده از بالا به پایین] (/ اسناد / وضعیت بلند کردن-وضعیت.html) بیشتر آشنا شوید.
 
-## [Events](/docs/handling-events.html) {#events}
+ ## [Events] (/ Docs / handling-Events.html) {#events
 
-Handling events with React elements has some syntactic differences:
+ رسیدگی به رویدادها با عناصر React دارای تفاوت های نحوی است:
 
-* React event handlers are named using camelCase, rather than lowercase.
-* With JSX you pass a function as the event handler, rather than a string.
+ * به جای حروف کوچک ، حامیان رویداد واقعی با استفاده از camelCase نامگذاری می شوند.
+ * با JSX شما به جای یک رشته عملکردی را به عنوان کنترل کننده رویداد به تصویب می رسانید.
 
-## [Reconciliation](/docs/reconciliation.html) {#reconciliation}
+ ## [آشتی]] (/ اسناد / آشتی.html) {# آشتی
 
-When a component's props or state change, React decides whether an actual DOM update is necessary by comparing the newly returned element with the previously rendered one. When they are not equal, React will update the DOM. This process is called "reconciliation".
+ وقتی عواید یا مؤلفه های یک مؤلفه تغییر می کند ، React با مقایسه عنصر تازه برگشت یافته با مورد قبلی که ارائه شده است ، تصمیم می گیرد که آیا بروزرسانی واقعی DOM ضروری است یا خیر.  هنگامی که آنها برابر نباشند ، React DOM را به روز می کند.  این روند "آشتی" نامیده می شود.
