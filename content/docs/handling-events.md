@@ -1,6 +1,6 @@
 ---
 id: handling-events
-title: Handling Events
+title: کار با رویدادها
 permalink: docs/handling-events.html
 prev: state-and-lifecycle.html
 next: conditional-rendering.html
@@ -8,12 +8,12 @@ redirect_from:
   - "docs/events-ko-KR.html"
 ---
 
-Handling events with React elements is very similar to handling events on DOM elements. There are some syntactic differences:
+کار با رویدادها در ری‌اکت همانندِ کار با رویدادها در المنت‌هایِ DOM است. تنها چند تفاوتِ سینتکسی هست:
 
-* React events are named using camelCase, rather than lowercase.
-* With JSX you pass a function as the event handler, rather than a string.
+* نامگذاریِ رویدادهایِ ری‌اکت به camelCase است، بر خلافِ نامگذاریِ lowercase در رویدادهایِ DOM.
+* با استفاده از JSX، برایِ رسیدگی به رویداد یک تابع پاس داده می‌شود، به جایِ یک رشته.
 
-For example, the HTML:
+برایِ مثال، کدِ HTML زیر
 
 ```html
 <button onclick="activateLasers()">
@@ -21,7 +21,7 @@ For example, the HTML:
 </button>
 ```
 
-is slightly different in React:
+در ری‌اکت به این فرم خواهد بود:
 
 ```js{1}
 <button onClick={activateLasers}>
@@ -29,7 +29,8 @@ is slightly different in React:
 </button>
 ```
 
-Another difference is that you cannot return `false` to prevent default behavior in React. You must call `preventDefault` explicitly. For example, with plain HTML, to prevent the default link behavior of opening a new page, you can write:
+تفاوتِ دیگر این است که نمی‌توان برایِ جلوگیری از رفتارِ پیش‌فرض `false` برگرداند. در عوض باید صریحانه `preventDefault` را صدا زد.
+برایِ نمونه، در HTML برایِ جلوگیری از باز شدنِ لینک در صفحه‌یِ جدید به طورِ پیش‌فرض، می‌توان چنین کرد:
 
 ```html
 <a href="#" onclick="console.log('The link was clicked.'); return false">
@@ -37,7 +38,7 @@ Another difference is that you cannot return `false` to prevent default behavior
 </a>
 ```
 
-In React, this could instead be:
+در ری‌اکت، اما شیوه دیگر است:
 
 ```js{2-5,8}
 function ActionLink() {
@@ -54,11 +55,13 @@ function ActionLink() {
 }
 ```
 
-Here, `e` is a synthetic event. React defines these synthetic events according to the [W3C spec](https://www.w3.org/TR/DOM-Level-3-Events/), so you don't need to worry about cross-browser compatibility. See the [`SyntheticEvent`](/docs/events.html) reference guide to learn more.
+در این‌جا، `e` یک رویدادِ نحوی (سینتکسی) است. ری‌اکت این رویدادهایِ نحوی را بر اساسِ [استانداردِ W3C](https://www.w3.org/TR/DOM-Level-3-Events/) تعریف می‌کند، پس نیاز نیست بابتِ سازگاری با مرورگرها نگران بود.
+برایِ آگاهیِ بیشتر به بخشِ [`رویدادهایِ نحوی`](/docs/events.html) نگاهی بیندازید.
 
-When using React you should generally not need to call `addEventListener` to add listeners to a DOM element after it is created. Instead, just provide a listener when the element is initially rendered.
+هنگامِ استفاده از ری‌اکت قاعدتاً نباید نیازی باشد `addEventListener` را فرابخوانیم تا به یک المنتِ DOM هنگامِ ایجاد شدن یک شنونده بیفزاییم. در عوض می‌توان در آغاز، هنگامی که المنت رندر می‌شود، یک شنونده تأمین کرد
 
-When you define a component using an [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes), a common pattern is for an event handler to be a method on the class. For example, this `Toggle` component renders a button that lets the user toggle between "ON" and "OFF" states:
+هنگامِ تعریفِ یک کامپوننت با استفاده از یک [کلاسِ ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)، یک الگویِ متداول تعریفِ رسنده‌یِ رویداد (event handler) به صورتِ یک متدِ کلاس است.
+در نمونه‌یِ زیر، کامپوننتِ `Toggle` یک دکمه رندر می‌کند که کاربر می‌تواند آن را خاموش یا روشن کند.
 
 ```js{6,7,10-14,18}
 class Toggle extends React.Component {
