@@ -6,7 +6,7 @@ permalink: docs/code-splitting.html
 
 ## بسته بندی کردن (bundling) {#bundling}
 
-در بیشتر برنامه های ری‌اکت فایل ها توسط ابزار هایی مثل [Webpack](https://webpack.js.org/) یا [Browserify](http://browserify.org/) بسته بندی (bundle) می شوند
+در بیشتر برنامه های ری‌اکت فایل ها توسط ابزار هایی مثل [Webpack](https://webpack.js.org/) یا [Browserify](http://browserify.org/) بسته بندی می شوند
 
 پروسه ی bundle کردن به این شکل است که فایل های import شده دنبال می شود و همه ی آنها در یک فایل با نام "bundle" ادغام می شوند. این فایل bundle می تواند در صفحه ی وب بارگزاری شود تا کل برنامه را به یکباره اجرا کند.
 
@@ -105,28 +105,12 @@ import("./math").then(math => {
 
 ```js
 import OtherComponent from './OtherComponent';
-
-function MyComponent() {
-  return (
-    <div>
-      <OtherComponent />
-    </div>
-  );
-}
 ```
 
 **بعد:**
 
 ```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
-
-function MyComponent() {
-  return (
-    <div>
-      <OtherComponent />
-    </div>
-  );
-}
 ```
 
 هنگامی که کامپوننت فوق رندر می شود، بصورت خودکار فایل bundle ای که حاوی `OtherComponent` است را لود می کند.
