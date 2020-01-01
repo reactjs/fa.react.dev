@@ -1,6 +1,6 @@
 ---
 id: thinking-in-react
-title: Thinking in React
+title: فکر کردن در چارچوب ری‌اکت
 permalink: docs/thinking-in-react.html
 redirect_from:
   - 'blog/2013/11/05/thinking-in-react.html'
@@ -8,17 +8,19 @@ redirect_from:
 prev: composition-vs-inheritance.html
 ---
 
-React is, in our opinion, the premier way to build big, fast Web apps with JavaScript. It has scaled very well for us at Facebook and Instagram.
+به عقیده ما، ری‌اکت بهترین راه برای ساخت وب اپلیکیشن هایی سریع و بزرگ، با استفاده از جاوااسکریپت است و برای ما در فیسبوک و اینستاگرام خیلی خوب جواب داده است.
 
-One of the many great parts of React is how it makes you think about apps as you build them. In this document, we'll walk you through the thought process of building a searchable product data table using React.
+ری‌اکت بخش های خیلی خوب زیادی دارد، اما یکی از بهترین آنها، چگونگی نگرش به اپ هایی است که مشغول به ساخت آنها هستید.
+در این سند (Document)، به فرایند تفکر در ساخت یک جدول محصولات با قابلیت جستجو خواهیم پرداخت، و برای ساخت این جدول از ری‌اکت استفاده میکنیم.
 
-## Start With A Mock {#start-with-a-mock}
 
-Imagine that we already have a JSON API and a mock from our designer. The mock looks like this:
+## شروع با یک مدل  {#start-with-a-mock}
+
+تصور کنید که ما از قبل یک JSON API و یک مدل، که توسط طراح آماده شده، داریم. مدل آماده شده، چیزی شبیه به این است:
 
 ![Mockup](../images/blog/thinking-in-react-mock.png)
 
-Our JSON API returns some data that looks like this:
+و JSON API هم این اطلاعات را در خود جا داده است:
 
 ```
 [
@@ -31,27 +33,35 @@ Our JSON API returns some data that looks like this:
 ];
 ```
 
-## Step 1: Break The UI Into A Component Hierarchy {#step-1-break-the-ui-into-a-component-hierarchy}
+## قدم اول: رابط کاربری را به یک سلسله از کامپوننت ها تقسیم کنید{#step-1-break-the-ui-into-a-component-hierarchy}
 
-The first thing you'll want to do is to draw boxes around every component (and subcomponent) in the mock and give them all names. If you're working with a designer, they may have already done this, so go talk to them! Their Photoshop layer names may end up being the names of your React components!
+اولین کاری که باید کنید، این است که دور هر کدام از کامپوننت های موجود خط بکشید و تمامی کامپوننت ها را به همراه زیرمجموعه های آن مشخص کنید و برای هر کدام یک نام در نظر بگیرید. (هر کامپوننت ممکن است یک یا چند کامپوننت زیر مجموعه داشته باشد)
 
-But how do you know what should be its own component? Use the same techniques for deciding if you should create a new function or object. One such technique is the [single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle), that is, a component should ideally only do one thing. If it ends up growing, it should be decomposed into smaller subcomponents.
+اگر به همراه یک طراح (دیزاینر) کار میکنید، ممکن است او قبلا همین کار را انجام داده باشد. نامگذاری آنها برای لایه های مختلف در فایل فتوشاپی که تهیه کرده اند، میتواند نام کامپوننت ها در کد شما هم باشد!
 
-Since you're often displaying a JSON data model to a user, you'll find that if your model was built correctly, your UI (and therefore your component structure) will map nicely. That's because UI and data models tend to adhere to the same *information architecture*. Separate your UI into components, where each component matches one piece of your data model.
+اما چطور بفهمیم که یک بخش باید تبدیل به یک کامپوننت جداگانه شود؟ در این موارد بهتر است از همان تکنیک هایی استفاده کنیم که زمان تصمیم گیری برای تعریف یک تابع Function یا یک شیء Object جدید به کمک مان می آمدند.
+یکی از این تکنیک ها ["اصل مسئولیت واحد" یا "اصل تک وظیفگی" ](https://en.wikipedia.org/wiki/Single_responsibility_principle), است.
+این اصل بیان میکند که هر کامپوننت، باید در حالت ایده آل فقط یک کار را انجام دهد و اگر وظایف آن گسترش یافت، باید برای برای آن کامپوننت های زیر مجموعه Subcomponent تعریف کرد و وظایف اضافی را به آنها سپرد.
+
+از آنجایی که اغلب یک مدل داده جیسون (JSON Data Model) به کاربر نشان داده میشود، متوجه خواهید شد که اگر این مدل درست ساخته شده باشد، رابط کاربری و ساختار کامپوننت های شما هم به درستی قابل ترسیم و تعیین خواهد بود.
+این بدان دلیل است که مدل داده (Data Model) و رابط کاربری معمولا از یک معماری اطلاعات (information architecture) یکسان تبعیت میکنند.
+رابط کاربری را طوری به کامپوننت های مختلف تقسیم کنید که هر کامپوننت با بخش خاصی از مدل داده مرتبط باشد.
 
 ![Component diagram](../images/blog/thinking-in-react-components.png)
 
-You'll see here that we have five components in our app. We've italicized the data each component represents.
+در این تصویر می بینید که ما پنج کامپوننت در برنامه خود داریم و اطلاعاتی که هر کامپوننت نمایش میدهد را با حروف ایتالیک مشخص کرده ایم:
 
-  1. **`FilterableProductTable` (orange):** contains the entirety of the example
-  2. **`SearchBar` (blue):** receives all *user input*
-  3. **`ProductTable` (green):** displays and filters the *data collection* based on *user input*
-  4. **`ProductCategoryRow` (turquoise):** displays a heading for each *category*
-  5. **`ProductRow` (red):** displays a row for each *product*
+  1. **`FilterableProductTable` (نارنجی):** شامل تمام برنامه 
+  2. **`SearchBar` (آبی):** *ورودی های کاربر* را دریافت میکند
+  3. **`ProductTable` (سبز):** تمامی *مجموعه اطلاعات* را با توجه به *ورودی کاربر* نمایش داده و اطلاعات را فیلتر میکند
+  4. **`ProductCategoryRow` (فیروزه ای):** یک تیتر را برای هر *دسته* نمایش میدهد
+  5. **`ProductRow` (قرمز):** یک ردیف را برای هر *محصول* نمایش میدهد
 
-If you look at `ProductTable`, you'll see that the table header (containing the "Name" and "Price" labels) isn't its own component. This is a matter of preference, and there's an argument to be made either way. For this example, we left it as part of `ProductTable` because it is part of rendering the *data collection* which is `ProductTable`'s responsibility. However, if this header grows to be complex (e.g., if we were to add affordances for sorting), it would certainly make sense to make this its own `ProductTableHeader` component.
+اگر نگاهی به کامپوننت `ProductTable`بیندازید، متوجه میشوید که تیترهای جدول (شامل "Name" و “Price”) کامپوننت جداگانه ای ندارند که بیشتر یک موضوع سلیقه ای است و دلایل و استدلال هایی برای استفاده یا عدم استفاده از یک کامپوننت جداگانه برای آنها وجود دارد.
+در این مثال، آن را بخشی از  `ProductTable` قرار دادیم، چرا که جزئی از *مجموعه داده ها data collection* بوده و رندر کردن آن وظیفه `ProductTable` است.
+با این حال، اگر هدر جدول پیچیده تر شود (مثلا اگر گزینه ای برای مرتب کردن لیست محصولات اضافه میکردیم)، مطمئنا منطقی تر بود که آنها در یک کامپوننت جداگانه با نام `ProductTableHeader` بگذاریم
 
-Now that we've identified the components in our mock, let's arrange them into a hierarchy. Components that appear within another component in the mock should appear as a child in the hierarchy:
+حالا که کامپوننت های موجود در پروژه را مشخص کردیم، وقتش رسیده که سلسله مراتب آنها را نیز تعیین کنیم. کامپوننت هایی که با توجه به مدل، درون یک کامپوننت دیگر قرار میگیرند، فرزند آن محسوب میشوند:
 
   * `FilterableProductTable`
     * `SearchBar`
@@ -59,9 +69,9 @@ Now that we've identified the components in our mock, let's arrange them into a 
       * `ProductCategoryRow`
       * `ProductRow`
 
-## Step 2: Build A Static Version in React {#step-2-build-a-static-version-in-react}
+## قدم دوم: یک نسخه ایستا (Static) در ری‌اکت بسازید {#step-2-build-a-static-version-in-react}
 
-<p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/gaearon/pen/BwWzwm">Thinking In React: Step 2</a> on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">این بخش را در <a href="https://codepen.io/gaearon/pen/BwWzwm">فکر کردن در چارچوب ری‌اکت: گام دوم</a> روی <a href="https://codepen.io">CodePen</a>ببینید.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 Now that you have your component hierarchy, it's time to implement your app. The easiest way is to build a version that takes your data model and renders the UI but has no interactivity. It's best to decouple these processes because building a static version requires a lot of typing and no thinking, and adding interactivity requires a lot of thinking and not a lot of typing. We'll see why.
