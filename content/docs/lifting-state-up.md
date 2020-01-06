@@ -1,6 +1,6 @@
 ---
 id: lifting-state-up
-title: Lifting State Up
+title: ارسال state به بالا
 permalink: docs/lifting-state-up.html
 prev: forms.html
 next: composition-vs-inheritance.html
@@ -9,11 +9,13 @@ redirect_from:
   - "docs/flux-todo-list.html"
 ---
 
-Often, several components need to reflect the same changing data. We recommend lifting the shared state up to their closest common ancestor. Let's see how this works in action.
+برخی اوقات کامپوننت‌ها نیاز دارند تا زنجیره دیتا را بازتاب دهند.
+پیشنهاد ما این است که state را به نزدیک ترین جد بالایی ارسال کنید. ببینیم این کار در عمل چگونه است؟
 
-In this section, we will create a temperature calculator that calculates whether the water would boil at a given temperature.
+در این بخش - ما یک دماسنج میسازیم که محاسبه میکند در دمای داده شده به آن آب جوش آمده است یا خیر.
 
-We will start with a component called `BoilingVerdict`. It accepts the `celsius` temperature as a prop, and prints whether it is enough to boil the water:
+ما با کامپوننتی شروع خواهیم کرد که به آن `BoilingVerdict` میگویند.
+این کامپوننت `celsius` را به عنوان props دریافت میکند و درصورت کافی بودن آن برای به جوش آوردن آب آن را چاپ میکند.
 
 ```js{3,5}
 function BoilingVerdict(props) {
@@ -24,9 +26,10 @@ function BoilingVerdict(props) {
 }
 ```
 
-Next, we will create a component called `Calculator`. It renders an `<input>` that lets you enter the temperature, and keeps its value in `this.state.temperature`.
+سپس کامپوننتی به عنوان `Calculator` ایجاد میکنیم.
+که آن یک `<input>` را رندر میکند که به شما اجازه میدهد دما را وارد کنید و مقدار آن را در `this.state.temperature` نگهداری کنید.
 
-Additionally, it renders the `BoilingVerdict` for the current input value.
+به علاوه  `BoilingVerdict` را برای مقدار اولیه input رندر میکند.
 
 ```js{5,9,13,17-21}
 class Calculator extends React.Component {
@@ -56,7 +59,7 @@ class Calculator extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/ZXeOBm?editors=0010)
+[**درCodePen امتحان کنید**](https://codepen.io/gaearon/pen/ZXeOBm?editors=0010)
 
 ## Adding a Second Input {#adding-a-second-input}
 
