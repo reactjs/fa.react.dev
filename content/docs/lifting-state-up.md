@@ -321,15 +321,15 @@ class Calculator extends React.Component {
 
 هر به روز رسانی این مراحل را طی می‌کند تا در نهایت این دو input با هم همگام باشند.
 
-## Lessons Learned {#lessons-learned}
 
-There should be a single "source of truth" for any data that changes in a React application. Usually, the state is first added to the component that needs it for rendering. Then, if other components also need it, you can lift it up to their closest common ancestor. Instead of trying to sync the state between different components, you should rely on the [top-down data flow](/docs/state-and-lifecycle.html#the-data-flows-down).
+## درس‌هایی که آموختیم {#lessons-learned}
 
-Lifting state involves writing more "boilerplate" code than two-way binding approaches, but as a benefit, it takes less work to find and isolate bugs. Since any state "lives" in some component and that component alone can change it, the surface area for bugs is greatly reduced. Additionally, you can implement any custom logic to reject or transform user input.
+باید برای هر داده‌ای که در React تغییر میکند یک "منبع حقیقت" وجود داشته باشد. معمولا state در ابتدا به کامپوننت برای رندر مجدد اضافه می‌شود. و اگر کامپوننت دیگری به‌آن نیاز داشت، شما میتوانید آن را به بالا و نزدیکترین جد مشترک ارسال کنید. به جای اینکه سعی کنید state را بین کامپوننت های مختلف همگام کنید، باید به حالت [جریان داده از بالا-به-پایین](/docs/state-and-lifecycle.html#the-data-flows-down) تکیه کنید.
 
-If something can be derived from either props or state, it probably shouldn't be in the state. For example, instead of storing both `celsiusValue` and `fahrenheitValue`, we store just the last edited `temperature` and its `scale`. The value of the other input can always be calculated from them in the `render()` method. This lets us clear or apply rounding to the other field without losing any precision in the user input.
+بالا بردن state شامل نوشتن بیشتر "تکرار واضحات" نسبت به روش binding دو-طرفه است، ولی به عنوان مزیت، هزینه کمتری برای پیدا کردن و کپسوله کردن باگ‌ها دارد. از آنجایی که هر state در برخی کامپوننت‌ها "زندگی"  میکند و آن کامپوننت به تنهایی می‌تواند ان را تغییر دهد، سطح وسیعی از باگ‌ها به طور چشم‌گیری کاهش پیدا میکند. علاوه بر این ، شما می‌توانید منطق سفارشی برای رد یا انتقال ورودی کاربر پیاده سازی کنید.
 
-When you see something wrong in the UI, you can use [React Developer Tools](https://github.com/facebook/react-devtools) to inspect the props and move up the tree until you find the component responsible for updating the state. This lets you trace the bugs to their source:
+اگر چیزی میتوانست از props یا state ناشی شود ، احتمالا نباید در state باشد. برای مثال ، به جای ذخیره کردن `celsiusValue` و `fahrenheitValue`، ما فقط آخرین `temperature` و `scale` تغییر کرده را ذخیزه می‌کنیم. مقدار سایز inputها میتواند در متد `render()` محاسبه شود. این به ما امکان می دهد بدون از دست دادن دقت در ورودی کاربر ، سایر فیلد‌ها را پاک یا رند کنیم.
+
+وقتی می‌بینید چیزی در UI اشتباه است, میتواند از  [ابزار توسعه React](https://github.com/facebook/react/tree/master/packages/react-devtools) برای بازرسی propها استفاده کنید و در درخت اینقدر بالا بروید تا کامپوننتی که مسول به‌روز رسانی state هست را پیدا کنید. این به شما امکان میدهد  تا باگ‌ها را تا منبع دنبال کنید.
 
 <img src="../images/docs/react-devtools-state.gif" alt="Monitoring State in React DevTools" max-width="100%" height="100%">
-
