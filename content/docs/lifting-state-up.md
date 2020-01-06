@@ -121,9 +121,9 @@ class Calculator extends React.Component {
 ما همچنین نمیتوانیم `BoilingVerdict` از `Calculator` را نمایش دهیم. 
 `Calculator` دمای کنونی را نمی‌داند زیرا در `TemperatureInput` مخفی است.
 
-## Writing Conversion Functions {#writing-conversion-functions}
+## نوشتن تابع تبدیل {#writing-conversion-functions}
 
-First, we will write two functions to convert from Celsius to Fahrenheit and back:
+در ابتدا ما دو تابع مینویسیم که دما را از سیلسیوس به فارنهایت و برعکس تبدیل کند:
 
 ```js
 function toCelsius(fahrenheit) {
@@ -135,9 +135,9 @@ function toFahrenheit(celsius) {
 }
 ```
 
-These two functions convert numbers. We will write another function that takes a string `temperature` and a converter function as arguments and returns a string. We will use it to calculate the value of one input based on the other input.
+این دو تابع اعداد را تبدیل میکنند. ما دو تابع خواهیم نوشت که string `temperature` و تابع تبدیل را به عنوان آرگومان دریافت می‌کند و یک string برمیگرداند. ما از این برای محاسبه مقدار یک input با توجه به مقدار input دیگر استفاده میکنیم.
 
-It returns an empty string on an invalid `temperature`, and it keeps the output rounded to the third decimal place:
+که این روی مقدار نامعتبر `temperature` string خالی برمیگرداند، و خروجی را تا سه رقم اعشار رند میکند:
 
 ```js
 function tryConvert(temperature, convert) {
@@ -151,7 +151,7 @@ function tryConvert(temperature, convert) {
 }
 ```
 
-For example, `tryConvert('abc', toCelsius)` returns an empty string, and `tryConvert('10.22', toFahrenheit)` returns `'50.396'`.
+برای مثال، `tryConvert('abc', toCelsius)` string خالی برمیگرداند, و `tryConvert('10.22', toFahrenheit)` string `'50.396'` را برمیگرداند.
 
 ## Lifting State Up {#lifting-state-up}
 
