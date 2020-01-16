@@ -9,7 +9,7 @@ permalink: docs/react-dom.html
 اگر ری‌اکت را با تگ `<script>` بارگیری کنید، این APIهای سطح بالا در `ReactDOM` به صورت عمومی در دسترس هستن. اگر از ES6 با npm استفاده می‌کنید، می‌توانید بنویسید `import ReactDOM from 'react-dom'`.
 اگر از ES5 با npm استفاده می‌کنید ،می‌توانید بنویسید `var ReactDOM = require('react-dom')`.
 
-## بررسی اجمالی {#overview}
+## مرور کلی {#overview}
 
 بسته `react-dom` متدهای خاصی از DOM را فراهم می‌کند که در صورت نیاز میتوان در سطح بالایی از اپلیکیشن شما به عنوان راه فراری از مدل React استفاده کرد. بیشتر کامپوننت‌های شما نیازی ندارد که از این moduleها استفاده کنند.
 
@@ -29,7 +29,7 @@ React از تمام مرورگرهای معروف پشتیبانی می‌کند
 
 * * *
 
-## Reference {#reference}
+## مرجع {#reference}
 
 ### `render()` {#render}
 
@@ -37,27 +37,25 @@ React از تمام مرورگرهای معروف پشتیبانی می‌کند
 ReactDOM.render(element, container[, callback])
 ```
 
-Render a React element into the DOM in the supplied `container` and return a [reference](/docs/more-about-refs.html) to the component (or returns `null` for [stateless components](/docs/components-and-props.html#function-and-class-components)).
+یک المان React را درون DOM برای `container` فراهم شده رندر می‌کند و یک [ارجاع](/docs/more-about-refs.html) به کامپوننت بر‌میگرداند. ( یا برای [کامپوننت‌های بی‌state](/docs/components-and-props.html#function-and-class-components) ، `null` برمی‌گرداند).
 
-If the React element was previously rendered into `container`, this will perform an update on it and only mutate the DOM as necessary to reflect the latest React element.
+اگر المان React قبلا در  `container` رندر شده بود، React یک به‌روزرسانی جدید رویش اجرا می‌کند و فقط زمانی DOM را تغییر(mutate) می‌دهد که ضروری باشد تا بر آخرین المان React بازتاب پیدا کند.
 
-If the optional callback is provided, it will be executed after the component is rendered or updated.
+اگر callback دلخواهی فراهم شده بود، بعد از اینکه کامپوننت رندر یا به‌روزرسانی شد اجرا می‌شود.
 
 > Note:
 >
-> `ReactDOM.render()` controls the contents of the container node you pass in. Any existing DOM elements inside are replaced when first called. Later calls use React’s DOM diffing algorithm for efficient updates.
+> `ReactDOM.render()` محتوای نود container که به داخل آن می‌فرستید را کنترل می کند. هنگامی که برای اولین بار فراخوانی می‌شود هر المنتی که داخلش باشد جایگزین می‌شود. ولی در سایر فراخوانی‌ها برای بهینه بودن به‌روزرسانی از الگوریتم اختلاف‌یاب React استفاده می‌شود (React’s DOM diffing algorithm).
 >
-> `ReactDOM.render()` does not modify the container node (only modifies the children of the container). It may be possible to insert a component to an existing DOM node without overwriting the existing children.
+> `ReactDOM.render()` نود اصلی را تغییر نمیدهد (فقط بچه‌های container را تغییر می‌دهد). شاید ممکن باشد که کامپوننتی را درون نودی که قبلا وجود داشته وارد کرد بدون اینکه نیاز به بازنویسی نودهای زیر شاخه(children) باشد.
 >
-> `ReactDOM.render()` currently returns a reference to the root `ReactComponent` instance. However, using this return value is legacy
-> and should be avoided because future versions of React may render components asynchronously in some cases. If you need a reference to the root `ReactComponent` instance, the preferred solution is to attach a
-> [callback ref](/docs/more-about-refs.html#the-ref-callback-attribute) to the root element.
+> `ReactDOM.render()` در حال حاضر یک ارجاع از ریشه بدل(instance) `ReactComponent` برمی‌گرداند. با این حال با این حال استفاده از این مقدار برگشتی نوعی میراث است و باید از آن پرهیز شود زیرا در ورژن‌های آینده React شاید برخی کامپوننت‌ها در گاهی اوقات ناهمگام رندر شوند.اگر شما به مرجع بدل ریشه `ReactComponent` نیاز داشتید، بهترین راه حل آن است که یک [callback ref](/docs/more-about-refs.html#the-ref-callback-attribute) به ریشه المنت وصل کنید.
 >
-> Using `ReactDOM.render()` to hydrate a server-rendered container is deprecated and will be removed in React 17. Use [`hydrate()`](#hydrate) instead.
-
+> استفاده از `ReactDOM.render()` برای hydrate کردن رندر شدن container سمت سرور منسوخ شده است و در ورژن ۱۷ React پاک خواهد شد. به جای آن از [`()hydrate`](#hydrate) استفاده کنید.
+>
 * * *
 
-### `hydrate()` {#hydrate}
+### `()hydrate` {#hydrate}
 
 ```javascript
 ReactDOM.hydrate(element, container[, callback])
