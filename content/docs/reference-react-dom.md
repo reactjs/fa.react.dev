@@ -6,11 +6,12 @@ category: Reference
 permalink: docs/react-dom.html
 ---
 
-If you load React from a `<script>` tag, these top-level APIs are available on the `ReactDOM` global. If you use ES6 with npm, you can write `import ReactDOM from 'react-dom'`. If you use ES5 with npm, you can write `var ReactDOM = require('react-dom')`.
+اگر ری‌اکت را با تگ `<script>` بارگیری کنید، این APIهای سطح بالا در `ReactDOM` به صورت عمومی در دسترس هستن. اگر از ES6 با npm استفاده می‌کنید، می‌توانید بنویسید `import ReactDOM from 'react-dom'`.
+اگر از ES5 با npm استفاده می‌کنید ،می‌توانید بنویسید `var ReactDOM = require('react-dom')`.
 
-## Overview {#overview}
+## بررسی اجمالی {#overview}
 
-The `react-dom` package provides DOM-specific methods that can be used at the top level of your app and as an escape hatch to get outside of the React model if you need to. Most of your components should not need to use this module.
+بسته `react-dom` متدهای خاصی از DOM را فراهم می‌کند که در صورت نیاز میتوان در سطح بالایی از اپلیکیشن شما به عنوان راه فراری از مدل React استفاده کرد. بیشتر کامپوننت‌های شما نیازی ندارد که از این moduleها استفاده کنند.
 
 - [`render()`](#render)
 - [`hydrate()`](#hydrate)
@@ -18,13 +19,13 @@ The `react-dom` package provides DOM-specific methods that can be used at the to
 - [`findDOMNode()`](#finddomnode)
 - [`createPortal()`](#createportal)
 
-### Browser Support {#browser-support}
+### پشتیبانی مرورگر {#browser-support}
 
-React supports all popular browsers, including Internet Explorer 9 and above, although [some polyfills are required](/docs/javascript-environment-requirements.html) for older browsers such as IE 9 and IE 10.
+React از تمام مرورگرهای معروف پشتیبانی می‌کند، که شامل Internet Explorer 9 و بالاتر می‌شود، گرچه برای مرورگرهای قدیمی مثل IE 9 و IE 10 [به مکمل‌ها(polyfills) نیاز است](/docs/javascript-environment-requirements.html).
 
-> Note
+> توجه
 >
-> We don't support older browsers that don't support ES5 methods, but you may find that your apps do work in older browsers if polyfills such as [es5-shim and es5-sham](https://github.com/es-shims/es5-shim) are included in the page. You're on your own if you choose to take this path.
+> ما از مرورگرهای قدیمی که از متدهای ES5 پشتیبانی نمی‌کنند پشتیبانی نمی‌کنیم، ولی متوجه می‌شوید که برنامه شما در این مرورگرها کار می‌کنند، اگر مکمل‌هایی مثل [es5-shim و es5-sham](https://github.com/es-shims/es5-shim) را در صفحه وارد کنید. در انتخاب این مسیر فقط به خودتان متکی هستید.
 
 * * *
 
