@@ -4,7 +4,7 @@ title: Forwarding Refs
 permalink: docs/forwarding-refs.html
 ---
 
-حمل مرجع روشی برای انتقال خودکار [ref] (/docs/refs-and-the-dom.html) از طریق یک جزء به یکی از فرزندانش است. این به طور معمول برای بیشتر مؤلفه های برنامه ضروری نیست. با این حال، این می تواند برای برخی از انواع مؤلفه ها، به ویژه در کتابخانه های مؤلفه قابل استفاده مجدد، مفید باشد. متداول ترین موضوع ها در زیر توضیح داده شده است.
+حمل مرجع روشی برای انتقال خودکار [ref](/docs/refs-and-the-dom.html) از طریق یک جزء به یکی از فرزندانش است. این به طور معمول برای بیشتر مؤلفه های برنامه ضروری نیست. با این حال، این می تواند برای برخی از انواع مؤلفه ها، به ویژه در کتابخانه های مؤلفه قابل استفاده مجدد، مفید باشد. متداول ترین موضوع ها در زیر توضیح داده شده است.
 
 ## حمل جرمع به DOM کامپوننت {#forwarding-refs-to-dom-components}
 
@@ -21,9 +21,10 @@ In the example below, `FancyButton` uses `React.forwardRef` to obtain the `ref` 
 
 `embed:forwarding-refs/fancy-button-simple-ref.js`
 
-This way, components using `FancyButton` can get a ref to the underlying `button` DOM node and access it if necessary—just like if they used a DOM `button` directly.
+به این ترتیب ، اجزای با استفاده از "FancyButton" می توانند به قسمت زیر دکمه "گره" DOM مراجعه کنند و در صورت لزوم به آن دسترسی پیدا کنند - درست مثل اینکه مستقیماً از دکمه DOM استفاده می کردند.
 
-Here is a step-by-step explanation of what happens in the above example:
+
+در اینجا توضیح گام به گام آنچه در مثال بالا اتفاق می افتد آورده شده است:
 
 1. We create a [React ref](/docs/refs-and-the-dom.html) by calling `React.createRef` and assign it to a `ref` variable.
 1. We pass our `ref` down to `<FancyButton ref={ref}>` by specifying it as a JSX attribute.
@@ -59,18 +60,18 @@ This means that refs intended for our `FancyButton` component will actually be a
 Fortunately, we can explicitly forward refs to the inner `FancyButton` component using the `React.forwardRef` API. `React.forwardRef` accepts a render function that receives `props` and `ref` parameters and returns a React node. For example:
 `embed:forwarding-refs/log-props-after.js`
 
-## Displaying a custom name in DevTools {#displaying-a-custom-name-in-devtools}
+## نمایش نام سفارشی در DevTools {#displaying-a-custom-name-in-devtools}
 
 `React.forwardRef` accepts a render function. React DevTools uses this function to determine what to display for the ref forwarding component.
 
-For example, the following component will appear as "*ForwardRef*" in the DevTools:
-
+به عنوان مثال ، مؤلفه زیر به صورت "*ForwardRef*" در DevTools ظاهر می شود:
+ 
 `embed:forwarding-refs/wrapped-component.js`
 
-If you name the render function, DevTools will also include its name (e.g. "*ForwardRef(myFunction)*"):
+اگر تابع رندر را نامگذاری کنید ، DevTools نام آن را نیز شامل می شود (به عنوان مثال "*ForwardRef(myFunction)*"):
 
 `embed:forwarding-refs/wrapped-component-with-function-name.js`
 
-You can even set the function's `displayName` property to include the component you're wrapping:
+حتی می توانید نامی که برای توابع نمایش می دهد را تنظیم کنید تا نام مؤلفه ای که از آن بسته بندی شده است واضح باشد:
 
 `embed:forwarding-refs/customized-display-name.js`
