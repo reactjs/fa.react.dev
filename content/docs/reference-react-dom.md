@@ -21,15 +21,14 @@ If you load React from a `<script>` tag, these top-level APIs are available on t
 
 ### پشتیبانی مرورگر {#browser-support}
 
-React supports all popular browsers, including Internet Explorer 9 and above, although [some polyfills are required](/docs/javascript-environment-requirements.html) for older browsers such as IE 9 and IE 10.
+ری اکت از کلیه مرورگرهای محبوب، از جمله Internet Explorer 9 و بالاتر پشتیبانی می کند، اگرچه [چند پیش نیاز دارد] (/ اسناد / javascript-Environment-Requires.html) تا برای مرورگرهای قدیمی مانند IE 9 و IE 10 به خوبی عمل کند.
 
-> Note
+> نکته
 >
-> We don't support older browsers that don't support ES5 methods, but you may find that your apps do work in older browsers if polyfills such as [es5-shim and es5-sham](https://github.com/es-shims/es5-shim) are included in the page. You're on your own if you choose to take this path.
+> ما از مرورگرهای قدیمی كه از روشهای ES5 پشتیبانی نمی كنند پشتیبانی نمی كنیم، اما شما ممكن است متوجه شوید که در صورتی که برنامه شما شامل پیش نیاز هایی مانند [es5-shim و es5-sham](https://github.com/es-shims/es5-shim) باشد برنامه های شما در مرورگرهای قدیمی نیز به خوبی كار کند. اگر تصمیم دارید این را انتخاب کنید، مسئولیت آن با خودتان است.
 
-* * *
 
-## Reference {#reference}
+## ارجاع {#reference}
 
 ### `render()` {#render}
 
