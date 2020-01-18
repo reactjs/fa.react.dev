@@ -8,9 +8,10 @@ permalink: docs/react-dom.html
 
 If you load React from a `<script>` tag, these top-level APIs are available on the `ReactDOM` global. If you use ES6 with npm, you can write `import ReactDOM from 'react-dom'`. If you use ES5 with npm, you can write `var ReactDOM = require('react-dom')`.
 
-## Overview {#overview}
+## بررسی اجمالی {#overview}
 
-The `react-dom` package provides DOM-specific methods that can be used at the top level of your app and as an escape hatch to get outside of the React model if you need to. Most of your components should not need to use this module.
+بسته `react-dom` روش هایی خاص برای مدیریت و کار با پرونده را فراهم می کند که می تواند در بالاترین سطح برنامه ها استفاده شود و به عنوان یک راه برای جلوگیری از استفاده از ماژول `React` است.
+بیشتر اجزای برنامه شما نیازی به استفاده از این ماژول ندارد.
 
 - [`render()`](#render)
 - [`hydrate()`](#hydrate)
@@ -18,7 +19,7 @@ The `react-dom` package provides DOM-specific methods that can be used at the to
 - [`findDOMNode()`](#finddomnode)
 - [`createPortal()`](#createportal)
 
-### Browser Support {#browser-support}
+### پشتیبانی مرورگر {#browser-support}
 
 React supports all popular browsers, including Internet Explorer 9 and above, although [some polyfills are required](/docs/javascript-environment-requirements.html) for older browsers such as IE 9 and IE 10.
 
