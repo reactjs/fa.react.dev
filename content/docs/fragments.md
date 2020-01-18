@@ -18,11 +18,11 @@ render() {
 }
 ```
 
-There is also a new [short syntax](#short-syntax) for declaring them.
+همچنین یک [نحو کوتاه](#short-syntax) برای اعلام آنها وجود دارد.
 
-## Motivation {#motivation}
+## انگیزه {#motivation}
 
-A common pattern is for a component to return a list of children. Take this example React snippet:
+یک الگوی رایج برای این است که یک جزء بتواند لیستی از فرزندان را برگرداند. از این مثال نمونه React snippet بگیرید:
 
 ```jsx
 class Table extends React.Component {
