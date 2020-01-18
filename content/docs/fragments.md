@@ -140,4 +140,4 @@ function Glossary(props) {
 
 ### نسخه ی نمایشی زنده {#live-demo}
 
-می توانید با این [CodePen](https://codepen.io/reactjs/pen/VrEbjE?editors=1000) نحو جدید قطعه JSX را امتحان کنید.
+می توانید با استفاده از [CodePen](https://codepen.io/reactjs/pen/VrEbjE?editors=1000) نحو جدید قطعه JSX را امتحان کنید.
