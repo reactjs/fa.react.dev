@@ -67,9 +67,9 @@ class Columns extends React.Component {
 </table>
 ```
 
-Fragments solve this problem.
+قطعات این مشکل را حل می کنند.
 
-## Usage {#usage}
+## طریقه استفاده {#usage}
 
 ```jsx{4,7}
 class Columns extends React.Component {
@@ -84,7 +84,7 @@ class Columns extends React.Component {
 }
 ```
 
-which results in a correct `<Table />` output of:
+که منجر به خروجی صحیح `<Table />` در:
 
 ```jsx
 <table>
@@ -95,9 +95,9 @@ which results in a correct `<Table />` output of:
 </table>
 ```
 
-### Short Syntax {#short-syntax}
+### نحو کوتاه {#short-syntax}
 
-There is a new, shorter syntax you can use for declaring fragments. It looks like empty tags:
+یک نحو جدید و کوتاه تر وجود دارد که می توانید برای اعلام قطعات استفاده کنید. این شبیه به برچسب های خالی است:
 
 ```jsx{4,7}
 class Columns extends React.Component {
