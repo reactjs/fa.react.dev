@@ -95,9 +95,10 @@ Remove a mounted React component from the DOM and clean up its event handlers an
 
 <h3 dir="rtl">`findDOMNode()` {#finddomnode}</h3>
 <p dir="rtl">
-> Note:
->
-> `findDOMNode` is an escape hatch used to access the underlying DOM node. In most cases, use of this escape hatch is discouraged because it pierces the component abstraction. [It has been deprecated in `StrictMode`.](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
+
+> توجه داشته باشید:
+> 
+> متد findDOMNode یک دریچه فرار است که برای دسترسی به گره DOM استفاده می شود. در بیشتر موارد، استفاده از این دریچه فرار از آن منع می شود زیرا انتزاع مؤلفه را سوراخ می کند. [این در "StrictMode" منسوخ شده است.](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
 </p>
 
 ```javascript
