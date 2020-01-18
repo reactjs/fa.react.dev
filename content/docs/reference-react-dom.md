@@ -37,11 +37,12 @@ permalink: docs/react-dom.html
 ReactDOM.render(element, container[, callback])
 ```
 
-Render a React element into the DOM in the supplied `container` and return a [reference](/docs/more-about-refs.html) to the component (or returns `null` for [stateless components](/docs/components-and-props.html#function-and-class-components)).
+یک عنصر React را به DOM در ظرف قرار دهید و یک [مرجع](/docs/more-about-refs.html) به مؤلفه (یا برگشت مقدار `null` برای [اجزای بی تاب](/docs/components-and-props.html#function-and-class-components)) بازگردانی کنید.
 
-If the React element was previously rendered into `container`, this will perform an update on it and only mutate the DOM as necessary to reflect the latest React element.
+اگر عنصر React قبلاً در ظرف قرار داده شده باشد، این یک به روزرسانی را روی آن انجام می دهد و فقط در صورت لزوم DOM را تغییر می دهد تا آخرین عنصر React را منعکس کند.
 
-If the optional callback is provided, it will be executed after the component is rendered or updated.
+اگر مقدار پاسخ که یک مقدار اختیاری است را ارائه داده باشید، پس از ارائه یا به روزرسانی مؤلفه، اجرا خواهد شد.
+ 
 
 > نکته:
 >
