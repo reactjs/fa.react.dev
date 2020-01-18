@@ -7,7 +7,7 @@ permalink: docs/react-dom.html
 ---
 
 
-اگر React را با استفاده از `<script>" بارگیری می کنید، این API های سطح بالا در همه جا بر روی "ReactDOM" در دسترس هستند. اگر از ES6 با npm استفاده می کنید، می توانید `import ReactDOM from 'react-dom'` را وارد کنید. اگر از ES5 با npm استفاده می کنید نیز `var ReactDOM = require('react-dom')` را بنویسید.
+اگر React را با استفاده از `<script>` بارگیری می کنید، این API های سطح بالا در همه جا بر روی **ReactDOM** در دسترس هستند. اگر از ES6 با npm استفاده می کنید، می توانید `import ReactDOM from 'react-dom'` را وارد کنید. اگر از ES5 با npm استفاده می کنید نیز `var ReactDOM = require('react-dom')` را بنویسید.
 
 ## بررسی اجمالی {#overview}
 
