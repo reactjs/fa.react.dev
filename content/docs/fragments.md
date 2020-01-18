@@ -4,8 +4,8 @@ title: Fragments
 permalink: docs/fragments.html
 ---
 
-A common pattern in React is for a component to return multiple elements. Fragments let you group a list of children without adding extra nodes to the DOM.
-
+یک الگوی رایج در React این است که یک مؤلفه بتواند عناصر مختلف را برگرداند. قطعات به شما امکان می دهد لیستی از فرزندان را بدون اضافه کردن گره های اضافی به DOM گروه بندی کنید.
+ 
 ```js
 render() {
   return (
@@ -18,11 +18,11 @@ render() {
 }
 ```
 
-There is also a new [short syntax](#short-syntax) for declaring them.
+همچنین یک [نحو کوتاه](#short-syntax) برای اعلام آنها وجود دارد.
 
-## Motivation {#motivation}
+## انگیزه {#motivation}
 
-A common pattern is for a component to return a list of children. Take this example React snippet:
+یک الگوی رایج برای این است که یک جزء بتواند لیستی از فرزندان را برگرداند. از این مثال نمونه React snippet بگیرید:
 
 ```jsx
 class Table extends React.Component {
