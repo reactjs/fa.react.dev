@@ -88,7 +88,7 @@ ReactDOM.unmountComponentAtNode(container)
 ```
 
 <p dir="rtl">
-Remove a mounted React component from the DOM and clean up its event handlers and state. If no component was mounted in the container, calling this function does nothing. Returns `true` if a component was unmounted and `false` if there was no component to unmount.
+یک مؤلفه React نصب شده را از DOM جدا کرده و بررسی کننده رویداد و وضعیت آن را تمیز کنید. اگر هیچ مؤلفه ای در ظرف نصب نشده باشد، فراخوانی این عملکرد هیچ کاری نمی کند. این عملکرد مقدار صحیح را برمیگرداند اگر مؤلفه برچیده شود و در صورت عدم وجود مؤلفه ای مقدار "نادرست" را می گرداند.
 </p>
 
 * * *
