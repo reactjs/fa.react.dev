@@ -108,9 +108,10 @@ ReactDOM.findDOMNode(component)
 <p dir="rtl">
 اگر این مؤلفه در DOM نصب شده باشد ، این عنصر DOM مرورگر بومی را برمی گرداند. این روش برای خواندن مقادیر خارج از DOM مانند مقادیر شکل فرم و انجام اندازه گیری DOM مفید است. **در بیشتر موارد، شما می توانید یک گره به DOM متصل کنید و از استفاده از "findDOMNode" خودداری کنید.**
 
-When a component renders to `null` or `false`, `findDOMNode` returns `null`. When a component renders to a string, `findDOMNode` returns a text DOM node containing that value. As of React 16, a component may return a fragment with multiple children, in which case `findDOMNode` will return the DOM node corresponding to the first non-empty child.
+هنگامی که یک جزء را بصورت "null" یا "false"و findDOMNode ظاهر می شود و `null` را برمی گرداند. وقتی یک جزء به عنوان یک رشته ظاهر می شود `findDOMNode` یک عنصر متنی را که شامل متن است برمیگرداند.
+همانطور که از React 16، یک مؤلفه می تواند قطعه ای را به همراه چند فرزند برگرداند، در این صورت "findDOMNode" گره DOM را که مربوط به اولین فرزند غیر خالی است، باز می گرداند.
 
-> Note:
+> نکته:
 >
 > `findDOMNode` only works on mounted components (that is, components that have been placed in the DOM). If you try to call this on a component that has not been mounted yet (like calling `findDOMNode()` in `render()` on a component that has yet to be created) an exception will be thrown.
 >
