@@ -38,7 +38,8 @@ class Table extends React.Component {
 }
 ```
 
-`<Columns />` would need to return multiple `<td>` elements in order for the rendered HTML to be valid. If a parent div was used inside the `render()` of `<Columns />`, then the resulting HTML will be invalid.
+دستور `<Columns />` نیاز خواهد بود تا بتوانید چند `<td>` را برگردانید که در خروجی از لحاظ HTML معتبر باشند.
+اگر در بخش ارائه از `<Columns />` استفاده کنید, خروجی HTML نادرست خواهد بود.
 
 ```jsx
 class Columns extends React.Component {
