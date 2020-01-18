@@ -47,16 +47,13 @@ ReactDOM.render(element, container[, callback])
  
 
 > نکته:
+> `ReactDOM.render()` محتوای نود container که به داخل آن می‌فرستید را کنترل می کند. هنگامی که برای اولین بار فراخوانی می‌شود هر المنتی که داخلش باشد جایگزین می‌شود. ولی در سایر فراخوانی‌ها برای بهینه بودن به‌روزرسانی از الگوریتم اختلاف‌یاب React استفاده می‌شود (React’s DOM diffing algorithm).
 >
-> `ReactDOM.render()` controls the contents of the container node you pass in. Any existing DOM elements inside are replaced when first called. Later calls use React’s DOM diffing algorithm for efficient updates.
+> `ReactDOM.render()` نود اصلی را تغییر نمیدهد (فقط بچه‌های container را تغییر می‌دهد). شاید ممکن باشد که کامپوننتی را درون نودی که قبلا وجود داشته وارد کرد بدون اینکه نیاز به بازنویسی نودهای زیر شاخه(children) باشد.
 >
-> `ReactDOM.render()` does not modify the container node (only modifies the children of the container). It may be possible to insert a component to an existing DOM node without overwriting the existing children.
+> `ReactDOM.render()` در حال حاضر یک ارجاع از ریشه بدل(instance) `ReactComponent` برمی‌گرداند. با این حال با این حال استفاده از این مقدار برگشتی نوعی میراث است و باید از آن پرهیز شود زیرا در ورژن‌های آینده React شاید برخی کامپوننت‌ها در گاهی اوقات ناهمگام رندر شوند.اگر شما به مرجع بدل ریشه `ReactComponent` نیاز داشتید، بهترین راه حل آن است که یک [callback ref](/docs/more-about-refs.html#the-ref-callback-attribute) به ریشه المنت وصل کنید.
 >
-> `ReactDOM.render()` currently returns a reference to the root `ReactComponent` instance. However, using this return value is legacy
-> and should be avoided because future versions of React may render components asynchronously in some cases. If you need a reference to the root `ReactComponent` instance, the preferred solution is to attach a
-> [callback ref](/docs/more-about-refs.html#the-ref-callback-attribute) to the root element.
->
-> Using `ReactDOM.render()` to hydrate a server-rendered container is deprecated and will be removed in React 17. Use [`hydrate()`](#hydrate) instead.
+> استفاده از `ReactDOM.render()` برای hydrate کردن رندر شدن container سمت سرور منسوخ شده است و در ورژن ۱۷ React پاک خواهد شد. به جای آن از [`()hydrate`](#hydrate) استفاده کنید.
 </p>
 
 * * *
@@ -68,15 +65,16 @@ ReactDOM.hydrate(element, container[, callback])
 ```
 
 <p dir="rtl">
-Same as [`render()`](#render), but is used to hydrate a container whose HTML contents were rendered by [`ReactDOMServer`](/docs/react-dom-server.html). React will attempt to attach event listeners to the existing markup.
+مثل [`()render`](#render) است، ولی برای hydrate کردن یک container که محتوای HTML آن توسط [`ReactDOMServer`](/docs/react-dom-server.html) رنده شده است استفاده می‌شود. React تلاش می‌کند تا event listenerهایی به (markups)نشانه‌گذاری‌های موجود متصل کند.
 
 ری اکت انتظار دارد که محتوای ارائه شده بین سرور و کلاینت یکسان باشد. این می تواند اختلافات در متن را برطرف کند، اما باید ناسازگاری ها را با اشکال در نظر بگیرید و آنها را برطرف کنید. در حالت توسعه، React در مورد عدم تطابق هشدار می دهد. هیچ تضمینی وجود ندارد که اختلاف ویژگی ها در صورت عدم تطابق در آنها برطرف شود. این امر به دلایل عملکرد بسیار مهم است زیرا در اکثر برنامه ها، عدم تطابق نادر است، بنابراین اعتبار و اهمیت دادن به همه نشانه گذاری ها بسیار گران قیمت است.
 
 اگر ویژگی و عنصر متن یک عنصر به طور اجتناب ناپذیری بین سرور و مشتری متفاوت باشد (برای مثال ، یک timestamp)، شما می توانید با اضافه کردن "suppressHydrationWarning = {true" به این عنصر هشدار را ساکت کنید. این درنظر گرفته شده است که یک دریچه فرار باشد. بیش از حد از آن استفاده نکنید. اگر محتوای متن نباشد، React تلاش نخواهد کرد تا آنرا پیکربندی کند، بنابراین ممکن است تا به روزرسانیهای بعدی متناقض بماند.
 
-If you intentionally need to render something different on the server and the client, you can do a two-pass rendering. Components that render something different on the client can read a state variable like `this.state.isClient`, which you can set to `true` in `componentDidMount()`. This way the initial render pass will render the same content as the server, avoiding mismatches, but an additional pass will happen synchronously right after hydration. Note that this approach will make your components slower because they have to render twice, so use it with caution.
 
-Remember to be mindful of user experience on slow connections. The JavaScript code may load significantly later than the initial HTML render, so if you render something different in the client-only pass, the transition can be jarring. However, if executed well, it may be beneficial to render a "shell" of the application on the server, and only show some of the extra widgets on the client. To learn how to do this without getting the markup mismatch issues, refer to the explanation in the previous paragraph.
+اگر نیاز دارید تا از عمد چیز متفاوتی سمت سرور یا کاربر رندر کنید، می‌توانید از روش رندر کردن دو-گذری استفاده کنید. کامپوننت‌هایی که چیز متفاوتی سمت کاربر رندر می‌کنند می‌توانند stateای شبیه به `this.state.isClient` را بخوانند، که می‌توانید آن را در `componentDidMount()` برابر `true` قرار دهید. به این طریق در گذر اولیه رندر، همان محتوای سمت سرور رندر می‌شود، از عدم تطابق جلوگیری می‌شود، ولی یک گذر همگام درست بعد از hydration اتفاق می‌افتد. توجه کنید که در این روش کامپوننت‌های شما کم سرعت می‌شوند زیرا باید دوبار رندر شوند، پس با دقت استفاده کنید.
+
+نسبت به اتصال ضعیف کاربر توجه داشته باشید. کد JavaScript می‌تواند خیلی دیرتر از HTML اولیه رندر شود، پس اگر چیز متفاوتی در گذر فقط-کاربر رندر کنید، انتقال می‌تواند نامطلوب باشد. گرچه، اگر به خوبی اجرا شود، می‌تواند برای رندر شدن "shell" نرم‌افزار روی سرور مفید باشد، و فقط چند ابزارک سمت کاربر را نشان می‌دهد. برای اینکه بدانید این کار بدون اینکه درچار مشکل تطابق شوید چطور انجام می‌شود، به توضیحات پاراگراف قبلی مراجعه کنید.
 </p>
 
 * * *
@@ -113,9 +111,9 @@ ReactDOM.findDOMNode(component)
 
 > نکته:
 >
-> `findDOMNode` only works on mounted components (that is, components that have been placed in the DOM). If you try to call this on a component that has not been mounted yet (like calling `findDOMNode()` in `render()` on a component that has yet to be created) an exception will be thrown.
+> `findDOMNode` فقط روی کامپوننت‌هایی که mount شده اند کار می‌کنند (که آن کامپوننت در جای خود در DOM قرار گرفته است). اگر سعی کنید که آن را در کامپوننت فراخوانی کنید که هنوز در صفحه mount نشده است (مثل فراخوانی  `findDOMNode()` در `render()` روی کامپوننتی که هنوز ایجاد نشده است) به exception میخورید.
 >
-> `findDOMNode` cannot be used on function components.
+> `findDOMNode` در کامپوننت‌های تابعی کار نمی‌کند.
 </p>
 
 * * *
