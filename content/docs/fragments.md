@@ -115,7 +115,7 @@ You can use `<></>` the same way you'd use any other element except that it does
 
 ### Keyed Fragments {#keyed-fragments}
 
-Fragments declared with the explicit `<React.Fragment>` syntax may have keys. A use case for this is mapping a collection to an array of fragments -- for example, to create a description list:
+تکه های اعلام شده با نحوی صریح `<React.Fragment>` ممکن است دارای کلید باشند. مورد استفاده برای این کار ، نقشه برداری از مجموعه به مجموعه ای از قطعات است - برای مثال ، برای ایجاد یک لیست توضیحات:
 
 ```jsx
 function Glossary(props) {
@@ -135,6 +135,6 @@ function Glossary(props) {
 
 `key` is the only attribute that can be passed to `Fragment`. In the future, we may add support for additional attributes, such as event handlers.
 
-### Live Demo {#live-demo}
+### نسخه ی نمایشی زنده {#live-demo}
 
-You can try out the new JSX fragment syntax with this [CodePen](https://codepen.io/reactjs/pen/VrEbjE?editors=1000).
+می توانید با این [CodePen](https://codepen.io/reactjs/pen/VrEbjE?editors=1000) نحو جدید قطعه JSX را امتحان کنید.
