@@ -4,9 +4,9 @@ title: Forwarding Refs
 permalink: docs/forwarding-refs.html
 ---
 
-Ref forwarding is a technique for automatically passing a [ref](/docs/refs-and-the-dom.html) through a component to one of its children. This is typically not necessary for most components in the application. However, it can be useful for some kinds of components, especially in reusable component libraries. The most common scenarios are described below.
+حمل مرجع روشی برای انتقال خودکار [ref] (/docs/refs-and-the-dom.html) از طریق یک جزء به یکی از فرزندانش است. این به طور معمول برای بیشتر مؤلفه های برنامه ضروری نیست. با این حال، این می تواند برای برخی از انواع مؤلفه ها، به ویژه در کتابخانه های مؤلفه قابل استفاده مجدد، مفید باشد. متداول ترین موضوع ها در زیر توضیح داده شده است.
 
-## Forwarding refs to DOM components {#forwarding-refs-to-dom-components}
+## حمل جرمع به DOM کامپوننت {#forwarding-refs-to-dom-components}
 
 Consider a `FancyButton` component that renders the native `button` DOM element:
 `embed:forwarding-refs/fancy-button-simple.js`
@@ -31,13 +31,13 @@ Here is a step-by-step explanation of what happens in the above example:
 1. We forward this `ref` argument down to `<button ref={ref}>` by specifying it as a JSX attribute.
 1. When the ref is attached, `ref.current` will point to the `<button>` DOM node.
 
->Note
+>توجه
 >
 >The second `ref` argument only exists when you define a component with `React.forwardRef` call. Regular function or class components don't receive the `ref` argument, and ref is not available in props either.
 >
 >Ref forwarding is not limited to DOM components. You can forward refs to class component instances, too.
 
-## Note for component library maintainers {#note-for-component-library-maintainers}
+## نکته برای نگهدارنده های کتابخانه ها {#note-for-component-library-maintainers}
 
 **When you start using `forwardRef` in a component library, you should treat it as a breaking change and release a new major version of your library.** This is because your library likely has an observably different behavior (such as what refs get assigned to, and what types are exported), and this can break apps and other libraries that depend on the old behavior.
 
