@@ -21,7 +21,7 @@ If you load React from a `<script>` tag, these top-level APIs are available on t
 
 ### پشتیبانی مرورگر {#browser-support}
 
-ری اکت از کلیه مرورگرهای محبوب، از جمله Internet Explorer 9 و بالاتر پشتیبانی می کند، اگرچه [چند پیش نیاز دارد] (/ اسناد / javascript-Environment-Requires.html) تا برای مرورگرهای قدیمی مانند IE 9 و IE 10 به خوبی عمل کند.
+ری اکت از کلیه مرورگرهای محبوب، از جمله Internet Explorer 9 و بالاتر پشتیبانی می کند، اگرچه [چند پیش نیاز دارد](/docs/javascript-Environment-Requires.html) تا برای مرورگرهای قدیمی مانند IE 9 و IE 10 به خوبی عمل کند.
 
 > نکته
 >
@@ -42,7 +42,7 @@ If the React element was previously rendered into `container`, this will perform
 
 If the optional callback is provided, it will be executed after the component is rendered or updated.
 
-> Note:
+> نکته:
 >
 > `ReactDOM.render()` controls the contents of the container node you pass in. Any existing DOM elements inside are replaced when first called. Later calls use React’s DOM diffing algorithm for efficient updates.
 >
@@ -111,4 +111,4 @@ When a component renders to `null` or `false`, `findDOMNode` returns `null`. Whe
 ReactDOM.createPortal(child, container)
 ```
 
-Creates a portal. Portals provide a way to [render children into a DOM node that exists outside the hierarchy of the DOM component](/docs/portals.html).
+ایجاد یک پرتال. پورتال ها راهی برای [دادن اجزای فرزند به گره DOM که در خارج از سلسله مراتب از مؤلفه DOM وجود دارد ارائه می دهد](/docs/portalals.html).
