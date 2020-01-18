@@ -70,7 +70,7 @@ ReactDOM.hydrate(element, container[, callback])
 <p dir="rtl">
 Same as [`render()`](#render), but is used to hydrate a container whose HTML contents were rendered by [`ReactDOMServer`](/docs/react-dom-server.html). React will attempt to attach event listeners to the existing markup.
 
-React expects that the rendered content is identical between the server and the client. It can patch up differences in text content, but you should treat mismatches as bugs and fix them. In development mode, React warns about mismatches during hydration. There are no guarantees that attribute differences will be patched up in case of mismatches. This is important for performance reasons because in most apps, mismatches are rare, and so validating all markup would be prohibitively expensive.
+ری اکت انتظار دارد که محتوای ارائه شده بین سرور و کلاینت یکسان باشد. این می تواند اختلافات در متن را برطرف کند، اما باید ناسازگاری ها را با اشکال در نظر بگیرید و آنها را برطرف کنید. در حالت توسعه، React در مورد عدم تطابق هشدار می دهد. هیچ تضمینی وجود ندارد که اختلاف ویژگی ها در صورت عدم تطابق در آنها برطرف شود. این امر به دلایل عملکرد بسیار مهم است زیرا در اکثر برنامه ها، عدم تطابق نادر است، بنابراین اعتبار و اهمیت دادن به همه نشانه گذاری ها بسیار گران قیمت است.
 
 If a single element's attribute or text content is unavoidably different between the server and the client (for example, a timestamp), you may silence the warning by adding `suppressHydrationWarning={true}` to the element. It only works one level deep, and is intended to be an escape hatch. Don't overuse it. Unless it's text content, React still won't attempt to patch it up, so it may remain inconsistent until future updates.
 
