@@ -134,8 +134,10 @@ function Glossary(props) {
 }
 ```
 
-`key` is the only attribute that can be passed to `Fragment`. In the future, we may add support for additional attributes, such as event handlers.
 
-### Live Demo {#live-demo}
+"کلید" تنها صفتی است که می توان به Fragment منتقل کرد. در آینده، ما ممکن است از ویژگی های بیشتری بعدا پشتیبانی کنیم، مانند کنترل رویداد ها
 
-You can try out the new JSX fragment syntax with this [CodePen](https://codepen.io/reactjs/pen/VrEbjE?editors=1000).
+
+### نسخه ی نمایشی زنده {#live-demo}
+
+می توانید با این [CodePen](https://codepen.io/reactjs/pen/VrEbjE?editors=1000) نحو جدید قطعه JSX را امتحان کنید.
