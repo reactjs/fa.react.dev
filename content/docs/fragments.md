@@ -4,7 +4,7 @@ title: Fragments
 permalink: docs/fragments.html
 ---
 
-A common pattern in React is for a component to return multiple elements. Fragments let you group a list of children without adding extra nodes to the DOM.
+یک الگوی رایج در React این است که یک مؤلفه بتواند عناصر مختلف را برگرداند. قطعات به شما امکان می دهد لیستی از فرزندان را بدون اضافه کردن گره های اضافی به DOM گروه بندی کنید.
 
 ```js
 render() {
