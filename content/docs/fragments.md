@@ -113,7 +113,7 @@ class Columns extends React.Component {
 }
 ```
 
-You can use `<></>` the same way you'd use any other element except that it doesn't support keys or attributes.
+می توانید از `<></>` ها به همان روشی استفاده کنید که می توانید از هر عنصر دیگری استفاده کنید به جز اینکه از ویژگی ها پشتیبانی نمی کند.
 
 ### قطعات اصلی {#keyed-fragments}
 
@@ -135,7 +135,8 @@ function Glossary(props) {
 }
 ```
 
-`key` is the only attribute that can be passed to `Fragment`. In the future, we may add support for additional attributes, such as event handlers.
+"کلید" تنها صفتی است که می توان به Fragment منتقل کرد. در آینده، ما ممکن است از ویژگی های بیشتری بعدا پشتیبانی کنیم، مانند کنترل رویداد ها
+
 
 ### نسخه ی نمایشی زنده {#live-demo}
 
