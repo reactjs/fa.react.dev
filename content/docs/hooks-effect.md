@@ -6,9 +6,9 @@ next: hooks-rules.html
 prev: hooks-state.html
 ---
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+*Hookها* ضمیمه جدید ری‌اکت ۱۶.۸ هستند. آن‌ها به شما اجازه می‌دهند تا از state و سایر ویژگی‌های ری‌اکت بدون نوشتن class استفاده کنید.
 
-The *Effect Hook* lets you perform side effects in function components:
+*Effect Hook* به شما اجازه می‌دهد تا اثرات جانبی را در کامپوننت‌های تابعی نمایش دهید:
 
 ```js{1,6-10}
 import React, { useState, useEffect } from 'react';
@@ -33,21 +33,21 @@ function Example() {
 }
 ```
 
-This snippet is based on the [counter example from the previous page](/docs/hooks-state.html), but we added a new feature to it: we set the document title to a custom message including the number of clicks.
+این تکه کد با توجه به [مثال counter در صفحه قبلی است](/docs/hooks-state.html), ولی ما ویژگی جدیدی به آن افزودیم: ما title سند را با پیامی دستی تنظیم کردیم که تعداد کلیک‌ها را نشان می‌دهد.
 
-Data fetching, setting up a subscription, and manually changing the DOM in React components are all examples of side effects. Whether or not you're used to calling these operations "side effects" (or just "effects"), you've likely performed them in your components before.
+دریافت دادها, تنظیم اشتراک(subscription), و تغییر دستی DOM مثال‌هایی از اثرات جانبی هستند. خواه نا خواه شما اینگونه عملیات را "اثرات جانبی"( یا تاثیرات ) خطاب می‌کردید, احتمالا قبلا آنها را در کامپوننت‌های خود اجرا کردید.
 
->Tip
+>نکته
 >
->If you're familiar with React class lifecycle methods, you can think of `useEffect` Hook as `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount` combined.
+>اگر با متدهای چرخه‌حیات ری‌اکت آشنا باشید, می‌توانید به `useEffect` به عنوان ترکیبی از `componentDidMount`, `componentDidUpdate`, و `componentWillUnmount` نگاه کنید.
 
-There are two common kinds of side effects in React components: those that don't require cleanup, and those that do. Let's look at this distinction in more detail.
+در کامپوننت‌های React دو گونه اثرجانبی وجود دارد: آنهایی که به پاک‌سازی نیاز دارند و آنهایی که به پاک‌سازی نیاز ندارند. بیاید به این تمیز نگاهی عمیق‌تر داشته باشیم.
 
-## Effects Without Cleanup {#effects-without-cleanup}
+## Effects بدون نیاز به پاکسازی {#effects-without-cleanup}
 
 Sometimes, we want to **run some additional code after React has updated the DOM.** Network requests, manual DOM mutations, and logging are common examples of effects that don't require a cleanup. We say that because we can run them and immediately forget about them. Let's compare how classes and Hooks let us express such side effects.
 
-### Example Using Classes {#example-using-classes}
+### Example با استفاده از Classeها {#example-using-classes}
 
 In React class components, the `render` method itself shouldn't cause side effects. It would be too early -- we typically want to perform our effects *after* React has updated the DOM.
 
