@@ -8,7 +8,7 @@ prev: hooks-state.html
 
 *Hookها* ضمیمه جدید ری‌اکت ۱۶.۸ هستند. آن‌ها به شما اجازه می‌دهند تا از state و سایر ویژگی‌های ری‌اکت بدون نوشتن class استفاده کنید.
 
-*Effect Hook* به شما اجازه می‌دهد تا اثرات جانبی را در کامپوننت‌های تابعی نمایش دهید:
+*Effect Hook* به شما اجازه می‌دهد تا effectهای جانبی را در کامپوننت‌های تابعی نمایش دهید:
 
 ```js{1,6-10}
 import React, { useState, useEffect } from 'react';
@@ -35,23 +35,22 @@ function Example() {
 
 این تکه کد با توجه به [مثال counter در صفحه قبلی است](/docs/hooks-state.html), ولی ما ویژگی جدیدی به آن افزودیم: ما title سند را با پیامی دستی تنظیم کردیم که تعداد کلیک‌ها را نشان می‌دهد.
 
-دریافت دادها, تنظیم اشتراک(subscription), و تغییر دستی DOM مثال‌هایی از اثرات جانبی هستند. خواه نا خواه شما اینگونه عملیات را "اثرات جانبی"( یا تاثیرات ) خطاب می‌کردید, احتمالا قبلا آنها را در کامپوننت‌های خود اجرا کردید.
+دریافت دادها, تنظیم اشتراک(subscription), و تغییر دستی DOM مثال‌هایی از effectهای جانبی هستند. خواه نا خواه شما اینگونه عملیات را "effectهای جانبی"( یا تاثیرات ) خطاب می‌کردید, احتمالا قبلا آنها را در کامپوننت‌های خود اجرا کردید.
 
 >نکته
 >
 >اگر با متدهای چرخه‌حیات ری‌اکت آشنا باشید, می‌توانید به `useEffect` به عنوان ترکیبی از `componentDidMount`, `componentDidUpdate`, و `componentWillUnmount` نگاه کنید.
 
-در کامپوننت‌های React دو گونه اثرجانبی وجود دارد: آنهایی که به پاک‌سازی نیاز دارند و آنهایی که به پاک‌سازی نیاز ندارند. بیاید به این تمیز نگاهی عمیق‌تر داشته باشیم.
+در کامپوننت‌های React دو گونه effectجانبی وجود دارد: آنهایی که به پاک‌سازی نیاز دارند و آنهایی که به پاک‌سازی نیاز ندارند. بیاید به این تمیز نگاهی عمیق‌تر داشته باشیم.
 
-## Effects بدون نیاز به پاکسازی {#effects-without-cleanup}
+## Effectهای بدون نیاز به پاکسازی {#effects-without-cleanup}
 
-Sometimes, we want to **run some additional code after React has updated the DOM.** Network requests, manual DOM mutations, and logging are common examples of effects that don't require a cleanup. We say that because we can run them and immediately forget about them. Let's compare how classes and Hooks let us express such side effects.
+گاهی اوقات نیاز داریم تا **مقداری کد اضافه پس از آنکه ری‌اکت Dom را به‌روز رسانی کرد اجرا کنیم**. درخواست‌های درون شبکه، تغییرات دستی DOM، و گزارش‌گیری مثال‌هایی متداول از effectها هستند که نیازی به پاک‌سازی ندارند. زیرا می‌گوییم میتوانیم آنها را اجرا کنیم و فورا فراموششان کنیم. بییاید ببینیم که classها و Hookها چگونه این effectهای جانبی را بیان می‌کنند.
 
-### Example با استفاده از Classeها {#example-using-classes}
+### مثالی با استفاده از Classها {#example-using-classes}
 
-In React class components, the `render` method itself shouldn't cause side effects. It would be too early -- we typically want to perform our effects *after* React has updated the DOM.
-
-This is why in React classes, we put side effects into `componentDidMount` and `componentDidUpdate`. Coming back to our example, here is a React counter class component that updates the document title right after React makes changes to the DOM:
+در کامپوننت‌های از نوع class ری‌اکت، متد `render` نباید خودش باعث effectهای جانبی باشد. اگر باشد خیلی زود است -- معمولا می‌خواهیم تا effectهای ما *بعد* از اینکه ری‌اکت DOM را به‌روز رسانی کرد اتفاق بیفتد.
+به همین دلیل است که در ری‌اکت این effectهای جانبی را درون `componentDidMount` و `componentDidUpdate` قرار می‌دهیم.  بر‌می‌گردیم به مثالمان, در اینجا کامپوننت شمارش از نوع class ری‌اکت را داریم که title سند را درست بعد از آنکه ری‌اکت تغییرات را روی DOM اعمال کرد به‌روز رسانی می‌کند.
 
 ```js{9-15}
 class Example extends React.Component {
@@ -83,15 +82,15 @@ class Example extends React.Component {
 }
 ```
 
-Note how **we have to duplicate the code between these two lifecycle methods in class.**
+دقت کنید که چگونه **مجبوریم تا کد را در این دو متد چرخه‌حیات تکرار کنیم.**
 
-This is because in many cases we want to perform the same side effect regardless of whether the component just mounted, or if it has been updated. Conceptually, we want it to happen after every render -- but React class components don't have a method like this. We could extract a separate method but we would still have to call it in two places.
+زیرا در چندین مورد می‌خواهیم effect یکسانی را صرفنظر از اینکه کامپوننت فقط mount یا به‌روز رسانی شده است اعمال کنیم. به طور دقیق‌تر می‌خواهیم بعد از هر رندر اتفاق بیفتد -- ولی کاپوننت‌های از نوع class  ری‌اکت متدی به این شکل ندارند. می‌توانیم متد مجزایی اقتباس کنیم ولی همچنان مجبوریم در دو مکان صدایش کنیم.
 
-Now let's see how we can do the same with the `useEffect` Hook.
+حالا ببینیم چگونه می‌توانیم همین کار را با Hook `useEffect` انجام دهیم.
 
 ### Example Using Hooks {#example-using-hooks}
 
-We've already seen this example at the top of this page, but let's take a closer look at it:
+قبلا این مثال را در بالای صفحه مشاهده کردیم ، حالا می‌خواهیم نگاه دقیق‌تری به آن کنیم:
 
 ```js{1,6-8}
 import React, { useState, useEffect } from 'react';
@@ -114,15 +113,15 @@ function Example() {
 }
 ```
 
-**What does `useEffect` do?** By using this Hook, you tell React that your component needs to do something after render. React will remember the function you passed (we'll refer to it as our "effect"), and call it later after performing the DOM updates. In this effect, we set the document title, but we could also perform data fetching or call some other imperative API.
+**`useEffect` چه کاری انجام می‌دهد?** با استفاده از این Hook, به ری‌اکت اعلام می‌کنید که کامپوننت شما بعد از رندر نیاز به انجام کاری دارد. ری‌اکت تابعی که شما به آن انتقال دادید را به خاطر خواهد آورد (که همان "effect" خودمان است) و بعد از به‌روز رسانی فراخوانی‌اش می‌کند. ما در این effect ، عنوان سند را تنظیم می‌کنیم، ولی می‌توانیم دریافت داده یا فراخوانی برخی از APIهای ضروری را انجام دهیم.
 
-**Why is `useEffect` called inside a component?** Placing `useEffect` inside the component lets us access the `count` state variable (or any props) right from the effect. We don't need a special API to read it -- it's already in the function scope. Hooks embrace JavaScript closures and avoid introducing React-specific APIs where JavaScript already provides a solution.
+**چر`useEffect` درون کامپوننت فراخوانی می‌شود?** قراردادن `useEffect` به ما اجازه می‌دهد تا به state `count` (یا هر props دیگری) درست در درون effect دست‌رسی داشته باشیم. و برای خواندن آنها به API دیگری نیاز نداریم ــ زیرا همواره در scope تابع قرار دارند. Hookها از closureهای زبان جاوا اسکریپت ناشی می‌شوند و از تولید APIهای خاص ری‌اکت جلوگیری می‌کنند چرا که قبلا جاوااسکریپت این راه‌حل را ارایه داده است.
 
-**Does `useEffect` run after every render?** Yes! By default, it runs both after the first render *and* after every update. (We will later talk about [how to customize this](#tip-optimizing-performance-by-skipping-effects).) Instead of thinking in terms of "mounting" and "updating", you might find it easier to think that effects happen "after render". React guarantees the DOM has been updated by the time it runs the effects.
+**آیا `useEffect` بعد از هر رندر اجرا می‌شود?** بله! به صورت پیش‌فرض, ‌`useEffect` در اولین رندر *و* بعد از هر به‌روز رسانی اجرا می‌شود. (بعدا در مورد اینکه چگونه [آن را شخصی‌سازی کنیم صحبت می‌کنیم](#tip-optimizing-performance-by-skipping-effects).) به جای اینکه به آن به عنوان مدت "به‌روز رسانی شدن" و "mountشدن" فکر کنید آسان‌تر است که به آن به عنوان effectی که بعد از هر رندر اتفاق می‌افتد فکر کنید. ری‌اکت تضمین می‌کند که در زمانی که effectها اجرا می‌شوند DOM به‌روز رسانی شده باشد.
 
-### Detailed Explanation {#detailed-explanation}
+### توضیحات مفصل {#detailed-explanation}
 
-Now that we know more about effects, these lines should make sense:
+حالا که بیشتر در مورد این effectها می‌دانیم, این عبارات برای ما مفهوم بهتری پیدا می‌کنند:
 
 ```js
 function Example() {
@@ -134,13 +133,14 @@ function Example() {
 }
 ```
 
-We declare the `count` state variable, and then we tell React we need to use an effect. We pass a function to the `useEffect` Hook. This function we pass *is* our effect. Inside our effect, we set the document title using the `document.title` browser API. We can read the latest `count` inside the effect because it's in the scope of our function. When React renders our component, it will remember the effect we used, and then run our effect after updating the DOM. This happens for every render, including the first one.
+ما متغیر state `count` را ایجاد می‌کنیم، و بعد از آن به ری‌اکت می‌گوییم که میخوایم از effectی استفاده کنیم. یک تابع به Hook `useEffect` انتقال می‌دهیم. این تابعی که انتقال می‌دهیم effect ما *می‌باشد*. درون effect title سند را با استفاده از API مرورگر `document.title` قرار می‌دهیم. می‌توانیم آخرین مقدار `count` را درون effect داشته باشیم زیرا درون scope تابع ما قرار دارد. هنگامی که ری‌اکت کامپوننت‌مان را رندر می‌کند، effectمان را به یاد خواهد داشت، سپس effect را بعد از به‌روز رسانی DOM اجرا می‌کند. این عمل برای هر رندر حتی اولین رندر اتفاق می‌افتد.
 
-Experienced JavaScript developers might notice that the function passed to `useEffect` is going to be different on every render. This is intentional. In fact, this is what lets us read the `count` value from inside the effect without worrying about it getting stale. Every time we re-render, we schedule a _different_ effect, replacing the previous one. In a way, this makes the effects behave more like a part of the render result -- each effect "belongs" to a particular render. We will see more clearly why this is useful [later on this page](#explanation-why-effects-run-on-each-update).
+توسعه‌دهندگان باتجربه می‌دانند که تابعی که به `useEffect` انتقال می‌دهیم در هر رندر متفاوت است. این عمدی است. در حقیقت، این چیزی است که به ما اجازه می‌دهد مقدار `count` را درون effect بخوانیم بدون آنکه نگران کهنه شدن آن باشیم. هر بار که مجددا رندر میکنیم یک effect ـمتفاوتـ برنامه ریزی می‌کنیم، که جایگزین قبلی می‌شود. به طریقی این باعث می‌شود که effectها شبیه به قسمتی از نتیجه رندر رفتار کنند -- هر effect "متعلق" به رندر مشخصی است. بعدا در این صفحه به وضوح می‌بینیم که چرا این اینقدر  [مفید است](#explanation-why-effects-run-on-each-update)
 
->Tip
+>نکته
 >
->Unlike `componentDidMount` or `componentDidUpdate`, effects scheduled with `useEffect` don't block the browser from updating the screen. This makes your app feel more responsive. The majority of effects don't need to happen synchronously. In the uncommon cases where they do (such as measuring the layout), there is a separate [`useLayoutEffect`](/docs/hooks-reference.html#uselayouteffect) Hook with an API identical to `useEffect`.
+> برخلاف `componentDidMount` یا `componentDidUpdate`، effectهایی که با `useEffect` برنامه‌ریزی می‌شوند مرورگر را از به‌روز رسانی صفحه باز نمی‌دارند. این باعث میشه نرم‌افزار شما حس responsive بهتری داشته باشد. اکثر effectها نیازی ندارند تا همگام اتفاق بیافتند.  در جاهای نادری که همگام اتفاق نمی‌افتند (مثل اندازگیری layout)، Hook مجزایی به نام [`useLayoutEffect`](/docs/hooks-reference.html#uselayouteffect) با APIای همسان از `useEffect` وجود دارد.
+
 
 ## Effects with Cleanup {#effects-with-cleanup}
 
