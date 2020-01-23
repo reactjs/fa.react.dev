@@ -427,11 +427,11 @@ ChatAPI.subscribeToFriendStatus(300, handleStatusChange);     // Run next effect
 ChatAPI.unsubscribeFromFriendStatus(300, handleStatusChange); // Clean up last effect
 ```
 
-این رفتار ثباتی را به صورت پیش‌فرض تضمین می‌کند و از باگ‌هایی که به دلیل فراموش کردن منظق بهروز رسانی. بوجود می‌آید جلوگیری می‌کند.
+این رفتار ثباتی را به صورت پیش‌فرض تضمین می‌کند و از باگ‌هایی که به دلیل فراموش کردن منطق به‌روز رسانی بوجود می‌آید جلوگیری می‌کند.
 
-### Tip: Optimizing Performance by Skipping Effects {#tip-optimizing-performance-by-skipping-effects}
+### نکته: بهینه‌سازی عملکرد باپریدن از Effect {#tip-optimizing-performance-by-skipping-effects}
 
-In some cases, cleaning up or applying the effect after every render might create a performance problem. In class components, we can solve this by writing an extra comparison with `prevProps` or `prevState` inside `componentDidUpdate`:
+در برخی موارد، پاک‌سازی یا اعمال effect بعد از هر رندر ممکن است مشکل عملکردی ایجاد کند. در کامپوننت‌های classای،این مشکل را با نوشتن مقایسه‌ای با `prevProps` یا `prevState` در `componentDidUpdate` حل می‌کنیم.
 
 ```js
 componentDidUpdate(prevProps, prevState) {
@@ -440,8 +440,7 @@ componentDidUpdate(prevProps, prevState) {
   }
 }
 ```
-
-This requirement is common enough that it is built into the `useEffect` Hook API. You can tell React to *skip* applying an effect if certain values haven't changed between re-renders. To do so, pass an array as an optional second argument to `useEffect`:
+این نیاز به اندازه‌ کافی معمول است که درون ساختار API `useEffect` ساخته شده است. میتوانید به ری‌اکت بگویید اگر مقادیر خاصی بین رندر مجدد تغییری نداشته است از اعمال effect خوداری کن. برای این کار یک آرایه به عنوان آرگومان دوم به `useEffect` انتقال می‌دهیم.
 
 ```js{3}
 useEffect(() => {
@@ -449,11 +448,11 @@ useEffect(() => {
 }, [count]); // Only re-run the effect if count changes
 ```
 
-In the example above, we pass `[count]` as the second argument. What does this mean? If the `count` is `5`, and then our component re-renders with `count` still equal to `5`, React will compare `[5]` from the previous render and `[5]` from the next render. Because all items in the array are the same (`5 === 5`), React would skip the effect. That's our optimization.
+در مثال بالا, `[count]` را به عنوان آرگومان دوم انتقال می‌دهیم. این به چه معنی‌ست?  اگر `count` برابر `5` باشد, و کامپوننت ما دوباره با مقدار `count` که برابر `5` است رندر شود, ری‌اکت `[5]` از رندر قبلی را با `[5]` از رندر بعدی مقایسه می‌کند. چون تمام موارد در آرایه مثل هم هستن(`5 === 5`), ری‌اکت از این effect خودداری می‌کند.  این بهینه‌سازی ماست.
 
-When we render with `count` updated to `6`, React will compare the items in the `[5]` array from the previous render to items in the `[6]` array from the next render. This time, React will re-apply the effect because `5 !== 6`. If there are multiple items in the array, React will re-run the effect even if just one of them is different.
+وقتی  با مقدار `count` که به `6` به‌روز رسانی شده رندر می‌کنیم,ری‌اکت مقدار آرایه `[5]`  در آیتم قبلی و  `[6]` در رندر بعدی را مقایسه می‌کند. این سری, ری‌اکت effect را مجدد اعمال می‌کند زیرا `5 !== 6`. اگر چند متغییر در آرایه باشد ری‌اکت effect را در صورتی که حتی یکی از آنها متفاوت باشد اعمال می‌کند.
 
-This also works for effects that have a cleanup phase:
+که این شامل Effectهایی که فاز پاک‌سازی دارند نیز می‌باشد:
 
 ```js{10}
 useEffect(() => {
@@ -468,22 +467,23 @@ useEffect(() => {
 }, [props.friend.id]); // Only re-subscribe if props.friend.id changes
 ```
 
-In the future, the second argument might get added automatically by a build-time transformation.
+در آینده ممکن است, آرگومان دوم هنگام انتقالات ساخت (build) به شکل خودکار اضافه شود.
 
->Note
+>توجه
 >
->If you use this optimization, make sure the array includes **all values from the component scope (such as props and state) that change over time and that are used by the effect**. Otherwise, your code will reference stale values from previous renders. Learn more about [how to deal with functions](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) and [what to do when the array changes too often](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often).
+>اگر از این بهینه سازی استفاده می‌کنید, مطمين شوید که **تمام مقادیر از scope کامپوننت (مثل props و state) که در طول زمان تغییر می‌کنند و توسط effect استفاده می‌شوند در آرایه حضور دارند**. در غیر این صورت، کد شما مقادیر کهنه رندر قبلی را reference خواهد داد. بیشتر بیاموزید که [چگونه میتوان با توابع کار کرد](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) و [چکار کنیم اگر آرایه اکثرا دچار تغییر شود](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often).
 >
->If you want to run an effect and clean it up only once (on mount and unmount), you can pass an empty array (`[]`) as a second argument. This tells React that your effect doesn't depend on *any* values from props or state, so it never needs to re-run. This isn't handled as a special case -- it follows directly from how the dependencies array always works.
+>اگر می‌خواهید که یک effect را فقط یکباراجرا و پاکسازی کنید (در mount و unmount), می‌توانید یک آرایه حالی (`[]`) به عنوان آرگومان دوم انتقال دهید. این به ری‌اکت اعلام می‌کند که effect شما هیچ یک از مقادیر state یا props وابسته نیست، بنابراین به اجرای مجدد نیازی ندارد. این به عنوان موردی خاص بررسی نمی‌شود -- به طور مستقیم از چگونگی عملکرد آرایه وابستگی پیروی می کند.
 >
->If you pass an empty array (`[]`), the props and state inside the effect will always have their initial values. While passing `[]` as the second argument is closer to the familiar `componentDidMount` and `componentWillUnmount` mental model, there are usually [better](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [solutions](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) to avoid re-running effects too often. Also, don't forget that React defers running `useEffect` until after the browser has painted, so doing extra work is less of a problem.
+>اگر آرایه خالی انتقال دهید(`[]`), propها و state درون effect همیشه مقادیر اولیه خود را خواهند داشت. هنگامی که `[]` به عنوان آرگومان دوم انتقال می‌دهید از لحاظ فکری شبیه به مدل `componentDidMount` و `componentWillUnmount` است, معمولا [راه](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [حل](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) بهتری برای جلوگیری از رندر‌های مکرر وجود دارد. همچنین, فراموش نکنید که ری‌اکت `useEffect` را تا زمانی که مرورگر تصویر را مشخص کند به تاخیر می‌اندازد,پس کار از محکم کاری عیب نمی‌کند.
 >
->We recommend using the [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) rule as part of our [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) package. It warns when dependencies are specified incorrectly and suggests a fix.
+>ما توصیه می‌کنیم که از قوانین [`exhaustive-deps`](https://github.com/facebook/react/issues/14920)به عنوان بخشی از پکیج [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) استفاده کنید. اگر از dependencies درست استفاده نکنید به شما هشدار می‌دهد و راه حل را توصیه می‌کند.
 
-## Next Steps {#next-steps}
+## ‌گام‌های بعدی {#next-steps}
 
-Congratulations! This was a long page, but hopefully by the end most of your questions about effects were answered. You've learned both the State Hook and the Effect Hook, and there is a *lot* you can do with both of them combined. They cover most of the use cases for classes -- and where they don't, you might find the [additional Hooks](/docs/hooks-reference.html) helpful.
+تبریک میگوییم! این صفحه طولانی بود,ولی خوشبختانه اکثر سوالات شما در مورد effectها پاسخ داده شد. شما هر دوی State Hook و Effect Hook را آموختید, و کارهای *زیادی* با ترکیب این دو می‌توانید انجام دهید. آنها اکثر موارد استفاده در classها را پوشش می‌دهند -- و اگر ندادند ، احتمالا [Hookهای اضافی](/docs/hooks-reference.html) مفید هستند.
 
-We're also starting to see how Hooks solve problems outlined in [Motivation](/docs/hooks-intro.html#motivation). We've seen how effect cleanup avoids duplication in `componentDidUpdate` and `componentWillUnmount`, brings related code closer together, and helps us avoid bugs. We've also seen how we can separate effects by their purpose, which is something we couldn't do in classes at all.
+همچنین می‌توانیم ببنیم که Hookها چگونه مشکلات مشخص شده در [Motivation](/docs/hooks-intro.html#motivation) را حل می‌کنند. دیدم که effectپاک‌سازی چگونه ار دوباره کاری در `componentDidUpdate` و `componentWillUnmount` جلوگیری می‌کند. کدهای مرتبط را نزدیک هم قرار می‌دهد، و کمک می‌کند از باگ جلوگیری کنیم. همچنین دیدیم که چطور می‌توان effectها را با توجه به هدفشات از هم جدا کرد، که چیزیست که در classها اصلا نمی‌توانستیم انجام دهیم.
 
-At this point you might be questioning how Hooks work. How can React know which `useState` call corresponds to which state variable between re-renders? How does React "match up" previous and next effects on every update? **On the next page we will learn about the [Rules of Hooks](/docs/hooks-rules.html) -- they're essential to making Hooks work.**
+
+در این نقطه شاید برایتان این سوال پیش آمده باشد که Hookها چگونه کار می‌کنند. چگونه ری‌اکت میداند که کدام فراخوانی از `useState` به کدام متغییر state در هر رندر پاسخ می‌دهد. چگونه چگونه ری‌اکت در هر به‌روز رسانی effectقبلی و بعدی را "match up" می‌کند ؟ **در صفحه بعد به [قوانین Hookها](/docs/hooks-rules.html) خواهیم پرداخت-- برای اینکه Hookها کار کنند ضرروی هستند.**
