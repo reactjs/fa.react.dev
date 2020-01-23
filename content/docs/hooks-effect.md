@@ -197,7 +197,7 @@ class FriendStatus extends React.Component {
 
 ببینم چگونه می‌شود این کامپوننت رو با استفاده از Hook ها نوشت.
 
-شاید به این فکر می‌کنید که ما به effect مجزایی نیاز داشته باشیم تا این پاک‌سازی رو انجام دهیم. ولی کدی که برای اضافه کردن و پاک ردن subscription به `useEffect`ای که برای نگهداری آنها در کنار هم طراحی شده بسیار مرتبط است. اگر effect شما یک تابع بر‌گرداند، ری‌کت زمانی آن را اجرا میکند که موقع پاک‌سازی باشد:
+شاید به این فکر می‌کنید که ما به effect مجزایی نیاز داشته باشیم تا این پاک‌سازی رو انجام دهیم. ولی کدی که برای اضافه کردن و پاک ردن subscription به `useEffect`ای که برای نگهداری آنها در کنار هم طراحی شده بسیار مرتبط است. اگر effect شما یک تابع بر‌گرداند، ری‌کت زمانی آن را اجرا می‌کند که موقع پاک‌سازی باشد:
 
 ```js{6-16}
 import React, { useState, useEffect } from 'react';
@@ -226,7 +226,7 @@ function FriendStatus(props) {
 
 **چرا از effect خود تابعی را برمی‌گردانیم?** یک مکانیزم پاک‌سازی و اختیاری در effectهاست. هر effect شاید یک تابع بازگرداند که به دنبالش پاک‌سازی را انجام دهد. این ما اجازه می‌دهد تا منطق اضافه کردن و پاک کردن subscriptions را در کنار هم نگه داریم. آنها جز یک effect هستند!
 
-**چه زمانی ری‌اکت عمل پاک‌سازی effect را انجام می‌دهد?** ری‌اکت عمل پاک‌سازی را هنگامی که کامپوننت unmount می‌شود انجام می‌دهد. گرچه، همانطور که قبلا آموختیم، effectها نه‌تنها یک بار بلکه در هر رندر اجرا می‌شوند. *همچنین* به این دلیلاست که ری‌کت قبل از اینکه effect را اجرا کند از رندر ثبلی پاک‌سازی می‌کند. در آینده بحث می‌کنیم که [چرا این کار از باگ جلوگیری می‌کند](#explanation-why-effects-run-on-each-update) و [و چگونه در صورت کاهش عمل‌کرد از این رفتار خودداری کنیم](#tip-optimizing-performance-by-skipping-effects).
+**چه زمانی ری‌اکت عمل پاک‌سازی effect را انجام می‌دهد?** ری‌اکت عمل پاک‌سازی را هنگامی که کامپوننت unmount می‌شود انجام می‌دهد. گرچه، همانطور که قبلا آموختیم، effectها نه‌تنها یک بار بلکه در هر رندر اجرا می‌شوند. *همچنین* به این دلیل است که ری‌کت قبل از اینکه effect را اجرا کند از رندر قبلی پاک‌سازی می‌کند. در آینده بحث می‌کنیم که [چرا این کار از باگ جلوگیری می‌کند](#explanation-why-effects-run-on-each-update) و [و چگونه در صورت کاهش عمل‌کرد از این رفتار خودداری کنیم](#tip-optimizing-performance-by-skipping-effects).
 
 >توجه
 >
@@ -267,11 +267,11 @@ Effect Hook این دو مورد را با یک API یکی می‌کند.
 
 ## نکته هایی برای استفاده از Effectها {#tips-for-using-effects}
 
-We'll continue this page with an in-depth look at some aspects of `useEffect` that experienced React users will likely be curious about. Don't feel obligated to dig into them now. You can always come back to this page to learn more details about the Effect Hook.
+ما این صفحه را با پرداختن به جنبه‌های از `useEffect` که کاربران با تجربه ری‌اکت در باره‌اش کنجکاو هستند ادامه می‌دهیم. خودتون رو ملزم نکنید که در آن حفر شوید. همیشه می‌توانید به این صفحه مراجعه کنید و در مورد Hook Effect دقیق‌تر بیاموزید.
 
-### Tip: Use Multiple Effects to Separate Concerns {#tip-use-multiple-effects-to-separate-concerns}
+### نکته: از چند Effect برای جدا کردن مهم‌ها استفاده کنید.{#tip-use-multiple-effects-to-separate-concerns}
 
-One of the problems we outlined in the [Motivation](/docs/hooks-intro.html#complex-components-become-hard-to-understand) for Hooks is that class lifecycle methods often contain unrelated logic, but related logic gets broken up into several methods. Here is a component that combines the counter and the friend status indicator logic from the previous examples:
+یکی از مشکلاتی که در [Motivation](/docs/hooks-intro.html#complex-components-become-hard-to-understand) Hookها نمایان شد این بود که گاهی اوقات در کامپوننت‌های classای اعلب شامل منطقنامرتبطی هستند, ولی منطق مرتبط در چندین متد شکسته شده‌اند. در اینجا کامپوننتی هست که منطق شاخص شمارش و وضعیت دوستان را در مثال ثبل با هم ترکیب می‌کند:
 
 ```js
 class FriendStatusWithCounter extends React.Component {
@@ -308,9 +308,9 @@ class FriendStatusWithCounter extends React.Component {
   // ...
 ```
 
-Note how the logic that sets `document.title` is split between `componentDidMount` and `componentDidUpdate`. The subscription logic is also spread between `componentDidMount` and `componentWillUnmount`. And `componentDidMount` contains code for both tasks.
+توجه کنید که چطور منطقی که `document.title` را قرار می‌دهد بین `componentDidMount` و `componentDidUpdate` تقسیم شده است. منطق subscription نیز هما ن‌طور بین `componentDidMount` و `componentWillUnmount` تقسیم شده است. و `componentDidMount` شامل کد هر دو امر است.
 
-So, how can Hooks solve this problem? Just like [you can use the *State* Hook more than once](/docs/hooks-state.html#tip-using-multiple-state-variables), you can also use several effects. This lets us separate unrelated logic into different effects:
+پسِ hookها چگونه این مشکل را برطرف می‌کنند? همان‌طور که [میتوانید از Hook *State* بیش از یک بار استفاده کنید](/docs/hooks-state.html#tip-using-multiple-state-variables), همچنین می‌توانید چندین effectداشته باشید. که به شما امکان می‌دهد تا منطق‌های نامرتبط را بین چندین effect جدا کنید:
 
 ```js{3,8}
 function FriendStatusWithCounter(props) {
@@ -334,13 +334,13 @@ function FriendStatusWithCounter(props) {
 }
 ```
 
-**Hooks let us split the code based on what it is doing** rather than a lifecycle method name. React will apply *every* effect used by the component, in the order they were specified.
+**Hookها اجازه می‌دهدند تا کد را با توجه به کاری که می‌کند جدا کنیم** درست برعکس متدهای چرخه حیات. ری‌اکت تمام effectهایی که کامپوننت از آنها استفاده می‌کند را به ترتیبی که مشخص شده‌اند اعمال می‌کند.
 
-### Explanation: Why Effects Run on Each Update {#explanation-why-effects-run-on-each-update}
+### توضیح: چرا Effectها در هر به‌روز رسانی اجرا می‌شوند؟ {#explanation-why-effects-run-on-each-update}
 
-If you're used to classes, you might be wondering why the effect cleanup phase happens after every re-render, and not just once during unmounting. Let's look at a practical example to see why this design helps us create components with fewer bugs.
+اگر قبلا از class استفاده می‌کردید، متعجب هستید که چرا فاز effect پاک‌سازی به جای اینکه فقط یک‌بار در حین unmount اتفاق بیافتد در هر رندر رخ می‌دهد. پس بگذارید که در این مثال خاص توضیح دهیم که چرا این طراحی به ما کمک می‌کند تا باگ‌های کمتری داشته باشیم.
 
-[Earlier on this page](#example-using-classes-1), we introduced an example `FriendStatus` component that displays whether a friend is online or not. Our class reads `friend.id` from `this.props`, subscribes to the friend status after the component mounts, and unsubscribes during unmounting:
+[قبلا در این صفحه](#example-using-classes-1), مثالی از کامپوننت `FriendStatus` که به ما نشان میداد وضعیت دوستان آنلاین هست یا خیر زدیم. کلاس ما `friend.id` را از `this.props` خوانده, و بعد از mount شدن کامپوننت subscribe می‌کند, در حین unsubscribe, unmount می‌کند:
 
 ```js
   componentDidMount() {
@@ -358,9 +358,9 @@ If you're used to classes, you might be wondering why the effect cleanup phase h
   }
 ```
 
-**But what happens if the `friend` prop changes** while the component is on the screen? Our component would continue displaying the online status of a different friend. This is a bug. We would also cause a memory leak or crash when unmounting since the unsubscribe call would use the wrong friend ID.
+**ولی چه اتفاقی می‌افتد در حالی که کامپوننت روی صفحه است props `friend` تغییر کند** ? کامپوننت ما وضعیت آنلاین بودن دوست دیگری را نشان می‌دهد و این یک باگ است.همچنین ممکن است باعث کمبود حافظه و خرابی شویم چرا که عمل  unsubscribe با آی‌دی دوست ریگری رخ می‌دهد.
 
-In a class component, we would need to add `componentDidUpdate` to handle this case:
+در کامپوننت classای برای کنترل این مورد از `componentDidUpdate` استفاده می‌کردیم:
 
 ```js{8-19}
   componentDidMount() {
@@ -391,9 +391,9 @@ In a class component, we would need to add `componentDidUpdate` to handle this c
   }
 ```
 
-Forgetting to handle `componentDidUpdate` properly is a common source of bugs in React applications.
+فراموش کردن استفاده درست از `componentDidUpdate` منبع باگ در برنامه‌‌های ری‌اکت است.
 
-Now consider the version of this component that uses Hooks:
+حالا ورژنی از این کامپوننت که از Hookها استفاده میند را تجسم کنید:
 
 ```js
 function FriendStatus(props) {
@@ -407,9 +407,9 @@ function FriendStatus(props) {
   });
 ```
 
-It doesn't suffer from this bug. (But we also didn't make any changes to it.)
+از این باگ رنج نمی‌برد. (ولی تغییری هم روی آن اعمال نکردیم.)
 
-There is no special code for handling updates because `useEffect` handles them *by default*. It cleans up the previous effects before applying the next effects. To illustrate this, here is a sequence of subscribe and unsubscribe calls that this component could produce over time:
+کد خاصی برای به‌روز رسانی نداریم زیرا `useEffect` به طور پیش فرض این کار را می‌کند. effectهای قبلی را پاک‌سازی می‌کند و effect بعدی را اعمال می‌کند. برای نشان دادن این، در اینجا توالی‌ای از فراخوانی subscribe و unsubscribe وجود دارد که کامپوننت میتواند در طور زمان تولید کند:
 
 ```js
 // Mount with { friend: { id: 100 } } props
@@ -427,7 +427,7 @@ ChatAPI.subscribeToFriendStatus(300, handleStatusChange);     // Run next effect
 ChatAPI.unsubscribeFromFriendStatus(300, handleStatusChange); // Clean up last effect
 ```
 
-This behavior ensures consistency by default and prevents bugs that are common in class components due to missing update logic.
+این رفتار ثباتی را به صورت پیش‌فرض تضمین می‌کند و از باگ‌هایی که به دلیل فراموش کردن منظق بهروز رسانی. بوجود می‌آید جلوگیری می‌کند.
 
 ### Tip: Optimizing Performance by Skipping Effects {#tip-optimizing-performance-by-skipping-effects}
 
