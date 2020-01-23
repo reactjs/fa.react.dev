@@ -224,9 +224,9 @@ function FriendStatus(props) {
 }
 ```
 
-**چرا از effect خود تابعی را برمی‌گردانیم?** یک مکانیزم پاک‌سازی و اختیاری در effectهاست. هر effect شاید یک تابع بازگرداند که به دنبالش پاک‌سازی را انجام دهد. این ما اجاره می‌دهد تا منطق اضافه کردن و پاک کردن subscriptions را در کنار هم نگه داریم. آنها جر یک effect هستند!
+**چرا از effect خود تابعی را برمی‌گردانیم?** یک مکانیزم پاک‌سازی و اختیاری در effectهاست. هر effect شاید یک تابع بازگرداند که به دنبالش پاک‌سازی را انجام دهد. این ما اجازه می‌دهد تا منطق اضافه کردن و پاک کردن subscriptions را در کنار هم نگه داریم. آنها جز یک effect هستند!
 
-**چه زمانی ری‌اکت عمل پاک‌سازی effect را انجام می‌دهد?** ری‌اکت عمل پاک‌سازی را هنگامی که کامپوننت unmount می‌شود انجام می‌دهد. گرچه، همانطور که قبلا آموختیم، effectها در هر رندر اجرا می‌شوند و فقط یکبار رخ نمی‌هند. *همچنین* به این دلیلاست که ری‌کت قبل از اینکه effect را اجرا کند از رندر ثبلی پاک‌سازی می‌کند. در آینده بحث می‌کنیم که [چرا این کار از باگ جلوگیری می‌کند](#explanation-why-effects-run-on-each-update) و [و چگونه در صورت کاهش عمل‌کرد از این رفتار خودداری کنیم](#tip-optimizing-performance-by-skipping-effects).
+**چه زمانی ری‌اکت عمل پاک‌سازی effect را انجام می‌دهد?** ری‌اکت عمل پاک‌سازی را هنگامی که کامپوننت unmount می‌شود انجام می‌دهد. گرچه، همانطور که قبلا آموختیم، effectها نه‌تنها یک بار بلکه در هر رندر اجرا می‌شوند. *همچنین* به این دلیلاست که ری‌کت قبل از اینکه effect را اجرا کند از رندر ثبلی پاک‌سازی می‌کند. در آینده بحث می‌کنیم که [چرا این کار از باگ جلوگیری می‌کند](#explanation-why-effects-run-on-each-update) و [و چگونه در صورت کاهش عمل‌کرد از این رفتار خودداری کنیم](#tip-optimizing-performance-by-skipping-effects).
 
 >توجه
 >
@@ -234,7 +234,7 @@ function FriendStatus(props) {
 
 ## جمع‌بندی {#recap}
 
-We've learned that `useEffect` lets us express different kinds of side effects after a component renders. Some effects might require cleanup so they return a function:
+تا اینجا آموختیم که `useEffect` به ما اجازه می‌دهد تا انوع مختلفی از effectهای جانبی بعد از رندر شدن کامپوننت بیان کنیم. شاید برخی از effectها به پاک‌سازی نیاز داشته باشد که یک تابع بر‌می‌گرداند:
 
 ```js
   useEffect(() => {
@@ -249,7 +249,7 @@ We've learned that `useEffect` lets us express different kinds of side effects a
   });
 ```
 
-Other effects might not have a cleanup phase, and don't return anything.
+باقی effectها شاید فاز پاک‌سازی نداشته باشند، و هیچ چیزی برنگردانند.
 
 ```js
   useEffect(() => {
@@ -257,15 +257,15 @@ Other effects might not have a cleanup phase, and don't return anything.
   });
 ```
 
-The Effect Hook unifies both use cases with a single API.
+Effect Hook این دو مورد را با یک API یکی می‌کند.
 
 -------------
 
-**If you feel like you have a decent grasp on how the Effect Hook works, or if you feel overwhelmed, you can jump to the [next page about Rules of Hooks](/docs/hooks-rules.html) now.**
+**اگر احساس کردید که به درک مناسب تری از Effect Hook و نحوه کار آن نیاز دارید, یا احساس سردرگمی کردید, میتوانید به صفحه بعدی [قوانین Hookها](/docs/hooks-rules.html) بروید.**
 
 -------------
 
-## Tips for Using Effects {#tips-for-using-effects}
+## نکته هایی برای استفاده از Effectها {#tips-for-using-effects}
 
 We'll continue this page with an in-depth look at some aspects of `useEffect` that experienced React users will likely be curious about. Don't feel obligated to dig into them now. You can always come back to this page to learn more details about the Effect Hook.
 
