@@ -139,16 +139,16 @@ function Example() {
 
 >نکته
 >
-> برخلاف `componentDidMount` یا `componentDidUpdate`، effectهایی که با `useEffect` برنامه‌ریزی می‌شوند مرورگر را از به‌روز رسانی صفحه باز نمی‌دارند. این باعث میشه نرم‌افزار شما حس responsive بهتری داشته باشد. اکثر effectها نیازی ندارند تا همگام اتفاق بیافتند.  در جاهای نادری که همگام اتفاق نمی‌افتند (مثل اندازگیری layout)، Hook مجزایی به نام [`useLayoutEffect`](/docs/hooks-reference.html#uselayouteffect) با APIای همسان از `useEffect` وجود دارد.
+> برخلاف `componentDidMount` یا `componentDidUpdate`، effectهایی که با `useEffect` برنامه‌ریزی می‌شوند مرورگر را از به‌روز رسانی صفحه باز نمی‌دارند. این باعث می‌شود نرم‌افزار شما حس responsive بهتری داشته باشد. اکثر effectها نیازی ندارند تا همگام اتفاق بیافتند.  در جاهای نادری که همگام اتفاق نمی‌افتند (مثل اندازگیری layout)، Hook مجزایی به نام [`useLayoutEffect`](/docs/hooks-reference.html#uselayouteffect) با APIای همسان از `useEffect` وجود دارد.
 
 
 ## Effects with Cleanup {#effects-with-cleanup}
 
-Earlier, we looked at how to express side effects that don't require any cleanup. However, some effects do. For example, **we might want to set up a subscription** to some external data source. In that case, it is important to clean up so that we don't introduce a memory leak! Let's compare how we can do it with classes and with Hooks.
+قبلا، مشاهده کردیم که چگونه می‌توان effectهایی که نیاز به پاکسازی ندارد را بیان کرد. گرچه، برخی از effect ها به پاکسازی نیاز دارند. برای مثال، **شاید نیاز داشته باشیم تا برای منبع داده خارجی  subscription تنظیم کنیم**. در این مورد، برای جلوگیری از کمبود حافطه انجام پاکسازی مهم است! بیایید برای این کار Hookها و classها را با هم مقایسه کنیم.
 
 ### Example Using Classes {#example-using-classes-1}
 
-In a React class, you would typically set up a subscription in `componentDidMount`, and clean it up in `componentWillUnmount`. For example, let's say we have a `ChatAPI` module that lets us subscribe to a friend's online status. Here's how we might subscribe and display that status using a class:
+در class ری‌اکت، معمولا subscription را در `componentDidMount` قرار می‌دهید، و در `componentWillUnmount` پاک‌سازی‌اش می‌کنید. برای مثال، فرض کنیم که ماژولی به نام `ChatAPI` داریم که به ما اجازه می‌دهد به وضعیت آنلاین بودن دوستان متصل شویم. در کلاس اینگونه متصل شده و وضعیت را نمایش می‌دهیم:
 
 ```js{8-26}
 class FriendStatus extends React.Component {
@@ -187,17 +187,17 @@ class FriendStatus extends React.Component {
 }
 ```
 
-Notice how `componentDidMount` and `componentWillUnmount` need to mirror each other. Lifecycle methods force us to split this logic even though conceptually code in both of them is related to the same effect.
+توجه کنید که چگونه `componentDidMount` و `componentWillUnmount` روبه‌روی یک‌دیگر هستند. چرخه‌های حیات ما را مجبور می‌کنند که منطق را در بین‌شان تقسیم کنیم در حالی که هردوی آنها مرتبط به effect یکسانی هستند.
 
->Note
+>توجه
 >
->Eagle-eyed readers may notice that this example also needs a `componentDidUpdate` method to be fully correct. We'll ignore this for now but will come back to it in a [later section](#explanation-why-effects-run-on-each-update) of this page.
+> خوانندگان ریزبین متوجه می‌شوند که این مثال برای اینکه کامل باشد به `componentDidUpdate` نیاز دارد. فعلا این مطلب رو نادیده می‌گیریم ولی در [بخش بعدی](#explanation-why-effects-run-on-each-update) این صفحه به آن می‌پردازیم.
 
-### Example Using Hooks {#example-using-hooks-1}
+### مثال استفاده از Hookها {#example-using-hooks-1}
 
-Let's see how we could write this component with Hooks.
+ببینم چگونه می‌شود این کامپوننت رو با استفاده از Hook ها نوشت.
 
-You might be thinking that we'd need a separate effect to perform the cleanup. But code for adding and removing a subscription is so tightly related that `useEffect` is designed to keep it together. If your effect returns a function, React will run it when it is time to clean up:
+شاید به این فکر می‌کنید که ما به effect مجزایی نیاز داشته باشیم تا این پاک‌سازی رو انجام دهیم. ولی کدی که برای اضافه کردن و پاک ردن subscription به `useEffect`ای که برای نگهداری آنها در کنار هم طراحی شده بسیار مرتبط است. اگر effect شما یک تابع بر‌گرداند، ری‌کت زمانی آن را اجرا میکند که موقع پاک‌سازی باشد:
 
 ```js{6-16}
 import React, { useState, useEffect } from 'react';
@@ -224,15 +224,15 @@ function FriendStatus(props) {
 }
 ```
 
-**Why did we return a function from our effect?** This is the optional cleanup mechanism for effects. Every effect may return a function that cleans up after it. This lets us keep the logic for adding and removing subscriptions close to each other. They're part of the same effect!
+**چرا از effect خود تابعی را برمی‌گردانیم?** یک مکانیزم پاک‌سازی و اختیاری در effectهاست. هر effect شاید یک تابع بازگرداند که به دنبالش پاک‌سازی را انجام دهد. این ما اجاره می‌دهد تا منطق اضافه کردن و پاک کردن subscriptions را در کنار هم نگه داریم. آنها جر یک effect هستند!
 
-**When exactly does React clean up an effect?** React performs the cleanup when the component unmounts. However, as we learned earlier, effects run for every render and not just once. This is why React *also* cleans up effects from the previous render before running the effects next time. We'll discuss [why this helps avoid bugs](#explanation-why-effects-run-on-each-update) and [how to opt out of this behavior in case it creates performance issues](#tip-optimizing-performance-by-skipping-effects) later below.
+**چه زمانی ری‌اکت عمل پاک‌سازی effect را انجام می‌دهد?** ری‌اکت عمل پاک‌سازی را هنگامی که کامپوننت unmount می‌شود انجام می‌دهد. گرچه، همانطور که قبلا آموختیم، effectها در هر رندر اجرا می‌شوند و فقط یکبار رخ نمی‌هند. *همچنین* به این دلیلاست که ری‌کت قبل از اینکه effect را اجرا کند از رندر ثبلی پاک‌سازی می‌کند. در آینده بحث می‌کنیم که [چرا این کار از باگ جلوگیری می‌کند](#explanation-why-effects-run-on-each-update) و [و چگونه در صورت کاهش عمل‌کرد از این رفتار خودداری کنیم](#tip-optimizing-performance-by-skipping-effects).
 
->Note
+>توجه
 >
->We don't have to return a named function from the effect. We called it `cleanup` here to clarify its purpose, but you could return an arrow function or call it something different.
+>نیازی نیست که تابعی که بر‌می‌گردانیم را حتما نام‌گذاری کنیم. در اینجا نامش را `cleanup` گذاشتیم تا مفهموم بهتری نشان دهد، ولی شما می‌توانید تابع arrow برگردانید یا چیز دیگری نام‌گذاری کنید.
 
-## Recap {#recap}
+## جمع‌بندی {#recap}
 
 We've learned that `useEffect` lets us express different kinds of side effects after a component renders. Some effects might require cleanup so they return a function:
 
