@@ -39,7 +39,7 @@ function Example() {
 
 >نکته
 >
->اگر با متدهای چرخه‌حیات ری‌اکت آشنا باشید, می‌توانید به `useEffect` به عنوان ترکیبی از `componentDidMount`, `componentDidUpdate`, و `componentWillUnmount` نگاه کنید.
+>اگر با متدهای چرخه‌حیات ری‌اکت آشنا باشید، می‌توانید به `useEffect` به عنوان ترکیبی از `componentDidMount`، `componentDidUpdate` و `componentWillUnmount` نگاه کنید.
 
 در کامپوننت‌های React دو گونه effectجانبی وجود دارد: آنهایی که به پاک‌سازی نیاز دارند و آنهایی که به پاک‌سازی نیاز ندارند. بیاید به این تمیز نگاهی عمیق‌تر داشته باشیم.
 
