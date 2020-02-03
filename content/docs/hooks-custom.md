@@ -68,11 +68,11 @@ function FriendListItem(props) {
 
 به طور سنتی در ری‌اکت، دو روش برای اشتراک گذاشتن منطق بین کامپوننت‌ها داریم: [رندر کردن props](/docs/render-props.html) و [استفاده از کامپوننت‌های higher-order](/docs/higher-order-components.html). حالا به Hookها نگاه می‌کنیم که چطور بسیاری از این مشکلات مشابه‌ را بدون اینکه مجبور به اضافه کردن کامپوننت‌های بیشتر به درخت [فایل‌ها] بشیم برایمان حل می کنند.
 
-## Extracting a Custom Hook {#extracting-a-custom-hook}
+## خارج کردن Hookشخصی‌سازی شده {#extracting-a-custom-hook}
 
-When we want to share logic between two JavaScript functions, we extract it to a third function. Both components and Hooks are functions, so this works for them too!
+در جاوااسکریپت هنگامی که می‌خواهیم منطقی را بین دو تابع به اشتراک بگذاریم، آن منطق را به عنوان تابع سومی خارج می‌کنیم. کامپوننت‌ها و Hookها هر دو تابع هستند، پس این کار برای آن‌ها هم عملیست.
 
-**A custom Hook is a JavaScript function whose name starts with "`use`" and that may call other Hooks.** For example, `useFriendStatus` below is our first custom Hook:
+**Hook تابع جاواسکریپتی‌ای هست که اول نامش با "`use`" شروع می‌شود و شاید Hookهای دیگری را فرخوانی کند** برای مثال، `useFriendStatus` اولین Hook شخصی‌سازی شده ماست:
 
 ```js{3}
 import React, { useState, useEffect } from 'react';
@@ -94,12 +94,11 @@ function useFriendStatus(friendID) {
   return isOnline;
 }
 ```
+چیز جدیدی درونش نیست -- منطق از کامپوننت بالایی کپی شده است. درست مثل کامپوننت، دقت کنید که Hookهای دیگر را بدون شرط در بالاترین سطح Hook شخصیتان فراخوانی کنید.
 
-There's nothing new inside of it -- the logic is copied from the components above. Just like in a component, make sure to only call other Hooks unconditionally at the top level of your custom Hook.
+برخلاف یک کامپوننت ری‌اکت، یک Hookشخصی نیازی ندارد تا با امضای خاصی مشخص شود. می‌توانیم تصمیم بگیریم که چه چیزی به عنوان آرگومان دریافت کند،و اگر چیزی هست که باید آن را برگرداند، برگرداند به عبارت دیگر، مانند تابعی معمولیست. نامش بهتر است که با `use` آغاز شود تا با یک نگاه بفهمید که [قوانین hookها](/docs/hooks-rules.html) روی آن اعمال شده است.
 
-Unlike a React component, a custom Hook doesn't need to have a specific signature. We can decide what it takes as arguments, and what, if anything, it should return. In other words, it's just like a normal function. Its name should always start with `use` so that you can tell at a glance that the [rules of Hooks](/docs/hooks-rules.html) apply to it.
-
-The purpose of our `useFriendStatus` Hook is to subscribe us to a friend's status. This is why it takes `friendID` as an argument, and returns whether this friend is online:
+هدف Hook `useFriendStatus` آن است که اشتراک(subscribe) به وضعیت دوستان داشته باشد. به همین دلیل است که `friendID` را به عنوان آرگومان قبول می‌کند، و اگر دوستمان آنلاین باشد مقدارش را برمی‌گرداند:
 
 ```js
 function useFriendStatus(friendID) {
@@ -111,7 +110,7 @@ function useFriendStatus(friendID) {
 }
 ```
 
-Now let's see how we can use our custom Hook.
+حالا ببینیم که Hook ما چگونه کار می‌کند.
 
 ## Using a Custom Hook {#using-a-custom-hook}
 
