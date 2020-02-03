@@ -6,11 +6,11 @@ next: hooks-reference.html
 prev: hooks-rules.html
 ---
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+*Hookها* ضمیمه جدید ری‌اکت ۱۶.۸ هستند. آن‌ها به شما اجازه می‌دهند تا از state و سایر ویژگی‌های ری‌اکت بدون نوشتن کلاس استفاده کنید.
 
-Building your own Hooks lets you extract component logic into reusable functions.
+ساختن Hookهای خودتون به شما کمک می‌کنه تا منطق برنامه را به توابعی که می‌توان مجدد استفاده کرد تبدیل کنید.
 
-When we were learning about [using the Effect Hook](/docs/hooks-effect.html#example-using-hooks-1), we saw this component from a chat application that displays a message indicating whether a friend is online or offline:
+هنگامی که در حال آموختن استفاده از Effect Hook بودیم، کامپوننت زیر که به ما پیامی در خصوص وضعیت آنلاین بودن دوستمان را نشان می‌داد دیدیم:
 
 ```js{4-15}
 import React, { useState, useEffect } from 'react';
@@ -36,7 +36,8 @@ function FriendStatus(props) {
 }
 ```
 
-Now let's say that our chat application also has a contact list, and we want to render names of online users with a green color. We could copy and paste similar logic above into our `FriendListItem` component but it wouldn't be ideal:
+حالا بیاین بگیم که برنامه چت‌مان یک لیست مخاطب هم داشته باشد، ما هم می‌خواهیم لیست کاربران آنلاین را با رنگ سبز نشون بدیم. می‌توانیم این کار را با کپی کردن منطق مشابه بالا در کامپوننت `FriendListItem`  انجام بدیم ولی ایده خوبی نیست:
+
 
 ```js{4-15}
 import React, { useState, useEffect } from 'react';
@@ -63,9 +64,9 @@ function FriendListItem(props) {
 }
 ```
 
-Instead, we'd like to share this logic between `FriendStatus` and `FriendListItem`.
+به جای آن، میتوانیم این منطق رو بین `FriendStatus` و `FriendListItem` به اشتراک بگذاریم.
 
-Traditionally in React, we've had two popular ways to share stateful logic between components: [render props](/docs/render-props.html) and [higher-order components](/docs/higher-order-components.html). We will now look at how Hooks solve many of the same problems without forcing you to add more components to the tree.
+به طور سنتی در ری‌اکت، دو روش برای اشتراک گذاشتن منطق بین کامپوننت‌ها داریم: [رندر کردن props](/docs/render-props.html) و [استفاده از کامپوننت‌های higher-order](/docs/higher-order-components.html). حالا به Hookها نگاه می‌کنیم که چطور بسیاری از این مشکلات مشابه‌ را بدون اینکه مجبور به اضافه کردن کامپوننت‌های بیشتر به درخت [فایل‌ها] بشیم برایمان حل می کنند.
 
 ## Extracting a Custom Hook {#extracting-a-custom-hook}
 
