@@ -112,11 +112,11 @@ function useFriendStatus(friendID) {
 
 حالا ببینیم که Hook ما چگونه کار می‌کند.
 
-## Using a Custom Hook {#using-a-custom-hook}
+## استفاده از Hook شخصی‌سازی شده {#using-a-custom-hook}
 
-In the beginning, our stated goal was to remove the duplicated logic from the `FriendStatus` and `FriendListItem` components. Both of them want to know whether a friend is online.
+در ابتدا، هدف اصلی ما این بود که منطق اضافی را از کامپوننت‌های `FriendStatus` و `FriendListItem` حذف کنیم. هر دوی آنها می‌خواهند بدانند که یک دوست انلاین هست یا خیر.
 
-Now that we've extracted this logic to a `useFriendStatus` hook, we can *just use it:*
+حالا که ما این منطق را به عنوان یک Hook `useFriendStatus` خارج کردیم، فقط باید استفاده‌اش کنیم.
 
 ```js{2}
 function FriendStatus(props) {
@@ -141,19 +141,21 @@ function FriendListItem(props) {
 }
 ```
 
-**Is this code equivalent to the original examples?** Yes, it works in exactly the same way. If you look closely, you'll notice we didn't make any changes to the behavior. All we did was to extract some common code between two functions into a separate function. **Custom Hooks are a convention that naturally follows from the design of Hooks, rather than a React feature.**
+**آیا این کد با مثال اصلی برابراست?** بله، دقیقا همانطور عمل می‌کند.اگر نزدیک‌تر نگاه کنید، متوجه می‌شوید که ما تغییری در رفتار ایجاد نکردیم. تمام کاری که کردیم این بود که کد مشترک بین دو تابع را درون تابعی جدا قرار دادیم. **Hookهای شخصی‌سازی شده قراردیست که به طور ذاتی به جای اینکه یک ویژگیه ری‌اکتی باشد از طراحی Hookها پیروی می‌کند.**
 
-**Do I have to name my custom Hooks starting with “`use`”?** Please do. This convention is very important. Without it, we wouldn't be able to automatically check for violations of [rules of Hooks](/docs/hooks-rules.html) because we couldn't tell if a certain function contains calls to Hooks inside of it.
+**آیا مجبورم که حتما نام Hook شخصی خودم را با “`use`” آغاز کنم?** لطفا همین‌ کار را کنید. این قراردادی خیلی مهم است. بدون آن نمی‌توانیم به صورت خودکار نقض [قوانین Hookها را](/docs/hooks-rules.html) چک کنیم زیرا نمی‌توانیم بگوییم که یک تابع بخصوص درونش Hookهایی را فراخوانی کرده باشد.
 
-**Do two components using the same Hook share state?** No. Custom Hooks are a mechanism to reuse *stateful logic* (such as setting up a subscription and remembering the current value), but every time you use a custom Hook, all state and effects inside of it are fully isolated.
+**آیا دو کامپوننت که از Hook یکسانی استفاده می‌کنند state را به اشتراک می‌گذارند?** خیر. hookهای شخصی‌سازی شده مکانیزمی برای استفاده مجدد از منطق *با state* هستند (مانند تنظیم اشتراک و به خاطر سپردن مقدار کننونی)، ولی هربار که از Hook شخصی استفاده می‌کنید، تمام state و effectهای درونش کاملا ایزوله هستند.
 
-**How does a custom Hook get isolated state?** Each *call* to a Hook gets isolated state. Because we call `useFriendStatus` directly, from React's point of view our component just calls `useState` and `useEffect`. And as we [learned](/docs/hooks-state.html#tip-using-multiple-state-variables) [earlier](/docs/hooks-effect.html#tip-use-multiple-effects-to-separate-concerns), we can call `useState` and `useEffect` many times in one component, and they will be completely independent.
+**چگونه یک Hook شخصی state ایزوله می‌گیرد?** هر *فراخوانی* Hook  یک state ایزوله دریافت می‌کند. به خاطر فراخوانی مستقیم `useFriendStatus`، از دیدگاه ری‌اکت کامپوننت ما `useState` و `useEffect` را فراخوانی می‌کند.و همان گونه که [درقبل](/docs/hooks-effect.html#tip-use-multiple-effects-to-separate-concerns) [آموختیم](/docs/hooks-state.html#tip-using-multiple-state-variables)،می‌توانیم `useState` و `useEffect` هر چقدر که بخواهیم در یک کامپوننت صدا بزنیم، و همه آنها کاملا مستقل از هم خواهند بود.
 
-### Tip: Pass Information Between Hooks {#tip-pass-information-between-hooks}
+### نکته: انتقال اطلاعات بین Hookها {#tip-pass-information-between-hooks}
 
-Since Hooks are functions, we can pass information between them.
+از آنجایی که Hookها تابع هستند، می‌توانیم بین آنها اطلاعات رد و بدل کنیم.
 
-To illustrate this, we'll use another component from our hypothetical chat example. This is a chat message recipient picker that displays whether the currently selected friend is online:
+
+
+برای نشان دادن این‌کار ، از کامپوننت دیگری در مثال فرض چت‌مان استفاده می‌کنیم. این گیرنده پذیرش پیام است که آنلاین بودن دوست انتخاب شده را به‌ ما نشان می‌دهد:
 
 ```js{8-9,13}
 const friendList = [
@@ -184,18 +186,20 @@ function ChatRecipientPicker() {
 }
 ```
 
-We keep the currently chosen friend ID in the `recipientID` state variable, and update it if the user chooses a different friend in the `<select>` picker.
+ما مقدار آی‌دی دوست انتخابی را درون متغییر state `recipientID` قرار می‌دهیم، و در صورتی که کاربر دوست دیگری را از  `<select>` انتخاب کند آن را به‌روز رسانی می‌کنیم.
 
-Because the `useState` Hook call gives us the latest value of the `recipientID` state variable, we can pass it to our custom `useFriendStatus` Hook as an argument:
+به دلیل اینکه فراخوانی Hook `useState` به ما مقدار آخرین متغییر state  `recipientID` را می‌دهد، می‌توانیم آن را به Hook شخصی `useFriendStatus` به عنوان آرگومان انتقال انتقال دهیم:
 
 ```js
   const [recipientID, setRecipientID] = useState(1);
   const isRecipientOnline = useFriendStatus(recipientID);
 ```
 
-This lets us know whether the *currently selected* friend is online. If we pick a different friend and update the `recipientID` state variable, our `useFriendStatus` Hook will unsubscribe from the previously selected friend, and subscribe to the status of the newly selected one.
+این کار به ما اجازه می‌دهد تا بدانیم *دوست انتخابی* آنلاین هست یا خیر. اگر دوست دیگری انتخاب کنیم و مقدار `recipientID` را به‌روز رسانی کنیم، Hook `useFriendStatus`مان اشتراک دوستی که در قبل انتخاب کردیم را از بین می‌برد و به دوست جدیدی که انتخاب کردیم اشتراک می‌زند.
 
-## `useYourImagination()` {#useyourimagination}
+## `useتخیلتان()` {#useyourimagination}
+
+
 
 Custom Hooks offer the flexibility of sharing logic that wasn't possible in React components before. You can write custom Hooks that cover a wide range of use cases like form handling, animation, declarative subscriptions, timers, and probably many more we haven't considered. What's more, you can build Hooks that are just as easy to use as React's built-in features.
 
