@@ -141,11 +141,11 @@ function FriendListItem(props) {
 }
 ```
 
-**آیا این کد با مثال اصلی برابراست?** بله، دقیقا همانطور عمل می‌کند.اگر نزدیک‌تر نگاه کنید، متوجه می‌شوید که ما تغییری در رفتار ایجاد نکردیم. تمام کاری که کردیم این بود که کد مشترک بین دو تابع را درون تابعی جدا قرار دادیم. **Hookهای شخصی‌سازی شده قراردیست که به طور ذاتی به جای اینکه یک ویژگیه ری‌اکتی باشد از طراحی Hookها پیروی می‌کند.**
+**آیا این کد با مثال اصلی برابراست?** بله، دقیقا همانطور عمل می‌کند.اگر دقیق‌تر نگاه کنید، متوجه می‌شوید که ما تغییری در رفتار ایجاد نکردیم. تمام کاری که کردیم این بود که کد مشترک بین دو تابع را درون تابعی جدا قرار دادیم. **Hookهای شخصی‌سازی شده قراردیست که به طور ذاتی به جای اینکه یک ویژگیه ری‌اکتی باشد از طراحی Hookها پیروی می‌کند.**
 
 **آیا مجبورم که حتما نام Hook شخصی خودم را با “`use`” آغاز کنم?** لطفا همین‌ کار را کنید. این قراردادی خیلی مهم است. بدون آن نمی‌توانیم به صورت خودکار نقض [قوانین Hookها را](/docs/hooks-rules.html) چک کنیم زیرا نمی‌توانیم بگوییم که یک تابع بخصوص درونش Hookهایی را فراخوانی کرده باشد.
 
-**آیا دو کامپوننت که از Hook یکسانی استفاده می‌کنند state را به اشتراک می‌گذارند?** خیر. hookهای شخصی‌سازی شده مکانیزمی برای استفاده مجدد از منطق *با state* هستند (مانند تنظیم اشتراک و به خاطر سپردن مقدار کننونی)، ولی هربار که از Hook شخصی استفاده می‌کنید، تمام state و effectهای درونش کاملا ایزوله هستند.
+**آیا دو کامپوننت که از Hook یکسانی استفاده می‌کنند state را به اشتراک می‌گذارند?** خیر. hookهای شخصی‌سازی شده مکانیزمی برای استفاده مجدد از منطق *با state* هستند (مانند تنظیم اشتراک و به خاطر سپردن مقدار کنونی)، ولی هربار که از Hook شخصی استفاده می‌کنید، تمام state و effectهای درونش کاملا ایزوله هستند.
 
 **چگونه یک Hook شخصی state ایزوله می‌گیرد?** هر *فراخوانی* Hook  یک state ایزوله دریافت می‌کند. به خاطر فراخوانی مستقیم `useFriendStatus`، از دیدگاه ری‌اکت کامپوننت ما `useState` و `useEffect` را فراخوانی می‌کند.و همان گونه که [درقبل](/docs/hooks-effect.html#tip-use-multiple-effects-to-separate-concerns) [آموختیم](/docs/hooks-state.html#tip-using-multiple-state-variables)،می‌توانیم `useState` و `useEffect` هر چقدر که بخواهیم در یک کامپوننت صدا بزنیم، و همه آنها کاملا مستقل از هم خواهند بود.
 
@@ -155,7 +155,7 @@ function FriendListItem(props) {
 
 
 
-برای نشان دادن این‌کار ، از کامپوننت دیگری در مثال فرض چت‌مان استفاده می‌کنیم. این گیرنده پذیرش پیام است که آنلاین بودن دوست انتخاب شده را به‌ ما نشان می‌دهد:
+برای نشان دادن این‌کار ، از کامپوننت دیگری در مثال فرضی چت‌مان استفاده می‌کنیم. این گیرنده پذیرش پیام است که آنلاین بودن دوست انتخاب شده را به‌ ما نشان می‌دهد:
 
 ```js{8-9,13}
 const friendList = [
@@ -199,13 +199,13 @@ function ChatRecipientPicker() {
 
 ## `useتخیلتان()` {#useyourimagination}
 
+Hookهای شخصی سازی شده راهکاری برای اشتراک گذاشتن منطق پیشنهاد می‌دهند که قبلا در کامپوننت‌های ری‌اکت امکان پذیر نبود. شما می توانید Hookهای شخصی‌سازی شده ای بنویسید که محدوده بزرگی از موارد استفاده مانند کنترل کردن، انیمیشن، پیاده سازی مشترکین، تایمر، و شاید خیلی از موارد دیگر که به آن اشاره نکردیم را پوشش دهد. چیز بیشتر اینکه، می‌توانید hookهایی بنویسید که همانند ویژگی‌های درونی ری‌اکت  به راحتی قابل استفاده باشند.
 
 
-Custom Hooks offer the flexibility of sharing logic that wasn't possible in React components before. You can write custom Hooks that cover a wide range of use cases like form handling, animation, declarative subscriptions, timers, and probably many more we haven't considered. What's more, you can build Hooks that are just as easy to use as React's built-in features.
 
-Try to resist adding abstraction too early. Now that function components can do more, it's likely that the average function component in your codebase will become longer. This is normal -- don't feel like you *have to* immediately split it into Hooks. But we also encourage you to start spotting cases where a custom Hook could hide complex logic behind a simple interface, or help untangle a messy component.
+سعی کنید در قبال اینکه خیلی زود انتضاع اضافه کنید مقاومت کنید. حالا که آن کامپوننت تابعی کار بیشتری می‌تواند انجام دهد، این احتمال وجود دارد که میانگین مؤلفه عملکرد در پایه کد شما طولانی تر شود. این طبیعیست-- این احساس را نداشته باشید که *مجبورید* آن را فورا به Hook تقسیم کنید. ولی ما توصیه می‌کنیم مواردی را شروع کنید که هوک سفارشی می تواند منطق پیچیده را در پشت یک رابط ساده پنهان کند، یا به حل کردن یک کامپوننت درهم تنیده و کثیف کمک کند.
 
-For example, maybe you have a complex component that contains a lot of local state that is managed in an ad-hoc way. `useState` doesn't make centralizing the update logic any easier so you might prefer to write it as a [Redux](https://redux.js.org/) reducer:
+برای مثال، شاید کامپوننت پیچیده‌ای داشته باشید که شامل state های محلی زیادی باشد که به صورت موقت اداره می‌شود. `useState` به روزرسانی متمرکز منطق را راحتتر نمی‌کند شاید ترجیح دهید که از کاهش دهنده [ری‌داکس](https://redux.js.org/) استفاده کنید:
 
 ```js
 function todosReducer(state, action) {
@@ -222,9 +222,10 @@ function todosReducer(state, action) {
 }
 ```
 
-Reducers are very convenient to test in isolation, and scale to express complex update logic. You can further break them apart into smaller reducers if necessary. However, you might also enjoy the benefits of using React local state, or might not want to install another library.
+کاهش دهنده‌ها آزمودن در فضای ایزوله و تشریح به‌روز رسانی‌های پیچیده را راحت‌تر می‌کنند، شما می‌توانید بعدا در صورت نیاز آنها به قسمت‌های کوچکتری تقسیم کنید. ولی شاید هم بخواهید از state محلی ری‌اکت استفاده کنید، و نخواهید از کتاب خانه دیگری استفاده کنید.
 
-So what if we could write a `useReducer` Hook that lets us manage the *local* state of our component with a reducer? A simplified version of it might look like this:
+پس چی می‌شد اگر می‌توانستیم یک Hook `useReducer` بنویسیم که به ما اجازه مدیریت state *محلی* کامپوننت‌مان را با یک کاهش‌دهنده بدهد؟ یک ورژن ساده آن میتواند به شکل زیر باشد:
+
 
 ```js
 function useReducer(reducer, initialState) {
@@ -239,7 +240,7 @@ function useReducer(reducer, initialState) {
 }
 ```
 
-Now we could use it in our component, and let the reducer drive its state management:
+حالا می‌توانیم از این در کامپوننت خودمان استفاده کنیم، و بگذاریم تا کاهش‌دهنده جریان state را مدیریت کند:
 
 ```js{2}
 function Todos() {
@@ -253,4 +254,4 @@ function Todos() {
 }
 ```
 
-The need to manage local state with a reducer in a complex component is common enough that we've built the `useReducer` Hook right into React. You'll find it together with other built-in Hooks in the [Hooks API reference](/docs/hooks-reference.html).
+نیاز مدیریت state محلی با کاهش‌دهنده در یک کامپوننت پیچیده به اندازه کافی عمومی بود که ما Hook `useReducer` را درون ری‌کت ساختیم. شما این و سایر Hook های درون ساخته شده را درکنار هم در صفحه [Hooks API reference](/docs/hooks-reference.html) پیدا می‌کنید.
