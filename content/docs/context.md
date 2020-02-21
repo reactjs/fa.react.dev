@@ -4,26 +4,26 @@ title: Context
 permalink: docs/context.html
 ---
 
-Context provides a way to pass data through the component tree without having to pass props down manually at every level.
+Context راهی را برای انتقال داده از بین درخت کامپوننت بدون نیاز به انتقال دستیه props به پایین در هر سطح فراهم می‌کند.
 
-In a typical React application, data is passed top-down (parent to child) via props, but this can be cumbersome for certain types of props (e.g. locale preference, UI theme) that are required by many components within an application. Context provides a way to share values like these between components without having to explicitly pass a prop through every level of the tree.
+در یک اپلیکیشن معمول ری‌اکت, داده از طریق props از بالا به پایین (والدین به فرزند) منتقل می‌شود, اما این کار برای انواع خاصی از props ها (برای مثال: locale preference, تم رابط کاربری) که مورد نیاز بسیاری از کامپوننت ها در یک اپلیکیشن است می‌تواند سنگین باشد. Context راهی را برای به اشتراک گذاری مقادیری مانند این بدون نیاز به انتقال prop به صورت صریح از طریق هر سطح درخت فراهم می‌کند.
 
-- [When to Use Context](#when-to-use-context)
-- [Before You Use Context](#before-you-use-context)
+- [چه موقع  باید از Context استفاده کرد](#when-to-use-context)
+- [قبل از اینکه از Context استفاده کنید](#before-you-use-context)
 - [API](#api)
   - [React.createContext](#reactcreatecontext)
   - [Context.Provider](#contextprovider)
   - [Class.contextType](#classcontexttype)
   - [Context.Consumer](#contextconsumer)
   - [Context.displayName](#contextdisplayname)
-- [Examples](#examples)
-  - [Dynamic Context](#dynamic-context)
-  - [Updating Context from a Nested Component](#updating-context-from-a-nested-component)
-  - [Consuming Multiple Contexts](#consuming-multiple-contexts)
-- [Caveats](#caveats)
-- [Legacy API](#legacy-api)
+- [مثال ها](#examples)
+  - [Context پویا](#dynamic-context)
+  - [به‌روز‌رسانی Context از یک کامپوننت تودرتو](#updating-context-from-a-nested-component)
+  - [مصرف چندین Context](#consuming-multiple-contexts)
+- [هشدارها](#caveats)
+- [API موروثی](#legacy-api)
 
-## When to Use Context {#when-to-use-context}
+## چه موقع  باید از Context استفاده کرد {#when-to-use-context}
 
 Context is designed to share data that can be considered "global" for a tree of React components, such as the current authenticated user, theme, or preferred language. For example, in the code below we manually thread through a "theme" prop in order to style the Button component:
 
@@ -33,7 +33,7 @@ Using context, we can avoid passing props through intermediate elements:
 
 `embed:context/motivation-solution.js`
 
-## Before You Use Context {#before-you-use-context}
+## قبل از اینکه از Context استفاده کنید {#before-you-use-context}
 
 Context is primarily used when some data needs to be accessible by *many* components at different nesting levels. Apply it sparingly because it makes component reuse more difficult.
 
@@ -136,7 +136,7 @@ Changes are determined by comparing the new and old values using the same algori
 
 > Note
 >
-> The way changes are determined can cause some issues when passing objects as `value`: see [Caveats](#caveats).
+> The way changes are determined can cause some issues when passing objects as `value`: see [هشدارها](#caveats).
 
 ### `Class.contextType` {#classcontexttype}
 
@@ -166,7 +166,7 @@ The `contextType` property on a class can be assigned a Context object created b
 
 > Note:
 >
-> You can only subscribe to a single context using this API. If you need to read more than one see [Consuming Multiple Contexts](#consuming-multiple-contexts).
+> You can only subscribe to a single context using this API. If you need to read more than one see [مصرف چندین Context](#consuming-multiple-contexts).
 >
 > If you are using the experimental [public class fields syntax](https://babeljs.io/docs/plugins/transform-class-properties/), you can use a **static** class field to initialize your `contextType`.
 
@@ -211,9 +211,9 @@ MyContext.displayName = 'MyDisplayName';
 <MyContext.Consumer> // "MyDisplayName.Consumer" in DevTools
 ```
 
-## Examples {#examples}
+## مثال ها {#examples}
 
-### Dynamic Context {#dynamic-context}
+### Context پویا {#dynamic-context}
 
 A more complex example with dynamic values for the theme:
 
@@ -226,7 +226,7 @@ A more complex example with dynamic values for the theme:
 **app.js**
 `embed:context/theme-detailed-app.js`
 
-### Updating Context from a Nested Component {#updating-context-from-a-nested-component}
+### به‌روز‌رسانی Context از یک کامپوننت تودرتو {#updating-context-from-a-nested-component}
 
 It is often necessary to update the context from a component that is nested somewhere deeply in the component tree. In this case you can pass a function down through the context to allow consumers to update the context:
 
@@ -258,7 +258,7 @@ To get around this, lift the value into the parent's state:
 
 `embed:context/reference-caveats-solution.js`
 
-## Legacy API {#legacy-api}
+## API موروثی {#legacy-api}
 
 > Note
 >
