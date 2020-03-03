@@ -7,19 +7,20 @@ permalink: docs/glossary.html
 
 ---
 
-## Single-page Application {#single-page-application}
+## نرم‌افزار تک-صفحه‌ای {#single-page-application}
 
-A single-page application is an application that loads a single HTML page and all the necessary assets (such as JavaScript and CSS) required for the application to run. Any interactions with the page or subsequent pages do not require a round trip to the server which means the page is not reloaded.
+یک نرم‌افزار-تک صفحه‌ای نرم‌افزاری است که یک صفحه HTML با تمامی دارایی‌های ضروری‌اش (مثل جاوا‌اسکریپت و سی اس اس) که برای اجرا شدن نرم‌افزار نیاز هست را بارگیری می‌کند. تمام فعل و انفعالاتی که در صفحه رخ می‌دهد و آنهایی که متعاقبا رخ می‌دهند دیگر به گردشی به دور سرور نیاز ندارند که به این معنیست که صفحه مجددا بارگیری نمی‌شود.
 
-Though you may build a single-page application in React, it is not a requirement. React can also be used for enhancing small parts of existing websites with additional interactivity. Code written in React can coexist peacefully with markup rendered on the server by something like PHP, or with other client-side libraries. In fact, this is exactly how React is being used at Facebook.
+شاید یک برنامه تک صفحه‌ای با ری‌اکت بسازید، اما ری‌اکت یک نیاز ضروری نیست. ری‌کت میتواند برای بهبود قسمت کوچکی از وبسایت حاضر با تعامل اضافی استفاده شود. کد ری‌اکت می‌تواند به شکل مسالمت آمیزی با مارکاپ رندر شده سمت سرور توسط ربانی مثل PHP یا کتابخانه‌های سمت کاربر هم زیستی کند. در واقع، این دلیلیست که ری‌امت در فیس‌بوک استفاده می‌شود.
 
-## ES6, ES2015, ES2016, etc {#es6-es2015-es2016-etc}
+## ES6, ES2015, ES2016, و غیره {#es6-es2015-es2016-etc}
 
-These acronyms all refer to the most recent versions of the ECMAScript Language Specification standard, which the JavaScript language is an implementation of. The ES6 version (also known as ES2015) includes many additions to the previous versions such as: arrow functions, classes, template literals, `let` and `const` statements. You can learn more about specific versions [here](https://en.wikipedia.org/wiki/ECMAScript#Versions).
+تمام این کلمات اختصاری به جدیدترین ورژن استاندارد‌های زبان ECMAScript رجوع می‌کند که زبان جاواسکریپت از آن پیاده‌سازی  شده است. ورژن ES6 (که به ES2015 معروف است ) چند ضمیمه به ورژن قبلی اضافه کرده است مانند: توابع پیکانی, کلاس‌ها, template literals, `let` و `const`. شما می‌توانید در مورد ورژن ها [اینجا](https://en.wikipedia.org/wiki/ECMAScript#Versions) اطلاعات بیشتری کسب کنید.
 
-## Compilers {#compilers}
+## کامپایلر‌ها {#compilers}
 
-A JavaScript compiler takes JavaScript code, transforms it and returns JavaScript code in a different format. The most common use case is to take ES6 syntax and transform it into syntax that older browsers are capable of interpreting. [Babel](https://babeljs.io/) is the compiler most commonly used with React.
+کامپایلر جاوااسکریپت کد جاوااسکریپت شما رو می‌گیرد، و آن‌را به حالت دیگری تبدیل می‌کند. یکی از مواردی که به طور عمومی مورد استفاده قرار می‌گیرد آنست که کد ES6 شما رو دریافت می‌کند و دست خط آن‌را به چیزی که مرورگر‌های قدیمی می‌فهمند تبدیل می‌کند.
+[Babel](https://babeljs.io/) کامپایلری هست که عموما در ری‌اکت استفاده می‌شود.
 
 ## Bundlers {#bundlers}
 
