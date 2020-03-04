@@ -24,15 +24,15 @@ permalink: docs/glossary.html
 
 ## Bundlers {#bundlers}
 
-Bundlers take JavaScript and CSS code written as separate modules (often hundreds of them), and combine them together into a few files better optimized for the browsers. Some bundlers commonly used in React applications include [Webpack](https://webpack.js.org/) and [Browserify](http://browserify.org/).
+Bundlerها کد جاوااسکریپت و سی‌اس‌اس از ماژول‌های جداگانه را می‌گیرند (معملا صدها ماژول) و آنها را در یک فایل جدید که برای مرورگرها بهتر بهینه سازی شده است ترکیب می‌کنند. برخی از Bundlerها در ری‌اکت اضافه شده است مانند [Webpack](https://webpack.js.org/) و [Browserify](http://browserify.org/).
 
 ## Package Managers {#package-managers}
 
-Package managers are tools that allow you to manage dependencies in your project. [npm](https://www.npmjs.com/) and [Yarn](https://yarnpkg.com/) are two package managers commonly used in React applications. Both of them are clients for the same npm package registry.
+Package managerها ابزارهایی هستند که به شما امکان می‌دهند تا وابستگی‌های پروژه را مدیریت کنید. [npm](https://www.npmjs.com/) و [Yarn](https://yarnpkg.com/) دو Package managerای هستند که عموما در نرم‌افزارهای ری‌اکت استفاده شده‌اند. هر دوی آنها به نوعی ارباب رجوع رجیستری بسته NPM هستند.
 
 ## CDN {#cdn}
 
-CDN stands for Content Delivery Network. CDNs deliver cached, static content from a network of servers across the globe. 
+CDN مخخف Content Delivery Network (شبکه تحویل‌دهی محتوا) است. CDNها محتوای کش شده یا ایستایی یک شبکه از سرور‌ها در سراسر دنیا را تحویل می‌دهند.
 
 ## JSX {#jsx}
 
