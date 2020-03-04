@@ -11,11 +11,11 @@ permalink: docs/glossary.html
 
 یک نرم‌افزار-تک صفحه‌ای نرم‌افزاری است که یک صفحه HTML با تمامی دارایی‌های ضروری‌اش (مثل جاوا‌اسکریپت و سی اس اس) که برای اجرا شدن نرم‌افزار نیاز هست را بارگیری می‌کند. تمام فعل و انفعالاتی که در صفحه رخ می‌دهد و آنهایی که متعاقبا رخ می‌دهند دیگر به گردشی به دور سرور نیاز ندارند که به این معنیست که صفحه مجددا بارگیری نمی‌شود.
 
-شاید یک برنامه تک صفحه‌ای با ری‌اکت بسازید، اما ری‌اکت یک نیاز ضروری نیست. ری‌کت میتواند برای بهبود قسمت کوچکی از وبسایت حاضر با تعامل اضافی استفاده شود. کد ری‌اکت می‌تواند به شکل مسالمت آمیزی با مارکاپ رندر شده سمت سرور توسط ربانی مثل PHP یا کتابخانه‌های سمت کاربر هم زیستی کند. در واقع، این دلیلیست که ری‌امت در فیس‌بوک استفاده می‌شود.
+شاید یک برنامه تک صفحه‌ای با ری‌اکت بسازید، اما ری‌اکت یک نیاز ضروری نیست. ری‌کت میتواند برای بهبود قسمت کوچکی از وبسایت حاضر با تعامل اضافی استفاده شود. کد ری‌اکت می‌تواند به شکل مسالمت آمیزی با مارکاپ رندر شده سمت سرور توسط زبانی مثل PHP یا کتابخانه‌های سمت کاربر هم زیستی کند. در واقع، این دلیلیست که ری‌اکت در فیس‌بوک استفاده می‌شود.
 
 ## ES6, ES2015, ES2016, و غیره {#es6-es2015-es2016-etc}
 
-تمام این کلمات اختصاری به جدیدترین ورژن استاندارد‌های زبان ECMAScript رجوع می‌کند که زبان جاواسکریپت از آن پیاده‌سازی  شده است. ورژن ES6 (که به ES2015 معروف است ) چند ضمیمه به ورژن قبلی اضافه کرده است مانند: توابع پیکانی, کلاس‌ها, template literals, `let` و `const`. شما می‌توانید در مورد ورژن ها [اینجا](https://en.wikipedia.org/wiki/ECMAScript#Versions) اطلاعات بیشتری کسب کنید.
+تمام این کلمات اختصاری به جدیدترین ورژن استاندارد‌های زبان ECMAScript اشاره می‌کند که زبان جاواسکریپت از آن پیاده‌سازی  شده است. ورژن ES6 (که به ES2015 معروف است ) چند ضمیمه به ورژن قبلی اضافه کرده است مانند: توابع پیکانی, کلاس‌ها, template literals, `let` و `const`. شما می‌توانید در مورد ورژن ها [اینجا](https://en.wikipedia.org/wiki/ECMAScript#Versions) اطلاعات بیشتری کسب کنید.
 
 ## کامپایلر‌ها {#compilers}
 
@@ -51,7 +51,7 @@ ReactDOM.render(
 
 ## [Elements](/docs/rendering-elements.html) {#elements}
 
-elementهای ری‌اکت بلاک‌هایی هستند که نرم‌افزارهای ری‌امت را می‌سازند. فردی ممکن است elementها را با مفهموم گسترش یافته "کامپوننت" اشتباه بگیرد. یک المنت چیزی را که می‌خواهید در صفحه نمایش دهید را نشان می‌دهد. المان‌های ری‌اکت immutable هستند.
+elementهای ری‌اکت بلاک‌هایی هستند که نرم‌افزارهای ری‌اکت را می‌سازند. فردی ممکن است elementها را با مفهموم گسترش یافته "کامپوننت" اشتباه بگیرد. یک المنت چیزی را که می‌خواهید در صفحه نمایش دهید را نشان می‌دهد. المان‌های ری‌اکت immutable هستند.
 
 ```js
 const element = <h1>Hello, world</h1>;
@@ -60,7 +60,7 @@ const element = <h1>Hello, world</h1>;
 
 ## [Components](/docs/components-and-props.html) {#components}
 
-کامپوننت‌های ری‌اکت کوچک، تکه‌های قابل استفاده کد هستند که یک element ری ‌اکت برمی‌گردانند تا در صفحه رندر شود. ساده‌ترین ورژن یک کامپوننت ری‌اکت یک تابع جاوااسکریپت ساده است که که یک element ری‌اکت باز می‌گرداند.
+کامپوننت‌های ری‌اکت تکه‌های قابل استفاده کوچک کد هستند که یک element ری ‌اکت برمی‌گردانند تا در صفحه رندر شود. ساده‌ترین ورژن یک کامپوننت ری‌اکت یک تابع جاوااسکریپت ساده است که یک element ری‌اکت باز می‌گرداند.
 
 ```js
 function Welcome(props) {
@@ -94,7 +94,7 @@ props.number = 42;
 
 ### `props.children` {#propschildren}
 
-`props.children` در هر کامپوننتی قابل دسترسیست. شامل محتوای بین باز شدن و بسته شدن تگ یک کامپوننت است. برای مثال:
+`props.children` در هر کامپوننتی قابل دسترس است. شامل محتوای بین باز شدن و بسته شدن تگ یک کامپوننت است. برای مثال:
 
 ```js
 <Welcome>Hello world!</Welcome>
@@ -120,47 +120,46 @@ class Welcome extends React.Component {
 
 ### [`state`](/docs/state-and-lifecycle.html#adding-local-state-to-a-class) {#state}
 
-A component needs `state` when some data associated with it changes over time. For example, a `Checkbox` component might need `isChecked` in its state, and a `NewsFeed` component might want to keep track of `fetchedPosts` in its state.
+هنگامی که داده‌ای که با کامپوننت در ارتباط است در و در طول زمان دچار تغییر می‌شود، کامپوننت به `state` نیاز دارد. برای مثال، کامپوننت `Checkbox` شاید به `isChecked` در  state خود نیاز داشته باشد، و کامپوننت `NewsFeed` شاید بخواهد تا `fetchedPosts` را در state خود دنبال کند.
 
-The most important difference between `state` and `props` is that `props` are passed from a parent component, but `state` is managed by the component itself. A component cannot change its `props`, but it can change its `state`.
+بزرگترین فرق بین `state` و `props` آن است که `هاprop` از طریق کامپوننت پدر انتقال پیدا می‌کنند، ولی `state` توسط خود کامپوننت مدیریت می‌شود. کامپوننت نمی‌تواند `هایprop` خودش را تغییر دهد، ولی می‌تواند `state` خودش را تغییر دهد.
 
-For each particular piece of changing data, there should be just one component that "owns" it in its state. Don't try to synchronize states of two different components. Instead, [lift it up](/docs/lifting-state-up.html) to their closest shared ancestor, and pass it down as props to both of them.
+برای هر تکه خاص از تغییر داده، باید فقط یک کامپوننت باشد که آن را در stateاش ازآن خود کند. سعی نکنید که state دو کامپوننت مختلف را باهم یکسان کنید. به جای این کار، آن را به نزدیکترین کامپوننت جد که بین آنها به اشتراک گذاشته شده [انتقال دهید](/docs/lifting-state-up.html) و سپس به هر دوی آنها از بالا به پایین انتقال دهید.
 
 ## [Lifecycle Methods](/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class) {#lifecycle-methods}
 
-Lifecycle methods are custom functionality that gets executed during the different phases of a component. There are methods available when the component gets created and inserted into the DOM ([mounting](/docs/react-component.html#mounting)), when the component updates, and when the component gets unmounted or removed from the DOM.
+متد‌های چرخه حیات توابع شخصی‌سازی شده ای هستند که در فاز‌های مختلف یک کامپوننت فراخوانی می‌شوند. برای زمانی که کامپوننت ساخته می‌شود و درون DOM اضافه می‌شود([mounting](/docs/react-component.html#mounting))، زمانی که کامپوننت به‌روز رسانی می‌شود، و زمانی که کامپوننت unmounted یا پاک می‌شود متد‌هایی وجود دارند.
 
  ## [Controlled](/docs/forms.html#controlled-components) vs. [Uncontrolled Components](/docs/uncontrolled-components.html)
 
-React has two different approaches to dealing with form inputs. 
+ری‌اکت دو نوع روش برای کار با input فرم ها دارد:
 
-An input form element whose value is controlled by React is called a *controlled component*. When a user enters data into a controlled component a change event handler is triggered and your code decides whether the input is valid (by re-rendering with the updated value). If you do not re-render then the form element will remain unchanged.
+input elementای که مقدار آن توسط ری‌اکت کنترل می‌شود را *controlled component* (کامپوننت های کنترل شده) می‌خوانند.  هنگامی که کاربر داده‌ای درون یک کامپوننت کنترل شده وارد می‌کند روی‌داد کنترل تغییر فعال می‌شود و کد شما تصمیم می‌گیرد که input شما معتبر است (با استفاده از به‌روز رسانی مقدار). اگر شما مجددا رندر نکنید آن input دست نخورده باقی می‌ماند.
 
-An *uncontrolled component* works like form elements do outside of React. When a user inputs data into a form field (an input box, dropdown, etc) the updated information is reflected without React needing to do anything. However, this also means that you can't force the field to have a certain value.
+یک *uncontrolled component* (کامپوننت‌های کنترل نشده) مانند elementهای خارج از ری‌اکت کار می‌کند. اگر کاربر داده‌ای درون فیلدی از فرم وارد کند (input, dropdown, وغیره) اطاعات بدون اینکه ری‌اکت در موردش کاری کند تاثیر می‌پذیرند. همچنین، این به آن معناست که شما نمی‌توانید فیلد را مجبور کنید تا مقدار خاصی داشته باشد.
 
-In most cases you should use controlled components.
+در اکثر موارد باید از کامپوننت‌های کنترل شده استفاده کنید.
 
 ## [Keys](/docs/lists-and-keys.html) {#keys}
 
-A "key" is a special string attribute you need to include when creating arrays of elements. Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside an array to give the elements a stable identity.
+"key" متن خصیصه خاصی هست که هنگامی که میخواهید آرایه ای از elementها را ایجاد کنید نیاز دارید که وارد کنید. Keyها به ری‌اکت کمک می‌کنند که چه آیتمی تغییر کرده، اضافه شده، یا پاک شده است. Keyها باید به elementهای درون آرایه داده شوند تا هویت ثابتی داشته باشند.
 
-Keys only need to be unique among sibling elements in the same array. They don't need to be unique across the whole application or even a single component.
+Keyها فقط باید بین هم نژادهایشان درون یک آرایه، منحصر به فرد باشند.نیازی نیست که در تمام برنامه یا حتی درون یک کامپوننت  منحصر به فرد باشند.
 
-Don't pass something like `Math.random()` to keys. It is important that keys have a "stable identity" across re-renders so that React can determine when items are added, removed, or re-ordered. Ideally, keys should correspond to unique and stable identifiers coming from your data, such as `post.id`.
+چیزی مثل `Math.random()` را برای keyها قرار ندهید. بسیار مهم است که keyها "هویت ثابت" در بین هر رندر داشته باشند تا ری‌اکت بتواند هنگامی که آیتمی  اضافه، کم یا مجددا به‌روز رسانی شد تشخیص دهد. در حالت ایده آل، keyها باید با هویت باثباتی که از داده‌های شما می‌آیند مطابق باشند، مانند `post.id`.
 
 ## [Refs](/docs/refs-and-the-dom.html) {#refs}
 
-React supports a special attribute that you can attach to any component. The `ref` attribute can be an object created by [`React.createRef()` function](/docs/react-api.html#reactcreateref) or a callback function, or a string (in legacy API). When the `ref` attribute is a callback function, the function receives the underlying DOM element or class instance (depending on the type of element) as its argument. This allows you to have direct access to the DOM element or component instance.
-
-Use refs sparingly. If you find yourself often using refs to "make things happen" in your app, consider getting more familiar with [top-down data flow](/docs/lifting-state-up.html).
+ری‌اکت از خصیصه‌ای پشتیبانی می‌کند که شما می‌توانید به هر کامپوننتی بچسبانید. خصیصه `ref` می‌تواند آبجکتی ساخته شده توسط [`تابع ()React.createRef`](/docs/react-api.html#reactcreateref) یا تابع callback، یا یک متن باشد (در Api قدیم). هنگامی که خصیصه `ref` یک callback باشد، تابع element نهفته DOM و یا instance کلاس را به عنوان آرگومان دریافت می‌کند (بسته به نوع element). این به شما اجازه می‌دهد تا به element DOM یا instance کلاس دسترسی داشته باشید.
+از ref زیاد استفاده نکنید. اگر دیدید که مکرر از ref در نرم‌افزارتان استفاده می‌کنید تا همه چیز اتفاق بیافتد در نظر داشته باشید که با [جریان داده از بالا به پایین](/docs/lifting-state-up.html). بیشتر آشنا شوید.
 
 ## [Events](/docs/handling-events.html) {#events}
 
-Handling events with React elements has some syntactic differences:
+کنترل روی‌دادها با elementهای ری‌اکت قواعد صرف ونحوی متفاوتی دارد :
 
-* React event handlers are named using camelCase, rather than lowercase.
-* With JSX you pass a function as the event handler, rather than a string.
+* کنترلر‌های روی داد ری‌اکت به شکل شتری نوشته می‌شوند به جای آنکه با حروف کوچک نوشته شوند.
+* با JSX شما تابع را به عنوان کنترل روی‌داد انتقال می‌دهید به جای انتقال یک متن.
 
 ## [Reconciliation](/docs/reconciliation.html) {#reconciliation}
 
-When a component's props or state change, React decides whether an actual DOM update is necessary by comparing the newly returned element with the previously rendered one. When they are not equal, React will update the DOM. This process is called "reconciliation".
+هنگامی که propها یا state تغییر می‌کند، ری‌اکت با مقایسه elementهای بازگشت داده شده و آنهایی که قبلا رندر شده بودند تصمیم می‌گید که DOM  اصلی به‌روز رسانی شود یا خیر. هنگامی که با هم برابر نباشند، ری‌اکت DOM را به‌روز رسانی می‌کند. این پردازش "reconciliation" خوانده می‌شود.
