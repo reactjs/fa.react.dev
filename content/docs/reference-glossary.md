@@ -36,9 +36,10 @@ CDN مخخف Content Delivery Network (شبکه تحویل‌دهی محتوا) 
 
 ## JSX {#jsx}
 
-JSX is a syntax extension to JavaScript. It is similar to a template language, but it has full power of JavaScript. JSX gets compiled to `React.createElement()` calls which return plain JavaScript objects called "React elements". To get a basic introduction to JSX [see the docs here](/docs/introducing-jsx.html) and find a more in-depth tutorial on JSX [here](/docs/jsx-in-depth.html).
+JSX یک افزونه‌ی دست‌خط برای جاوااسکریپت است. به زبان template شبیه است ولی دارای تمام قدرت جاوااسکریپت می‌باشد. JSX توسط فراخوانی `React.createElement()` کامپایل می‌شود که یک شی جاوااسکریپتی ساده به نام "React elements" را باز می‌گرداند. برای دست‌یابی به معرفی JSX می‌توانید [این سند را ببینید](/docs/introducing-jsx.html) و آموزش عمیق‌تری در [اینجا](/docs/jsx-in-depth.html) پیدا کنید.
 
-React DOM uses camelCase property naming convention instead of HTML attribute names. For example, `tabindex` becomes `tabIndex` in JSX. The attribute `class` is also written as `className` since `class` is a reserved word in JavaScript:
+ری‌اکت Dom از نگارش شتری به‌جای نحوه نام گذاری در خصیصه‌های HTML برای نام گذاری خود استفاده می‌کند. برای مثال `tabindex` در JSX می‌شود `tabIndex`.
+همچنین خصیصه `class` به شکل `className` نوشته می‌شود زیرا کلمه `class` در زبان جاوااسکریپت رزرو شده است.
 
 ```js
 const name = 'Clementine';
@@ -50,17 +51,16 @@ ReactDOM.render(
 
 ## [Elements](/docs/rendering-elements.html) {#elements}
 
-React elements are the building blocks of React applications. One might confuse elements with a more widely known concept of "components". An element describes what you want to see on the screen. React elements are immutable.
+elementهای ری‌اکت بلاک‌هایی هستند که نرم‌افزارهای ری‌امت را می‌سازند. فردی ممکن است elementها را با مفهموم گسترش یافته "کامپوننت" اشتباه بگیرد. یک المنت چیزی را که می‌خواهید در صفحه نمایش دهید را نشان می‌دهد. المان‌های ری‌اکت immutable هستند.
 
 ```js
 const element = <h1>Hello, world</h1>;
 ```
-
-Typically, elements are not used directly, but get returned from components.
+معمولا، elementها مستقیما استفاده نمی‌شوند، ولی از کامپوننت ها برمی‌گردند.
 
 ## [Components](/docs/components-and-props.html) {#components}
 
-React components are small, reusable pieces of code that return a React element to be rendered to the page. The simplest version of React component is a plain JavaScript function that returns a React element:
+کامپوننت‌های ری‌اکت کوچک، تکه‌های قابل استفاده کد هستند که یک element ری ‌اکت برمی‌گردانند تا در صفحه رندر شود. ساده‌ترین ورژن یک کامپوننت ری‌اکت یک تابع جاوااسکریپت ساده است که که یک element ری‌اکت باز می‌گرداند.
 
 ```js
 function Welcome(props) {
@@ -68,7 +68,7 @@ function Welcome(props) {
 }
 ```
 
-Components can also be ES6 classes:
+همچنین کامپوننت‌ها می‌توانند کلاس‌های ES6 باشند:
 
 ```js
 class Welcome extends React.Component {
@@ -78,30 +78,29 @@ class Welcome extends React.Component {
 }
 ```
 
-Components can be broken down into distinct pieces of functionality and used within other components. Components can return other components, arrays, strings and numbers. A good rule of thumb is that if a part of your UI is used several times (Button, Panel, Avatar), or is complex enough on its own (App, FeedStory, Comment), it is a good candidate to be a reusable component. Component names should also always start with a capital letter (`<Wrapper/>` **not** `<wrapper/>`). See [this documentation](/docs/components-and-props.html#rendering-a-component) for more information on rendering components. 
+کامپوننت‌ها می‌توانند به تکه‌های مجزای عملکردی شکسته شوند و در کامپوننت‌های دیگر استفاده شوند. کامپوننت‌ها می‌توانند کامپوننت‌های دیگر، متن و عدد برگردانند، یک قانون خوب آنست که اگر کامپوننت شما چندین بار در UI مورد استفاده قرار گرفت (دکمه، پنل، آواتار)، یا به نوبه خودش به اندازه کافی پیچیده شده بود (نرم‌افزار،FeedStory، کامنت‌ها)، کاندید خوبی است برای اینکه به یک کامپوننت قابل استفاده مجدد تبدیل شود.
+همچنین نام کامپوننت‌ها باید همیشه با حرف بزرگ شروع شود.(`<Wrapper/>` **نه** `<wrapper/>`). برای کسب اطلاعات بیشتر در مورد رندر شدن کامپوننت‌ها [این سند را مشاهده کنید](/docs/components-and-props.html#rendering-a-component). 
 
 ### [`props`](/docs/components-and-props.html) {#props}
 
-`props` are inputs to a React component. They are data passed down from a parent component to a child component.
-
-Remember that `props` are readonly. They should not be modified in any way:
+`props` ورودی‌های کامپوننت ری‌اکت هستند. آنها داده‌هایی هستند که از کامپوننت پدر به کامپوننت فرزند انتقال پیدا می‌کنند.
+به خاطر داشته باشید که`props`ها را فقط می‌توان خواند. نباید آنها را به هیچ طریقی تغییر داد:
 
 ```js
 // Wrong!
 props.number = 42;
 ```
-
-If you need to modify some value in response to user input or a network response, use `state` instead.
+اگر نیاز دارید مقداری را در پاسخ به ورودی کاربر یا شبکه تغییر دهید به جای آن از `state` استفاده کنید.
 
 ### `props.children` {#propschildren}
 
-`props.children` is available on every component. It contains the content between the opening and closing tags of a component. For example:
+`props.children` در هر کامپوننتی قابل دسترسیست. شامل محتوای بین باز شدن و بسته شدن تگ یک کامپوننت است. برای مثال:
 
 ```js
 <Welcome>Hello world!</Welcome>
 ```
 
-The string `Hello world!` is available in `props.children` in the `Welcome` component:
+متن `Hello world!` در `props.children` در کامپوننت `Welcome` در دسترس است:
 
 ```js
 function Welcome(props) {
@@ -109,7 +108,7 @@ function Welcome(props) {
 }
 ```
 
-For components defined as classes, use `this.props.children`:
+برای کامپوننت‌هایی که از کلاس استفاده می‌کنند از `this.props.children` استفاده کنید:
 
 ```js
 class Welcome extends React.Component {
