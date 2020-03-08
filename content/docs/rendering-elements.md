@@ -72,10 +72,6 @@ const element = <h1>Hello, world</h1>;
 
 ![DOM inspector showing granular updates](../images/docs/granular-dom-updates.gif)
 
-<<<<<<< HEAD
 با وجود این‌که ما هر ثانیه یک المنت که توصیف‌کننده کل UI است را ایجاد می‌کنیم، فقط node متنی که محتویاتش تغییر کرده‌است توسط ری‌اکت DOM به‌روز‌رسانی می‌شود.
-=======
-Even though we create an element describing the whole UI tree on every tick, only the text node whose contents have changed gets updated by React DOM.
->>>>>>> 2ab1ca5007a37ca509863a212293f1c6b26d0afc
 
 براساس تجربه ما، تفکر درباره این‌که UI در یک زمان مشخص چگونه به نظر بیاید، به جای این‌که چگونه آن را در طول زمان تغییر دهیم، یک دسته کامل از باگ‌ها را از بین می‌برد.
