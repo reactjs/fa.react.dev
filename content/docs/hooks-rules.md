@@ -6,26 +6,27 @@ next: hooks-custom.html
 prev: hooks-effect.html
 ---
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+*Hookها* ضمیمه جدید ری‌اکت ۱۶.۸ هستند. آن‌ها به شما اجازه می‌دهند تا از state و سایر ویژگی‌های ری‌اکت بدون نوشتن کلاس استفاده کنید.
 
-Hooks are JavaScript functions, but you need to follow two rules when using them. We provide a [linter plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) to enforce these rules automatically:
+Hookها توابع جاوااسکریپت هستند، ولی هنگامی که از آنها استفاده می‌کنید باید از دو قانون تبعیت کنید. ما یک [پلاگین آستر](https://www.npmjs.com/package/eslint-plugin-react-hooks) برای اجرای خودکار این قوانین برای شما فراهم کردیم.
 
-### Only Call Hooks at the Top Level {#only-call-hooks-at-the-top-level}
 
-**Don't call Hooks inside loops, conditions, or nested functions.** Instead, always use Hooks at the top level of your React function. By following this rule, you ensure that Hooks are called in the same order each time a component renders. That's what allows React to correctly preserve the state of Hooks between multiple `useState` and `useEffect` calls. (If you're curious, we'll explain this in depth [below](#explanation).)
+### Hookها را فقط در بالاترین سطح فراخوانی کنید{#only-call-hooks-at-the-top-level}
 
-### Only Call Hooks from React Functions {#only-call-hooks-from-react-functions}
+**Hookها را درون لوپ، شرط، یا توابع در هم تنیده فراخوانی نکنید** به جای آن، همیشه آنها را در بالاترین سطح توابع ری‌اکت فراخوانی کنید. با پیروی از این قوانین، مطمین می‌شوید که Hookها هنگامی که در یک کامپوننت رندر می‌شوند به یک ترتیب فراخوانی می‌شوند. این چیزیست که به ری‌اکت اجازه می‌دهد state hookها را بین چندین فراخوانی از `useState` و `useEffect` حفظ کند.
 
-**Don't call Hooks from regular JavaScript functions.** Instead, you can:
+### Hookها را فقط در توابع ری‌اکتی فراخوانی کنید {#only-call-hooks-from-react-functions}
 
-* ✅ Call Hooks from React function components.
-* ✅ Call Hooks from custom Hooks (we'll learn about them [on the next page](/docs/hooks-custom.html)).
+**Hookها را در توابع عادی جاوااسکریپت فراخوانی نکنید.** به جای آن، می‌توانید:
 
-By following this rule, you ensure that all stateful logic in a component is clearly visible from its source code.
+* ✅ Hookها را در توابع ری‌اکت فراخوانی کنید.
+* ✅ Hookها را از Hookها فراخوانی کنید (در صفحه بعدی در موردشان خواهیم [آموخت](/docs/hooks-custom.html)).
 
-## ESLint Plugin {#eslint-plugin}
+با پیروی از این قوانین، متوجه می‌شوید که تمام منطق stateful به وضوح در منبع کد یک کامپوننت قابل مشاهده است.
 
-We released an ESLint plugin called [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) that enforces these two rules. You can add this plugin to your project if you'd like to try it:
+## پلاگین ESLint {#eslint-plugin}
+
+ما پلاگینی منتشر کردیم که به آن[`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) گفته می‌شود و این دو قانون را اجباری می‌کند. اگر دوست داشتید می‌توانید این پلاگین را به پروژه خود اضافه کنید.
 
 ```bash
 npm install eslint-plugin-react-hooks --save-dev
@@ -46,13 +47,12 @@ npm install eslint-plugin-react-hooks --save-dev
 }
 ```
 
-This plugin is included by default in [Create React App](/docs/create-a-new-react-app.html#create-react-app).
+در آینده قصد داریم تا این پلاگین را به صورت پیش فرض در Create React App و ابزارهای مشابه وارد کنیم.
+**اکنون شما میتوانید به پیج صفحه بعد که آموزش [نوشتن Hook شخصی](/docs/hooks-custom.html) را می‌دهد جهش داشته باشید.** در ادامه در این پیج می‌خواهیم توضیح دهیم که علت این قوانین چیست.
 
-**You can skip to the next page explaining how to write [your own Hooks](/docs/hooks-custom.html) now.** On this page, we'll continue by explaining the reasoning behind these rules.
+## توضیح {#explanation}
 
-## Explanation {#explanation}
-
-As we [learned earlier](/docs/hooks-state.html#tip-using-multiple-state-variables), we can use multiple State or Effect Hooks in a single component:
+همانطور که در قبل [آموختیم](/docs/hooks-state.html#tip-using-multiple-state-variables)، می توانیم از چندین هوک State و Effect در یک کامپوننت استفاده کنیم.
 
 ```js
 function Form() {
@@ -76,7 +76,7 @@ function Form() {
 }
 ```
 
-So how does React know which state corresponds to which `useState` call? The answer is that **React relies on the order in which Hooks are called**. Our example works because the order of the Hook calls is the same on every render:
+پس ری‌اکت چگونه می‌فهمد که چه stateای به چه فراخوانی از `useState` مرتبط است؟ جواب این‌است که **ری‌اکت به ترتیبی که Hookها فراخوانی می‌شود تکیه می‌کند**. مثال ما کار می‌کند زیرا ترتیب فراخوانی Hookها در هر رندر یکسان است:
 
 ```js
 // ------------
@@ -98,7 +98,8 @@ useEffect(updateTitle)     // 4. Replace the effect for updating the title
 // ...
 ```
 
-As long as the order of the Hook calls is the same between renders, React can associate some local state with each of them. But what happens if we put a Hook call (for example, the `persistForm` effect) inside a condition?
+تا زمانی که ترتیب فراخوانی Hookها بین رندرها یکسان است، ری‌اکت می‌تواند برخی از state های محلی را با هر یک از آنها مرتبط کند. ولی چه می‌شود وقتی که ما Hookای را درون شرطی فراخوانی می‌کنیم (برای مثال، تاثیر `persistForm`).
+
 
 ```js
   // 🔴 We're breaking the first rule by using a Hook in a condition
@@ -109,7 +110,7 @@ As long as the order of the Hook calls is the same between renders, React can as
   }
 ```
 
-The `name !== ''` condition is `true` on the first render, so we run this Hook. However, on the next render the user might clear the form, making the condition `false`. Now that we skip this Hook during rendering, the order of the Hook calls becomes different:
+شرط `name !== ''` در اولین رندر صحیح است، پس این Hook را اجرا می‌کنیم. گرچه، در رندر بعدی کاربر ممکن است فرم را خالی کرده باشد و شرط را ناصحیح قرار دهد. و حالا در طول رندر این Hook از رویش میپریم، فراخوانی‌های Hook متفاوت می‌شود:
 
 ```js
 useState('Mary')           // 1. Read the name state variable (argument is ignored)
@@ -118,9 +119,9 @@ useState('Poppins')        // 🔴 2 (but was 3). Fail to read the surname state
 useEffect(updateTitle)     // 🔴 3 (but was 4). Fail to replace the effect
 ```
 
-React wouldn't know what to return for the second `useState` Hook call. React expected that the second Hook call in this component corresponds to the `persistForm` effect, just like during the previous render, but it doesn't anymore. From that point, every next Hook call after the one we skipped would also shift by one, leading to bugs.
+ری‌اکت نمی‌داند که چه چیزی را برای دومین Hook `useState` برگرداند. ری‌اکت توقع دارد که دومین فراخوانی درست مثل رندر قبلی Hook در این کامپوننت به افکت `persistForm` مرتبط باشد، ولی اینگونه نیست. از اینجا به بعد، تمامی Hookهای بعد از Hookای که ما از رویش پریدیم یکی به بعدی منتقل می‌شود و منجر به باگ می‌گردد.
 
-**This is why Hooks must be called on the top level of our components.** If we want to run an effect conditionally, we can put that condition *inside* our Hook:
+**به همین دلیل است که Hookها باید در بالاترین سطح کامپوننت فراخوانی شوند.** اگر بخواهیم Hookرا بر اساس شرطی اجرا کنیم می‌توانیم شرط را *درون* Hookمان قرار دهیم:
 
 ```js
   useEffect(function persistForm() {
@@ -130,9 +131,8 @@ React wouldn't know what to return for the second `useState` Hook call. React ex
     }
   });
 ```
+**توجه داشته باشید که اگر این پلاگین آستری که [فراهم](https://www.npmjs.com/package/eslint-plugin-react-hooks) کردیم را نصب کنید دیگر نیاز نیست نگران این مشکلات باشید** ولی الان می‌دانید که *چرا* Hookها اینگونه کار می‌کنند، و این قوانین از چه مشکلاتی جلوگیری می‌کند.
 
-**Note that you don't need to worry about this problem if you use the [provided lint rule](https://www.npmjs.com/package/eslint-plugin-react-hooks).** But now you also know *why* Hooks work this way, and which issues the rule is preventing.
+## گام‌های بعدی {#next-steps}
 
-## Next Steps {#next-steps}
-
-Finally, we're ready to learn about [writing your own Hooks](/docs/hooks-custom.html)! Custom Hooks let you combine Hooks provided by React into your own abstractions, and reuse common stateful logic between different components.
+درنهایت، آماده هستیم تا در مورد [نوشتن Hook شخصی خودمان](/docs/hooks-custom.html) بیاموزیم! Hookهای شخصی اجازه می‌دهند تا چندین Hook که ری‌اکت فراهم کرده را باهم ترکیب کنید و انتزاع خود را داشته باشید، و از همان منطق stateful بین کامپوننت‌ها مجددا استفاده کنید.
