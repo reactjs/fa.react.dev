@@ -7,16 +7,15 @@ redirect_from:
 prev: lifting-state-up.html
 next: thinking-in-react.html
 ---
+ری‌اکت دارای یک مدل ترکیبی (compostion) قدرتمند است. به همین دلیل برای افزایش امکان استفاده مجدد کد بین کامپوننت‌ها، ما استفاده از ترکیب را به جای ارث‌بری پیشنهاد می‌کنیم.
 
-React has a powerful composition model, and we recommend using composition instead of inheritance to reuse code between components.
+توسعه‌دهنگانی که تازه وارد دنیای ری‌اکت می‌شوند، هنگام مواجه با ارث‌بری دچار مشکلاتی می‌شوند. در این بخش، چند مورد از آن‌ها را بررسی و نشان می‌دهیم که چگونه با استفاده از ترکیب می‌توان آن‌ها را حل کرد.
 
-In this section, we will consider a few problems where developers new to React often reach for inheritance, and show how we can solve them with composition.
+## در بر گرفتن {#containment}
 
-## Containment {#containment}
+بعضی از کامپوننت‌ها اطلاعاتی از فرزند خود ندارند. این مورد در کامپوننت‌هایی مانند `Sidebar` یا `Dialog` که مانند یک قاب عمل می‌کنند، مرسوم است.
 
-Some components don't know their children ahead of time. This is especially common for components like `Sidebar` or `Dialog` that represent generic "boxes".
-
-We recommend that such components use the special `children` prop to pass children elements directly into their output:
+توصیه ما درمورد این کامپوننت‌ها، استفاده از prop مخصوص `children` است. به این وسیله کامپوننت المنت‌های فرزند خود را مستقیم به خروجی منتقل می‌کند:
 
 ```js{4}
 function FancyBorder(props) {
@@ -28,7 +27,7 @@ function FancyBorder(props) {
 }
 ```
 
-This lets other components pass arbitrary children to them by nesting the JSX:
+با این روش می توان یک JSX دلخواه را به عنوان فرزند درون آن‌ها قرار داد:
 
 ```js{4-9}
 function WelcomeDialog() {
@@ -45,11 +44,11 @@ function WelcomeDialog() {
 }
 ```
 
-**[Try it on CodePen](https://codepen.io/gaearon/pen/ozqNOV?editors=0010)**
+**[روی CodePen امتحان کنید](https://codepen.io/gaearon/pen/ozqNOV?editors=0010)**
 
-Anything inside the `<FancyBorder>` JSX tag gets passed into the `FancyBorder` component as a `children` prop. Since `FancyBorder` renders `{props.children}` inside a `<div>`, the passed elements appear in the final output.
+هرچیزی که میان تگ `<FancyBorder>` قرار گیرد، از راه prop `children` در اختیار کامپوننت `FancyBorder` قرار می‌گیرد. از آن‌جا که کامپوننت `FancyBorder` مقدار `{props.children}` را میان یک `<div>` رندر می‌کند، در نتیجه المنت‌های پاس داده شده در خروجی نهایی ظاهر می‌شوند.
 
-While this is less common, sometimes you might need multiple "holes" in a component. In such cases you may come up with your own convention instead of using `children`:
+در مواردی نادر، ممکن است نیاز به پر کردن چند جای خالی در کامپوننت خود داشته‌باشید. در این حالت می‌توانید به جای `children`، بر اساس روش دلخواه خود عمل کنید:
 
 ```js{5,8,18,21}
 function SplitPane(props) {
@@ -78,15 +77,15 @@ function App() {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/gwZOJp?editors=0010)
+[**روی CodePen امتحان کنید**](https://codepen.io/gaearon/pen/gwZOJp?editors=0010)
 
-React elements like `<Contacts />` and `<Chat />` are just objects, so you can pass them as props like any other data. This approach may remind you of "slots" in other libraries but there are no limitations on what you can pass as props in React.
+المنت‌های ری‌اکتی مانند `<Contacts />` و `<Chat />` فقط ‌آبجکت هستند، بنابراین شما می‌توانید آن‌ها را (مانند انواع دیگر دیتا) به عنوان prop [به کامپوننت‌های دیگر] پاس دهید. این روش ممکن است‌شما را یاد "slots" در دیگر کتابخانه‌ها بیاندازد. هیچ محدودیتی در پاس دادن prop در ری‌اکت نیست.
 
-## Specialization {#specialization}
+## تخصص {#specialization}
 
-Sometimes we think about components as being "special cases" of other components. For example, we might say that a `WelcomeDialog` is a special case of `Dialog`.
+گاهی اوقات به ذهن ما می‌رسد که کامپوننت‌ها شکل ویژه‌ای از یک کامپوننت دیگر هستند. برای مثال، می‌توان گفت یک `WelcomeDialog` شکل ویژه‌ای از یک `Dialog` است.
 
-In React, this is also achieved by composition, where a more "specific" component renders a more "generic" one and configures it with props:
+در ری‌اکت، این قابلیت با ترکیب امکان‌پذیر می‌شود. به این ترتیب که یک کامپوننت جزیی، یک کامپوننت کلی‌تر را با تنظیم prop ها رندر می‌کند:
 
 ```js{5,8,16-18}
 function Dialog(props) {
@@ -111,9 +110,9 @@ function WelcomeDialog() {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/kkEaOZ?editors=0010)
+[**روی CodePen امتحان کنید**](https://codepen.io/gaearon/pen/kkEaOZ?editors=0010)
 
-Composition works equally well for components defined as classes:
+ترکیب برای کامپوننت‌هایی که بر پایه کلاس نوشته‌شده‌اند نیز به خوبی کار می‌کند:
 
 ```js{10,27-31}
 function Dialog(props) {
@@ -161,12 +160,12 @@ class SignUpDialog extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/gwZbYa?editors=0010)
+[**روی CodePen امتحان کنید**](https://codepen.io/gaearon/pen/gwZbYa?editors=0010)
 
-## So What About Inheritance? {#so-what-about-inheritance}
+## پس ارث‌بری چه می‌شود؟ {#so-what-about-inheritance}
 
-At Facebook, we use React in thousands of components, and we haven't found any use cases where we would recommend creating component inheritance hierarchies.
+در Facebook ما از ری‌اکت برای ساخت هزاران کامپوننت استفاده می‌کنیم. اما هنوز موردی برای استفاده ارث‌بری پیدا نکرده‌ایم که آن را پیشنها کنیم.
 
-Props and composition give you all the flexibility you need to customize a component's look and behavior in an explicit and safe way. Remember that components may accept arbitrary props, including primitive values, React elements, or functions.
+با استفاده از prop و ترکیب کامپوننت‌ها، در طراحی ظاهر و عملکرد کامپوننت‌ها انعطاف‌پذیری لازم را خواهید داشت. به‌خاطر داشته‌باشید که کامپوننت‌ها می‌توانند prop های دلخواهی مثل مقادیر اولیه، المنت‌های ری‌اکت و یا توابع را دریافت کنند.
 
-If you want to reuse non-UI functionality between components, we suggest extracting it into a separate JavaScript module. The components may import it and use that function, object, or a class, without extending it.
+اگر نیاز دارید قابلیتی که مربوط به UI نمی‌شود را میان کامپوننت‌ها به اشتراک بگذارید، پیشنهاد ما ساخت یک ماژول جاوااسکریپت است. کامپوننت‌های شما می‌توانند آن تابع، آبجکت و یا یک کلاس را import کرده و بدون تغییر یا توسعه آن، از قابلیت‌های آن بهره ببرند.
