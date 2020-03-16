@@ -36,6 +36,10 @@ const element = <h1>Hello, world</h1>;
 
 برای رندر کردن یک المنت ری‌اکت درون یک DOM node ریشه، هر دو را به `ReactDOM.render()` بدهید
 
+<<<<<<< HEAD
+=======
+To render a React element into a root DOM node, pass both to [`ReactDOM.render()`](/docs/react-dom.html#render):
+>>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
 
 `embed:rendering-elements/render-an-element.js`
 
@@ -49,6 +53,10 @@ const element = <h1>Hello, world</h1>;
 
 با اطلاعاتی که تا این‌جا به‌دست آورده‌ایم، تنها راه به‌روز رسانی UI این است که یک المنت جدید ساخته و آن را به تابع `ReactDOM.render()` بدهیم.
 
+<<<<<<< HEAD
+=======
+With our knowledge so far, the only way to update the UI is to create a new element, and pass it to [`ReactDOM.render()`](/docs/react-dom.html#render).
+>>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
 
 این مثال ساعت را درنظر بگیرید:
 
@@ -56,11 +64,19 @@ const element = <h1>Hello, world</h1>;
 
 [با CodePen امتحان کنید](codepen://rendering-elements/update-rendered-element)
 
+<<<<<<< HEAD
 در این مثال تابع `ReactDOM.render()` هربار توسط callback تابع [`()setInterval`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) فراخوانی می‌شود.
+=======
+It calls [`ReactDOM.render()`](/docs/react-dom.html#render) every second from a [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) callback.
+>>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
 
 >**نکته:**
 >
+<<<<<<< HEAD
 > در عمل، بیشتر برنامه‌های ری‌اکت تنها یک بار `ReactDOM.render()` را فراخوانی می‌کنند. در بخش‌های بعدی یاد می‌گیریم که چگونه چنین کد‌هایی به صورت [کامپوننت‌های دارای state](/docs/state-and-lifecycle.html) کپسوله می‌شوند.
+=======
+>In practice, most React apps only call [`ReactDOM.render()`](/docs/react-dom.html#render) once. In the next sections we will learn how such code gets encapsulated into [stateful components](/docs/state-and-lifecycle.html).
+>>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
 >
 > از آن‌جا که هر بخش با استناد به موضوع‌های پیشین نوشته‌ شده‌است، پیشنهاد می‌کنیم هیچ موضوعی را از قلم نیندازید.
 
@@ -74,4 +90,8 @@ const element = <h1>Hello, world</h1>;
 
 با وجود این‌که ما هر ثانیه یک المنت که توصیف‌کننده کل UI است را ایجاد می‌کنیم، فقط node متنی که محتویاتش تغییر کرده‌است توسط ری‌اکت DOM به‌روز‌رسانی می‌شود.
 
+<<<<<<< HEAD
 براساس تجربه ما، تفکر درباره این‌که UI در یک زمان مشخص چگونه به نظر بیاید، به جای این‌که چگونه آن را در طول زمان تغییر دهیم، یک دسته کامل از باگ‌ها را از بین می‌برد.
+=======
+In our experience, thinking about how the UI should look at any given moment, rather than how to change it over time, eliminates a whole class of bugs.
+>>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1

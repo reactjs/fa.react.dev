@@ -48,7 +48,11 @@ class Welcome extends React.Component {
 
 دو کامپوننت بالا از نظر ری‌اکت یکسان هستند.
 
+<<<<<<< HEAD
 کلاس‌ها ویژگی های منحصر بفرد دیگری نیز دارند که  [ در بخش‌های بعدی ](/docs/state-and-lifecycle.html)به آنها خواهیم پرداخت. تا آن زمان به دلیل اختصار از کامپوننت‌های تابع استفاده می‌کنیم .
+=======
+Function and Class components both have some additional features that we will discuss in the [next sections](/docs/state-and-lifecycle.html).
+>>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
 
 ## رندر کردن یک کامپوننت {#rendering-a-component}
 
@@ -64,7 +68,11 @@ const element = <div />;
 const element = <Welcome name="Sara" />;
 ```
 
+<<<<<<< HEAD
 زمانی که ری‌اکت با المنتی مواجه می‌شود که بیانگر یک کامپوننت تعریف شده توسط کاربر باشد، ویژگی‌های JSX را در قالب یک شی واحد به کامپوننت منتقل می‌کند. ما این object را “props” می‌نامیم.
+=======
+When React sees an element representing a user-defined component, it passes JSX attributes and children to this component as a single object. We call this object "props".
+>>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
 
 
 برای مثال کد زیر "Hello, Sara" را روی صفحه رندر می‌کند:
