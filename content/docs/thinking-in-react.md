@@ -1,6 +1,6 @@
 ---
 id: thinking-in-react
-title: Thinking in React
+title: فکر کردن در چارچوب ری‌اکت
 permalink: docs/thinking-in-react.html
 redirect_from:
   - 'blog/2013/11/05/thinking-in-react.html'
@@ -8,17 +8,19 @@ redirect_from:
 prev: composition-vs-inheritance.html
 ---
 
-React is, in our opinion, the premier way to build big, fast Web apps with JavaScript. It has scaled very well for us at Facebook and Instagram.
+به عقیده ما، ری‌اکت بهترین راه برای ساخت وب اپلیکیشن هایی سریع و بزرگ، با استفاده از جاوااسکریپت است و برای ما در فیسبوک و اینستاگرام خیلی خوب جواب داده است.
 
-One of the many great parts of React is how it makes you think about apps as you build them. In this document, we'll walk you through the thought process of building a searchable product data table using React.
+ری‌اکت بخش‌های خیلی خوب زیادی دارد، اما یکی از بهترین آنها، چگونگی نگرش به اپ‌هایی است که مشغول به ساخت آنها هستید.
+در این سند (Document)، به فرایند تفکر در ساخت یک جدول محصولات با قابلیت جستجو خواهیم پرداخت، و برای ساخت این جدول از ری‌اکت استفاده میکنیم.
 
-## Start With A Mock {#start-with-a-mock}
 
-Imagine that we already have a JSON API and a mock from our designer. The mock looks like this:
+## شروع با یک مدل  {#start-with-a-mock}
+
+تصور کنید که ما از قبل یک JSON API و یک مدل، که توسط طراح آماده شده است را داریم. مدل آماده شده چیزی شبیه به این است:
 
 ![Mockup](../images/blog/thinking-in-react-mock.png)
 
-Our JSON API returns some data that looks like this:
+و JSON API هم داده‌هایی را باز می‌گرداند که به صورت زیر است:
 
 ```
 [
@@ -31,27 +33,35 @@ Our JSON API returns some data that looks like this:
 ];
 ```
 
-## Step 1: Break The UI Into A Component Hierarchy {#step-1-break-the-ui-into-a-component-hierarchy}
+## قدم اول: رابط کاربری را به یک سلسله از کامپوننت‌ها تقسیم کنید{#step-1-break-the-ui-into-a-component-hierarchy}
 
-The first thing you'll want to do is to draw boxes around every component (and subcomponent) in the mock and give them all names. If you're working with a designer, they may have already done this, so go talk to them! Their Photoshop layer names may end up being the names of your React components!
+اولین کاری که باید انجام دهید، این است که دور هر کدام از کامپوننت‌های موجود خط بکشید و تمامی کامپوننت‌ها را به همراه زیرمجموعه‌های آن (subcomponents) مشخص کنید و برای هر کدام یک نام در نظر بگیرید (هر کامپوننت ممکن است یک یا چند کامپوننت زیرمجموعه داشته باشد).
 
-But how do you know what should be its own component? Just use the same techniques for deciding if you should create a new function or object. One such technique is the [single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle), that is, a component should ideally only do one thing. If it ends up growing, it should be decomposed into smaller subcomponents.
+اگر به همراه یک طراح کار می‌کنید، ممکن است او قبلا همین کار را انجام داده باشد. نام‌گذاری آن‌ها برای لایه‌های مختلف در فایل فتوشاپی که تهیه کرده‌اند، می‌تواند نام کامپوننت‌ها در کد شما هم باشد!
 
-Since you're often displaying a JSON data model to a user, you'll find that if your model was built correctly, your UI (and therefore your component structure) will map nicely. That's because UI and data models tend to adhere to the same *information architecture*, which means the work of separating your UI into components is often trivial. Just break it up into components that represent exactly one piece of your data model.
+اما چطور بفهمیم که یک بخش باید تبدیل به یک کامپوننت جداگانه شود؟ در این موارد بهتر است از همان تکنیک‌هایی استفاده کنیم که زمان تصمیم‌گیری برای تعریف یک تابع یا یک شیء جدید به کمک‌‌‌ ما می‌آمدند.
+یکی از این تکنیک‌ها [اصل مسئولیت واحد (single responsibility principle)](https://en.wikipedia.org/wiki/Single_responsibility_principle) است.
+این اصل بیان می‌کند که هر کامپوننت، باید در حالت ایده‌آل فقط یک کار را انجام دهد و اگر وظایف آن گسترش یافت، باید برای آن کامپوننت‌های زیرمجموعه تعریف کرد و وظایف اضافی را به آنها سپرد.
+
+از آن‌جایی که اغلب یک مدل داده JSON به کاربر نشان داده می‌شود، متوجه خواهید شد که اگر این مدل درست ساخته شده‌باشد، رابط کاربری و ساختار کامپوننت‌های شما هم به درستی قابل ترسیم و تعیین خواهد بود.
+این بدان دلیل است که مدل داده (data model) و رابط کاربری معمولا از یک معماری اطلاعات (information architecture) یکسان تبعیت می‌کنند.
+رابط کاربری را طوری به کامپوننت‌های مختلف تقسیم کنید که هر کامپوننت با بخش خاصی از مدل داده مرتبط باشد.
 
 ![Component diagram](../images/blog/thinking-in-react-components.png)
 
-You'll see here that we have five components in our simple app. We've italicized the data each component represents.
+در این تصویر می‌بینید که ما پنج کامپوننت در برنامه خود داریم و اطلاعاتی که هر کامپوننت نمایش می‌دهد را با حروف ایتالیک مشخص کرده‌ایم:
 
-  1. **`FilterableProductTable` (orange):** contains the entirety of the example
-  2. **`SearchBar` (blue):** receives all *user input*
-  3. **`ProductTable` (green):** displays and filters the *data collection* based on *user input*
-  4. **`ProductCategoryRow` (turquoise):** displays a heading for each *category*
-  5. **`ProductRow` (red):** displays a row for each *product*
+  1. **`FilterableProductTable` (نارنجی):** شامل تمام برنامه 
+  2. **`SearchBar` (آبی):** *ورودی‌های کاربر* را دریافت می‌کند
+  3. **`ProductTable` (سبز):** تمامی *مجموعه اطلاعات* را با توجه به *ورودی کاربر* نمایش داده و اطلاعات را فیلتر میکند
+  4. **`ProductCategoryRow` (فیروزه ای):** یک تیتر را برای هر *دسته* نمایش می‌دهد
+  5. **`ProductRow` (قرمز):** یک ردیف را برای هر *محصول* نمایش می‌دهد
 
-If you look at `ProductTable`, you'll see that the table header (containing the "Name" and "Price" labels) isn't its own component. This is a matter of preference, and there's an argument to be made either way. For this example, we left it as part of `ProductTable` because it is part of rendering the *data collection* which is `ProductTable`'s responsibility. However, if this header grows to be complex (i.e. if we were to add affordances for sorting), it would certainly make sense to make this its own `ProductTableHeader` component.
+اگر نگاهی به کامپوننت `ProductTable`بیندازید، متوجه میشوید که تیترهای جدول (شامل "Name" و “Price”) کامپوننت جداگانه‌ای ندارند که بیشتر یک موضوع سلیقه‌ای است و دلایل و استدلال‌هایی برای استفاده یا عدم استفاده از یک کامپوننت جداگانه برای آنها وجود دارد.
+در این مثال، آن را بخشی از `ProductTable` قرار دادیم، چرا که جزئی از *مجموعه داده ها data collection* بوده و رندر کردن آن وظیفه `ProductTable` است.
+با این حال، اگر header جدول پیچیده‌تر شود (مثلا اگر گزینه‌ای برای مرتب کردن لیست محصولات اضافه می‌کردیم)، مطمئنا منطقی‌تر بود که آنها در یک کامپوننت جداگانه با نام `ProductTableHeader` بگذاریم.
 
-Now that we've identified the components in our mock, let's arrange them into a hierarchy. This is easy. Components that appear within another component in the mock should appear as a child in the hierarchy:
+حالا که کامپوننت‌های موجود در پروژه را مشخص کردیم، وقتش رسیده که سلسله مراتب آنها را نیز تعیین کنیم. کامپوننت‌هایی که با توجه به مدل، درون یک کامپوننت دیگر قرار می‌گیرند، فرزند آن محسوب می‌شوند:
 
   * `FilterableProductTable`
     * `SearchBar`
@@ -59,90 +69,108 @@ Now that we've identified the components in our mock, let's arrange them into a 
       * `ProductCategoryRow`
       * `ProductRow`
 
-## Step 2: Build A Static Version in React {#step-2-build-a-static-version-in-react}
+## قدم دوم: یک نسخه ایستا (Static) در ری‌اکت بسازید {#step-2-build-a-static-version-in-react}
 
-<p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/gaearon/pen/BwWzwm">Thinking In React: Step 2</a> on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">این بخش را در <a href="https://codepen.io/gaearon/pen/BwWzwm">فکر کردن در چارچوب ری‌اکت: گام دوم</a> روی <a href="https://codepen.io">CodePen</a> ببینید.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-Now that you have your component hierarchy, it's time to implement your app. The easiest way is to build a version that takes your data model and renders the UI but has no interactivity. It's best to decouple these processes because building a static version requires a lot of typing and no thinking, and adding interactivity requires a lot of thinking and not a lot of typing. We'll see why.
+بعد از اینکه سلسله مراتب را مشخص کردید، نوبت به پیاده‌سازی اپ می رسد. راحت‌ترین راه این است که نسخه‌ای بسازید که مدل داده ها را می‌گیرد و رابط کاربری را تولید می‌کند اما هیچ تعاملی با کاربر ندارد.
+بهتر است که این دو فرایند (نوشتن نسخه تعاملی و ایستا) را از هم جدا کنیم، به این دلیل که ساخت نسخه ایستا، به مقدار زیادی نوشتن و مقدار کمی فکر کردن نیاز دارد. اما اضافه کردن امکان تعامل و پویایی، احتیاج به مقدار زیادی تفکر دارد و نیاز آن به نوشتن بسیار کم‌تر است. دلیلش را در ادامه خواهیم دید.
 
-To build a static version of your app that renders your data model, you'll want to build components that reuse other components and pass data using *props*. *props* are a way of passing data from parent to child. If you're familiar with the concept of *state*, **don't use state at all** to build this static version. State is reserved only for interactivity, that is, data that changes over time. Since this is a static version of the app, you don't need it.
 
-You can build top-down or bottom-up. That is, you can either start with building the components higher up in the hierarchy (i.e. starting with `FilterableProductTable`) or with the ones lower in it (`ProductRow`). In simpler examples, it's usually easier to go top-down, and on larger projects, it's easier to go bottom-up and write tests as you build.
+برای ساخت یک نسخه ایستا که مدل داده را رندر کند و نمایش دهد، باید کامپوننت‌هایی بسازید که از بقیه کامپوننت‌ها استفاده می‌کنند و داده‌ها را از طریق *props* انتقال می‌دهند. *props* امکانی است که بوسیله آن، داده‌ها از کامپوننت والد (parent) به کامپوننت فرزند (child) منتقل می‌شوند.
+اگر که با مفهوم state آشنایی دارید، **هرگز از آن برای ساخت نسخه ایستا استفاده نکنید!** state برای ایجاد تعامل طراحی شده و داده‌ای است که در طول زمان تغییر می‌کند و از آن‌جایی که فعلا روی نسخه ایستا کار می‌کنیم، نیازی به آن نخواهیم داشت.
 
-At the end of this step, you'll have a library of reusable components that render your data model. The components will only have `render()` methods since this is a static version of your app. The component at the top of the hierarchy (`FilterableProductTable`) will take your data model as a prop. If you make a change to your underlying data model and call `ReactDOM.render()` again, the UI will be updated. It's easy to see how your UI is updated and where to make changes since there's nothing complicated going on. React's **one-way data flow** (also called *one-way binding*) keeps everything modular and fast.
+می‌توانید روند ساخت را از بالا به پایین، یا از پایین به بالا شروع کنید. به این معنا که هم می‌توانید از بالاترین کامپوننت در سلسله مراتب قرار دارند (مثلا `FilterableProductTable`) یا از کامپوننت‌هایی که در سطوح پایین‌تری قرار دارند (مثل `ProductRow`) آغاز کنید. در مثال‌های ساده‌تر، معمولا شروع از بالا به پایین راحت‌تر است. در حالی‌که در پروژه‌های بزرگ‌تر، بهتر است که از پایین به بالا پیش بروید و همزمان با ساخت اپ، برای آن تست نیز بنویسید.
 
-Simply refer to the [React docs](/docs/) if you need help executing this step.
+در پایان این گام، شما کتابخانه‌ای از کامپوننت‌ها خواهید داشت که مدل داده را رندر می‌کند. از آنجایی که با نسخه ایستا سر و کار داریم، کامپوننت‌ها تنها متد `render()` خواهند داشت.
+کامپوننتی که در راس سلسله مراتب قرار دارد (یعنی `FilterableProductTable`) مدل داده‌ها را بعنوان یک prop دریافت می‌کند.
+اگر تغییراتی را در مدل داده‌های زیربنایی پروژه ایجاد کنید و دوباره `ReactDOM.render()` را صدا بزنید، رابط کاربری به‌روز رسانی خواهد شد و می‌توانید ببینید که رابط کاربری چگونه و در کجا تغییر می‌کند.
 
-### A Brief Interlude: Props vs State {#a-brief-interlude-props-vs-state}
+**جریان یکطرفه داده (one-way data flow)** در ری‌اکت (که با نام *binding یک‌طرفه* نیز شناخته می‌شود) همه چیز را ماژولار و سریع نگه می‌دارد.
 
-There are two types of "model" data in React: props and state. It's important to understand the distinction between the two; skim [the official React docs](/docs/interactivity-and-dynamic-uis.html) if you aren't sure what the difference is.
+اگر برای اجرای این بخش به کمک نیاز داشتید، به [React docs](/docs/) مراجعه کنید.
 
-## Step 3: Identify The Minimal (but complete) Representation Of UI State {#step-3-identify-the-minimal-but-complete-representation-of-ui-state}
+### یک مکث مختصر: props در مقابل state {#a-brief-interlude-props-vs-state}
 
-To make your UI interactive, you need to be able to trigger changes to your underlying data model. React makes this easy with **state**.
+دو نوع داده "مدل" در ری‌اکت وجود دارد و خیلی مهم است که تفاوت این دو را بدانیم: اگر خیلی در این مورد مطمئن نیستید، نگاهی به  [مستندات رسمی ری‌اکت ](/docs/state-and-lifecycle.html) بیندازید.
 
-To build your app correctly, you first need to think of the minimal set of mutable state that your app needs. The key here is [DRY: *Don't Repeat Yourself*](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). Figure out the absolute minimal representation of the state your application needs and compute everything else you need on-demand. For example, if you're building a TODO list, just keep an array of the TODO items around; don't keep a separate state variable for the count. Instead, when you want to render the TODO count, simply take the length of the TODO items array.
+علاوه بر این، می‌توانید به بخش [سوالات پرتکرار: تفاوت میان state و props چیست؟](/docs/faq-state.html#what-is-the-difference-between-state-and-props) مراجعه کنید.
 
-Think of all of the pieces of data in our example application. We have:
+## قدم سوم: مشخص کردن یک نمونه حداقلی (اما کامل) از state های موردنیاز در رابط کاربری {#step-3-identify-the-minimal-but-complete-representation-of-ui-state}
 
-  * The original list of products
-  * The search text the user has entered
-  * The value of the checkbox
-  * The filtered list of products
+برای تعاملی کردن رابط کاربری، باید بتوانید در مدل داده زیربنایی پروژه [همان داده‌های اولیه] تغییر ایجاد کنید. اینکار در ری‌اکت از طریق **state** انجام می‌شود.
+برای ساخت اپ به صورت صحیح، ابتدا باید به مجموعه‌ای حداقلی از داده‌های قابل تغییر فکر کنید که در پروژه شما نیاز است. کلید این موضوع، [اصل *خودت را تکرار نکن*](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) است.
+تعیین کنید که در حال حاضر، مختصرترین مجموعه state که برنامه شما نیاز دارد چیست و بقیه موارد را به مرور، و در زمان لزوم محاسبه و تعیین کنید.
 
-Let's go through each one and figure out which one is state. Simply ask three questions about each piece of data:
+برای مثال، اگر یک برنامه برای لیست کارها (TODO List) طراحی می‌کنید، یک آرایه از آیتم‌های موجود در لیست کارها را در دسترس نگه دارید. اما دیگر نیازی به تعیین یک state برای شمارش آیتم‌ها ندارید. به جای آن، زمان رندر کردن تعداد، می‌توانید از طول آرایه آیتم‌ها استفاده کنید.
 
-  1. Is it passed in from a parent via props? If so, it probably isn't state.
-  2. Does it remain unchanged over time? If so, it probably isn't state.
-  3. Can you compute it based on any other state or props in your component? If so, it isn't state.
+تمام تکه‌های داده را در مثال خودمان در نظر بگیرید:
 
-The original list of products is passed in as props, so that's not state. The search text and the checkbox seem to be state since they change over time and can't be computed from anything. And finally, the filtered list of products isn't state because it can be computed by combining the original list of products with the search text and value of the checkbox.
+  * یک لیست اصلی از محصولات
+  * متنی که کاربر جستجو میکند
+  * مقدار checkbox
+  * لیست محصولات فیلتر شده پس از جستجو توسط کاربر
 
-So finally, our state is:
+به طور جداگانه سراغ هر یک از این موارد می‌رویم تا ببینیم که کدامشان state هستند. درمورد هر بخش، این ۳ سوال را از خودتان بپرسید:
 
-  * The search text the user has entered
-  * The value of the checkbox
+  1. آیا این داده از طرف یک کامپوننت والد و بوسیله props انتقال داده شده؟ اگر جواب مثبت است، پس احتمالا این داده state نیست.
+  2. آیا در طول زمان بدون تغییر می‌ماند؟ اگر اینطور است پس احتمالا باز هم state نیست.
+  3. آیا می‌توانید آن را بر اساس یک state یا props موجود محاسبه کنید؟ اگر اینطور است، پس حتما این داده  state نیست.
 
-## Step 4: Identify Where Your State Should Live {#step-4-identify-where-your-state-should-live}
+لیست اولیه و اصلی محصولات، بعنوان یک props منتقل می‌شود، بنابراین state نیست. اما به نظر میرسد که متن جستجو و مقدار چک باکس state هستند چرا که در طول زمان تغییر می‌کنند و نمی‌توان آن‌ها را به‌سیله داده دیگری محاسبه کرد. در نهایت، لیست محصولات فیلتر شده پس از جستجو هم state نیست، چرا که می‌توان آن را از ترکیب لیست اصلی و اولیه با متن سرچ کاربر و مقدار چک باکس بدست آورد.
 
-<p data-height="600" data-theme-id="0" data-slug-hash="qPrNQZ" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/gaearon/pen/qPrNQZ">Thinking In React: Step 4</a> on <a href="https://codepen.io">CodePen</a>.</p>
+پس در مجموع، state این اپ عبارت است از:
 
-OK, so we've identified what the minimal set of app state is. Next, we need to identify which component mutates, or *owns*, this state.
+  * متنی که کاربر در فیلد جستجو وارد میکند
+  * مقدار checkbox
 
-Remember: React is all about one-way data flow down the component hierarchy. It may not be immediately clear which component should own what state. **This is often the most challenging part for newcomers to understand,** so follow these steps to figure it out:
+## قدم چهارم: مشخص کنید که state در کجا باید قرار بگیرد {#step-4-identify-where-your-state-should-live}
 
-For each piece of state in your application:
+<p data-height="600" data-theme-id="0" data-slug-hash="qPrNQZ" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">این بخش را در <a href="https://codepen.io/gaearon/pen/qPrNQZ">فکر کردن در چارچوب ری‌اکت: گام چهارم</a> روی <a href="https://codepen.io">CodePen</a> ببینید.</p>
 
-  * Identify every component that renders something based on that state.
-  * Find a common owner component (a single component above all the components that need the state in the hierarchy).
-  * Either the common owner or another component higher up in the hierarchy should own the state.
-  * If you can't find a component where it makes sense to own the state, create a new component simply for holding the state and add it somewhere in the hierarchy above the common owner component.
+بعد از اینکه ما حداقل state مورد نیاز در پروژه را مشخص کردیم، نوبت این است که بدانیم هر state باید در کدام کامپوننت قرار بگیرد.
 
-Let's run through this strategy for our application:
+به یاد داشته باشید: ری‌اکت بر مبنای جریان یک طرفه و رو به پایین داده در سلسله مراتب کامپوننت‌ها کار می‌کند. ممکن است این موضوع که کدام کامپوننت، کدام state را در خود جا می‌دهد، در اپتدا واضح نباشد.  **اغلب این مساله، چالش برانگیزترین بخش برای افرادیست که تازه با ری‌اکت آشنا شده‌اند.**
 
-  * `ProductTable` needs to filter the product list based on state and `SearchBar` needs to display the search text and checked state.
-  * The common owner component is `FilterableProductTable`.
-  * It conceptually makes sense for the filter text and checked value to live in `FilterableProductTable`
+پس برای اینکه متوجه موضوع بشوید، این قدم‌ها را برای هر state در برنامه خود دنبال کنید:
 
-Cool, so we've decided that our state lives in `FilterableProductTable`. First, add an instance property `this.state = {filterText: '', inStockOnly: false}` to `FilterableProductTable`'s `constructor` to reflect the initial state of your application. Then, pass `filterText` and `inStockOnly` to `ProductTable` and `SearchBar` as a prop. Finally, use these props to filter the rows in `ProductTable` and set the values of the form fields in `SearchBar`.
+  * کامپوننت‌هایی را که چیزی را براساس آن state رندر می‌کنند، مشخص کنید.
+  * یک کامپوننت مشترک صاحب state را پیدا کنید (کامپوننتی که در سلسله مراتب برنامه، بالاتر از دیگر کامپوننت‌های استفاده کننده از state قرار می‌گیرد و خود نیز از آن state استفاده می‌کند)
+  * صاحب مشترک یا کامپوننت دیگری که در سلسله مراتب، بالاتر قرار می‌گیرد، باید صاحب state باشند.
+  * اگر نتوانستید کامپوننتی را پیدا کنید که قرار دادن state در آن منطقی باشد، یک کامپوننت جدید ایجاد کنید که منحصرا برای نگهداری state باشد و آن را جایی بالاتر از صاحب مشترک state در سلسله مراتب قرار دهید.
 
-You can start seeing how your application will behave: set `filterText` to `"ball"` and refresh your app. You'll see that the data table is updated correctly.
+حالا این استراتژی را برای برنامه خودمان اجرا کنیم:
 
-## Step 5: Add Inverse Data Flow {#step-5-add-inverse-data-flow}
+  * کامپوننت `ProductTable` نیاز دارد که براساس state، لیست محصولات را فیلتر کند و کامپوننت `SearchBar` هم نیاز دارد که متن جستجو و وضعیت checkbox را نمایش دهد.
+  * صاحب مشترک در این مثال، کامپوننت `FilterableProductTable` است.
+  * پس منطقی به نظر میرسد که state ها را در کامپوننت `FilterableProductTable` قرار دهیم.
 
-<p data-height="600" data-theme-id="0" data-slug-hash="LzWZvb" data-default-tab="js,result" data-user="rohan10" data-embed-version="2" data-pen-title="Thinking In React: Step 5" class="codepen">See the Pen <a href="https://codepen.io/gaearon/pen/LzWZvb">Thinking In React: Step 5</a> on <a href="https://codepen.io">CodePen</a>.</p>
+به این ترتیب، در ابتدا ویژگی `this.state = {filterText: '', inStockOnly: false}` را در بخش `constructor`در کامپوننت `FilterableProductTable` قرار می‌دهیم تا state ابتدایی برنامه شما را نشان دهد.
 
-So far, we've built an app that renders correctly as a function of props and state flowing down the hierarchy. Now it's time to support data flowing the other way: the form components deep in the hierarchy need to update the state in `FilterableProductTable`.
+سپس، `filterText` و `inStockOnly` را به کامپوننت‌های `ProductTable` و `SearchBar` بعنوان props انتقال می‌دهیم. 
+درنهایت، این props برای فیلتر وردی های محصولات در `ProductTable` و مشخص کردن مقدار در checkbox موجود در `SearchBar` به کار می‌روند.
 
-React makes this data flow explicit to make it easy to understand how your program works, but it does require a little more typing than traditional two-way data binding.
+حالا می‌توانید ببینید که برنامه شما چطور عمل می‌کند: `filterText` را به `"ball"` تغییر بدهید و برنامه را دوباره بارگذاری کنید. خواهید دید که جدول داده‌ها به درستی تغییر می‌کند.
 
-If you try to type or check the box in the current version of the example, you'll see that React ignores your input. This is intentional, as we've set the `value` prop of the `input` to always be equal to the `state` passed in from `FilterableProductTable`.
+## قدم پنجم: اضافه کردن جریان معکوس داده {#step-5-add-inverse-data-flow}
 
-Let's think about what we want to happen. We want to make sure that whenever the user changes the form, we update the state to reflect the user input. Since components should only update their own state, `FilterableProductTable` will pass callbacks to `SearchBar` that will fire whenever the state should be updated. We can use the `onChange` event on the inputs to be notified of it. The callbacks passed by `FilterableProductTable` will call `setState()`, and the app will be updated.
+<p data-height="600" data-theme-id="0" data-slug-hash="LzWZvb" data-default-tab="js,result" data-user="rohan10" data-embed-version="2" data-pen-title="Thinking In React: Step 5" class="codepen">این بخش را در <a href="https://codepen.io/gaearon/pen/LzWZvb">فکر کردن در چارچوب ری‌اکت: گام پنجم</a> در <a href="https://codepen.io">CodePen</a> ببینید.</p>
 
-Though this sounds complex, it's really just a few lines of code. And it's really explicit how your data is flowing throughout the app.
+تا به اینجای کار، ما برنامه‌ای ساختیم که به طور صحیح و به شکل تابعی از props و state، رندر می‌شد و جریان داده در آن از بالا به پایین بود.
+اما حالا زمان آن است که برنامه، جریان داده را به شکل معکوس و رو به بالا پشتیبانی کند: فرم‌های موجود در پایین‌ترین بخش سلسله مراتب کامپوننت‌ها، باید بتوانند state درون کامپوننت `FilterableProductTable` را تغییر دهند.
 
-## And That's It {#and-thats-it}
+ری‌اکت، این جریان داده را شفاف می‌کند تا به کمک آن، بتوانید طرز کار برنامه‌تان را درک کنید، اما این مساله احتیاج به نوشتن و تایپ بیشتری نسبت به روش سنتی data binding دو طرفه دارد.
 
-Hopefully, this gives you an idea of how to think about building components and applications with React. While it may be a little more typing than you're used to, remember that code is read far more than it's written, and it's extremely easy to read this modular, explicit code. As you start to build large libraries of components, you'll appreciate this explicitness and modularity, and with code reuse, your lines of code will start to shrink. :)
+در نسخه فعلی این مثال، اگه در فیلد جستجو تایپ کنید یا تیک checkbox  را بزنید، خواهید دید که ری‌اکت، ورودی شما را نادیده می‌گیرد. این موضوع عمدی است، چرا که ما تعیین کردیم، `value` در `input` همواره با مقدار  `state` که از کامپوننت `FilterableProductTable` منتقل می‌شود، برابر باشد.
+
+بیایید به این فکر کنیم که می‌خواهیم چه اتفاقی بیفتد؟ می‌خواهیم مطمئن شویم که هر زمان کاربر، تغییراتی را در فرم (فیلد جستجو یا checkbox) اعمال می‌کند، state به‌روز رسانی شده و تغییرات را منعکس کند. 
+از آنجایی که کامپوننت‌ها فقط مجاز به تغییر state موجود در خودشان هستند، کامپوننت `FilterableProductTable` callbackهایی را به کامپوننت`SearchBar` انتقال می‌دهد تا هر وقت نیاز به تغییر state وجود داشت، فراخوانی شوند.
+می‌توانیم از رویداد `onChange` برای ورودی‌ها استفاده کنیم تا به این طریق، کامپوننت `FilterableProductTable` از لزوم اجرای تغییر مطلع شود.
+آن callback که از کامپوننت `FilterableProductTable` انتقال می‌یابد،  `setState()` است و باعث تغییر و به‌روز رسانی اپ میشود.
+
+## همین! {#and-thats-it}
+
+امیدواریم که این مطلب، به شما ایده داده باشد که چگونه باید درباره ساختن کامپوننت‌ها و برنامه‌ها در ری‌اکت فکر کنید. البته ممکن است که میزان نوشتن، بیشتر از حدی باشد که به آن عادت دارید، اما به یاد داشته باشید که کد، بیشتر از اینکه نوشته شود، خوانده می‌شود و خواندن این کد که به شکل ماژولار، ساده و شفاف نوشته شده است، بسیار راحت‌تر خواهد بود.
+
+به محض اینکه ساخت کتابخانه‌های بزرگ متشکل از کامپوننت‌ها را شروع کنید، بابت این شفافیت و ماژولار بودن سپاسگزار خواهید شد، و با وجود امکان استفاده مجدد از کدها، تعداد خط‌های کد شما به مرور کم‌تر خواهد شد!  :)

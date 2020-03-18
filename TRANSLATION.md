@@ -24,7 +24,7 @@
   <tbody>
     <tr>
       <td dir="ltr">
-        ansestor
+        ancestor
       </td>
       <td>
         جد
@@ -35,7 +35,7 @@
         attribute
       </td>
       <td>
-        صفت
+        خصوصیت
       </td>
     </tr>
     <tr>
@@ -80,6 +80,22 @@
     </tr>
     <tr>
       <td dir="ltr">
+        controlled component
+      </td>
+      <td>
+        کامپوننت کنترل‌شده
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        customized
+      </td>
+      <td>
+        سفارشی
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
         fragment
       </td>
       <td>
@@ -94,12 +110,20 @@
         داده
       </td>
     </tr>
-      <tr>
+    <tr>
       <td dir="ltr">
         element
       </td>
       <td>
         المنت
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
+        event
+      </td>
+      <td>
+        رویداد/رخداد
       </td>
     </tr>
     <tr>
@@ -144,6 +168,14 @@
     </tr>
     <tr>
       <td dir="ltr">
+        inline
+      </td>
+      <td>
+        درخط
+      </td>
+    </tr>
+    <tr>
+      <td dir="ltr">
         legacy code
       </td>
       <td>
@@ -166,7 +198,7 @@
         متد
       </td>
     </tr>
-     <tr>
+    <tr>
       <td dir="ltr">
         node
       </td>
@@ -230,7 +262,15 @@
         رابط کاربری
       </td>
     </tr>
-        <tr>
+    <tr>
+      <td dir="ltr">
+        uncontrolled component
+      </td>
+      <td>
+        کامپوننت کنترل‌نشده
+      </td>
+    </tr>
+    <tr>
       <td dir="ltr">
         user
       </td>
@@ -272,14 +312,6 @@
     </tr>
     <tr>
       <td dir="ltr">
-        ansestor
-      </td>
-      <td>
-        اجداد
-      </td>
-    </tr>
-    <tr>
-      <td dir="ltr">
         document
       </td>
       <td>
@@ -296,7 +328,7 @@
     </tr>
     <tr>
       <td dir="ltr">
-        epaque
+        opaque
       </td>
       <td>
         غیرشفاف
@@ -409,6 +441,11 @@
     </tr>
     <tr>
       <td>
+        subscribe
+      </td>
+    </tr>
+    <tr>
+      <td>
         bind
       </td>
     </tr>
@@ -492,7 +529,7 @@
         RFC
       </td>
     </tr>
-        <tr>
+    <tr>
       <td>
         scope
       </td>
@@ -509,7 +546,17 @@
     </tr>
     <tr>
       <td>
+        style
+      </td>
+    </tr>
+    <tr>
+      <td>
         syntactic sugar
+      </td>
+    </tr>
+    <tr>
+      <td>
+        timestamp
       </td>
     </tr>
     <tr>
@@ -535,22 +582,6 @@
     <tr>
       <td>
         loading indicator
-      </td>
-    </tr>
-    <tr>
-      <td dir="ltr">
-        attribute
-      </td>
-      <td>
-        خصوصیت
-      </td>
-    </tr>
-    <tr>
-      <td dir="ltr">
-        property
-      </td>
-      <td>
-        ویژگی
       </td>
     </tr>
   </tbody>

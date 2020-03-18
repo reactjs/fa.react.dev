@@ -6,13 +6,13 @@ layout: docs
 category: Reference
 ---
 
-This reference guide documents the `SyntheticEvent` wrapper that forms part of React's Event System. See the [Handling Events](/docs/handling-events.html) guide to learn more.
+این صفحه، مرجع `SyntheticEvent` می‌باشد که بخشی از سیستم رویدادهای ری‌اکت (React's Event System) را تشکیل می‌دهد. برای یادگیری بیشتر، [Handling Events](/docs/handling-events.html) را ببینید.
 
-## Overview {#overview}
+  ## مرور کلی {#overview}
 
-Your event handlers will be passed instances of `SyntheticEvent`, a cross-browser wrapper around the browser's native event. It has the same interface as the browser's native event, including `stopPropagation()` and `preventDefault()`, except the events work identically across all browsers.
+`SyntheticEvent` روکشی است بر رویدادهای ذاتی خود مرورگر که در تمام مرورگر‌ها کار می‌کند. کنترل کننده‌های رویداد (event handlers) شما instance  هایی از `SyntheticEvent` دریافت خواهند کرد. رابط آن همانند رویدادهای ذاتی مرورگر است و شامل `stopPropagation()` و `preventDefault()` هم هست. با این تفاوت که رویدادها در تمام مرورگر‌ها عین هم کار می‌کنند.
 
-If you find that you need the underlying browser event for some reason, simply use the `nativeEvent` attribute to get it. Every `SyntheticEvent` object has the following attributes:
+اگر فکر می‌کنید که در جایی باید رویداد ذاتی خود مرورگر را استفاده کنید، کافی است که `nativeEvent` را به عنوان یک attribute اضافه کنید تا به آن دسترسی یابید. هر آبجکت `SyntheticEvent`، attribute های زیر دارد:
 
 ```javascript
 boolean bubbles
@@ -30,16 +30,16 @@ DOMEventTarget target
 number timeStamp
 string type
 ```
-
-> Note:
+ 
+> توجه:
 >
-> As of v0.14, returning `false` from an event handler will no longer stop event propagation. Instead, `e.stopPropagation()` or `e.preventDefault()` should be triggered manually, as appropriate.
+> از نسخه ی ۰/۱۴، بازگشت دادن `false`  از یک کنترل کننده ی رویداد، مانع انتشار یک رویداد نمی شود. بجای آن، `e.stopPropagation()`  یا `e.preventDefault()` ، هر کدام به درخور موقعیت باید اجرا شوند<div class=""></div>
 
-### Event Pooling {#event-pooling}
+###  جمع آوری رویداد (event-pooling) {#event-pooling}
+`SyntheticEvent` جمع آوری می‌شود. یعنی اینکه آبجکت `SyntheticEvent` پس از آنکه callback اش فراخوانی شد، تمام دارایی‌های خود را از دست خواهد داد و استفاده ی مجدد خواهد شد.
+این  به خاطر ارتقای کارکرد است.
+از همین رو، شما نمی توانید به طور غیرهمزمان (asynchronous) به رویداد دسترسی داشته باشید.
 
-The `SyntheticEvent` is pooled. This means that the `SyntheticEvent` object will be reused and all properties will be nullified after the event callback has been invoked.
-This is for performance reasons.
-As such, you cannot access the event in an asynchronous way.
 
 ```javascript
 function onClick(event) {
@@ -52,54 +52,54 @@ function onClick(event) {
     console.log(eventType); // => "click"
   }, 0);
 
-  // Won't work. this.state.clickEvent will only contain null values.
+  // کار نخواهد کرد. this.state.clickEvent فقط حاوی متغیرهای تهی خواهد بود.
   this.setState({clickEvent: event});
 
-  // You can still export event properties.
+  // همچنان قادر خواهید بود که دارایی‌های رویداد را صادر کنید
   this.setState({eventType: event.type});
 }
 ```
 
-> Note:
+> توجه:
 >
-> If you want to access the event properties in an asynchronous way, you should call `event.persist()` on the event, which will remove the synthetic event from the pool and allow references to the event to be retained by user code.
+> اگر می‌خواهید که به دارایی‌های رویداد، به طور غیرهمزمان دسترسی داشته باشید باید `event.persist()` را در رویداد فراخوانی کنید. این موجب خواهد شد که رویداد سینتاتیک از روند جمع‌آوری خارج شود و ارجاعات داده شده به آن رویداد در کد کاربر حفظ شود.
 
-## Supported Events {#supported-events}
+## رویدادهای پشتیبانی شده {#supported-events}
 
-React normalizes events so that they have consistent properties across different browsers.
+ری‌اکت فرایند نرمال سازی را روی رویدادها انجام می دهد تا در مرورگرهای مختلف، ویژگی های یکسانی داشته باشند.
 
-The event handlers below are triggered by an event in the bubbling phase. To register an event handler for the capture phase, append `Capture` to the event name; for example, instead of using `onClick`, you would use `onClickCapture` to handle the click event in the capture phase.
+کنترل کنندگان رویدادهایی که در زیر می بینید، در فاز bubbling اجرا می شوند. اگر می خواهید که رویدادی در فاز capture اجرا شود، `Capture` را به نام رویداد اضافه کنید. مثلا بجای `onClick`، بنویسید `onClickCapture`.
 
 - [Clipboard Events](#clipboard-events)
 - [Composition Events](#composition-events)
-- [Keyboard Events](#keyboard-events)
-- [Focus Events](#focus-events)
-- [Form Events](#form-events)
-- [Mouse Events](#mouse-events)
-- [Pointer Events](#pointer-events)
-- [Selection Events](#selection-events)
-- [Touch Events](#touch-events)
-- [UI Events](#ui-events)
-- [Wheel Events](#wheel-events)
-- [Media Events](#media-events)
-- [Image Events](#image-events)
-- [Animation Events](#animation-events)
-- [Transition Events](#transition-events)
-- [Other Events](#other-events)
+- [رویداد‌های صفحه‌کلید (Keyboard Events)](#keyboard-events)
+- [رویداد‌های فکوس (Focus Events)](#focus-events)
+- [رویداد‌های فرم (Form Events)](#form-events)
+- [رویداد‌های ماوس (Mouse Events)](#mouse-events)
+- [رویداد‌های اشاره‌گر (Pointer Events)](#pointer-events)
+- [رویداد‌های انتخاب (Selection Events)](#selection-events)
+- [رویداد‌های لمسی (Touch Events)](#touch-events)
+- [رویداد‌های رابط کاربری (UI Events)](#ui-events)
+- [رویداد‌های اسکرول ماوس (Wheel Events)](#wheel-events)
+- [رویداد‌های مدیا (Media Events)](#media-events)
+- [رویداد‌های تصویر (Image Events)](#image-events)
+- [رویداد‌های انیمیشن (Animation Events)](#animation-events)
+- [رویداد‌های انتقال (Transition Events)](#transition-events)
+- [دیگر رویداد‌ها](#other-events)
 
 * * *
 
-## Reference {#reference}
+## مرجع {#reference}
 
-### Clipboard Events {#clipboard-events}
+### (Clipboard Events) {#clipboard-events}
 
-Event names:
+نام رویدادها
 
 ```
 onCopy onCut onPaste
 ```
 
-Properties:
+ویژگی‌ها
 
 ```javascript
 DOMDataTransfer clipboardData
@@ -109,13 +109,13 @@ DOMDataTransfer clipboardData
 
 ### Composition Events {#composition-events}
 
-Event names:
+نام رویدادها
 
 ```
 onCompositionEnd onCompositionStart onCompositionUpdate
 ```
 
-Properties:
+ویژگی‌ها
 
 ```javascript
 string data
@@ -124,15 +124,15 @@ string data
 
 * * *
 
-### Keyboard Events {#keyboard-events}
+### رویداد‌های صفحه‌کلید (Keyboard Events) {#keyboard-events}
 
-Event names:
+نام رویدادها
 
 ```
 onKeyDown onKeyPress onKeyUp
 ```
 
-Properties:
+ویژگی‌ها
 
 ```javascript
 boolean altKey
@@ -149,21 +149,21 @@ boolean shiftKey
 number which
 ```
 
-The `key` property can take any of the values documented in the [DOM Level 3 Events spec](https://www.w3.org/TR/uievents-key/#named-key-attribute-values).
+`key` می‌تواند هر کدام از متغیرهای ذکر شده در [DOM Level 3 Events spec](https://www.w3.org/TR/uievents-key/#named-key-attribute-values) را داشته باشد. 
 
 * * *
 
-### Focus Events {#focus-events}
+### رویداد‌های فکوس (Focus Events) {#focus-events}
 
-Event names:
+نام رویدادها
 
 ```
 onFocus onBlur
 ```
 
-These focus events work on all elements in the React DOM, not just form elements.
+رویدادهای فوق برای تمام المنت‌های React DOM کار خواهد کرد و نه فقط المنت‌های فرم.
 
-Properties:
+ویژگی‌ها
 
 ```javascript
 DOMEventTarget relatedTarget
@@ -171,21 +171,20 @@ DOMEventTarget relatedTarget
 
 * * *
 
-### Form Events {#form-events}
+### رویداد‌های فرم (Form Events) {#form-events}
 
-Event names:
+نام رویدادها
 
 ```
 onChange onInput onInvalid onSubmit
 ```
-
-For more information about the onChange event, see [Forms](/docs/forms.html).
+برای اطلاعات بیشتر در مورد رویداد onChange، [Forms](/docs/forms.html) را ببینید.
 
 * * *
 
-### Mouse Events {#mouse-events}
+### رویداد‌های ماوس (Mouse Events) {#mouse-events}
 
-Event names:
+نام رویدادها
 
 ```
 onClick onContextMenu onDoubleClick onDrag onDragEnd onDragEnter onDragExit
@@ -193,9 +192,9 @@ onDragLeave onDragOver onDragStart onDrop onMouseDown onMouseEnter onMouseLeave
 onMouseMove onMouseOut onMouseOver onMouseUp
 ```
 
-The `onMouseEnter` and `onMouseLeave` events propagate from the element being left to the one being entered instead of ordinary bubbling and do not have a capture phase.
+رویدادهای `onMouseEnter`  و  `onMouseLeave` از المنت ترک شده به المنت وارد شده تکثیر می‌شوند. آنها فاز capture ندارند و bubbling معمول هم در آنها اتفاق نمی افتد.
 
-Properties:
+ویژگی‌ها
 
 ```javascript
 boolean altKey
@@ -216,20 +215,20 @@ boolean shiftKey
 
 * * *
 
-### Pointer Events {#pointer-events}
+### رویداد‌های اشاره‌گر (Pointer Events) {#pointer-events}
 
-Event names:
+نام رویدادها
 
 ```
 onPointerDown onPointerMove onPointerUp onPointerCancel onGotPointerCapture
 onLostPointerCapture onPointerEnter onPointerLeave onPointerOver onPointerOut
 ```
 
-The `onPointerEnter` and `onPointerLeave` events propagate from the element being left to the one being entered instead of ordinary bubbling and do not have a capture phase.
+رویدادهای `onPointerEnter`  و  `onPointerLeave`  از المنت ترک شده به المنت وارد شده تکثیر می‌شوند. آنها فاز capture ندارند و bubbling معمول هم در آنها اتفاق نمی افتد.
 
-Properties:
+ویژگی‌ها
 
-As defined in the [W3 spec](https://www.w3.org/TR/pointerevents/), pointer events extend [Mouse Events](#mouse-events) with the following properties:
+طبق [W3 spec](https://www.w3.org/TR/pointerevents/)، رویدادهای متعلق به نشانگر ماوس، رویدادهای مربوط به ماوس ([Mouse Events](#mouse-events)) را با ویژگی‌های زیر توسعه می‌دهند.
 
 ```javascript
 number pointerId
@@ -244,17 +243,18 @@ string pointerType
 boolean isPrimary
 ```
 
-A note on cross-browser support:
+نکته ای در مورد پشتیبانی در مرورگرهای مختلف:
 
-Pointer events are not yet supported in every browser (at the time of writing this article, supported browsers include: Chrome, Firefox, Edge, and Internet Explorer). React deliberately does not polyfill support for other browsers because a standard-conform polyfill would significantly increase the bundle size of `react-dom`.
+رویدادهای متعلق به نشانگر ماوس در تمام مرورگرها پشتیبانی نمی شوند. در زمان نوشتن این مقاله مرورگرهایی که از آن پشتیبانی می‌کنند عبارتند از: کروم، فایرفاکس، اج، و اینترنت اکسپلورر. ری‌اکت تعمدا از کد جایگزین برای پشتیبانی در مرورگرهای دیگر استفاده نمی کند، چون این کد باعث افزایش چشمگیر حجم `react-dom` می‌شود.
 
-If your application requires pointer events, we recommend adding a third party pointer event polyfill.
+اگر اپلیکیشن شما نیازمند رویدادهای نشانگر ماوس است، توصیه می‌کنیم که از کدهای جایگزین third party استفاده کنید.
+ 
 
 * * *
 
-### Selection Events {#selection-events}
+### رویداد‌های انتخاب (Selection Events) {#selection-events}
 
-Event names:
+نام رویدادها
 
 ```
 onSelect
@@ -262,15 +262,15 @@ onSelect
 
 * * *
 
-### Touch Events {#touch-events}
+### رویداد‌های لمسی (Touch Events) {#touch-events}
 
-Event names:
+نام رویدادها
 
 ```
 onTouchCancel onTouchEnd onTouchMove onTouchStart
 ```
 
-Properties:
+ویژگی‌ها
 
 ```javascript
 boolean altKey
@@ -285,15 +285,15 @@ DOMTouchList touches
 
 * * *
 
-### UI Events {#ui-events}
+### رویداد‌های رابط کاربری (UI Events) {#ui-events}
 
-Event names:
+نام رویدادها
 
 ```
 onScroll
 ```
 
-Properties:
+ویژگی‌ها
 
 ```javascript
 number detail
@@ -302,15 +302,15 @@ DOMAbstractView view
 
 * * *
 
-### Wheel Events {#wheel-events}
+### رویداد‌های اسکرول ماوس (Wheel Events) {#wheel-events}
 
-Event names:
+نام رویدادها
 
 ```
 onWheel
 ```
 
-Properties:
+ویژگی‌ها
 
 ```javascript
 number deltaMode
@@ -321,9 +321,9 @@ number deltaZ
 
 * * *
 
-### Media Events {#media-events}
+### رویداد‌های مدیا (Media Events) {#media-events}
 
-Event names:
+نام رویدادها
 
 ```
 onAbort onCanPlay onCanPlayThrough onDurationChange onEmptied onEncrypted
@@ -334,9 +334,9 @@ onTimeUpdate onVolumeChange onWaiting
 
 * * *
 
-### Image Events {#image-events}
+### رویداد‌های تصویر (Image Events) {#image-events}
 
-Event names:
+نام رویدادها
 
 ```
 onLoad onError
@@ -344,15 +344,15 @@ onLoad onError
 
 * * *
 
-### Animation Events {#animation-events}
+### رویداد‌های انیمیشن (Animation Events) {#animation-events}
 
-Event names:
+نام رویدادها
 
 ```
 onAnimationStart onAnimationEnd onAnimationIteration
 ```
 
-Properties:
+ویژگی‌ها
 
 ```javascript
 string animationName
@@ -362,15 +362,15 @@ float elapsedTime
 
 * * *
 
-### Transition Events {#transition-events}
+### رویداد‌های انتقال (Transition Events) {#transition-events}
 
-Event names:
+نام رویدادها
 
 ```
 onTransitionEnd
 ```
 
-Properties:
+ویژگی‌ها
 
 ```javascript
 string propertyName
@@ -380,9 +380,9 @@ float elapsedTime
 
 * * *
 
-### Other Events {#other-events}
+### دیگر رویداد‌ها {#other-events}
 
-Event names:
+نام رویدادها
 
 ```
 onToggle

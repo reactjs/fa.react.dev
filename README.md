@@ -12,6 +12,10 @@
 پیشرفت نسخه فارسی را از <a href="https://www.isreacttranslatedyet.com/">isreacttranslatedyet.com</a> دنبال کنید.
 </p>
 
+<p dir="rtl">
+  آخرین نسخه اسنادی که درحال ترجمه هستند را در <a href="https://reactjs-fa.netlify.com/" target="_blank">reactjs-fa.netlify.com</a> ببینید.
+</p>
+
 <h2 dir="rtl">چگونه مشارکت کنم؟</h2>
 
 <p dir="rtl">
@@ -58,13 +62,13 @@
 <h3 dir="rtl">نصب</h3>
 
 ```bash
-# 1. یک کپی از مخزن کد بگیرید
+# ۱. یک کپی از مخزن کد بگیرید
 git clone https://github.com/reactjs/fa.reactjs.org.git
 
-# 2. به شاخه اصلی پروژه بروید
+# ۲. به شاخه اصلی پروژه بروید
 cd fa.reactjs.org
 
-# 3. وابستگی‌های npm پروژه را نصب کنید
+# ۳. وابستگی‌های npm پروژه را نصب کنید
 yarn
 ```
 
@@ -104,6 +108,13 @@ yarn dev
   </li>
     <li>
     <a href="https://github.com/zahrajoulaei">@zahrajoulaei</a>
+  </li>
+   <li>
+    <a href="https://github.com/seven-deuce">@seven-deuce</a>
+  </li>
+  <li>
+    <a href="https://github.com/rezvani2647">@rezvani2647</a>
+  </li>
 </ul>
 
 

@@ -19,7 +19,7 @@ redirect_from:
 
 >نکته
 >
-> این آموزش مختص افرادیست که علاقه مند به **یادگیری توسط تمرین عملی** دارند. اگر قصد فراگیری از پایه مباحث ری اکت را دارید، [راهنمای قدم به قدم](/docs/hello-world.html) ما را بخوانید.
+> این آموزش مختص افرادیست که علاقه مند به **یادگیری توسط تمرین عملی** دارند. اگر قصد فراگیری از پایه مباحث ری اکت را دارید، [راهنمای قدم به قدم](/docs/hello-world.html) ما را بخوانید. متوجه می‌شوید که این آموزش و آن راهنما مکمل هم هستند.
 
 این آموزش به چند قسمت تقسیم میشود:
 
@@ -35,7 +35,7 @@ redirect_from:
 
 نتیجه کار را میتوانید [اینجا](https://codepen.io/gaearon/pen/gWWZgR?editors=0010) مشاهده کنید. **ممکن است که با ترکیب ایک کد آشنایی نداشته باشید، اما جای نگرانی نیست! هدف این مقاله آموختن ساختار ری اکت و مفاهیم آن است.**
 
-ما پیشنهاد میکنیم که بازی را قبل از شروع بررسی کنید. یکی از امکانات این بازی یک لیست در سمت راست صفحه است که تمام حرکات انجام شده در بازی را ثبت میکند.
+ما پیشنهاد میکنیم که بازی را قبل از شروع بررسی کنید. یکی از امکانات این بازی یک لیست در سمت راست صفحه است که تمام تاریخچه حرکاتی که در بازی رخ داده را ثبت میکند و همچنان که بازی پیشرفت می‌کند به‌روز رسانی می‌شود.
 
 ما در این آموزش با یک قالب ساده تر شروع خواهیم کرد. مرحله بعدی آماده سازی محیط توسطه ی بازیست.
 
@@ -116,7 +116,7 @@ We recommend following [these instructions](https://babeljs.io/docs/editors/) to
 
 ### کمک، من گیر کردم! {#help-im-stuck}
 
-If you get stuck, check out the [community support resources](/community/support.html). In particular, [Reactiflux Chat](https://discord.gg/0ZcbPKXt5bZjGY5n) is a great way to get help quickly. If you don't receive an answer, or if you remain stuck, please file an issue, and we'll help you out.
+If you get stuck, check out the [community support resources](/community/support.html). In particular, [Reactiflux Chat](https://discord.gg/reactiflux) is a great way to get help quickly. If you don't receive an answer, or if you remain stuck, please file an issue, and we'll help you out.
 
 ## بررسی اجمالی {#overview}
 
@@ -195,6 +195,7 @@ class Board extends React.Component {
   renderSquare(i) {
     return <Square value={i} />;
   }
+}
 ```
 
 Change Square's `render` method to show that value by replacing `{/* TODO */}` with `{this.props.value}`:
@@ -333,7 +334,7 @@ The React Devtools extension for [Chrome](https://chrome.google.com/webstore/det
 
 The React DevTools let you check the props and the state of your React components.
 
-After installing React DevTools, you can right-click on any element on the page, click "Inspect" to open the developer tools, and the React tab will appear as the last tab to the right.
+After installing React DevTools, you can right-click on any element on the page, click "Inspect" to open the developer tools, and the React tabs ("⚛️ Components" and "⚛️ Profiler") will appear as the last tabs to the right. Use "⚛️ Components" to inspect the component tree.
 
 **However, note there are a few extra steps to get it working with CodePen:**
 
@@ -521,7 +522,7 @@ Note how in `handleClick`, we call `.slice()` to create a copy of the `squares` 
 
 ### Why Immutability Is Important {#why-immutability-is-important}
 
-In the previous code example, we suggested that you use the `.slice()` operator to create a copy of the `squares` array to modify instead of modifying the existing array. We'll now discuss immutability and why immutability is important to learn.
+In the previous code example, we suggested that you use the `.slice()` method to create a copy of the `squares` array to modify instead of modifying the existing array. We'll now discuss immutability and why immutability is important to learn.
 
 There are generally two approaches to changing data. The first approach is to *mutate* the data by directly changing the data's values. The second approach is to replace the data with a new copy which has the desired changes.
 
