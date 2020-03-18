@@ -441,6 +441,11 @@
     </tr>
     <tr>
       <td>
+        subscribe
+      </td>
+    </tr>
+    <tr>
+      <td>
         bind
       </td>
     </tr>

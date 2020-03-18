@@ -145,7 +145,7 @@ The problem with this syntax is that a different callback is created each time t
 
 ## Passing Arguments to Event Handlers {#passing-arguments-to-event-handlers}
 
-Inside a loop it is common to want to pass an extra parameter to an event handler. For example, if `id` is the row ID, either of the following would work:
+Inside a loop, it is common to want to pass an extra parameter to an event handler. For example, if `id` is the row ID, either of the following would work:
 
 ```js
 <button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>
