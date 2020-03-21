@@ -52,7 +52,7 @@
     <a href="https://git-scm.com/downloads">Git</a>
   </li>
   <li>
-    <a href="https://nodejs.org/en/">Node.js</a> نسخه ۸ (۸.۴.۰ به بالا)
+    <a href="https://nodejs.org/en/">Node.js</a> نسخه ۱۲ (۱۲.۰.۰ به بالا)
   </li>
     <li>
     <a href="https://yarnpkg.com/lang/en/docs/install/">Yarn</a>

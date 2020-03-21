@@ -28,6 +28,8 @@ Hookها توابع جاوااسکریپت هستند، ولی هنگامی که
 
 ما پلاگینی منتشر کردیم که به آن[`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) گفته می‌شود و این دو قانون را اجباری می‌کند. اگر دوست داشتید می‌توانید این پلاگین را به پروژه خود اضافه کنید.
 
+این پلاگین به صورت پیش‌فرض در [Create React App](/docs/create-a-new-react-app.html#create-react-app) وجود دارد.
+
 ```bash
 npm install eslint-plugin-react-hooks --save-dev
 ```
@@ -47,7 +49,6 @@ npm install eslint-plugin-react-hooks --save-dev
 }
 ```
 
-در آینده قصد داریم تا این پلاگین را به صورت پیش فرض در Create React App و ابزارهای مشابه وارد کنیم.
 **اکنون شما میتوانید به پیج صفحه بعد که آموزش [نوشتن Hook شخصی](/docs/hooks-custom.html) را می‌دهد جهش داشته باشید.** در ادامه در این پیج می‌خواهیم توضیح دهیم که علت این قوانین چیست.
 
 ## توضیح {#explanation}

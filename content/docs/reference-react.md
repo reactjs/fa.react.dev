@@ -130,7 +130,7 @@ const MyComponent = React.memo(function MyComponent(props) {
 
 به صورت پیش‌فرض این فقط یک مقایسه سطحی بین اشیاء موجود در شیء props انجام می‌دهد. اگر می‌خواهید خودتان این مقایسه را کنترل کنید، می‌توانید یک تابع مقایسه شخصی‌سازی شده را به عنوان آرگومان دوم به این تابع بدهید.
 
-`React.memo` تنها بر تغییر props اثر می‌گذارد. اگر کامپوننت شما درون `React.memo` قرار گرفته‌است و در آن از هوک‌های [`useState`](/docs/hooks-state.html) و [`useContext`](/docs/hooks-reference.html#usecontext) استفاده شده‌است، تغییر state یا context باعث رندر شدن مجدد می‌شود.
+`React.memo` تنها تغییرات props را بررسی می‌کند. اگر کامپوننت شما درون `React.memo` قرار گرفته‌است و در آن از هوک‌های [`useState`](/docs/hooks-state.html) و [`useContext`](/docs/hooks-reference.html#usecontext) استفاده شده‌است، تغییر state یا context باعث رندر شدن مجدد می‌شود.
 
 ```javascript
 function MyComponent(props) {

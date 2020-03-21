@@ -26,6 +26,7 @@ void preventDefault()
 boolean isDefaultPrevented()
 void stopPropagation()
 boolean isPropagationStopped()
+void persist()
 DOMEventTarget target
 number timeStamp
 string type
@@ -75,6 +76,7 @@ function onClick(event) {
 - [رویداد‌های صفحه‌کلید (Keyboard Events)](#keyboard-events)
 - [رویداد‌های فکوس (Focus Events)](#focus-events)
 - [رویداد‌های فرم (Form Events)](#form-events)
+- [رویدادهای عمومی (Generic Events)](#generic-events)
 - [رویداد‌های ماوس (Mouse Events)](#mouse-events)
 - [رویداد‌های اشاره‌گر (Pointer Events)](#pointer-events)
 - [رویداد‌های انتخاب (Selection Events)](#selection-events)
@@ -176,9 +178,19 @@ DOMEventTarget relatedTarget
 نام رویدادها
 
 ```
-onChange onInput onInvalid onSubmit
+onChange onInput onInvalid onReset onSubmit 
 ```
 برای اطلاعات بیشتر در مورد رویداد onChange، [Forms](/docs/forms.html) را ببینید.
+
+* * *
+
+### رویدادهای عمومی (Generic Events) {#generic-events}
+
+نام رویدادها
+
+```
+onError onLoad
+```
 
 * * *
 

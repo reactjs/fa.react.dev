@@ -34,8 +34,7 @@ const element = <h1>Hello, world</h1>;
 
 برنامه‌هایی که فقط با ری‌اکت ساخته می‌شوند، معمولا فقط یک DOM node ریشه دارند. اگر ری‌اکت را به یک برنامه موجود اضافه کنید، می‌توانید هر تعدادی از DOM node های ریشه‌ی ایزوله که بخواهید داشته‌باشید.
 
-برای رندر کردن یک المنت ری‌اکت درون یک DOM node ریشه، هر دو را به `ReactDOM.render()` بدهید
-
+برای رندر کردن یک المنت ری‌اکت درون یک DOM node ریشه، هر دو را به [`ReactDOM.render()`](/docs/react-dom.html#render) بدهید:
 
 `embed:rendering-elements/render-an-element.js`
 
@@ -47,8 +46,7 @@ const element = <h1>Hello, world</h1>;
 
 المنت‌های ری‌اکت [تغییر ناپدیر](https://en.wikipedia.org/wiki/Immutable_object) هستند. زمانی که یک المنت را ایجاد می‌کنید، دیگر قادر به تغییر فرزندان یا خصوصیات آن نخواهید بود. یک المنت را مانند یک فریم از یک فیلم تصور کنید که UI را در یک نقطه زمانی مشخص نشان می‌دهد.
 
-با اطلاعاتی که تا این‌جا به‌دست آورده‌ایم، تنها راه به‌روز رسانی UI این است که یک المنت جدید ساخته و آن را به تابع `ReactDOM.render()` بدهیم.
-
+با اطلاعاتی که تا این‌جا به‌دست آورده‌ایم، تنها راه به‌روز رسانی UI این است که یک المنت جدید ساخته و آن را به تابع [`ReactDOM.render()`](/docs/react-dom.html#render) بدهیم.
 
 این مثال ساعت را درنظر بگیرید:
 
@@ -56,11 +54,11 @@ const element = <h1>Hello, world</h1>;
 
 [با CodePen امتحان کنید](codepen://rendering-elements/update-rendered-element)
 
-در این مثال تابع `ReactDOM.render()` هربار توسط callback تابع [`()setInterval`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) فراخوانی می‌شود.
+در این مثال تابع [`ReactDOM.render()`](/docs/react-dom.html#render) هربار توسط callback تابع [`()setInterval`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) فراخوانی می‌شود.
 
 >**نکته:**
 >
-> در عمل، بیشتر برنامه‌های ری‌اکت تنها یک بار `ReactDOM.render()` را فراخوانی می‌کنند. در بخش‌های بعدی یاد می‌گیریم که چگونه چنین کد‌هایی به صورت [کامپوننت‌های دارای state](/docs/state-and-lifecycle.html) کپسوله می‌شوند.
+> در عمل، بیشتر برنامه‌های ری‌اکت تنها یک بار [`ReactDOM.render()`](/docs/react-dom.html#render) را فراخوانی می‌کنند. در بخش‌های بعدی یاد می‌گیریم که چگونه چنین کد‌هایی به صورت [کامپوننت‌های دارای state](/docs/state-and-lifecycle.html) کپسوله می‌شوند.
 >
 > از آن‌جا که هر بخش با استناد به موضوع‌های پیشین نوشته‌ شده‌است، پیشنهاد می‌کنیم هیچ موضوعی را از قلم نیندازید.
 
