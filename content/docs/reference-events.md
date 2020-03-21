@@ -73,10 +73,10 @@ function onClick(event) {
 
 - [Clipboard Events](#clipboard-events)
 - [Composition Events](#composition-events)
-<<<<<<< HEAD
 - [رویداد‌های صفحه‌کلید (Keyboard Events)](#keyboard-events)
 - [رویداد‌های فکوس (Focus Events)](#focus-events)
 - [رویداد‌های فرم (Form Events)](#form-events)
+- [رویدادهای عمومی (Generic Events)](#generic-events)
 - [رویداد‌های ماوس (Mouse Events)](#mouse-events)
 - [رویداد‌های اشاره‌گر (Pointer Events)](#pointer-events)
 - [رویداد‌های انتخاب (Selection Events)](#selection-events)
@@ -88,23 +88,6 @@ function onClick(event) {
 - [رویداد‌های انیمیشن (Animation Events)](#animation-events)
 - [رویداد‌های انتقال (Transition Events)](#transition-events)
 - [دیگر رویداد‌ها](#other-events)
-=======
-- [Keyboard Events](#keyboard-events)
-- [Focus Events](#focus-events)
-- [Form Events](#form-events)
-- [Generic Events](#generic-events)
-- [Mouse Events](#mouse-events)
-- [Pointer Events](#pointer-events)
-- [Selection Events](#selection-events)
-- [Touch Events](#touch-events)
-- [UI Events](#ui-events)
-- [Wheel Events](#wheel-events)
-- [Media Events](#media-events)
-- [Image Events](#image-events)
-- [Animation Events](#animation-events)
-- [Transition Events](#transition-events)
-- [Other Events](#other-events)
->>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
 
 * * *
 
@@ -201,12 +184,9 @@ onChange onInput onInvalid onReset onSubmit
 
 * * *
 
-<<<<<<< HEAD
-### رویداد‌های ماوس (Mouse Events) {#mouse-events}
-=======
-### Generic Events {#generic-events}
+### رویدادهای عمومی (Generic Events) {#generic-events}
 
-Event names:
+نام رویدادها
 
 ```
 onError onLoad
@@ -214,8 +194,7 @@ onError onLoad
 
 * * *
 
-### Mouse Events {#mouse-events}
->>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
+### رویداد‌های ماوس (Mouse Events) {#mouse-events}
 
 نام رویدادها
 
