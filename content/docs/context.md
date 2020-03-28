@@ -201,7 +201,7 @@ class MyClass extends React.Component {
 
 ### `Context.displayName` {#contextdisplayname}
 
-شیئ context یک ویژگی از نوع رشته با نام `displayName` می‌پذیرد. DevTools ری‌اکت از این رشته استفاده  عنون می‌کند تا مشخص کند که چه چیزی را برای عنوان context نمایش دهد.
+شیئ context یک ویژگی از نوع رشته با نام `displayName` می‌پذیرد. DevTools ری‌اکت از این رشته استفاده می‌کند تا مشخص کند که چه چیزی را برای عنوان context نمایش دهد.
 
 به عنوان مثال٬ کامپوننت زیر در DevTools به صورت MyDisplayName ظاهر می‌شود:
 
