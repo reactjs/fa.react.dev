@@ -197,7 +197,7 @@ class MyClass extends React.Component {
 
 > یادداشت
 >
-> برای اطلاعات بیشتر در مورد الگوی 'تابع به عنوان فرزند'٬ [رندر کردن prop ها](/docs/render-props.html) را ببینید.
+> برای اطلاعات بیشتر در مورد الگوی 'تابع به عنوان فرزند'٬ [render props](/docs/render-props.html) را ببینید.
 
 ### `Context.displayName` {#contextdisplayname}
 
