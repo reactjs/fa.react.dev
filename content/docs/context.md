@@ -243,7 +243,7 @@ MyContext.displayName = 'MyDisplayName';
 
 ### مصرف چندین context {#consuming-multiple-contexts}
 
-برای این‌که رندر دوباره را سریع نگه داریم٬ ری‌اکت باید هر مصرف‌کننده context را به یک نود جداگانه در درخت تبدیل کند.
+برای این‌که رندرشدن های مجدد را سریع نگه داریم٬ ری‌اکت باید هر مصرف‌کننده context را به یک نود جداگانه در درخت تبدیل کند.
 
 `embed:context/multiple-contexts.js`
 
