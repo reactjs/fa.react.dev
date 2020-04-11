@@ -68,17 +68,7 @@ class NameForm extends React.Component {
 
 از آن‌جایی که خصوصیت value روی المنت فرم ما قرار گرفته‌است، مقدار نمایش داده‌شده همیشه `this.state.value` که باعث ‌می‌شود state ری‌اکت به عنوان منبع ‌نگه‌داری داده و وضعیت ‌باشد. از آن‌جایی که `handleChange` با هر فشردن کلید برای به‌روز رسانی state ری‌اکت اجرا می‌شود، مقدار نمایش داده‌شده هم با تایپ کردن کاربر به‌روز‌رسانی خواهد شد.
 
-<<<<<<< HEAD
-در یک کامپوننت کنترل‌شده، هر تغییر state یک تابع handler مرتبط خواهد داشت. این باعث سر راست شدن تغییر یا اعتبارسنجی ورودی کاربر خواهد شد. به عنوان مثال، اگر ما می‌خواستیم نوشتن نام‌ها را با حروف بزرگ اجباری کنیم، می توانستیم `handleChange` را به این صورت بنویسیم:
-
-```javascript{2}
-handleChange(event) {
-  this.setState({value: event.target.value.toUpperCase()});
-}
-```
-=======
-With a controlled component, the input's value is always driven by the React state. While this means you have to type a bit more code, you can now pass the value to other UI elements too, or reset it from other event handlers.
->>>>>>> fa5e6e7a988b4cb465601e4c3beece321edeb812
+با داشتن یک کامپوننت کنترل‌شده، همیشه مقدار input از state ری‌اکت گرفته می‌شود. درحالی که کد بیشتری باید بنویسید، می توانید این مقدار را به المنت‌های دیگر رابط کاربری بدهید یا با event handler های دیگر آن را تغییر دهید.
 
 ## تگ textarea {#the-textarea-tag}
 
