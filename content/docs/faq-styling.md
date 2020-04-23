@@ -6,7 +6,7 @@ layout: docs
 category: FAQ
 ---
 
-### چگونه میتوانم کلاس های CSS را به کامپوننت ها اضافه کنم؟ {#how-do-i-add-css-classes-to-components}
+### چگونه می توانم کلاس های CSS را به کامپوننت ها اضافه کنم؟ {#how-do-i-add-css-classes-to-components}
 
 یک رشته را به عنوان ویژگی به `className` دهید:
 
@@ -32,7 +32,7 @@ render() {
 > 
 > اگر شما اغلب اوقات همچین کدی را می نویسید، پکیج [classnames](https://www.npmjs.com/package/classnames#usage-with-reactjs) می تواند آن را ساده تر کند.
 
-### آیا میتوانم از استایل های درون خطی (inline styles) استفاده کنم؟ {#can-i-use-inline-styles}
+### آیا می توانم از استایل های درون خطی (inline styles) استفاده کنم؟ {#can-i-use-inline-styles}
 
 بله، اسناد مربوط به طراحی ظاهر را [اینجا](/docs/dom-elements.html#style) ببینید.
 
@@ -47,6 +47,6 @@ render() {
 _توجه داشته باشید که این عملکرد جزئی از ری اکت نمی باشد، بلکه توسط کتابخانه های شخص ثالث ارائه شده._ ری اکت هیچ نظری درباره نحوه ی تعریف استایل ها ندارد؛ اگر شک و شبهه ای دارید، یک نقطه شروع خوب این است که استایل های خود را درون فایل جداگانه `*.css` تعریف کرده و طبق معمول با استفاده از [`className`](/docs/dom-elements.html#classname) به آن ها مراجعه کنید.
 
 
-### آیا میتوانم با ری اکت انیمیشن انجام دهم؟ {#can-i-do-animations-in-react}
+### آیا می توانم با ری اکت انیمیشن انجام دهم؟ {#can-i-do-animations-in-react}
 
 ری اکت میتواند برای قدرت بخشیدن به انیمیشن ها استفاده شود. به مثال های [React Transition Group](https://reactcommunity.org/react-transition-group/) و [React Motion](https://github.com/chenglou/react-motion) یا [React Spring](https://github.com/react-spring/react-spring)، نگاه بیاندازید.
