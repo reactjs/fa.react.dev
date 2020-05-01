@@ -8,7 +8,7 @@ category: FAQ
 
 ### چگونه می توانم کلاس های CSS را به کامپوننت ها اضافه کنم؟ {#how-do-i-add-css-classes-to-components}
 
-یک رشته را به عنوان ویژگی به `className` دهید:
+متنی به عنوان prop به `className` اختصاص می دهیم.
 
 ```jsx
 render() {
