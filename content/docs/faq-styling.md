@@ -40,7 +40,7 @@ render() {
 
 کلاس های CSS معمولاً عملکرد بهتری نسبت به استایل های درون خطی دارند.
 
-### CSS-in-JS چیست؟ {#what-is-css-in-js}
+### CSS در JS چیست ؟ {#what-is-css-in-js}
 
 "CSS-in-JS" اشاره دارد به یک الگو که در آن CSS توسط Javascript تشکیل شده است به جای اینکه داخل یک فایل خارجی تعریف شده باشد. مقایسه کتابخانه های CSS-in-JS را در [اینجا](https://github.com/MicheleBertoli/css-in-js) بخوانید.
 
