@@ -56,7 +56,7 @@ ReactDOM.render(
 ```js
 const element = <h1>Hello, world</h1>;
 ```
-معمولا، elementها مستقیما استفاده نمی‌شوند، ولی از کامپوننت ها برمی‌گردند.
+معمولا المنت‌ها مستقیم استفاده نمی‌شوند، بلکه توسط کامپوننت‌ها باز گردانده می‌شوند.
 
 ## [کامپوننت‌ها](/docs/components-and-props.html) {#components}
 
