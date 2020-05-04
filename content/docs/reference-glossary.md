@@ -128,7 +128,7 @@ class Welcome extends React.Component {
 
 ## [Lifecycle Methods](/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class) {#lifecycle-methods}
 
-متد‌های چرخه حیات توابع شخصی‌سازی شده ای هستند که در فاز‌های مختلف یک کامپوننت فراخوانی می‌شوند. برای زمانی که کامپوننت ساخته می‌شود و درون DOM اضافه می‌شود([mounting](/docs/react-component.html#mounting))، زمانی که کامپوننت به‌روز رسانی می‌شود، و زمانی که کامپوننت unmounted یا پاک می‌شود متد‌هایی وجود دارند.
+متد‌های چرخه حیات (Lifecycle Methods) توابع شخصی‌سازی شده‌ای هستند که در فاز‌های مختلف یک کامپوننت فراخوانی می‌شوند. برای زمانی که کامپوننت ساخته می‌شود و درون DOM اضافه می‌شود ([mounting](/docs/react-component.html#mounting))، زمانی که کامپوننت به‌روز رسانی می‌شود، و زمانی که کامپوننت unmounted یا از DOM حذف می‌شود متد‌هایی وجود دارند.
 
  ## [Controlled](/docs/forms.html#controlled-components) vs. [Uncontrolled Components](/docs/uncontrolled-components.html)
 
