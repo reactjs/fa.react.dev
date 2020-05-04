@@ -100,7 +100,7 @@ props.number = 42;
 <Welcome>Hello world!</Welcome>
 ```
 
-متن `Hello world!` در `props.children` در کامپوننت `Welcome` در دسترس است:
+رشته `Hello world!` در `props.children` در کامپوننت `Welcome` در دسترس است:
 
 ```js
 function Welcome(props) {
