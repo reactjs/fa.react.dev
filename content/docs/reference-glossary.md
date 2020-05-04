@@ -7,37 +7,39 @@ permalink: docs/glossary.html
 
 ---
 
-## Single-page Application {#single-page-application}
+## برنامه‌ تک-صفحه‌ای {#single-page-application}
 
-A single-page application is an application that loads a single HTML page and all the necessary assets (such as JavaScript and CSS) required for the application to run. Any interactions with the page or subsequent pages do not require a round trip to the server which means the page is not reloaded.
+یک برنامه‌-تک صفحه‌ای برنامه‌ی است که یک صفحه HTML با تمامی ملزومات آن (مثل جاوا‌اسکریپت و css) که برای اجرا شدن برنامه‌ نیاز هست را بارگیری می‌کند. هر تعاملی با صفحه یا سایر صفحات، دیگر نیازی به ارسال در‌خواست به سمت سرور نیاز ندارد که به معنی عدم بارگیری مجدد صفحه است.
 
-Though you may build a single-page application in React, it is not a requirement. React can also be used for enhancing small parts of existing websites with additional interactivity. Code written in React can coexist peacefully with markup rendered on the server by something like PHP, or with other client-side libraries. In fact, this is exactly how React is being used at Facebook.
+اگرچه می‌توان یک برنامه تک-صفحه‌ای با ری‌اکت بسازید، اما استفاده از ری‌اکت الزامی نیست. همچنین می‌توان از آن برای بهبود بخش‌های کوچک وبسایت‌های موجود استفاده کرد. کد نوشته شده با ری‌اکت می‌تواند همراه با markup رندر شده سمت سرور، توسط زبانی مثل PHP یا کتاب‌خانه‌های سمت کاربر هم‌زیستی کند. در واقع، ری‌اکت به همین صورت در فیس‌بوک استفاده می‌شود.
 
-## ES6, ES2015, ES2016, etc {#es6-es2015-es2016-etc}
+## ES6، ES2015، ES2016 و غیره {#es6-es2015-es2016-etc}
 
-These acronyms all refer to the most recent versions of the ECMAScript Language Specification standard, which the JavaScript language is an implementation of. The ES6 version (also known as ES2015) includes many additions to the previous versions such as: arrow functions, classes, template literals, `let` and `const` statements. You can learn more about specific versions [here](https://en.wikipedia.org/wiki/ECMAScript#Versions).
+تمام این کلمات اختصاری به جدیدترین ورژن‌های مشخصات استاندارد زبان ECMAScript اشاره می‌کند که زبان جاواسکریپت پیاده‌سازی‌ای از آن است. ورژن ES6 (که به ES2015 معروف است) مواردی به نسخه‌های قبلی افزوده‌است، مانند: توابع arrow، کلاس‌ها، template literals ،`let` و `const`. شما می‌توانید در مورد ورژن ها [اینجا](https://en.wikipedia.org/wiki/ECMAScript#Versions) اطلاعات بیشتری کسب کنید.
 
-## Compilers {#compilers}
+## کامپایلر‌ها {#compilers}
 
-A JavaScript compiler takes JavaScript code, transforms it and returns JavaScript code in a different format. The most common use case is to take ES6 syntax and transform it into syntax that older browsers are capable of interpreting. [Babel](https://babeljs.io/) is the compiler most commonly used with React.
+یک کامپایلر جاوااسکریپت کد جاوااسکریپت را دریافت کرده، آن را تغییر شکل می‌دهد و کد جاوااسکریپت را با قالب متفاوتی باز می‌گرداند. یک مورد استفاده مرسوم، آنست که کد ES6 شما رو دریافت می‌کند و دست‌خط آن‌را به چیزی که مرورگر‌های قدیمی می‌فهمند تبدیل می‌کن. [Babel](https://babeljs.io/) کامپایلری هست که عموما در ری‌اکت استفاده می‌شود. 
+[Babel](https://babeljs.io/) کامپایلری هست که عموما در ری‌اکت استفاده می‌شود.
 
 ## Bundlers {#bundlers}
 
-Bundlers take JavaScript and CSS code written as separate modules (often hundreds of them), and combine them together into a few files better optimized for the browsers. Some bundlers commonly used in React applications include [Webpack](https://webpack.js.org/) and [Browserify](http://browserify.org/).
+Bundlerها کد جاوااسکریپت و CSS را از ماژول‌های جداگانه را می‌گیرند (معمولا صدها ماژول) و آنها را در یک فایل جدید که برای مرورگرها بهتر بهینه سازی شده است ترکیب می‌کنند. برخی از Bundlerها که در ری‌اکت استفاده شده‌اند مانند [Webpack](https://webpack.js.org/) و [Browserify](http://browserify.org/) هستند.
 
 ## Package Managers {#package-managers}
 
-Package managers are tools that allow you to manage dependencies in your project. [npm](https://www.npmjs.com/) and [Yarn](https://yarnpkg.com/) are two package managers commonly used in React applications. Both of them are clients for the same npm package registry.
+package managerها ابزارهایی هستند که به شما امکان می‌دهند تا وابستگی‌های پروژه را مدیریت کنید. [npm](https://www.npmjs.com/) و [Yarn](https://yarnpkg.com/) دو package manager مرسوم در برنامه‌های ری‌اکت استفاده شده‌اند. هر دوی آنها مشتری npm registery هستند.
 
 ## CDN {#cdn}
 
-CDN stands for Content Delivery Network. CDNs deliver cached, static content from a network of servers across the globe. 
+CDN مخفف Content Delivery Network (شبکه تحویل‌ محتوا) است. CDNها محتوای cach شده یا استای یک شبکه از سرور‌ها در سراسر دنیا را تحویل می‌دهند.
 
 ## JSX {#jsx}
 
-JSX is a syntax extension to JavaScript. It is similar to a template language, but it has full power of JavaScript. JSX gets compiled to `React.createElement()` calls which return plain JavaScript objects called "React elements". To get a basic introduction to JSX [see the docs here](/docs/introducing-jsx.html) and find a more in-depth tutorial on JSX [here](/docs/jsx-in-depth.html).
+JSX افزونه‌ای بر syntax جاوااسکریپت است. به یک زبان template شبیه است ولی دارای تمام قدرت جاوااسکریپت می‌باشد. JSX توسط فراخوانی `React.createElement()` کامپایل می‌شود که یک شی جاوااسکریپتی ساده به نام "React elements" را باز می‌گرداند. مقدمه‌ای بر مفاهیم پایه‌ای JSX [در این سند آورده شده‌است](/docs/introducing-jsx.html) و می‌توانید آموزش عمیق‌تری در [اینجا](/docs/jsx-in-depth.html) پیدا کنید.
 
-React DOM uses camelCase property naming convention instead of HTML attribute names. For example, `tabindex` becomes `tabIndex` in JSX. The attribute `class` is also written as `className` since `class` is a reserved word in JavaScript:
+در DOM ری‌اکت عرف نامگذاری property ها به‌جای اسامی attribute های HTML، به صورت camleCase است. در JSX برای مثال `tabindex` به `tabIndex` تبدیل می‌شود.
+همچنین خصیصه `class` به شکل `className` نوشته می‌شود زیرا کلمه `class` در زبان جاوااسکریپت رزرو شده است.
 
 ```js
 const name = 'Clementine';
@@ -47,19 +49,18 @@ ReactDOM.render(
 );
 ```  
 
-## [Elements](/docs/rendering-elements.html) {#elements}
+## [المنت‌ها](/docs/rendering-elements.html) {#elements}
 
-React elements are the building blocks of React applications. One might confuse elements with a more widely known concept of "components". An element describes what you want to see on the screen. React elements are immutable.
+المنت‌های (elements) ری‌اکت بلاک‌هایی هستند که برنامه‌های ری‌اکت را می‌سازند. فردی ممکن است المنت‌ها را با مفهموم متداول "کامپوننت" اشتباه بگیرد. یک المنت چیزی را که می‌خواهید در صفحه نمایش دهید را نشان می‌دهد. المن‌های ری‌اکت تغییر ناپذیر (immutable) هستند.
 
 ```js
 const element = <h1>Hello, world</h1>;
 ```
+معمولا المنت‌ها مستقیم استفاده نمی‌شوند، بلکه توسط کامپوننت‌ها باز گردانده می‌شوند.
 
-Typically, elements are not used directly, but get returned from components.
+## [کامپوننت‌ها](/docs/components-and-props.html) {#components}
 
-## [Components](/docs/components-and-props.html) {#components}
-
-React components are small, reusable pieces of code that return a React element to be rendered to the page. The simplest version of React component is a plain JavaScript function that returns a React element:
+کامپوننت‌های ری‌اکت تکه‌های کوچک کد، با قابلیت استفاده مجدد هستند. آن‌ها یک المنت ری‌‌اکت را برمی‌گردانند تا در صفحه رندر شود. ساده‌ترین نسخه یک کامپوننت ری‌اکت یک تابع جاوااسکریپت ساده است که یک المنت ری‌اکت را باز می‌گرداند.
 
 ```js
 function Welcome(props) {
@@ -67,7 +68,7 @@ function Welcome(props) {
 }
 ```
 
-Components can also be ES6 classes:
+همچنین کامپوننت‌ها می‌توانند کلاس‌های ES6 باشند:
 
 ```js
 class Welcome extends React.Component {
@@ -77,30 +78,29 @@ class Welcome extends React.Component {
 }
 ```
 
-Components can be broken down into distinct pieces of functionality and used within other components. Components can return other components, arrays, strings and numbers. A good rule of thumb is that if a part of your UI is used several times (Button, Panel, Avatar), or is complex enough on its own (App, FeedStory, Comment), it is a good candidate to be a reusable component. Component names should also always start with a capital letter (`<Wrapper/>` **not** `<wrapper/>`). See [this documentation](/docs/components-and-props.html#rendering-a-component) for more information on rendering components. 
+کامپوننت‌ها می‌توانند به تکه‌هایی با عملکرد مجزا شکسته و در کامپوننت‌های دیگر استفاده شوند. کامپوننت‌ها می‌توانند دیگر کامپوننت‌ها، آرایه‌ها، متن و عدد را برگردانند. یک قانون تجربی خوب آنست که اگر بخشی از رابط کاربری شما چندبار مورد استفاده قرار گرفت (Button، Panel یا Avatar)، یا به نوبه خودش به اندازه کافی پیچیده شده‌بود (App، FeedStory یا Comment)، کاندید خوبی برای تبدیل به یک کامپوننت است که قابلیت استفاده مجدد داشته باشد.
+همچنین نام کامپوننت‌ها باید همیشه با حرف بزرگ شروع شود (`<Wrapper/>` **نه** `<wrapper/>`). برای کسب اطلاعات بیشتر در مورد رندر شدن کامپوننت‌ها [این سند ](/docs/components-and-props.html#rendering-a-component) را مشاهده کنید.
 
 ### [`props`](/docs/components-and-props.html) {#props}
 
-`props` are inputs to a React component. They are data passed down from a parent component to a child component.
-
-Remember that `props` are readonly. They should not be modified in any way:
+`props` ورودی‌های کامپوننت ری‌اکت هستند. آنها داده‌هایی هستند که از کامپوننت پدر به کامپوننت فرزند انتقال پیدا می‌کنند.
+به خاطر داشته باشید که`props`ها را فقط می‌توان خواند. نباید آنها را به هیچ طریقی تغییر داد:
 
 ```js
 // Wrong!
 props.number = 42;
 ```
-
-If you need to modify some value in response to user input or a network response, use `state` instead.
+اگر نیاز دارید مقداری را در پاسخ به ورودی کاربر یا شبکه تغییر دهید به جای آن از `state` استفاده کنید.
 
 ### `props.children` {#propschildren}
 
-`props.children` is available on every component. It contains the content between the opening and closing tags of a component. For example:
+`props.children` در هر کامپوننتی قابل دسترس است. محتوای بین تگ باز و بسته‌ی یک کامپوننت را دربر دارد. برای مثال:
 
 ```js
 <Welcome>Hello world!</Welcome>
 ```
 
-The string `Hello world!` is available in `props.children` in the `Welcome` component:
+رشته `Hello world!` در `props.children` در کامپوننت `Welcome` در دسترس است:
 
 ```js
 function Welcome(props) {
@@ -108,7 +108,7 @@ function Welcome(props) {
 }
 ```
 
-For components defined as classes, use `this.props.children`:
+برای کامپوننت‌هایی بر پایه کلاس تعریف شده‌اند، از `this.props.children` استفاده کنید:
 
 ```js
 class Welcome extends React.Component {
@@ -120,47 +120,47 @@ class Welcome extends React.Component {
 
 ### [`state`](/docs/state-and-lifecycle.html#adding-local-state-to-a-class) {#state}
 
-A component needs `state` when some data associated with it changes over time. For example, a `Checkbox` component might need `isChecked` in its state, and a `NewsFeed` component might want to keep track of `fetchedPosts` in its state.
+کامپوننت هنگامی به `state` نیاز دارد که داده‌ای که با‌ آن در ارتباط است در طول زمان تغییر کند. برای مثال، کامپوننت `Checkbox` شاید به `isChecked` در state خود نیاز داشته باشد، و کامپوننت `NewsFeed` شاید بخواهد تا `fetchedPosts` را در state خود دنبال کند.
 
-The most important difference between `state` and `props` is that `props` are passed from a parent component, but `state` is managed by the component itself. A component cannot change its `props`, but it can change its `state`.
+بزرگترین فرق بین `state` و `props` آن است که `هاprop` از طریق کامپوننت پدر انتقال پیدا می‌کنند، ولی `state` توسط خود کامپوننت مدیریت می‌شود. کامپوننت نمی‌تواند `هایprop` خودش را تغییر دهد، ولی می‌تواند `state` خودش را تغییر دهد.
 
-For each particular piece of changing data, there should be just one component that "owns" it in its state. Don't try to synchronize states of two different components. Instead, [lift it up](/docs/lifting-state-up.html) to their closest shared ancestor, and pass it down as props to both of them.
+برای هر داده مشخصی که تغییر می‌کند، فقط یک کامپوننت باید باشد که آن را در stateاش ازآن خود کند. سعی نکنید که state دو کامپوننت مختلف را باهم همگام‌سازی کنید. به جای این کار، آن را به بالا، یعنی نزدیکترین کامپوننت جد مشترک آن‌ها [انتقال دهید](/docs/lifting-state-up.html) و سپس از بالا به پایین توسط props به هردوی آن‌ها انتقال دهید.
 
 ## [Lifecycle Methods](/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class) {#lifecycle-methods}
 
-Lifecycle methods are custom functionality that gets executed during the different phases of a component. There are methods available when the component gets created and inserted into the DOM ([mounting](/docs/react-component.html#mounting)), when the component updates, and when the component gets unmounted or removed from the DOM.
+متد‌های چرخه حیات (Lifecycle Methods) توابع شخصی‌سازی شده‌ای هستند که در فاز‌های مختلف یک کامپوننت فراخوانی می‌شوند. برای زمانی که کامپوننت ساخته می‌شود و درون DOM اضافه می‌شود ([mounting](/docs/react-component.html#mounting))، زمانی که کامپوننت به‌روز رسانی می‌شود، و زمانی که کامپوننت unmounted یا از DOM حذف می‌شود متد‌هایی وجود دارند.
 
- ## [Controlled](/docs/forms.html#controlled-components) vs. [Uncontrolled Components](/docs/uncontrolled-components.html)
+ ## [کامپوننت‌های کنترل‌شده](/docs/forms.html#controlled-components) در برابر [کنترل‌نشده](/docs/uncontrolled-components.html)
 
-React has two different approaches to dealing with form inputs. 
+ری‌اکت دو نوع روش برای کار با input فرم ها دارد:
 
-An input form element whose value is controlled by React is called a *controlled component*. When a user enters data into a controlled component a change event handler is triggered and your code decides whether the input is valid (by re-rendering with the updated value). If you do not re-render then the form element will remain unchanged.
+المنت‌های ورودی که مقدار آن‌ها توسط ری‌اکت کنترل می‌شود را *کامپوننت های کنترل شده (controlled component)* می‌خوانند.  هنگامی که کاربر داده‌ای درون یک کامپوننت کنترل شده وارد می‌کند event handler تغییر فعال می‌شود و کد شما تصمیم می‌گیرد که input شما معتبر است یا خیر (با استفاده از به‌روز رسانی مقدار). اگر شما مجددا رندر نکنید آن input دست نخورده باقی می‌ماند.
 
-An *uncontrolled component* works like form elements do outside of React. When a user inputs data into a form field (an input box, dropdown, etc) the updated information is reflected without React needing to do anything. However, this also means that you can't force the field to have a certain value.
+یک کامپوننت‌ کنترل نشده (uncontrolled component) مانند المنت‌های خارج از ری‌اکت کار می‌کند. اگر کاربر داده‌ای درون فیلدی از فرم وارد کند (input، dropdown و غیره) بدون این‌که ری‌اکت کاری کند، اطلاعات آن مورد تغییر قرار می‌گیرد. همچنین، به آن معناست که شما نمی‌توانید فیلد را مجبور کنید تا مقدار خاصی داشته باشد.
 
-In most cases you should use controlled components.
+در اکثر موارد باید از کامپوننت‌های کنترل شده استفاده کنید.
 
 ## [Keys](/docs/lists-and-keys.html) {#keys}
 
-A "key" is a special string attribute you need to include when creating arrays of elements. Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside an array to give the elements a stable identity.
+یک “key” خصوصیت ویژه‌ای از جنس رشته است که باید هنگام ایجاد آرایه‌ای از المنت‌ها آن را اضافه کنیم. keyها به ری‌اکت کمک می‌کنند که چه آیتمی تغییر کرده، اضافه شده، یا پاک شده است. با دادن Keyها به المنت‌های درون آرایه، هویت پایداری به آن‌ها داده می‌شود.
 
-Keys only need to be unique among sibling elements in the same array. They don't need to be unique across the whole application or even a single component.
+Keyها فقط باید بین هم همتایان (siblings) درون یک آرایه، منحصر به فرد باشند. نیازی نیست که در تمام برنامه یا حتی درون یک کامپوننت  منحصر به فرد باشند.
 
-Don't pass something like `Math.random()` to keys. It is important that keys have a "stable identity" across re-renders so that React can determine when items are added, removed, or re-ordered. Ideally, keys should correspond to unique and stable identifiers coming from your data, such as `post.id`.
+چیزی مثل `Math.random()` را برای keyها قرار ندهید. بسیار مهم است که keyها "هویت ثابت" در بین هر رندر داشته باشند تا ری‌اکت بتواند هنگامی که آیتمی  اضافه، کم یا مجددا به‌روز رسانی شد تشخیص دهد. در حالت ایده آل، keyها باید با هویت باثباتی که از داده‌های شما می‌آیند مطابق باشند، مانند `post.id`.
 
 ## [Refs](/docs/refs-and-the-dom.html) {#refs}
 
-React supports a special attribute that you can attach to any component. The `ref` attribute can be an object created by [`React.createRef()` function](/docs/react-api.html#reactcreateref) or a callback function, or a string (in legacy API). When the `ref` attribute is a callback function, the function receives the underlying DOM element or class instance (depending on the type of element) as its argument. This allows you to have direct access to the DOM element or component instance.
+ری‌اکت از خصوصیتی پشتیبانی می‌کند که شما می‌توانید آن را به هر کامپوننتی بچسبانید. خصیصه `ref` می‌تواند آبجکتی ساخته شده توسط [`تابع ()React.createRef`](/docs/react-api.html#reactcreateref) یا تابع callback، یا یک متن باشد (در Api قدیم). هنگامی که خصیصه `ref` یک callback است، آن تابع المنتی [که ref به آن نسبت داده شده] از DOM را و یا instance کلاس را به عنوان آرگومان دریافت می‌کند (به نوع المنت بستگی دارد). این به شما اجازه می‌دهد تا به المنت DOM یا instance کلاس دسترسی داشته باشید.
 
-Use refs sparingly. If you find yourself often using refs to "make things happen" in your app, consider getting more familiar with [top-down data flow](/docs/lifting-state-up.html).
+از ref زیاد استفاده نکنید. اگر دیدید که مکرر از ref در برنامه‌تان استفاده می‌کنید تا کارتان را راه بیاندازید، در نظر داشته باشید که با [جریان داده از بالا به پایین](/docs/lifting-state-up.html) بیشتر آشنا شوید.
 
 ## [Events](/docs/handling-events.html) {#events}
 
-Handling events with React elements has some syntactic differences:
+مدیریت رخ‌دادها با المنت‌های ری‌اکت تفاوت‌های در قواعد دارد:
 
-* React event handlers are named using camelCase, rather than lowercase.
-* With JSX you pass a function as the event handler, rather than a string.
+* در ری‌اکت، event handler ها طبق قانون camleCase به‌جای lowercase نامگذاری می‌شوند.
+* با بهره‌گیری از JSX، شما یک تابع را به‌جای یک رشته به event handler پاس می‌دهید.
 
-## [Reconciliation](/docs/reconciliation.html) {#reconciliation}
+## [تلفیق](/docs/reconciliation.html) {#reconciliation}
 
-When a component's props or state change, React decides whether an actual DOM update is necessary by comparing the newly returned element with the previously rendered one. When they are not equal, React will update the DOM. This process is called "reconciliation".
+هنگامی که props یا state تغییر می‌کند، ری‌اکت با مقایسه المنت‌های بازگشت داده شده و آنهایی که قبلا رندر شده بودند تصمیم می‌گید که DOM  اصلی به‌روز رسانی شود یا خیر. هنگامی که با هم برابر نباشند، ری‌اکت DOM را به‌روز رسانی می‌کند. این پروسه تلفیق (reconciliation) خوانده می‌شود.
