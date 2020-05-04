@@ -94,7 +94,7 @@ props.number = 42;
 
 ### `props.children` {#propschildren}
 
-`props.children` در هر کامپوننتی قابل دسترس است. شامل محتوای بین باز شدن و بسته شدن تگ یک کامپوننت است. برای مثال:
+`props.children` در هر کامپوننتی قابل دسترس است. محتوای بین تگ باز و بسته‌ی یک کامپوننت را دربر دارد. برای مثال:
 
 ```js
 <Welcome>Hello world!</Welcome>
