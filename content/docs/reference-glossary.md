@@ -58,7 +58,7 @@ const element = <h1>Hello, world</h1>;
 ```
 معمولا، elementها مستقیما استفاده نمی‌شوند، ولی از کامپوننت ها برمی‌گردند.
 
-## [Components](/docs/components-and-props.html) {#components}
+## [کامپوننت‌ها](/docs/components-and-props.html) {#components}
 
 کامپوننت‌های ری‌اکت تکه‌های قابل استفاده کوچک کد هستند که یک element ری ‌اکت برمی‌گردانند تا در صفحه رندر شود. ساده‌ترین ورژن یک کامپوننت ری‌اکت یک تابع جاوااسکریپت ساده است که یک element ری‌اکت باز می‌گرداند.
 
