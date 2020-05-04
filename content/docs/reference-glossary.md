@@ -108,7 +108,7 @@ function Welcome(props) {
 }
 ```
 
-برای کامپوننت‌هایی که از کلاس استفاده می‌کنند از `this.props.children` استفاده کنید:
+برای کامپوننت‌هایی بر پایه کلاس تعریف شده‌اند، از `this.props.children` استفاده کنید:
 
 ```js
 class Welcome extends React.Component {
