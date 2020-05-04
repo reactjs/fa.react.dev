@@ -49,7 +49,7 @@ ReactDOM.render(
 );
 ```  
 
-## [Elements](/docs/rendering-elements.html) {#elements}
+## [المنت‌ها](/docs/rendering-elements.html) {#elements}
 
 elementهای ری‌اکت بلاک‌هایی هستند که برنامه‌های ری‌اکت را می‌سازند. فردی ممکن است elementها را با مفهموم متداول "کامپوننت" اشتباه بگیرد. یک المنت چیزی را که می‌خواهید در صفحه نمایش دهید را نشان می‌دهد. المان‌های ری‌اکت immutable هستند.
 
