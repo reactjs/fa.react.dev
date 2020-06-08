@@ -417,11 +417,14 @@ this.setState(function(state, props) {
 یک کامپوننت ممکن است خودش انتخاب کند که state خود را به عنوان props به کامپوننت‌های فرزند انتقال دهد.
 
 ```js
+<<<<<<< HEAD
 <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
 ```
 همچنین برای کامپوننت‌هایی که توسط کاربر تعریف شده‌است، کار می کند.
 
 ```js
+=======
+>>>>>>> c9b990070fc35d31b56957263e1ea9fe2fe67b40
 <FormattedDate date={this.state.date} />
 ```
 
