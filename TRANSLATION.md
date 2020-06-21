@@ -35,7 +35,7 @@
         attribute
       </td>
       <td>
-        خصوصیت
+        صفت
       </td>
     </tr>
     <tr>
