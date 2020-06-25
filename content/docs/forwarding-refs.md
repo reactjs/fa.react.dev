@@ -6,7 +6,7 @@ permalink: docs/forwarding-refs.html
 
 Ref forwarding یک تکنیک برای ارسال خودکار یک  [ref](/docs/refs-and-the-dom.html) از طریق یک کامپوننت به فرزندانش می باشد. اینکار معمولا برای بسیاری از کامپوننت ها در اپلیکیشن لازم نیست. به هر حال، در بعضی از کامپوننت ها، به خصوص در کامپوننت های کتابخانه ای با قابلیت استفاده مجدد میتواند مفید باشد. رایج ترین حالات ممکن در ادامه شرح داده شده اند.
 
-## فوروارد کردن refs به کامپوننت های DOM {#forwarding-refs-to-dom-components}
+## فوروارد کردن ref ها به کامپوننت‌های DOM {#forwarding-refs-to-dom-components}
 
 یک کامپوننت `FancyButton` که المنت محلی `button` در DOM را رندر می کند در نظر بگیرید:
 `embed:forwarding-refs/fancy-button-simple.js`
