@@ -70,7 +70,7 @@ ref فوروارد کردن یک تکنیک برای ارسال خودکار ی�
 
 `React.forwardRef` یک تابع رندر می‌پذیرد. React DevTools از این تابع برای بررسی اینکه چه چیزی را برای کامپوننت ref forwarding نمایش دهد استفاده می‌کند.
 
-برای مثال، کامپوننت زیر به عنوان "*ForwardRef*" در DevTools ظاهر می شود:
+برای مثال، کامپوننت زیر به عنوان "*ForwardRef*" در DevTools ظاهر می‌شود:
 
 `embed:forwarding-refs/wrapped-component.js`
 
