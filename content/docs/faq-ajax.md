@@ -1,24 +1,24 @@
 ---
 id: faq-ajax
-title: AJAX and APIs
+title: AJAX و API ها
 permalink: docs/faq-ajax.html
 layout: docs
 category: FAQ
 ---
 
-### How can I make an AJAX call? {#how-can-i-make-an-ajax-call}
+### چگونه یک درخواست AJAX ایجاد کنم؟ {#how-can-i-make-an-ajax-call}
 
-You can use any AJAX library you like with React. Some popular ones are [Axios](https://github.com/axios/axios), [jQuery AJAX](https://api.jquery.com/jQuery.ajax/), and the browser built-in [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
+شما می‎توانید از هر کتابخانه AJAX که علاقه دارید استفاده کنید. بعضی از کتابخانه‎های معروف عبارتند از [Axios](https://github.com/axios/axios)، [jQuery AJAX](https://api.jquery.com/jQuery.ajax/) و کتابخانه موجود در خود مرورگر [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
 
-### Where in the component lifecycle should I make an AJAX call? {#where-in-the-component-lifecycle-should-i-make-an-ajax-call}
+### در کدام قسمت چرخه حیات کامپوننت باید درخواست AJAX را بسازم؟ {#where-in-the-component-lifecycle-should-i-make-an-ajax-call}
 
-You should populate data with AJAX calls in the [`componentDidMount`](/docs/react-component.html#mounting) lifecycle method. This is so you can use `setState` to update your component when the data is retrieved.
+شما باید داده‎ها را در متد [`componentDidMount`](/docs/react-component.html#mounting) چرخه حیات توسط درخواست های AJAX دریافت نمایید. در اینصورت می‎توانید با استفاده از `setState` کامپوننت را هنگام دریافت داده بروزرسانی نمایید.
 
-### Example: Using AJAX results to set local state {#example-using-ajax-results-to-set-local-state}
+### مثال: استفاده از نتایج AJAX برای ست کردن state محلی {#example-using-ajax-results-to-set-local-state}
 
-The component below demonstrates how to make an AJAX call in `componentDidMount` to populate local component state. 
+کامپوننت زیر چگونگی ایجاد یک درخواست AJAX در `componentDidMount` برای پر کردن state محلی کامپوننت را نشان می‎دهد.
 
-The example API returns a JSON object like this:
+API استفاده شده در مثال یک شی JSON به شکل زیر برمیگرداند:
 
 ```
 {
@@ -83,7 +83,7 @@ class MyComponent extends React.Component {
 }
 ```
 
-Here is the equivalent with [Hooks](https://reactjs.org/docs/hooks-intro.html): 
+معادل همین مثال با استفاده از [Hooks](https://reactjs.org/docs/hooks-intro.html): 
 
 ```js
 function MyComponent() {
