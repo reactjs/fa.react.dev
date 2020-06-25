@@ -74,7 +74,7 @@ ref فوروارد کردن یک تکنیک برای ارسال خودکار ی�
 
 `embed:forwarding-refs/wrapped-component.js`
 
-اگر شما تابع رندر را نامگذاری کنید، DevTools نام آنرا نیز بکار می برد. (برای مثال  "*ForwardRef(myFunction)*"):
+اگر شما تابع رندر را نامگذاری کنید، DevTools نام آن‌را نیز به‌کار می‌برد. (برای مثال  "*ForwardRef(myFunction)*"):
 
 `embed:forwarding-refs/wrapped-component-with-function-name.js`
 
