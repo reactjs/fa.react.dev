@@ -1,6 +1,6 @@
 ---
 id: forwarding-refs
-title: Forwarding Refs
+title: فوروارد کردن ref ها
 permalink: docs/forwarding-refs.html
 ---
 
