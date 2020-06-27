@@ -12,7 +12,7 @@ category: FAQ
 
 ### در کدام قسمت چرخه حیات کامپوننت باید درخواست AJAX را بسازم؟ {#where-in-the-component-lifecycle-should-i-make-an-ajax-call}
 
-شما باید داده‎ها را در متد [`componentDidMount`](/docs/react-component.html#mounting) چرخه حیات توسط درخواست های AJAX دریافت نمایید. در اینصورت می‎توانید با استفاده از `setState` کامپوننت را هنگام دریافت داده بروزرسانی نمایید.
+شما باید داده‌ها را در متد [`componentDidMount`](/docs/react-component.html#mounting) چرخه حیات توسط درخواست‌های AJAX دریافت نمایید. در این‌صورت می‌توانید با استفاده از `setState` کامپوننت را هنگام دریافت داده به‌روزرسانی نمایید.
 
 ### مثال: استفاده از نتایج AJAX برای ست کردن state محلی {#example-using-ajax-results-to-set-local-state}
 
