@@ -8,7 +8,7 @@ category: FAQ
 
 ### چگونه یک درخواست AJAX ایجاد کنم؟ {#how-can-i-make-an-ajax-call}
 
-شما می‎توانید از هر کتابخانه AJAX که علاقه دارید استفاده کنید. بعضی از کتابخانه‎های معروف عبارتند از [Axios](https://github.com/axios/axios)، [jQuery AJAX](https://api.jquery.com/jQuery.ajax/) و کتابخانه موجود در خود مرورگر [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
+شما می‌توانید از هر کتابخانه AJAX که علاقه دارید با ری‌اکت استفاده کنید. بعضی از کتابخانه‌های معروف عبارتند از [Axios](https://github.com/axios/axios)، [jQuery AJAX](https://api.jquery.com/jQuery.ajax/) و کتابخانه موجود در خود مرورگر [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) است.
 
 ### در کدام قسمت چرخه حیات کامپوننت باید درخواست AJAX را بسازم؟ {#where-in-the-component-lifecycle-should-i-make-an-ajax-call}
 
