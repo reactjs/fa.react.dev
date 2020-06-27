@@ -16,7 +16,7 @@ category: FAQ
 
 ### مثال: استفاده از نتایج AJAX برای مقداردهی state محلی {#example-using-ajax-results-to-set-local-state}
 
-کامپوننت زیر چگونگی ایجاد یک درخواست AJAX در `componentDidMount` برای پر کردن state محلی کامپوننت را نشان می‎دهد.
+کامپوننت زیر چگونگی ایجاد یک درخواست AJAX در `componentDidMount` برای پر کردن state محلی کامپوننت را نشان می‌دهد.
 
 API استفاده شده در مثال یک شی JSON به شکل زیر برمیگرداند:
 
