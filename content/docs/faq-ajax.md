@@ -14,7 +14,7 @@ category: FAQ
 
 شما باید داده‌ها را در متد [`componentDidMount`](/docs/react-component.html#mounting) چرخه حیات توسط درخواست‌های AJAX دریافت نمایید. در این‌صورت می‌توانید با استفاده از `setState` کامپوننت را هنگام دریافت داده به‌روزرسانی نمایید.
 
-### مثال: استفاده از نتایج AJAX برای ست کردن state محلی {#example-using-ajax-results-to-set-local-state}
+### مثال: استفاده از نتایج AJAX برای مقداردهی state محلی {#example-using-ajax-results-to-set-local-state}
 
 کامپوننت زیر چگونگی ایجاد یک درخواست AJAX در `componentDidMount` برای پر کردن state محلی کامپوننت را نشان می‎دهد.
 
