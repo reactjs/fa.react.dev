@@ -281,7 +281,7 @@ static getDerivedStateFromProps(props, state)
 اشتقاق (deriving) state باعث بلندی کد می‌شود و فکر کردن در مورد کامپوننت شما را سخت می‌کند.
 [مطمئن شوید با جایگزین‌های ساده‌تر آشنا هستید:](/blog/2018/06/07/you-probably-dont-need-derived-state.html)
 
-* اگر نیاز به **انجام یک تاثیر بیرونی** (برای مثال fetch کردن داده یا اعمال انیمیشن) در پاسخ یک تغییر در props دارید، از متد چرخه‌ی حیات [`componentDidUpdate`](#componentdidupdate) به عنوان جایگزین استفاده کنید.
+* اگر نیاز به **انجام یک تاثیر جانبی (side effect)** (برای مثال fetch کردن داده یا اعمال انیمیشن) در پاسخ یک تغییر در props دارید، از متد چرخه‌ی حیات [`componentDidUpdate`](#componentdidupdate) به عنوان جایگزین استفاده کنید.
 
 * اگر می‌خواهید **بعضی داده‌ها را فقط زمان تغییرات یک props محاسبه کنید**، [از یک memoization به عنوان جایگزین استفاده کنید](/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization).
 
