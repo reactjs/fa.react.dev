@@ -56,7 +56,7 @@ class Welcome extends React.Component {
 >
 >- [`UNSAFE_componentWillMount()`](#unsafe_componentwillmount)
 
-#### بروزرسانی {#updating}
+#### به‌روز رسانی {#updating}
 
 یک به‌روز رسانی می‌تواند به وسیله تغییر دادن state یا props رخ دهد. این متدها هنگامی که یک کامپوننت دوباره رندر می‌شود به ترتیب زیر صدا زده می‌شوند:
 
