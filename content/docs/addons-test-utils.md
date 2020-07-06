@@ -1,27 +1,27 @@
 ---
 id: test-utils
-title: Test Utilities
+title: ابزارهای تست
 permalink: docs/test-utils.html
 layout: docs
 category: Reference
 ---
 
-**Importing**
+**ایمپورت کردن**
 
 ```javascript
 import ReactTestUtils from 'react-dom/test-utils'; // ES6
 var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
 ```
 
-## Overview {#overview}
+## بررسی اجمالی {#overview}
 
-`ReactTestUtils` makes it easy to test React components in the testing framework of your choice. At Facebook we use [Jest](https://facebook.github.io/jest/) for painless JavaScript testing. Learn how to get started with Jest through the Jest website's [React Tutorial](https://jestjs.io/docs/tutorial-react).
+`ReactTestUtils` عملیات تست کامپوننت‌های ری‌اکت را در فریموورک موردنظرتان ساده می‌کند. ما در فیسبوک از [Jest](https://facebook.github.io/jest/) برای تست کردن جاوااسکریپتی بدون دردسر استفاده می‌کنیم. برای اینکه یاد بگیرید از کجا شروع کنید از [React Tutorial](https://jestjs.io/docs/tutorial-react) سایت Jest استفاده نمایید.
 
-> Note:
+> نکته:
 >
-> We recommend using [React Testing Library](https://testing-library.com/react) which is designed to enable and encourage writing tests that use your components as the end users do.
+> ما استفاده از [React Testing Library](https://testing-library.com/react) را پیش‌نهاد می‌کنیم، از آن‌جا که طراحی آن با هدف قادر ساختن و تشویق شما به نوشتن تست‌ به گونه‌ای است که کاربر نهایی کامپوننت شما را استفاده می‌کند.
 >
-> Alternatively, Airbnb has released a testing utility called [Enzyme](https://airbnb.io/enzyme/), which makes it easy to assert, manipulate, and traverse your React Components' output.
+> به عنوان جایگزین، Airbnb یک ابزار تست به نام [Enzyme](https://airbnb.io/enzyme/) منتشر کرده‌است که بررسی، دستکاری و ارزیابی خروجی کامپوننت‌های ری‌اکت شما را ساده می‌کند.
 
  - [`act()`](#act)
  - [`mockComponent()`](#mockcomponent)
@@ -40,17 +40,17 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
  - [`renderIntoDocument()`](#renderintodocument)
  - [`Simulate`](#simulate)
 
-## Reference {#reference}
+## مرجع {#reference}
 
 ### `act()` {#act}
 
-To prepare a component for assertions, wrap the code rendering it and performing updates inside an `act()` call. This makes your test run closer to how React works in the browser.
+برای آماده‌سازی یک کامپوننت برای اثبات، کدی که آن را رندر و به‌روز رسانی می‌کند را درون یک فراخوانی `act()` قرار دهید. این‌کار باعث می‌شود تست شما به روش کارکرد ری‌اکت در مرورگر نزدیک‌تر شود.
 
->Note
+>نکته
 >
->If you use `react-test-renderer`, it also provides an `act` export that behaves the same way.
+>اگر از `react-test-renderer` استفاده می‌کنید، یک خروجی `act` که به همین شکل رفتار می‌کند برایتان فراهم می‌کند.
 
-For example, let's say we have this `Counter` component:
+برای مثال، اجازه دهید بگوییم این کامپوننت `Counter` را داریم:
 
 ```js
 class Counter extends React.Component {
@@ -83,7 +83,7 @@ class Counter extends React.Component {
 }
 ```
 
-Here is how we can test it:
+به این شکل آن را تست می‌کنیم:
 
 ```js{3,20-22,29-31}
 import React from 'react';
@@ -122,9 +122,9 @@ it('can render and update a counter', () => {
 });
 ```
 
-- Don't forget that dispatching DOM events only works when the DOM container is added to the `document`. You can use a library like [React Testing Library](https://testing-library.com/react) to reduce the boilerplate code.
+- فراموش نکنید که توضیع (dispatch) رویداد‌های DOM تنها زمانی که DOM container به `document` اضافه شده‌باشد کار می‌کند. شما می‌توانید از یک کتابخانه مانند [React Testing Library](https://testing-library.com/react) برای کاهش کدهای تکراری (boilerplate) استفاده کنید.
 
-- The [`recipes`](/docs/testing-recipes.html) document contains more details on how `act()` behaves, with examples and usage.
+- سند [دستورالعمل‌ها](/docs/testing-recipes.html) شامل اطلاعات بیشتری در مورد چگونگی رفتار `act()`، با مثال‌ها و کاربردها می‌باشد.
 
 * * *
 
@@ -137,11 +137,11 @@ mockComponent(
 )
 ```
 
-Pass a mocked component module to this method to augment it with useful methods that allow it to be used as a dummy React component. Instead of rendering as usual, the component will become a simple `<div>` (or other tag if `mockTagName` is provided) containing any provided children.
+یک ماژول کامپوننت mock شده به این متد پاس دهید تا آن را به متدهای سودمندی که به آن اجازه می‌دهند که به عنوان یک کامپوننت ساختگی ری‌اکت استفاده شود تبدیل کنید. به جای این‌که مثل همیشه رندر شود، کامپوننت یک `<div>` ساده (یا تگ دیگری اگر `mockTagName` فراهم شده باشد) خواهد شد که هر فرزندی را که فراهم شده‌‌باشد، دربر می‌گیرد.
 
-> Note:
+> نکته:
 >
-> `mockComponent()` is a legacy API. We recommend using [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) instead.
+> `mockComponent()` یک API قدیمی است. ما استفاده از [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) را به عنوان جایگزین پیشنهاد می‌کنیم.
 
 * * *
 
@@ -151,7 +151,7 @@ Pass a mocked component module to this method to augment it with useful methods 
 isElement(element)
 ```
 
-Returns `true` if `element` is any React element.
+اگر `element` هر المنت ری‌اکتی باشد `true` برمی‌گرداند.
 
 * * *
 
@@ -164,7 +164,7 @@ isElementOfType(
 )
 ```
 
-Returns `true` if `element` is a React element whose type is of a React `componentClass`.
+اگر `element` یک المنت ری‌اکت که از نوع `componentClass` ری‌اکت است باشد، `true` بازمی‌گرداند.
 
 * * *
 
@@ -174,7 +174,7 @@ Returns `true` if `element` is a React element whose type is of a React `compone
 isDOMComponent(instance)
 ```
 
-Returns `true` if `instance` is a DOM component (such as a `<div>` or `<span>`).
+اگر `instance` یک کامپوننت DOM باشد (مانند یک `<div>` یا `<span>`) مقدار `true` برمی‌گرداند.
 
 * * *
 
@@ -184,7 +184,7 @@ Returns `true` if `instance` is a DOM component (such as a `<div>` or `<span>`).
 isCompositeComponent(instance)
 ```
 
-Returns `true` if `instance` is a user-defined component, such as a class or a function.
+اگر `instance` یک کامپوننت تعریف شده توسط کاربر مانند یک کلاس یا یک تابع باشد، مقدار `true` را برمی‌گرداند.
 
 * * *
 
@@ -197,7 +197,7 @@ isCompositeComponentWithType(
 )
 ```
 
-Returns `true` if `instance` is a component whose type is of a React `componentClass`.
+اگر `instance` یک کامپوننت از نوع `componentClass` ری‌اکت باشد مقدار `true` را برمی‌گرداند.
 
 * * *
 
@@ -210,7 +210,7 @@ findAllInRenderedTree(
 )
 ```
 
-Traverse all components in `tree` and accumulate all components where `test(component)` is `true`. This is not that useful on its own, but it's used as a primitive for other test utils.
+از تمامی کامپوننت ها در `tree` عبور می‌کند و تمام کامپوننت‌هایی که `test(component)` آن‌ها مقدار `true` دارد را ذخیره می‌کند. به تنهایی کاربردی ندارد، اما به عنوان یک قدم اولیه برای دیگر ابزارهای تست استفاده می‌شود.
 
 * * *
 
@@ -223,7 +223,7 @@ scryRenderedDOMComponentsWithClass(
 )
 ```
 
-Finds all DOM elements of components in the rendered tree that are DOM components with the class name matching `className`.
+تمامی المنت‌های DOM در کامپوننت‌های درخت رندر شده را که کامپوننت‌هایی هستند که نام کلاسشان با `className` برابر است را پیدا می‌کند.
 
 * * *
 
@@ -236,7 +236,7 @@ findRenderedDOMComponentWithClass(
 )
 ```
 
-Like [`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclass) but expects there to be one result, and returns that one result, or throws exception if there is any other number of matches besides one.
+شبیه [`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclass) است اما انتظار دارد که تنها یک نتیجه وجود داشته باشد، یا اگر هر تعدادی به غیر از یک نتیجه پیدا کند یک خطا می‌اندازد.
 
 * * *
 
@@ -249,7 +249,7 @@ scryRenderedDOMComponentsWithTag(
 )
 ```
 
-Finds all DOM elements of components in the rendered tree that are DOM components with the tag name matching `tagName`.
+تمامی المنت‌های DOM در کامپوننت‌های درخت رندر شده را که کامپوننت‌هایی هستند که نام تگشان با `tagName` برابر است را پیدا می‌کند.
 
 * * *
 
@@ -262,7 +262,7 @@ findRenderedDOMComponentWithTag(
 )
 ```
 
-Like [`scryRenderedDOMComponentsWithTag()`](#scryrendereddomcomponentswithtag) but expects there to be one result, and returns that one result, or throws exception if there is any other number of matches besides one.
+شبیه [`scryRenderedDOMComponentsWithTag()`](#scryrendereddomcomponentswithtag) است اما انتظار دارد که تنها یک نتیجه وجود داشته باشد، یا اگر هر تعدادی به غیر از یک نتیجه پیدا کند یک خطا می‌اندازد.
 
 * * *
 
@@ -275,7 +275,7 @@ scryRenderedComponentsWithType(
 )
 ```
 
-Finds all instances of components with type equal to `componentClass`.
+تمامی instance های کامپوننت‌ها با نوع `componentClass` را پیدا می‌کند.
 
 * * *
 
@@ -288,7 +288,7 @@ findRenderedComponentWithType(
 )
 ```
 
-Same as [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype) but expects there to be one result and returns that one result, or throws exception if there is any other number of matches besides one.
+مانند [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype) است اما انتظار دارد که تنها یک نتیجه وجود داشته باشد، یا اگر هر تعدادی به غیر از یک نتیجه پیدا کند یک خطا باز می‌گرداند.
 
 ***
 
@@ -298,20 +298,20 @@ Same as [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype) bu
 renderIntoDocument(element)
 ```
 
-Render a React element into a detached DOM node in the document. **This function requires a DOM.** It is effectively equivalent to:
+یک المنت ری‌اکت را در یک نود DOM جدا شده در document رندر می‌کند. **این تابع یک DOM نیاز دارد.** معادل است با:
 
 ```js
 const domContainer = document.createElement('div');
 ReactDOM.render(element, domContainer);
 ```
 
-> Note:
+> نکته:
 >
-> You will need to have `window`, `window.document` and `window.document.createElement` globally available **before** you import `React`. Otherwise React will think it can't access the DOM and methods like `setState` won't work.
+> شما به `window`، `window.document` و `window.document.createElement` **قبل** از اینکه `React` را ایمپورت کنید و با دسترسی عمومی نیاز خواهید داشت. در غیر اینصورت ری‌اکت فکر می‌کند که نمی‌تواند به DOM دسترسی پیدا کند و متدهایی مانند `setState` کار نخواهند کرد.
 
 * * *
 
-## Other Utilities {#other-utilities}
+## دیگر ابزارها {#other-utilities}
 
 ### `Simulate` {#simulate}
 
@@ -322,11 +322,11 @@ Simulate.{eventName}(
 )
 ```
 
-Simulate an event dispatch on a DOM node with optional `eventData` event data.
+توزیع یک رویداد روی یک نود DOM با `eventData` داده اختیاری برای رویداد شبیه‌سازی می‌کند.
 
-`Simulate` has a method for [every event that React understands](/docs/events.html#supported-events).
+`Simulate` یک متد برای [هر رویدادی که ری‌اکت می‌فهمد](/docs/events.html#supported-events) دارد.
 
-**Clicking an element**
+**کلیک کردن روی یک المنت**
 
 ```javascript
 // <button ref={(node) => this.button = node}>...</button>
@@ -334,7 +334,7 @@ const node = this.button;
 ReactTestUtils.Simulate.click(node);
 ```
 
-**Changing the value of an input field and then pressing ENTER.**
+**تغییر مقدار یک فیلد ورودی و سپس فشردن ENTER.**
 
 ```javascript
 // <input ref={(node) => this.textInput = node} />
@@ -344,8 +344,8 @@ ReactTestUtils.Simulate.change(node);
 ReactTestUtils.Simulate.keyDown(node, {key: "Enter", keyCode: 13, which: 13});
 ```
 
-> Note
+> نکته
 >
-> You will have to provide any event property that you're using in your component (e.g. keyCode, which, etc...) as React is not creating any of these for you.
+> شما باید هرگونه ویژگی رویدادی که در کامپوننتان استفاه می‌کنید (مانند keyCode, which, etc...) را فراهم کنید چرا که ری‌اکت هیچ یک از ان‌ها را برای شما ایجاد نمی‌کند.
 
 * * *
