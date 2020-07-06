@@ -15,7 +15,7 @@ redirect_from:
   - "tips/use-react-with-other-libraries.html"
 ---
 
-این صفحه حاوی جزئیات دقیق منابع API کلاس کامپوننت ری‌اکت می‌باشد. فرض شده است که شما با مفاهیم بنادین ری‌اکت مانند [کامپوننت ها و Props](/docs/components-and-props.html) و [State و چرخه حیات](/docs/state-and-lifecycle.html) آشنا هستید. در غیر‌اینصورت ابتدا آن‌ها را مطالعه نمایید.
+این صفحه شامل جزئیات دقیق منابع API ری‌اکت برای تعریف کامپوننت از جنس کلاس‌ است. فرض شده‌است که شما با مفاهیم بنادین ری‌اکت مانند [کامپوننت‌ها و Props](/docs/components-and-props.html) و [State و چرخه حیات](/docs/state-and-lifecycle.html) آشنا هستید. در غیر‌این‌صورت ابتدا آن‌ها را مطالعه نمایید.
 
 ## بررسی اجمالی {#overview}
 
