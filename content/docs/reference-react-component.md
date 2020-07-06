@@ -73,7 +73,7 @@ class Welcome extends React.Component {
 >- [`UNSAFE_componentWillUpdate()`](#unsafe_componentwillupdate)
 >- [`UNSAFE_componentWillReceiveProps()`](#unsafe_componentwillreceiveprops)
 
-#### نابود شدن {#unmounting}
+#### نابود شدن (Unmounting) {#unmounting}
 
 این متدها هنگامی که یک کامپوننت از DOM پاک می‌شود صدا زده می‌شوند:
 
