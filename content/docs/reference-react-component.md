@@ -58,7 +58,7 @@ class Welcome extends React.Component {
 
 #### بروزرسانی {#updating}
 
-یک بروزرسانی می‌تواند به وسیله تغییر دادن state یا props رخ دهد. این متدها هنگامی که یک کامپوننت دوباره رندر می‌شود به ترتیب زیر صدا زده می‌شوند:
+یک به‌روز رسانی می‌تواند به وسیله تغییر دادن state یا props رخ دهد. این متدها هنگامی که یک کامپوننت دوباره رندر می‌شود به ترتیب زیر صدا زده می‌شوند:
 
 - [`static getDerivedStateFromProps()`](#static-getderivedstatefromprops)
 - [`shouldComponentUpdate()`](#shouldcomponentupdate)
