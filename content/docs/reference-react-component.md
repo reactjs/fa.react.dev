@@ -133,7 +133,7 @@ render()
 
 > نکته:
 >
-> در صورتی که [`shouldComponentUpdate()`](#shouldcomponentupdate)، false بازگرداند، `render()` فراخوانی نمی‌شود.
+> تابع `render()` فراخوانی نخواهد شد، اگر [`shouldComponentUpdate()`](#shouldcomponentupdate) مقدار false را بازگرداند.```
 
 * * *
 
