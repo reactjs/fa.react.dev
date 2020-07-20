@@ -122,7 +122,11 @@ ReactDOM.render(
 
 ### if خطی با استفاده از عملگر منطقی && {#inline-if-with-logical--operator}
 
+<<<<<<< HEAD
 شما می‌توانید [هر expression را در JSX به صورت توکار](https://reactjs.org/docs/introducing-jsx.html#embedding-expressions-in-jsx) با قراردادن در آکولاد بنویسید. این مورد شامل عملگر منطقی `&&` هم می‌شود. کاربرد آن برای اضافه‌کردن شرطی یک المنت است:
+=======
+You may [embed expressions in JSX](/docs/introducing-jsx.html#embedding-expressions-in-jsx) by wrapping them in curly braces. This includes the JavaScript logical `&&` operator. It can be handy for conditionally including an element:
+>>>>>>> ee75c297574468f888574aae2d9620d64bb5b5a1
 
 ```js{6-10}
 function Mailbox(props) {
