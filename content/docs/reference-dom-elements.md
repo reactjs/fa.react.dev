@@ -1,6 +1,6 @@
 ---
 id: dom-elements
-title: DOM Elements
+title: المنت‌های DOM
 layout: docs
 category: Reference
 permalink: docs/dom-elements.html
@@ -14,27 +14,27 @@ redirect_from:
   - "tips/dangerously-set-inner-html.html"
 ---
 
-React implements a browser-independent DOM system for performance and cross-browser compatibility. We took the opportunity to clean up a few rough edges in browser DOM implementations.
+به دلیل کارایی و سازگاری با مرورگرهای مختلف، ری‌اکت سیستم DOM خود را، مستقل از مرورگر پیاده‌سازی می‌کند. ما از این فرصت استفاده کردیم تا مقداری به زمختی های پیاده‌سازی DOM در مرورگر نظم دهیم.
 
-In React, all DOM properties and attributes (including event handlers) should be camelCased. For example, the HTML attribute `tabindex` corresponds to the attribute `tabIndex` in React. The exception is `aria-*` and `data-*` attributes, which should be lowercased. For example, you can keep `aria-label` as `aria-label`.
+در ری‌اکت، تمامی ویژگی‌ها و صفات DOM (از جلمه event handler ها) باید به صورت camelCase باشند. برای مثال، صفت `tabindex` در HTML با صفت `tabIndex` در ری‌اکت مطابقت دارد. استثناهایی که وجود دارند یکی صفات `aria-*` و دیگری صفات `data-*` هستند که باید با حروف کوچک نوشته بشوند. برای مثال `aria-label` همان `aria-label` باقی می‌ماند.
 
-## Differences In Attributes {#differences-in-attributes}
+## تفاوت بین صفات {#differences-in-attributes}
 
-There are a number of attributes that work differently between React and HTML:
+صفاتی وجود دارند که عملکردشان در ری‌اکت با HTML متفاوت است:
 
 ### checked {#checked}
 
-The `checked` attribute is supported by `<input>` components of type `checkbox` or `radio`. You can use it to set whether the component is checked. This is useful for building controlled components. `defaultChecked` is the uncontrolled equivalent, which sets whether the component is checked when it is first mounted.
+صفت `checked` در کامپوننت های `<input>` که از تیپ `checkbox` یا `radio` هستند قابل استفاده است. شما میتوانید از آن بدین شکل که وضعیت کامپوننت چک خورده باشد یا نه استفاده کنید. این برای ساختن کامپوننت‌های کنترل شده مناسب است. معادل کنترل نشده آن `defaultChecked` هست که فقط وضعیت چک خوردن همان اول کامپوننت را هنگام mount شدن بر عهده دارد.
 
 ### className {#classname}
 
-To specify a CSS class, use the `className` attribute. This applies to all regular DOM and SVG elements like `<div>`, `<a>`, and others.
+برای اختصاص دادن یک کلاس CSS، از صفت `className` استفاده کنید. این در مورد همه المنت های معمول DOM و SVG مانند `<div>`، `<a>` و سایرین صدق می‌کند.
 
-If you use React with Web Components (which is uncommon), use the `class` attribute instead.
+اگر از ری‌اکت برای Web Components (که البته رایج نیست) استفاده می‌کنید، صفت class را مورد استفاده قرار دهید.
 
 ### dangerouslySetInnerHTML {#dangerouslysetinnerhtml}
 
-`dangerouslySetInnerHTML` is React's replacement for using `innerHTML` in the browser DOM. In general, setting HTML from code is risky because it's easy to inadvertently expose your users to a [cross-site scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting) attack. So, you can set HTML directly from React, but you have to type out `dangerouslySetInnerHTML` and pass an object with a `__html` key, to remind yourself that it's dangerous. For example:
+`dangerouslySetInnerHTML` جایگزین ری‌اکت برای `innerHTML` جهت استفاده در DOM مرورگر است. به طور کلی، قرار دادن HTML از داخل کد، کار پر خطریست، برای این‌که به‌راحتی  کاربران را در معرض حمله [تزریق اسکریپت از طریق وبگاه (XSS)](https://fa.wikipedia.org/wiki/%D8%AA%D8%B2%D8%B1%DB%8C%D9%82_%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA_%D8%A7%D8%B2_%D8%B7%D8%B1%DB%8C%D9%82_%D9%88%D8%A8%DA%AF%D8%A7%D9%87) قرار می‌دهد. البته که می‌توانید مستقیما HTML را از طریق ری‌اکت وارد کنید، اما باید بنویسید `dangerouslySetInnerHTML` و یک شئ با کلید `__html` در آن قرار بدهید تا به خودتان یادآوری کنید که کار خطرناکی کرده‌اید. برای مثال:
 
 ```js
 function createMarkup() {
@@ -48,23 +48,21 @@ function MyComponent() {
 
 ### htmlFor {#htmlfor}
 
-Since `for` is a reserved word in JavaScript, React elements use `htmlFor` instead.
+از اونجایی که `for` کلمه رزرو شده ای در جاوااسکریپت هست، المنت های ری‌اکت از `htmlFor` استفاده میکنند.
 
 ### onChange {#onchange}
 
-The `onChange` event behaves as you would expect it to: whenever a form field is changed, this event is fired. We intentionally do not use the existing browser behavior because `onChange` is a misnomer for its behavior and React relies on this event to handle user input in real time.
+رویداد `onChange` رفتاری که از او انتظار می‌رود را دارد: هر وقت که یک فیلد از فرم تغییر کند، این رویداد اجرا می‌شود. ما عمدا از رفتار آن، آن طور که در مرورگر تعریف شده تبعیت نمی کنیم، چون `onChange` نامی اشتباه برای رفتارش دارد و ری‌اکت برای مدیریت زنده ی اطلاعات وارد شده توسط کاربر به آن اتکا دارد.
 
 ### selected {#selected}
 
-The `selected` attribute is supported by `<option>` components. You can use it to set whether the component is selected. This is useful for building controlled components.
+صفت `selected` توسط کامپوننت‌های `<option>` پشتیبانی می‌شود. شما می‌توانید از آن برای تعیین اینکه کامپوننت انتخاب شده یا نه استفاده کنید. این برای ساختن کامپوننت‌های کنترل شده مناسب است.
 
 ### style {#style}
 
->Note
+>توجه
 >
->Some examples in the documentation use `style` for convenience, but **using the `style` attribute as the primary means of styling elements is generally not recommended.** In most cases, [`className`](#classname) should be used to reference classes defined in an external CSS stylesheet. `style` is most often used in React applications to add dynamically-computed styles at render time. See also [FAQ: Styling and CSS](/docs/faq-styling.html).
-
-The `style` attribute accepts a JavaScript object with camelCased properties rather than a CSS string. This is consistent with the DOM `style` JavaScript property, is more efficient, and prevents XSS security holes. For example:
+>بعضی مثال‌های این مستندات از `style` برای راحتی کار استفاده می‌کند، اما **استفاده کردن از صفت style به عنوان راهکار اصلی برای style دادن به المنت‌ها، عموما پیشنهاد نمی‌شود. ** در غالب موارد، [`className`](#classname) باید برای ارجاع دادن به کلاس‌های تعریف شده در یک CSS stylesheet خارجی استفاده شود. `style` معمولا در اپلیکیشن های ری‌اکت وقتی استفاده می‌شود که نیاز به اضافه کردن style های پویا در زمان render باشد. مراجعه کنید به [سوالات متداول: style دادن و CSS](/docs/faq-styling.html). صفت `style`، یک شئ جاوااسکریپت با ویژگی‌های camelCased قبول می‌کند، نه اینکه یک رشته CSS قبول کند. این با ویژگی `style` جاوااسکریپت در DOM سازگاری دارد، بهینه‌تر است و از حفره‌های امنیتی XSS جلوگیری می‌کند. برای مثال:
 
 ```js
 const divStyle = {
@@ -77,7 +75,7 @@ function HelloWorldComponent() {
 }
 ```
 
-Note that styles are not autoprefixed. To support older browsers, you need to supply corresponding style properties:
+به یاد داشته باشید که style ها به صورت اتوماتیک prefix ندارند. برای این‌که بتوانید مرورگرهای قدیمی را هم پشتیبانی کنید، باید ویژگی‌های مربوطه style را خودتان اضافه کنید:
 
 ```js
 const divStyle = {
@@ -89,10 +87,9 @@ function ComponentWithTransition() {
   return <div style={divStyle}>This should work cross-browser</div>;
 }
 ```
+کلیدهای style به صورت camelCase هستند تا با روشی که node به ویژگی‌های DOM از طریق جاوااسکریپت دسترسی پیدا می‌کند، سازگاری داشته‌باشد (مثال: `node.style.backgroundImage`). همه Vendor Prefix ها [به جز `ms`](https://www.andismith.com/blogs/2012/02/modernizr-prefixed/) باید با حرف بزرگ شروع بشوند. برای همین است که `WebkitTransition` در ابتدا یک "W" بزرگ دارد.
 
-Style keys are camelCased in order to be consistent with accessing the properties on DOM nodes from JS (e.g. `node.style.backgroundImage`). Vendor prefixes [other than `ms`](https://www.andismith.com/blogs/2012/02/modernizr-prefixed/) should begin with a capital letter. This is why `WebkitTransition` has an uppercase "W".
-
-React will automatically append a "px" suffix to certain numeric inline style properties. If you want to use units other than "px", specify the value as a string with the desired unit. For example:
+ری‌اکت به طور اتوماتیک یک پسوند "px" به برخی ویژگی‌های عددی style درخط (inline) اضافه می‌کند. اگر می‌خواهید واحدی غیر از "px" استفاده کنید، مقدار آن را به صورت یک رشته همراه با واحد مورد نظر وارد کنید. برای مثال:
 
 ```js
 // Result style: '10px'
@@ -106,27 +103,27 @@ React will automatically append a "px" suffix to certain numeric inline style pr
 </div>
 ```
 
-Not all style properties are converted to pixel strings though. Certain ones remain unitless (eg `zoom`, `order`, `flex`). A complete list of unitless properties can be seen [here](https://github.com/facebook/react/blob/4131af3e4bf52f3a003537ec95a1655147c81270/src/renderers/dom/shared/CSSProperty.js#L15-L59).
+البته همه ویژگی‌های style به رشته و پیکسل تبدیل نمی‌شوند. برخی از آنها بدون واحد باقی می‌مانند (مثلا `zoom`، `order` و `flex`). لیست کامل این ویژگی‌های بدون واحد در [اینجا](https://github.com/facebook/react/blob/4131af3e4bf52f3a003537ec95a1655147c81270/src/renderers/dom/shared/CSSProperty.js#L15-L59) قابل مشاهده است.
 
 ### suppressContentEditableWarning {#suppresscontenteditablewarning}
 
-Normally, there is a warning when an element with children is also marked as `contentEditable`, because it won't work. This attribute suppresses that warning. Don't use this unless you are building a library like [Draft.js](https://facebook.github.io/draft-js/) that manages `contentEditable` manually.
+معمولا، هر وقت که یک المنت والد به عنوان `contentEditable` علامت‌ گذاری می‌شود، هشداری داده می شود چون کار نخواهد کرد. این صفت باعث می‌شود تا آن هشدار مسکوت باقی بماند. از این استفاده نکنید، مگر اینکه یک کتابخانه ای دارید می‌سازید مثل [Draft.js](https://facebook.github.io/draft-js/) که خودش به صورت دستی `contentEditable` را مدیریت می‌کند.
 
 ### suppressHydrationWarning {#suppresshydrationwarning}
 
-If you use server-side React rendering, normally there is a warning when the server and the client render different content. However, in some rare cases, it is very hard or impossible to guarantee an exact match. For example, timestamps are expected to differ on the server and on the client.
+اگر از rendering سمت سروری ری‌اکت استفاده می‌کنید، در صورتی که محتوای render شده کلاینت با محتوای render شده سرور متفاوت باشد، هشداری دریافت می‌کنید. البته، در برخی موارد خیلی سخت است که دقیقا با همدیگر جور بشوند. برای مثال timestamp ها بین سرور و کلاینت متفاوت خواهند بود.
 
-If you set `suppressHydrationWarning` to `true`, React will not warn you about mismatches in the attributes and the content of that element. It only works one level deep, and is intended to be used as an escape hatch. Don't overuse it. You can read more about hydration in the [`ReactDOM.hydrate()` documentation](/docs/react-dom.html#hydrate).
+اگر شما `suppressHydrationWarning` را برای المنتی `true` کنید، ری‌اکت برای مغایرت‌های صفات و محتوای آن المنت به شما هشدار نخواهد داد. فقط تا یک سطح از عمق کار خواهد کرد، و این هم به منظور یک راه فرار است، زیاد از آن استفاده نکنید. شما می‌توانید در مورد hydration در [اسناد `ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) بیشتر بخوانید.
 
 ### value {#value}
 
-The `value` attribute is supported by `<input>` and `<textarea>` components. You can use it to set the value of the component. This is useful for building controlled components. `defaultValue` is the uncontrolled equivalent, which sets the value of the component when it is first mounted.
+صفت `value` توسط کامپوننت های `<input>` و `<textarea>` پشتیبانی می‌شود. شما می‌توانید از آن برای تعیین مقدار یک کامپوننت استفاده کنید. این برای ساختن کامپوننت های کنترل‌شده مناسب است. `defaultValue` معادل غیر کنترلی آن است، که مقدار کامپوننت را در هنگام mount شدن تعیین می‌کند.
 
-## All Supported HTML Attributes {#all-supported-html-attributes}
+## تمام صفات HTML قابل پشتیبانی {#all-supported-html-attributes}
 
-As of React 16, any standard [or custom](/blog/2017/09/08/dom-attributes-in-react-16.html) DOM attributes are fully supported.
+بعد از ری‌اکت ۱۶، هر صفت استاندارد [یا سفارشی](/blog/2017/09/08/dom-attributes-in-react-16.html)DOM کاملا پشتیبانی می‌شود.
 
-React has always provided a JavaScript-centric API to the DOM. Since React components often take both custom and DOM-related props, React uses the `camelCase` convention just like the DOM APIs:
+AP‌Iای که ری‌اکت برای DOM ارائه کرده، همیشه با محوریت JavaScript بوده‌است. از آن‌جایی که کامپوننت‌های ری‌اکت معمولا هم prop‌های مربوط به DOM و همpropهای سفارشی را دریافت می‌کند، ری‌اکت از قانون camelCase استفاده می‌کند. درست مشابه APIهایی که DOM ارائه می‌کند:
 
 ```js
 <div tabIndex="-1" />      // Just like node.tabIndex DOM API
@@ -134,9 +131,9 @@ React has always provided a JavaScript-centric API to the DOM. Since React compo
 <input readOnly={true} />  // Just like node.readOnly DOM API
 ```
 
-These props work similarly to the corresponding HTML attributes, with the exception of the special cases documented above.
+این prop ها شبیه صفات HTML همگون خود کار می‌کنند، به استثناء موارد خاص که در بالا ذکر شده اند.
 
-Some of the DOM attributes supported by React include:
+برخی از صفات DOM که توسط ری‌اکت پشتیبانی می‌شوند عبارتند از:
 
 ```
 accept acceptCharset accessKey action allowFullScreen alt async autoComplete
@@ -154,7 +151,7 @@ sizes span spellCheck src srcDoc srcLang srcSet start step style summary
 tabIndex target title type useMap value width wmode wrap
 ```
 
-Similarly, all SVG attributes are fully supported:
+به همین ترتیب، تمام صفات SVG کاملا پشتیبانی می‌شوند:
 
 ```
 accentHeight accumulate additive alignmentBaseline allowReorder alphabetic
@@ -193,4 +190,4 @@ xlinkHref xlinkRole xlinkShow xlinkTitle xlinkType xmlns xmlnsXlink xmlBase
 xmlLang xmlSpace y y1 y2 yChannelSelector z zoomAndPan
 ```
 
-You may also use custom attributes as long as they're fully lowercase.
+شما می‌توانید صفات سفارشی را استفاده کنید تا وقتی که کاملا با حروف کوچک باشند.
