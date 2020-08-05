@@ -69,7 +69,7 @@ git clone https://github.com/reactjs/fa.reactjs.org.git
 cd fa.reactjs.org
 
 # ۳. وابستگی‌های npm پروژه را نصب کنید
-yarn
+npm install
 ```
 
 <h3 dir="rtl">اجرا</h3>
