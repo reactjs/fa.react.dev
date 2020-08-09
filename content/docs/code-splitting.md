@@ -42,14 +42,9 @@ console.log(add(16, 26)); // 42
 >
 > بسته‌های شما در نهایت با این نمونه تفاوت زیادی خواهد داشت.
 
-اگر شما از [Gatsby](https://www.gatsbyjs.org/) ،[Next.js](https://github.com/zeit/next.js/) ،[Create React App](https://github.com/facebookincubator/create-react-app) یا ابزار های مشابه استفاده می‌کنید، به‌طور پیش‌فرض Webpack تنظیم شده‌است تا برنامه‌ی شما را بسته‌بندی کند.
+اگر شما از [Gatsby](https://www.gatsbyjs.org/) ،[Next.js](https://nextjs.org/) ،[Create React App](https://create-react-app.dev/) یا ابزار های مشابه استفاده می‌کنید، به‌طور پیش‌فرض Webpack تنظیم شده‌است تا برنامه‌ی شما را بسته‌بندی کند.
 
-<<<<<<< HEAD
 در غیر این صورت، لازم است که پروسه‌ی بسته‌بندی را خودتان تنظیم و راه‌اندازی کنید. برای نمونه راهنمایی‌های [نصب](https://webpack.js.org/guides/installation/) و [شروع به کار](https://webpack.js.org/guides/getting-started/) را از مستندات Webpack مشاهده کنید.
-=======
-If you're using [Create React App](https://create-react-app.dev/), [Next.js](https://nextjs.org/), [Gatsby](https://www.gatsbyjs.org/), or a similar tool, you will have a Webpack setup out of the box to bundle your
-app.
->>>>>>> c89c38241278804b48bf34b1d8d9ee0b9f1b6e8c
 
 ## تکه‌تکه کردن کد {#code-splitting}
 
