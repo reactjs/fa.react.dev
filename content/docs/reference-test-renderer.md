@@ -103,7 +103,7 @@ expect(testInstance.findByProps({className: "sub"}).children).toEqual(['Sub']);
 TestRenderer.create(element, options);
 ```
 
-یک نمونه `TestRenderer` بسازید همراه با پاس دادن یک المنت ری‌اکت بسازید. این از DOM واقعی استفاده نمی‌کند، اما همچنان درخت کامپوننت را در حافظه به طور کامل رندر می‌کند و شما می‌توانید در مورد آن تست بنویسید. یک [نمونه TestRenderer](#testrenderer-instance) باز می‌گرداند.
+یک نمونه `TestRenderer` همراه با پاس دادن یک المنت ری‌اکت بسازید. این از DOM واقعی استفاده نمی‌کند، اما همچنان درخت کامپوننت را در حافظه به طور کامل رندر می‌کند و شما می‌توانید در مورد آن تست بنویسید. یک [نمونه TestRenderer](#testrenderer-instance) باز می‌گرداند.
 
 ### `TestRenderer.act()` {#testrendereract}
 
