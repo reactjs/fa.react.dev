@@ -165,7 +165,7 @@ testRenderer.update(element)
 testRenderer.unmount()
 ```
 
-درخت درون حافظه را با اجرای رویدایدهای چرخه‌حیات مناسب نابود خواهد کرد.
+درخت درون حافظه را با اجرای رویدایدهای چرخه‌حیات مناسب نابود (unmount) خواهد کرد.
 
 ### `testRenderer.getInstance()` {#testrenderergetinstance}
 
