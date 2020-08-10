@@ -111,7 +111,7 @@ TestRenderer.create(element, options);
 TestRenderer.act(callback);
 ```
 
-مانند [راهنمای `act()` از `react-dom/test-utils`](/docs/test-utils.html#act)، `TestRenderer.act` یک کامپوننت برای تست آماده می‌کند. از این ورژن `act()` برای پوشاندن فراخوانی‌ها به `TestRenderer.create` و `testRenderer.update` استفاده کنید.
+مانند [[متد] کمکی `act()` از `react-dom/test-utils`](/docs/test-utils.html#act)، `TestRenderer.act` هم یک کامپوننت برای تست‌ها (assertions) آماده می‌کند. از این ورژن `act()` برای دربر گرفتن فراخوانی‌ها به `TestRenderer.create` و `testRenderer.update` استفاده کنید.
 
 ```javascript
 import {create, act} from 'react-test-renderer';
