@@ -6,7 +6,7 @@ layout: docs
 category: Reference
 ---
 
-**مهم**
+**ایمپورت**
 
 ```javascript
 import TestRenderer from 'react-test-renderer'; // ES6
