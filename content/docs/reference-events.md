@@ -10,9 +10,15 @@ category: Reference
 
   ## مرور کلی {#overview}
 
+<<<<<<< HEAD
 `SyntheticEvent` روکشی است بر رویدادهای ذاتی خود مرورگر که در تمام مرورگر‌ها کار می‌کند. کنترل کننده‌های رویداد (event handlers) شما instance  هایی از `SyntheticEvent` دریافت خواهند کرد. رابط آن همانند رویدادهای ذاتی مرورگر است و شامل `stopPropagation()` و `preventDefault()` هم هست. با این تفاوت که رویدادها در تمام مرورگر‌ها عین هم کار می‌کنند.
 
 اگر فکر می‌کنید که در جایی باید رویداد ذاتی خود مرورگر را استفاده کنید، کافی است که `nativeEvent` را به عنوان یک attribute اضافه کنید تا به آن دسترسی یابید. هر آبجکت `SyntheticEvent`، attribute های زیر دارد:
+=======
+Your event handlers will be passed instances of `SyntheticEvent`, a cross-browser wrapper around the browser's native event. It has the same interface as the browser's native event, including `stopPropagation()` and `preventDefault()`, except the events work identically across all browsers. 
+
+If you find that you need the underlying browser event for some reason, simply use the `nativeEvent` attribute to get it. The synthetic events are different from, and do not map directly to, the browser's native events. For example in `onMouseLeave` `event.nativeEvent` will point to a `mouseout` event. The specific mapping is not part of the public API and may change at any time. Every `SyntheticEvent` object has the following attributes:
+>>>>>>> d16f1ee7958b5f80ef790265ba1b8711d4f228d6
 
 ```javascript
 boolean bubbles

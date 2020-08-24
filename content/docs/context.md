@@ -2,6 +2,8 @@
 id: context
 title: Context
 permalink: docs/context.html
+prev: reconciliation.html
+next: fragments.html
 ---
 
 Context راهی را برای انتقال داده در درخت کامپوننت بدون نیاز به انتقال دستیه props به تمام سطح های پایینی فراهم می‌کند.
