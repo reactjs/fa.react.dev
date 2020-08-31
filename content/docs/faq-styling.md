@@ -42,7 +42,11 @@ render() {
 
 ### CSS در JS چیست ؟ {#what-is-css-in-js}
 
+<<<<<<< HEAD
 "CSS-in-JS" اشاره دارد به یک الگو که در آن CSS توسط Javascript تشکیل شده است به جای اینکه داخل یک فایل خارجی تعریف شده باشد. مقایسه کتابخانه های CSS-in-JS را در [اینجا](https://github.com/MicheleBertoli/css-in-js) بخوانید.
+=======
+"CSS-in-JS" refers to a pattern where CSS is composed using JavaScript instead of defined in external files.
+>>>>>>> 25cc703d1f23f1782ff96c5c7882a806f8741ec4
 
 _توجه داشته باشید که این عملکرد جزئی از ری اکت نمی باشد، بلکه توسط کتابخانه های شخص ثالث ارائه شده._ ری اکت هیچ نظری درباره نحوه ی تعریف استایل ها ندارد؛ اگر شک و شبهه ای دارید، یک نقطه شروع خوب این است که استایل های خود را درون فایل جداگانه `*.css` تعریف کرده و طبق معمول با استفاده از [`className`](/docs/dom-elements.html#classname) به آن ها مراجعه کنید.
 
