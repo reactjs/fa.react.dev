@@ -124,9 +124,15 @@ const MyComponent = React.memo(function MyComponent(props) {
 });
 ```
 
+<<<<<<< HEAD
 `React.memo` یک [کامپوننت مرتبه بالا](/docs/higher-order-components.html) می‌باشد. شبیه به[`React.PureComponent`](#reactpurecomponent) است ولی برای توابع به جای کلاس‌ها استفاده می‌شود.
 
 اگر کامپوننت تابعی شما در صورت گرفتن props یکسان، نتیجه‌ی یکسان تولید می‌کند، می‌توانید آن‌را در یک فراخوانی `React.memo`، wrap کنید تا با یادداشت‌برداری نتیجه، کارایی را بالا برید. این کار به آن معناست که ری‌اکت رندر کردن کامپوننت را در نظر نمی‌گیرد و آخرین نتایج رندرهای قبلی را درنظر می‌گیرد.
+=======
+`React.memo` is a [higher order component](/docs/higher-order-components.html).
+
+If your component renders the same result given the same props, you can wrap it in a call to `React.memo` for a performance boost in some cases by memoizing the result. This means that React will skip rendering the component, and reuse the last rendered result.
+>>>>>>> 657658aa1f19c65e35055ddca4452c98d569552f
 
 به صورت پیش‌فرض این فقط یک مقایسه سطحی بین اشیاء موجود در شیء props انجام می‌دهد. اگر می‌خواهید خودتان این مقایسه را کنترل کنید، می‌توانید یک تابع مقایسه شخصی‌سازی شده را به عنوان آرگومان دوم به این تابع بدهید.
 

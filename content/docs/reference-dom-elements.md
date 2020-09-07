@@ -56,7 +56,12 @@ function MyComponent() {
 
 ### selected {#selected}
 
+<<<<<<< HEAD
 صفت `selected` توسط کامپوننت‌های `<option>` پشتیبانی می‌شود. شما می‌توانید از آن برای تعیین اینکه کامپوننت انتخاب شده یا نه استفاده کنید. این برای ساختن کامپوننت‌های کنترل شده مناسب است.
+=======
+If you want to mark an `<option>` as selected, reference the value of that option in the `value` of its `<select>` instead.
+Check out ["The select Tag"](/docs/forms.html#the-select-tag) for detailed instructions.
+>>>>>>> 657658aa1f19c65e35055ddca4452c98d569552f
 
 ### style {#style}
 
@@ -117,7 +122,11 @@ function ComponentWithTransition() {
 
 ### value {#value}
 
+<<<<<<< HEAD
 صفت `value` توسط کامپوننت های `<input>` و `<textarea>` پشتیبانی می‌شود. شما می‌توانید از آن برای تعیین مقدار یک کامپوننت استفاده کنید. این برای ساختن کامپوننت های کنترل‌شده مناسب است. `defaultValue` معادل غیر کنترلی آن است، که مقدار کامپوننت را در هنگام mount شدن تعیین می‌کند.
+=======
+The `value` attribute is supported by `<input>`, `<select>` and `<textarea>` components. You can use it to set the value of the component. This is useful for building controlled components. `defaultValue` is the uncontrolled equivalent, which sets the value of the component when it is first mounted.
+>>>>>>> 657658aa1f19c65e35055ddca4452c98d569552f
 
 ## تمام صفات HTML قابل پشتیبانی {#all-supported-html-attributes}
 
