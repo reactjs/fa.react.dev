@@ -1,88 +1,88 @@
 - title: Installation
   items:
     - id: getting-started
-      title: Getting Started
+      title: آغاز کردن
     - id: add-react-to-a-website
-      title: Add React to a Website
+      title: اضافه کردن ری‌اکت به یک وبسایت
     - id: create-a-new-react-app
-      title: Create a New React App
+      title: ساخت یک برنامه ری‌اکت جدید
     - id: cdn-links
-      title: CDN Links
+      title: لینک های cdn
     - id: release-channels
-      title: Release Channels
-- title: Main Concepts
+      title: کانال های انتشار
+- title: مفاهیم اصلی
   isOrdered: true
   items:
     - id: hello-world
-      title: Hello World
+      title: سلام دنیا
     - id: introducing-jsx
-      title: Introducing JSX
+      title: معرفی JSX
     - id: rendering-elements
-      title: Rendering Elements
+      title: رندر کردن المنت ها
     - id: components-and-props
-      title: Components and Props
+      title: کامپوننت ها و prop ها
     - id: state-and-lifecycle
-      title: State and Lifecycle
+      title: State و Lifecycle
     - id: handling-events
-      title: Handling Events
+      title: رسیدگی به رویداد ها
     - id: conditional-rendering
-      title: Conditional Rendering
+      title: رندر کردن شرطی
     - id: lists-and-keys
-      title: Lists and Keys
+      title: لیست ها و کلید ها
     - id: forms
-      title: Forms
+      title: فرم ها
     - id: lifting-state-up
-      title: Lifting State Up
+      title: بالا کشیدن state
     - id: composition-vs-inheritance
-      title: Composition vs Inheritance
+      title: ترکیب در مقابل وراثت
     - id: thinking-in-react
-      title: Thinking In React
+      title: فکر کردن در ری‌اکت
 - title: Advanced Guides
   items:
     - id: accessibility
-      title: Accessibility
+      title: قابلیت دسترسی
     - id: code-splitting
-      title: Code-Splitting
+      title: جداسازی کد
     - id: context
-      title: Context
+      title: زمینه (Context)
     - id: error-boundaries
-      title: Error Boundaries
+      title: مرز های خطا
     - id: forwarding-refs
-      title: Forwarding Refs
+      title: ارسال ref ها
     - id: fragments
-      title: Fragments
+      title: قطعات
     - id: higher-order-components
-      title: Higher-Order Components
+      title: کامپوننت های مرتبه بالاتر
     - id: integrating-with-other-libraries
-      title: Integrating with Other Libraries
+      title: یکپارچه‌سازی با دیگر کتاب‌خانه ها
     - id: jsx-in-depth
-      title: JSX In Depth
+      title: JSX عمیق
     - id: optimizing-performance
-      title: Optimizing Performance
+      title: بهبود عملکرد
     - id: portals
-      title: Portals
+      title: پرتال ها
     - id: profiler
-      title: Profiler
+      title: پروفایلر
     - id: react-without-es6
-      title: React Without ES6
+      title: ری‌اکت بدون ES6
     - id: react-without-jsx
-      title: React Without JSX
+      title: ری‌اکت بدون JSX
     - id: reconciliation
-      title: Reconciliation
+      title: اصلاح
     - id: refs-and-the-dom
-      title: Refs and the DOM
+      title: Ref ها و DOM
     - id: render-props
-      title: Render Props
+      title: رندر کردن prop ها
     - id: static-type-checking
-      title: Static Type Checking
+      title: بررسی ایستای تایپ ها
     - id: strict-mode
       title: Strict Mode
     - id: typechecking-with-proptypes
-      title: Typechecking With PropTypes
+      title: بررسی تایپ ها با PropTypes
     - id: uncontrolled-components
-      title: Uncontrolled Components
+      title: کامپوننت های کنترل نشده
     - id: web-components
-      title: Web Components
+      title: وب کامپوننت ها
 - title: مرجع API
   items:
     - id: react-api
