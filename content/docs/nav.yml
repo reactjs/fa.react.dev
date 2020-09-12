@@ -3,13 +3,13 @@
     - id: getting-started
       title: آغاز کردن
     - id: add-react-to-a-website
-      title: اضافه کردن ری‌اکت به یک وبسایت
+      title: Add React to a Website
     - id: create-a-new-react-app
-      title: ساخت یک برنامه ری‌اکت جدید
+      title: Create a New React App
     - id: cdn-links
-      title: لینک های cdn
+      title: CDN Links
     - id: release-channels
-      title: کانال های انتشار
+      title: Release Channels
 - title: مفاهیم اصلی
   isOrdered: true
   items:
@@ -18,71 +18,71 @@
     - id: introducing-jsx
       title: معرفی JSX
     - id: rendering-elements
-      title: رندر کردن المنت ها
+      title: رندر کردن المنت‌ها
     - id: components-and-props
       title: کامپوننت ها و prop ها
     - id: state-and-lifecycle
-      title: State و Lifecycle
+      title: state و lifecycle
     - id: handling-events
-      title: رسیدگی به رویداد ها
+      title: Handling Events
     - id: conditional-rendering
       title: رندر کردن شرطی
     - id: lists-and-keys
-      title: لیست ها و کلید ها
+      title: لیست‌ها و کلید‌‌ها
     - id: forms
-      title: فرم ها
+      title: فرم‌ها
     - id: lifting-state-up
-      title: بالا کشیدن state
+      title: انتقال state به بالا
     - id: composition-vs-inheritance
       title: ترکیب در مقابل وراثت
     - id: thinking-in-react
-      title: فکر کردن در ری‌اکت
+      title: فکر کردن در چارچوب ری‌اکت
 - title: Advanced Guides
   items:
     - id: accessibility
-      title: قابلیت دسترسی
+      title: Accessibility
     - id: code-splitting
-      title: جداسازی کد
+      title: تکه تکه کردن کد
     - id: context
-      title: زمینه (Context)
+      title: Context
     - id: error-boundaries
-      title: مرز های خطا
+      title: Error Boundaries
     - id: forwarding-refs
-      title: ارسال ref ها
+      title: فوروارد کردن ref ها
     - id: fragments
-      title: قطعات
+      title: Fragments
     - id: higher-order-components
-      title: کامپوننت های مرتبه بالاتر
+      title: Higher-Order Components
     - id: integrating-with-other-libraries
-      title: یکپارچه‌سازی با دیگر کتاب‌خانه ها
+      title: Integrating with Other Libraries
     - id: jsx-in-depth
-      title: JSX عمیق
+      title: JSX In Depth
     - id: optimizing-performance
-      title: بهبود عملکرد
+      title: Optimizing Performance
     - id: portals
-      title: پرتال ها
+      title: Portals
     - id: profiler
-      title: پروفایلر
+      title: Profiler API
     - id: react-without-es6
-      title: ری‌اکت بدون ES6
+      title: React Without ES6
     - id: react-without-jsx
-      title: ری‌اکت بدون JSX
+      title: React Without JSX
     - id: reconciliation
-      title: اصلاح
+      title: Reconciliation
     - id: refs-and-the-dom
-      title: Ref ها و DOM
+      title: Refs and the DOM
     - id: render-props
-      title: رندر کردن prop ها
+      title: Render Props
     - id: static-type-checking
-      title: بررسی ایستای تایپ ها
+      title: Static Type Checking
     - id: strict-mode
       title: Strict Mode
     - id: typechecking-with-proptypes
-      title: بررسی تایپ ها با PropTypes
+      title: Typechecking With PropTypes
     - id: uncontrolled-components
-      title: کامپوننت های کنترل نشده
+      title: Uncontrolled Components
     - id: web-components
-      title: وب کامپوننت ها
+      title: Web Components
 - title: مرجع API
   items:
     - id: react-api
