@@ -1,7 +1,7 @@
 - title: Installation
   items:
     - id: getting-started
-      title: Getting Started
+      title: آغاز کردن
     - id: add-react-to-a-website
       title: Add React to a Website
     - id: create-a-new-react-app
@@ -10,45 +10,45 @@
       title: CDN Links
     - id: release-channels
       title: Release Channels
-- title: Main Concepts
+- title: مفاهیم اصلی
   isOrdered: true
   items:
     - id: hello-world
-      title: Hello World
+      title: سلام دنیا
     - id: introducing-jsx
-      title: Introducing JSX
+      title: معرفی JSX
     - id: rendering-elements
-      title: Rendering Elements
+      title: رندر کردن المنت‌ها
     - id: components-and-props
-      title: Components and Props
+      title: کامپوننت ها و prop ها
     - id: state-and-lifecycle
-      title: State and Lifecycle
+      title: state و lifecycle
     - id: handling-events
       title: Handling Events
     - id: conditional-rendering
-      title: Conditional Rendering
+      title: رندر کردن شرطی
     - id: lists-and-keys
-      title: Lists and Keys
+      title: لیست‌ها و کلید‌‌ها
     - id: forms
-      title: Forms
+      title: فرم‌ها
     - id: lifting-state-up
-      title: Lifting State Up
+      title: انتقال state به بالا
     - id: composition-vs-inheritance
-      title: Composition vs Inheritance
+      title: ترکیب در مقابل وراثت
     - id: thinking-in-react
-      title: Thinking In React
+      title: فکر کردن در چارچوب ری‌اکت
 - title: Advanced Guides
   items:
     - id: accessibility
       title: Accessibility
     - id: code-splitting
-      title: Code-Splitting
+      title: تکه تکه کردن کد
     - id: context
       title: Context
     - id: error-boundaries
       title: Error Boundaries
     - id: forwarding-refs
-      title: Forwarding Refs
+      title: فوروارد کردن ref ها
     - id: fragments
       title: Fragments
     - id: higher-order-components
@@ -62,7 +62,7 @@
     - id: portals
       title: Portals
     - id: profiler
-      title: Profiler
+      title: Profiler API
     - id: react-without-es6
       title: React Without ES6
     - id: react-without-jsx
