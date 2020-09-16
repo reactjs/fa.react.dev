@@ -1,7 +1,7 @@
 - title: Installation
   items:
     - id: getting-started
-      title: آغاز کردن
+      title: Getting Started
     - id: add-react-to-a-website
       title: Add React to a Website
     - id: create-a-new-react-app
@@ -37,7 +37,7 @@
       title: ترکیب در مقابل وراثت
     - id: thinking-in-react
       title: فکر کردن در چارچوب ری‌اکت
-- title: Advanced Guides
+- title: راهنما‌های پیشرفته
   items:
     - id: accessibility
       title: Accessibility
