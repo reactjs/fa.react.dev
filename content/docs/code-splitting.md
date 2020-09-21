@@ -2,7 +2,6 @@
 id: code-splitting
 title: تکه تکه کردن کد
 permalink: docs/code-splitting.html
-prev: accessibility.html
 ---
 
 ## بسته‌بندی کردن (bundling) {#bundling}
