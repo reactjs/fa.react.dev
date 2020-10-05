@@ -152,7 +152,24 @@ ReactDOM.render(
 
 بنابراین اگر شرط برابر با `true` باشد، المنتی که بلافاصله بعد از عملگر `&&` قرار گرفته است در خروجی نمایش داده خواهد شد و اگر حاصل شرط برابر با`false` باشد،‌ ری‌اکت این عبارت را نادیده می‌گیرد. 
 
+<<<<<<< HEAD
 ### if-else خطی با عملگر شرطی {#inline-if-else-with-conditional-operator}
+=======
+Note that returning a falsy expression will still cause the element after `&&` to be skipped but will return the falsy expression. In the example below, `<div>0</div>` will be returned by the render method.
+
+```javascript{2,5}
+render() {
+  const count = 0;
+  return (
+    <div>
+      { count && <h1>Messages: {count}</h1>}
+    </div>
+  );
+}
+```
+
+### Inline If-Else with Conditional Operator {#inline-if-else-with-conditional-operator}
+>>>>>>> 8f7ffa473905148fd5c7ecfd7fed5dabbd261bf0
 
 روش دیگر رندر شرطی المنت‌ها به‌صورت خطی،‌ استفاده از عملگر شرطی جاوااسکریپت [`condition ? true : false`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) است.
 

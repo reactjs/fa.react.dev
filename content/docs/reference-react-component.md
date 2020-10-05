@@ -39,7 +39,11 @@ class Welcome extends React.Component {
 
 ### چرخه‌ی حیات کامپوننت {#the-component-lifecycle}
 
+<<<<<<< HEAD
 هر کامپوننت چندین "متد چرخه‌ی حیات" دارد که شما می‌توانید بازنویسی کنید تا در زمان‌های خاص فرآیند اجرا، کد شما اجرا شود. **شما می‌توانید از [این دیاگرام چرخه‌حیات](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) به عنوان راهنما استفاده کنید.** در لیست زیر، متدهای چرخه‌ی حیات رایج به صورت **برجسته** نشانه‌گذاری شده‌اند. باقی آن‌ها برای موارد نادر استفاده وجود دارند.
+=======
+Each component has several "lifecycle methods" that you can override to run code at particular times in the process. **You can use [this lifecycle diagram](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) as a cheat sheet.** In the list below, commonly used lifecycle methods are marked as **bold**. The rest of them exist for relatively rare use cases.
+>>>>>>> 8f7ffa473905148fd5c7ecfd7fed5dabbd261bf0
 
 #### اجرای اولیه (Mounting) {#mounting}
 
@@ -109,7 +113,11 @@ class Welcome extends React.Component {
 
 ### متدهای چرخه‌ی حیات رایج {#commonly-used-lifecycle-methods}
 
+<<<<<<< HEAD
 متدهای این بخش اکثریت قریب به اتفاق موارد کاربردی که شما هنگام ایجاد کامپوننت‌های ری‌اکت با آن‌ها مواجه می‌شوید را پوشش می‌دهد. **برای یک مرجع بصری، [این دیاگرام چرخه‌ی حیات](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) را بررسی کند.**
+=======
+The methods in this section cover the vast majority of use cases you'll encounter creating React components. **For a visual reference, check out [this lifecycle diagram](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/).**
+>>>>>>> 8f7ffa473905148fd5c7ecfd7fed5dabbd261bf0
 
 ### `render()` {#render}
 
@@ -245,7 +253,11 @@ componentWillUnmount()
 
 ### متدهای چرخه‌ی حیات با کاربرد کم {#rarely-used-lifecycle-methods}
 
+<<<<<<< HEAD
 متدهای این بخش به موارد استفاده غیررایج مربوط هستند. آن‌ها یک زمانی کاربردی بودند، اما کامپوننت‌های شما احتمالا نیازی به هیچ‌یک از آن‌ها نخواهند داشت. **شما می‌توانید اکثر این متدها را در [این دیاگرام چرخه‌ی حیات](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) ببینید. برای این منظور بر روی "Show less common lifecycles" در بالای ان کلیک کنید.**
+=======
+The methods in this section correspond to uncommon use cases. They're handy once in a while, but most of your components probably don't need any of them. **You can see most of the methods below on [this lifecycle diagram](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) if you click the "Show less common lifecycles" checkbox at the top of it.**
+>>>>>>> 8f7ffa473905148fd5c7ecfd7fed5dabbd261bf0
 
 
 ### `shouldComponentUpdate()` {#shouldcomponentupdate}
@@ -278,8 +290,13 @@ static getDerivedStateFromProps(props, state)
 
 این متد برای [موارد استفاده نادر](/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state) که state وابسته به تغییرات props در طول زمان است وجود دارد. برای مثال، ممکن است برای پیاده‌سازی یک کامپوننت `<Transition>` که فرزند قبلی و بعدی خود را برای تصمیم‌گیری اینکه برای کدام‌یک انیمیشن ورود و برای کدام‌یک انیمیشن خروج را اعمال کند مقایسه می‌کند، کاربردی باشد.
 
+<<<<<<< HEAD
 اشتقاق (deriving) state باعث بلندی کد می‌شود و فکر کردن در مورد کامپوننت شما را سخت می‌کند.
 [مطمئن شوید با جایگزین‌های ساده‌تر آشنا هستید:](/blog/2018/06/07/you-probably-dont-need-derived-state.html)
+=======
+Deriving state leads to verbose code and makes your components difficult to think about.
+[Make sure you're familiar with simpler alternatives:](/blog/2018/06/07/you-probably-dont-need-derived-state.html)
+>>>>>>> 8f7ffa473905148fd5c7ecfd7fed5dabbd261bf0
 
 * اگر نیاز به **انجام یک تاثیر جانبی (side effect)** (برای مثال fetch کردن داده یا اعمال انیمیشن) در پاسخ یک تغییر در props دارید، از متد چرخه‌ی حیات [`componentDidUpdate`](#componentdidupdate) به عنوان جایگزین استفاده کنید.
 
@@ -323,9 +340,15 @@ getSnapshotBeforeUpdate(prevProps, prevState)
 
 برای اطلاعات بیشتر، [*کنترل خطاها در ری‌اکت ۱۶*](/blog/2017/07/26/error-handling-in-react-16.html) را ببینید.
 
+<<<<<<< HEAD
 > نکته
 > 
 > مرزهای خطا تنها می‌توانند خطاهای کامپوننت‌های درخت **زیر** خودشان را بگیرند. یک مرز خطا نمی‌تواند خطای درون خودش را بگیرد.
+=======
+> Note
+>
+> Error boundaries only catch errors in the components **below** them in the tree. An error boundary can’t catch an error within itself.
+>>>>>>> 8f7ffa473905148fd5c7ecfd7fed5dabbd261bf0
 
 ### `static getDerivedStateFromError()` {#static-getderivedstatefromerror}
 ```javascript
@@ -353,7 +376,7 @@ class ErrorBoundary extends React.Component {
       return <h1>Something went wrong.</h1>;
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
 }
 ```
@@ -407,15 +430,22 @@ class ErrorBoundary extends React.Component {
       return <h1>Something went wrong.</h1>;
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
 }
 ```
 
+<<<<<<< HEAD
 > نکته
 > 
 > هنگام رویداد یک خطا، شما می‌توانید با صدا زدن `setState` یک UI به وسیله `componentDidCatch()` رندر کند، اما این در انتشارهای آینده منسوخ خواهد شد.
 > از `static getDerivedStateFromError()` برای کنترل رندر کردن UI هنگام بروز خطا استفاده نمایید.
+=======
+> Note
+>
+> In the event of an error, you can render a fallback UI with `componentDidCatch()` by calling `setState`, but this will be deprecated in a future release.
+> Use `static getDerivedStateFromError()` to handle fallback rendering instead.
+>>>>>>> 8f7ffa473905148fd5c7ecfd7fed5dabbd261bf0
 
 * * *
 
