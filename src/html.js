@@ -40,10 +40,7 @@ export default class HTML extends React.Component<Props> {
 
           {this.props.headComponents}
         </head>
-<<<<<<< HEAD
         <body {...this.props.bodyAttributes} dir="rtl">
-=======
-        <body {...this.props.bodyAttributes}>
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -132,7 +129,6 @@ export default class HTML extends React.Component<Props> {
               `,
             }}
           />
->>>>>>> 8f7ffa473905148fd5c7ecfd7fed5dabbd261bf0
           <div
             id="___gatsby"
             dangerouslySetInnerHTML={{__html: this.props.body}}
