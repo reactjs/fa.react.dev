@@ -278,7 +278,7 @@ static getDerivedStateFromProps(props, state)
 
 این متد برای [موارد استفاده نادر](/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state) که state وابسته به تغییرات props در طول زمان است وجود دارد. برای مثال، ممکن است برای پیاده‌سازی یک کامپوننت `<Transition>` که فرزند قبلی و بعدی خود را برای تصمیم‌گیری اینکه برای کدام‌یک انیمیشن ورود و برای کدام‌یک انیمیشن خروج را اعمال کند مقایسه می‌کند، کاربردی باشد.
 
-اشتقاق (deriving) state باعث بلندی کد می‌شود و فکر کردن در مورد کامپوننت شما را سخت می‌کند.
+اشتقاق (deriving) state باعث طولانی‌تر شده کد می‌شود، و در نتیجه فکر کردن در مورد کامپوننت شما را سخت می‌کند.
 [مطمئن شوید با جایگزین‌های ساده‌تر آشنا هستید:](/blog/2018/06/07/you-probably-dont-need-derived-state.html)
 
 * اگر نیاز به **انجام یک تاثیر جانبی (side effect)** (برای مثال fetch کردن داده یا اعمال انیمیشن) در پاسخ یک تغییر در props دارید، از متد چرخه‌ی حیات [`componentDidUpdate`](#componentdidupdate) به عنوان جایگزین استفاده کنید.
@@ -353,7 +353,7 @@ class ErrorBoundary extends React.Component {
       return <h1>Something went wrong.</h1>;
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
 }
 ```
@@ -407,7 +407,7 @@ class ErrorBoundary extends React.Component {
       return <h1>Something went wrong.</h1>;
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
 }
 ```
