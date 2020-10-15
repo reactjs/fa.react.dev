@@ -1,6 +1,6 @@
 ---
 id: getting-started
-title: Getting Started
+title: شروع کنید
 permalink: docs/getting-started.html
 next: add-react-to-a-website.html
 redirect_from:
