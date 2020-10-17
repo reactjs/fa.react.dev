@@ -9,11 +9,7 @@
 </p>
 
 <p dir="rtl">
-پیشرفت نسخه فارسی را از <a href="https://www.isreacttranslatedyet.com/">isreacttranslatedyet.com</a> دنبال کنید.
-</p>
-
-<p dir="rtl">
-  آخرین نسخه اسنادی که درحال ترجمه هستند را در <a href="https://reactjs-fa.netlify.com/" target="_blank">reactjs-fa.netlify.com</a> ببینید.
+  نسخه فارسی اسناد ری‌اکت را در <a href="https://fa.reactjs.org/" target="_blank">fa.reactjs.org</a> ببینید.
 </p>
 
 <h2 dir="rtl">چگونه مشارکت کنم؟</h2>
