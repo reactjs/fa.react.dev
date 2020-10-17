@@ -85,34 +85,49 @@ yarn dev
 اگر سوالی دارید با نگاه‌دارندگان تماس بگیرید یا <a href="https://github.com/reactjs/fa.reactjs.org/issues/new">یک موضوع (issue) جدید</a> ثبت کنید!
 </p>
 
+<h2 dir="rtl">مشارکت‌کنندگان</h2>
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/hosseinAMD"><img src="https://avatars2.githubusercontent.com/u/43136173?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Hossein Ahmadi</b></sub></a></td>
+    <td align="center"><a href="https://github.com/mohsenkhanpour"><img src="https://avatars1.githubusercontent.com/u/28626829?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Mohsen Khanpour</b></sub></a></td>
+    <td align="center"><a href="https://github.com/black-sheep777"><img src="https://avatars2.githubusercontent.com/u/16780155?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Forough Fallah</b></sub></a></td>
+    <td align="center"><a href="https://www.bitsnbytes.ir/"><img src="https://avatars2.githubusercontent.com/u/20579660?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Mohammadjavad Raadi</b></sub></a></td>
+    <td align="center"><a href="https://octascript.com/"><img src="https://avatars0.githubusercontent.com/u/52595036?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Erfan</b></sub></a></td>
+    <td align="center"><a href="https://github.com/mahdinba97"><img src="https://avatars2.githubusercontent.com/u/29746159?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Mahdi</b></sub></a></td>
+    <td align="center"><a href="https://github.com/x1smind"><img src="https://avatars0.githubusercontent.com/u/7421771?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Faraz Soroush</b></sub></a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://sabramooz.ir/"><img src="https://avatars0.githubusercontent.com/u/7726076?v=4?s=64" width="64px;" alt=""/><br /><sub><b>pooya</b></sub></a></td>
+    <td align="center"><a href="https://github.com/c0m1t"><img src="https://avatars1.githubusercontent.com/u/45701680?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Shahab</b></sub></a></td>
+    <td align="center"><a href="https://github.com/J3brahimi"><img src="https://avatars1.githubusercontent.com/u/42724322?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Javad Ebrahimi</b></sub></a></td>
+    <td align="center"><a href="http://pouyajabbarisani.com/"><img src="https://avatars1.githubusercontent.com/u/13765850?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Pouya Jabbarisani</b></sub></a></td>
+    <td align="center"><a href="https://github.com/hajarsadeghi"><img src="https://avatars3.githubusercontent.com/u/13552048?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Hajar</b></sub></a></td>
+    <td align="center"><a href="https://github.com/sadeghbarati"><img src="https://avatars0.githubusercontent.com/u/17789047?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Sadegh Barati</b></sub></a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
 <h2 dir="rtl">نگاه‌دارندگان</h2>
 
-<ul>
-  <li>
-    <a href="https://github.com/masoud-bahrami">@masoud-bahrami</a>
-  </li>
-  </li>
-    <li>
-    <a href="https://github.com/Schabaani">@Schabaani</a>
-  </li>
-  </li>
-    <li>
-    <a href="https://github.com/sJJdGG">@sJJdGG</a>
-  </li>
-  <li>
-    <a href="https://github.com/sorousht">@sorousht</a>
-  </li>
-    <li>
-    <a href="https://github.com/zahrajoulaei">@zahrajoulaei</a>
-  </li>
-   <li>
-    <a href="https://github.com/seven-deuce">@seven-deuce</a>
-  </li>
-  <li>
-    <a href="https://github.com/rezvani2647">@rezvani2647</a>
-  </li>
-</ul>
-
+<table>
+<tr>
+  <td align="center"><a href="https://github.com/rezvani2647"><img src="https://avatars1.githubusercontent.com/u/61161472?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Abolfazl Rezvani Naraqi</b></sub></a></td>
+  <td align="center"><a href="https://github.com/Schabaani"><img src="https://avatars3.githubusercontent.com/u/16123923?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Amir Shabani</b></sub></a></td>
+  <td align="center"><a href="http://refactor.ir/"><img src="https://avatars2.githubusercontent.com/u/10113477?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Masoud Bahrami</b></sub></a></td>
+  <td align="center"><a href="https://github.com/seven-deuce"><img src="https://avatars1.githubusercontent.com/u/40258654?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Mehdi</b></sub></a></td>
+  <td align="center"><a href="https://github.com/sJJdGG"><img src="https://avatars1.githubusercontent.com/u/25764288?v=4?s=64" width="64px;" alt=""/><br /><sub><b>sJJdGG</b></sub></a></td>
+  <td align="center"><a href="http://sorousht.com/"><img src="https://avatars2.githubusercontent.com/u/3072018?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Soroush Torkzadeh</b></sub></a></td>
+  <td align="center"><a href="https://github.com/zahrajoulaei"><img src="https://avatars0.githubusercontent.com/u/13994544?v=4?s=64" width="64px;" alt=""/><br /><sub><b>ZahraCandoIt!</b></sub></a></td>
+  </tr>
+</table>
 
 <h2 dir="rtl">مجوز</h2>
 
