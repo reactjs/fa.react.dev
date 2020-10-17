@@ -86,7 +86,9 @@ yarn dev
 </p>
 
 <h2 dir="rtl">مشارکت‌کنندگان</h2>
-
+<p dir="rtl">
+این پروژه مدیون انرژی و وقت این افراد است:
+</p>
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -115,7 +117,7 @@ yarn dev
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-<h2 dir="rtl">نگاه‌دارندگان</h2>
+<h3 dir="rtl">نگاه‌دارندگان</h3>
 
 <table>
 <tr>
@@ -128,6 +130,7 @@ yarn dev
   <td align="center"><a href="https://github.com/zahrajoulaei"><img src="https://avatars0.githubusercontent.com/u/13994544?v=4?s=64" width="64px;" alt=""/><br /><sub><b>ZahraCandoIt!</b></sub></a></td>
   </tr>
 </table>
+<p dir="rtl">اسم شما فراموش شده‌است؟‌ <a href="https://github.com/reactjs/fa.reactjs.org/issues/new">به ما تذکر دهید!</a></p>
 
 <h2 dir="rtl">مجوز</h2>
 
