@@ -182,4 +182,8 @@ const element = {
 
 >**راهنمایی:**
 >
+<<<<<<< HEAD
 >ما استفاده از [تعریف زبان "Babel"](https://babeljs.io/docs/editors) را برای ویرایشگر مورد نظرتان پیشنهاد می‌کنیم که هم کدهای JSX و هم ES6 به درستی برجسته شوند.
+=======
+>We recommend using the ["Babel" language definition](https://babeljs.io/docs/en/next/editors) for your editor of choice so that both ES6 and JSX code is properly highlighted.
+>>>>>>> 30baecf59de28a8cd3c91a2cd878e3822f864061

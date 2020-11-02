@@ -130,7 +130,11 @@ const MyContext = React.createContext(defaultValue);
 
 هر شئ context ای با یک کامپوننت ری‌اکتی Provider همراه می‌شود که به کامپوننت‌های مصرف‌کننده آن این اجازه را می‌دهد که تغییرات context را به اشتراک بگذارند.
 
+<<<<<<< HEAD
 این کامپوننت یک prop به نام `value` را می‌پذیرد که به کامپوننت‌های مصرف‌کننده آن که نوادگان این Provider می‌باشند٬ انتقال یابد. Provider می‌تواند به چندین مصرف‌کننده متصل شود. Providerها می‌توانند به شکلی تودرتو شوند تا valueهایی را که در عمق درخت وجود دارند باطل کنند.. 
+=======
+The Provider component accepts a `value` prop to be passed to consuming components that are descendants of this Provider. One Provider can be connected to many consumers. Providers can be nested to override values deeper within the tree.
+>>>>>>> 30baecf59de28a8cd3c91a2cd878e3822f864061
 
 هرزمانی که prop ‍‍‍‍`value` مربوط به Provider تغییر کند تمام مصرف‌کننده‌هایی که نوادگان یک Provider هستند دوباره رندر می‌شوند. Propagation از Provider تا نوادگان مصرف‌کننده آن (شامل [`.contextType`](#classcontexttype) و [`useContext`](/docs/hooks-reference.html#usecontext)) مشمول متد `shouldComponentUpdate` نیستند٬ بنابراین حتی زمانی که جد کامپوننت یک به‌ روز‌رسانی را رد می‌کند٬ مصرف‌کننده آن به روزرسانی می‌شود.
 
