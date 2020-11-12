@@ -32,46 +32,11 @@ number timeStamp
 string type
 ```
  
+> از نسخه ۱۷، دیگر `e.persist()` کاری انجام نمی‌دهد به دلیل این‌که `SyntheticEvent` [پول (pool)](/docs/legacy-event-pooling.html) نمی‌شود.
+
 > توجه:
 >
-<<<<<<< HEAD
 > از نسخه ی ۰/۱۴، بازگشت دادن `false`  از یک کنترل کننده ی رویداد، مانع انتشار یک رویداد نمی شود. بجای آن، `e.stopPropagation()`  یا `e.preventDefault()` ، هر کدام به درخور موقعیت باید اجرا شوند<div class=""></div>
-
-###  جمع آوری رویداد (event-pooling) {#event-pooling}
-`SyntheticEvent` جمع آوری می‌شود. یعنی اینکه آبجکت `SyntheticEvent` پس از آنکه callback اش فراخوانی شد، تمام دارایی‌های خود را از دست خواهد داد و استفاده ی مجدد خواهد شد.
-این  به خاطر ارتقای کارکرد است.
-از همین رو، شما نمی توانید به طور غیرهمزمان (asynchronous) به رویداد دسترسی داشته باشید.
-
-
-```javascript
-function onClick(event) {
-  console.log(event); // => nullified object.
-  console.log(event.type); // => "click"
-  const eventType = event.type; // => "click"
-
-  setTimeout(function() {
-    console.log(event.type); // => null
-    console.log(eventType); // => "click"
-  }, 0);
-
-  // کار نخواهد کرد. this.state.clickEvent فقط حاوی متغیرهای تهی خواهد بود.
-  this.setState({clickEvent: event});
-
-  // همچنان قادر خواهید بود که دارایی‌های رویداد را صادر کنید
-  this.setState({eventType: event.type});
-}
-```
-=======
-> As of v17, `e.persist()` doesn't do anything because the `SyntheticEvent` is no longer [pooled](/docs/legacy-event-pooling.html).
->>>>>>> 255497f12fa00d231b5af5d5aa34fa5beffac9e4
-
-> توجه:
->
-<<<<<<< HEAD
-> اگر می‌خواهید که به دارایی‌های رویداد، به طور غیرهمزمان دسترسی داشته باشید باید `event.persist()` را در رویداد فراخوانی کنید. این موجب خواهد شد که رویداد سینتاتیک از روند جمع‌آوری خارج شود و ارجاعات داده شده به آن رویداد در کد کاربر حفظ شود.
-=======
-> As of v0.14, returning `false` from an event handler will no longer stop event propagation. Instead, `e.stopPropagation()` or `e.preventDefault()` should be triggered manually, as appropriate.
->>>>>>> 255497f12fa00d231b5af5d5aa34fa5beffac9e4
 
 ## رویدادهای پشتیبانی شده {#supported-events}
 
@@ -386,15 +351,12 @@ DOMTouchList touches
 onScroll
 ```
 
-<<<<<<< HEAD
-ویژگی‌ها
-=======
->Note
->
->Starting with React 17, the `onScroll` event **does not bubble** in React. This matches the browser behavior and prevents the confusion when a nested scrollable element fires events on a distant parent.
 
-Properties:
->>>>>>> 255497f12fa00d231b5af5d5aa34fa5beffac9e4
+> یادداشت
+>
+> با شروع ری‌اکت ۱۷، رویداد `onScroll` در ری‌اکت **به بالا منتشر (bubble) نخواهد شد**. این [تغییر] با رفتار مرورگر تطبیق دارد و از رخداد اشتباه جلوگیری می‌کند، هنگامی که یک المنت داخلی که دارای اسکرول است یک رویداد را برای یک والد مرتبه‌بالا رها می‌کند. 
+
+ویژگی‌ها:
 
 ```javascript
 number detail
