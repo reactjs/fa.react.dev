@@ -412,10 +412,23 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
+<<<<<<< HEAD
 > نکته
 > 
 > هنگام رویداد یک خطا، شما می‌توانید با صدا زدن `setState` یک UI به وسیله `componentDidCatch()` رندر کند، اما این در انتشارهای آینده منسوخ خواهد شد.
 > از `static getDerivedStateFromError()` برای کنترل رندر کردن UI هنگام بروز خطا استفاده نمایید.
+=======
+Production and development builds of React slightly differ in the way `componentDidCatch()` handles errors.
+
+On development, the errors will bubble up to `window`, this means that any `window.onerror` or `window.addEventListener('error', callback)` will intercept the errors that have been caught by `componentDidCatch()`.
+
+On production, instead, the errors will not bubble up, which means any ancestor error handler will only receive errors not explictly caught by `componentDidCatch()`.
+
+> Note
+>
+> In the event of an error, you can render a fallback UI with `componentDidCatch()` by calling `setState`, but this will be deprecated in a future release.
+> Use `static getDerivedStateFromError()` to handle fallback rendering instead.
+>>>>>>> 957276e1e92bb48e5bb6b1c17fd0e7a559de0748
 
 * * *
 
