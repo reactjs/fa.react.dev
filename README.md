@@ -109,6 +109,7 @@ yarn dev
     <td align="center"><a href="http://pouyajabbarisani.com/"><img src="https://avatars1.githubusercontent.com/u/13765850?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Pouya Jabbarisani</b></sub></a></td>
     <td align="center"><a href="https://github.com/hajarsadeghi"><img src="https://avatars3.githubusercontent.com/u/13552048?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Hajar</b></sub></a></td>
     <td align="center"><a href="https://github.com/sadeghbarati"><img src="https://avatars0.githubusercontent.com/u/17789047?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Sadegh Barati</b></sub></a></td>
+    <td align="center"><a href="https://github.com/pooooriya"><img src="https://avatars2.githubusercontent.com/u/65160744?v=4?s=64" width="64px;" alt=""/><br /><sub><b>pooooriya</b></sub></a></td>
   </tr>
 </table>
 
