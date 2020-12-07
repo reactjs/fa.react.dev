@@ -127,7 +127,7 @@ function ComponentWithTransition() {
 AP‌Iای که ری‌اکت برای DOM ارائه کرده، همیشه با محوریت JavaScript بوده‌است. از آن‌جایی که کامپوننت‌های ری‌اکت معمولا هم prop‌های مربوط به DOM و همpropهای سفارشی را دریافت می‌کند، ری‌اکت از قانون camelCase استفاده می‌کند. درست مشابه APIهایی که DOM ارائه می‌کند:
 
 ```js
-<div tabIndex="-1" />      // Just like node.tabIndex DOM API
+<div tabIndex={-1} />      // Just like node.tabIndex DOM API
 <div className="Button" /> // Just like node.className DOM API
 <input readOnly={true} />  // Just like node.readOnly DOM API
 ```

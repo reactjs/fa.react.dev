@@ -416,7 +416,11 @@ class ErrorBoundary extends React.Component {
 
 روی [محیط] توسعه، خطا‌ها به بالا حرکت می‌کنند تا به `window` برسند، به این معنی که هرکدام از `window.onerror` یا `window.addEventListener('error', callback)` در مسیر خطاهای که توسط `componentDidCatch()` گرفته شده‌اند، قرار می‌گیرند.
 
+<<<<<<< HEAD
 روی [محیط] تولید، در عوض خطا‌ها به بالا حرکت نمی‌کنند، به این معنی که هر error handler تنها خطاهایی را دریافت می‌کند که توسط `componentDidCatch()` تولید نشده‌اند.
+=======
+On production, instead, the errors will not bubble up, which means any ancestor error handler will only receive errors not explicitly caught by `componentDidCatch()`.
+>>>>>>> 4fc709d0576d0f0f1f8ea8b6bb341a12944b5510
 
 > نکته
 > 
