@@ -2,14 +2,14 @@ community:
   title: Community
 
 docs:
-  title: Docs
+  title: اسناد
 
 more:
   title: More
   items:
-    - title: Tutorial
+    - title: آموزش مقدماتی
       to: /tutorial/tutorial.html
-    - title: Blog
+    - title: بلاگ
       to: /blog
     - title: Acknowledgements
       to: /acknowledgements.html

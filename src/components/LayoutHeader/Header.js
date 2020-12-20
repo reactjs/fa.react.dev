@@ -220,7 +220,7 @@ const Header = ({location}: {location: Location}) => (
                   display: 'none',
                 },
               }}>
-              Languages
+              زبان‌ها
             </span>
           </Link>
           <a
@@ -247,7 +247,7 @@ const Header = ({location}: {location: Location}) => (
             href="https://github.com/facebook/react/"
             target="_blank"
             rel="noopener">
-            GitHub
+            گیت‌هاب
             <ExternalLinkSvg
               cssProps={{
                 marginRight: 5,
