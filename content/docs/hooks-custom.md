@@ -115,7 +115,7 @@ function useFriendStatus(friendID) {
 
 در ابتدا، هدف اصلی ما این بود که منطق اضافی را از کامپوننت‌های `FriendStatus` و `FriendListItem` حذف کنیم. هر دوی آن‌ها می‌خواهند بدانند که یک دوست آنلاین هست یا خیر.
 
-حالا که ما این منطق را به عنوان یک Hook `useFriendStatus` خارج کردیم، فقط باید استفاده‌اش کنیم.
+حالا که ما این منطق را به عنوان یک هوک `useFriendStatus` خارج کردیم، فقط باید استفاده‌اش کنیم.
 
 ```js{2}
 function FriendStatus(props) {
