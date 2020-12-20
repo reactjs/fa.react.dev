@@ -109,7 +109,7 @@ function useFriendStatus(friendID) {
 }
 ```
 
-حالا ببینیم که Hook ما چگونه کار می‌کند.
+حالا ببینیم که هوک ما چگونه کار می‌کند.
 
 ## استفاده از Hook شخصی‌سازی شده {#using-a-custom-hook}
 
