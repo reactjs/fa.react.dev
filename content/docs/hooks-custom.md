@@ -147,7 +147,7 @@ function FriendListItem(props) {
 
 **چگونه یک هوک شخصی‌سازی شده state ایزوله می‌گیرد؟** هر *فراخوانی* هوک  یک state ایزوله دریافت می‌کند. به خاطر فراخوانی مستقیم `useFriendStatus`، از دیدگاه ری‌اکت کامپوننت ما `useState` و `useEffect` را فراخوانی می‌کند. همان گونه که [درقبل](/docs/hooks-effect.html#tip-use-multiple-effects-to-separate-concerns) [آموختیم](/docs/hooks-state.html#tip-using-multiple-state-variables)،می‌توانیم `useState` و `useEffect` هر چقدر که بخواهیم در یک کامپوننت صدا بزنیم، و همه آنها کاملا مستقل از هم خواهند بود.
 
-### نکته: انتقال اطلاعات بین Hookها {#tip-pass-information-between-hooks}
+### نکته: انتقال اطلاعات بین هوک‌ها {#tip-pass-information-between-hooks}
 
 از آنجایی که Hookها تابع هستند، می‌توانیم بین آنها اطلاعات رد و بدل کنیم.
 
