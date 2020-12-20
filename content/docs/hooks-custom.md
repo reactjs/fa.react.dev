@@ -186,7 +186,7 @@ function ChatRecipientPicker() {
 
 ما مقدار آی‌دی دوست انتخابی را درون متغییر state `recipientID` قرار می‌دهیم، و در صورتی که کاربر دوست دیگری را از  `<select>` انتخاب کند آن را به‌روز رسانی می‌کنیم.
 
-به دلیل اینکه فراخوانی Hook `useState` به ما مقدار آخرین متغییر state  `recipientID` را می‌دهد، می‌توانیم آن را به Hook شخصی `useFriendStatus` به عنوان آرگومان انتقال انتقال دهیم:
+به دلیل اینکه فراخوانی هوک `useState` به ما مقدار آخرین متغییر state  `recipientID` را می‌دهد، می‌توانیم آن را به هوک شخصی `useFriendStatus` به عنوان آرگومان انتقال دهیم:
 
 ```js
   const [recipientID, setRecipientID] = useState(1);
