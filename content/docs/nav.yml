@@ -80,7 +80,7 @@
     - id: typechecking-with-proptypes
       title: Typechecking With PropTypes
     - id: uncontrolled-components
-      title: Uncontrolled Components
+      title: کامپوننت‌های کنترل‌نشده
     - id: web-components
       title: Web Components
 - title: مرجع API
