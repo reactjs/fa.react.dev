@@ -31,7 +31,7 @@ redirect_from:
 
 به عنوان مثال، اگر بخواهیم در مثال قبل در زمان ثبت فرم، نام نمایش داده شود، ‌می‌توانیم فرم را ‌به‌صورت یک کامپوننت کنترل‌شده بنویسیم:
 
-```javascript{4,10-12,24}
+```javascript{4,10-12,21,24}
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
