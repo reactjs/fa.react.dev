@@ -39,7 +39,7 @@ class Welcome extends React.Component {
 
 ### چرخه‌ی حیات کامپوننت {#the-component-lifecycle}
 
-هر کامپوننت چندین "متد چرخه‌ی حیات" دارد که شما می‌توانید بازنویسی کنید تا در زمان‌های خاص فرآیند اجرا، کد شما اجرا شود. **شما می‌توانید از [این دیاگرام چرخه‌حیات](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) به عنوان راهنما استفاده کنید.** در لیست زیر، متدهای چرخه‌ی حیات رایج به صورت **برجسته** نشانه‌گذاری شده‌اند. باقی آن‌ها برای موارد نادر استفاده وجود دارند.
+هر کامپوننت چندین "متد چرخه‌ی حیات" دارد که شما می‌توانید بازنویسی کنید تا در زمان‌های خاص فرآیند اجرا، کد شما اجرا شود. **شما می‌توانید از [این دیاگرام چرخه‌حیات](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) به عنوان راهنما استفاده کنید.** در لیست زیر، متدهای چرخه‌ی حیات رایج به صورت **برجسته** نشانه‌گذاری شده‌اند. باقی آن‌ها برای موارد نادر استفاده وجود دارند.
 
 #### اجرای اولیه (Mounting) {#mounting}
 
@@ -109,7 +109,7 @@ class Welcome extends React.Component {
 
 ### متدهای چرخه‌ی حیات رایج {#commonly-used-lifecycle-methods}
 
-متدهای این بخش اکثریت قریب به اتفاق موارد کاربردی که شما هنگام ایجاد کامپوننت‌های ری‌اکت با آن‌ها مواجه می‌شوید را پوشش می‌دهد. **برای یک مرجع بصری، [این دیاگرام چرخه‌ی حیات](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) را بررسی کند.**
+متدهای این بخش اکثریت قریب به اتفاق موارد کاربردی که شما هنگام ایجاد کامپوننت‌های ری‌اکت با آن‌ها مواجه می‌شوید را پوشش می‌دهد. **برای یک مرجع بصری، [این دیاگرام چرخه‌ی حیات](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) را بررسی کند.**
 
 ### `render()` {#render}
 
@@ -245,7 +245,7 @@ componentWillUnmount()
 
 ### متدهای چرخه‌ی حیات با کاربرد کم {#rarely-used-lifecycle-methods}
 
-متدهای این بخش به موارد استفاده غیررایج مربوط هستند. آن‌ها یک زمانی کاربردی بودند، اما کامپوننت‌های شما احتمالا نیازی به هیچ‌یک از آن‌ها نخواهند داشت. **شما می‌توانید اکثر این متدها را در [این دیاگرام چرخه‌ی حیات](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) ببینید. برای این منظور بر روی "Show less common lifecycles" در بالای ان کلیک کنید.**
+متدهای این بخش به موارد استفاده غیررایج مربوط هستند. آن‌ها یک زمانی کاربردی بودند، اما کامپوننت‌های شما احتمالا نیازی به هیچ‌یک از آن‌ها نخواهند داشت. **شما می‌توانید اکثر این متدها را در [این دیاگرام چرخه‌ی حیات](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) ببینید. برای این منظور بر روی "Show less common lifecycles" در بالای ان کلیک کنید.**
 
 
 ### `shouldComponentUpdate()` {#shouldcomponentupdate}
@@ -274,11 +274,11 @@ shouldComponentUpdate(nextProps, nextState)
 static getDerivedStateFromProps(props, state)
 ```
 
-`getDerivedStateFromProps` درست بعد از فراخوانی متد رندر، در هر دو حالت نصب و اجرای اولیه و به‌روز رسانی‌های بعد از آن صدا زده می‌شود. این متد باید یک آبجکت برای به‌روز رسانی state، و یا null برای عدم به‌روز رسانی بازگرداند.
+`getDerivedStateFromProps` درست بعد از فراخوانی متد رندر، در هر دو حالت نصب و اجرای اولیه و به‌روز رسانی‌های بعد از آن صدا زده می‌شود. این متد باید یک آبجکت برای به‌روز رسانی state، و یا `null` برای عدم به‌روز رسانی بازگرداند.
 
 این متد برای [موارد استفاده نادر](/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state) که state وابسته به تغییرات props در طول زمان است وجود دارد. برای مثال، ممکن است برای پیاده‌سازی یک کامپوننت `<Transition>` که فرزند قبلی و بعدی خود را برای تصمیم‌گیری اینکه برای کدام‌یک انیمیشن ورود و برای کدام‌یک انیمیشن خروج را اعمال کند مقایسه می‌کند، کاربردی باشد.
 
-اشتقاق (deriving) state باعث بلندی کد می‌شود و فکر کردن در مورد کامپوننت شما را سخت می‌کند.
+اشتقاق (deriving) state باعث طولانی‌تر شده کد می‌شود، و در نتیجه فکر کردن در مورد کامپوننت شما را سخت می‌کند.
 [مطمئن شوید با جایگزین‌های ساده‌تر آشنا هستید:](/blog/2018/06/07/you-probably-dont-need-derived-state.html)
 
 * اگر نیاز به **انجام یک تاثیر جانبی (side effect)** (برای مثال fetch کردن داده یا اعمال انیمیشن) در پاسخ یک تغییر در props دارید، از متد چرخه‌ی حیات [`componentDidUpdate`](#componentdidupdate) به عنوان جایگزین استفاده کنید.
@@ -353,7 +353,7 @@ class ErrorBoundary extends React.Component {
       return <h1>Something went wrong.</h1>;
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
 }
 ```
@@ -407,10 +407,16 @@ class ErrorBoundary extends React.Component {
       return <h1>Something went wrong.</h1>;
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
 }
 ```
+
+نسخه‌های ساخته‌شده برای [محیط‌های] production (تولید) و development (توسعه) ری‌اکت تفاوت جزیی در چگونگی برخورد با خطا‌های `componentDidCatch()` دارند.
+
+روی [محیط] توسعه، خطا‌ها به بالا حرکت می‌کنند تا به `window` برسند، به این معنی که هرکدام از `window.onerror` یا `window.addEventListener('error', callback)` در مسیر خطاهای که توسط `componentDidCatch()` گرفته شده‌اند، قرار می‌گیرند.
+
+روی [محیط] تولید، در عوض خطا‌ها به بالا حرکت نمی‌کنند، به این معنی که هر error handler تنها خطاهایی را دریافت می‌کند که توسط `componentDidCatch()` تولید نشده‌اند.
 
 > نکته
 > 
@@ -587,7 +593,7 @@ component.forceUpdate(callback)
 
 ### `defaultProps` {#defaultprops}
 
-`defaultProps` می‌تواند به عنوان یک ویژگی خود کلاس کامپوننت، برای ست کردن props های پیش‌فرض کلاس تعریف شود. این برای props تعریف نشده استفاده می‌شود، اما نه برای props هایی که مقدار null دارند. برای مثال:
+`defaultProps` می‌تواند به عنوان یک ویژگی خود کلاس کامپوننت، برای ست کردن props های پیش‌فرض کلاس تعریف شود. این برای props تعریف نشده استفاده می‌شود، اما نه برای props هایی که مقدار `null` دارند. برای مثال:
 
 ```js
 class CustomButton extends React.Component {
@@ -607,7 +613,7 @@ CustomButton.defaultProps = {
   }
 ```
 
-اگر برای `props.color` مقدار null ست شده باشد، null باقی خواهد ماند:
+اگر برای `props.color` مقدار `null` ست شده باشد، `null` باقی خواهد ماند:
 
 ```js
   render() {

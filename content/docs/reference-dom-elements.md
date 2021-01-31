@@ -56,7 +56,8 @@ function MyComponent() {
 
 ### selected {#selected}
 
-صفت `selected` توسط کامپوننت‌های `<option>` پشتیبانی می‌شود. شما می‌توانید از آن برای تعیین اینکه کامپوننت انتخاب شده یا نه استفاده کنید. این برای ساختن کامپوننت‌های کنترل شده مناسب است.
+اگر می خواهید یک `<option>` را در حالت انتخاب‌شده قرار دهید، مقدار `value` آن را به مقدار `value` تگ `<select> بدهید.
+ برای یافتن دستورالعمل با جزییات، به ["تگ select"](/docs/forms.html#the-select-tag) مراجعه کنید.
 
 ### style {#style}
 
@@ -117,7 +118,7 @@ function ComponentWithTransition() {
 
 ### value {#value}
 
-صفت `value` توسط کامپوننت های `<input>` و `<textarea>` پشتیبانی می‌شود. شما می‌توانید از آن برای تعیین مقدار یک کامپوننت استفاده کنید. این برای ساختن کامپوننت های کنترل‌شده مناسب است. `defaultValue` معادل غیر کنترلی آن است، که مقدار کامپوننت را در هنگام mount شدن تعیین می‌کند.
+صفت `value` توسط کامپوننت های `<input>`، `<select>` و `<textarea>` پشتیبانی می‌شود. شما می‌توانید از آن برای تعیین مقدار یک کامپوننت استفاده کنید. این برای ساختن کامپوننت های کنترل‌شده مناسب است. `defaultValue` معادل غیر کنترلی آن است، که مقدار کامپوننت را در هنگام mount شدن تعیین می‌کند.
 
 ## تمام صفات HTML قابل پشتیبانی {#all-supported-html-attributes}
 
@@ -126,7 +127,7 @@ function ComponentWithTransition() {
 AP‌Iای که ری‌اکت برای DOM ارائه کرده، همیشه با محوریت JavaScript بوده‌است. از آن‌جایی که کامپوننت‌های ری‌اکت معمولا هم prop‌های مربوط به DOM و همpropهای سفارشی را دریافت می‌کند، ری‌اکت از قانون camelCase استفاده می‌کند. درست مشابه APIهایی که DOM ارائه می‌کند:
 
 ```js
-<div tabIndex="-1" />      // Just like node.tabIndex DOM API
+<div tabIndex={-1} />      // Just like node.tabIndex DOM API
 <div className="Button" /> // Just like node.className DOM API
 <input readOnly={true} />  // Just like node.readOnly DOM API
 ```

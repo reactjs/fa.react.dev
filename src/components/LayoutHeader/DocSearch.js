@@ -44,7 +44,6 @@ class DocSearch extends Component<{}, State> {
           alignItems: 'center',
           paddingLeft: '0.25rem',
           paddingRight: '0.25rem',
-
           [media.lessThan('expandedSearch')]: {
             justifyContent: 'flex-end',
           },
@@ -58,6 +57,7 @@ class DocSearch extends Component<{}, State> {
           // },
           [media.greaterThan('expandedSearch')]: {
             minWidth: 100,
+            width: 'calc(100% / 5)',
           },
         }}>
         <input
@@ -99,8 +99,8 @@ class DocSearch extends Component<{}, State> {
           }}
           id="algolia-doc-search"
           type="search"
-          placeholder="Search"
-          aria-label="Search docs"
+          placeholder="جستجو"
+          aria-label="جستجوی اسناد"
           dir="rtl"
         />
       </form>

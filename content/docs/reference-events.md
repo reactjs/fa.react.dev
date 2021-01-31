@@ -12,7 +12,7 @@ category: Reference
 
 `SyntheticEvent` روکشی است بر رویدادهای ذاتی خود مرورگر که در تمام مرورگر‌ها کار می‌کند. کنترل کننده‌های رویداد (event handlers) شما instance  هایی از `SyntheticEvent` دریافت خواهند کرد. رابط آن همانند رویدادهای ذاتی مرورگر است و شامل `stopPropagation()` و `preventDefault()` هم هست. با این تفاوت که رویدادها در تمام مرورگر‌ها عین هم کار می‌کنند.
 
-اگر فکر می‌کنید که در جایی باید رویداد ذاتی خود مرورگر را استفاده کنید، کافی است که `nativeEvent` را به عنوان یک attribute اضافه کنید تا به آن دسترسی یابید. هر آبجکت `SyntheticEvent`، attribute های زیر دارد:
+اگر فکر می‌کنید که در جایی باید رویداد ذاتی خود مرورگر را استفاده کنید، کافی است که `nativeEvent` را به عنوان یک attribute اضافه کنید تا به آن دسترسی یابید. رویداد‌های سینتتیک متفاوت از رویداد‌های ذاتی مرورگر هستند و تناظر یک به یک بین آن‌ها وجود ندارد. برای مثال در `onMouseLeave`، مقدار `event.nativeEvent` به رویداد `mouseout` اشاره دارد. این تناظر بخشی از API عمومی نیست و ممکن است هر موقعی تغییر کند. هر آبجکت `SyntheticEvent`، attribute های زیر دارد:
 
 ```javascript
 boolean bubbles
@@ -32,38 +32,11 @@ number timeStamp
 string type
 ```
  
+> از نسخه ۱۷، دیگر `e.persist()` کاری انجام نمی‌دهد به دلیل این‌که `SyntheticEvent` [پول (pool)](/docs/legacy-event-pooling.html) نمی‌شود.
+
 > توجه:
 >
 > از نسخه ی ۰/۱۴، بازگشت دادن `false`  از یک کنترل کننده ی رویداد، مانع انتشار یک رویداد نمی شود. بجای آن، `e.stopPropagation()`  یا `e.preventDefault()` ، هر کدام به درخور موقعیت باید اجرا شوند<div class=""></div>
-
-###  جمع آوری رویداد (event-pooling) {#event-pooling}
-`SyntheticEvent` جمع آوری می‌شود. یعنی اینکه آبجکت `SyntheticEvent` پس از آنکه callback اش فراخوانی شد، تمام دارایی‌های خود را از دست خواهد داد و استفاده ی مجدد خواهد شد.
-این  به خاطر ارتقای کارکرد است.
-از همین رو، شما نمی توانید به طور غیرهمزمان (asynchronous) به رویداد دسترسی داشته باشید.
-
-
-```javascript
-function onClick(event) {
-  console.log(event); // => nullified object.
-  console.log(event.type); // => "click"
-  const eventType = event.type; // => "click"
-
-  setTimeout(function() {
-    console.log(event.type); // => null
-    console.log(eventType); // => "click"
-  }, 0);
-
-  // کار نخواهد کرد. this.state.clickEvent فقط حاوی متغیرهای تهی خواهد بود.
-  this.setState({clickEvent: event});
-
-  // همچنان قادر خواهید بود که دارایی‌های رویداد را صادر کنید
-  this.setState({eventType: event.type});
-}
-```
-
-> توجه:
->
-> اگر می‌خواهید که به دارایی‌های رویداد، به طور غیرهمزمان دسترسی داشته باشید باید `event.persist()` را در رویداد فراخوانی کنید. این موجب خواهد شد که رویداد سینتاتیک از روند جمع‌آوری خارج شود و ارجاعات داده شده به آن رویداد در کد کاربر حفظ شود.
 
 ## رویدادهای پشتیبانی شده {#supported-events}
 
@@ -167,8 +140,81 @@ onFocus onBlur
 
 ویژگی‌ها
 
-```javascript
+```js
 DOMEventTarget relatedTarget
+```
+
+#### onFocus {#onfocus}
+
+The `onFocus` event is called when the element (or some element inside of it) receives focus. For example, it's called when the user clicks on a text input.
+
+```javascript
+function Example() {
+  return (
+    <input
+      onFocus={(e) => {
+        console.log('Focused on input');
+      }}
+      placeholder="onFocus is triggered when you click this input."
+    />
+  )
+}
+```
+
+#### onBlur {#onblur}
+
+The `onBlur` event handler is called when focus has left the element (or left some element inside of it). For example, it's called when the user clicks outside of a focused text input.
+
+```javascript
+function Example() {
+  return (
+    <input
+      onBlur={(e) => {
+        console.log('Triggered because this input lost focus');
+      }}
+      placeholder="onBlur is triggered when you click this input and then you click outside of it."
+    />
+  )
+}
+```
+
+#### Detecting Focus Entering and Leaving {#detecting-focus-entering-and-leaving}
+
+You can use the `currentTarget` and `relatedTarget` to differentiate if the focusing or blurring events originated from _outside_ of the parent element. Here is a demo you can copy and paste that shows how to detect focusing a child, focusing the element itself, and focus entering or leaving the whole subtree.
+
+```javascript
+function Example() {
+  return (
+    <div
+      tabIndex={1}
+      onFocus={(e) => {
+        if (e.currentTarget === e.target) {
+          console.log('focused self');
+        } else {
+          console.log('focused child', e.target);
+        }
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          // Not triggered when swapping focus between children
+          console.log('focus entered self');
+        }
+      }}
+      onBlur={(e) => {
+        if (e.currentTarget === e.target) {
+          console.log('unfocused self');
+        } else {
+          console.log('unfocused child', e.target);
+        }
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          // Not triggered when swapping focus between children
+          console.log('focus left self');
+        }
+      }}
+    >
+      <input id="1" />
+      <input id="2" />
+    </div>
+  );
+}
 ```
 
 * * *
@@ -305,7 +351,12 @@ DOMTouchList touches
 onScroll
 ```
 
-ویژگی‌ها
+
+> یادداشت
+>
+> با شروع ری‌اکت ۱۷، رویداد `onScroll` در ری‌اکت **به بالا منتشر (bubble) نخواهد شد**. این [تغییر] با رفتار مرورگر تطبیق دارد و از رخداد اشتباه جلوگیری می‌کند، هنگامی که یک المنت داخلی که دارای اسکرول است یک رویداد را برای یک والد مرتبه‌بالا رها می‌کند. 
+
+ویژگی‌ها:
 
 ```javascript
 number detail

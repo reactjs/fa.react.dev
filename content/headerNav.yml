@@ -1,13 +1,13 @@
 items:
-  - title: Docs
+  - title: اسناد
     to: /docs/getting-started.html
     activeSelector: /docs/
-  - title: Tutorial
+  - title: آموزش مقدماتی
     to: /tutorial/tutorial.html
     activeSelector: /tutorial
-  - title: Blog
+  - title: بلاگ
     to: /blog/
     activeSelector: /blog
-  - title: Community
+  - title: انجمن
     to: /community/support.html
     activeSelector: /community

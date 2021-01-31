@@ -1,14 +1,14 @@
 ---
 id: uncontrolled-components
-title: Uncontrolled Components
+title: کامپوننت‌های کنترل‌نشده
 permalink: docs/uncontrolled-components.html
 ---
 
-In most cases, we recommend using [controlled components](/docs/forms.html#controlled-components) to implement forms. In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
+برای پیاده‌سازی فرم‌ها، توصیه می‌کنیم در اکثر موارد از [کامپوننت‌های کنترل‌شده](/docs/forms.html#controlled-components) استفاده کنید. در یک کامپوننت کنترل‌شده، اطلاعات مربوط به فرم توسط یک کامپوننتِ ری‌اکت مدیریت می‌شود. را‌هکار دیگر استفاده از کامپوننت‌های کنترل‌نشده است که در آن‌ها اطلاعات مربوط به فرم توسط خود DOM مدیریت می‌شود.
 
-To write an uncontrolled component, instead of writing an event handler for every state update, you can [use a ref](/docs/refs-and-the-dom.html) to get form values from the DOM.
+برای نوشتن یک کامپوننت کنترل‌نشده، بجای نوشتن یک event handler و آپدیت کردن state در تک تک موارد، می‌توانید [از یک رفرنس استفاده کنید](/docs/refs-and-the-dom.html) و مقادیر فرم را از DOM دریافت کنید.  
 
-For example, this code accepts a single name in an uncontrolled component:
+ برای مثال در کد زیر، یک کامپوننت کنترل‌نشده تنها یک نام را به عنوان ورودی می‌پذیرد: 
 
 ```javascript{5,9,18}
 class NameForm extends React.Component {
@@ -37,15 +37,15 @@ class NameForm extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/WooRWa?editors=0010)
+[**در CodePen امتحان کنید**](https://codepen.io/gaearon/pen/WooRWa?editors=0010)
 
-Since an uncontrolled component keeps the source of truth in the DOM, it is sometimes easier to integrate React and non-React code when using uncontrolled components. It can also be slightly less code if you want to be quick and dirty. Otherwise, you should usually use controlled components.
+از آن‌جایی که یک کامپوننت کنترل‌نشده مقادیر DOM را مبنای حقیقت قرار می‌دهد، گاهی اوقات تلفیق کردن کدهای نوشته شده با ری‌اکت و کدهای غیر ری‌اکتی آسان‌تر خواهد بود چنانچه از کامپوننت‌های کنترل‌نشده استفاده شده باشد. علاوه بر این، اگر قصد انجام کاری را دارید که در آن سرعت از دقت مهمتر است، استفاده از این روش می‌تواند منجر به نوشتن اندکی کد کمتر شود. در غیر اینصورت به طور معمول می‌بایستی از کامپوننت‌های کنترل‌شده استفاده کنید.
 
-If it's still not clear which type of component you should use for a particular situation, you might find [this article on controlled versus uncontrolled inputs](https://goshakkk.name/controlled-vs-uncontrolled-inputs-react/) to be helpful.
+اگر هنوز برایتان کاملا روشن نیست که در یک شرایط خاص از کدام روش باید استفاده کنید، [این مقاله در باب مقایسه ورودی‌های کنترل‌شده و کنترل‌نشده](https://goshakkk.name/controlled-vs-uncontrolled-inputs-react/) می‌تواند برایتان مفید باشد.
 
-### Default Values {#default-values}
+### مقادیر اولیه {#default-values}
 
-In the React rendering lifecycle, the `value` attribute on form elements will override the value in the DOM. With an uncontrolled component, you often want React to specify the initial value, but leave subsequent updates uncontrolled. To handle this case, you can specify a `defaultValue` attribute instead of `value`.
+در طول چرخه رندر شدن یک کامپوننت در ری‌اکت، مقادیر DOM با مقادیر صفت `value` موجود در المنت‌های مربوط به فرم جایگزین می‌شوند. در صورت استفاده از یک کامپوننت کنترل‌نشده،‌ اغلب اوقات چنین می‌خواهید که ری‌اکت یک مقدار اولیه به المنت تخصیص دهد ولی آپدیت‌های متعاقب آن را کنترل‌نشده رها کند. برای نیل به این مقصود می‌توانید صفت `defaultValue` را بجای `value` مشخص کنید. بعد از اینکه کامپوننت در DOM تعبیه شد،‌ تغییر دادن مقدار `defaultValue` موجب آپدیت شدن مقادیر DOM نخواهد شد.
 
 ```javascript{7}
 render() {
@@ -64,21 +64,20 @@ render() {
 }
 ```
 
-Likewise, `<input type="checkbox">` and `<input type="radio">` support `defaultChecked`, and `<select>` and `<textarea>` supports `defaultValue`.
+به همین ترتیب، `<input type="checkbox">` و `<input type="radio">` از `defaultChecked` و `<select>` و `<textarea>` از `defaultValue` پشتیبانی می‌کنند.
 
-## The file input Tag {#the-file-input-tag}
+## المنت ورودی از نوع فایل {#the-file-input-tag}
 
-In HTML, an `<input type="file">` lets the user choose one or more files from their device storage to be uploaded to a server or manipulated by JavaScript via the [File API](https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications).
+در زبان HTML، به کار بردن `<input type="file">` به کاربر اجازه می‌دهد یک یا چند فایل را از حافظه دستگاه خود انتخاب کرده آنها را بر روی یک سرور بارگذاری کند و یا از طریق [File API](https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications) به اطلاعات موجود در فایل دسترسی پیدا کند. 
 
 ```html
 <input type="file" />
 ```
 
-In React, an `<input type="file" />` is always an uncontrolled component because its value can only be set by a user, and not programmatically.
+در ری‌اکت، یک `<input type="file" />` همواره یک کامپوننت کنترل‌نشده است به این دلیل که تنها توسط کاربر قابل مقداردهی است و نه از طریق دستورات نوشته‌شده در برنامه.
 
-You should use the File API to interact with the files. The following example shows how to create a [ref to the DOM node](/docs/refs-and-the-dom.html) to access file(s) in a submit handler:
+برای کار کردن با فایل‌ها باید از File API استفاده کنید. مثال زیر چگونگی ساختن یک [رفرنس به یک نودِ DOM](/docs/refs-and-the-dom.html) به منظور دسترسی به فایل(ها) در submit handler را نشان می‌دهد: 
 
 `embed:uncontrolled-components/input-type-file.js`
 
-[](codepen://uncontrolled-components/input-type-file)
-
+[در CodePen امتحان کنید](codepen://uncontrolled-components/input-type-file)

@@ -1,36 +1,36 @@
 ---
 id: introducing-jsx
-title: Introducing JSX
+title: معرفی JSX
 permalink: docs/introducing-jsx.html
 prev: hello-world.html
 next: rendering-elements.html
 ---
 
-Consider this variable declaration:
+تعریف متغیر زیر را در نظر بگیرید:
 
 ```js
 const element = <h1>Hello, world!</h1>;
 ```
 
-This funny tag syntax is neither a string nor HTML.
+این قاعده بامزه نه یک رشته متنی و نه HTML است.
 
-It is called JSX, and it is a syntax extension to JavaScript. We recommend using it with React to describe what the UI should look like. JSX may remind you of a template language, but it comes with the full power of JavaScript.
+به این JSX گفته می‌شود. یک قاعده توسعه یافته برای جاوااسکریپت می‌باشد. ما استفاده از آن با ری‌اکت را برای تعریف اینکه رابط کاربری باید چه شکلی باشد پیشنهاد می‌کنیم. ممکن است JSX برای شما یک زبان قالب (template language) به نظر برسد اما با تمام قدرت و امکانات جاوااسکریپت همراه می‌شود.
 
-JSX produces React "elements". We will explore rendering them to the DOM in the [next section](/docs/rendering-elements.html). Below, you can find the basics of JSX necessary to get you started.
+JSX المنت‌های ری‌اکت را تولید می‌کند. ما در [بخش بعدی](/docs/rendering-elements.html) نحوه رنرد شدن آن‌ها در DOM را کاوش می‌کنیم. شما می‌توانید مفاهیم پایه‌ای مورد نیاز برای شروع با JSX را پایین‌تر پیدا کنید.
 
-### Why JSX? {#why-jsx}
+### چرا JSX؟ {#why-jsx}
 
-React embraces the fact that rendering logic is inherently coupled with other UI logic: how events are handled, how the state changes over time, and how the data is prepared for display.
+ری‌اکت این حقیقت را که منطق رندر کردن ذاتا به منطق رابط کاربری مانند: چگونگی کنترل رویدادها، اینکه state در طول زمان چگونه تغییر می‌کند و اینکه داده چگونه برای نمایش آماده می‌شود متصل و وابسته است را پذیرفته‌است.
 
-Instead of artificially separating *technologies* by putting markup and logic in separate files, React [separates *concerns*](https://en.wikipedia.org/wiki/Separation_of_concerns) with loosely coupled units called "components" that contain both. We will come back to components in a [further section](/docs/components-and-props.html), but if you're not yet comfortable putting markup in JS, [this talk](https://www.youtube.com/watch?v=x7cQ3mrcKaY) might convince you otherwise.
+به جای جداسازی مصنوعی *تکنولوژی‌ها* با قراردادن نشانه‌گذاری و منطق در فایل‌های جداگانه، ری‌اکت با واحد‌هایی با وابستگی بسیار کم که "کامپوننت" نامیده می‌شوند و شامل هر دو هستند [*دغدغه‌ها را جدا کرده است*](https://en.wikipedia.org/wiki/Separation_of_concerns). ما در [بخش‌های آینده](/docs/components-and-props.html) به کامپوننت‌ها برمی‌گردیم اما اگر شما با قرار دادن نشانه‌گذاری در JS راحت نیستید، ممکن است [این گفتگو](https://www.youtube.com/watch?v=x7cQ3mrcKaY) شما را قانع کند.
 
-React [doesn't require](/docs/react-without-jsx.html) using JSX, but most people find it helpful as a visual aid when working with UI inside the JavaScript code. It also allows React to show more useful error and warning messages.
+ری‌اکت به استفاده از JSX [نیاز ندارد](/docs/react-without-jsx.html)، اما بیشتر مردم آن را به عنوان یک کمک بصری در زمان کار کردن با رابط کاربری درون کدهای جاوااسکریپت مفید می‌دانند. همچنین به ری‌اکت اجازه می‌دهد تا خطاها و تذکرهای کاربردی‌تری را نمایش دهد.
 
-With that out of the way, let's get started!
+با کامل شدن آن بیایید شروع کنیم!
 
-### Embedding Expressions in JSX {#embedding-expressions-in-jsx}
+### قراردادن عبارات در JSX {#embedding-expressions-in-jsx}
 
-In the example below, we declare a variable called `name` and then use it inside JSX by wrapping it in curly braces:
+در مثال زیر، ما یک متغیر به نام `name` تعریف می‌کنیم و سپس با قراردادن آن بین دو آکولاد، از آن در JSX استفاده می‌کنیم.
 
 ```js{1,2}
 const name = 'Josh Perez';
@@ -42,9 +42,10 @@ ReactDOM.render(
 );
 ```
 
-You can put any valid [JavaScript expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions) inside the curly braces in JSX. For example, `2 + 2`, `user.firstName`, or `formatName(user)` are all valid JavaScript expressions.
+شما می‌توانید هر [عبارت جاوااسکریپت](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions) معتبری را بین آکولادها در JSX قرار دهید.
+برای مثال، `2 + 2`، `user.firstName` یا `formatName(user)`، همه عبارات معتبر جاوااسکریپت هستند.
 
-In the example below, we embed the result of calling a JavaScript function, `formatName(user)`, into an `<h1>` element.
+در مثال زیر، ما نتیجه صدازدن یک تابع جاوااسکریپت به نام `formatName(user)` را درون یک المنت `<h1>` قرار می‌دهیم.
 
 ```js{12}
 function formatName(user) {
@@ -70,13 +71,13 @@ ReactDOM.render(
 
 [](codepen://introducing-jsx)
 
-We split JSX over multiple lines for readability. While it isn't required, when doing this, we also recommend wrapping it in parentheses to avoid the pitfalls of [automatic semicolon insertion](https://stackoverflow.com/q/2846283).
+ما JSX را در چند سطر برای خوانایی بالاتر تقسیم می‌کنیم. با اینکه ضروری نیست، اما ما پیشنهاد می‌کنیم هنگام انجام این کار، از پوشش در پرانتزها نیز برای جلوگیری از اشتباهات رایج [درج خودکار نقطه‌ویرگول (semicolon)](https://stackoverflow.com/q/2846283) استفاده نمایید.
 
-### JSX is an Expression Too {#jsx-is-an-expression-too}
+### JSX نیز یک عبارت است {#jsx-is-an-expression-too}
 
-After compilation, JSX expressions become regular JavaScript function calls and evaluate to JavaScript objects.
+بعد از کامپایل شدن، عبارات JSX به فراخوانی‌های معمولی توابع جاوااسکریپت تبدیل می‌شوند و به عنوان آبجکت‌های جاوااسکریپتی سنجیده (evaluate) می‌شوند.
 
-This means that you can use JSX inside of `if` statements and `for` loops, assign it to variables, accept it as arguments, and return it from functions:
+این به این معنی است که شما می‌توانید از JSX درون گزاره‌های `if` و حلقه‌های `for` استفاده کنید، به یک متغیر منصوبش کنید، به عنوان یک آگومان قبولش کنید و یا آن را به عنوان نتیجه یک تابع برگردانید:
 
 ```js{3,5}
 function getGreeting(user) {
@@ -87,37 +88,37 @@ function getGreeting(user) {
 }
 ```
 
-### Specifying Attributes with JSX {#specifying-attributes-with-jsx}
+### تعیین کردن صفات با JSX {#specifying-attributes-with-jsx}
 
-You may use quotes to specify string literals as attributes:
+شمامی‌توانید از نشان نقل قول برای تعیین رشته‌های متنی به عنوان صفات استفاده کنید.
 
 ```js
 const element = <div tabIndex="0"></div>;
 ```
 
-You may also use curly braces to embed a JavaScript expression in an attribute:
+همچنین می‌توانید از آکولاد برای قراردادن عبارت جاوااسکریپت درون یک صفت استفاده کنید:
 
 ```js
 const element = <img src={user.avatarUrl}></img>;
 ```
 
-Don't put quotes around curly braces when embedding a JavaScript expression in an attribute. You should either use quotes (for string values) or curly braces (for expressions), but not both in the same attribute.
+زمانی که یک عبارت جاوااسکریپت را درون یک صفت قرار می‌دهید از نشان‌های نقل قول در دو طرف آکولادها استفاده نکنید. شما باید یا از نشان‌های نقل قول (برای مقادیر متنی) یا آکولادها (برای عبارات) استفاده کنید، اما نباید از هر دو برای یک صفت استفاده کنید.
 
->**Warning:**
+>**هشدار:**
 >
->Since JSX is closer to JavaScript than to HTML, React DOM uses `camelCase` property naming convention instead of HTML attribute names.
+>از آنجایی که JSX به جاوااسکریپت بیشتر از HTML نزدیک است، DOM ری‌اکت به جای استفاده از نام‌های صفات HTML از نحوه نامگذاری `camelCase` استفاده می‌کند.
 >
->For example, `class` becomes [`className`](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) in JSX, and `tabindex` becomes [`tabIndex`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/tabIndex).
+>برای مثال، `class` در JSX به [`className`](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) تبدیل می‌شود و `tabindex` به [`tabIndex`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/tabIndex) تبدیل می‌شود.
 
-### Specifying Children with JSX {#specifying-children-with-jsx}
+### تعیین کردن فرزندان در JSX {#specifying-children-with-jsx}
 
-If a tag is empty, you may close it immediately with `/>`, like XML:
+مانند XML، اگر یک تگ خالی است، می‌توانید فورا با `/>` آن را ببندید.
 
 ```js
 const element = <img src={user.avatarUrl} />;
 ```
 
-JSX tags may contain children:
+تگ‌های JSX می‌توانند شامل فرزند باشند:
 
 ```js
 const element = (
@@ -128,9 +129,9 @@ const element = (
 );
 ```
 
-### JSX Prevents Injection Attacks {#jsx-prevents-injection-attacks}
+### JSX از حملات Injection جلوگیری می‌کند {#jsx-prevents-injection-attacks}
 
-It is safe to embed user input in JSX:
+قراردادن ورودی کاربر در JSX ایمن است:
 
 ```js
 const title = response.potentiallyMaliciousInput;
@@ -138,13 +139,13 @@ const title = response.potentiallyMaliciousInput;
 const element = <h1>{title}</h1>;
 ```
 
-By default, React DOM [escapes](https://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html) any values embedded in JSX before rendering them. Thus it ensures that you can never inject anything that's not explicitly written in your application. Everything is converted to a string before being rendered. This helps prevent [XSS (cross-site-scripting)](https://en.wikipedia.org/wiki/Cross-site_scripting) attacks.
+DOM ری‌اکت، هر مقداری که قبل از رندر شدن آن قرارداده شده‌باشد را به صورت پیش‌فرض [رها می‌کند.](https://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html). بنابراین مطمئن می‌شود که شما هرگز نمی‌توانید چیزی که به صورت صریح در اپلیکیشن شما نوشته‌ نشده‌باشد را تزریق کنید. همه‌چیز قبل از رندر شدن به یک رشته متنی تبدیل می‌شود. این به جلوگیری از حملات [XSS (cross-site-scripting)](https://en.wikipedia.org/wiki/Cross-site_scripting) کمک می‌کند.
 
-### JSX Represents Objects {#jsx-represents-objects}
+### JSX نمایانگر آبجکت‌ها است {#jsx-represents-objects}
 
-Babel compiles JSX down to `React.createElement()` calls.
+Babel، JSX را به فراخوانی‌های `React.createElement()` کامپایل می‌کند.
 
-These two examples are identical:
+این دو مثال زیر یکسان هستند:
 
 ```js
 const element = (
@@ -162,7 +163,7 @@ const element = React.createElement(
 );
 ```
 
-`React.createElement()` performs a few checks to help you write bug-free code but essentially it creates an object like this:
+`React.createElement()` تعداد کمی ارزیابی را برای کمک به نوشتن کد‌های بدون باگ اجرا می‌کند اما اساسا یک آبجکت مانند این تولید می‌کند:
 
 ```js
 // Note: this structure is simplified
@@ -175,10 +176,10 @@ const element = {
 };
 ```
 
-These objects are called "React elements". You can think of them as descriptions of what you want to see on the screen. React reads these objects and uses them to construct the DOM and keep it up to date.
+این آبجکت‌ها "المنت‌های ری‌اکت" صدا زده می‌شوند. می‌توانید به آ‌ن‌ها به عنوان توضیح چیزی که می‌خواهید روی صفحه ببینید فکر کنید. ری‌اکت این آبجکت‌ها را می‌خواند و از آن‌ها برای ساخت DOM استفاده می‌کند و آن‌ها را به‌روز حفظ می‌کند.
 
-We will explore rendering React elements to the DOM in the [next section](/docs/rendering-elements.html).
+ما در [بخش بعدی](/docs/rendering-elements.html) رندر شدن المنت‌های ری‌اکت در DOM را بررسی می‌کنیم.
 
->**Tip:**
+>**راهنمایی:**
 >
->We recommend using the ["Babel" language definition](https://babeljs.io/docs/editors) for your editor of choice so that both ES6 and JSX code is properly highlighted.
+>ما استفاده از [تعریف زبان "Babel"](https://babeljs.io/docs/en/next/editors) را برای ویرایشگر مورد نظرتان پیشنهاد می‌کنیم که هم کدهای JSX و هم ES6 به درستی برجسته شوند.

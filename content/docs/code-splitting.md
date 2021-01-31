@@ -6,7 +6,7 @@ permalink: docs/code-splitting.html
 
 ## بسته‌بندی کردن (bundling) {#bundling}
 
-در بیشتر برنامه های ری‌اکت فایل ها توسط ابزار هایی مثل [Webpack](https://webpack.js.org/) یا [Browserify](http://browserify.org/) بسته بندی می شوند
+فایل‌های بیشتر برنامه‌های ری‌اکت با کمک ابزار‌هایی مانند [Webpack](https://webpack.js.org/)، [Rollup](https://rollupjs.org/) یا [Browserify](http://browserify.org/) بسته‌بندی (bundle) می‌شود. فرآیند بسته بندی کردن فایل‌ها به پیدا کردن فایل‌های ایمپورت شده و قرار دادن محتوای همه‌ آن‌ها در یک فایل "بسته" گفته می‌شود. می‌توان این بسته را در یک صفحه وب بارگذاری کرد که تمام برنامه یک‌جا بارگذاری شود.
 
 پروسه‌ی بسته‌بندی کردن به این شکل است که فایل های import شده دنبال می‌شود و همه‌ی آن‌ها در یک فایل با نام "bundle" ادغام می‌شوند. این فایل bundle می‌تواند در صفحه‌ی وب بارگذاری شود تا کل برنامه را به یک‌باره اجرا کند.
 
@@ -42,7 +42,7 @@ console.log(add(16, 26)); // 42
 >
 > بسته‌های شما در نهایت با این نمونه تفاوت زیادی خواهد داشت.
 
-اگر شما از [Gatsby](https://www.gatsbyjs.org/) ،[Next.js](https://github.com/zeit/next.js/) ،[Create React App](https://github.com/facebookincubator/create-react-app) یا ابزار های مشابه استفاده می‌کنید، به‌طور پیش‌فرض Webpack تنظیم شده‌است تا برنامه‌ی شما را بسته‌بندی کند.
+اگر شما از [Gatsby](https://www.gatsbyjs.org/) ،[Next.js](https://nextjs.org/) ،[Create React App](https://create-react-app.dev/) یا ابزار های مشابه استفاده می‌کنید، به‌طور پیش‌فرض Webpack تنظیم شده‌است تا برنامه‌ی شما را بسته‌بندی کند.
 
 در غیر این صورت، لازم است که پروسه‌ی بسته‌بندی را خودتان تنظیم و راه‌اندازی کنید. برای نمونه راهنمایی‌های [نصب](https://webpack.js.org/guides/installation/) و [شروع به کار](https://webpack.js.org/guides/getting-started/) را از مستندات Webpack مشاهده کنید.
 
@@ -79,11 +79,11 @@ import("./math").then(math => {
 });
 ```
 
-هنگامی که Webpack با این سینکتس برخورد می کند، بصورت خودکار شروع به تکه‌تکه کردن کد برنامه ی شما می‌کند. اگر شما از Create React App استفاده می‌کنید، این در حال حاضر برای شما تنظیم شده‌است و شما می‌توانید همین حالا [از اینجا شروع به استفاده از آن کنید](https://facebook.github.io/create-react-app/docs/code-splitting). همچنین به‌صورت پیش‌فرض توسط [Next.js](https://nextjs.org/docs/advanced-features/dynamic-import) نیز پشتیبانی می‌شود.
+هنگامی که Webpack با این سینکتس برخورد می کند، بصورت خودکار شروع به تکه‌تکه کردن کد برنامه ی شما می‌کند. اگر شما از Create React App استفاده می‌کنید، این در حال حاضر برای شما تنظیم شده‌است و شما می‌توانید همین حالا [از اینجا شروع به استفاده از آن کنید](https://create-react-app.dev/docs/code-splitting/). همچنین به‌صورت پیش‌فرض توسط [Next.js](https://nextjs.org/docs/advanced-features/dynamic-import) نیز پشتیبانی می‌شود.
 
 اگر شما Webpack را خودتان تنظیم و راه‌اندازی کرده‌اید، ممکن است بخواهید [راهنمای تکه‌تکه کردن کد Webpack](https://webpack.js.org/guides/code-splitting/) را بخوانید. پیکربندی Webpack شما احتمالا چیزی [شبیه به این](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269) باشد.
 
-هنگام استفاده از [Babel](https://babeljs.io/)، شما باید اطمینان حاصل کنید که Babel می‌تواند سینتکس import پویا را parse کند ولی آن را تغییر ندهد. در این راستا شما به [babel-plugin-syntax-dynamic-import](https://yarnpkg.com/en/package/babel-plugin-syntax-dynamic-import) نیاز خواهید داشت.
+هنگام استفاده از [Babel](https://babeljs.io/)، شما باید اطمینان حاصل کنید که Babel می‌تواند سینتکس import پویا را parse کند ولی آن را تغییر ندهد. در این راستا شما به [babel-plugin-syntax-dynamic-import](https://classic.yarnpkg.com/en/package/@babel/plugin-syntax-dynamic-import) نیاز خواهید داشت.
 
 
 ## `React.lazy` {#reactlazy}
