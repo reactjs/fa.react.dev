@@ -74,7 +74,7 @@ class CodeExample extends Component<Props> {
         {loaded ? (
           <CodeEditor code={code} containerNodeID={containerNodeID} />
         ) : (
-          <h4>در حال بارگذاری کد ...</h4>
+          <h4>در حال بارگذاری نمونه کد...</h4>
         )}
       </div>
     );
