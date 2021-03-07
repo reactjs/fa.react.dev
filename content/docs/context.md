@@ -6,11 +6,7 @@ permalink: docs/context.html
 
 Context راهی را برای انتقال داده در درخت کامپوننت بدون نیاز به انتقال دستیه props به تمام سطح های پایینی فراهم می‌کند.
 
-<<<<<<< HEAD
 در یک اپلیکیشن معمولی ری‌اکت, داده از طریق props از بالا به پایین (والدین به فرزند) منتقل می‌شود, اما این کار برای انواع خاصی از props ها (برای مثال: locale preference, تم رابط کاربری) که مورد نیاز بسیاری از کامپوننت ها در یک اپلیکیشن است می‌تواند سنگین باشد. Context راهی را برای به اشتراک گذاری مقادیری مانند این بین کامپوننت‌ها بدون نیاز به انتقال prop صریحا‍ً‌ از هر سطح درخت فراهم می‌کند.
-=======
-In a typical React application, data is passed top-down (parent to child) via props, but such usage can be cumbersome for certain types of props (e.g. locale preference, UI theme) that are required by many components within an application. Context provides a way to share values like these between components without having to explicitly pass a prop through every level of the tree.
->>>>>>> 4fa06486cdb8c5a1cd7e3d88b24e76b1920f33fd
 
 - [چه موقع  باید از Context استفاده کرد](#when-to-use-context)
 - [قبل از اینکه از Context استفاده کنید](#before-you-use-context)
@@ -84,12 +80,7 @@ function Page(props) {
 
 با این تغییر٬ فقط بالاترین کامپوننت یعنی Page باید در مورد استفاده `user` و ‍`avatarsize` توسط کامپوننت‌های `Link` و `Avatar` بداند.
 
-<<<<<<< HEAD
-این *وارونگی کنترل* در بسیاری از موارد می‌تواند کد شما را از طریق کاهش تعداد propهایی که باید در اپلیکیشن خود انتقال دهید تمیزتر کند و کنترل بیشتری به کامپوننت‌های پایه می‌دهد.
-با این حال٬ این کار در هر موردی تصمیم درست نیست: انتقال پیچیدگی بیشتر به بالا در درخت باعث پیچیده‌تر شدن کامپوننت‌های سطح-بالا می‌شود و ممکن است کامپوننت‌های سطح-پایین را مجبور به انعطاف‌پذیری بیشتر از آنچه که می‌خواهید کند.
-=======
-This *inversion of control* can make your code cleaner in many cases by reducing the amount of props you need to pass through your application and giving more control to the root components. Such inversion, however, isn't the right choice in every case; moving more complexity higher in the tree makes those higher-level components more complicated and forces the lower-level components to be more flexible than you may want.
->>>>>>> 4fa06486cdb8c5a1cd7e3d88b24e76b1920f33fd
+این *وارونگی کنترل* در بسیاری از موارد می‌تواند کد شما را از طریق کاهش تعداد propهایی که باید در اپلیکیشن خود انتقال دهید تمیزتر کند و کنترل بیشتری به کامپوننت‌های پایه می‌دهد. با این حال همچین وارونگی در هر موردی تصمیم درست نیست: انتقال پیچیدگی بیشتر به بالا در درخت باعث پیچیده‌تر شدن کامپوننت‌های سطح-بالا می‌شود و ممکن است کامپوننت‌های سطح-پایین را مجبور به انعطاف‌پذیری بیشتر از آنچه که می‌خواهید کند.
 
 شما برای یک کامپوننت محدود به یک فرزند نیستید. شما می‌توانید چندین فرزند٬ یا حتی چندین "slots" جداگانه برای فرزندان٬ [همانطور که در اینجا مستند شده است
 ](/docs/composition-vs-inheritance.html#containment)انتقال دهید:
@@ -128,11 +119,7 @@ const MyContext = React.createContext(defaultValue);
 
 کد بالا یک شیٔ context ایجاد می‌کند. وقتی ری‌اکت یک کامپوننتی را رندر می‌کند که به این شیء context ارجاع می‌کند (subscribes)٬ مقدار context  حاضر را از نزدیکترین `Provider` مرتبط بالایی در درخت خواهد خواند.
 
-<<<<<<< HEAD
-آرگومان `defaultValue` **فقط** زمانی استفاده می‌شود که یک کامپوننت در بالاتر از خود در درخت یک Provider مطابق نداشته باشد. این مورد می‌تواند برای تست کردن کامپوننت‌ها در انزوا بدون wrap کردن آن‌ها مفید باشد. توجه داشته باشید: انتقال `undefined` به عنوان مقدار Provider باعث نمی‌شود که کامپوننت‌هایی که از آن استفاده می‌کنند از `defaultValue` استفاده کنند.
-=======
-The `defaultValue` argument is **only** used when a component does not have a matching Provider above it in the tree. This default value can be helpful for testing components in isolation without wrapping them. Note: passing `undefined` as a Provider value does not cause consuming components to use `defaultValue`.
->>>>>>> 4fa06486cdb8c5a1cd7e3d88b24e76b1920f33fd
+آرگومان `defaultValue` **فقط** زمانی استفاده می‌شود که یک کامپوننت در بالاتر از خود در درخت یک Provider مطابق نداشته باشد. مقدار پیش‌فرض می‌تواند برای تست کردن کامپوننت‌ها در انزوا بدون wrap کردن آن‌ها مفید باشد. توجه داشته باشید: انتقال `undefined` به عنوان مقدار Provider باعث نمی‌شود که کامپوننت‌هایی که از آن استفاده می‌کنند از `defaultValue` استفاده کنند.
 
 ### `Context.Provider` {#contextprovider}
 
@@ -176,11 +163,7 @@ class MyClass extends React.Component {
 MyClass.contextType = MyContext;
 ```
 
-<<<<<<< HEAD
-یک شیئ Context که با [`React.createContext()`](#reactcreatecontext) ایجاد شده است می‌تواند به ویژگی `contextType` در یک کلاس اختصاص یابد. این کار به شما اجازه می‌دهد که از نزدیک‌ترین مقدار فعلی `contextType` با استفاده از `this.context` استفاده کنید. شما می‌توانید از این قضیه در تمام متدهای چرخه‌حیات از جمله تابع رندر استفاده کنید.
-=======
-The `contextType` property on a class can be assigned a Context object created by [`React.createContext()`](#reactcreatecontext). Using this property lets you consume the nearest current value of that Context type using `this.context`. You can reference this in any of the lifecycle methods including the render function.
->>>>>>> 4fa06486cdb8c5a1cd7e3d88b24e76b1920f33fd
+یک شیئ Context که با [`React.createContext()`](#reactcreatecontext) ایجاد شده است می‌تواند به ویژگی `contextType` در یک کلاس اختصاص یابد. استفاده از این ویژگی به شما اجازه می‌دهد که از نزدیک‌ترین مقدار فعلی `contextType` با استفاده از `this.context` استفاده کنید. شما می‌توانید از این قضیه در تمام متدهای چرخه‌حیات از جمله تابع رندر استفاده کنید.
 
 > یادداشت:
 >
@@ -207,11 +190,7 @@ class MyClass extends React.Component {
 </MyContext.Consumer>
 ```
 
-<<<<<<< HEAD
-یک کامپوننت ری‌اکت که تغییرات context را به اشتراک می‌گذارد. این کار به شما اجازه می‌دهد که یک context را داخل [کامپوننت تابع](/docs/components-and-props.html#function-and-class-components) به اشتراک بگذارید.
-=======
-A React component that subscribes to context changes. Using this component lets you subscribe to a context within a [function component](/docs/components-and-props.html#function-and-class-components).
->>>>>>> 4fa06486cdb8c5a1cd7e3d88b24e76b1920f33fd
+یک کامپوننت ری‌اکت که تغییرات context را به اشتراک می‌گذارد. استفاده از این کامپوننت به شما اجازه می‌دهد که یک context را داخل [کامپوننت تابعی](/docs/components-and-props.html#function-and-class-components) به اشتراک بگذارید.
 
 نیاز به یک [کامپوننت به عنوان فرزند](/docs/render-props.html#using-props-other-than-render) دارد. این تابع مقدار context فعلی را دریافت می‌کند و یک نود ری‌اکت برمی‌گرداند. آرگومان `value` ای که به تابع داده شده است با prop `value` نزدیک‌ترین Provider بالاتر از آن در درخت برای این context برابر خواهد بود. اگر در بالاتر هیچ Provider ای برای این context وجود نداشت٬ آرگومان `value` با `defaultValue` ای که به `createContext()` داده شد٬ برابر خواهد بود.
 

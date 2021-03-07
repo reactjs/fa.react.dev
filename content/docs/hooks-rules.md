@@ -11,13 +11,9 @@ prev: hooks-effect.html
 Hookها توابع جاوااسکریپت هستند، ولی هنگامی که از آنها استفاده می‌کنید باید از دو قانون تبعیت کنید. ما یک [پلاگین آستر](https://www.npmjs.com/package/eslint-plugin-react-hooks) برای اجرای خودکار این قوانین برای شما فراهم کردیم.
 
 
-<<<<<<< HEAD
 ### Hookها را فقط در بالاترین سطح فراخوانی کنید{#only-call-hooks-at-the-top-level}
-=======
-**Don't call Hooks inside loops, conditions, or nested functions.** Instead, always use Hooks at the top level of your React function, before any early returns. By following this rule, you ensure that Hooks are called in the same order each time a component renders. That's what allows React to correctly preserve the state of Hooks between multiple `useState` and `useEffect` calls. (If you're curious, we'll explain this in depth [below](#explanation).)
->>>>>>> 4fa06486cdb8c5a1cd7e3d88b24e76b1920f33fd
 
-**Hookها را درون لوپ، شرط، یا توابع در هم تنیده فراخوانی نکنید** به جای آن، همیشه آنها را در بالاترین سطح توابع ری‌اکت فراخوانی کنید. با پیروی از این قوانین، مطمین می‌شوید که Hookها هنگامی که در یک کامپوننت رندر می‌شوند به یک ترتیب فراخوانی می‌شوند. این چیزیست که به ری‌اکت اجازه می‌دهد state hookها را بین چندین فراخوانی از `useState` و `useEffect` حفظ کند.
+**Hookها را درون لوپ، شرط، یا توابع در هم تنیده فراخوانی نکنید** به جای آن، همیشه آنها را در بالاترین سطح توابع ری‌اکت، پیش از هر return زودهنگام، فراخوانی کنید. با پیروی از این قوانین، مطمین می‌شوید که Hookها هنگامی که در یک کامپوننت رندر می‌شوند به یک ترتیب فراخوانی می‌شوند. این چیزیست که به ری‌اکت اجازه می‌دهد state hookها را بین چندین فراخوانی از `useState` و `useEffect` حفظ کند.
 
 ### Hookها را فقط در توابع ری‌اکتی فراخوانی کنید {#only-call-hooks-from-react-functions}
 
