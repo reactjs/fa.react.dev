@@ -111,8 +111,10 @@ yarn dev
     <td align="center"><a href="https://github.com/sadeghbarati"><img src="https://avatars0.githubusercontent.com/u/17789047?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Sadegh Barati</b></sub></a></td>
     <td align="center"><a href="https://github.com/pooooriya"><img src="https://avatars2.githubusercontent.com/u/65160744?v=4?s=64" width="64px;" alt=""/><br /><sub><b>pooooriya</b></sub></a></td>
   </tr>
+    <tr>
+    <td align="center"><a href="https://github.com/behzad-dev"><img src="https://avatars0.githubusercontent.com/u/70510985?v=4?s=64" width="64px;" alt=""/><br /><sub><b>behzad</b></sub></a></td>
+  </tr>
 </table>
-
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 
