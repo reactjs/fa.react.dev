@@ -1,6 +1,6 @@
 ---
 id: hooks-custom
-title: Building Your Own Hooks
+title: هوک‌های خود را بسازید
 permalink: docs/hooks-custom.html
 next: hooks-reference.html
 prev: hooks-rules.html
