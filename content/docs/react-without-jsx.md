@@ -1,14 +1,16 @@
 ---
 id: react-without-jsx
-title: React Without JSX
+title: ری‌اکت بدون JSX
 permalink: docs/react-without-jsx.html
 ---
 
-JSX is not a requirement for using React. Using React without JSX is especially convenient when you don't want to set up compilation in your build environment.
+برای استفاده از ری‌اکت شما نیاز به JSX ندارید.استفاده نکردن از JSX در ری‌اکت هنگامی راحت‌تر است که نیاز به راه اندازی یک محیط تولید(build environment) ندارید.
 
-Each JSX element is just syntactic sugar for calling `React.createElement(component, props, ...children)`. So, anything you can do with JSX can also be done with just plain JavaScript.
+هر المنت JSX فقط کدی (syntactic sugar) برای فراخوانی `React.createElement(component, props, ...children)` است. بنابراین هرکاری که با JSX می‌توانید انجام دهید، می شود با جاوااسکریپت ساده هم انجام داد.```
 
-For example, this code written with JSX:
+
+
+برای مثال، این کد با JSX نوشته شده است:
 
 ```js
 class Hello extends React.Component {
@@ -23,7 +25,9 @@ ReactDOM.render(
 );
 ```
 
-can be compiled to this code that does not use JSX:
+
+
+که می‌توان همین کد را بدون نیاز به JSX کامپایل کرد:
 
 ```js
 class Hello extends React.Component {
@@ -38,11 +42,17 @@ ReactDOM.render(
 );
 ```
 
-If you're curious to see more examples of how JSX is converted to JavaScript, you can try out [the online Babel compiler](babel://jsx-simple-example).
+اگر کنجکاو هستید که نمونه های بیشتری از چگونگی تبدیل JSX به جاوا اسکریپت ببینید، می‌توانید از [کامپایلر آنلاین Babel](babel://jsx-simple-example) استفاده کنید.
 
-The component can either be provided as a string, as a subclass of `React.Component`, or a plain function.
 
-If you get tired of typing `React.createElement` so much, one common pattern is to assign a shorthand:
+
+
+کامپوننت هم می‌توان به صورت string باشد هم به صورت یک subclass از `React.Component` و یا یک تابع.
+
+اگر از نوشتن `React.createElement` خسته شده اید، یک الگوی معمول این است که از اختصارنویسی استفاده نمایید:
+
+
+
 
 ```js
 const e = React.createElement;
@@ -52,8 +62,8 @@ ReactDOM.render(
   document.getElementById('root')
 );
 ```
+اگر شما از این اختصارنویسی در `React.createElement` استفاده نمایید، می‌تواند به اندازه استفاده نکردن از JSX در ری‌اکت راحت باشد.
 
-If you use this shorthand form for `React.createElement`, it can be almost as convenient to use React without JSX.
 
-Alternatively, you can refer to community projects such as [`react-hyperscript`](https://github.com/mlmorg/react-hyperscript) and [`hyperscript-helpers`](https://github.com/ohanhi/hyperscript-helpers) which offer a terser syntax.
+در صورت نیاز، شما می‌توانید به انجمن‌هایی نظیر [`react-hyperscript`](https://github.com/mlmorg/react-hyperscript) و [`hyperscript-helpers`](https://github.com/ohanhi/hyperscript-helpers) که مثال‌های دیگر را در اختیارتان می‌گذارد مراجعه نمایید.
 
