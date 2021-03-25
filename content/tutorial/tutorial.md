@@ -1,6 +1,6 @@
 ---
 id: tutorial
-title: "Tutorial: Intro to React"
+title: "Tutorial: مقدمه ای بر ری‌اکت"
 layout: tutorial
 sectionid: tutorial
 permalink: tutorial/tutorial.html
@@ -12,15 +12,14 @@ redirect_from:
   - "docs/tutorial-zh-CN.html"
 ---
 
-This tutorial doesn't assume any existing React knowledge.
+این آموزش هیچ دانش قبلی از ری‌اکت را در نظر نمی گیرید و از صفر آموزش میدهد
+## قبل از شروع آموزش {#before-we-start-the-tutorial}
 
-## Before We Start the Tutorial {#before-we-start-the-tutorial}
+ما در طول این آموزش یک بازی کوچک خواهیم ساخت. **ممکن است وسوسه شوید که از آن صرف نظر کنید زیرا شما بازی نمیسازید -- اما به آن فرصت دهید.** تکنیک هایی که در این آموزش فرا خواهید گرفت برای ساخت هر برنامه ری‌اکت مهم و اساسی هستند و تسلط بر آن درک عمیقی از ری‌اکت به شما میدهد.
 
-We will build a small game during this tutorial. **You might be tempted to skip it because you're not building games -- but give it a chance.** The techniques you'll learn in the tutorial are fundamental to building any React app, and mastering it will give you a deep understanding of React.
-
->Tip
+>نکته
 >
->This tutorial is designed for people who prefer to **learn by doing**. If you prefer learning concepts from the ground up, check out our [step-by-step guide](/docs/hello-world.html). You might find this tutorial and the guide complementary to each other.
+>این آموزش برای افرادی طراحی شده است که ترجیح می دهند با انجام کار یاد بگیرند. اگر یادگیری مفاهیم را از ابتدا ترجیح می دهید ، [راهنمای گام به گام](/docs/hello-world.html). ما را ببینید. ممکن است این آموزش و راهنما را مکمل یکدیگر بدانید.
 
 The tutorial is divided into several sections:
 
