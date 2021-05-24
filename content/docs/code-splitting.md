@@ -46,7 +46,11 @@ console.log(add(16, 26)); // 42
 
 در غیر این صورت، لازم است که پروسه‌ی بسته‌بندی را خودتان تنظیم و راه‌اندازی کنید. برای نمونه راهنمایی‌های [نصب](https://webpack.js.org/guides/installation/) و [شروع به کار](https://webpack.js.org/guides/getting-started/) را از مستندات Webpack مشاهده کنید.
 
+<<<<<<< HEAD
 ## تکه‌تکه کردن کد {#code-splitting}
+=======
+If you aren't, you'll need to set up bundling yourself. For example, see the [Installation](https://webpack.js.org/guides/installation/) and [Getting Started](https://webpack.js.org/guides/getting-started/) guides on the Webpack docs.
+>>>>>>> e60bca04f3da690256ce019bd8907c2b368589ee
 
 بسته‌بندی بسیار خوب است، اما همواره با رشد و بزرگ شدن برنامه‌تان، فایل bundle شما نیز بزرگ می‌شود. به ویژه اگر شما از کتابخانه‌های جانبی استفاده کنید. 
 لازم است که همیشه چشمتان به کدهایی باشد که به فایل بسته اضافه می‌کنید. اگر به صورت تصادفی حجم فایل بسته زیاد شود، درنتیجه زمان بارگذاری اولیه برنامه شما طولانی می‌شود.
