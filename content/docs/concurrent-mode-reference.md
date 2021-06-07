@@ -28,7 +28,6 @@ This page is an API reference for the React [Concurrent Mode](/docs/concurrent-m
 
 - [Enabling Concurrent Mode](#concurrent-mode)
     - [`createRoot`](#createroot)
-    - [`createBlockingRoot`](#createblockingroot)
 - [Suspense](#suspense)
     - [`Suspense`](#suspensecomponent)
     - [`SuspenseList`](#suspenselist)
@@ -47,18 +46,6 @@ Replaces `ReactDOM.render(<App />, rootNode)` and enables Concurrent Mode.
 
 For more information on Concurrent Mode, check out the [Concurrent Mode documentation.](/docs/concurrent-mode-intro.html)
 
-### `createBlockingRoot` {#createblockingroot}
-
-```js
-ReactDOM.createBlockingRoot(rootNode).render(<App />)
-```
-
-Replaces `ReactDOM.render(<App />, rootNode)` and enables [Blocking Mode](/docs/concurrent-mode-adoption.html#migration-step-blocking-mode).
-
-Opting into Concurrent Mode introduces semantic changes to how React works. This means that you can't use Concurrent Mode in just a few components. Because of this, some apps may not be able to migrate directly to Concurrent Mode. 
-
-Blocking Mode only contains a small subset of Concurrent Mode features and is intended as an intermediary migration step for apps that are unable to migrate directly.
-
 ## Suspense API {#suspense}
 
 ### `Suspense` {#suspensecomponent}
@@ -72,7 +59,7 @@ Blocking Mode only contains a small subset of Concurrent Mode features and is in
 
 `Suspense` lets your components "wait" for something before they can render, showing a fallback while waiting.
 
-In this example, `ProfileDetails` is waiting for an asynchronous API call to fetch some data. While we wait for `ProfileDetails` and `ProfilePhoto`, we will show the `Loading...` fallback instead. It is important to note that until all children inside `<Suspense>` has loaded, we will continue to show the fallback.
+In this example, `ProfileDetails` is waiting for an asynchronous API call to fetch some data. While we wait for `ProfileDetails` and `ProfilePhoto`, we will show the `Loading...` fallback instead. It is important to note that until all children inside `<Suspense>` have loaded, we will continue to show the fallback.
 
 `Suspense` takes two props:
 * **fallback** takes a loading indicator. The fallback is shown until all of the children of the `Suspense` component have finished rendering.

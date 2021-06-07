@@ -128,7 +128,11 @@ const MyComponent = React.memo(function MyComponent(props) {
 
 اگر کامپوننت شما در صورت گرفتن props یکسان، نتیجه‌ی یکسان تولید می‌کند، می‌توانید آن‌را در یک فراخوانی `React.memo`، wrap کنید تا با یادداشت‌برداری نتیجه، کارایی را بالا برید. این کار به آن معناست که ری‌اکت رندر کردن کامپوننت را در نظر نمی‌گیرد و آخرین نتایج رندرهای قبلی را درنظر می‌گیرد.
 
+<<<<<<< HEAD
 به صورت پیش‌فرض این فقط یک مقایسه سطحی بین اشیاء موجود در شیء props انجام می‌دهد. اگر می‌خواهید خودتان این مقایسه را کنترل کنید، می‌توانید یک تابع مقایسه شخصی‌سازی شده را به عنوان آرگومان دوم به این تابع بدهید.
+=======
+`React.memo` only checks for prop changes. If your function component wrapped in `React.memo` has a [`useState`](/docs/hooks-state.html), [`useReducer`](/docs/hooks-reference.html#usereducer) or [`useContext`](/docs/hooks-reference.html#usecontext) Hook in its implementation, it will still rerender when state or context change.
+>>>>>>> 68e4efcf93b6e589355f6aa3cbc3f3c811c0ad37
 
 `React.memo` تنها تغییرات props را بررسی می‌کند. اگر کامپوننت شما درون `React.memo` قرار گرفته‌است و در آن از هوک‌های [`useState`](/docs/hooks-state.html) و [`useContext`](/docs/hooks-reference.html#usecontext) استفاده شده‌است، تغییر state یا context باعث رندر شدن مجدد می‌شود.
 
