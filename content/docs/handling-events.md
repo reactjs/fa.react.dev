@@ -29,27 +29,31 @@ redirect_from:
 </button>
 ```
 
+<<<<<<< HEAD
 تفاوت دیگر این است که شما نمی‌توانید برای جلوگیری از رفتار پیش‌فرض در ری‌اکت، مقدار `false` را بازگردانید. شما باید `preventDefault` را صریحا فراخانی کنید. برای مثال، در HTML ساده، برای جلوگیری از بازکردن یک صفحه جدید به عنوان رفتار پیش‌فرض لینک می‌توانید بنویسید:
+=======
+Another difference is that you cannot return `false` to prevent default behavior in React. You must call `preventDefault` explicitly. For example, with plain HTML, to prevent the default form behavior of submitting, you can write:
+>>>>>>> f3baa6d075c8de475b688abf035d7054bc8a9606
 
 ```html
-<a href="#" onclick="console.log('The link was clicked.'); return false">
-  Click me
-</a>
+<form onsubmit="console.log('You clicked submit.'); return false">
+  <button type="submit">Submit</button>
+</form>
 ```
 
 در ری‌اکت می‌توانید این کد را جایگزین کنید:
 
-```js{2-5,8}
-function ActionLink() {
-  function handleClick(e) {
+```js{3}
+function Form() {
+  function handleSubmit(e) {
     e.preventDefault();
-    console.log('The link was clicked.');
+    console.log('You clicked submit.');
   }
 
   return (
-    <a href="#" onClick={handleClick}>
-      Click me
-    </a>
+    <form onSubmit={handleSubmit}>
+      <button type="submit">Submit</button>
+    </form>
   );
 }
 ```
@@ -71,8 +75,8 @@ class Toggle extends React.Component {
   }
 
   handleClick() {
-    this.setState(state => ({
-      isToggleOn: !state.isToggleOn
+    this.setState(prevState => ({
+      isToggleOn: !prevState.isToggleOn
     }));
   }
 

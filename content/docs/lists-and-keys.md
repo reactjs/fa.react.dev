@@ -211,9 +211,13 @@ ReactDOM.render(
 
 ###  کلید‌ها فقط باید میان همتایان خود یکتا باشند {#keys-must-only-be-unique-among-siblings}
 
+<<<<<<< HEAD
 کلید‌هایی که در آرایه‌ها استفاده می‌شوند باید در میان فرزندانشان یکتا باشند.
 اگرچه احتیاجی نیست که به صورت عمومی یکتا باشند.
 وقتی دو نوع آرایه مختلف تولید می‌کنیم می‌توانیم از کلید‌های یکسان استفاده کنیم: 
+=======
+Keys used within arrays should be unique among their siblings. However, they don't need to be globally unique. We can use the same keys when we produce two different arrays:
+>>>>>>> f3baa6d075c8de475b688abf035d7054bc8a9606
 
 ```js{2,5,11,12,19,21}
 function Blog(props) {
