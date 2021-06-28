@@ -9,7 +9,11 @@ redirect_from:
   - "docs/forms-zh-CN.html"
 ---
 
+<<<<<<< HEAD
 المنت‌های فرم HTML در نحوه‌ی کارکرد با المنت‌های دیگر DOM در ری‌اکت تفاوت جزیی دارند، به این دلیل که المنت‌های فرم به صورت طبیعی مقداری state درونی ‌نگه‌داری ‌می‌کنند. برای مثال، این فرم که ‌به‌صورت HTML ساده نوشته شده است تنها یک نام دریافت ‌می‌کند:
+=======
+HTML form elements work a bit differently from other DOM elements in React, because form elements naturally keep some internal state. For example, this form in plain HTML accepts a single name:
+>>>>>>> 25f756d8e3800afb032cb31ce3626d6134e31e38
 
 ```html
 <form>

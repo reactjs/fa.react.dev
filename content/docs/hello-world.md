@@ -34,7 +34,13 @@ ReactDOM.render(
 هر فصل در این راهنما براساس دانش معرفی‌شده در فصل‌های پیشین بنا می‌شود. **شما می‌توانید بیشتر ری‌اکت را با مطالعه فصل‌های راهنمای "مفاهیم اصلی" به ترتیبی که در نوار کناری آورده‌‌ شده است، یاد بگیرید.** برای مثال، [“مقدمه‌ای بر JSX”](/docs/introducing-jsx.html) فصل بعدی بعد از این فصل است.
 
 
+<<<<<<< HEAD
 ## فرض‌های سطح دانش {#knowledge-level-assumptions}
+=======
+>Note
+>
+>This guide occasionally uses some newer JavaScript syntax in the examples. If you haven't worked with JavaScript in the last few years, [these three points](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c) should get you most of the way.
+>>>>>>> 25f756d8e3800afb032cb31ce3626d6134e31e38
 
 ری‌اکت یک کتابخانه جاوااسکریپت است، و بنابراین ما فرض می‌کنیم که شما درک پایه‌ای از زبان جاوااسکریپت دارید. **اگر خیلی مطمئن نیستید، پیشنهاد می‌کنیم [یک آموزش جاوااسکریپت را طی کنید](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) تا سطح دانش خود را بررسی کنید** و بتوانید این راهنما را بدون گمراهی دنبال کنید. این کار ممکن است برای شما بین ۳۰ دقیقه تا یک ساعت به طول بیانجامد، اما در نتیجه این حس را نخواهید داشت که [با خواندن این راهنما] ری‌اکت و جاوااسکریپت را همزمان یاد می‌گیرید.
 
