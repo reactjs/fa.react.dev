@@ -32,7 +32,7 @@ React has always provided a JavaScript-centric API to the DOM. Since React compo
 <div tabIndex={-1} />
 ```
 
-This has not changed. However, the way we enforced it in the past forced us to maintain a allowlist of all valid React DOM attributes in the bundle:
+This has not changed. However, the way we enforced it in the past forced us to maintain an allowlist of all valid React DOM attributes in the bundle:
 
 ```js
 // ...
@@ -165,7 +165,7 @@ Below is a detailed list of them.
     React 15: Converts `NaN`s to strings and passes them through.  
     React 16: Converts `NaN`s to strings and passes them through with a warning.
 
-While testing this release, we have also [created an automatically generated table](https://github.com/facebook/react/blob/master/fixtures/attribute-behavior/AttributeTableSnapshot.md) for all known attributes to track potential regressions.
+While testing this release, we have also [created an automatically generated table](https://github.com/facebook/react/blob/main/fixtures/attribute-behavior/AttributeTableSnapshot.md) for all known attributes to track potential regressions.
 
 ## Try It! {#try-it}
 
