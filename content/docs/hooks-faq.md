@@ -18,11 +18,11 @@ This page answers some of the frequently asked questions about [Hooks](/docs/hoo
   ).join('\n')
 -->
 
-* **[Adoption Strategy](#adoption-strategy)**
-  * [Which versions of React include Hooks?](#which-versions-of-react-include-hooks)
-  * [Do I need to rewrite all my class components?](#do-i-need-to-rewrite-all-my-class-components)
-  * [What can I do with Hooks that I couldn't with classes?](#what-can-i-do-with-hooks-that-i-couldnt-with-classes)
-  * [How much of my React knowledge stays relevant?](#how-much-of-my-react-knowledge-stays-relevant)
+* **[راهبردی برای پذیرفتن](#adoption-strategy)**
+  * [کدام نسخه های ری اکت از هوک پشتیبانی می کنند؟](#which-versions-of-react-include-hooks)
+  * [آیا لازم است تمام کلاس کامپوننت ها را باز نویسی کنم؟](#do-i-need-to-rewrite-all-my-class-components)
+  * [چه کاری با هوک می توانم انجام دهم که با کلاس کامپوننت ها نمی توانم؟](#what-can-i-do-with-hooks-that-i-couldnt-with-classes)
+  * [چه مقدار از دانش ری اکت من تحت تاثیر قرار می گیرد؟](#how-much-of-my-react-knowledge-stays-relevant)
   * [Should I use Hooks, classes, or a mix of both?](#should-i-use-hooks-classes-or-a-mix-of-both)
   * [Do Hooks cover all use cases for classes?](#do-hooks-cover-all-use-cases-for-classes)
   * [Do Hooks replace render props and higher-order components?](#do-hooks-replace-render-props-and-higher-order-components)
@@ -57,9 +57,9 @@ This page answers some of the frequently asked questions about [Hooks](/docs/hoo
   * [How does React associate Hook calls with components?](#how-does-react-associate-hook-calls-with-components)
   * [What is the prior art for Hooks?](#what-is-the-prior-art-for-hooks)
 
-## Adoption Strategy {#adoption-strategy}
+## راهبردی برای پذیرفتن {#adoption-strategy}
 
-### Which versions of React include Hooks? {#which-versions-of-react-include-hooks}
+### کدام نسخه های ری اکت از هوک پشتیبانی می کنند؟ {#which-versions-of-react-include-hooks}
 
 Starting with 16.8.0, React includes a stable implementation of React Hooks for:
 
@@ -73,15 +73,15 @@ Note that **to enable Hooks, all React packages need to be 16.8.0 or higher**. H
 
 [React Native 0.59](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059) and above support Hooks.
 
-### Do I need to rewrite all my class components? {#do-i-need-to-rewrite-all-my-class-components}
+### آیا لازم است تمام کلاس کامپوننت ها را باز نویسی کنم؟ {#do-i-need-to-rewrite-all-my-class-components}
 
 No. There are [no plans](/docs/hooks-intro.html#gradual-adoption-strategy) to remove classes from React -- we all need to keep shipping products and can't afford rewrites. We recommend trying Hooks in new code.
 
-### What can I do with Hooks that I couldn't with classes? {#what-can-i-do-with-hooks-that-i-couldnt-with-classes}
+### چه کاری با هوک می توانم انجام دهم که با کلاس کامپوننت ها نمی توانم؟ {#what-can-i-do-with-hooks-that-i-couldnt-with-classes}
 
 Hooks offer a powerful and expressive new way to reuse functionality between components. ["Building Your Own Hooks"](/docs/hooks-custom.html) provides a glimpse of what's possible. [This article](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889) by a React core team member dives deeper into the new capabilities unlocked by Hooks.
 
-### How much of my React knowledge stays relevant? {#how-much-of-my-react-knowledge-stays-relevant}
+### چه مقدار از دانش ری اکت من تحت تاثیر قرار می گیرد؟ {#how-much-of-my-react-knowledge-stays-relevant}
 
 Hooks are a more direct way to use the React features you already know -- such as state, lifecycle, context, and refs. They don't fundamentally change how React works, and your knowledge of components, props, and top-down data flow is just as relevant.
 
