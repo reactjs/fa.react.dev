@@ -328,12 +328,9 @@ class Calculator extends React.Component {
 
 بالا بردن state شامل نوشتن بیشتر "boilerplate" نسبت به روش binding دو-طرفه است، ولی به عنوان مزیت، هزینه کمتری برای پیدا کردن و کپسوله کردن باگ‌ها دارد. از آنجایی که هر state در برخی کامپوننت‌ها "زندگی"  می‌کند و آن کامپوننت به تنهایی می‌تواند آن را تغییر دهد، سطح وسیعی از باگ‌ها به طور چشم‌گیری کاهش پیدا می‌کند. علاوه بر این ، شما می‌توانید منطق سفارشی برای رد یا انتقال ورودی کاربر پیاده سازی کنید.
 
-<<<<<<< HEAD
-=======
-When you see something wrong in the UI, you can use [React Developer Tools](https://github.com/facebook/react/tree/main/packages/react-devtools) to inspect the props and move up the tree until you find the component responsible for updating the state. This lets you trace the bugs to their source:
->>>>>>> 0bb0303fb704147452a568472e968993f0729c28
-
 اگر چیزی می‌توانست از props یا state ناشی شود ، احتمالا نباید در state باشد. برای مثال ، به جای ذخیره کردن `celsiusValue` و `fahrenheitValue`، ما فقط آخرین `temperature` و `scale` تغییر کرده را ذخیزه می‌کنیم. مقدار سایز inputها می‌تواند در متد `render()` محاسبه شود. این به ما امکان می دهد بدون از دست دادن دقت در ورودی کاربر ، سایر فیلد‌ها را پاک یا رند کنیم.
 وقتی می‌بینید چیزی در UI اشتباه است, می‌تواند از  [ابزار توسعه React](https://github.com/facebook/react/tree/master/packages/react-devtools) برای بازرسی propها استفاده کنید و در درخت اینقدر بالا بروید تا کامپوننتی که مسول به‌روز رسانی state هست را پیدا کنید. این به شما امکان میدهد  تا باگ‌ها را تا منبع دنبال کنید.
+
+هنگامی که در UI مشکلی مشاهده کردید ، می توانید از [React Developer Tools](https://github.com/facebook/react/tree/main/packages/react-devtools) برای بازبینی props و حرکت به سمت بالا درخت استفاده کنید تا زمانی که component مسئول بروزرسانی state را پیدا کنید. با این کار می توانید باگ‌ها را از منبع آنها ردیابی کنید:
 
 <img src="../images/docs/react-devtools-state.gif" alt="Monitoring State in React DevTools" max-width="100%" height="100%">
