@@ -29,27 +29,27 @@ redirect_from:
 </button>
 ```
 
-تفاوت دیگر این است که شما نمی‌توانید برای جلوگیری از رفتار پیش‌فرض در ری‌اکت، مقدار `false` را بازگردانید. شما باید `preventDefault` را صریحا فراخانی کنید. برای مثال، در HTML ساده، برای جلوگیری از بازکردن یک صفحه جدید به عنوان رفتار پیش‌فرض لینک می‌توانید بنویسید:
+تفاوت دیگر این است که برای جلوگیری از رفتار پیش فرض در React، نمی توانید `false` را برگردانید. شما باید صراحتا `preventDefault`  را فراخوانی کنید. به عنوان مثال ، با HTML ساده ، برای جلوگیری از رفتار پیش‌فرض ارسال فرم، می توانید بنویسید:
 
 ```html
-<a href="#" onclick="console.log('The link was clicked.'); return false">
-  Click me
-</a>
+<form onsubmit="console.log('You clicked submit.'); return false">
+  <button type="submit">Submit</button>
+</form>
 ```
 
 در ری‌اکت می‌توانید این کد را جایگزین کنید:
 
-```js{2-5,8}
-function ActionLink() {
-  function handleClick(e) {
+```js{3}
+function Form() {
+  function handleSubmit(e) {
     e.preventDefault();
-    console.log('The link was clicked.');
+    console.log('You clicked submit.');
   }
 
   return (
-    <a href="#" onClick={handleClick}>
-      Click me
-    </a>
+    <form onSubmit={handleSubmit}>
+      <button type="submit">Submit</button>
+    </form>
   );
 }
 ```
@@ -66,13 +66,13 @@ class Toggle extends React.Component {
     super(props);
     this.state = {isToggleOn: true};
 
-    // This binding is necessary to make `this` work in the callback
+    // این بایندینگ برای اینکه `this` در callback کار کند ضروری است.
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
-    this.setState(state => ({
-      isToggleOn: !state.isToggleOn
+    this.setState(prevState => ({
+      isToggleOn: !prevState.isToggleOn
     }));
   }
 

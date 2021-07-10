@@ -21,7 +21,9 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
 >
 > ما استفاده از [React Testing Library](https://testing-library.com/react) را پیش‌نهاد می‌کنیم، از آن‌جا که طراحی آن با هدف قادر ساختن و تشویق شما به نوشتن تست‌ به گونه‌ای است که کاربر نهایی کامپوننت شما را استفاده می‌کند.
 >
-> به عنوان جایگزین، Airbnb یک ابزار تست به نام [Enzyme](https://airbnb.io/enzyme/) منتشر کرده‌است که بررسی، دستکاری و ارزیابی خروجی کامپوننت‌های ری‌اکت شما را ساده می‌کند.
+> برای نسخه‌های ری‌اکت <= 16، کتابخانه [Enzyme](https://airbnb.io/enzyme/) بررسی، دستکاری و ارزیابی خروجی کامپوننت‌های ری‌اکت شما را ساده می‌کند.
+
+
 
  - [`act()`](#act)
  - [`mockComponent()`](#mockcomponent)
