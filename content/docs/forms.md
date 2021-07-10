@@ -9,11 +9,7 @@ redirect_from:
   - "docs/forms-zh-CN.html"
 ---
 
-<<<<<<< HEAD
-المنت‌های فرم HTML در نحوه‌ی کارکرد با المنت‌های دیگر DOM در ری‌اکت تفاوت جزیی دارند، به این دلیل که المنت‌های فرم به صورت طبیعی مقداری state درونی ‌نگه‌داری ‌می‌کنند. برای مثال، این فرم که ‌به‌صورت HTML ساده نوشته شده است تنها یک نام دریافت ‌می‌کند:
-=======
-HTML form elements work a bit differently from other DOM elements in React, because form elements naturally keep some internal state. For example, this form in plain HTML accepts a single name:
->>>>>>> 0bb0303fb704147452a568472e968993f0729c28
+المنت‌های فرم HTML کمی متفاوت از سایر المنت‌های DOM در React عمل می کنند ، زیرا المنت‌های فرم به طور طبیعی مقداری state درونی ‌را حفظ می کنند. به عنوان مثال ، این فرم که ‌به‌صورت HTML ساده نوشته شده است ساده یک نام را قبول می کند:
 
 ```html
 <form>
@@ -269,6 +265,7 @@ var partialState = {};
 partialState[name] = value;
 this.setState(partialState);
 ```
+
 همچنین از آن جایی که `setState()` ‌به‌صورت خودکار ‌می‌تواند [تغییرات جزیی state را به درون state فعلی ادغام کند](/docs/state-and-lifecycle.html#state-updates-are-merged), ما فقط نیاز داریم آن را با بخشی که تغییر کرده‌است فراخوانی کنیم.
 
 ## مقدار Null ورودی کنترل‌شده {#controlled-input-null-value}
