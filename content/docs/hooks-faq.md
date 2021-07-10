@@ -18,11 +18,11 @@ This page answers some of the frequently asked questions about [Hooks](/docs/hoo
   ).join('\n')
 -->
 
-* **[راهبردی برای پذیرفتن](#adoption-strategy)**
-  * [کدام نسخه های ری اکت از هوک پشتیبانی می کنند؟](#which-versions-of-react-include-hooks)
-  * [آیا لازم است تمام کلاس کامپوننت ها را باز نویسی کنم؟](#do-i-need-to-rewrite-all-my-class-components)
-  * [چه کاری با هوک می توانم انجام دهم که با کلاس کامپوننت ها نمی توانم؟](#what-can-i-do-with-hooks-that-i-couldnt-with-classes)
-  * [چه مقدار از دانش ری اکت من تحت تاثیر قرار می گیرد؟](#how-much-of-my-react-knowledge-stays-relevant)
+* **[استراتژی استفاده](#adoption-strategy)**
+  * [کدام نسخه‌های ری‌اکت از هوک پشتیبانی می‌کنند؟](#which-versions-of-react-include-hooks)
+  * [آیا لازم است تمام کلاس کامپوننت‌هایم را بازنویسی کنم؟](#do-i-need-to-rewrite-all-my-class-components)
+  * [چه کاری با هوک می‌توانم انجام دهم که با کلاس کامپوننت‌ها نمی‌توانستم؟](#what-can-i-do-with-hooks-that-i-couldnt-with-classes)
+  * [چه مقدار از دانش ری‌اکت من تحت تاثیر قرار می‌گیرد؟](#how-much-of-my-react-knowledge-stays-relevant)
   * [Should I use Hooks, classes, or a mix of both?](#should-i-use-hooks-classes-or-a-mix-of-both)
   * [Do Hooks cover all use cases for classes?](#do-hooks-cover-all-use-cases-for-classes)
   * [Do Hooks replace render props and higher-order components?](#do-hooks-replace-render-props-and-higher-order-components)
