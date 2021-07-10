@@ -299,11 +299,7 @@ static getDerivedStateFromProps(props, state)
 getSnapshotBeforeUpdate(prevProps, prevState)
 ```
 
-<<<<<<< HEAD
-`getSnapshotBeforeUpdate()` درست قبل از آخرین خروجی رندر شده‌ای که به DOM سپرده شده‌است صدا زده می‌شود و کامپوننت شما را توانا می‌سازد تا بعضی اطلاعات را (مانند اسکرول کردن مکان صفحه) قبل از اینکه بالقوه تغییر کند از DOM بگیرد. هر مقداری که توسط ین چرخه‌ی حیات بازگردد به عنوان یک پارامتر به `componentDidUpdate()` پاس داده خواهد شد.
-=======
-`getSnapshotBeforeUpdate()` is invoked right before the most recently rendered output is committed to e.g. the DOM. It enables your component to capture some information from the DOM (e.g. scroll position) before it is potentially changed. Any value returned by this lifecycle method will be passed as a parameter to `componentDidUpdate()`.
->>>>>>> 0bb0303fb704147452a568472e968993f0729c28
+`getSnapshotBeforeUpdate()` درست قبل از اعمال‌شدن آخرین خروجی اخیراً رندرشده به عنوان مثال به DOM فراخوانی می شود. این متد component شما را قادر می سازد قبل از اینکه به طور بالقوه تغییر کند ، برخی اطلاعات را از DOM (به عنوان مثال موقعیت اسکرول) ضبط کند. هر مقداری که از این متد lifecycle برگردانده شود به عنوان یک پارامتر به `componentDidUpdate()` منتقل می‌شود.
 
 این مورد استفاده رایج نیست، اما ممکن است در رابط‌کاربری‌هایی مانند صفحه‌ی چت که کنترل مکان اسکرول به شکلی خاص نیاز است، رخ دهد.
 
