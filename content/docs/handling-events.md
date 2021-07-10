@@ -29,11 +29,7 @@ redirect_from:
 </button>
 ```
 
-<<<<<<< HEAD
-تفاوت دیگر این است که شما نمی‌توانید برای جلوگیری از رفتار پیش‌فرض در ری‌اکت، مقدار `false` را بازگردانید. شما باید `preventDefault` را صریحا فراخانی کنید. برای مثال، در HTML ساده، برای جلوگیری از بازکردن یک صفحه جدید به عنوان رفتار پیش‌فرض لینک می‌توانید بنویسید:
-=======
-Another difference is that you cannot return `false` to prevent default behavior in React. You must call `preventDefault` explicitly. For example, with plain HTML, to prevent the default form behavior of submitting, you can write:
->>>>>>> 0bb0303fb704147452a568472e968993f0729c28
+تفاوت دیگر این است که برای جلوگیری از رفتار پیش فرض در React، نمی توانید `false` را برگردانید. شما باید صراحتا `preventDefault`  را فراخوانی کنید. به عنوان مثال ، با HTML ساده ، برای جلوگیری از رفتار پیش‌فرض ارسال فرم، می توانید بنویسید:
 
 ```html
 <form onsubmit="console.log('You clicked submit.'); return false">
@@ -70,7 +66,7 @@ class Toggle extends React.Component {
     super(props);
     this.state = {isToggleOn: true};
 
-    // This binding is necessary to make `this` work in the callback
+    // این بایندینگ برای اینکه `this` در callback کار کند ضروری است.
     this.handleClick = this.handleClick.bind(this);
   }
 
