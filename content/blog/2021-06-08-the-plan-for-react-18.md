@@ -1,59 +1,59 @@
 ---
-title: "The Plan for React 18"
+title: "برنامه برای ری‌اکت ۱۸"
 author: [acdlite, bvaughn, abernathyca, gaearon, rachelnabors, rickhanlonii, sebmarkbage, sethwebster]
 ---
 
-The React team is excited to share a few updates:
+تیم ری‌اکت برای به اشتراک گذاشتن چند بروزرسانی هیجان زده است:
 
-1. We’ve started work on the React 18 release, which will be our next major version.
-2. We’ve created a Working Group to prepare the community for gradual adoption of new features in React 18.
-3. We’ve published a React 18 Alpha so that library authors can try it and provide feedback.
+1. ما کار بر روی انتشار ری‌اکت نسخه ۱۸، که نسخه اصلی بعدی خواهد بود را شروع کرده‌ایم.
+2. یک گروه کاری ایجاد کرده‌ایم تا به آماده کردن جامعه ری‌اکت برای پذیرش تدریجی قابلیت های جدید ری‌اکت ۱۸ بپردازد.
+3. یک نسخه آلفا انتشار داده‌ایم تا نوسیندگان کتابخانه‌ها بتوانند این نسخه را امتحان کرده و نظرات خود را به ما انتقال دهند.
 
-These updates are primarily aimed at maintainers of third-party libraries. If you’re learning, teaching, or using React to build user-facing applications, you can safely ignore this post. But you are welcome to follow the discussions in the React 18 Working Group if you're curious!
+این بروزرسانی ها به طور اصلی نگاه‌دارندگان کتابخانه‌های شخص ثالث را درنظر گرفته است. اگر شما در حال یادگیری، تدریس و یا استفاده از ری‌اکت برای ساختن برنامه های کاربری هستید، میتوانید به سادگی این پست را در نظر نگیرید. با این وجود اگر کنجکاو هستید، از بحث شما در گروه کاری ری‌اکت ۱۸ استقبال میشود.
 
-## What’s coming in React 18
+## چه چیزهایی در ری‌اکت ۱۸ می‌آیند؟
 
-When it’s released, React 18 will include out-of-the-box improvements (like [automatic batching](https://github.com/reactwg/react-18/discussions/21)), new APIs (like [`startTransition`](https://github.com/reactwg/react-18/discussions/41)), and a [new streaming server renderer](https://github.com/reactwg/react-18/discussions/37) with built-in support for `React.lazy`.
+زمانی که ری‌اکت ۱۸ منتشر شود، شامل بهبودهایی قابل لمس در همان لحظه اول (مانند [automatic batching](https://github.com/reactwg/react-18/discussions/21))، رابط‌های برنامه‌نویسی (API) جدید (همانند [`startTransition`](https://github.com/reactwg/react-18/discussions/41))، و یک [streaming server renderer](https://github.com/reactwg/react-18/discussions/37) جدید با پشتیبانی از `React.lazy` خواهد بود.
 
-These features are possible thanks to a new opt-in mechanism we’re adding in React 18. It’s called “concurrent rendering” and it lets React prepare multiple versions of the UI at the same time. This change is mostly behind-the-scenes, but it unlocks new possibilities to improve both real and perceived performance of your app.
+این قابلیت‌ها به لطف مکانیزم جدید انتخابی که در حال اضافه کردن به ری‌اکت ۱۸ هستیم ممکن شده‌اند. این مکانیزم رندر همزمان (concurrent rendreing) نام دارد و به ری‌اکت اجازه میدهد تا چندین نسخه از رابط کاربری (UI) را به طور همزمان آماده کند. با اینکه این تغییر به طور عمده در پشت پرده اتفاق میافتد، اما قابلیت های جدیدی را برای بهبود کارآرایی نرم افزار شما (جه کارایی حقیقی و چه کارایی قابل درک در حین کار با نرم افزار) فراهم میکند.
 
-If you've been following our research into the future of React (we don't expect you to!), you might have heard of something called “concurrent mode” or that it might break your app. In response to this feedback from the community, we’ve redesigned the upgrade strategy for gradual adoption. Instead of an all-or-nothing “mode”, concurrent rendering will only be enabled for updates triggered by one of the new features. In practice, this means **you will be able to adopt React 18 without rewrites and try the new features at your own pace.**
+اگر در حال دنبال‌کردن تحقیقات در مورد آینده ری‌اکت بوده‌اید (که البته ما چنین توقعی از شما نداریم!)، ممکن است چیزی به اسم "concurrent mode" (مد همزمان) به گوشتان خورده باشد، یا اینکه این ممکن است اپ شما را بشکند. در جواب به این بازخورد از جامعه ری‌اکت، ما استراتژی بروزرسانی را در راستای پذیرش تدریجی بازطراحی کردیم. به جای یک "مد" همه یا هیچ چیز، رندر همزمان (concurrent rendring) تنها برای بروزرسانی‌هایی فعال خواهند بود که توسط یکی از قابلیت‌های جدید استفاده شده باشند. در عمل، این به معنی آن است که **شما میتوانید ری‌اکت ۱۸ را بدون بازنویسی بپذیرید و قابلیت های جدید را با سرعت خودتان امتحان کنید**.
 
-## A gradual adoption strategy
+## یک استراتژی پذیرش تدریجی
 
-Since concurrency in React 18 is opt-in, there are no significant out-of-the-box breaking changes to component behavior. **You can upgrade to React 18 with minimal or no changes to your application code, with a level of effort comparable to a typical major React release**. Based on our experience converting several apps to React 18, we expect that many users will be able to upgrade within a single afternoon.
+از آنجایی که همزمانی در ری‌اکت ۱۸ اختیاریست، تغییرات شکننده بزرگی در رابطه با رفتار کامپوننت‌ها به محض انتشار وجود نخواهد داشت. **شما میتوانید با کمترین تغییر و یا بدون تغییری در کدهای اپلیکیشن خود، ری‌اکت را به نسخه ۱۸ ارتقا دهید، با زحمتی همانند انتشار یک نسخه جدید معمولی ری‌اکت**. بر اساس تجربه ما در تبدیل چندین اپ به ری‌اکت ۱۸، انتظار داریم کاربران زیادی بتوانند در یک بعدازظهر ارتقا دهند.
 
-We successfully shipped concurrent features to tens of thousands of components at Facebook, and in our experience, we've found that most React components “just work” without additional changes. We're committed to making sure this is a smooth upgrade for the entire community, so today we're announcing the React 18 Working Group.
+ما با موفقیت قابلیت‌های همزمان را به ده‌ها هزار از کامپوننت‌ها در فیسبوک آورده‌ایم و در تجربه ما، متوجه شدیم که اکثر کامپوننت‌های ری‌اکت بدون هیچ تغییر اضافه‌ای کار میکردند. ما به مطمئن شدن اینکه این ارتقا برای کل جامعه ری‌اکت روان است متعهدیم، بنابراین امروز گروه کاری ری‌اکت ۱۸ را اعلام میکنیم.
 
-## Working with the community
+## همکاری با جامعه ری‌اکت
 
-We’re trying something new for this release: We've invited a panel of experts, developers, library authors, and educators from across the React community to participate in our [React 18 Working Group](https://github.com/reactwg/react-18) to provide feedback, ask questions, and collaborate on the release. We couldn't invite everyone we wanted to this initial, small group, but if this experiment works out, we hope there will be more in the future!
+ما درحال امتحان کردن چیز جدیدی برای این انتشار جدید هستیم: ما از گروهی از افراد خبره، توسعه‌دهندگان، نویسندگان کتابخانه‌ها و مدرسان در جامعه ری‌اکت دعوت کرده ایم تا در[ گروه کاری ری‌اکت ۱۸](https://github.com/reactwg/react-18) در مورد انتشار بازخورد دهند، سوال بپرسند و همکاری کنند. ما نمی‌توانستیم هرکسی را که می‌خواهیم به این گروه کوچک و اولیه دعوت کنیم، اما اگر این آزمایش به نتیجه برسد، امیدواریم که در آینده موارد بیشتری وجود داشته باشد!
 
-**The goal of the React 18 Working Group is to prepare the ecosystem for a smooth, gradual adoption of React 18 by existing applications and libraries.** The Working Group is hosted on [GitHub Discussions](https://github.com/reactwg/react-18/discussions) and is available for the public to read. Members of the working group can leave feedback, ask questions, and share ideas. The core team will also use the discussions repo to share our research findings. As the stable release gets closer, any important information will also be posted on this blog.
+**هدف گروه کاری ری‌اکت ۱۸ آماده‌کردن اکوسیستم برای پذیرش نرم و تدریجی ری‌اکت ۱۸ توسط اپلیکیشن‌ها و کتابخانه‌های موجود است.** گروه کاری بر روی [GitHub Discussions](https://github.com/reactwg/react-18/discussions) میزبانی شده‌است و برای خواندن عموم در دسترس است. اعضای گروه کاری می‌توانند بازخورد های خود را قرار دهند، سوال مطرح کنند و یا ایده های خود را به اشتراک بگذارند. تیم اصلی (هسته) نیز از مخزن گفتگو‌ها استفاده می‌کند تا یافته های تحقیقات خود را به اشتراک بگذارد. با نزدیک‌شدن انتشار پایدار، هر اطلاعات مهمی در این بلاگ نیز قرار خواهد گرفت.
 
-For more information on upgrading to React 18, or additional resources about the release, see the [React 18 announcement post](https://github.com/reactwg/react-18/discussions/4).
+برای اطلاعات بیشتر درمورد ارتقا به ری‌اکت ۱۸ یا منابع بیشتر درمورد انتشار، مطلب [اطلاعیه ری‌اکت ۱۸](https://github.com/reactwg/react-18/discussions/4) را ببینید.
 
-## Accessing the React 18 Working Group
+## دسترسی به گروه کاری ری‌اکت ۱۸
 
-Everyone can read the discussions in the [React 18 Working Group repo](https://github.com/reactwg/react-18).
+همه میتوانند گفتگوها را در [مخزن گروه کاری ری‌اکت ۱۸](https://github.com/reactwg/react-18) بخوانند
 
-Because we expect an initial surge of interest in the Working Group, only invited members will be allowed to create or comment on threads. However, the threads are fully visible to the public, so everyone has access to the same information. We believe this is a good compromise between creating a productive environment for working group members, while maintaining transparency with the wider community.
+از آن‌جا که انتظار می‌رود در اوایل فعالیت گروه کاری افراد زیادی به سمت این گروه بیایند، به همین خاطر تنها افراد دعوت‌شده میتوانند گفتگو جدیدی ایجاد و یا نظر بر روی گفتگوها قرار بدهند. اگرچه تمامی گفتگوها برای همگان کاملا قابل مشاهده هستند، بنابراین همه به اطلاعات یکسانی دسترسی دارند. ما بر این باوریم که این سازش خوبی بین ایجاد یک محیط با بازدهی برای اعضای گروه کاری ضمن حفظ شفافیت در جامعه بزرگ‌تر است.
 
-As always, you can submit bug reports, questions, and general feedback to our [issue tracker](https://github.com/facebook/react/issues).
+مانند همیشه، میتوانید مشکلات، سوالات و بازخورد‌های عمومی خود را به [issue tracker](https://github.com/facebook/react/issues) ما ارسال نمایید.
 
-## How to try React 18 Alpha today
+## چگونه ری‌اکت ۱۸ آلفا را امروز امتحان کنیم
 
-New alphas are [regularly published to npm using the `@alpha` tag](https://github.com/reactwg/react-18/discussions/9). These releases are built using the most recent commit to our main repo. When a feature or bugfix is merged, it will appear in an alpha the following weekday.
+نسخه های آلفا جدید [به صورت مداوم بر روی npm با برچسب `@alpha` منتشر میشوند](https://github.com/reactwg/react-18/discussions/9). این انتشارها با استفاده از آخرین کامیت بر روی مخزن اصلی ساخته می‌شوند. زمانی که یک قابلیت یا رفع اشکال مرج شد، در روز هفته آتی در نسخه آلفا مشاهده خواهد شد.
 
-There may be significant behavioral or API changes between alpha releases. Please remember that **alpha releases are not recommended for user-facing, production applications**.
+ممکن است تغییرات بزرگی در رفتار یا API ها در بین انتشار‌های آلفا وجود داشته باشد. لطفا به یاد داشته باشد که **نسخه های آلفا برای اپلیکیشن های محیط پروداکشن و رسمی توصیه نمی‌شوند**.
 
-## Projected React 18 release timeline
+## خط زمانی پیشبینی‌شده انتشار ری‌اکت ۱۸
 
-We don't have a specific release date scheduled, but we expect it will take several months of feedback and iteration before React 18 is ready for most production applications.
+تاریخ دقیقی برای انتشار برنامه‌ریزی نکرده‌ایم، اما انتظار چند ماه بازخورد و چرخه را قبل از اینکه ری‌اکت ۱۸ برای بیشترین اپلیکیشن های پروداکشن مناسب باشد را داریم.
 
-* Library Alpha: Available today
-* Public Beta: At least several months
-* Release Candidate (RC): At least several weeks after Beta
-* General Availability: At least several weeks after RC
+* کتابخانه آلفا: امروز در دسترس است
+* بتا عمومی: حداقل چندین ماه
+* کاندید انتشار (RC): حداقل چندین هفته بعد از بتا
+* دسترسی عمومی: حداقل چندین هفته بعد از RC
 
-More details about our projected release timeline are [available in the Working Group](https://github.com/reactwg/react-18/discussions/9). We'll post updates on this blog when we're closer to a public release.
+جزئیات بیشتر درمورد خط زمان پیش بینی شده در [گروه کاری](https://github.com/reactwg/react-18/discussions/9) در دسترس است. زمانی که به انتشار عمومی نزدیک شویم، در این بلاگ بروزرسانی ها را قرار خواهیم داد.
