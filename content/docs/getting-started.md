@@ -1,6 +1,6 @@
 ---
 id: getting-started
-title: Getting Started
+title: شروع
 permalink: docs/getting-started.html
 next: add-react-to-a-website.html
 redirect_from:
@@ -18,109 +18,109 @@ redirect_from:
   - "docs/environments.html"
 ---
 
-This page is an overview of the React documentation and related resources.
+این صفحه مروری بر مستند سازی ری‌اکت و منابع مربوط به آن می‌باشد .
 
-**React** is a JavaScript library for building user interfaces. Learn what React is all about on [our homepage](/) or [in the tutorial](/tutorial/tutorial.html).
+**ری‌‌اکت** یک کتابخانه جاوا اسکریپت برای ایجاد کردن رابط‌های کاربری است. برای بهتر فهمیدن هر آنچه درباره مفهوم ری‌کت است می‌توانید به   [صفحه اصلی ری‌اکت](/) یا به [ بخش آموزش](/tutorial/tutorial.html) مراجعه کنید.
 
 ---
 
-- [Try React](#try-react)
-- [Learn React](#learn-react)
-- [Staying Informed](#staying-informed)
-- [Versioned Documentation](#versioned-documentation)
-- [Something Missing?](#something-missing)
+- [ری‌اکت را امتحان کنید](#try-react)
+- [یادگیری ری‌اکت](#learn-react)
+- [به روز بمانید](#staying-informed)
+- [ورژن‌های مستندات](#versioned-documentation)
+- [چیزی از قلم افتاده است؟](#something-missing)
 
-## Try React {#try-react}
+## ری‌اکت را امتحان کنید {#try-react}
 
-React has been designed from the start for gradual adoption, and **you can use as little or as much React as you need.** Whether you want to get a taste of React, add some interactivity to a simple HTML page, or start a complex React-powered app, the links in this section will help you get started.
+ری‌اکت از ابتدا برای پذیرش تدریجی طراحی شده‌است، و **شما می‌توانید کم یا زیاد به هر میزان که نیاز دارید از آن استفاده کنید**.اگر شما بخواهید طعم ری‌اکت را بچشید ، مقداری تعامل به یک صفحه **HTML** ساده اضافه میکنید، یا یک برنامه قدرتمند و پیچیده ری‌اکت را شروع می‌کنید، پیوست‌ها در این بخش به شما کمک خواهند کرد که شروع کنید.
 
-### Online Playgrounds {#online-playgrounds}
+### زمین بازی آنلاین {#online-playgrounds}
 
-If you're interested in playing around with React, you can use an online code playground. Try a Hello World template on [CodePen](codepen://hello-world), [CodeSandbox](https://codesandbox.io/s/new), or [Stackblitz](https://stackblitz.com/fork/react).
+اگر به سر و کله زدن با ری‌اکت علاقه‌مند هستید، میتوانید از محیط‌های انلاین برای کد زدن استفاده کنید. عبارت معروف **Hello World** را بر روی سایت ‌هایی مانند  [CodePen](codepen://hello-world)، [CodeSandbox](https://codesandbox.io/s/new) یا [Stackblitz](https://stackblitz.com/fork/react) امتحان کنید.
 
-If you prefer to use your own text editor, you can also [download this HTML file](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html), edit it, and open it from the local filesystem in your browser. It does a slow runtime code transformation, so we'd only recommend using this for simple demos.
+اگر شما ترجیح می‌دهید از ویرایشگر متن خود استفاده کنید ، می‌توانید [این فایل HTML را دانلود کنید](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html)، ویرایش کنید، و آن را در فایل سیستم محلی خود با مرور‌گر باز کنید. این کار زمان اجرا تبدیل کد بسیار کندی دارد، بنابراین ما فقط استفاده از آن را برای دمو‌های ساده توصیه خواهیم کرد .
 
-### Add React to a Website {#add-react-to-a-website}
+### افزودن ری‌اکت به یک وبسایت {#add-react-to-a-website}
 
-You can [add React to an HTML page in one minute](/docs/add-react-to-a-website.html). You can then either gradually expand its presence, or keep it contained to a few dynamic widgets.
+شما می‌تواتید [ری‌اکت را در یک دقیقه به یک صفحه HTML اضافه کنید.](/docs/add-react-to-a-website.html) شما می‌توانید به تدریج حضور آن را گسترش دهید ، و یا آن را در چند ویجت  (widgets) پویا نگه دارید.
 
-### Create a New React App {#create-a-new-react-app}
+### ایجاد کردن یک برنامه جدید ری‌اکت {#create-a-new-react-app}
 
-When starting a React project, a [simple HTML page with script tags](/docs/add-react-to-a-website.html) might still be the best option. It only takes a minute to set up!
+هنگامی‌ که یک پروژه ری‌اکت را شروع می‌کنید،[یک صفحه HTML ساده همراه با برچسب‌های اسکریپت](/docs/add-react-to-a-website.html) ممکن است هنوز بهترین گزینه باشد. فقط یک دقیقه طول می‌کشد تابه راه بیفتد!
 
-As your application grows, you might want to consider a more integrated setup. There are several JavaScript toolchains we recommend for larger applications. Each of them can work with little to no configuration and lets you take full advantage of the rich React ecosystem. [Learn how.](/docs/create-a-new-react-app.html)
+همانطور که برنامه شما رشد می‌کند، ممکن است بخواهید یک چیدمان یکپارچه را در نظر بگیرید. مجموعه ابزار‌های مختلفی برای جاوا اسکریپت وجود دارد که ما برای برنامه‌های بزرگ‌تر پیشنهاد می‌کنیم. هر کدام از آن‌ها می‌توانند با یک پیکربندی کوچک و یا بدون هیچ پیکربندی کار کنند و به شما اجازه می‌دهد تا از تمام مزیت اکو سیستم غنی ری‌اکت بهره ببرید . [**بیشتر بخوانید**.](/docs/create-a-new-react-app.html)
 
-## Learn React {#learn-react}
+## یادگیری ری‌اکت {#learn-react}
 
-People come to React from different backgrounds and with different learning styles. Whether you prefer a more theoretical or a practical approach, we hope you'll find this section helpful.
+افرادی که به سمت ری‌اکت می‌آیند در زمینه‌های مختلف و با سبک‌های یادگیری متفاوتی هستند. چه شما یک رویکرد تئوری و یا یک روش عملی را ترجیح ‌دهید ، ما امیدواریم که این بخش برای شما مفید باشد.
 
-* If you prefer to **learn by doing**, start with our [practical tutorial](/tutorial/tutorial.html).
-* If you prefer to **learn concepts step by step**, start with our [guide to main concepts](/docs/hello-world.html).
+* اگر شما **یادگیری همراه با انجام دادن** را ترجیح می‌دهید ، با [آموزش عملی](/tutorial/tutorial.html) ما شروع کنید.
+* اگر شما  **یادگیری گام به گام مفاهیم** را ترجیح می‌دهید، با [راهنمایی به مفاهیم اصلی](/docs/hello-world.html) ما شروع کنید.
 
-Like any unfamiliar technology, React does have a learning curve. With practice and some patience, you *will* get the hang of it.
+مانند هر تکنولوژی ناآشنا دیگری ،ری‌اکت از یک منحنی یادگیری برخوردار است. با تمرین و کمی صبر و شکیبایی، شما *لم‌کاری* آن را به دست خواهید آورد.
 
-### First Examples {#first-examples}
+### مثال‌های ابتدایی {#first-examples}
 
-The [React homepage](/) contains a few small React examples with a live editor. Even if you don't know anything about React yet, try changing their code and see how it affects the result.
+در [صفحه اصلی ری‌اکت](/) تعداد کمی مثال ساده ری‌اکت همراه با ویرایشگر زنده (live editor) وجود دارد. حتی اگر شما هنوز چیزی در مورد ری‌اکت نمیدانید، سعی کنید کد آن‌ها را تغییر دهید و ببینید چگونه بر نتیجه آن‌ها تاثیر می‌گذارد.
 
-### React for Beginners {#react-for-beginners}
+### ری‌اکت برای مبتدی‌ها {#react-for-beginners}
 
-If you feel that the React documentation goes at a faster pace than you're comfortable with, check out [this overview of React by Tania Rascia](https://www.taniarascia.com/getting-started-with-react/). It introduces the most important React concepts in a detailed, beginner-friendly way. Once you're done, give the documentation another try!
+اگر احساس می‌کنید که اسناد ری‌اکت با سرعت بیشتری نسبت به زمانی که با آن راحت هستید، حرکت می‌کند، [این مرور کلی ری‌اکت از Tania Rascia](https://www.taniarascia.com/getting-started-with-react/) را چک کنید. این مرور مهم‌ترین مفاهیم ری‌اکت را به طور مفصل ، به روش دوستانه و مبتدی معرفی می‌کند. زمانی که این کار را انجام دادید، مستندات را دوباره امتحان کنید!
 
-### React for Designers {#react-for-designers}
+### ری‌اکت برای طراح‌ها {#react-for-designers}
 
-If you're coming from a design background, [these resources](https://reactfordesigners.com/) are a great place to get started.
+اگر شما از یک زمینه با سابقه طراحی می‌آیید، [این منابع](https://reactfordesigners.com/) جای خوبی برای شروع شما هستند
 
-### JavaScript Resources {#javascript-resources}
+### منابع جاوا‌‌ اسکریپت {#javascript-resources}
 
-The React documentation assumes some familiarity with programming in the JavaScript language. You don't have to be an expert, but it's harder to learn both React and JavaScript at the same time.
+مستندات ری‌اکت ، نوعی شباهت با برنامه‌نویسی در زبان جاوا اسکریپت دارد. شما نباید یک حرفه‌ای باشید ، ولی یادگیری همزمان ری‌اکت و جاوا اسکریپت سخت‌‌‌تر است.
 
-We recommend going through [this JavaScript overview](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) to check your knowledge level. It will take you between 30 minutes and an hour but you will feel more confident learning React.
+ما توصیه می‌کنیم که از [این مرور کلی جاوا اسکریپت](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) استفاده کنید برای اینکه سطح دانش خودتان را چک کنید. این کار شما بین ۳۰ دقیقه تا یک ساعت طول خواهد کشید اما شما احساس اعتماد به نفس بیشتری بدست  خواهید آورد.
 
->Tip
+>نکته
 >
->Whenever you get confused by something in JavaScript, [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [javascript.info](https://javascript.info/) are great websites to check. There are also [community support forums](/community/support.html) where you can ask for help.
+>هر وقت شما  با چیزی در جاوا اسکریپت گیج شدید، [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript) و [javascript.info](https://javascript.info/) بهترین وب‌سایت‌ها یرای چک کردن هستند. همچنین انجمن‌های [community support forums](/community/support.html) وجود دارد که شما در آن‌جا می‌توانید کمک بگیرید.
 
-### Practical Tutorial {#practical-tutorial}
+### آموزش عملی {#practical-tutorial}
 
-If you prefer to **learn by doing,** check out our [practical tutorial](/tutorial/tutorial.html). In this tutorial, we build a tic-tac-toe game in React. You might be tempted to skip it because you're not into building games -- but give it a chance. The techniques you'll learn in the tutorial are fundamental to building *any* React apps, and mastering it will give you a much deeper understanding.
+اگر شما **یادگیری همراه با انجام دادن** را ترجیح می‌دهید [آموزش عملی](/tutorial/tutorial.html) ما را چک کنید . در این آموزش ، ما یک بازی دوز (tic - tac - toe) در ری‌اکت می‌سازیم. شما ممکن است وسوسه بشوید بی‌خیال آن بشوید چون به ساختن بازی‌های کامپیوتری علاقه‌ای ندارید؛ اما یک فرصت به این آموزش بدهید. تکنیک‌هایی که در این آموزش یاد می‌گیرید برای ساختن هر نوع برنامه ری‌اکت بنیادی و اساسی هستند و یاد گرفتن آن درک عمیق‌تری از آن به شما خواهد داد .
 
-### Step-by-Step Guide {#step-by-step-guide}
+### راهنمایی گام به گام {#step-by-step-guide}
 
-If you prefer to **learn concepts step by step,** our [guide to main concepts](/docs/hello-world.html) is the best place to start. Every next chapter in it builds on the knowledge introduced in the previous chapters so you won't miss anything as you go along.
+اگر شما  **یادگیری گام به گام مفاهیم** را ترجیح می‌دهید ،  [راهنمایی به مفاهیم اصلی](/docs/hello-world.html) ما بهترین جا برای شروع است. هر فصل بعد از آن براساس دانش ارائه‌شده در بخش‌های قبلی ساخته می‌شود به طوری که شما همانطور که ادامه می‌دهید هیچ چیزی را از دست نخواهید داد .
 
-### Thinking in React {#thinking-in-react}
+### فکر کردن در چهارچوب ری‌اکت {#thinking-in-react}
 
-Many React users credit reading [Thinking in React](/docs/thinking-in-react.html) as the moment React finally "clicked" for them. It's probably the oldest React walkthrough but it's still just as relevant.
+بسیاری از کاربران ری‌اکت با خواندن [فکر کردن در چهارچوب ری‌اکت](/docs/thinking-in-react.html) به آن اعتبار می‌دهند لحظه‌ای که ری‌اکت در نهایت برای آن‌ها جبران خواهد‌کرد. این احتمالا ً قدیمی‌ترین معرفی ری‌اکت است، اما هنوز به همان اندازه مرتبط است .
 
-### Recommended Courses {#recommended-courses}
+### دوره‌هایی پیشنهادی {#recommended-courses}
 
-Sometimes people find third-party books and video courses more helpful than the official documentation. We maintain [a list of commonly recommended resources](/community/courses.html), some of which are free.
+برخی اوقات مردم کتاب‌های مرتبط و دوره‌های ویدئویی مفیدتری نسبت به اسناد رسمی پیدا می‌کنند . ما  [فهرست منابع توصیه‌شده](/community/courses.html) را نگهداری می‌کنیم، که برخی از آن‌ها رایگان هستند.
 
-### Advanced Concepts {#advanced-concepts}
+### مفاهیم پیشرفته {#advanced-concepts}
 
-Once you're comfortable with the [main concepts](/docs/hello-world.html) and played with React a little bit, you might be interested in more advanced topics. This section will introduce you to the powerful, but less commonly used React features like [context](/docs/context.html) and [refs](/docs/refs-and-the-dom.html).
+زمانی که شما با  [مفاهیم اصلی](/docs/hello-world.html) احساس راحتی کردید و کمی با ری‌اکت بازی کردید، ممکن است به موضوعات پیشرفته‌تر علاقه‌مند باشید. این بخش شما را به قدرتمندی معرفی می‌کند، اما معمولاً کمتر از خصوصیات ری‌اکت استفاده می‌شود مانند [context](/docs/context.html) و [refs](/docs/refs-and-the-dom.html).
 
-### API Reference {#api-reference}
+###  مرجع API {#api-reference1}
 
-This documentation section is useful when you want to learn more details about a particular React API. For example, [`React.Component` API reference](/docs/react-component.html) can provide you with details on how `setState()` works, and what different lifecycle methods are useful for.
+این بخش اسناد زمانی که می‌خواهید جزئیات بیشتری را در مورد یک API مشخص ری‌اکت یاد بگیرید مفید است . به عنوان مثال، [`React.Component` API reference](/docs/react-component.html) می‌تواند جزئیاتی را برای شما درباره‌ی اینکه چگونه یک  `setState()` کار می‌کند  فراهم کند، و کدام روش‌های مختلف چرخه حیات مفید هستند ؟
 
-### Glossary and FAQ {#glossary-and-faq}
+### واژه‌نامه و سوالات متداول {#glossary-and-faq}
 
-The [glossary](/docs/glossary.html) contains an overview of the most common terms you'll see in the React documentation. There is also a FAQ section dedicated to short questions and answers about common topics, including [making AJAX requests](/docs/faq-ajax.html), [component state](/docs/faq-state.html), and [file structure](/docs/faq-structure.html).
+بخش [واژنامه](/docs/glossary.html) شامل مرور کلی جملات رایجی که در مستندات ری‌اکت می‌بینید را شامل می‌شود. همچنین بخش سوالات مربوط به سوالات کوتاه و پاسخ به موضوعات مشترک وجود دارد ، شامل [ساختن درخواست‌های AJAX](/docs/faq-ajax.html) ، [کامپوننت state](/docs/faq-state.html) و [ساختار فایل](/docs/faq-structure.html).
 
-## Staying Informed {#staying-informed}
+## به روز بمانید {#staying-informed}
 
-The [React blog](/blog/) is the official source for the updates from the React team. Anything important, including release notes or deprecation notices, will be posted there first.
+بخش [بلاگ ری‌اکت](/blog/) یک منبع رسمی برای به روزرسانی های تیم ری‌اکت است. هر چیز مهم دیگری، شامل نکات انتشار (release notes) یا  اعلام‌های استهلاک (deprecation notices)، ابتدا در اینجا پست خواهد شد.
 
-You can also follow the [@reactjs account](https://twitter.com/reactjs) on Twitter, but you won't miss anything essential if you only read the blog.
+شما همچنین می‌توانید صفحه  [اکانت @reactjs](https://twitter.com/reactjs) را در تويیتر دنبال کنید، اما اگر بلاگ ری‌اکت را مطالعه کنید هیچ چیز مهمی را از دست نمی‌دهید .
 
-Not every React release deserves its own blog post, but you can find a detailed changelog for every release in the [`CHANGELOG.md` file in the React repository](https://github.com/facebook/react/blob/main/CHANGELOG.md), as well as on the [Releases](https://github.com/facebook/react/releases) page.
+هر نسخه منتشرشده ری‌اکت، لازم به داشتن پست وبلاگ خودش نیست،اما شما می‌توانید گزارش مفصلی از تغییرات برای هر نسخه منتشر شده در [`CHANGELOG.md` file in the React repository](https://github.com/facebook/react/blob/main/CHANGELOG.md) پیدا کنید ، وهمچنین در مورد نسخه‌های منتشرشده در صفحه [انتشارها](https://github.com/facebook/react/releases) اطلاعات کسب کنید.
 
-## Versioned Documentation {#versioned-documentation}
+## ورژن‌های مستندات {#versioned-documentation}
 
-This documentation always reflects the latest stable version of React. Since React 16, you can find older versions of the documentation on a [separate page](/versions). Note that documentation for past versions is snapshotted at the time of the release, and isn't being continuously updated.
+این مستندسازی همیشه آخرین نسخه پایدار ری‌اکت را نشان می‌دهد. از ری‌اکت نسخه ۱۶ به بعد، شما می‌توانید نسخه‌های قدیمی اسناد را در یک  [صفحه جداگانه](/versions) پیدا کنید. توجه داشته باشید که سند نسخه‌های قبلی در زمان انتشار عکس گرفته شده است، و به صورت مستمر به روز‌رسانی نشده‌است.
 
-## Something Missing? {#something-missing}
+## چیزی از قلم افتاده است؟ {#something-missing}
 
-If something is missing in the documentation or if you found some part confusing, please [file an issue for the documentation repository](https://github.com/reactjs/reactjs.org/issues/new) with your suggestions for improvement, or tweet at the [@reactjs account](https://twitter.com/reactjs). We love hearing from you!
+اگر چیزی در مستندسازی از قلم افتاده‌است و یا اگر بخشی از آن را گیج‌کننده دیدید، لطفا [فایل موضوع مورد نظر خود را در مخزن اسناد](https://github.com/reactjs/reactjs.org/issues/new) همراه با پیشنهادهای شما برای پیشرفت بیشتر مستند‌سازی قرار دهید، یا آن را در صفحه توییتر  [اکانت @reactjs](https://twitter.com/reactjs) توییت کنید. ما مشتاقیم که آن را از شما بشنویم!
