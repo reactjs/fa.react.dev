@@ -1,15 +1,15 @@
-- title: Installation
+- title: نصب کردن
   items:
     - id: getting-started
-      title: Getting Started
+      title: شروع
     - id: add-react-to-a-website
-      title: Add React to a Website
+      title: افزودن ری‌اکت به یک وبسایت
     - id: create-a-new-react-app
-      title: Create a New React App
+      title: ایجاد کردن یک برنامه جدید در ری‌اکت
     - id: cdn-links
-      title: CDN Links
+      title: لینک‌های CDN
     - id: release-channels
-      title: Release Channels
+      title: کانال‌های انتشار
 - title: مفاهیم اصلی
   isOrdered: true
   items:
@@ -106,7 +106,7 @@
       title: پیش‌نیاز‌های محیط جاوااسکریپت
     - id: glossary
       title: واژه‌نامه
-- title: Hooks
+- title: هوک‌ها
   isOrdered: true
   items:
     - id: hooks-intro
@@ -125,14 +125,14 @@
       title: Hooks API Reference
     - id: hooks-faq
       title: Hooks FAQ
-- title: Testing
+- title: تست
   items:
     - id: testing
-      title: Testing Overview
+      title: مرور کلی تست گرفتن
     - id: testing-recipes
-      title: Testing Recipes
+      title: دستورات تست گرفتن
     - id: testing-environments
-      title: Testing Environments
+      title: محیط‌های تست گرفتن
 - title: Contributing
   items:
     - id: how-to-contribute
@@ -143,7 +143,7 @@
       title: Implementation Notes
     - id: design-principles
       title: Design Principles
-- title: FAQ
+- title: سوالات متداول
   items:
     - id: faq-ajax
       title: AJAX و API ها
