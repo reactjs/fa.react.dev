@@ -141,7 +141,7 @@ class Home extends Component {
                         fontSize: 30,
                       },
                     }}>
-                    یک کتابخانه جاوااسکریپت برای ساخت رابط‌کاربری
+                    یک کتابخانه جاوااسکریپت برای ساخت رابط کاربری
                   </p>
                   <Flex
                     valign="center"

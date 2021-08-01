@@ -18,7 +18,7 @@ const FeedbackForm = () => {
   } else {
     return (
       <span>
-        Is this page useful?
+        آیا این صفحه مفید است؟
         <button
           css={[sharedStyles.articleLayout.feedbackButton, {marginLeft: '6px'}]}
           aria-label="Yes"
