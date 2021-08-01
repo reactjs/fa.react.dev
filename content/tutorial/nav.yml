@@ -52,7 +52,7 @@
           href: /tutorial/tutorial.html#making-an-interactive-component
           forceInternal: true
         - id: developer-tools
-          title: ابزار برنامه نویسان
+          title: ابزارهای برنامه‌نویسان
           href: /tutorial/tutorial.html#developer-tools
           forceInternal: true
     - id: completing-the-game
@@ -61,15 +61,15 @@
       forceInternal: true
       subitems:
         - id: lifting-state-up
-          title: بالا بردن state(منتقل به کامپوننت‌های بالا‌تر)
+          title: بالا بردن state (انتقال state به کامپوننت‌های بالا‌تر)
           href: /tutorial/tutorial.html#lifting-state-up
           forceInternal: true
         - id: why-immutability-is-important
-          title: چرا جایگزینی؟
+          title: چرا تغییرناپذیری (Immutability) مهم است؟
           href: /tutorial/tutorial.html#why-immutability-is-important
           forceInternal: true
         - id: function-components
-          title: کامپوننت تابعی
+          title: کامپوننت‌های تابعی
           href: /tutorial/tutorial.html#function-components
           forceInternal: true
         - id: taking-turns
@@ -81,7 +81,7 @@
           href: /tutorial/tutorial.html#declaring-a-winner
           forceInternal: true
     - id: adding-time-travel
-      title: اضافه کرده قابلیت ماشین زمان
+      title: اضافه کردن قابلیت ماشین زمان
       href: /tutorial/tutorial.html#adding-time-travel
       forceInternal: true
       subitems:
@@ -94,11 +94,11 @@
           href: /tutorial/tutorial.html#lifting-state-up-again
           forceInternal: true
         - id: showing-the-past-moves
-          title: نمایش حرکت‌های قبلی به کابر
+          title: نمایش حرکت‌های قبلی
           href: /tutorial/tutorial.html#showing-the-past-moves
           forceInternal: true
         - id: picking-a-key
-          title: قرار دادن یک کلید
+          title: برگزیدن یک کلید (key)
           href: /tutorial/tutorial.html#picking-a-key
           forceInternal: true
         - id: implementing-time-travel
