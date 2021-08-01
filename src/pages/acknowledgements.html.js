@@ -22,7 +22,7 @@ const Acknowlegements = ({data, location}) => (
           <Header>Acknowledgements</Header>
           <TitleAndMetaTags
             canonicalUrl={`${urlRoot}/acknowledgements.html`}
-            title="React - Acknowledgements"
+            title="ری‌اکت - سپاسگزاری‌ها"
           />
 
           <div css={sharedStyles.markdown}>

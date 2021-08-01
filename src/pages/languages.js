@@ -47,27 +47,27 @@ const Languages = ({location}: Props) => (
     <Container>
       <div css={sharedStyles.articleLayout.container}>
         <div css={sharedStyles.articleLayout.content}>
-          <Header>Languages</Header>
+          <Header>زبان‌ها</Header>
           <TitleAndMetaTags
             canonicalUrl={`${urlRoot}/languages/`}
-            title="React - Languages"
+            title="ری‌اکت - زبان‌ها"
           />
 
           <div css={sharedStyles.markdown}>
             <p>
-              The React documentation is available in the following languages:
+              مستندات ری‌اکت در زبان‌های زیر در دسترس است:
             </p>
 
             <LanguagesGrid languages={complete} />
 
-            <h2>In Progress</h2>
+            <h2>در دست اقدام</h2>
             <LanguagesGrid languages={partial} />
 
-            <h2>Needs Contributors</h2>
+            <h2>به مشارکت کنندگان نیاز دارد</h2>
             <LanguagesGrid languages={incomplete} />
 
             <p>
-              Don't see your language above?{' '}
+              زبان خود را نمی‌بینید؟{' '}
               <a
                 href="https://github.com/reactjs/reactjs.org-translation#reactjsorg-translation"
                 target="_blank"

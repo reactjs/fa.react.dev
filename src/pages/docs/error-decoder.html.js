@@ -53,7 +53,7 @@ const ErrorPage = ({data, location}: Props) => (
               title={data.markdownRemark.frontmatter.title}
             />
             <TitleAndMetaTags
-              title={`React - ${data.markdownRemark.frontmatter.title}`}
+              title={`ری‌اکت - ${data.markdownRemark.frontmatter.title}`}
             />
 
             <div css={sharedStyles.articleLayout.content}>
