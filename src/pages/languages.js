@@ -54,9 +54,7 @@ const Languages = ({location}: Props) => (
           />
 
           <div css={sharedStyles.markdown}>
-            <p>
-              مستندات ری‌اکت در زبان‌های زیر در دسترس است:
-            </p>
+            <p>مستندات ری‌اکت در زبان‌های زیر در دسترس است:</p>
 
             <LanguagesGrid languages={complete} />
 
