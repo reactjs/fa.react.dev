@@ -8,10 +8,10 @@
 
 module.exports = {
   siteMetadata: {
-    title: 'React: A JavaScript library for building user interfaces',
-    siteUrl: 'https://reactjs.org',
-    rssFeedTitle: 'React',
-    rssFeedDescription: 'A JavaScript library for building user interfaces',
+    title: 'ری‌اکت: یک کتابخانه جاوااسکریپت برای ساخت رابط کاربری',
+    siteUrl: 'https://fa.reactjs.org',
+    rssFeedTitle: 'ری‌اکت',
+    rssFeedDescription: 'یک کتابخانه جاوااسکریپت برای ساخت رابط کاربری',
   },
   mapping: {
     'MarkdownRemark.frontmatter.author': 'AuthorYaml',
@@ -60,7 +60,7 @@ module.exports = {
           {
             resolve: 'gatsby-remark-code-repls',
             options: {
-              defaultText: '<b>Try it on CodePen</b>',
+              defaultText: '<b>بر روی CodePen امتحان کنید</b>',
               directory: `${__dirname}/examples/`,
               target: '_blank',
               codepen: {
@@ -163,10 +163,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'React Docs',
-        short_name: 'React', // eg. React [%LANG_CODE%]
+        name: 'اسناد ری‌اکت',
+        short_name: 'ری‌اکت [fa]', // eg. React [%LANG_CODE%]
         // Translators: please change this and two above options (see https://www.gatsbyjs.org/packages/gatsby-plugin-manifest/#feature-configuration---optional)
-        lang: 'en',
+        lang: 'fa',
         start_url: '/',
         background_color: '#20232a',
         theme_color: '#20232a',
