@@ -14,7 +14,7 @@ const FeedbackForm = () => {
   const [feedbackGiven, setFeedbackGiven] = useState(false);
 
   if (feedbackGiven) {
-    return 'Thanks for letting us know!';
+    return 'ممنون ازینکه ما را در جریان گذاشتید!';
   } else {
     return (
       <span>
