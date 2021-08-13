@@ -1,7 +1,7 @@
-- title: نصب کردن
+- title: نصب
   items:
     - id: getting-started
-      title: شروع
+      title: شروع به کار
     - id: add-react-to-a-website
       title: افزودن ری‌اکت به یک وبسایت
     - id: create-a-new-react-app
