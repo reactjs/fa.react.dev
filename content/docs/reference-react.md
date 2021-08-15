@@ -175,12 +175,16 @@ React.createElement(
 ```
 React.cloneElement(
   element,
-  [props],
+  [config],
   [...children]
 )
 ```
 
+<<<<<<< HEAD
 شبیه‌سازی (clone) و برگرداندن یک `المنت` به عنوان یک نقطه شروع. المنت جدید، دارای props المنت اصلی همراه با props جدید به شکل ترکیب شده سطحی می‌باشد. فرزندان جدید جایگزین فرزندان قبلی می‌شوند. `key` و `ref` المنت اصلی محفوظ می‌مانند.
+=======
+Clone and return a new React element using `element` as the starting point. `config` should contain all new props, `key`, or `ref`. The resulting element will have the original element's props with the new props merged in shallowly. New children will replace existing children. `key` and `ref` from the original element will be preserved if no `key` and `ref` present in the `config`.
+>>>>>>> 95e15d063b205007a92c52efb5311f76ad5a0b6c
 
 `React.cloneElement()` تقریبا برابر است با:
 
@@ -188,7 +192,11 @@ React.cloneElement(
 <element.type {...element.props} {...props}>{children}</element.type>
 ```
 
+<<<<<<< HEAD
  گرچه، این کار `ref`ها را محفوظ نگاه می‌دارد. این یه آن معناست که اگر شما یک فرزند را با `ref` آن دریافت کنید، آن‌را به شکل اتفاقی از اجداد خود سرقت نمی‌کنید. شما `ref` یکسان متصل شده به المنت جدید خواهید داشت.
+=======
+However, it also preserves `ref`s. This means that if you get a child with a `ref` on it, you won't accidentally steal it from your ancestor. You will get the same `ref` attached to your new element. The new `ref` or `key` will replace old ones if present.
+>>>>>>> 95e15d063b205007a92c52efb5311f76ad5a0b6c
 
 این API به عنوان جایگزینی برای `React.addons.cloneWithProps()` منسوخ شده معرفی شد.
 
