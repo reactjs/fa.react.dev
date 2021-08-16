@@ -1,13 +1,13 @@
 ---
 id: hooks-faq
-title: Hooks FAQ
+title: سؤالات متداول هوک‌ها
 permalink: docs/hooks-faq.html
 prev: hooks-reference.html
 ---
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+*هوک‌ها* قابلیت جدید در ری‌اکت ۱۶.۸ هستند. هوک‌ها به شما اجازه می‌دهند بدون نوشتن کلاس، از state و قابلیت های دیگر ری‌اکت استفاده کنید.
 
-This page answers some of the frequently asked questions about [Hooks](/docs/hooks-overview.html).
+این صفحه به برخی از سؤالات متداول درباره [هوک‌ها](/docs/hooks-overview.html) پاسخ می‌دهد.
 
 <!--
   if you ever need to regenerate this, this snippet in the devtools console might help:
@@ -18,13 +18,13 @@ This page answers some of the frequently asked questions about [Hooks](/docs/hoo
   ).join('\n')
 -->
 
-* **[استراتژی استفاده](#adoption-strategy)**
-  * [کدام نسخه‌های ری‌اکت از هوک پشتیبانی می‌کنند؟](#which-versions-of-react-include-hooks)
-  * [آیا لازم است تمام کلاس کامپوننت‌هایم را بازنویسی کنم؟](#do-i-need-to-rewrite-all-my-class-components)
-  * [چه کاری با هوک می‌توانم انجام دهم که با کلاس کامپوننت‌ها نمی‌توانستم؟](#what-can-i-do-with-hooks-that-i-couldnt-with-classes)
-  * [چه مقدار از دانش ری‌اکت من مرتبط می‌ماند؟](#how-much-of-my-react-knowledge-stays-relevant)
-  * [Should I use Hooks, classes, or a mix of both?](#should-i-use-hooks-classes-or-a-mix-of-both)
-  * [Do Hooks cover all use cases for classes?](#do-hooks-cover-all-use-cases-for-classes)
+* **[استراتژی پذیرش استفاده از هوک](#adoption-strategy)**
+  * [کدام نسخه‌های ری‌اکت شامل هوک‌ها می‌باشند؟](#which-versions-of-react-include-hooks)
+  * [آیا نیاز است تمام کامپوننت‌های از جنس کلاس را بازنویسی کنم؟](#do-i-need-to-rewrite-all-my-class-components)
+  * [چه کاری می‌توانم با هوک‌ها انجام دهم که با کلاس‌ها نمی‌توانم؟](#what-can-i-do-with-hooks-that-i-couldnt-with-classes)
+  * [چقدر از دانش من درمورد ری‌اکت همچنان مرتبط است و به درد می‌خورد؟](#how-much-of-my-react-knowledge-stays-relevant)
+  * [بهتر است از هوک‌ها استفاده کنم یا کلاس‌ها و یا ترکیبی از این دو؟](#should-i-use-hooks-classes-or-a-mix-of-both)
+  * [آیا هوک‌ها تمام موارد استفاده کلاس‌ها را پوشش می‌دهند؟](#do-hooks-cover-all-use-cases-for-classes)
   * [Do Hooks replace render props and higher-order components?](#do-hooks-replace-render-props-and-higher-order-components)
   * [What do Hooks mean for popular APIs like Redux connect() and React Router?](#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router)
   * [Do Hooks work with static typing?](#do-hooks-work-with-static-typing)
@@ -57,11 +57,11 @@ This page answers some of the frequently asked questions about [Hooks](/docs/hoo
   * [How does React associate Hook calls with components?](#how-does-react-associate-hook-calls-with-components)
   * [What is the prior art for Hooks?](#what-is-the-prior-art-for-hooks)
 
-## استراتژی استفاده {#adoption-strategy}
+## استراتژی پذیرش استفاده از هوک {#adoption-strategy}
 
-### کدام نسخه‌های ری‌اکت از هوک پشتیبانی می‌کنند؟ {#which-versions-of-react-include-hooks}
+### کدام نسخه‌های ری‌اکت شامل هوک‌ها می‌باشند؟ {#which-versions-of-react-include-hooks}
 
-Starting with 16.8.0, React includes a stable implementation of React Hooks for:
+از نسخه ری‌اکت ۱۶.۸.۰، ری‌اکت شامل یک پیاده سازی پایدار از هوک‌های ری‌کت برای کتابخانه‌های زیر است:
 
 * React DOM
 * React Native
@@ -69,35 +69,35 @@ Starting with 16.8.0, React includes a stable implementation of React Hooks for:
 * React Test Renderer
 * React Shallow Renderer
 
-Note that **to enable Hooks, all React packages need to be 16.8.0 or higher**. Hooks won't work if you forget to update, for example, React DOM.
+در نظر داشته باشید که برای **فعال کردن هوک‌ها، تمام پکیج‌های ری‌اکت نیاز به نسخه ۱۶.۸.۰ و یا بالاتر دارند**. اگر شما فراموش کنید که یک پکیجی مثل React Dom را بروزرسانی کنید، هوک‌ها کار نمی‌کنند.
 
-[React Native 0.59](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059) and above support Hooks.
+[React Native نسخه ۰.۵۹](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059) و بالاتر از هوک‌ها پشتیبانی می‌کنند.
 
-### چه کاری با هوک می‌توانم انجام دهم که با کلاس کامپوننت‌ها نمی‌توانستم؟ {#do-i-need-to-rewrite-all-my-class-components}
+### آیا نیاز است تمام کامپوننت‌های از جنس کلاس را بازنویسی کنم؟ {#do-i-need-to-rewrite-all-my-class-components}
 
-No. There are [no plans](/docs/hooks-intro.html#gradual-adoption-strategy) to remove classes from React -- we all need to keep shipping products and can't afford rewrites. We recommend trying Hooks in new code.
+خیر. [هیچ برنامه‌ای](/docs/hooks-intro.html#gradual-adoption-strategy) برای حذف کامپوننت‌های کلاسی از ری‌کت وجود ندارد. ما همگی نیاز داریم که به انتشار محصولاتمان ادامه دهیم و نمی‌توانیم از عهده مخارج بازنویسی برآییم. پیشنهاد می‌کنیم هوک‌ها را در یک پروژه جدید امتحان کنید.
 
-### چه کاری با هوک می توانم انجام دهم که با کلاس کامپوننت ها نمی توانم؟ {#what-can-i-do-with-hooks-that-i-couldnt-with-classes}
+### چه کاری می‌توانم با هوک‌ها انجام دهم که با کلاس‌ها نمی‌توانم؟ {#what-can-i-do-with-hooks-that-i-couldnt-with-classes}
 
-Hooks offer a powerful and expressive new way to reuse functionality between components. ["Building Your Own Hooks"](/docs/hooks-custom.html) provides a glimpse of what's possible. [This article](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889) by a React core team member dives deeper into the new capabilities unlocked by Hooks.
+هوک‌ها یک راه جدید قدرتمند و گویا برای بازاستفاده از کارکرد‌ها بین کامپوننت‌ها ارائه می‌دهند. [هوک‌های خودت را بساز](/docs/hooks-custom.html)، یک گوشه‌ای از آنچه با هوک‌ها می‌توانید انجام دهید را برای شما فراهم می‌کنند. [این مقاله](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889) که توسط یکی از اعضای اصلی ری‌اکت نوشته شده است، به قابلیت‌های جدیدی که توسط هوک‌ها مقدور شده‌اند به صورت عمیق می‌پردازد.
 
-### چه مقدار از دانش ری‌اکت من مرتبط می‌ماند؟ {#how-much-of-my-react-knowledge-stays-relevant}
+### چقدر از دانش من درمورد ری‌اکت همچنان مرتبط است و به درد می‌خورد؟ {#how-much-of-my-react-knowledge-stays-relevant}
 
-Hooks are a more direct way to use the React features you already know -- such as state, lifecycle, context, and refs. They don't fundamentally change how React works, and your knowledge of components, props, and top-down data flow is just as relevant.
+هوک‌ها یک روش مستقیم‌تر هستند برای استفاده از امکانات ری‌اکتی که شما می‌دانید؛ مثل state، چرخه حیات، context و ref. هوک‌ها تغییری اساسی در طرز کار ری‌اکت نمی‌دهند و دانش شما از کامپوننت‌ها، props، و جریان بالا به پایین داده همچنان مرتبط و درست است.
 
-Hooks do have a learning curve of their own. If there's something missing in this documentation, [raise an issue](https://github.com/reactjs/reactjs.org/issues/new) and we'll try to help.
+هوک‌ها منحنی یادگیری خود را دارند. اگر چیزی در این مستند‌سازی جا مانده است، یک [issue](https://github.com/reactjs/fa.reactjs.org/issues/new) ایجاد کنید و ما تلاش می‌کنیم کمک کنیم.
 
-### Should I use Hooks, classes, or a mix of both? {#should-i-use-hooks-classes-or-a-mix-of-both}
+### بهتر است از هوک‌ها استفاده کنم یا کلاس‌ها و یا ترکیبی از این دو؟ {#should-i-use-hooks-classes-or-a-mix-of-both}
 
-When you're ready, we'd encourage you to start trying Hooks in new components you write. Make sure everyone on your team is on board with using them and familiar with this documentation. We don't recommend rewriting your existing classes to Hooks unless you planned to rewrite them anyway (e.g. to fix bugs).
+زمانی که آماده بودید، ما شما را به امتحان کردن هوک‌ها در کامپوننت‌های جدیدی که می‌نویسید تشویق می‌کنیم. مطمعن شوید که همه در تیم شما توجیح باشند در استفاده از هوک‌ها و آشنایی با این مستندات. ما بازنویسی کلاس‌های موجود به هوک‌ها را پیشنهاد نمی‌دهیم، مگر زمانی که شما برنامه بازنویسی را از قبل داشته اید (همانند برطرف کردن خطاها).
 
-You can't use Hooks *inside* a class component, but you can definitely mix classes and function components with Hooks in a single tree. Whether a component is a class or a function that uses Hooks is an implementation detail of that component. In the longer term, we expect Hooks to be the primary way people write React components.
+شما نمی‌توانید از هوک‌ها *داخل* یک کامپوننت از نوع کلاس استفاده کنید، اما قطعن می‌توانید ترکیبی از کامپوننت‌های از نوع کلاس و تابع با هوک‌ها را در یک پروژه داشته باشید. اینکه کامپوننت کلاس باشد یا تابعی که از هوک‌ها استفاده می‌کند، جزئیات پیاده سازی آن کامپوننت است. در بلند مدت، ما توقع داریم که هوک‌ها روش اصلی نوشتن کامپوننت‌های ری‌اکت برای توسعه دهندگان باشند.
 
-### Do Hooks cover all use cases for classes? {#do-hooks-cover-all-use-cases-for-classes}
+### آیا هوک‌ها تمام موارد استفاده کلاس‌ها را پوشش می‌دهند؟ {#do-hooks-cover-all-use-cases-for-classes}
 
-Our goal is for Hooks to cover all use cases for classes as soon as possible. There are no Hook equivalents to the uncommon `getSnapshotBeforeUpdate`, `getDerivedStateFromError` and `componentDidCatch` lifecycles yet, but we plan to add them soon.
+هدف ما پوشش دادن تمامی موارد کاربرد کلاس‌ها توسط هوک‌ها در سریع‌ترین حالت ممکن است. هنوز هیچ هوک معادلی برای موارد غیرمعمول چرخه حیات `getSnapshotBeforeUpdate`، `getDerivedStateFromError` و `componentDidCatch` وجود ندارد، اما قصد داریم تا به زودی این موارد را نیز اضافه کنیم.
 
-It is an early time for Hooks, and some third-party libraries might not be compatible with Hooks at the moment.
+برای هوک‌ها این اول کار است و بعضی از کتابخانه‌های خارجی شاید در این لحظه با هوک‌ها سازگار نباشند.
 
 ### Do Hooks replace render props and higher-order components? {#do-hooks-replace-render-props-and-higher-order-components}
 
