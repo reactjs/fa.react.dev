@@ -97,7 +97,11 @@ function Example() {
 
 ما همچنین اطلاع داریم که انتظارات برای اضافه کردن دستورات پایه‌‌ی جدید به ری‌‌اکت بسیار بالاست. ما برای خواننده‌‌های کنجکاو، [یک RFC با جزییات](https://github.com/reactjs/rfcs/pull/68) آماده کرده‌‌ایم که با عمق بیشتری به ایده‌ها می‌‌پردازد، و چشم‌انداز گسترده‌ای بر تصمیمات مشخصی در طراحی فعلی و پیشین فراهم می‌‌کند.
 
+<<<<<<< HEAD
 **اساسا، هوک ها در کنار کدهای نوشته‌‌شده از قبل کار خواهند کرد، پس شما می‌‌توانید به‌صورت تدریجی از آن‌‌ها بهره گیرید.**  عجله‌ای برای مهاجرت‌ به هوک‌ها نیست! ما پیشنهاد می‌کنیم که از بازنویسی‌های کلان کد خود، به خصوص کامپوننت‌هایی پیچیده‌ای که با کلاس نوشته شده‌اند. تفکر به شیوه هوک‌ها نیازمند کمی تغییر در شیوه تفکر است. بر اساس تجربه ما، بهتر است که استفاده از هوک‌ها را در کامپوننت‌های کم اهمیت تمرین کنید و مطمئن شوید که همه اعضای تیم با آن‌ها مشکلی ندارند. بعد از اینکه هوک‌ها را امتحان کردید، [بازخورد‌های خود را برای ما ارسال کنید](https://github.com/facebook/react/issues/new)، چه مثبت، چه منفی!
+=======
+**Crucially, Hooks work side-by-side with existing code so you can adopt them gradually.** There is no rush to migrate to Hooks. We recommend avoiding any "big rewrites", especially for existing, complex class components. It takes a bit of a mind shift to start "thinking in Hooks". In our experience, it's best to practice using Hooks in new and non-critical components first, and ensure that everybody on your team feels comfortable with them. After you give Hooks a try, please feel free to [send us feedback](https://github.com/facebook/react/issues/new), positive or negative.
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
 ما قصد داریم تمام موارد کاربرد کلاس‌ها رو برای هوک‌ها هم پیاده‌سازی کنیم، اما **ما برای آینده قابل پیش‌بینی‌ای از کامپوننت‌های نوشته‌شده با کلاس پشتیبانی می‌کنیم.** در فیس‌بوک ما ده‌ها هزار کامپوننت برپایه کلاس داریم و قطعا برنامه‌ای برای بازنویسی مجدد آن‌ها نداریم. درعوض، در کنار کلاس‌ها، استفاده از هوک‌ها را در کد‌های جدید شروع کرده‌ایم.
 

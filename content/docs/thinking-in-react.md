@@ -47,9 +47,13 @@ prev: composition-vs-inheritance.html
 این بدان دلیل است که مدل داده (data model) و رابط کاربری معمولا از یک معماری اطلاعات (information architecture) یکسان تبعیت می‌کنند.
 رابط کاربری را طوری به کامپوننت‌های مختلف تقسیم کنید که هر کامپوننت با بخش خاصی از مدل داده مرتبط باشد.
 
-![Component diagram](../images/blog/thinking-in-react-components.png)
+![Diagram showing nesting of components](../images/blog/thinking-in-react-components.png)
 
+<<<<<<< HEAD
 در این تصویر می‌بینید که ما پنج کامپوننت در برنامه خود داریم و اطلاعاتی که هر کامپوننت نمایش می‌دهد را با حروف ایتالیک مشخص کرده‌ایم:
+=======
+You'll see here that we have five components in our app. We've italicized the data each component represents. The numbers in the image correspond to the numbers below.
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
   1. **`FilterableProductTable` (نارنجی):** شامل تمام برنامه 
   2. **`SearchBar` (آبی):** *ورودی‌های کاربر* را دریافت می‌کند
