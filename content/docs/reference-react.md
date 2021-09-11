@@ -180,11 +180,7 @@ React.cloneElement(
 )
 ```
 
-<<<<<<< HEAD
-شبیه‌سازی (clone) و برگرداندن یک `المنت` به عنوان یک نقطه شروع. المنت جدید، دارای props المنت اصلی همراه با props جدید به شکل ترکیب شده سطحی می‌باشد. فرزندان جدید جایگزین فرزندان قبلی می‌شوند. `key` و `ref` المنت اصلی محفوظ می‌مانند.
-=======
-Clone and return a new React element using `element` as the starting point. `config` should contain all new props, `key`, or `ref`. The resulting element will have the original element's props with the new props merged in shallowly. New children will replace existing children. `key` and `ref` from the original element will be preserved if no `key` and `ref` present in the `config`.
->>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
+شبیه‌سازی (clone) و برگرداندن یک المنت جدید ری‌اکت با استفاده از `element` به عنوان نقطه شروع جدید. `config` باید تمامی props های جدید، `key` یا `ref` را شامل شود. المنت جدید، دارای props المنت اصلی همراه با props جدید به شکل ترکیب شده سطحی می‌باشد. فرزندان جدید جایگزین فرزندان قبلی می‌شوند. `key` و `ref` المنت اصلی اگر `key` و `ref` جدید در `config` وجود نداشته باشد محفوظ می‌مانند.
 
 `React.cloneElement()` تقریبا برابر است با:
 
@@ -192,11 +188,7 @@ Clone and return a new React element using `element` as the starting point. `con
 <element.type {...element.props} {...props}>{children}</element.type>
 ```
 
-<<<<<<< HEAD
- گرچه، این کار `ref`ها را محفوظ نگاه می‌دارد. این یه آن معناست که اگر شما یک فرزند را با `ref` آن دریافت کنید، آن‌را به شکل اتفاقی از اجداد خود سرقت نمی‌کنید. شما `ref` یکسان متصل شده به المنت جدید خواهید داشت.
-=======
-However, it also preserves `ref`s. This means that if you get a child with a `ref` on it, you won't accidentally steal it from your ancestor. You will get the same `ref` attached to your new element. The new `ref` or `key` will replace old ones if present.
->>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
+گرچه، این کار `ref`ها را محفوظ نگاه می‌دارد. این به آن معناست که اگر شما یک فرزند را با `ref` آن دریافت کنید، آن‌را به شکل اتفاقی از اجداد خود سرقت نمی‌کنید. شما `ref` یکسان متصل شده به المنت جدید خواهید داشت. `ref` و `key` جدید اگر وجود داشته باشند جایگزین قدیمی‌ها می‌شوند.
 
 این API به عنوان جایگزینی برای `React.addons.cloneWithProps()` منسوخ شده معرفی شد.
 
