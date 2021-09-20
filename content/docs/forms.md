@@ -270,11 +270,7 @@ this.setState(partialState);
 
 ## مقدار Null ورودی کنترل‌شده {#controlled-input-null-value}
 
-<<<<<<< HEAD
-قراردادن prop value روی یک [کامپوننت کنترل‌شده](/docs/forms.html#controlled-components) از تغییر ورودی توسط کاربر جلوگیری می‌کند، مگر اینکه شما بخواهید. اگر یک `value` روی ورودی قرار داده‌اید، اما هنوز قابل‌ ویرایش است، ممکن است `value` را تصادفا با `undefined` و یا `null` مقدار‌دهی کرده باشید.
-=======
-Specifying the `value` prop on a [controlled component](/docs/forms.html#controlled-components) prevents the user from changing the input unless you desire so. If you've specified a `value` but the input is still editable, you may have accidentally set `value` to `undefined` or `null`.
->>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
+قراردادن prop به نام value روی یک [کامپوننت کنترل‌شده](/docs/forms.html#controlled-components)  از تغییر ورودی توسط کاربر جلوگیری می‌کند، مگر اینکه شما بخواهید. اگر یک `value` روی ورودی قرار داده‌اید، اما هنوز قابل‌ ویرایش است، ممکن است `value` را تصادفا با `undefined` و یا `null` مقدار‌دهی کرده باشید.
 
 نمونه کد زیر این [رفتار] را نشان ‌می‌دهد. (در ابتدا فیلد ورودی قفل است اما پس از زمانی کوتاه قابل‌تغییر ‌می‌شود.)
 
