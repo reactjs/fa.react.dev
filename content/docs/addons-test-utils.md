@@ -143,7 +143,7 @@ mockComponent(
 
 > نکته:
 >
-> `mockComponent()` یک API قدیمی است. ما استفاده از [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) را به عنوان جایگزین پیشنهاد می‌کنیم.
+> `mockComponent()` یک API قدیمی است. ما استفاده از [`jest.mock()`](https://jestjs.io/docs/tutorial-react-native#mock-native-modules-using-jestmock) به عنوان جایگزین توصیه می‌کنیم.
 
 * * *
 

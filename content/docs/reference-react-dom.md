@@ -49,7 +49,7 @@ ReactDOM.render(element, container[, callback])
 >
 > `ReactDOM.render()` نود اصلی را تغییر نمیدهد (فقط فرزنده‌های container را تغییر می‌دهد). شاید ممکن باشد که کامپوننتی را درون نودی که قبلا وجود داشته وارد کرد بدون اینکه نیاز به بازنویسی نودهای زیر شاخه(children) باشد.
 >
-> `ReactDOM.render()` در حال حاضر یک reference از ریشه instance `ReactComponent` برمی‌گرداند. با این حال استفاده از این مقدار برگشتی سنتی است و باید از آن پرهیز شود زیرا در ورژن‌های آینده ری‌اکت شاید برخی کامپوننت‌ها در گاهی اوقات ناهمگام رندر شوند.اگر شما به مرجع instance ریشه `ReactComponent` نیاز داشتید، بهترین راه حل آن است که یک [callback ref](/docs/more-about-refs.html#the-ref-callback-attribute) به ریشه المنت وصل کنید.
+> `ReactDOM.render()` در حال حاضر یک reference از ریشه instance `ReactComponent` برمی‌گرداند. با این حال استفاده از این مقدار برگشتی سنتی است و باید از آن پرهیز شود زیرا در ورژن‌های آینده ری‌اکت شاید برخی کامپوننت‌ها در گاهی اوقات ناهمگام رندر شوند.اگر شما به مرجع instance ریشه `ReactComponent` نیاز داشتید، بهترین راه حل آن است که یک [callback ref](/docs/refs-and-the-dom.html#callback-refs) به ریشه المنت وصل کنید.
 >
 > استفاده از `ReactDOM.render()` برای hydrate کردن یک container که سمت سرور رندر شده‌است، منسوخ شده است و در ورژن ۱۷ ری‌اکت پاک خواهد شد. به جای آن از [`()hydrate`](#hydrate) استفاده کنید.
 * * *
