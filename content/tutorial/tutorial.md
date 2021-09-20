@@ -524,7 +524,11 @@ class Board extends React.Component {
 
 ### چرا تغییرناپذیری (Immutability) مهم است؟ {#why-immutability-is-important}
 
+<<<<<<< HEAD
 در مثال قبلی دیدید که به جای تغییر دادن مستقیم آرایه‌ی `squares` پیشنهاد دادیم با استفاده از متد `.slice()` یک کپی از آن تهیه کرده و بعد از انجام تغییرات آن را با متغیر اصلی تعویض کنید. در این بخش به تغییرناپذیری (Immutability) و ضرورت و برتری انجام این کار می‌پردازیم.
+=======
+In the previous code example, we suggested that you create a copy of the `squares` array using the `slice()` method instead of modifying the existing array. We'll now discuss immutability and why immutability is important to learn.
+>>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
 
 به طور کلی دو روش برای تغییر مقدار یک داده وجود دارد. روش اول این است که مقادیر داده را به صورت مسقیم دگرگون کنیم تا داده *تغییر (mutate)* کند. روش دوم این است که داده را با یک کپی جدید که دارای تغییرات دلخواه است تعویض ‌کنیم.
 
