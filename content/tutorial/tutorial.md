@@ -451,11 +451,19 @@ class Square extends React.Component {
 
 وقتی که یک Square کلیک شد تابع `onClick` که از Board می‌آید، صدا زده می‌شود. در این‌جا مروری بر چگونگی بدست آمدن این رخداد می‌کنیم:
 
+<<<<<<< HEAD
 1. prop به نام `onClick` در کامپوننت `<button>` که از پیش تعریف شده در DOM است برای ری‌اکت به این معناست که یک شنونده برای رویداد کلیک(click event listener) برای او تعریف کن.
 2. وقتی که دکمه کلیک شد، ری‌اکت کنترل کننده‌ی رویداد `onClick` که در متد `render()` کامپوننت Square تعریف شده را صدا می‌زند.
 3. کنترل کننده‌ی رویداد در زمان کلیک `this.props.onClick()` را صدا می‌زند. این prop از طرف Board تعریف شده بود.
 4. از آنجایی که کامپوننت Board `onClick={() => this.handleClick(i)}` را به هر Square می‌فرستد، Square دستور `this.handleClick(i)` را در هنگام کلیک شدنش اجرا می‌کند.
 5. چون هنوز متد `handleClick()` را نساخته‌ایم، کد ما کرش خواهد کرد و اگر روی یک مربع کلیک کنید بر روی صفحه خطایی شبیه به "this.handleClick is not a function" پدیدار می‌شود.
+=======
+1. The `onClick` prop on the built-in DOM `<button>` component tells React to set up a click event listener.
+2. When the button is clicked, React will call the `onClick` event handler that is defined in Square's `render()` method.
+3. This event handler calls `this.props.onClick()`. The Square's `onClick` prop was specified by the Board.
+4. Since the Board passed `onClick={() => this.handleClick(i)}` to Square, the Square calls the Board's `handleClick(i)` when clicked.
+5. We have not defined the `handleClick()` method yet, so our code crashes. If you click a square now, you should see a red error screen saying something like "this.handleClick is not a function".
+>>>>>>> 23d03a854ba21aeea0a03a0bd5185e0def9237d6
 
 >نکته
 >
