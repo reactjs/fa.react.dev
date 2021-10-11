@@ -164,10 +164,14 @@ prev: composition-vs-inheritance.html
 
 در نسخه فعلی این مثال، اگه در فیلد جستجو تایپ کنید یا تیک checkbox  را بزنید، خواهید دید که ری‌اکت، ورودی شما را نادیده می‌گیرد. این موضوع عمدی است، چرا که ما تعیین کردیم، `value` در `input` همواره با مقدار  `state` که از کامپوننت `FilterableProductTable` منتقل می‌شود، برابر باشد.
 
+<<<<<<< HEAD
 بیایید به این فکر کنیم که می‌خواهیم چه اتفاقی بیفتد؟ می‌خواهیم مطمئن شویم که هر زمان کاربر، تغییراتی را در فرم (فیلد جستجو یا checkbox) اعمال می‌کند، state به‌روز رسانی شده و تغییرات را منعکس کند. 
 از آنجایی که کامپوننت‌ها فقط مجاز به تغییر state موجود در خودشان هستند، کامپوننت `FilterableProductTable` callbackهایی را به کامپوننت`SearchBar` انتقال می‌دهد تا هر وقت نیاز به تغییر state وجود داشت، فراخوانی شوند.
 می‌توانیم از رویداد `onChange` برای ورودی‌ها استفاده کنیم تا به این طریق، کامپوننت `FilterableProductTable` از لزوم اجرای تغییر مطلع شود.
 آن callback که از کامپوننت `FilterableProductTable` انتقال می‌یابد،  `setState()` است و باعث تغییر و به‌روز رسانی اپ میشود.
+=======
+If you try to type or check the box in the previous version of the example (step 4), you'll see that React ignores your input. This is intentional, as we've set the `value` prop of the `input` to always be equal to the `state` passed in from `FilterableProductTable`.
+>>>>>>> 9b3c3f4e613440baf2e2f1775be65dac8c08ab5f
 
 ## همین! {#and-thats-it}
 
