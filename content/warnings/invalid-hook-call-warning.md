@@ -1,5 +1,5 @@
 ---
-title: Invalid Hook Call Warning
+title: خطای فراخوانی غیر مجاز هوک
 layout: single
 permalink: warnings/invalid-hook-call-warning.html
 ---
