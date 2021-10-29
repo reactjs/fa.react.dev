@@ -6,15 +6,15 @@ permalink: warnings/invalid-hook-call-warning.html
 
   شما احتمالا به این دلیل اینجا هستید که خطای زیر را دریافت کرده اید:
 
- > Hooks can only be called inside the body of a function component.
+ > هوک ها تنها در بدنه ی function component ها می توانند فراخوانی شوند.
+    
+این خطا به سه دلیل متداول به جود می آید:
 
-There are three common reasons you might be seeing it:
+1. ممکن است نسخه ی React و React Dom شما با هم تفاوت داشته باشند.
+2. ممکن است از **[قوانین هوک ها](/docs/hooks-rules.html)** تبعیت نکرده باشید.
+3. ممکن است **بیش از یک نسخه از React** در یک برنامه داشته باشید.
 
-1. You might have **mismatching versions** of React and React DOM.
-2. You might be **breaking the [Rules of Hooks](/docs/hooks-rules.html)**.
-3. You might have **more than one copy of React** in the same app.
-
-Let's look at each of these cases.
+بیایید هر یک از موارد بالا را به صورت جداگانه بررسی کنیم.
 
 ## Mismatching Versions of React and React DOM {#mismatching-versions-of-react-and-react-dom}
 
