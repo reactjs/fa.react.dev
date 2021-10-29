@@ -4,7 +4,7 @@ layout: single
 permalink: warnings/invalid-hook-call-warning.html
 ---
 
- You are probably here because you got the following error message:
+  شما احتمالا به این دلیل اینجا هستید که خطای زیر را دریافت کرده اید:
 
  > Hooks can only be called inside the body of a function component.
 
