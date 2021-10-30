@@ -108,10 +108,9 @@ console.log(window.React1 === window.React2);
 اگر `false` چاپ کرد شما احتمالا دو نسخه از `react` دارید و باید دلیل آن را بیابید.
 [This issue](https://github.com/facebook/react/issues/13991) شامل تعدادی از دلایل متداول است که برنامه نویسان دیگر به آن برخورده اند.
 این مشکل ممکن است با استفاده از `npm link` یا نظایر آن پدید آید. در این صورت `bundler` شما ممکن است دو نسخه از `react` را شناسایی کند. یکی در پوشه برنامه و دیگری در پوشه کتابخانه. با فرض اینکه پوشه های `myapp` و `mylib` در یک پوشه یکسان هستند یک راهکار احتمالی اجرای `npm link ../myapp/node_modules/react` از `mylib` است. این دستور کتابخانه را مجبور به استفاده از نسخه `react` برنامه می کند.
->Note
+>نکته
 >
->In general, React supports using multiple independent copies on one page (for example, if an app and a third-party widget both use it). It only breaks if `require('react')` resolves differently between the component and the `react-dom` copy it was rendered with.
-
+به طور کلی ری‌اکت استفاده از چند کپی مستقل در یک صفحه را پشتیبانی می‌کند.(مثلا یک برنامه و یک ابزار third party هر دو از آن استفاده کنند.)مشکل زمانی به جود می آید که `require('react')` در کامپوننت و نسخه react-dom که با آن رندر شده است به دو شئ متفاوت اشاره کند. 
 ## دلایل دیگر {#other-causes}
 
 اگر هیچکدام از راه حل های بالا موثر نبود لطفا در [this issue](https://github.com/facebook/react/issues/13991) نظر بگذارید و ما سعی میکنیم به شما کمک کنیم. سعی کنید یک مثال بازسازی شده و کوچک بسازید - ممکن است در حین آن به مشکل خود پی ببرید!
