@@ -8,7 +8,7 @@ permalink: warnings/invalid-hook-call-warning.html
 
  > Hooks can only be called inside the body of a function component
 
-این خطا به سه دلیل متداول به جود می آید:
+این خطا به سه دلیل متداول به وجود می آید:
 
 1. ممکن است نسخه ی React و React Dom شما نامتناسب باشند.
 2. ممکن است از **[قوانین هوک ها](/docs/hooks-rules.html)** تبعیت نکرده باشید.
@@ -18,7 +18,7 @@ permalink: warnings/invalid-hook-call-warning.html
 
 ## نامتناسب بودن نسخه ی React و React DOM {#mismatching-versions-of-react-and-react-dom}
 
-ممکن است شما نسخه ای از ‍‍`react-dom`(<16.8.0) یا `react−native`(<0.59)را نصب کرده باشید که از هوک ها پشتیانی نمی کند. شما می توانید در پوشه برنامه خود با اجرای دستور `npm ls react-dom` یا دستور `npm ls react-native` در ترمینال از نسخه مورد استفاده خود مطلع شوید. وجود بیش از یک نسخه از آن ها در پوشه برنامه هم می تواند مشکل ایجاد کند.
+ممکن است شما نسخه ای از ‍‍`react-dom`(<16.8.0) یا `react−native`(<0.59)را نصب کرده باشید که از هوک ها هنوز پشتیانی نمی کند. شما می توانید در پوشه برنامه خود با اجرای دستور `npm ls react-dom` یا دستور `npm ls react-native` در ترمینال از نسخه مورد استفاده خود مطلع شوید. وجود بیش از یک نسخه از آن ها در پوشه برنامه هم می تواند مشکل ایجاد کند.
 ## عدم تبعیت از قوانین هوک ها {#breaking-the-rules-of-hooks}
 
  تنها زمانی مجاز به فراخوانی هوک ها هستید که **ری‌اکت در حال رندر کردن یک function component باشد**.
