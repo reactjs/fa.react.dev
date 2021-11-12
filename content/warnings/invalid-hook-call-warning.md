@@ -22,8 +22,8 @@ permalink: warnings/invalid-hook-call-warning.html
 ## عدم تبعیت از قوانین هوک ها {#breaking-the-rules-of-hooks}
 
  تنها زمانی مجاز به فراخوانی هوک ها هستید که **ری‌اکت در حال رندر کردن یک function component باشد**.
-* ✅ هوک ها را اول بدنه ی function component ها فراخوانی کنید.
-* ✅ هوک ها را اول بدنه ی [custom Hook](/docs/hooks-custom.html) ها فراخوانی کنید
+* ✅ هوک ها را در بدنه ی function component ها فراخوانی کنید. یعنی در حلقه ها ,شرط ها و ... از آن ها استفاده نکنید.
+* ✅ هوک ها را در بدنه ی [custom Hook](/docs/hooks-custom.html) ها فراخوانی کنید
 
 **درباره این موضوع در [قوانین هوک ها](/docs/hooks-rules.html) بیشتر مطالعه کنید.**
 
