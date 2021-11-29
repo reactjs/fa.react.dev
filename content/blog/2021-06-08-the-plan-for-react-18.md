@@ -3,7 +3,15 @@ title: "برنامه برای ری‌اکت ۱۸"
 author: [acdlite, bvaughn, abernathyca, gaearon, rachelnabors, rickhanlonii, sebmarkbage, sethwebster]
 ---
 
+<<<<<<< HEAD
 تیم ری‌اکت برای به اشتراک گذاشتن چند بروزرسانی هیجان زده است:
+=======
+> Update Nov. 15th, 2021
+>
+> React 18 is now in beta. More information about the status of the release is [available in the React 18 Working Group post](https://github.com/reactwg/react-18/discussions/112).
+
+The React team is excited to share a few updates:
+>>>>>>> 0057efa12c1aa2271ef80d7a84d622732bdfa85c
 
 1. ما کار بر روی انتشار ری‌اکت نسخه ۱۸، که نسخه اصلی بعدی خواهد بود را شروع کرده‌ایم.
 2. یک گروه کاری ایجاد کرده‌ایم تا به آماده کردن جامعه ری‌اکت برای پذیرش تدریجی قابلیت های جدید ری‌اکت ۱۸ بپردازد.
