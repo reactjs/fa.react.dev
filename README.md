@@ -138,5 +138,5 @@ yarn dev
 <h2 dir="rtl">مجوز</h2>
 
 <p dir="rtl">
-محتوایی که در <a href="https://reactjs.org/">reactjs.org</a> قرار می‌گیرد، تخت مجوز CC-BY-4.0 منتشر می‌شود که جزئیات آن در <a href="https://github.com/open-source-explorer/reactjs.org/blob/master/LICENSE-DOCS.md">LICENSE-DOCS.md</a> آمده‌است.
+محتوایی که در <a href="https://reactjs.org/">reactjs.org</a> قرار می‌گیرد، تحت مجوز CC-BY-4.0 منتشر می‌شود که جزئیات آن در <a href="https://github.com/open-source-explorer/reactjs.org/blob/master/LICENSE-DOCS.md">LICENSE-DOCS.md</a> آمده‌است.
 </p>
