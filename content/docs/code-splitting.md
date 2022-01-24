@@ -174,11 +174,15 @@ const MyComponent = () => (
 
 مسیر‌ها نقطه شروع خوبی هستند. بیشتر افراد در محیط وب به زمان‌بر بودن انتقال از صفحه‌ای به صفحه دیگر عادت کرده‌اند. شما هم معمولا تمام صفحه را یک‌باره مجدد رندر می‌کنید، بنابراین دور از ذهن به‌نظر می‌رسد که کاربران شما با دیگر المان‌های صفحه در حال کار کردن باشند.
 
+<<<<<<< HEAD
 این‌جا یک مثال از چگونگی راه‌اندازی تکه‌تکه کردن کد بر‌پایه‌ی مسیر (route-based code splitting) در داخل برنامه‌تان با استفاده از کتابخانه‌هایی مثل [React Router](https://reacttraining.com/react-router/) با `React.lazy` را مشاهده می‌کنید.
+=======
+Here's an example of how to setup route-based code splitting into your app using libraries like [React Router](https://reactrouter.com/) with `React.lazy`.
+>>>>>>> 69bd27a3d558d6633e4f0adc61ecb8bb3d5f2edf
 
 ```js
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const Home = lazy(() => import('./routes/Home'));
 const About = lazy(() => import('./routes/About'));
@@ -186,10 +190,10 @@ const About = lazy(() => import('./routes/About'));
 const App = () => (
   <Router>
     <Suspense fallback={<div>Loading...</div>}>
-      <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route path="/about" component={About}/>
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
     </Suspense>
   </Router>
 );
