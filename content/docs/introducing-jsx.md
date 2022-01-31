@@ -69,7 +69,7 @@ ReactDOM.render(
 );
 ```
 
-[](codepen://introducing-jsx)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/PGEjdG?editors=1010)**
 
 ما JSX را در چند سطر برای خوانایی بالاتر تقسیم می‌کنیم. با اینکه ضروری نیست، اما ما پیشنهاد می‌کنیم هنگام انجام این کار، از پوشش در پرانتزها نیز برای جلوگیری از اشتباهات رایج [درج خودکار نقطه‌ویرگول (semicolon)](https://stackoverflow.com/q/2846283) استفاده نمایید.
 
@@ -93,7 +93,7 @@ function getGreeting(user) {
 شمامی‌توانید از نشان نقل قول برای تعیین رشته‌های متنی به عنوان صفات استفاده کنید.
 
 ```js
-const element = <div tabIndex="0"></div>;
+const element = <a href="https://www.reactjs.org"> link </a>;
 ```
 
 همچنین می‌توانید از آکولاد برای قراردادن عبارت جاوااسکریپت درون یک صفت استفاده کنید:

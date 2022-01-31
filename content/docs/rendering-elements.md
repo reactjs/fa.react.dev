@@ -38,7 +38,11 @@ const element = <h1>Hello, world</h1>;
 
 `embed:rendering-elements/render-an-element.js`
 
+<<<<<<< HEAD
 [با CodePen امتحان کنید](codepen://rendering-elements/render-an-element)
+=======
+**[Try it on CodePen](https://codepen.io/gaearon/pen/ZpvBNJ?editors=1010)**
+>>>>>>> 5f0549c86e7a9c0774e66687d1bc0118a681eb9d
 
 این کد روی صفحه "Hello, world" را نمایش می‌دهد.
 
@@ -52,7 +56,11 @@ const element = <h1>Hello, world</h1>;
 
 `embed:rendering-elements/update-rendered-element.js`
 
+<<<<<<< HEAD
 [با CodePen امتحان کنید](codepen://rendering-elements/update-rendered-element)
+=======
+**[Try it on CodePen](https://codepen.io/gaearon/pen/gwoJZk?editors=1010)**
+>>>>>>> 5f0549c86e7a9c0774e66687d1bc0118a681eb9d
 
 در این مثال تابع [`ReactDOM.render()`](/docs/react-dom.html#render) هربار توسط callback تابع [`()setInterval`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) فراخوانی می‌شود.
 
@@ -66,7 +74,11 @@ const element = <h1>Hello, world</h1>;
 
 ری‌اکت DOM المنت موردنظر و فرزندانش را با حالت پیشین آن مقایسه می‌کند و تنها به‌روز رسانی‌های DOM مورد نیاز را اعمال می‌کند تا ‌DOM را به وضعیت موردنظر برساند.
 
+<<<<<<< HEAD
 برای اطمینان، [مثال قبلی](codepen://rendering-elements/update-rendered-element) را با استفاده از ابزارهای مرورگر بررسی کنید:
+=======
+You can verify by inspecting the [last example](https://codepen.io/gaearon/pen/gwoJZk?editors=1010) with the browser tools:
+>>>>>>> 5f0549c86e7a9c0774e66687d1bc0118a681eb9d
 
 ![DOM inspector showing granular updates](../images/docs/granular-dom-updates.gif)
 
