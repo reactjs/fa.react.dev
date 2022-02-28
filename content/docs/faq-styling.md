@@ -47,6 +47,10 @@ render() {
 _توجه داشته باشید که این عملکرد جزئی از ری اکت نمی باشد، بلکه توسط کتابخانه های شخص ثالث ارائه شده._ ری اکت هیچ نظری درباره نحوه ی تعریف استایل ها ندارد؛ اگر شک و شبهه ای دارید، یک نقطه شروع خوب این است که استایل های خود را درون فایل جداگانه `*.css` تعریف کرده و طبق معمول با استفاده از [`className`](/docs/dom-elements.html#classname) به آن ها مراجعه کنید.
 
 
+<<<<<<< HEAD
 ### آیا می توانم با ری اکت انیمیشن انجام دهم؟ {#can-i-do-animations-in-react}
 
 ری اکت میتواند برای قدرت بخشیدن به انیمیشن ها استفاده شود. به مثال های [React Transition Group](https://reactcommunity.org/react-transition-group/) و [React Motion](https://github.com/chenglou/react-motion) یا [React Spring](https://github.com/react-spring/react-spring)، نگاه بیاندازید.
+=======
+React can be used to power animations. See [React Transition Group](https://reactcommunity.org/react-transition-group/), [React Motion](https://github.com/chenglou/react-motion), [React Spring](https://github.com/react-spring/react-spring), or [Framer Motion](https://framer.com/motion), for example.
+>>>>>>> 6bd09fe682e18ccd7747fcd7798fa8fb4d3edc42
