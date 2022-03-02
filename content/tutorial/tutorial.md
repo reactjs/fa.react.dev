@@ -295,7 +295,7 @@ class Square extends React.Component {
 اکنون متد `render` Square را طوری تغییری ‌می‌دهیم تا زمانی که کلیک شد مقدار فعلی state را نمایش دهد:
 
 * در تگ `<button>` عبارت `this.props.value` را با `this.state.value` جایگزین کنید.
-* عبارت `onClick={...}` را با ` onClick={() => this.setState({value='X'})}` جایگزین کنید.
+* عبارت `onClick={...}` را با ` onClick={() => this.setState({value:'X'})}` جایگزین کنید.
 * برای خوانایی بیش تر propهای `className` و `onClick` را در خط های جداگانه قرار دهید.
 
 بعد از این تغییرات باید تگ ‍`<button>` که از متد `render` Square برگشت داده می‌شود چیزی شبیه به این باشد:
