@@ -81,7 +81,11 @@ ReactDOM.render(
 );
 ```
 
+<<<<<<< HEAD
 [روی CodePen امتحان کنید](codepen://components-and-props/rendering-a-component)
+=======
+**[Try it on CodePen](https://codepen.io/gaearon/pen/YGYmEG?editors=1010)**
+>>>>>>> 7994045415a9066f8663ee5403e874edbb4c5f83
 
 بیایید جمع‌بندی کنیم که در این مثال چه اتفاقی می‌افتد:
 
@@ -127,7 +131,11 @@ ReactDOM.render(
 );
 ```
 
+<<<<<<< HEAD
 [روی CodePen امتحان کنید](codepen://components-and-props/composing-components)
+=======
+**[Try it on CodePen](https://codepen.io/gaearon/pen/KgQKPr?editors=1010)**
+>>>>>>> 7994045415a9066f8663ee5403e874edbb4c5f83
 
 معمولا، پروژه‌های جدید ری‌اکت دارای یک کامپوننت `App` واحد در بالاترین سطح هستند. اما اگر شما ری‌اکت را با پروژه‌ای موجود ادغام می‌کنید، می‌توانید از سطوح پایین به بالا طراحی کنید، برای مثال از یک کامپوننت کوچک مانند `Button` شروع کنید و تدریجا تا بالای سلسله مراتب view طراحی را ادامه دهید.
 
@@ -162,7 +170,11 @@ function Comment(props) {
 }
 ```
 
+<<<<<<< HEAD
 [روی CodePen امتحان کنید](codepen://components-and-props/extracting-components)
+=======
+**[Try it on CodePen](https://codepen.io/gaearon/pen/VKQwEo?editors=1010)**
+>>>>>>> 7994045415a9066f8663ee5403e874edbb4c5f83
 
 این کامپوننت author (یک شیء)، text (یک string)، و date (یک تاریخ) را به عنوان props دریافت و یک دیدگاه را در یک شبکه اجتماعی توصیف می‌کند.
 
@@ -241,7 +253,11 @@ function Comment(props) {
 }
 ```
 
+<<<<<<< HEAD
 [روی CodePen امتحان کنید](codepen://components-and-props/extracting-components-continued)
+=======
+**[Try it on CodePen](https://codepen.io/gaearon/pen/rrJNJY?editors=1010)**
+>>>>>>> 7994045415a9066f8663ee5403e874edbb4c5f83
 
 استخراج کامپوننت‌ها شاید در ابتدا به نظر کار سختی بیاید، اما داشتن یک پالت از کامپوننت‌هایی با قابلیت استفاده مجدد در اپ‌های بزرگتر، هزینه آن را باز می‌گرداند. به عنوان یک قانون کلی در نظر داشته باشید که اگر قسمتی از رابط کاربری شما بارها استفاده شده است (نظیر `Button`, `Panel` , `Avatar`) و یا اینکه قسمتی از رابط کاربری پیچیدگی منحصر به فرد خود را دارد (نظیر `App`, `FeedStory`, `Comment`) آن قسمت کاندیدای مناسبی برای استخراج و تبدیل شدن به یک کامپوننت مجزا است.
 
