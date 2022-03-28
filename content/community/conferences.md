@@ -12,43 +12,111 @@ Do you know of a local React.js conference? Add it here! (Please keep the list c
 
 ## Upcoming Conferences {#upcoming-conferences}
 
-### render(ATL) 2021 {#render-atlanta-2021} 
-September 13-15, 2021. Atlanta, GA, USA
+### React Live 2022 {#react-live-2022}
+April 1, 2022. Amsterdam, The Netherlands
 
-[Website](https://renderatl.com) - [Twitter](https://twitter.com/renderATL) - [Instagram](https://www.instagram.com/renderatl/) - [Facebook](https://www.facebook.com/renderatl/) - [LinkedIn](https://www.linkedin.com/company/renderatl)
+[Website](https://www.reactlive.nl/) - [Twitter](https://twitter.com/reactlivenl)
 
-### React Brussels 2021 {#react-brussels-2021} 
-October 15, 2021 - remote event
+### React Miami 2022 🌴 {#react-miami-2022}
+April 18 - 19, 2022. Miami, Florida
+[Website](https://www.reactmiami.com/)
 
-[Website](https://www.react.brussels/) - [Twitter](https://twitter.com/BrusselsReact) - [LinkedIn](https://www.linkedin.com/events/6805708233819336704/)
+### < React Global > Online Summit 2022 by Geekle {#react-global-2022}
+April 20 - 21, 2022 - Online Summit
 
+[Website](https://events.geekle.us/react2/) - [LinkedIn](https://www.linkedin.com/events/reactglobalonlinesummit-226887417664541614081/) 
 
-### React Conf Brasil 2021 {#react-conf-brasil-2021}
-October 16, 2021 - remote event
+### Reactathon 2022 {#reactathon-2022} 
+May 3 - 5, 2022. Berkeley, CA
 
-[Website](http://reactconf.com.br) - [Twitter](https://twitter.com/reactconfbr) - [Slack](https://react.now.sh) - [Facebook](https://facebook.com/reactconf) - [Instagram](https://instagram.com/reactconfbr) - [YouTube](https://www.youtube.com/channel/UCJL5eorStQfC0x1iiWhvqPA/videos)
+[Website](https://reactathon.com) - [Twitter](https://twitter.com/reactathon) -[YouTube](https://www.youtube.com/watch?v=-YG5cljNXIA)
 
-### React Advanced 2021 {#react-advanced-2021}
-October 22-23, 2021. In-person in London, UK + remote (hybrid event)
+### render(ATL) 2022 🍑 {#render-atlanta-2022} 
+June 1 - 4, 2022. Atlanta, GA, USA
 
-[Website](https://reactadvanced.com) - [Twitter](https://twitter.com/reactadvanced) - [Facebook](https://www.facebook.com/ReactAdvanced) - [Videos](https://youtube.com/c/ReactConferences)
+[Website](https://renderatl.com) - [Discord](https://www.renderatl.com/discord) - [Twitter](https://twitter.com/renderATL) - [Instagram](https://www.instagram.com/renderatl/) - [Facebook](https://www.facebook.com/renderatl/) - [LinkedIn](https://www.linkedin.com/company/renderatl) - [Podcast](https://www.renderatl.com/culture-and-code#/)
+
+### App.js Conf 2022 {#appjs-conf-2022}
+June 8 - 10, 2022. In-person in Kraków, Poland + remote
+
+[Website](https://appjs.co) - [Twitter](https://twitter.com/appjsconf)
+
+### React Summit 2022 {#react-summit-2022}
+June 17 & 21, 2022. In-person in Amsterdam, Netherlands + remote first interactivity (hybrid event)
+
+[Website](https://reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://youtube.com/c/ReactConferences)
+
+### React Native EU 2022: Powered by {callstack}
+September 1-2, 2022 - Remote event
+
+[Website](https://www.react-native.eu/?utm_campaign=React_Native_EU&utm_source=referral&utm_content=reactjs_community_conferences) -
+[Twitter](https://twitter.com/react_native_eu) -
+[Linkedin](https://www.linkedin.com/showcase/react-native-eu) -
+[Facebook](https://www.facebook.com/reactnativeeu/) - 
+[Instagram](https://www.instagram.com/reactnative_eu/)
+
+### React India 2022 {#react-india-2022}
+September 22 - 24, 2022. In-person in Goa, India + remote (hybrid event)
+
+[Website](https://www.reactindia.io) - [Twitter](https://twitter.com/react_india) - [Facebook](https://www.facebook.com/ReactJSIndia) - [Videos](https://www.youtube.com/channel/UCaFbHCBkPvVv1bWs_jwYt3w)
+
+### React Alicante 2022 {#react-alicante-2022}
+September 29 - October 1, 2022. In-person in Alicante, Spain + remote (hybrid event)
+
+[Website](http://reactalicante.es/) - [Twitter](https://twitter.com/reactalicante) - [Facebook](https://www.facebook.com/ReactAlicante) - [Videos](https://www.youtube.com/channel/UCaSdUaITU1Cz6PvC97A7e0w)
+
+## Past Conferences {#past-conferences}
+
+### AgentConf 2022 {#agent-conf-2022} 
+
+January 27 - 30, 2022. In-person in Dornbirn and Lech Austria
+
+[Website](https://agent.sh/) - [Twitter](https://twitter.com/AgentConf) - [Instagram](https://www.instagram.com/teamagent/)
+
+### React Conf 2021 {#react-conf-2021}
+December 8, 2021 - remote event (replay event on December 9)
+
+[Website](https://conf.reactjs.org/)
+
+### ReactEurope 2021 {#reacteurope-2021}
+December 9-10, 2021 - remote event
+
+[Website](https://www.react-europe.org) - [Twitter](https://twitter.com/ReactEurope) - [Facebook](https://www.facebook.com/ReactEurope) - [Videos](https://www.youtube.com/c/ReacteuropeOrgConf)
+
+### ReactNext 2021 {#react-next-2021}
+December 15, 2021. Tel-Aviv, Israel
+
+[Website](https://react-next.com) - [Twitter](https://twitter.com/ReactNext) - [Videos](https://www.youtube.com/channel/UC3BT8hh3yTTYxbLQy_wbk2w)
+
+### React India 2021 {#react-india-2021}
+November 12-13, 2021 - remote event
+
+[Website](https://www.reactindia.io) - [Twitter](https://twitter.com/react_india) - [Facebook](https://www.facebook.com/ReactJSIndia/) - [LinkedIn](https://www.linkedin.com/showcase/14545585) - [YouTube](https://www.youtube.com/channel/UCaFbHCBkPvVv1bWs_jwYt3w/videos)
 
 ### < React Global > by Geekle {#react-global-2021}
 November 3-4, 2021 - remote event
 
 [Website](https://geekle.us/react) - [LinkedIn](https://www.linkedin.com/events/javascriptglobalsummit6721691514176720896/) 
 
-## React Advanced London 2021 {#react-advanced-2021} 
-October 20-22, 2021. London, UK & remote
+### React Advanced 2021 {#react-advanced-2021}
+October 22-23, 2021. In-person in London, UK + remote (hybrid event)
 
-[Website](https://reactadvanced.com) - [Twitter](https://twitter.com/reactadvanced)
+[Website](https://reactadvanced.com) - [Twitter](https://twitter.com/reactadvanced) - [Facebook](https://www.facebook.com/ReactAdvanced) - [Videos](https://youtube.com/c/ReactConferences)
 
-### React India 2021 {#react-india-2021}
-November 12-14, 2021 - remote event
+### React Conf Brasil 2021 {#react-conf-brasil-2021}
+October 16, 2021 - remote event
 
-[Website](https://www.reactindia.io) - [Twitter](https://twitter.com/react_india) - [Facebook](https://www.facebook.com/ReactJSIndia/) - [LinkedIn](https://www.linkedin.com/showcase/14545585) - [YouTube](https://www.youtube.com/channel/UCaFbHCBkPvVv1bWs_jwYt3w/videos)
+[Website](http://reactconf.com.br) - [Twitter](https://twitter.com/reactconfbr) - [Slack](https://react.now.sh) - [Facebook](https://facebook.com/reactconf) - [Instagram](https://instagram.com/reactconfbr) - [YouTube](https://www.youtube.com/channel/UCJL5eorStQfC0x1iiWhvqPA/videos)
 
-## Past Conferences {#past-conferences}
+### React Brussels 2021 {#react-brussels-2021} 
+October 15, 2021 - remote event
+
+[Website](https://www.react.brussels/) - [Twitter](https://twitter.com/BrusselsReact) - [LinkedIn](https://www.linkedin.com/events/6805708233819336704/)
+
+### render(ATL) 2021 {#render-atlanta-2021} 
+September 13-15, 2021. Atlanta, GA, USA
+
+[Website](https://renderatl.com) - [Twitter](https://twitter.com/renderATL) - [Instagram](https://www.instagram.com/renderatl/) - [Facebook](https://www.facebook.com/renderatl/) - [LinkedIn](https://www.linkedin.com/company/renderatl)
 
 ### React Native EU 2021 {#react-native-eu-2021}
 September 1-2, 2021 - remote event
