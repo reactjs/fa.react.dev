@@ -8,16 +8,19 @@ next: introducing-jsx.html
 
 کوچکترین مثال ری‌اکت شبیه این است:
 
-```js
-ReactDOM.render(
-  <h1>Hello, world!</h1>,
-  document.getElementById('root')
-);
+```jsx
+ReactDOM
+  .createRoot(document.getElementById('root'))
+  .render(<h1>Hello, world!</h1>);
 ```
 
 این مثال یک عنوان را روی صفحه نمایش می‌دهد که می‌گوید: "Hello, world!"
 
+<<<<<<< HEAD
 **[روی CodePen امتحان کنید](codepen://hello-world)**
+=======
+**[Try it on CodePen](https://codepen.io/gaearon/pen/rrpgNB?editors=1010)**
+>>>>>>> 84ad3308338e2bb819f4f24fa8e9dfeeffaa970b
 
 روی لینک بالا کلیک کنید تا یک ویرایشگر آنلاین باز شود. هر تغییری که می‌خواهید اعمال کنید و تاثیر آن را بر خروجی مشاهده کنید. بیشتر صفحات در این راهنما، مثال‌های قابل ویرایشی مانند بالا دارند.
 

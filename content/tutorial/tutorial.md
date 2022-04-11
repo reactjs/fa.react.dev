@@ -451,11 +451,19 @@ class Square extends React.Component {
 
 وقتی که یک Square کلیک شد تابع `onClick` که از Board می‌آید، صدا زده می‌شود. در این‌جا مروری بر چگونگی بدست آمدن این رخداد می‌کنیم:
 
+<<<<<<< HEAD
 1. prop به نام `onClick` در کامپوننت `<button>` که از پیش تعریف شده در DOM است برای ری‌اکت به این معناست که یک شنونده برای رویداد کلیک(click event listener) برای او تعریف کن.
 2. وقتی که دکمه کلیک شد، ری‌اکت کنترل کننده‌ی رویداد `onClick` که در متد `render()` کامپوننت Square تعریف شده را صدا می‌زند.
 3. کنترل کننده‌ی رویداد در زمان کلیک `this.props.onClick()` را صدا می‌زند. این prop از طرف Board تعریف شده بود.
 4. از آنجایی که کامپوننت Board `onClick={() => this.handleClick(i)}` را به هر Square می‌فرستد، Square دستور `this.handleClick(i)` را در هنگام کلیک شدنش اجرا می‌کند.
 5. چون هنوز متد `handleClick()` را نساخته‌ایم، کد ما کرش خواهد کرد و اگر روی یک مربع کلیک کنید بر روی صفحه خطایی شبیه به "this.handleClick is not a function" پدیدار می‌شود.
+=======
+1. The `onClick` prop on the built-in DOM `<button>` component tells React to set up a click event listener.
+2. When the button is clicked, React will call the `onClick` event handler that is defined in Square's `render()` method.
+3. This event handler calls `this.props.onClick()`. The Square's `onClick` prop was specified by the Board.
+4. Since the Board passed `onClick={() => this.handleClick(i)}` to Square, the Square calls the Board's `handleClick(i)` when clicked.
+5. We have not defined the `handleClick()` method yet, so our code crashes. If you click a square now, you should see a red error screen saying something like "this.handleClick is not a function".
+>>>>>>> 84ad3308338e2bb819f4f24fa8e9dfeeffaa970b
 
 >نکته
 >
@@ -1045,7 +1053,13 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 
 **[مشاهده‌ی کد کامل در این مرحله](https://codepen.io/gaearon/pen/EmmGEa?editors=0010)**
 
+<<<<<<< HEAD
 بدین صورت، برای هر حرکت در بازی یک ایتم لیست `<li>` درست می‌شود که یک دکمه‌ی `<button>` را دربر دارد. کنترلر `onClick` این دکمه، متد `this.justTo()` را صدا می‌زند که هنوز آن را پیاده‌سازی نکرده‌ایم. ما در حال حاضر باید لیستی از حرکت‌های بازی و این هشدار را در developer tools مرورگرمان ببینیم:
+=======
+As we iterate through `history` array, `step` variable refers to the current `history` element value, and `move` refers to the current `history` element index. We are only interested in `move` here, hence `step` is not getting assigned to anything.
+
+For each move in the tic-tac-toe game's history, we create a list item `<li>` which contains a button `<button>`. The button has a `onClick` handler which calls a method called `this.jumpTo()`. We haven't implemented the `jumpTo()` method yet. For now, we should see a list of the moves that have occurred in the game and a warning in the developer tools console that says:
+>>>>>>> 84ad3308338e2bb819f4f24fa8e9dfeeffaa970b
 
 >  Warning:
 >  Each child in an array or iterator should have a unique “key” prop. Check the render method of “Game”.
@@ -1146,11 +1160,21 @@ class Game extends React.Component {
   }
 ```
 
+<<<<<<< HEAD
 حال در متد `handleClick` کلاس Game که موقع کلید روی مربع‌ها فعال می‌شود، تغییراتی می‌دهیم.
+=======
+Notice in `jumpTo` method, we haven't updated `history` property of the state. That is because state updates are merged or in more simple words React will update only the properties mentioned in `setState` method leaving the remaining state as is. For more info **[see the documentation](/docs/state-and-lifecycle.html#state-updates-are-merged)**.
+
+We will now make a few changes to the Game's `handleClick` method which fires when you click on a square.
+>>>>>>> 84ad3308338e2bb819f4f24fa8e9dfeeffaa970b
 
 state به نام `stepNumber` که ما اضافه کرده‌ایم منعکس‌کننده حرکت نشان داده‌شده در حال حاضر به کاربر است. پس از انجام یک حرکت جدید ، باید `stepNumber` را با افزودن `stepNumber: history.length` به عنوان بخشی از آرگومان `this.setState` به روز کنیم. این اطمینان می‌دهد که ما بعد از انجام یک حرکت جدید ، همان حرکت را نشان نمی‌دهیم.
 
+<<<<<<< HEAD
 ما هم‌چنین به جای خواندن متغیر `this.state.history` آن را با `this.state.history.slice(0, this.state.stepNumber + 1)` عوض می‌کنیم. این تضمین می‌کند که اگر "به عقب برگردیم" و سپس از آن نقطه حرکت جدیدی انجام دهیم ، تمام تاریخ "آینده" را که اکنون نادرست شده‌است دور می‌اندازیم.
+=======
+We will also replace reading `this.state.history` with `this.state.history.slice(0, this.state.stepNumber + 1)`. This ensures that if we "go back in time" and then make a new move from that point, we throw away all the "future" history that would now be incorrect.
+>>>>>>> 84ad3308338e2bb819f4f24fa8e9dfeeffaa970b
 
 ```javascript{2,13}
   handleClick(i) {
