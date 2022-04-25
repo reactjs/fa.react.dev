@@ -275,10 +275,10 @@ this.setState(partialState);
 نمونه کد زیر این [رفتار] را نشان ‌می‌دهد. (در ابتدا فیلد ورودی قفل است اما پس از زمانی کوتاه قابل‌تغییر ‌می‌شود.)
 
 ```javascript
-ReactDOM.render(<input value="hi" />, mountNode);
+ReactDOM.createRoot(mountNode).render(<input value="hi" />);
 
 setTimeout(function() {
-  ReactDOM.render(<input value={null} />, mountNode);
+  ReactDOM.createRoot(mountNode).render(<input value={null} />);
 }, 1000);
 
 ```
