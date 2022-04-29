@@ -30,9 +30,15 @@ Here are some good resources for further reading on when to use `props` vs `stat
 
 In React, both `this.props` and `this.state` represent the *rendered* values, i.e. what's currently on the screen.
 
+در ری‌اکت هر دوی `this.props` و ‍`this.state` نشانگر مقدارهای رندر شده، یعنی چیزی که در صفحه وجود دارد، هستند.
+
 Calls to `setState` are asynchronous - don't rely on `this.state` to reflect the new value immediately after calling `setState`. Pass an updater function instead of an object if you need to compute values based on the current state (see below for details).
 
+
+
 Example of code that will *not* behave as expected:
+
+یک مثال از کدی که طبق انتظار عمل *نخواهد* کرد:
 
 ```jsx
 incrementCount() {
@@ -57,13 +63,24 @@ handleSomething() {
 
 See below for how to fix this problem.
 
+راه حل این مشکل را در ادامه می‌توانید پیدا کنید.
+
 ### How do I update state with values that depend on the current state?
+
+### چگونه می‌توانم state را با مقدارهایی که به state کنونی وابسته هستند، بروزرسانی کنم؟
 
 Pass a function instead of an object to `setState` to ensure the call always uses the most updated version of state (see below).
 
+برای اینکه مطمئن شوید بروزترین نسخهٔ state استفاده می‌شود(در پایین ببینید)، در `setState` به جای شی، یک تابع قرار دهید.
+
 ### What is the difference between passing an object or a function in `setState`?
 
+### چه تفاوتی در قرار دادن تابع به جای شی در تابع `setState` وجود دارد؟
+
 Passing an update function allows you to access the current state value inside the updater. Since `setState` calls are batched, this lets you chain updates and ensure they build on top of each other instead of conflicting:
+
+
+
 
 ```jsx
 incrementCount() {
@@ -86,29 +103,31 @@ handleSomething() {
 
 [Learn more about setState](/docs/react-component.html#setstate)
 
-### When is `setState` asynchronous?
+[درباره `setState` بیشتر بیاموزید](/docs/react-component.html#setstate)
 
-Currently, `setState` is asynchronous inside event handlers.
+### چه زمانی `setState` ناهم‌زمان(asynchronous) است؟
+
+در حال حاضر `setState` در داخل event handlerها ناهم‌زمان است.
 
 This ensures, for example, that if both `Parent` and `Child` call `setState` during a click event, `Child` isn't re-rendered twice. Instead, React "flushes" the state updates at the end of the browser event. This results in significant performance improvements in larger apps.
 
 This is an implementation detail so avoid relying on it directly. In the future versions, React will batch updates by default in more cases.
 
-### Why doesn't React update `this.state` synchronously?
+### چرا ری‌اکت به طور همزمان `this.state` را بروزرسانی نمی‌کند؟
 
-As explained in the previous section, React intentionally "waits" until all components call `setState()` in their event handlers before starting to re-render. This boosts performance by avoiding unnecessary re-renders.
+همانطور که در بخش قبلی توضیح داده شد، ری‌اکت عمدا «منتظر می‌ماند» تا همه کامپوننت‌ها در event handlerهای خود، تابع `setState()` را قبل از آغاز رندرِ دوباره، فرا بخوانند. این کار با جلوگیری از رندرهای غیرضروری، باعث بهبود عملکرد می‌گردد.
 
-However, you might still be wondering why React doesn't just update `this.state` immediately without re-rendering.
+با این وجود شاید باز برای شما سوال باشد که چرا ری‌اکت بلافاصله `this.state` را بدون رندرِ دوباره، بروزرسانی نمی‌کند.
 
-There are two main reasons:
+دو دلیل عمده برای این کار وجود دارد:
 
-* This would break the consistency between `props` and `state`, causing issues that are very hard to debug.
-* This would make some of the new features we're working on impossible to implement.
+* این کار یکپارچگی بین `props` و ‍`state` را از بین برده و باعث ایجاد مشکلاتی می‌گردد که عیب‌زدایی(debug) آن بسیار دشوار خواهد بود.
+* این کار باعث می‌شود که پیاده‌سازی ویژگی‌های جدیدی که در حال کار بر روی آنها هستیم، غیرممکن گردد.
 
-This [GitHub comment](https://github.com/facebook/react/issues/11527#issuecomment-360199710) dives deep into the specific examples.
+ [این دیدگاه در گیت‌هاب ](https://github.com/facebook/react/issues/11527#issuecomment-360199710) موارد ویژه‌ای را با جزییات بیان می‌کند.
 
-### Should I use a state management library like Redux or MobX?
+### آیا باید از یک کتابخانه مدیریت state مانند Redux یا MobX استفاده کنم؟
 
-[Maybe.](https://redux.js.org/faq/general#when-should-i-use-redux)
+[شاید.](https://redux.js.org/faq/general#when-should-i-use-redux)
 
-It's a good idea to get to know React first, before adding in additional libraries. You can build quite complex applications using only React.
+بهتر است که قبل از شروع یک کتابخانهٔ اضافی دیگر، ابتدا ری‌اکت را خوب یاد بگیرید. شما می‌توانید تنها با استفاده از ری‌اکت، اپلیکیشن‌های تقریبا پیچیده‌ای بسازید.
