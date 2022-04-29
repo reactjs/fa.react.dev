@@ -6,25 +6,25 @@ layout: docs
 category: FAQ
 ---
 
-### What does `setState` do? {#what-does-setstate-do}
+### تابع `setState` چه کاری انجام می‌دهد؟ {#what-does-setstate-do}
 
-`setState()` schedules an update to a component's `state` object. When state changes, the component responds by re-rendering.
+تابع `setState(‍)` بروزرسانی ‍‍`state`یک کامپومننت را برنامه‌ریزی می‌کند. زمانی که state تغییر کند، کامپوننت با رندرِ مجدد پاسخ می‌دهد.
 
-### What is the difference between `state` and `props`? {#what-is-the-difference-between-state-and-props}
+### چه تفاوتی بین `state` و `props` وجود دارد؟ {#what-is-the-difference-between-state-and-props}
 
-[`props`](/docs/components-and-props.html) (short for "properties") and [`state`](/docs/state-and-lifecycle.html) are both plain JavaScript objects. While both hold information that influences the output of render, they are different in one important way: `props` get passed *to* the component (similar to function parameters) whereas `state` is managed *within* the component (similar to variables declared within a function).
+[`props`](docs/components-and-props.html/)(مخفف کلمه «properties») و [`state`،](/docs/state-and-lifecycle.html) هر دو شی‌های جاوااسکریپت می‌باشند. با وجود اینکه هر دو حاوی اطلاعاتی هستند که خروجی رندر را تحت تاثیر قرار می‌دهند، یک تفاوت بسیار مهم دارند: `props` *به* کامپوننت منتقل می‌شود(مثل پارمتر تابع) در حالی که `state` در داخل کامپوننت مدیریت می‌شود(مثل متغیرهایی که در *داخل* یک تابع ایجاد می‌شوند.)
 
-Here are some good resources for further reading on when to use `props` vs `state`:
+جهت مطالعه بیشتر به این منابع خوب درباره نحوه استفاده صحیح از `props` و `state` مراجعه کنید:
 * [Props vs State](https://github.com/uberVU/react-guide/blob/master/props-vs-state.md)
 * [ReactJS: Props vs. State](https://lucybain.com/blog/2016/react-state-vs-pros/)
 
-### Why is `setState` giving me the wrong value? {#why-is-setstate-giving-me-the-wrong-value}
+### چرا ‍`setState` مقدار(value) اشتباهی به من می‌دهد؟ {#why-is-setstate-giving-me-the-wrong-value}
 
-In React, both `this.props` and `this.state` represent the *rendered* values, i.e. what's currently on the screen.
+در ری‌اکت هر دوی `this.props` و ‍`this.state` نشانگر مقدارهای *رندر شده*، یعنی چیزی که در صفحه وجود دارد، هستند.
 
-Calls to `setState` are asynchronous - don't rely on `this.state` to reflect the new value immediately after calling `setState`. Pass an updater function instead of an object if you need to compute values based on the current state (see below for details).
+فراخوان‌های `setState` ناهم‌زمان(asynchronous) هستند، پس به `this.state` اتکا نکنید تا مقدار جدید شما را بلافاصله بعد از فراخواندن `setState` نمایش دهد. اگر نیاز به محاسبه مقدارها بر اساس state کنونی دارید، به جای شی، یک تابعِ بروزرسان به تابع `setState` ارسال کنید(برای جزيیات بیشتر به پایین نگاه کنید.)
 
-Example of code that will *not* behave as expected:
+مثال از کدی که طبق انتظار عمل *نخواهد* کرد:
 
 ```jsx
 incrementCount() {
@@ -47,15 +47,15 @@ handleSomething() {
 }
 ```
 
-See below for how to fix this problem.
+راه حل این مشکل را در پایین می‌توانید پیدا کنید.
 
-### How do I update state with values that depend on the current state? {#how-do-i-update-state-with-values-that-depend-on-the-current-state}
+### چگونه می‌توانم state را با مقدارهایی که به state فعلی وابسته هستند، بروزرسانی کنم؟ {#how-do-i-update-state-with-values-that-depend-on-the-current-state}
 
-Pass a function instead of an object to `setState` to ensure the call always uses the most updated version of state (see below). 
+برای اینکه مطمئن شوید بروزترین نسخهٔ state استفاده می‌شود، به تابع `setState` به جای شی، یک تابع ارسال کنید(در پایین نگاه کنید.)
 
-### What is the difference between passing an object or a function in `setState`? {#what-is-the-difference-between-passing-an-object-or-a-function-in-setstate}
+### چه تفاوتی در ارسال تابع به جای شی در تابع `setState` وجود دارد؟ {#what-is-the-difference-between-passing-an-object-or-a-function-in-setstate}
 
-Passing an update function allows you to access the current state value inside the updater. Since `setState` calls are batched, this lets you chain updates and ensure they build on top of each other instead of conflicting:
+ارسال یک تابعِ بروزرسان به شما اجازه دسترسی به مقدار state فعلی در داخل بروزرسان را می‌دهد. از آنجایی که فراخوان‌های setState دسته‌ای هستند، باعث می‌شود که بروزرسانی‌ها به صورت زنجیری انجام شده و بدون ایجاد تداخل، یکی پس از دیگری بروزرسانی شوند.
 
 ```jsx
 incrementCount() {
@@ -76,31 +76,31 @@ handleSomething() {
 }
 ```
 
-[Learn more about setState](/docs/react-component.html#setstate)
+[درباره `setState` بیشتر بیاموزید](/docs/react-component.html#setstate)
 
-### When is `setState` asynchronous? {#when-is-setstate-asynchronous}
+### چه زمانی `setState` ناهم‌زمان(asynchronous) است؟ {#when-is-setstate-asynchronous}
 
-Currently, `setState` is asynchronous inside event handlers.
+در حال حاضر `setState` در داخل event handlerها ناهم‌زمان است.
 
-This ensures, for example, that if both `Parent` and `Child` call `setState` during a click event, `Child` isn't re-rendered twice. Instead, React "flushes" the state updates at the end of the browser event. This results in significant performance improvements in larger apps.
+به عنوان نمونه این کار تضمین می‌کند که اگر هر دوی `Parent` و `Child` در هنگام رویدادِ کلیک، تابعِ `setState` را فراخوانی کنند، `Child` دو بار رندر نشود. ری‌اکت در عوض بروزرسانی‌های state را در پایان رویدادِ مرورگر، به صورت یکباره انجام می‌دهد. این کار باعث می‌گردد که در اپلیکشن‌های بزرگ‌تر عملکرد به صورت قابل توجهی بهبود یابد.
 
-This is an implementation detail so avoid relying on it directly. In the future versions, React will batch updates by default in more cases.
+این جزيیاتی اجرایی است، بنابراین از تکیه مستقیم به آن دوری کنید. در نسخه‌های آتی، ری‌اکت `state` را در موارد بیشتری به صورت پیش‌فرض بروزرسانی خواهد کرد.
 
-### Why doesn't React update `this.state` synchronously? {#why-doesnt-react-update-thisstate-synchronously}
+### چرا ری‌اکت به طور همزمان `this.state` را بروزرسانی نمی‌کند؟ {#why-doesnt-react-update-thisstate-synchronously}
 
-As explained in the previous section, React intentionally "waits" until all components call `setState()` in their event handlers before starting to re-render. This boosts performance by avoiding unnecessary re-renders.
+همانطور که در بخش قبلی توضیح داده شد، ری‌اکت عمدا «منتظر می‌ماند» تا همه کامپوننت‌ها در event handlerهای خود، تابع `setState()` را قبل از آغاز رندرِ دوباره، فرا بخوانند. این کار با جلوگیری از رندرهای غیرضروری، باعث بهبود عملکرد می‌گردد.
 
-However, you might still be wondering why React doesn't just update `this.state` immediately without re-rendering.
+با این وجود شاید باز برای شما سوال باشد که چرا ری‌اکت بلافاصله `this.state` را بدون رندرِ دوباره، بروزرسانی نمی‌کند.
 
-There are two main reasons:
+دو دلیل عمده برای این کار وجود دارد:
 
-* This would break the consistency between `props` and `state`, causing issues that are very hard to debug.
-* This would make some of the new features we're working on impossible to implement.
+* این کار یکپارچگی بین `props` و ‍`state` را از بین برده و باعث ایجاد مشکلاتی می‌گردد که عیب‌زدایی(debug) آن بسیار دشوار خواهد بود.
+* این کار باعث می‌شود که پیاده‌سازی ویژگی‌های جدیدی که در حال کار بر روی آنها هستیم، غیرممکن گردد.
 
-This [GitHub comment](https://github.com/facebook/react/issues/11527#issuecomment-360199710) dives deep into the specific examples.
+ این [ دیدگاه در گیت‌هاب ](https://github.com/facebook/react/issues/11527#issuecomment-360199710) موارد ویژه‌ای را با جزییات بیان می‌کند.
 
-### Should I use a state management library like Redux or MobX? {#should-i-use-a-state-management-library-like-redux-or-mobx}
+### آیا باید از یک کتابخانه مدیریت state مانند Redux یا MobX استفاده کنم؟ {#should-i-use-a-state-management-library-like-redux-or-mobx}
 
-[Maybe.](https://redux.js.org/faq/general#when-should-i-use-redux)
+[شاید.](https://redux.js.org/faq/general#when-should-i-use-redux)
 
-It's a good idea to get to know React first, before adding in additional libraries. You can build quite complex applications using only React.
+بهتر است که قبل از شروع یک کتابخانهٔ اضافی دیگر، ابتدا ری‌اکت را خوب یاد بگیرید. شما می‌توانید تنها با استفاده از ری‌اکت، اپلیکیشن‌های تقریبا پیچیده‌ای بسازید.
