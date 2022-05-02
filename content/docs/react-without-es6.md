@@ -216,10 +216,8 @@ var TickTock = createReactClass({
   }
 });
 
-ReactDOM.render(
-  <TickTock />,
-  document.getElementById('example')
-);
+const root = ReactDOM.createRoot(document.getElementById('example'));
+root.render(<TickTock />);
 ```
 
 اگر یک کامپوننت از چند mixin استفاده می‌کند و mixin های متفاوت یک متد چرخه حیات یکسان را تعریف می‌کنند، (برای مثال mixin های مختلف می‌خواهند کمی تمیزکاری پس از نابود شدن کامپوننت انجام دهند) همه متدهای چرخه حیات برای فراخوانی تضمین شده‌اند. متدهای mixin ها به همان ترتیبی که لیست شده‌اند، به دنبال صدا زدن یک متد روی کامپوننت اجرا می‌شوند.
