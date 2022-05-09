@@ -512,7 +512,11 @@ setState(updater, [callback])
 
 `setState()` تغییرات را در state کامپوننت درج می‌کند و به ری‌اکت می‌گوید که این کامپوننت و فزندانش نیاز به یک رندر دوباره با state بروز شده دارند. این متد اصلی است که شما برای به‌روز رسانی رابط کاربری در پاسخ به کنترل کننده‌های رویدادها (event handlers) و پاسخ‌های سرور استفاده می‌نمایید.
 
+<<<<<<< HEAD
 `setState()` را به عنوان یک *درخواست* و نه یک دستور برای به‌روز رسانی کامپوننت در نظر بگیرید. برای حس کردن کارایی بهتر، ری‌اکت ممکن است آن را به تاخیر بیاندازد، و سپس چندین کامپوننت را در یک لحظه بروز کند. ری‌اکت تضمین نمی‌کند که تغییرات state فورا اعمال شوند.
+=======
+Think of `setState()` as a *request* rather than an immediate command to update the component. For better perceived performance, React may delay it, and then update several components in a single pass. In the rare case that you need to force the DOM update to be applied synchronously, you may wrap it in [`flushSync`](/docs/react-dom.html#flushsync), but this may hurt performance.
+>>>>>>> 26a870e1c6e232062b760d37620d85802750e985
 
 `setState()` همیشه در لحظه کامپوننت را بروز نمی‌کند. ممکن است تغییر را بسته‌بندی کرده و یا به تاخیر انداخته باشد. این موضوع خواندن `this.state` درست پس از صدا زدن `setState()` را به یک تله تبدیل کرده‌است. به جای اینکار، از `componentDidUpdate` یا یک `setState` callback (`setState(updater, callback)`) استفاده کنید، که اجرا شدن هر دو پس از اینکه به‌روز رسانی اعمال شده است، تضمین شده است. اگر نیاز به ست کردن state بر اساس state قبلی دارید، در مورد آرگومان `updater` در زیر بخوانید.
 
