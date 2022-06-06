@@ -6,42 +6,134 @@ category: Reference
 permalink: docs/react-dom.html
 ---
 
+<<<<<<< HEAD
 اگر ری‌اکت را با تگ `<script>` بارگذاری کنید، این APIهای سطح بالا در `ReactDOM` به صورت عمومی در دسترس هستن. اگر از ES6 با npm استفاده می‌کنید، می‌توانید بنویسید `import ReactDOM from 'react-dom'`.
 اگر از ES5 با npm استفاده می‌کنید ،می‌توانید بنویسید `var ReactDOM = require('react-dom')`.
+=======
+The `react-dom` package provides DOM-specific methods that can be used at the top level of your app and as an escape hatch to get outside the React model if you need to.
+
+```js
+import * as ReactDOM from 'react-dom';
+```
+
+If you use ES5 with npm, you can write:
+
+```js
+var ReactDOM = require('react-dom');
+```
+
+The `react-dom` package also provides modules specific to client and server apps:
+- [`react-dom/client`](/docs/react-dom-client.html)
+- [`react-dom/server`](/docs/react-dom-server.html)
+>>>>>>> 9a5bf3e1f1c151720b3ce383fdd9743d4038b71e
 
 ## مرور کلی {#overview}
 
+<<<<<<< HEAD
 بسته `react-dom` متدهای خاصی از DOM را فراهم می‌کند که در صورت نیاز می‌توان در سطح بالایی از اپلیکیشن شما به عنوان راه فراری از مدل ری‌اکت استفاده کرد. بیشتر کامپوننت‌های شما نیازی ندارند که از این ماژول‌ها استفاده کنند.
+=======
+The `react-dom` package exports these methods:
+- [`createPortal()`](#createportal)
+- [`flushSync()`](#flushsync)
+>>>>>>> 9a5bf3e1f1c151720b3ce383fdd9743d4038b71e
 
+These `react-dom` methods are also exported, but are considered legacy:
 - [`render()`](#render)
 - [`hydrate()`](#hydrate)
-- [`unmountComponentAtNode()`](#unmountcomponentatnode)
 - [`findDOMNode()`](#finddomnode)
-- [`createPortal()`](#createportal)
+- [`unmountComponentAtNode()`](#unmountcomponentatnode)
+
+> Note: 
+> 
+> Both `render` and `hydrate` have been replaced with new [client methods](/docs/react-dom-client.html) in React 18. These methods will warn that your app will behave as if it's running React 17 (learn more [here](https://reactjs.org/link/switch-to-createroot)).
 
 ### پشتیبانی مرورگر {#browser-support}
 
+<<<<<<< HEAD
 ری‌اکت از تمام مرورگرهای معروف پشتیبانی می‌کند، که شامل Internet Explorer 9 و بالاتر می‌شود، گرچه برای مرورگرهای قدیمی مثل IE 9 و IE 10 [به مکمل‌ها(polyfills) نیاز است](/docs/javascript-environment-requirements.html).
+=======
+React supports all modern browsers, although [some polyfills are required](/docs/javascript-environment-requirements.html) for older versions.
+>>>>>>> 9a5bf3e1f1c151720b3ce383fdd9743d4038b71e
 
 > توجه
 >
+<<<<<<< HEAD
 > ما از مرورگرهای قدیمی که از متدهای ES5 پشتیبانی نمی‌کنند پشتیبانی نمی‌کنیم، ولی متوجه میشوید که اگر از مکمل‌هایی مثل [es5-shim و es5-sham](https://github.com/es-shims/es5-shim) استفاده کنید برنامه‌های شما در این مرورگرهای قدیمی کار می‌کنند. اما پیامد آن به عهده خودتان است.
 * * *
+=======
+> We do not support older browsers that don't support ES5 methods or microtasks such as Internet Explorer. You may find that your apps do work in older browsers if polyfills such as [es5-shim and es5-sham](https://github.com/es-shims/es5-shim) are included in the page, but you're on your own if you choose to take this path.
+>>>>>>> 9a5bf3e1f1c151720b3ce383fdd9743d4038b71e
 
 ## مرجع {#reference}
 
-### `render()` {#render}
+### `createPortal()` {#createportal}
 
 ```javascript
-ReactDOM.render(element, container[, callback])
+createPortal(child, container)
 ```
 
+<<<<<<< HEAD
 یک المنت ری‌اکت را درون container داده‌شده رندر می‌کند و یک [reference](/docs/more-about-refs.html) به آن کامپوننت (یا null برای [کامپوننت‌های بدون state](/docs/components-and-props.html#function-and-class-components)) باز می‌گرداند.
+=======
+Creates a portal. Portals provide a way to [render children into a DOM node that exists outside the hierarchy of the DOM component](/docs/portals.html).
+
+### `flushSync()` {#flushsync}
+
+```javascript
+flushSync(callback)
+```
+
+Force React to flush any updates inside the provided callback synchronously. This ensures that the DOM is updated immediately.
+
+```javascript
+// Force this state update to be synchronous.
+flushSync(() => {
+  setCount(count + 1);
+});
+// By this point, DOM is updated.
+```
+
+> Note:
+> 
+> `flushSync` can significantly hurt performance. Use sparingly.
+> 
+> `flushSync` may force pending Suspense boundaries to show their `fallback` state.
+> 
+> `flushSync` may also run pending effects and synchronously apply any updates they contain before returning.
+> 
+> `flushSync` may also flush updates outside the callback when necessary to flush the updates inside the callback. For example, if there are pending updates from a click, React may flush those before flushing the updates inside the callback.
+
+## Legacy Reference {#legacy-reference}
+### `render()` {#render}
+```javascript
+render(element, container[, callback])
+```
+
+> Note:
+>
+> `render` has been replaced with `createRoot` in React 18. See [createRoot](/docs/react-dom-client.html#createroot) for more info.
+
+Render a React element into the DOM in the supplied `container` and return a [reference](/docs/more-about-refs.html) to the component (or returns `null` for [stateless components](/docs/components-and-props.html#function-and-class-components)).
+>>>>>>> 9a5bf3e1f1c151720b3ce383fdd9743d4038b71e
 
 
 اگر المت ری‌اکت قبلا درون `container` رندر شده می‌بود، این دستور یک بروزرسانی روی آن انجام می‌داد و DOM را فقط در صورت لزوم تغغیر (mutate) می‌هد تا آخرین المنت ری‌اکت منعکس شود.
 
+<<<<<<< HEAD
 اگر callback دلخواهی داشتیم، بعد از اینکه کامپوننت رندر یا به‌روزرسانی شد اجرا می‌شود.
+=======
+> Note:
+>
+> `render()` controls the contents of the container node you pass in. Any existing DOM elements inside are replaced when first called. Later calls use React’s DOM diffing algorithm for efficient updates.
+>
+> `render()` does not modify the container node (only modifies the children of the container). It may be possible to insert a component to an existing DOM node without overwriting the existing children.
+>
+> `render()` currently returns a reference to the root `ReactComponent` instance. However, using this return value is legacy
+> and should be avoided because future versions of React may render components asynchronously in some cases. If you need a reference to the root `ReactComponent` instance, the preferred solution is to attach a
+> [callback ref](/docs/refs-and-the-dom.html#callback-refs) to the root element.
+>
+> Using `render()` to hydrate a server-rendered container is deprecated. Use [`hydrateRoot()`](#hydrateroot) instead.
+>>>>>>> 9a5bf3e1f1c151720b3ce383fdd9743d4038b71e
 
 > توجه:
 >
@@ -57,10 +149,18 @@ ReactDOM.render(element, container[, callback])
 ### `()hydrate` {#hydrate}
 
 ```javascript
-ReactDOM.hydrate(element, container[, callback])
+hydrate(element, container[, callback])
 ```
 
+<<<<<<< HEAD
 مثل [`()render`](#render) است، ولی برای hydrate کردن یک container که محتوای HTML آن توسط [`ReactDOMServer`](/docs/react-dom-server.html) رنده شده است استفاده می‌شود. ری‌اکت تلاش می‌کند به همان المان‌های رندر شده‌ی موجود، event listener هایی را اضافه کند.
+=======
+> Note:
+>
+> `hydrate` has been replaced with `hydrateRoot` in React 18. See [hydrateRoot](/docs/react-dom-client.html#hydrateroot) for more info.
+
+Same as [`render()`](#render), but is used to hydrate a container whose HTML contents were rendered by [`ReactDOMServer`](/docs/react-dom-server.html). React will attempt to attach event listeners to the existing markup.
+>>>>>>> 9a5bf3e1f1c151720b3ce383fdd9743d4038b71e
 
 ری‌اکت توقع دارد که محتوای رنده شده بین سرور و کاربر همسان باشند. ری‌اکت میتواند اختلافات را در متن محتوا وصله کند، ولی شما باید با عدم تطابق به عنوان باگ نگاه کنید و آنها را رفع کنید. در حالت توسعه، ری‌اکت این عدم تطابق را در مدت hydration به ما هشدار می‌دهد. هیچ تضمینی وجود ندارد که تفاوت‌های بین attribute در مواردی که عدم تطابق داریم وصله شوند. از این جهت برای عملکرد بهتر مهم است زیرا در اکثر نرم‌افزارها، عدم تطابق نادر است، و راست‌آزمایی markups میتواند از این نظر بسیار گران باشد.
 
@@ -75,10 +175,18 @@ ReactDOM.hydrate(element, container[, callback])
 ### `unmountComponentAtNode()` {#unmountcomponentatnode}
 
 ```javascript
-ReactDOM.unmountComponentAtNode(container)
+unmountComponentAtNode(container)
 ```
 
+<<<<<<< HEAD
 یک کامپوننت mount شده ری‌اکت را از DOM حذف و تمام event handler ها و state آن را پاک می‌کند. اگر هیچ کامپوننتی در mount container نشده باشد، فراخوانی این تابع هیچ کاری نمی‌کند. مقدار `true` را برای کامپوننت‌هایی که mount شدن و  مقدار `false` را در زمانی که هیچ کامپوننتی mount نشده باشد برمی‌گرداند.
+=======
+> Note:
+>
+> `unmountComponentAtNode` has been replaced with `root.unmount()` in React 18. See [createRoot](/docs/react-dom-client.html#createroot) for more info.
+
+Remove a mounted React component from the DOM and clean up its event handlers and state. If no component was mounted in the container, calling this function does nothing. Returns `true` if a component was unmounted and `false` if there was no component to unmount.
+>>>>>>> 9a5bf3e1f1c151720b3ce383fdd9743d4038b71e
 
 * * *
 
@@ -88,7 +196,7 @@ ReactDOM.unmountComponentAtNode(container)
 > `findDOMNode`  یک راه فرار است که برای دسترسی به DOM نود زیرین استفاده می‌شود. در بیشتر موارد، استفاده از این راه فرار پیش‌نهاد نمی‌شود. زیرا نفوذی به [لایه] abstraction کامپوننت است. این قابلیت [در `StrictMode` منسوخ شده است.](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
 
 ```javascript
-ReactDOM.findDOMNode(component)
+findDOMNode(component)
 ```
 این متد برای خواندن مقادیر خارج از DOM، مانند مقادیر فیلد‌های فرم و انجام بررسی‌های DOM مفید است. در **بیشتر موارد، شما می‌توانید یک ref به نود DOM متصل کنید و در کل از استفاده‌ی `findDOMNode` بپرهیزید.**
 
@@ -102,6 +210,7 @@ ReactDOM.findDOMNode(component)
 > `findDOMNode` در کامپوننت‌های تابعی کار نمی‌کند.
 
 * * *
+<<<<<<< HEAD
 
 ### `createPortal()` {#createportal}
 
@@ -109,3 +218,5 @@ ReactDOM.findDOMNode(component)
 ReactDOM.createPortal(child, container)
 ```
 یک پورتال ایجاد می‌کنند. پورتال‌ها راهی فراهم می‌کند تا [فرزنده‌ها را درون DOM نود بیرون سلسله مراتب DOM قرار دهید](/docs/portals.html).
+=======
+>>>>>>> 9a5bf3e1f1c151720b3ce383fdd9743d4038b71e
