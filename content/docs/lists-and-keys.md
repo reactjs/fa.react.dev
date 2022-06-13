@@ -35,13 +35,14 @@ const listItems = numbers.map((number) =>
 );
 ```
 
+<<<<<<< HEAD
 کل آرایه‌ی `listItems` را درون یک المنت `<ul>` قرار می‌دهیم و [آن را در DOM رندر می‌کنیم](/docs/rendering-elements.html#rendering-an-element-into-the-dom):  
+=======
+Then, we can include the entire `listItems` array inside a `<ul>` element:
+>>>>>>> 6d965422a4056bac5f93f92735364cb08bcffc6b
 
 ```javascript{2}
-ReactDOM.render(
-  <ul>{listItems}</ul>,
-  document.getElementById('root')
-);
+<ul>{listItems}</ul>
 ```
 
 [**در کدپن امتحان کنید**](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
@@ -67,10 +68,8 @@ function NumberList(props) {
 }
 
 const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<NumberList numbers={numbers} />);
 ```
 
 وقتی این کد را اجرا کنید، با این هشدار مواجه می‌شوید که برای آیتم‌های لیست یک key لازم است. “key” یک ویژگی خاص از جنس رشته است که وقتی لیستی از المنت‌ها درست می‌کنید، باید از آن استفاده کنید. در بخش بعدی دلیل اهمیت آن را توضیح می‌دهیم.
@@ -89,12 +88,6 @@ function NumberList(props) {
     <ul>{listItems}</ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 [**در کدپن امتحان کنید**](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
@@ -169,12 +162,6 @@ function NumberList(props) {
     </ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 **مثال: استفاده‌ی صحیح از کلید**
@@ -197,12 +184,6 @@ function NumberList(props) {
     </ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 [**در کدپن امتحان کنید**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
@@ -243,10 +224,9 @@ const posts = [
   {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
   {id: 2, title: 'Installation', content: 'You can install React from npm.'}
 ];
-ReactDOM.render(
-  <Blog posts={posts} />,
-  document.getElementById('root')
-);
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Blog posts={posts} />);
 ```
 
 [**در کدپن امتحان کنید**](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
