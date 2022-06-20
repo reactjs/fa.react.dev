@@ -12,7 +12,15 @@
   نسخه فارسی اسناد ری‌اکت را در <a href="https://fa.reactjs.org/" target="_blank">fa.reactjs.org</a> ببینید.
 </p>
 
+<<<<<<< HEAD
 <h2 dir="rtl">چگونه مشارکت کنم؟</h2>
+=======
+1. Git
+1. Node: any 12.x version starting with v12.0.0 or greater
+1. Yarn v1: See [Yarn website for installation instructions](https://yarnpkg.com/lang/en/docs/install/)
+1. A fork of the repo (for any contributions)
+1. A clone of the [reactjs.org repo](https://github.com/reactjs/reactjs.org) on your local machine
+>>>>>>> df2673d1b6ec0cc6657fd58690bbf30fa1e6e0e6
 
 <p dir="rtl">
 پیشنهاد می‌شود به‌ترتیب از لینک‌های زیر شروع کنید:
@@ -118,7 +126,15 @@ yarn dev
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 
+<<<<<<< HEAD
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+=======
+1. `git add -A && git commit -m "My message"` (replacing `My message` with a commit message, such as `Fix header logo on Android`) to stage and commit your changes
+1. `git push my-fork-name the-name-of-my-branch`
+1. Go to the [reactjs.org repo](https://github.com/reactjs/reactjs.org) and you should see recently pushed branches.
+1. Follow GitHub's instructions.
+1. If possible, include screenshots of visual changes. A preview build is triggered after your changes are pushed to GitHub.
+>>>>>>> df2673d1b6ec0cc6657fd58690bbf30fa1e6e0e6
 
 <h3 dir="rtl">نگاه‌دارندگان</h3>
 

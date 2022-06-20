@@ -31,8 +31,13 @@ function Example() {
 
 > نکته
 >
+<<<<<<< HEAD
 > ری‌‌اکت ۱۶.۸.۰ اولین نسخه منتشر شده است که از هوک‌‌ها پشتیبانی می‌‌کند. هنگام ارتقاع، فراموش نکنید همه‌‌ی پکیج‌‌ها شامل React DOM را به‌روز رسانی نمایید.
 > ری‌اکت نیتیو از زمان [انتشار نسخه ۰.۵۹](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059) از هوک‌ها پشتیبانی می‌کند.
+=======
+>React 16.8.0 is the first release to support Hooks. When upgrading, don't forget to update all packages, including React DOM.
+>React Native has supported Hooks since [the 0.59 release of React Native](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059).
+>>>>>>> df2673d1b6ec0cc6657fd58690bbf30fa1e6e0e6
 
 ## معرفی تصویری {#video-introduction}
 
@@ -95,7 +100,11 @@ function Example() {
 
 ما می‌‌دانیم که توسعه‌دهنده‌های ری‌‌اکت روی عرضه‌‌ی محصولات تمرکز دارند و وقتی برای مطالعه‌ هر API جدیدی که منتشر می‌‌شود را ندارند. هوک‌‌ها خیلی تازه هستند، و شاید برای یادگیری و بهره‌‌گیری از آن‌‌ها بهتر باشد تا برای مثال‌‌ها و آموزش‌‌های بیشتر صبر کنید.
 
+<<<<<<< HEAD
 ما همچنین اطلاع داریم که انتظارات برای اضافه کردن دستورات پایه‌‌ی جدید به ری‌‌اکت بسیار بالاست. ما برای خواننده‌‌های کنجکاو، [یک RFC با جزییات](https://github.com/reactjs/rfcs/pull/68) آماده کرده‌‌ایم که با عمق بیشتری به ایده‌ها می‌‌پردازد، و چشم‌انداز گسترده‌ای بر تصمیمات مشخصی در طراحی فعلی و پیشین فراهم می‌‌کند.
+=======
+We also understand that the bar for adding a new primitive to React is extremely high. For curious readers, we have prepared a [detailed RFC](https://github.com/reactjs/rfcs/pull/68) that dives into the motivation with more details, and provides extra perspective on the specific design decisions and related prior art.
+>>>>>>> df2673d1b6ec0cc6657fd58690bbf30fa1e6e0e6
 
 **اساسا، هوک ها در کنار کدهای نوشته‌‌شده از قبل کار خواهند کرد، پس شما می‌‌توانید به‌صورت تدریجی از آن‌‌ها بهره گیرید.**  عجله‌ای برای مهاجرت‌ به هوک‌ها نیست! ما پیشنهاد می‌کنیم که از بازنویسی‌های کلان کد خود، به خصوص کامپوننت‌هایی پیچیده‌ای که با کلاس نوشته شده‌اند پرهیز کنید. تفکر به شیوه هوک‌ها نیازمند کمی تغییر در شیوه تفکر است. بر اساس تجربه ما، بهتر است که استفاده از هوک‌ها را در کامپوننت‌های کم‌اهمیت و تازه تمرین کنید و مطمئن شوید که همه اعضای تیم با آن‌ها احساس راحتی می‌کنند. بعد از اینکه هوک‌ها را امتحان کردید، [بازخورد‌های خود را برای ما ارسال کنید](https://github.com/facebook/react/issues/new)، چه مثبت، چه منفی!
 
