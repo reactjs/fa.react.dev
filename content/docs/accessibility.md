@@ -1,4 +1,4 @@
----
+  ---
 id: accessibility
 title: Accessibility
 permalink: docs/accessibility.html

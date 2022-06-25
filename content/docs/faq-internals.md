@@ -1,23 +1,28 @@
 ---
 id: faq-internals
-title: Virtual DOM and Internals
+title: DOM مجازی و انترنال‌ها
 permalink: docs/faq-internals.html
 layout: docs
 category: FAQ
 ---
 
-### What is the Virtual DOM? {#what-is-the-virtual-dom}
+### DOM مجازی چیست؟ {#what-is-the-virtual-dom}
 
-The virtual DOM (VDOM) is a programming concept where an ideal, or "virtual", representation of a UI is kept in memory and synced with the "real" DOM by a library such as ReactDOM. This process is called [reconciliation](/docs/reconciliation.html).
 
-This approach enables the declarative API of React: You tell React what state you want the UI to be in, and it makes sure the DOM matches that state. This abstracts out the attribute manipulation, event handling, and manual DOM updating that you would otherwise have to use to build your app.
+دام مجازی(VDOM) یک مفهوم برنامه‌نویسی است که در آن نسخه‌ای ایده‌ال یا مجازی از یک UI در حافظه نگهداری می‌شود و توسط کتابخانه‌ای مانند ReactDOM با DOM واقعی همگام‌سازی می‌گردد. به این فرایند [تلفیق](/docs/reconciliation.html) گفته می‌شود.
 
-Since "virtual DOM" is more of a pattern than a specific technology, people sometimes say it to mean different things. In React world, the term "virtual DOM" is usually associated with [React elements](/docs/rendering-elements.html) since they are the objects representing the user interface. React, however, also uses internal objects called "fibers" to hold additional information about the component tree. They may also be considered a part of "virtual DOM" implementation in React.
 
-### Is the Shadow DOM the same as the Virtual DOM? {#is-the-shadow-dom-the-same-as-the-virtual-dom}
+این روش، API اعلامی ری‌اکت را فعال می‌کند. یعنی شما به ری‌اکت می‌گویید که UI خود را در چه stateی می‌خواهید، و ری‌اکت مطمئن می‌شود که DOM با state همخوانی دارد. و خلاصهٔ همه این‌ها می‌شود دستکاری attribute، مدیریت event، و آپدیت دستی DOM که برای ساخت برنامه خود به آن‌ها نیاز خواهید داشت.
 
-No, they are different. The Shadow DOM is a browser technology designed primarily for scoping variables and CSS in web components. The virtual DOM is a concept implemented by libraries in JavaScript on top of browser APIs.
 
-### What is "React Fiber"? {#what-is-react-fiber}
+از آنجایی که DOM مجازی بیشتر یک الگو است تا تکنولوژی، اغلب افراد به اشتباه از بیان آن منظور دیگری دارند. اصطلاح DOM مجازی در دنیای ری‌اکت، معمولا با [المنت‌های ری‌اکت](/docs/rendering-elements.html) مرتبط است چون این المنت‌ها در واقع شی‌هایی هستند که نمایانگر رابط کاربری می‌باشند. با این حال ری‌اکت از یک شی درونی با عنوان «فیبر» برای نگهداری اطلاعات اضافی درخت کامپوننت‌ها استفاده می‌کند. این فیبرها ممکن است که بخشی از DOM مجازی ری‌اکت در نظر گرفته شوند.
 
-Fiber is the new reconciliation engine in React 16. Its main goal is to enable incremental rendering of the virtual DOM. [Read more](https://github.com/acdlite/react-fiber-architecture).
+
+### آیا Shadow DOM همانند DOM مجازی است؟{#is-the-shadow-dom-the-same-as-the-virtual-dom}
+
+خیر، باهم فرق دارند. Shadow DOM فناوری مربوط به مرورگر است که عموما برای تعیین محدوده متغیرها و CSS در اجزای وب طراحی شده است. DOM مجازی مفهومی است که توسط کتابخانه‌ها در جاوا اسکریپت در بالای APIهای مرورگر پیاده‌سازی شده است.
+
+### «React Fiber» چیست؟  {#what-is-react-fiber}
+
+فیبر (Fiber) موتور تلفیقی جدیدی در ری‌اکت ۱۶ است. هدف اصلی فیبر فراهم کردن رندر افزایشی DOM مجازی است. [بیشتر بخوانید.](https://github.com/acdlite/react-fiber-architecture)
+
