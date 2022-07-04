@@ -114,7 +114,11 @@ function ComponentWithTransition() {
 
 اگر از rendering سمت سروری ری‌اکت استفاده می‌کنید، در صورتی که محتوای render شده کلاینت با محتوای render شده سرور متفاوت باشد، هشداری دریافت می‌کنید. البته، در برخی موارد خیلی سخت است که دقیقا با همدیگر جور بشوند. برای مثال timestamp ها بین سرور و کلاینت متفاوت خواهند بود.
 
+<<<<<<< HEAD
 اگر شما `suppressHydrationWarning` را برای المنتی `true` کنید، ری‌اکت برای مغایرت‌های صفات و محتوای آن المنت به شما هشدار نخواهد داد. فقط تا یک سطح از عمق کار خواهد کرد، و این هم به منظور یک راه فرار است، زیاد از آن استفاده نکنید. شما می‌توانید در مورد hydration در [اسناد `ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) بیشتر بخوانید.
+=======
+If you set `suppressHydrationWarning` to `true`, React will not warn you about mismatches in the attributes and the content of that element. It only works one level deep, and is intended to be used as an escape hatch. Don't overuse it. You can read more about hydration in the [`ReactDOM.hydrateRoot()` documentation](/docs/react-dom-client.html#hydrateroot).
+>>>>>>> ee7705675d2304c53c174b9fb316e2fbde1e9fb3
 
 ### value {#value}
 
