@@ -112,6 +112,9 @@ Do you have a local React.js meetup? Add it here! (Please keep the list alphabet
 ## Italy {#italy}
 * [Milan](https://www.meetup.com/React-JS-Milano/)
 
+## Kenya {#kenya}
+* [Nairobi - Reactdevske](https://kommunity.com/reactjs-developer-community-kenya-reactdevske)
+
 ## Malaysia {#malaysia}
 * [Kuala Lumpur](https://www.kl-react.com/)
 * [Penang](https://www.facebook.com/groups/reactpenang/)
@@ -142,6 +145,7 @@ Do you have a local React.js meetup? Add it here! (Please keep the list alphabet
 
 ## Poland {#poland}
 * [Warsaw](https://www.meetup.com/React-js-Warsaw/)
+* [Wrocław](https://www.meetup.com/ReactJS-Wroclaw/)
 
 ## Portugal {#portugal}
 * [Lisbon](https://www.meetup.com/JavaScript-Lisbon/)
@@ -149,15 +153,13 @@ Do you have a local React.js meetup? Add it here! (Please keep the list alphabet
 ## Scotland (UK) {#scotland-uk}
 * [Edinburgh](https://www.meetup.com/React-Scotland/)
 
-## Singapore {#singapore}
-* [Singapore - React Knowledgeable](https://reactknowledgeable.org/)
-
 ## Spain {#spain}
 * [Barcelona](https://www.meetup.com/ReactJS-Barcelona/)
 * [Canarias](https://www.meetup.com/React-Canarias/)
 
 ## Sweden {#sweden}
 * [Goteborg](https://www.meetup.com/ReactJS-Goteborg/)
+* [Stockholm](https://www.meetup.com/Stockholm-ReactJS-Meetup/)
 
 ## Switzerland {#switzerland}
 * [Zurich](https://www.meetup.com/Zurich-ReactJS-Meetup/)
