@@ -2,6 +2,11 @@
 .DS_STORE
 .idea
 node_modules
+<<<<<<< HEAD
 public
 yarn-error.log
 .vscode
+=======
+/public
+yarn-error.log
+>>>>>>> 8223159395aae806f8602de35e6527d35260acfb
