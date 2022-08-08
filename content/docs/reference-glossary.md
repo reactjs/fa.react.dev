@@ -41,13 +41,9 @@ JSX افزونه‌ای بر syntax جاوااسکریپت است. به یک ز�
 در DOM ری‌اکت عرف نامگذاری property ها به‌جای اسامی attribute های HTML، به صورت camleCase است. در JSX برای مثال `tabindex` به `tabIndex` تبدیل می‌شود.
 همچنین خصیصه `class` به شکل `className` نوشته می‌شود زیرا کلمه `class` در زبان جاوااسکریپت رزرو شده است.
 
-```js
-const name = 'Clementine';
-ReactDOM.render(
-  <h1 className="hello">My name is {name}!</h1>,
-  document.getElementById('root')
-);
-```  
+```jsx
+<h1 className="hello">My name is Clementine!</h1>
+```
 
 ## [المنت‌ها](/docs/rendering-elements.html) {#elements}
 

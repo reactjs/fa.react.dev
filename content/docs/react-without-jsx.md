@@ -17,10 +17,8 @@ class Hello extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <Hello toWhat="World" />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Hello toWhat="World" />);
 ```
 
 که می‌توان همین کد را بدون نیاز به JSX کامپایل کرد:
@@ -32,10 +30,8 @@ class Hello extends React.Component {
   }
 }
 
-ReactDOM.render(
-  React.createElement(Hello, {toWhat: 'World'}, null),
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(Hello, {toWhat: 'World'}, null));
 ```
 
 اگر کنجکاو هستید که نمونه های بیشتری از چگونگی تبدیل JSX به جاوا اسکریپت ببینید، می‌توانید از [کامپایلر آنلاین Babel](babel://jsx-simple-example) استفاده کنید.
@@ -47,10 +43,8 @@ ReactDOM.render(
 ```js
 const e = React.createElement;
 
-ReactDOM.render(
-  e('div', null, 'Hello World'),
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(e('div', null, 'Hello World'));
 ```
 
 اگر شما از این اختصارنویسی در `React.createElement` استفاده نمایید، می‌تواند به اندازه استفاده نکردن از JSX در ری‌اکت راحت باشد.
