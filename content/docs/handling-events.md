@@ -84,11 +84,6 @@ class Toggle extends React.Component {
     );
   }
 }
-
-ReactDOM.render(
-  <Toggle />,
-  document.getElementById('root')
-);
 ```
 
 [**این را روی CodePen امتحان کنید**](https://codepen.io/gaearon/pen/xEmzGg?editors=0010)
@@ -97,15 +92,18 @@ ReactDOM.render(
 
 این رفتار مختص به ری‌اکت نیست. این جزئی از [چگونگی کارکرد توابع در جاوااسکریپت](https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/) است. عموما، اگر شما بدون `()` بعد از آن به یک تابع اشاره کنید، مانند `onClick={this.handleClick}`، شما باید آن متد را bind کنید.
 
+<<<<<<< HEAD
 اگر فراخوانی `bind` شما را آزار می‌دهد، دو راه برای دور زدن ان وجود دارد. اگر شما از [قاعده فیلدهای عمومی کلاس](https://babeljs.io/docs/plugins/transform-class-properties/) استفاده می‌کنید، می‌توانید از فیلدهای کلاس برای bind کردن صحیح callback ها استفاده کنید.
+=======
+If calling `bind` annoys you, there are two ways you can get around this. You can use [public class fields syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields) to correctly bind callbacks:
+>>>>>>> 5fed75dac5f4e208369b102a1337d76944111b33
 
 ```js{2-6}
 class LoggingButton extends React.Component {
   // This syntax ensures `this` is bound within handleClick.
-  // Warning: this is *experimental* syntax.
   handleClick = () => {
     console.log('this is:', this);
-  }
+  };
 
   render() {
     return (
