@@ -81,11 +81,17 @@ prev: composition-vs-inheritance.html
 برای ساخت یک نسخه ایستا که مدل داده را رندر کند و نمایش دهد، باید کامپوننت‌هایی بسازید که از بقیه کامپوننت‌ها استفاده می‌کنند و داده‌ها را از طریق *props* انتقال می‌دهند. *props* امکانی است که بوسیله آن، داده‌ها از کامپوننت والد (parent) به کامپوننت فرزند (child) منتقل می‌شوند.
 اگر که با مفهوم state آشنایی دارید، **هرگز از آن برای ساخت نسخه ایستا استفاده نکنید!** state برای ایجاد تعامل طراحی شده و داده‌ای است که در طول زمان تغییر می‌کند و از آن‌جایی که فعلا روی نسخه ایستا کار می‌کنیم، نیازی به آن نخواهیم داشت.
 
+<<<<<<< HEAD
 می‌توانید روند ساخت را از بالا به پایین، یا از پایین به بالا شروع کنید. به این معنا که هم می‌توانید از بالاترین کامپوننت در سلسله مراتب قرار دارند (مثلا `FilterableProductTable`) یا از کامپوننت‌هایی که در سطوح پایین‌تری قرار دارند (مثل `ProductRow`) آغاز کنید. در مثال‌های ساده‌تر، معمولا شروع از بالا به پایین راحت‌تر است. در حالی‌که در پروژه‌های بزرگ‌تر، بهتر است که از پایین به بالا پیش بروید و همزمان با ساخت اپ، برای آن تست نیز بنویسید.
 
 در پایان این گام، شما کتابخانه‌ای از کامپوننت‌ها خواهید داشت که مدل داده را رندر می‌کند. از آنجایی که با نسخه ایستا سر و کار داریم، کامپوننت‌ها تنها متد `render()` خواهند داشت.
 کامپوننتی که در راس سلسله مراتب قرار دارد (یعنی `FilterableProductTable`) مدل داده‌ها را بعنوان یک prop دریافت می‌کند.
 اگر تغییراتی را در مدل داده‌های زیربنایی پروژه ایجاد کنید و دوباره `ReactDOM.render()` را صدا بزنید، رابط کاربری به‌روز رسانی خواهد شد و می‌توانید ببینید که رابط کاربری چگونه و در کجا تغییر می‌کند.
+=======
+At the end of this step, you'll have a library of reusable components that render your data model. The components will only have `render()` methods since this is a static version of your app. The component at the top of the hierarchy (`FilterableProductTable`) will take your data model as a prop. If you make a change to your underlying data model and call `root.render()` again, the UI will be updated. You can see how your UI is updated and where to make changes. React's **one-way data flow** (also called *one-way binding*) keeps everything modular and fast.
+
+Refer to the [React docs](/docs/getting-started.html) if you need help executing this step.
+>>>>>>> ea9e9ab2817c8b7eff5ff60e8fe9b649fd747606
 
 **جریان یکطرفه داده (one-way data flow)** در ری‌اکت (که با نام *binding یک‌طرفه* نیز شناخته می‌شود) همه چیز را ماژولار و سریع نگه می‌دارد.
 
@@ -153,7 +159,11 @@ prev: composition-vs-inheritance.html
 
 حالا می‌توانید ببینید که برنامه شما چطور عمل می‌کند: `filterText` را به `"ball"` تغییر بدهید و برنامه را دوباره بارگذاری کنید. خواهید دید که جدول داده‌ها به درستی تغییر می‌کند.
 
+<<<<<<< HEAD
 ## قدم پنجم: اضافه کردن جریان معکوس داده {#step-5-add-inverse-data-flow}
+=======
+If you try to type or check the box in the previous version of the example (step 4), you'll see that React ignores your input. This is intentional, as we've set the `value` prop of the `input` to always be equal to the `state` passed in from `FilterableProductTable`.
+>>>>>>> ea9e9ab2817c8b7eff5ff60e8fe9b649fd747606
 
 <p data-height="600" data-theme-id="0" data-slug-hash="LzWZvb" data-default-tab="js,result" data-user="rohan10" data-embed-version="2" data-pen-title="Thinking In React: Step 5" class="codepen">این بخش را در <a href="https://codepen.io/gaearon/pen/LzWZvb">فکر کردن در چارچوب ری‌اکت: گام پنجم</a> در <a href="https://codepen.io">CodePen</a> ببینید.</p>
 
