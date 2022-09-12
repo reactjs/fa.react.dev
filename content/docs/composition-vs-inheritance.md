@@ -168,4 +168,8 @@ class SignUpDialog extends React.Component {
 
 با استفاده از prop و ترکیب کامپوننت‌ها، در طراحی ظاهر و عملکرد کامپوننت‌ها انعطاف‌پذیری لازم را خواهید داشت. به‌خاطر داشته‌باشید که کامپوننت‌ها می‌توانند prop های دلخواهی مثل مقادیر اولیه، المنت‌های ری‌اکت و یا توابع را دریافت کنند.
 
+<<<<<<< HEAD
 اگر نیاز دارید قابلیتی که مربوط به UI نمی‌شود را میان کامپوننت‌ها به اشتراک بگذارید، پیشنهاد ما ساخت یک ماژول جاوااسکریپت است. کامپوننت‌های شما می‌توانند آن تابع، آبجکت و یا یک کلاس را import کرده و بدون تغییر یا توسعه آن، از قابلیت‌های آن بهره ببرند.
+=======
+If you want to reuse non-UI functionality between components, we suggest extracting it into a separate JavaScript module. The components may import it and use that function, object, or class, without extending it.
+>>>>>>> c7d858947f832d1ba4e78caebc391fd964ff6de6

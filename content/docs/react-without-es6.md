@@ -134,7 +134,11 @@ var SayHello = createReactClass({
 
 این یعنی نوشتن کلاس‌های ES6 همراه با کمی کد boilerplate برای مدیریت کننده‌های رویداد است، اما مزیت آن این است که عملکرد بهتری در اپلیکیشن‌های بزرک دارد.
 
+<<<<<<< HEAD
 اگر کد boilerplate برای شما جذاب نیست، می‌توانید پیشنهاد نحوی **experimental** در [Class Properties](https://babeljs.io/docs/plugins/transform-class-properties/) را در Babel فعال کنید:
+=======
+If the boilerplate code is too unattractive to you, you may use [ES2022 Class Properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields) syntax:
+>>>>>>> c7d858947f832d1ba4e78caebc391fd964ff6de6
 
 
 ```javascript
@@ -143,11 +147,11 @@ class SayHello extends React.Component {
     super(props);
     this.state = {message: 'Hello!'};
   }
-  // WARNING: this syntax is experimental!
+  
   // Using an arrow here binds the method:
   handleClick = () => {
     alert(this.state.message);
-  }
+  };
 
   render() {
     return (
@@ -159,9 +163,13 @@ class SayHello extends React.Component {
 }
 ```
 
+<<<<<<< HEAD
 لطفا در نظر داشته باشید که قاعده بالا **experimental** است و ممکن است تغییر کند، یا ممکن است این پیشنهاد وارد زبان نشود.
 
 اگر ترجیح می‌دهید که در امنیت باشید، چند انتخاب دارید:
+=======
+You also have a few other options:
+>>>>>>> c7d858947f832d1ba4e78caebc391fd964ff6de6
 
 * متدها را در سازنده bind کنید.
 * از arrow function ها استفاده کنید، برای مثال `onClick={(e) => this.handleClick(e)}`.
@@ -216,10 +224,8 @@ var TickTock = createReactClass({
   }
 });
 
-ReactDOM.render(
-  <TickTock />,
-  document.getElementById('example')
-);
+const root = ReactDOM.createRoot(document.getElementById('example'));
+root.render(<TickTock />);
 ```
 
 اگر یک کامپوننت از چند mixin استفاده می‌کند و mixin های متفاوت یک متد چرخه حیات یکسان را تعریف می‌کنند، (برای مثال mixin های مختلف می‌خواهند کمی تمیزکاری پس از نابود شدن کامپوننت انجام دهند) همه متدهای چرخه حیات برای فراخوانی تضمین شده‌اند. متدهای mixin ها به همان ترتیبی که لیست شده‌اند، به دنبال صدا زدن یک متد روی کامپوننت اجرا می‌شوند.

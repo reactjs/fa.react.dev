@@ -35,13 +35,14 @@ const listItems = numbers.map((number) =>
 );
 ```
 
+<<<<<<< HEAD
 کل آرایه‌ی `listItems` را درون یک المنت `<ul>` قرار می‌دهیم و [آن را در DOM رندر می‌کنیم](/docs/rendering-elements.html#rendering-an-element-into-the-dom):  
+=======
+Then, we can include the entire `listItems` array inside a `<ul>` element:
+>>>>>>> c7d858947f832d1ba4e78caebc391fd964ff6de6
 
 ```javascript{2}
-ReactDOM.render(
-  <ul>{listItems}</ul>,
-  document.getElementById('root')
-);
+<ul>{listItems}</ul>
 ```
 
 [**در کدپن امتحان کنید**](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
@@ -67,10 +68,8 @@ function NumberList(props) {
 }
 
 const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<NumberList numbers={numbers} />);
 ```
 
 وقتی این کد را اجرا کنید، با این هشدار مواجه می‌شوید که برای آیتم‌های لیست یک key لازم است. “key” یک ویژگی خاص از جنس رشته است که وقتی لیستی از المنت‌ها درست می‌کنید، باید از آن استفاده کنید. در بخش بعدی دلیل اهمیت آن را توضیح می‌دهیم.
@@ -89,12 +88,6 @@ function NumberList(props) {
     <ul>{listItems}</ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 [**در کدپن امتحان کنید**](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
@@ -132,8 +125,12 @@ const todoItems = todos.map((todo, index) =>
 );
 ```
 
+<<<<<<< HEAD
 اگر ممکن است ترتیب آیتم‌ها تغییر کند، پیشنهاد نمی‌کنیم که برای کلیدها از شاخص استفاده کنید. زیرا ممکن است تاثیر منفی‌ای بر عملکرد بگذارد و حتی باعث ایجاد مشکلاتی در state کامپوننت شود. 
 مقاله رابین پوکرنی (Robin Pokorny) که توضیحی مفصل در مورد [تاثیر منفی استفاده از شاخص به عنوان یک کلید](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318) است را بخوانید.
+=======
+We don't recommend using indexes for keys if the order of items may change. This can negatively impact performance and may cause issues with component state. Check out Robin Pokorny's article for an [in-depth explanation on the negative impacts of using an index as a key](https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/). If you choose not to assign an explicit key to list items then React will default to using indexes as keys.
+>>>>>>> c7d858947f832d1ba4e78caebc391fd964ff6de6
 
 اگر علاقه‌مندید بیشتر بدانید مقاله ی [توضیح مفصل در مورد اینکه چرا کلید ضروری است](/docs/reconciliation.html#recursing-on-children) را بخوانید. 
 
@@ -169,12 +166,6 @@ function NumberList(props) {
     </ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 **مثال: استفاده‌ی صحیح از کلید**
@@ -197,12 +188,6 @@ function NumberList(props) {
     </ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 [**در کدپن امتحان کنید**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
@@ -243,10 +228,9 @@ const posts = [
   {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
   {id: 2, title: 'Installation', content: 'You can install React from npm.'}
 ];
-ReactDOM.render(
-  <Blog posts={posts} />,
-  document.getElementById('root')
-);
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Blog posts={posts} />);
 ```
 
 [**در کدپن امتحان کنید**](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
