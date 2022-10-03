@@ -31,8 +31,13 @@ function Example() {
 
 > نکته
 >
+<<<<<<< HEAD
 > ری‌‌اکت ۱۶.۸.۰ اولین نسخه منتشر شده است که از هوک‌‌ها پشتیبانی می‌‌کند. هنگام ارتقاع، فراموش نکنید همه‌‌ی پکیج‌‌ها شامل React DOM را به‌روز رسانی نمایید.
 > ری‌اکت نیتیو از زمان [انتشار نسخه ۰.۵۹](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059) از هوک‌ها پشتیبانی می‌کند.
+=======
+>React 16.8.0 is the first release to support Hooks. When upgrading, don't forget to update all packages, including React DOM.
+>React Native has supported Hooks since [the 0.59 release of React Native](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059).
+>>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
 
 ## معرفی تصویری {#video-introduction}
 
@@ -80,8 +85,12 @@ function Example() {
 
 علاوه‌بر اینکه کلاس‌ها استفاده مجدد کد‌ها و مدیریت آن‌ها را دچار مشکل می‌کنند، دریافتیم که آن‌ها می‌‌توانند مانع بزرگی در یادگیری ری‌‌اکت باشند. شما باید یادبگیرید که  `this` چگونه در جاوااسکریپت کار می‌‌کند، که با کارکرد آن در بیشتر زبان‌‌ها بسیار متفاوت است. شما باید به یاد داشته باشید تا event handlerها را bind کنید. بدون [پلاگین پیشنهاد برای نوشتن propertyهای یک کلاس (هنوز پایدار نیست!)](https://babeljs.io/docs/en/babel-plugin-transform-class-properties/)، کد بسیار طولانی خواهد بود. آدم‌‌ها می‌‌توانند props، state، و جریان بالا به پایین داده را کاملا دریابند درحالی‌که هنوز  با کلاس‌‌ها کلنجار می‌روند. در مقایسه بین کامپوننت از جنس تابع یا کلاس و موارد استفاده از آن‌‌ها، حتی بین توسعه‌دهنده‌های با تجربه‌‌ی ری‌‌اکت هم اختلاف‌نظر وجود دارد.
 
+<<<<<<< HEAD
 افزون بر این، ری‌‌اکت ۵ سال است که عرضه شده است، و ما می‌‌خواهیم در ۵ سال آینده هم مطرح باشد. همانطور که [Svelte](https://svelte.technology/) ،[Angular](https://angular.io/)، [Glimmer](https://glimmerjs.com/) و دیگران نشان می‌‌دهند، [کامپایل پیش از موعد (ahead-of-time compilation)](https://en.wikipedia.org/wiki/Ahead-of-time_compilation) کامپوننت‌‌ها، پتانسیل زیادی را دارد. مخصوصا اگر به templateها محدود نباشد. ما اخیرا  با
 [component folding](https://github.com/facebook/react/issues/7323) بوسیله‌‌ی [Prepack](https://prepack.io/)‌‌ ‌‌آزمایشاتی را انجام دادیم که شاهد نتایج  سریع و امیدوارکننده‌ای بوده‌‌ایم. اگرچه دریافتیم که کامپوننت‌‌های برپایه کلاس می‌‌توانند ناخواسته باعث افزایش الگوهایی شوند که چنین بهینه‌‌سازی‌‌هایی را خراب می‌‌کنند. کلاس‌‌ها برای ابزارهای امروزی نیز مشکلاتی ایجاد می‌‌کنند. برای مثال، کلاس‌‌ها به خوبی minify نمی‌‌شوند، همچنین باعث می‌‌شوند تا hot reloading شکننده و نامطمئن شود. ما می‌‌خواهیم APIای را ارائه دهیم که به کد امکان بهینه‌‌سازی بیشتری بدهد.
+=======
+In addition to making code reuse and code organization more difficult, we've found that classes can be a large barrier to learning React. You have to understand how `this` works in JavaScript, which is very different from how it works in most languages. You have to remember to bind the event handlers. Without [ES2022 public class fields](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields), the code is very verbose. People can understand props, state, and top-down data flow perfectly well but still struggle with classes. The distinction between function and class components in React and when to use each one leads to disagreements even between experienced React developers.
+>>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
 
 برای حل این مشکلات، **هوک‌‌ها به شما اجازه می‌‌دهند تا از بیشتر قابلیت‌‌های ری‌‌اکت بدون کلاس‌‌ها بهره ببرید.** از نظر مفهومی، همیشه کامپوننت‌‌های ری‌‌اکت بیشتر به توابع نزدیک‌‌ بوده‌‌اند. هوک‌‌ها بدون آنکه روح کاربردی ری‌‌اکت را فداکند، از توابع بهره می‌برند. استفاده از هوک‌ها ساده است و شما به یادگیری مهارت‌های پیچیده برنامه نویسی تابع‌گرا (functional) و واکنش‌گرا (reactive) ندارید.
 
@@ -95,7 +104,11 @@ function Example() {
 
 ما می‌‌دانیم که توسعه‌دهنده‌های ری‌‌اکت روی عرضه‌‌ی محصولات تمرکز دارند و وقتی برای مطالعه‌ هر API جدیدی که منتشر می‌‌شود را ندارند. هوک‌‌ها خیلی تازه هستند، و شاید برای یادگیری و بهره‌‌گیری از آن‌‌ها بهتر باشد تا برای مثال‌‌ها و آموزش‌‌های بیشتر صبر کنید.
 
+<<<<<<< HEAD
 ما همچنین اطلاع داریم که انتظارات برای اضافه کردن دستورات پایه‌‌ی جدید به ری‌‌اکت بسیار بالاست. ما برای خواننده‌‌های کنجکاو، [یک RFC با جزییات](https://github.com/reactjs/rfcs/pull/68) آماده کرده‌‌ایم که با عمق بیشتری به ایده‌ها می‌‌پردازد، و چشم‌انداز گسترده‌ای بر تصمیمات مشخصی در طراحی فعلی و پیشین فراهم می‌‌کند.
+=======
+We also understand that the bar for adding a new primitive to React is extremely high. For curious readers, we have prepared a [detailed RFC](https://github.com/reactjs/rfcs/pull/68) that dives into the motivation with more details, and provides extra perspective on the specific design decisions and related prior art.
+>>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
 
 **اساسا، هوک ها در کنار کدهای نوشته‌‌شده از قبل کار خواهند کرد، پس شما می‌‌توانید به‌صورت تدریجی از آن‌‌ها بهره گیرید.**  عجله‌ای برای مهاجرت‌ به هوک‌ها نیست! ما پیشنهاد می‌کنیم که از بازنویسی‌های کلان کد خود، به خصوص کامپوننت‌هایی پیچیده‌ای که با کلاس نوشته شده‌اند پرهیز کنید. تفکر به شیوه هوک‌ها نیازمند کمی تغییر در شیوه تفکر است. بر اساس تجربه ما، بهتر است که استفاده از هوک‌ها را در کامپوننت‌های کم‌اهمیت و تازه تمرین کنید و مطمئن شوید که همه اعضای تیم با آن‌ها احساس راحتی می‌کنند. بعد از اینکه هوک‌ها را امتحان کردید، [بازخورد‌های خود را برای ما ارسال کنید](https://github.com/facebook/react/issues/new)، چه مثبت، چه منفی!
 
