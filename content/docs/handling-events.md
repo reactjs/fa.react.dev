@@ -92,11 +92,7 @@ class Toggle extends React.Component {
 
 این رفتار مختص به ری‌اکت نیست. این جزئی از [چگونگی کارکرد توابع در جاوااسکریپت](https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/) است. عموما، اگر شما بدون `()` بعد از آن به یک تابع اشاره کنید، مانند `onClick={this.handleClick}`، شما باید آن متد را bind کنید.
 
-<<<<<<< HEAD
-اگر فراخوانی `bind` شما را آزار می‌دهد، دو راه برای دور زدن ان وجود دارد. اگر شما از [قاعده فیلدهای عمومی کلاس](https://babeljs.io/docs/plugins/transform-class-properties/) استفاده می‌کنید، می‌توانید از فیلدهای کلاس برای bind کردن صحیح callback ها استفاده کنید.
-=======
-If calling `bind` annoys you, there are two ways you can get around this. You can use [public class fields syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields) to correctly bind callbacks:
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
+اگر فراخوانی `bind` شما را آزار می‌دهد، دو راه برای دور زدن ان وجود دارد. اگر شما از [قاعده فیلدهای عمومی کلاس](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields) استفاده می‌کنید، می‌توانید از فیلدهای کلاس برای bind کردن صحیح callback ها استفاده کنید.
 
 ```js{2-6}
 class LoggingButton extends React.Component {

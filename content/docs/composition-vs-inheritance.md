@@ -1,17 +1,18 @@
 ---
 id: composition-vs-inheritance
-title: Composition vs Inheritance
+title: ترکیب در مقابل وراثت
 permalink: docs/composition-vs-inheritance.html
 redirect_from:
   - "docs/multiple-components.html"
 prev: lifting-state-up.html
 next: thinking-in-react.html
 ---
+
 ری‌اکت دارای یک مدل ترکیبی (compostion) قدرتمند است. به همین دلیل برای افزایش امکان استفاده مجدد کد بین کامپوننت‌ها، ما استفاده از ترکیب را به جای ارث‌بری پیشنهاد می‌کنیم.
 
 توسعه‌دهنگانی که تازه وارد دنیای ری‌اکت می‌شوند، هنگام مواجه با ارث‌بری دچار مشکلاتی می‌شوند. در این بخش، چند مورد از آن‌ها را بررسی و نشان می‌دهیم که چگونه با استفاده از ترکیب می‌توان آن‌ها را حل کرد.
 
-## در بر گرفتن {#containment}
+## دربرگرفتن {#containment}
 
 بعضی از کامپوننت‌ها اطلاعاتی از فرزند خود ندارند. این مورد در کامپوننت‌هایی مانند `Sidebar` یا `Dialog` که مانند یک قاب عمل می‌کنند، مرسوم است.
 
@@ -168,8 +169,4 @@ class SignUpDialog extends React.Component {
 
 با استفاده از prop و ترکیب کامپوننت‌ها، در طراحی ظاهر و عملکرد کامپوننت‌ها انعطاف‌پذیری لازم را خواهید داشت. به‌خاطر داشته‌باشید که کامپوننت‌ها می‌توانند prop های دلخواهی مثل مقادیر اولیه، المنت‌های ری‌اکت و یا توابع را دریافت کنند.
 
-<<<<<<< HEAD
 اگر نیاز دارید قابلیتی که مربوط به UI نمی‌شود را میان کامپوننت‌ها به اشتراک بگذارید، پیشنهاد ما ساخت یک ماژول جاوااسکریپت است. کامپوننت‌های شما می‌توانند آن تابع، آبجکت و یا یک کلاس را import کرده و بدون تغییر یا توسعه آن، از قابلیت‌های آن بهره ببرند.
-=======
-If you want to reuse non-UI functionality between components, we suggest extracting it into a separate JavaScript module. The components may import it and use that function, object, or class, without extending it.
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34

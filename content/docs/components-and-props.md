@@ -79,22 +79,11 @@ const element = <Welcome name="Sara" />;
 root.render(element);
 ```
 
-<<<<<<< HEAD
-[روی CodePen امتحان کنید](codepen://components-and-props/rendering-a-component)
-=======
-**[Try it on CodePen](https://codepen.io/gaearon/pen/YGYmEG?editors=1010)**
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
+**[روی CodePen امتحان کنید](https://codepen.io/gaearon/pen/YGYmEG?editors=1010)**
 
 بیایید جمع‌بندی کنیم که در این مثال چه اتفاقی می‌افتد:
 
-<<<<<<< HEAD
-۱. ما تابع `ReactDOM.render()` را با المنت `<Welcome name="Sara" />` فرا می‌خوانیم.
-=======
-1. We call `root.render()` with the `<Welcome name="Sara" />` element.
-2. React calls the `Welcome` component with `{name: 'Sara'}` as the props.
-3. Our `Welcome` component returns a `<h1>Hello, Sara</h1>` element as the result.
-4. React DOM efficiently updates the DOM to match `<h1>Hello, Sara</h1>`.
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
+۱. ما تابع `root.render()` را با المنت `<Welcome name="Sara" />` فرا می‌خوانیم.
 
 ۲. ری‌اکت کامپوننت `Welcome` را به همراه `{name: 'Sara'}` که در ورودی تابع به عنوان `props` تعریف شده است، فرا می‌خواند.
 
@@ -131,11 +120,7 @@ function App() {
 }
 ```
 
-<<<<<<< HEAD
-[روی CodePen امتحان کنید](codepen://components-and-props/composing-components)
-=======
-**[Try it on CodePen](https://codepen.io/gaearon/pen/KgQKPr?editors=1010)**
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
+**[روی CodePen امتحان کنید](https://codepen.io/gaearon/pen/KgQKPr?editors=1010)**
 
 معمولا، پروژه‌های جدید ری‌اکت دارای یک کامپوننت `App` واحد در بالاترین سطح هستند. اما اگر شما ری‌اکت را با پروژه‌ای موجود ادغام می‌کنید، می‌توانید از سطوح پایین به بالا طراحی کنید، برای مثال از یک کامپوننت کوچک مانند `Button` شروع کنید و تدریجا تا بالای سلسله مراتب view طراحی را ادامه دهید.
 
@@ -170,11 +155,7 @@ function Comment(props) {
 }
 ```
 
-<<<<<<< HEAD
-[روی CodePen امتحان کنید](codepen://components-and-props/extracting-components)
-=======
-**[Try it on CodePen](https://codepen.io/gaearon/pen/VKQwEo?editors=1010)**
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
+**[روی CodePen امتحان کنید](https://codepen.io/gaearon/pen/VKQwEo?editors=1010)**
 
 این کامپوننت author (یک شیء)، text (یک string)، و date (یک تاریخ) را به عنوان props دریافت و یک دیدگاه را در یک شبکه اجتماعی توصیف می‌کند.
 
@@ -253,11 +234,7 @@ function Comment(props) {
 }
 ```
 
-<<<<<<< HEAD
-[روی CodePen امتحان کنید](codepen://components-and-props/extracting-components-continued)
-=======
-**[Try it on CodePen](https://codepen.io/gaearon/pen/rrJNJY?editors=1010)**
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
+**[روی CodePen امتحان کنید](https://codepen.io/gaearon/pen/rrJNJY?editors=1010)**
 
 استخراج کامپوننت‌ها شاید در ابتدا به نظر کار سختی بیاید، اما داشتن یک پالت از کامپوننت‌هایی با قابلیت استفاده مجدد در اپ‌های بزرگتر، هزینه آن را باز می‌گرداند. به عنوان یک قانون کلی در نظر داشته باشید که اگر قسمتی از رابط کاربری شما بارها استفاده شده است (نظیر `Button`, `Panel` , `Avatar`) و یا اینکه قسمتی از رابط کاربری پیچیدگی منحصر به فرد خود را دارد (نظیر `App`, `FeedStory`, `Comment`) آن قسمت کاندیدای مناسبی برای استخراج و تبدیل شدن به یک کامپوننت مجزا است.
 

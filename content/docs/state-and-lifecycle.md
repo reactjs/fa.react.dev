@@ -10,11 +10,7 @@ next: handling-events.html
 
 این صفحه مفهوم state و lifecycle را در یک کامپوننت ری‌اکتی معرفی می‌کند. برای مطالعه [مرجع API کامپوننت با جزئیات به اینجا](/docs/react-component.html) مراجعه کنید.
 
-<<<<<<< HEAD
-مثال ساعت را در [یکی از بخش‌های پیشین](/docs/rendering-elements.html#updating-the-rendered-element) در نظر بگیرید. در [رندر کردن المنت‌ها](/docs/rendering-elements.html#rendering-an-element-into-the-dom)، ما تنها یک راه برای به‌روز رسانی UI یاد گرفتیم. ما تابع `ReactDOM.render()` را فراخوانی می‌کنیم تا خروجی رندر شده را تغییر دهیم:
-=======
-Consider the ticking clock example from [one of the previous sections](/docs/rendering-elements.html#updating-the-rendered-element). In [Rendering Elements](/docs/rendering-elements.html#rendering-an-element-into-the-dom), we have only learned one way to update the UI. We call `root.render()` to change the rendered output:
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
+مثال تیک تاک ساعت از [یکی از بخش‌های قبلی](/docs/rendering-elements.html#updating-the-rendered-element) را در نظر بگیرید. در [رندرکردن المنت‌ها](/docs/rendering-elements.html#rendering-an-element-into-the-dom)، ما فقط یک راه برای به روز رسانی رابط کاربری یاد گرفته ایم. برای تغییر خروجی رندر شده `root.render()` را فراخوانی می کنیم:
 
 ```js{10}
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -299,11 +295,7 @@ root.render(<Clock />);
 
 بیایید به طور خلاصه جمع‌بندی کنیم که چه اتفاقی ره می‌دهد و به ترتیب چه توابعی فراخوانی می‌شوند:
 
-<<<<<<< HEAD
-1. زمانی که `<Clock />` به `ReactDOM.render()` پاس داده می‌شود، ری‌اکت سازنده کامپوننت `Clock` را فراخوانی می‌کند. از آن‌جایی که `Clock` زمان جاری را نمایش دهد، `this.state` را با شیء‌ای شامل زمان جاری مقداردهی اولیه می‌کند.
-=======
-1) When `<Clock />` is passed to `root.render()`, React calls the constructor of the `Clock` component. Since `Clock` needs to display the current time, it initializes `this.state` with an object including the current time. We will later update this state.
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
+1) هنگامی که `<Clock />` به `root.render()` منتقل می شود، React سازنده کامپوننت `Clock` را فراخوانی می کند. از آنجایی که `Clock` باید زمان جاری را نمایش دهد، `this.state`را با یک آبجکت شامل زمان فعلی مقداردهی اولیه می کند. ما بعداً این حالت (state) را به روز خواهیم کرد.
 
 2. سپس ری‌اکت تابع `render()` کامپوننت `Clock` را فرا می‌خواند. این روشی است که ری‌اکت می‌فهمد چه چیزی باید روی صفجه نمایش‌داده شود. سپس ری‌اکت DOM را به‌روز رسانی و با خروجی رندر `Clock` تطبیق می‌دهد.
 

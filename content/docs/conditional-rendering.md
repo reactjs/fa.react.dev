@@ -35,17 +35,9 @@ function Greeting(props) {
   return <GuestGreeting />;
 }
 
-<<<<<<< HEAD
-ReactDOM.render(
-  // تغییر isLoggedIn={true} را امتحان کنید 
-  <Greeting isLoggedIn={false} />,
-  document.getElementById('root')
-);
-=======
 const root = ReactDOM.createRoot(document.getElementById('root')); 
-// Try changing to isLoggedIn={true}:
+// تغییر isLoggedIn={true} را امتحان کنید 
 root.render(<Greeting isLoggedIn={false} />);
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
 ```
 
 [**روی CodePen امتحان کنید**](https://codepen.io/gaearon/pen/ZpVxNq?editors=0011)

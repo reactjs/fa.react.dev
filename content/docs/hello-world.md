@@ -15,11 +15,7 @@ root.render(<h1>Hello, world!</h1>);
 
 این مثال یک عنوان را روی صفحه نمایش می‌دهد که می‌گوید: "Hello, world!"
 
-<<<<<<< HEAD
-**[روی CodePen امتحان کنید](codepen://hello-world)**
-=======
-**[Try it on CodePen](https://codepen.io/gaearon/pen/rrpgNB?editors=1010)**
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
+**[روی CodePen امتحان کنید](https://codepen.io/gaearon/pen/rrpgNB?editors=1010)**
 
 روی لینک بالا کلیک کنید تا یک ویرایشگر آنلاین باز شود. هر تغییری که می‌خواهید اعمال کنید و تاثیر آن را بر خروجی مشاهده کنید. بیشتر صفحات در این راهنما، مثال‌های قابل ویرایشی مانند بالا دارند.
 

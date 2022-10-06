@@ -134,11 +134,7 @@ var SayHello = createReactClass({
 
 این یعنی نوشتن کلاس‌های ES6 همراه با کمی کد boilerplate برای مدیریت کننده‌های رویداد است، اما مزیت آن این است که عملکرد بهتری در اپلیکیشن‌های بزرک دارد.
 
-<<<<<<< HEAD
-اگر کد boilerplate برای شما جذاب نیست، می‌توانید پیشنهاد نحوی **experimental** در [Class Properties](https://babeljs.io/docs/plugins/transform-class-properties/) را در Babel فعال کنید:
-=======
-If the boilerplate code is too unattractive to you, you may use [ES2022 Class Properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields) syntax:
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
+اگر کد boilerplate برای شما خیلی جذاب نیست، می توانید از سینتکس [ES2022 Class Properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields) استفاده کنید:
 
 
 ```javascript
@@ -163,13 +159,7 @@ class SayHello extends React.Component {
 }
 ```
 
-<<<<<<< HEAD
-لطفا در نظر داشته باشید که قاعده بالا **experimental** است و ممکن است تغییر کند، یا ممکن است این پیشنهاد وارد زبان نشود.
-
-اگر ترجیح می‌دهید که در امنیت باشید، چند انتخاب دارید:
-=======
-You also have a few other options:
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
+شما همچنین چند گزینه دیگر دارید:
 
 * متدها را در سازنده bind کنید.
 * از arrow function ها استفاده کنید، برای مثال `onClick={(e) => this.handleClick(e)}`.

@@ -31,13 +31,8 @@ function Example() {
 
 > نکته
 >
-<<<<<<< HEAD
-> ری‌‌اکت ۱۶.۸.۰ اولین نسخه منتشر شده است که از هوک‌‌ها پشتیبانی می‌‌کند. هنگام ارتقاع، فراموش نکنید همه‌‌ی پکیج‌‌ها شامل React DOM را به‌روز رسانی نمایید.
+> ری‌‌اکت ۱۶.۸.۰ اولین نسخه منتشر شده است که از هوک‌‌ها پشتیبانی می‌‌کند. هنگام ارتقاء، فراموش نکنید همه‌‌ی پکیج‌‌ها شامل React DOM را به‌روز رسانی نمایید.
 > ری‌اکت نیتیو از زمان [انتشار نسخه ۰.۵۹](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059) از هوک‌ها پشتیبانی می‌کند.
-=======
->React 16.8.0 is the first release to support Hooks. When upgrading, don't forget to update all packages, including React DOM.
->React Native has supported Hooks since [the 0.59 release of React Native](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059).
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
 
 ## معرفی تصویری {#video-introduction}
 
