@@ -15,41 +15,24 @@ import * as ReactDOMServer from 'react-dom/server';
 var ReactDOMServer = require('react-dom/server');
 ```
 
-
-<<<<<<< HEAD
 ## مرور کلی{#overview}
 
-متدهای زیر هم در محیط مرورگر و هم سرور قابل استفاده هستند:
-=======
-These methods are only available in the **environments with [Node.js Streams](https://nodejs.dev/learn/nodejs-streams):**
+این متدها فقط در **محیط‌های دارای [Node.js Streams](https://nodejs.dev/learn/nodejs-streams) در دسترس هستند:**
 
 - [`renderToPipeableStream()`](#rendertopipeablestream)
-- [`renderToNodeStream()`](#rendertonodestream) (Deprecated)
+- [`renderToNodeStream()`](#rendertonodestream) (کنارگذاشته‌شده)
 - [`renderToStaticNodeStream()`](#rendertostaticnodestream)
 
-These methods are only available in the **environments with [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)** (this includes browsers, Deno, and some modern edge runtimes):
+این متدها فقط در **محیط‌های دارای [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) موجود هستند** (این شامل مرورگرها، Deno، و برخی ران‌تایم‌های edge مدرن است):
 
 - [`renderToReadableStream()`](#rendertoreadablestream)
 
-The following methods can be used in the environments that don't support streams:
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
+متدهای زیر را می‌توان در محیط‌هایی که از استریم پشتیبانی نمی‌کنند استفاده کرد:
 
 - [`renderToString()`](#rendertostring)
 - [`renderToStaticMarkup()`](#rendertostaticmarkup)
 
-<<<<<<< HEAD
-این متدهای دیگر، وابسته به یک پکیج (`stream`) هستند که **فقط در سرور در دسترس است** و در مرورگر کار نخواهد کرد.
-
-
-- [`renderToNodeStream()`](#rendertonodestream)
-- [`renderToStaticNodeStream()`](#rendertostaticnodestream)
-
-* * *
-
 ## مرجع {#reference}
-=======
-## Reference {#reference}
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
 
 ### `renderToPipeableStream()` {#rendertopipeablestream}
 
@@ -57,15 +40,9 @@ The following methods can be used in the environments that don't support streams
 ReactDOMServer.renderToPipeableStream(element, options)
 ```
 
-<<<<<<< HEAD
+یک المنت React را به HTML اولیه آن رندر می‌کند. یک استریم را که دارای متد `pipe(res)` برای لوله‌سازی خروجی و `abort()` برای لغو درخواست برمی‌گرداند. به طور کامل از تعلیق (suspense) و استریم HTML با بلاک‌های محتوای "تأخیر افتاده" که بعداً از طریق تگ‌های`<script>` این‌لاین ظاهر می‌شوند، پشتیبانی می‌کند. [بیشتر بخوانید](https://github.com/reactwg/react-18/discussions/37)
 
-یک المنت ری‌اکت را به شکل HTML اولیه اش، رندر کنید. ری‌اکت یک استرینگ HTML به شما باز خواهد گرداند. با این متد، شما HTML را در سرور ساخته و آن را با درخواست اولیه کاربر، برایش خواهید فرستاد. این باعث خواهد شد که صفحه شما سریعتر نمایش داده شود و موتورهای جستجو هم خواهند توانست برای SEO صفحات شما را واکاوی کنند.
-
-اگر [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) را روی نودی که پیشتر در سرور ساخته شده است، فراخوانی کنید، ری‌اکت آن را همانطوری که بوده حفظ خواهد کرد. در عین حال اجازه خواهد داد تا event handler ها را به آن الصاق کنید. از همین رو، بارگذاری اولیه سریع تر انجام خواهد شد.  
-=======
-Render a React element to its initial HTML. Returns a stream with a `pipe(res)` method to pipe the output and `abort()` to abort the request. Fully supports Suspense and streaming of HTML with "delayed" content blocks "popping in" via inline `<script>` tags later. [Read more](https://github.com/reactwg/react-18/discussions/37)
-
-If you call [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) on a node that already has this server-rendered markup, React will preserve it and only attach event handlers, allowing you to have a very performant first-load experience.
+اگر [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) را روی گره‌ای (node) که قبلاً این نشانه‌گذاری ارائه‌شده توسط سرور را دارد، فراخوانی کنید، React آن را حفظ می‌کند و فقط کنترل‌کننده‌های رویداد (event handlers) را پیوست می‌کند و به شما این امکان برای داشتن یک تجربه اولین لود کارآمد را خواهد داد.
 
 ```javascript
 let didError = false;
@@ -73,23 +50,23 @@ const stream = renderToPipeableStream(
   <App />,
   {
     onShellReady() {
-      // The content above all Suspense boundaries is ready.
-      // If something errored before we started streaming, we set the error code appropriately.
+      // محتوای بالای تمام مرزهای Suspense آماده است.
+      // اگر قبل از شروع استریم، مشکلی رخ داده باشد، کد خطا را به طور مناسب تنظیم می کنیم.
       res.statusCode = didError ? 500 : 200;
       res.setHeader('Content-type', 'text/html');
       stream.pipe(res);
     },
     onShellError(error) {
-      // Something errored before we could complete the shell so we emit an alternative shell.
+      // قبل از اینکه بتوانیم پوسته (shell) را تکمیل کنیم، مشکلی رخ داده است، بنابراین یک پوسته (shell) جایگزین منتشر می کنیم.
       res.statusCode = 500;
       res.send(
         '<!doctype html><p>Loading...</p><script src="clientrender.js"></script>'
       );
     },
     onAllReady() {
-      // If you don't want streaming, use this instead of onShellReady.
-      // This will fire after the entire page content is ready.
-      // You can use this for crawlers or static generation.
+      // اگر نمی خواهید استریم داشته باشید، به جای onShellReady از این استفاده کنید.
+      // این پس از آماده شدن کل محتوای صفحه فعال می شود.
+      // می توانید از آن برای خزنده‌ها (crawlers) یا تولید استاتیک استفاده کنید.
 
       // res.statusCode = didError ? 500 : 200;
       // res.setHeader('Content-type', 'text/html');
@@ -103,13 +80,12 @@ const stream = renderToPipeableStream(
 );
 ```
 
-See the [full list of options](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-dom/src/server/ReactDOMFizzServerNode.js#L36-L46).
+[لیست کامل گزینه‌ها](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-dom/src/server/ReactDOMFizzServerNode.js#63) را ببینید.
 
-> Note:
+> نکته:
 >
-> This is a Node.js-specific API. Environments with [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API), like Deno and modern edge runtimes, should use [`renderToReadableStream`](#rendertoreadablestream) instead.
+> این یک API ویژه Node.js است. محیط‌های دارای [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)، مانند Deno و رانتایم‌های edge مدرن، باید به جای آن از [`renderToReadableStream`](#rendertoreadablestream) استفاده کنند.
 >
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
 
 * * *
 
@@ -119,14 +95,9 @@ See the [full list of options](https://github.com/facebook/react/blob/14c2be8dac
 ReactDOMServer.renderToReadableStream(element, options);
 ```
 
-<<<<<<< HEAD
-این مشابه [`renderToString`](#rendertostring) است. با این تفاوت که DOM attribute های اضافه (از قبیل `data-reactroot`) که ری‌اکت به طور داخلی استفاده می‌کند را نخواهد ساخت. این زمانی مفید است که قصد داشته باشید از ری‌اکت صرفا برای تولید صفحات استاتیک استفاده کنید. از طرف دیگر، حذف کردن attribute های اضافه، می‌تواند حجم بایت های شما را کاهش دهد.
+یک المنت React را به HTML اولیه آن ارسال می کند. یک Promise را برمی‌گرداند که به یک [Readable Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) حل (resolve) می‌شود. به طور کامل از Suspense و استریم HTML پشتیبانی می کند. [بیشتر بخوانید](https://github.com/reactwg/react-18/discussions/127)
 
-اگر قصدتان این است که از ری‌اکت در سمت کاربر استفاده کنید تا HTML شما تعاملی شود، از این متد استفاده نکنید. بجایش، در سرور از [`renderToString`](#rendertostring) و در سمت کاربر از [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) استفاده کنید.
-=======
-Streams a React element to its initial HTML. Returns a Promise that resolves to a [Readable Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream). Fully supports Suspense and streaming of HTML. [Read more](https://github.com/reactwg/react-18/discussions/127)
-
-If you call [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) on a node that already has this server-rendered markup, React will preserve it and only attach event handlers, allowing you to have a very performant first-load experience.
+اگر [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) را روی گره‌ای (node) که قبلاً این نشانه‌گذاری ارائه‌شده توسط سرور را دارد، فراخوانی کنید، React آن را حفظ می‌کند و فقط کنترل‌کننده‌های رویداد (event handlers) را پیوست می‌کند و به شما این امکان برای داشتن یک تجربه اولین لود کارآمد را خواهد داد.
 
 ```javascript
 let controller = new AbortController();
@@ -172,31 +143,24 @@ See the [full list of options](https://github.com/facebook/react/blob/14c2be8dac
 >
 > This API depends on [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API). For Node.js, use [`renderToPipeableStream`](#rendertopipeablestream) instead.
 >
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
 
 * * *
 
-### `renderToNodeStream()`  (Deprecated) {#rendertonodestream}
+### `renderToNodeStream()`  (کنارگذاشته‌شده) {#rendertonodestream}
 
 ```javascript
 ReactDOMServer.renderToNodeStream(element)
 ```
 
-<<<<<<< HEAD
-یک المنت ری‌اکت را به شکل HTML اولیه اش، رندر کنید. ری‌اکت یک [Readable stream](https://nodejs.org/api/stream.html#stream_readable_streams) را به شما باز خواهد گرداند که یک استرینگ HTML را تولید می‌کند. HTML ساخته شده با این متد دقیقا همانی خواهد بود که [`ReactDOMServer.renderToString`](#rendertostring) می‌توانست به شما بدهد. با این متد، شما HTML را در سرور ساخته و آن را با درخواست اولیه کاربر، برایش خواهید فرستاد. این باعث خواهد شد که صفحه شما سریعتر نمایش داده شود و موتورهای جستجو هم خواهند توانست برای SEO صفحات شما را واکاوی کنند.
+یک المنت ری‌اکت را به شکل HTML اولیه اش، رندر می‌کند. ری‌اکت یک [Node.js Readable stream](https://nodejs.org/api/stream.html#stream_readable_streams) را به شما باز خواهد گرداند که یک استرینگ HTML را به عنوان خروجی می‌دهد. HTML ساخته شده با این متد دقیقا همانی خواهد بود که [`ReactDOMServer.renderToString`](#rendertostring) می‌توانست به شما بدهد. با این متد، شما HTML را در سرور ساخته و آن را با درخواست اولیه کاربر، برایش خواهید فرستاد. این باعث خواهد شد که صفحه شما سریعتر نمایش داده شود و موتورهای جستجو هم خواهند توانست برای SEO صفحات شما را واکاوی کنند.
 
-اگر [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) را روی نودی که پیشتر در سرور ساخته شده است، فراخوانی کنید، ری‌اکت آن را همانطوری که بوده حفظ خواهد کرد. در عین حال اجازه خواهد داد تا event handler ها را به آن الصاق کنید. از همین رو، بارگذاری اولیه سریع تر انجام خواهد شد.  
-=======
-Render a React element to its initial HTML. Returns a [Node.js Readable stream](https://nodejs.org/api/stream.html#stream_readable_streams) that outputs an HTML string. The HTML output by this stream is exactly equal to what [`ReactDOMServer.renderToString`](#rendertostring) would return. You can use this method to generate HTML on the server and send the markup down on the initial request for faster page loads and to allow search engines to crawl your pages for SEO purposes.
-
-If you call [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) on a node that already has this server-rendered markup, React will preserve it and only attach event handlers, allowing you to have a very performant first-load experience.
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
+اگر [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) را روی گره‌ای (node) که قبلاً این نشانه‌گذاری ارائه‌شده توسط سرور را دارد، فراخوانی کنید، React آن را حفظ می‌کند و فقط کنترل‌کننده‌های رویداد (event handlers) را پیوست می‌کند و به شما این امکان برای داشتن یک تجربه اولین لود کارآمد را خواهد داد.
 
 > توجه:
 >
 > منحصرا برای سرور! این API‌ در مرورگر کار نخواهد کرد.
 >
->استریم باز گردانده شده از این متد، با اینگدینگ utf-8 خواهد بود. اگر به اینکدینگ  متفاوتی در استریم خود نیاز دارید، به پروژه هایی مانند [iconv-lite](https://www.npmjs.com/package/iconv-lite) سر بزنید که استریمی از نوع transform را برای تغییر اینکدینگ متن در اختیار شما قرار می‌دهد.
+>استریم باز گردانده شده از این متد، یک استریم بایت با انکدینگ utf-8 خواهد بود. اگر به انکدینگ  متفاوتی در استریم خود نیاز دارید، به پروژه هایی مانند [iconv-lite](https://www.npmjs.com/package/iconv-lite) سر بزنید که استریمی از نوع transform را برای تغییر انکدینگ متن در اختیار شما قرار می‌دهد.
 
 * * *
 
@@ -210,20 +174,13 @@ ReactDOMServer.renderToStaticNodeStream(element)
 
 HTML ساخته شده توسط این استریم دقیقا همانی است که [`ReactDOMServer.renderToStaticMarkup`](#rendertostaticmarkup) می‌توانست برای شما بسازد.
 
-<<<<<<< HEAD
-اگر قصدتان این است که از ری‌اکت در سمت کاربر استفاده کنید تا HTML شما تعاملی شود، از این متد استفاده نکنید. بجایش، در سرور از [`renderToNodeStream`](#rendertonodestream) و در سمت کاربر از [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) استفاده کنید.
-=======
-If you plan to use React on the client to make the markup interactive, do not use this method. Instead, use [`renderToNodeStream`](#rendertonodestream) on the server and [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) on the client.
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
+اگر قصدتان این است که از ری‌اکت در سمت کاربر استفاده کنید تا HTML شما تعاملی شود، از این متد استفاده نکنید. بجایش، در سمت سرور از [`renderToNodeStream`](#rendertonodestream) و در سمت کاربر از [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) استفاده کنید.
 
 > توجه:
 >
 > منحصرا برای سرور! این API‌ در مرورگر کار نخواهد کرد.
 >
-<<<<<<< HEAD
->استریم باز گردانده شده از این متد، با اینگدینگ utf-8 خواهد بود. اگر به اینکدینگ  متفاوتی در استریم خود نیاز دارید، به پروژه هایی مانند [iconv-lite](https://www.npmjs.com/package/iconv-lite) سر بزنید که استریمی از نوع transform را برای تغییر اینکدینگ متن در اختیار شما قرار می‌دهد.
-=======
-> The stream returned from this method will return a byte stream encoded in utf-8. If you need a stream in another encoding, take a look at a project like [iconv-lite](https://www.npmjs.com/package/iconv-lite), which provides transform streams for transcoding text.
+>استریم باز گردانده شده از این متد، یک استریم بایت با انکدینگ utf-8 خواهد بود. اگر به انکدینگ  متفاوتی در استریم خود نیاز دارید، به پروژه هایی مانند [iconv-lite](https://www.npmjs.com/package/iconv-lite) سر بزنید که استریمی از نوع transform را برای تغییر انکدینگ متن در اختیار شما قرار می‌دهد.
 
 * * *
 
@@ -233,9 +190,9 @@ If you plan to use React on the client to make the markup interactive, do not us
 ReactDOMServer.renderToString(element)
 ```
 
-Render a React element to its initial HTML. React will return an HTML string. You can use this method to generate HTML on the server and send the markup down on the initial request for faster page loads and to allow search engines to crawl your pages for SEO purposes.
+یک المنت ری‌اکت را به شکل HTML اولیه اش، رندر کنید. ری‌اکت یک استرینگ HTML به شما باز خواهد گرداند. با این متد، شما HTML را در سرور ساخته و آن را با درخواست اولیه کاربر، برایش خواهید فرستاد. این باعث خواهد شد که صفحه شما سریعتر نمایش داده شود و موتورهای جستجو هم خواهند توانست برای SEO صفحات شما را واکاوی کنند.
 
-If you call [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) on a node that already has this server-rendered markup, React will preserve it and only attach event handlers, allowing you to have a very performant first-load experience.
+اگر [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) را روی نودی که پیشتر در سرور ساخته شده است، فراخوانی کنید، ری‌اکت آن را همانطوری که بوده حفظ خواهد کرد. در عین حال اجازه خواهد داد تا event handler ها را به آن الصاق کنید. از همین رو، بارگذاری اولیه سریع تر انجام خواهد شد.  
 
 > Note
 >
@@ -251,7 +208,6 @@ If you call [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) 
 ReactDOMServer.renderToStaticMarkup(element)
 ```
 
-Similar to [`renderToString`](#rendertostring), except this doesn't create extra DOM attributes that React uses internally, such as `data-reactroot`. This is useful if you want to use React as a simple static page generator, as stripping away the extra attributes can save some bytes.
+این مشابه [`renderToString`](#rendertostring) است. با این تفاوت که DOM attribute های اضافه (از قبیل `data-reactroot`) که ری‌اکت به طور داخلی استفاده می‌کند را نخواهد ساخت. این زمانی مفید است که قصد داشته باشید از ری‌اکت صرفا برای تولید صفحات استاتیک استفاده کنید. از طرف دیگر، حذف کردن attribute های اضافه، می‌تواند حجم بایت های شما را کاهش دهد.
 
-If you plan to use React on the client to make the markup interactive, do not use this method. Instead, use [`renderToString`](#rendertostring) on the server and [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) on the client.
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
+اگر قصدتان این است که از ری‌اکت در سمت کاربر استفاده کنید تا HTML شما تعاملی شود، از این متد استفاده نکنید. بجایش، در سرور از [`renderToString`](#rendertostring) و در سمت کاربر از [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) استفاده کنید.
