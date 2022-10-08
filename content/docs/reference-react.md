@@ -65,18 +65,14 @@ Suspense به کامپوننت‌ها اجازه می‌دهد تا قبل از 
 - [`React.lazy`](#reactlazy)
 - [`React.Suspense`](#reactsuspense)
 
-<<<<<<< HEAD
-### هوک‌ها {#hooks}
-=======
 ### Transitions {#transitions}
 
-*Transitions* are a new concurrent feature introduced in React 18. They allow you to mark updates as transitions, which tells React that they can be interrupted and avoid going back to Suspense fallbacks for already visible content.
+*Transitions* یک ویژگی همروند (concurrent) جدیدی است که در React 18 معرفی شده است. آنها به شما اجازه می دهند به‌روزرسانی‌ها را به عنوان transition علامت گذاری کنید، که به React می گوید که می توان آنها را قطع کرد و از fallback در Suspense برای محتوای قابل مشاهده خودداری کرد.
 
 - [`React.startTransition`](#starttransition)
 - [`React.useTransition`](/docs/hooks-reference.html#usetransition)
 
 ### Hooks {#hooks}
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
 
 *هوک‌ها* یک افزونه جدید در ری‌اکت ۱۶.۸ هستند. آن‌ها به شما این توانایی را می‌دهند که بدون نوشتن کلاس از state بهره ببرید. هوک‌ها یک [بخش توضیحات جدا](/docs/hooks-intro.html) و یک  مرجع API جدا دارند:
 
@@ -127,11 +123,7 @@ class Greeting extends React.Component {
 
 > نکته
 >
-<<<<<<< HEAD
->`shouldComponentUpdate()` در `React.PureComponent` فقط به صورت سطحی (shallow) اشیاء را مقایسه می‌کند. اگر این اشیاء دارای ساختاری پیچیده باشند، ممکن است باعث رخ‌داد منفی کاذب(false-negative) برای تفاوت‌های عمیق‌تر شود. تنها زمانی `PureComponent` را extend کنید که توقع دارید state و props ساده‌ باشند، یا زمانی از [`()forceUpdate`](/docs/react-component.html#forceupdate) استفاده کنید که می‌دانید ساختار عمیق داده‌ها تغییر پیدا کرده است. و یا [داده‌های تغییرناپذیز ](https://facebook.github.io/immutable-js/) را برای تسهیل مقایسه سریع داده‌های تودرتو استفاده کنید.
-=======
-> `React.PureComponent`'s `shouldComponentUpdate()` only shallowly compares the objects. If these contain complex data structures, it may produce false-negatives for deeper differences. Only extend `PureComponent` when you expect to have simple props and state, or use [`forceUpdate()`](/docs/react-component.html#forceupdate) when you know deep data structures have changed. Or, consider using [immutable objects](https://immutable-js.com/) to facilitate fast comparisons of nested data.
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
+> `shouldComponentUpdate()` در `React.PureComponent` فقط به صورت سطحی آبجکت‌ها را مقایسه می کند. اگر این آبجکت‌ها دارای ساختارهای داده پیچیده باشند، ممکن است برای تفاوت های عمیق تر، منفی کاذب ایجاد کند. `PureComponent` را فقط زمانی extend کنید که انتظار دارید دارای props و state ساده باشید، یا از [`forceUpdate()`](/docs/react-component.html#forceupdate) زمانی استفاده کنید که بدانید ساختارهای داده عمیق تغییر کرده‌اند. یا، استفاده از [آبجکت‌های غیرقابل تغییر] (https://immutable-js.com/) را برای تسهیل مقایسه سریع داده‌های تودرتو در نظر بگیرید.
 >
 > علاوه بر این، `shouldComponentUpdate()` در `React.PureComponent`، به‌روز شدن state و props را در کل زیردرخت کامپوننت درنظر نمی‌گیرد. پس مطمئن شوید که همه‌ی کامپوننت‌های فرزند نیز «pure» باشند.
 
@@ -155,7 +147,7 @@ const MyComponent = React.memo(function MyComponent(props) {
 
 ```javascript
 function MyComponent(props) {
-  /* render using props */
+  /* رندر با استفاده از props */
 }
 function areEqual(prevProps, nextProps) {
   /*
@@ -350,21 +342,11 @@ const SomeComponent = React.lazy(() => import('./SomeComponent'));
 
 توجه کنید که کامپوننت‌های `lazy` نیازمند وجود یک کامپوننت `<React.Suspense>` در سطوح بالاتر درخت رندر هستند. این نحوه‌ی مشخص کردن یک loading indicator است.
 
-<<<<<<< HEAD
-> **نکته**
->
-> استفاده از `React.lazy`همراه با import پویا نیازمند آن است که Promiseها در محیط جاوااسکریپت قابل استفاده باشند. این نیازمند یک polyfill روی IE11 و کمتر از آن است.
-
 ### `React.Suspense` {#reactsuspense}
 
-`React.Suspense` به شما اجازه می‌دهد loading indicator را مشخص کنید در حالتی که برخی کامپوننت‌های زیرین آن در درخت هنوز آماده‌ی رندر نباشند. فعلا، کامپوننت‌های با بارگذاری lazy، **تنها** مورد کاربردی است که `<React.Suspense>` از آن پشتیبانی می‌کند:
-=======
-### `React.Suspense` {#reactsuspense}
+`React.Suspense` به شما امکان می‌دهد در صورتی که برخی از اجزای درخت زیر آن هنوز آماده رندر نیستند، نشانگر بارگذاری (loading indicator) را مشخص کنید. در آینده قصد داریم به `Suspense` اجازه دهیم سناریوهای بیشتری مانند fetch کردن داده را مدیریت کند. می‌توانید در این مورد در [نقشه راه ما](/blog/2018/11/27/react-16-roadmap.html) بخوانید.
 
-`React.Suspense` lets you specify the loading indicator in case some components in the tree below it are not yet ready to render. In the future we plan to let `Suspense` handle more scenarios such as data fetching. You can read about this in [our roadmap](/blog/2018/11/27/react-16-roadmap.html).
-
-Today, lazy loading components is the **only** use case supported by `<React.Suspense>`:
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
+امروزه، بارگذاری lazy کامپوننت‌ها **تنها** مورد استفاده است که توسط `<React.Suspense>` پشتیبانی می‌شود:
 
 ```js
 // این کامپوننت به صورت پویا بارگذاری می‌شود
@@ -384,37 +366,29 @@ function MyComponent() {
 
 این قسمت در [راهنمای بخش‌بندی کد](/docs/code-splitting.html#reactlazy) توضیح داده شد‌ه‌است. توجه کنید که کامپوننت‌های `lazy` می‌توانند در اعماق یک درخت `Suspense` موجود باشند (نیازی نیست که تک‌تک آن‌ها را به این شکل wrap کنید) . بهترین تمرین این است که `<Suspense>` را جایی قرار دهید که میخواهید یک  loading indicator مشاهده کنید، اما `lazy()` را جایی قرار دهید که می‌خواهید کد را بخش‌بندی کنید.
 
-<<<<<<< HEAD
-گرچه این امکان فعلا وجود ندارد، در آینده برنامه‌ریزی کرده‌ایم که به  `Suspense` اجازه دهیم تا به سناریوهای دیگری چون واکشی داده رسیدگی کند. در این مورد می‌توانید به [نقشه‌ی راه ما](/blog/2018/11/27/react-16-roadmap.html) مراجعه کنید.
-
->نکته:
+> نکته
 >
->`React.lazy()` و `<React.Suspense>` هنوز توسط `ReactDOMServer` پشتیبانی نمی‌شوند. این یک محدودیت شناخته شده است که در آینده برطرف خواهد شد.
-=======
-> Note
->
-> For content that is already shown to the user, switching back to a loading indicator can be disorienting. It is sometimes better to show the "old" UI while the new UI is being prepared. To do this, you can use the new transition APIs [`startTransition`](#starttransition) and [`useTransition`](/docs/hooks-reference.html#usetransition) to mark updates as transitions and avoid unexpected fallbacks.
+> برای محتوایی که قبلاً به کاربر نشان داده شده است، بازگشت به نشانگر بارگزاری (loading indicator) می‌تواند باعث سردرگمی شود. گاهی اوقات بهتر است در حالی که رابط کاربری جدید در حال آماده شدن است، رابط کاربری "قدیمی" نشان داده شود. برای انجام این کار، می‌توانید از APIهای transition جدید [`startTransition`](#starttransition) و [`useTransition`](/docs/hooks-reference.html#usetransition) برای علامت‌گذاری به‌روزرسانی‌ها به‌عنوان transition و جلوگیری از fallback های غیرمنتظره استفاده کنید.
 
-#### `React.Suspense` in Server Side Rendering {#reactsuspense-in-server-side-rendering}
-During server side rendering Suspense Boundaries allow you to flush your application in smaller chunks by suspending.
-When a component suspends we schedule a low priority task to render the closest Suspense boundary's fallback. If the component unsuspends before we flush the fallback then we send down the actual content and throw away the fallback.
+#### `React.Suspense` در رندر سمت سرور {#reactsuspense-in-server-side-rendering}
+در طول رندر سمت سرور، مرزهای Suspense به شما این امکان را می دهد که برنامه خود را در تکه‌های های کوچکتر با suspend کردن flush کنید.
+هنگامی که یک کامپوننت به حالت تعلیق (suspend) در می‌آید، ما یک تسک با اولویت پایین را برنامه‌ریزی می‌کنیم تا fallback مربوط به نزدیک‌ترین مرز Suspense را رندر کنیم. اگر کامپوننت قبل از flush کردن از حالت تعلیق خارج شود، محتوای واقعی را ارسال می کنیم و fallback را دور می اندازیم.
 
-#### `React.Suspense` during hydration {#reactsuspense-during-hydration}
-Suspense boundaries depend on their parent boundaries being hydrated before they can hydrate, but they can hydrate independently from sibling boundaries. Events on a boundary before its hydrated will cause the boundary to hydrate at
-a higher priority than neighboring boundaries. [Read more](https://github.com/reactwg/react-18/discussions/130)
+#### `React.Suspense` در طول hydration {#reactsuspense-during-hydration}
+مرزهای Suspense به این بستگی دارد که قبل از اینکه خودشان بتوانند hydrate شوند، مرزهای والدین آنها hydrate شوند، اما می توانند مستقل از مرزهای خواهر و برادر hydrate شوند. رویدادها (events) روی یک مرز (boundary) قبل از hydrate شدن آن باعث می‌شود تا این مرز
+با اولویت بالاتر از مرزهای همسایه hydrate شود. [بیشتر بخوانید](https://github.com/reactwg/react-18/discussions/130)
 
 ### `React.startTransition` {#starttransition}
 
 ```js
 React.startTransition(callback)
 ```
-`React.startTransition` lets you mark updates inside the provided callback as transitions. This method is designed to be used when [`React.useTransition`](/docs/hooks-reference.html#usetransition) is not available.
+`React.startTransition` به شما امکان می‌دهد به‌روزرسانی‌های موجود در callback ارائه‌شده را به‌عنوان transition علامت‌گذاری کنید. این روش برای استفاده در مواقعی طراحی شده است که [`React.useTransition`](/docs/hooks-reference.html#usetransition) در دسترس نباشد.
 
-> Note:
+> نکته:
 >
-> Updates in a transition yield to more urgent updates such as clicks.
+> به‌روزرسانی‌ها در یک transition در مقابل به‌روزرسانی‌های با اولویت بالاتر مانند کلیک‌ تسلیم می‌شوند.
 >
-> Updates in a transition will not show a fallback for re-suspended content, allowing the user to continue interacting while rendering the update.
+> به‌روزرسانی‌های در transition، برای محتوایی که مجدد معلق (suspend) شده‌اند دیگر fallback را نشان نمی‌دهند، و به کاربر اجازه می‌دهند در حین رندرشدن به‌روزرسانی به تعامل ادامه دهند.
 >
-> `React.startTransition` does not provide an `isPending` flag. To track the pending status of a transition see [`React.useTransition`](/docs/hooks-reference.html#usetransition).
->>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
+> `React.startTransition` یک پرچم `isPending` ارائه نمی کند. برای ردیابی وضعیت معلق یک transition به [`React.useTransition`](/docs/hooks-reference.html#usetransition) مراجعه کنید.
