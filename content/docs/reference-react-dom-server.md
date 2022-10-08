@@ -116,9 +116,9 @@ try {
     }
   );
   
-  // This is to wait for all Suspense boundaries to be ready. You can uncomment
-  // this line if you want to buffer the entire HTML instead of streaming it.
-  // You can use this for crawlers or static generation:
+  // این برای منتظر ماندن است تا تمام مرزهای Suspense آماده شوند.
+  // اگر می‌خواهید به جای استریم، کل HTML را بافر کنید، می‌توانید این خط را از حالت نظر خارج کنید.
+  // می توانید از این برای خزنده‌ها (crawlers) یا تولید استاتیک استفاده کنید:
 
   // await stream.allReady;
 
@@ -137,11 +137,11 @@ try {
 }
 ```
 
-See the [full list of options](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-dom/src/server/ReactDOMFizzServerBrowser.js#L27-L35).
+به [لیست کامل گزینه‌ها](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-dom/src/server/ReactDOMFizzServerBrowser.js#L27-L35) مراجعه کنید.
 
-> Note:
+> نکته:
 >
-> This API depends on [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API). For Node.js, use [`renderToPipeableStream`](#rendertopipeablestream) instead.
+> این API به [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) بستگی دارد. برای Node.js، به جای آن از [`renderToPipeableStream`](#rendertopipeablestream) استفاده کنید.
 >
 
 * * *
@@ -194,11 +194,11 @@ ReactDOMServer.renderToString(element)
 
 اگر [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) را روی نودی که پیشتر در سرور ساخته شده است، فراخوانی کنید، ری‌اکت آن را همانطوری که بوده حفظ خواهد کرد. در عین حال اجازه خواهد داد تا event handler ها را به آن الصاق کنید. از همین رو، بارگذاری اولیه سریع تر انجام خواهد شد.  
 
-> Note
+> نکته
 >
-> This API has limited Suspense support and does not support streaming.
+> این API پشتیبانی محدودی از Suspense دارد و از استریم پشتیبانی نمی‌کند.
 >
-> On the server, it is recommended to use either [`renderToPipeableStream`](#rendertopipeablestream) (for Node.js) or [`renderToReadableStream`](#rendertoreadablestream) (for Web Streams) instead.
+> در سرور، توصیه می شود به جای آن از [`renderToPipeableStream`](#rendertopipeablestream) (برای Node.js) یا [`renderToReadableStream`](#rendertoreadablestream) (برای استریم‌های های وب) استفاده کنید.
 
 * * *
 
