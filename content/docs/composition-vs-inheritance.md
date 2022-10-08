@@ -1,17 +1,18 @@
 ---
 id: composition-vs-inheritance
-title: Composition vs Inheritance
+title: ترکیب در مقابل وراثت
 permalink: docs/composition-vs-inheritance.html
 redirect_from:
   - "docs/multiple-components.html"
 prev: lifting-state-up.html
 next: thinking-in-react.html
 ---
+
 ری‌اکت دارای یک مدل ترکیبی (compostion) قدرتمند است. به همین دلیل برای افزایش امکان استفاده مجدد کد بین کامپوننت‌ها، ما استفاده از ترکیب را به جای ارث‌بری پیشنهاد می‌کنیم.
 
 توسعه‌دهنگانی که تازه وارد دنیای ری‌اکت می‌شوند، هنگام مواجه با ارث‌بری دچار مشکلاتی می‌شوند. در این بخش، چند مورد از آن‌ها را بررسی و نشان می‌دهیم که چگونه با استفاده از ترکیب می‌توان آن‌ها را حل کرد.
 
-## در بر گرفتن {#containment}
+## دربرگرفتن {#containment}
 
 بعضی از کامپوننت‌ها اطلاعاتی از فرزند خود ندارند. این مورد در کامپوننت‌هایی مانند `Sidebar` یا `Dialog` که مانند یک قاب عمل می‌کنند، مرسوم است.
 

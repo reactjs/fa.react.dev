@@ -106,7 +106,7 @@ cd ..
 
 ```js
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './index.css';
 ```
 
@@ -451,10 +451,10 @@ class Square extends React.Component {
 
 وقتی که یک Square کلیک شد تابع `onClick` که از Board می‌آید، صدا زده می‌شود. در این‌جا مروری بر چگونگی بدست آمدن این رخداد می‌کنیم:
 
-1. prop به نام `onClick` در کامپوننت `<button>` که از پیش تعریف شده در DOM است برای ری‌اکت به این معناست که یک شنونده برای رویداد کلیک(click event listener) برای او تعریف کن.
+1. prop به نام `onClick` در کامپوننت `<button>` که از پیش تعریف شده در DOM است برای ری‌اکت به این معناست که یک شنونده برای رویداد کلیک (click event listener) تعریف کند.
 2. وقتی که دکمه کلیک شد، ری‌اکت کنترل کننده‌ی رویداد `onClick` که در متد `render()` کامپوننت Square تعریف شده را صدا می‌زند.
 3. کنترل کننده‌ی رویداد در زمان کلیک `this.props.onClick()` را صدا می‌زند. این prop از طرف Board تعریف شده بود.
-4. از آنجایی که کامپوننت Board `onClick={() => this.handleClick(i)}` را به هر Square می‌فرستد، Square دستور `this.handleClick(i)` را در هنگام کلیک شدنش اجرا می‌کند.
+4. از آنجایی که کامپوننت Board `onClick={() => this.handleClick(i)}` را به هر Square می‌فرستد، Square دستور `this.handleClick(i)` برای Board را در هنگام کلیک شدنش اجرا می‌کند.
 5. چون هنوز متد `handleClick()` را نساخته‌ایم، کد ما کرش خواهد کرد و اگر روی یک مربع کلیک کنید بر روی صفحه خطایی شبیه به "this.handleClick is not a function" پدیدار می‌شود.
 
 >نکته
@@ -542,7 +542,7 @@ var player = {score: 1, name: 'Jeff'};
 var newPlayer = Object.assign({}, player, {score: 2});
 // اکنون متغیر اصلی تغییر نکرده بلکه متغیر جدید از روی اصلی کپی و بعد تغییر پیدا کرده است
 
-// اگر از نسخه‌ی جدید جاوااسکریپت استفاده می‌کنید می‌توانید اینطور نیز بنویسید
+// اگر از سینتکس object spread استفاده می‌کنید می‌توانید اینطور نیز بنویسید
 // var newPlayer = {...player, score: 2};
 ```
 
@@ -1045,6 +1045,8 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 
 **[مشاهده‌ی کد کامل در این مرحله](https://codepen.io/gaearon/pen/EmmGEa?editors=0010)**
 
+همانطور که آرایه `history` مرور می کنیم، متغیر `step` به مقدار فعلی المنت `history` و `move` به شاخص فعلی المنت `history` اشاره دارد. ما در اینجا فقط به `move` علاقه مندیم، بنابراین `step` به چیزی اختصاص داده نمی شود.
+
 بدین صورت، برای هر حرکت در بازی یک ایتم لیست `<li>` درست می‌شود که یک دکمه‌ی `<button>` را دربر دارد. کنترلر `onClick` این دکمه، متد `this.justTo()` را صدا می‌زند که هنوز آن را پیاده‌سازی نکرده‌ایم. ما در حال حاضر باید لیستی از حرکت‌های بازی و این هشدار را در developer tools مرورگرمان ببینیم:
 
 >  Warning:
@@ -1145,6 +1147,8 @@ class Game extends React.Component {
     // این متد تغییری نمی‌کند
   }
 ```
+
+توجه داشته باشید که در متد `jumpTo`، ویژگی `history` مربوط به حالت (state) را به‌روزرسانی نکرده‌ایم. دلیل آن این است که به‌روزرسانی‌های حالت (state) ادغام می‌شوند یا به عبارت ساده‌تر React فقط ویژگی‌های ذکر شده در متد `setState` را به‌روزرسانی می‌کند و حالت (state) باقی‌مانده را به همان صورت باقی می‌گذارد. برای اطلاعات بیشتر **[به مستندات مراجعه کنید](/docs/state-and-lifecycle.html#state-updates-are-merged)**.
 
 حال در متد `handleClick` کلاس Game که موقع کلید روی مربع‌ها فعال می‌شود، تغییراتی می‌دهیم.
 

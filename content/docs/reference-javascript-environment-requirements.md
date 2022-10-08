@@ -6,26 +6,13 @@ category: Reference
 permalink: docs/javascript-environment-requirements.html
 ---
 
-ری‌اکت 16 به مجموعه(Collection) های [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) و [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) وابسته است. اگر در برنامه خود از مرورگرها و دستگاه‌های قدیمی پشتیبانی می‌کنید که ممکن است هنوز این موارد را به طور پیش فرض ارائه ندهند(به عنوان مثال IE <11) یا دارای پیاده‌سازی های غیر سازگار هستند (به عنوان مثال IE 11)، اضافه کردن یک برنامه چندکاره سراسری(global polyfill) مانند [core-js](https://github.com/zloirock/core-js) را به برنامه خود در نظر بگیرید.
+ری‌اکت ۱۸ از تمام مرورگرهای مدرن (Edge، Firefox، Chrome، Safari و غیره) پشتیبانی می کند.
 
-یک محیط چندکاره(polyfilled environment) برای ری‌اکت 16 با استفاده از core-js برای پشتیبانی از مرورگرهای قدیمی به صورت زیر است:
+اگر از مرورگرها و دستگاه‌های قدیمی‌تری مانند اینترنت اکسپلورر که ویژگی‌های مرورگر مدرن را به‌صورت بومی ارائه نمی‌کنند یا پیاده‌سازی‌های ناسازگاری دارند، پشتیبانی می‌کنید، در برنامه همراه خود یک polyfill سراسری اضافه کنید.
 
-```js
-import 'core-js/es/map';
-import 'core-js/es/set';
+در اینجا لیستی از ویژگی های مدرن مورد استفاده ری‌اکت ۱۸ آمده است:
+- [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+- [`Symbol`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
+- [`Object.assign`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-ReactDOM.render(
-  <h1>Hello, world!</h1>,
-  document.getElementById('root')
-);
-```
-
-ری‌اکت همچنین به `requestAnimationFrame` وابستگی دارد(حتی در محیط تست).
-شما می‌توانید از پکیج [raf](https://www.npmjs.com/package/raf) برای حل وابستگی `requestAnimationFrame` استفاده کنید :
-
-```js
-import 'raf/polyfill';
-```
+پلی‌فیل صحیح برای این ویژگی ها به محیط شما بستگی دارد. برای بسیاری از کاربران، می‌توانید تنظیمات [Browserlist](https://github.com/browserslist/browserslist) خود را پیکربندی کنید. برای دیگران، ممکن است نیاز داشته باشید که polyfillهایی مانند [`core-js`](https://github.com/zloirock/core-js) را مستقیماً ایمپورت کنید.

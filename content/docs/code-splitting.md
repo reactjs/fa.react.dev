@@ -80,14 +80,9 @@ import("./math").then(math => {
 
 ## `React.lazy` {#reactlazy}
 
-> نکته:
->
-> `React.lazy` و Suspense هنوز برای رندر کردن در سمت سرور در دسترس نیست. اگر شما می خواهید کد تان را در برنامه‌ای که سمت سرور رندر می‌شود تکه تکه کنید، ما به شما [Loadable Components](https://github.com/gregberge/loadable-components) را پیشنهاد می‌کنیم که [راهنمای خوبی برای تکه‌تکه کردن bundle در رندر سمت سرور](https://loadable-components.com/docs/server-side-rendering/) دارد.
-
 تابع `React.lazy` به شما اجازه می‌دهد که یک import پویا را به عنوان یک component معمولی رندر کنید.
 
 **قبل:**
-
 
 ```js
 import OtherComponent from './OtherComponent';
@@ -143,7 +138,53 @@ function MyComponent() {
 }
 ```
 
-### مرز‌های خطا (Error Boundaries)‌ {#error-boundaries}
+### جلوگیری از fallback {#avoiding-fallbacks}
+هر کامپوننتی ممکن است در نتیجه رندر به حالت تعلیق (suspend) درآید، حتی کامپوننت‌هایی که قبلاً به کاربر نشان داده شده اند. برای اینکه محتوای صفحه همیشه دارای ثبات باشد، اگر یک کامپوننت نشان داده شده از قبل به حالت تعلیق (suspend) درآمد، React باید درخت خود را تا نزدیکترین مرز `<Suspense>`  پنهان کند. با این حال، از منظر کاربر، این می تواند گمراه کننده باشد.
+
+این سوییچ‌کننده‌ی تب را در نظر بگیرید:
+
+```js
+import React, { Suspense } from 'react';
+import Tabs from './Tabs';
+import Glimmer from './Glimmer';
+
+const Comments = React.lazy(() => import('./Comments'));
+const Photos = React.lazy(() => import('./Photos'));
+
+function MyComponent() {
+  const [tab, setTab] = React.useState('photos');
+  
+  function handleTabSelect(tab) {
+    setTab(tab);
+  };
+
+  return (
+    <div>
+      <Tabs onTabSelect={handleTabSelect} />
+      <Suspense fallback={<Glimmer />}>
+        {tab === 'photos' ? <Photos /> : <Comments />}
+      </Suspense>
+    </div>
+  );
+}
+
+```
+
+در این مثال، اگر تب از `'photos'` به `'comments'` تغییر کند، اما `Comments` به حالت تعلیق (suspend) درآید، کاربر یک glimmer را مشاهده خواهد کرد. این منطقی است زیرا کاربر دیگر نمی‌خواهد `Photos` را ببیند، کامپوننت `Comments` آماده رندر چیزی نیست و React باید تجربه کاربر را دارای ثبات نگه دارد، بنابراین چاره‌ای جز نمایش `Glimmer` در بالا ندارد.
+
+با این حال، گاهی اوقات این تجربه کاربری مطلوب نیست. به ویژه، گاهی اوقات بهتر است در حالی که رابط کاربری جدید در حال آماده شدن است، رابط کاربری "قدیمی" نشان داده شود. می توانید از API جدید [`startTransition`](/docs/react-api.html#starttransition) استفاده کنید تا React را مجبور به انجام این کار کنید:
+
+```js
+function handleTabSelect(tab) {
+  startTransition(() => {
+    setTab(tab);
+  });
+}
+```
+
+در اینجا، به React می‌گویید که تنظیم تب روی `'comments'` یک به‌روزرسانی فوری نیست، بلکه یک [transition](/docs/react-api.html#transitions) است که ممکن است کمی طول بکشد. سپس React رابط کاربری قدیمی را در جای خود و تعاملی نگه می‌دارد و زمانی که `<Comments />` آماده شد، به نمایش آن تغییر می‌کند. برای اطلاعات بیشتر به [Transitions](/docs/react-api.html#transitions) مراجعه کنید.
+
+### مرزهای خطا {#error-boundaries}
 
 اگر یک ماژول در هنگام بارگیری با مشکل مواجه شود (برای مثال، به خاطر مشکلات شبکه)، خطا می دهد. شما می توانید خطا‌های این‌چنینی را مدیریت کنید که تجربه کاربری خوبی را نشان داده و بازیابی را با [مرز های خطا](/docs/error-boundaries.html) مدیریت کنید. هنگامی که مرز خطای‌تان را ساختید، شما می‌توانید از آن در هر جایی در بالای کامپوننت lazy تان برای نمایش حالت خطا هنگامی که مشکلی در شبکه وجود دارد، استفاده کنید.
 
@@ -174,11 +215,11 @@ const MyComponent = () => (
 
 مسیر‌ها نقطه شروع خوبی هستند. بیشتر افراد در محیط وب به زمان‌بر بودن انتقال از صفحه‌ای به صفحه دیگر عادت کرده‌اند. شما هم معمولا تمام صفحه را یک‌باره مجدد رندر می‌کنید، بنابراین دور از ذهن به‌نظر می‌رسد که کاربران شما با دیگر المان‌های صفحه در حال کار کردن باشند.
 
-این‌جا یک مثال از چگونگی راه‌اندازی تکه‌تکه کردن کد بر‌پایه‌ی مسیر (route-based code splitting) در داخل برنامه‌تان با استفاده از کتابخانه‌هایی مثل [React Router](https://reacttraining.com/react-router/) با `React.lazy` را مشاهده می‌کنید.
+این‌جا یک مثال از چگونگی راه‌اندازی تکه‌تکه کردن کد بر‌پایه‌ی مسیر (route-based code splitting) در داخل برنامه‌تان با استفاده از کتابخانه‌هایی مثل [React Router](https://reactrouter.com/) با `React.lazy` را مشاهده می‌کنید.
 
 ```js
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const Home = lazy(() => import('./routes/Home'));
 const About = lazy(() => import('./routes/About'));
@@ -186,10 +227,10 @@ const About = lazy(() => import('./routes/About'));
 const App = () => (
   <Router>
     <Suspense fallback={<div>Loading...</div>}>
-      <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route path="/about" component={About}/>
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
     </Suspense>
   </Router>
 );

@@ -10,9 +10,11 @@ next: handling-events.html
 
 این صفحه مفهوم state و lifecycle را در یک کامپوننت ری‌اکتی معرفی می‌کند. برای مطالعه [مرجع API کامپوننت با جزئیات به اینجا](/docs/react-component.html) مراجعه کنید.
 
-مثال ساعت را در [یکی از بخش‌های پیشین](/docs/rendering-elements.html#updating-the-rendered-element) در نظر بگیرید. در [رندر کردن المنت‌ها](/docs/rendering-elements.html#rendering-an-element-into-the-dom)، ما تنها یک راه برای به‌روز رسانی UI یاد گرفتیم. ما تابع `ReactDOM.render()` را فراخوانی می‌کنیم تا خروجی رندر شده را تغییر دهیم:
+مثال تیک تاک ساعت از [یکی از بخش‌های قبلی](/docs/rendering-elements.html#updating-the-rendered-element) را در نظر بگیرید. در [رندرکردن المنت‌ها](/docs/rendering-elements.html#rendering-an-element-into-the-dom)، ما فقط یک راه برای به روز رسانی رابط کاربری یاد گرفته ایم. برای تغییر خروجی رندر شده `root.render()` را فراخوانی می کنیم:
 
-```js{8-11}
+```js{10}
+const root = ReactDOM.createRoot(document.getElementById('root'));
+  
 function tick() {
   const element = (
     <div>
@@ -20,10 +22,7 @@ function tick() {
       <h2>It is {new Date().toLocaleTimeString()}.</h2>
     </div>
   );
-  ReactDOM.render(
-    element,
-    document.getElementById('root')
-  );
+  root.render(element);
 }
 
 setInterval(tick, 1000);
@@ -35,7 +34,9 @@ setInterval(tick, 1000);
 
 می تونیم با کپسوله کردن ظاهر ساعت شروع کنیم:
 
-```js{3-6,12}
+```js{5-8,13}
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
 function Clock(props) {
   return (
     <div>
@@ -46,10 +47,7 @@ function Clock(props) {
 }
 
 function tick() {
-  ReactDOM.render(
-    <Clock date={new Date()} />,
-    document.getElementById('root')
-  );
+  root.render(<Clock date={new Date()} />);
 }
 
 setInterval(tick, 1000);
@@ -62,10 +60,7 @@ setInterval(tick, 1000);
 ایده‌آل این است که ما یک بار `Clock` را بنویسیم و خودش به‌روز رسانی را انجام دهد:
 
 ```js{2}
-ReactDOM.render(
-  <Clock />,
-  document.getElementById('root')
-);
+root.render(<Clock />);
 ```
 
 برای پیاده‌سازی آن، باید به کامپوننت `Clock` state اضافه کنیم.
@@ -159,10 +154,7 @@ class Clock extends React.Component {
 3. `date` را از props المنت `<Clock />` حذف کنید:
 
 ```js{2}
-ReactDOM.render(
-  <Clock />,
-  document.getElementById('root')
-);
+root.render(<Clock />);
 ```
 
 ما بعدا کد مربوط به تایمر را به خود کامپوننت اضافه‌می کنیم.
@@ -186,10 +178,8 @@ class Clock extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <Clock />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Clock />);
 ```
 
 [**روی CodePen امتحان کنید**](https://codepen.io/gaearon/pen/KgQpJd?editors=0010)
@@ -295,10 +285,8 @@ class Clock extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <Clock />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Clock />);
 ```
 
 [**روی CodePen امتحان کنید**](https://codepen.io/gaearon/pen/amqdNA?editors=0010)
@@ -307,7 +295,7 @@ ReactDOM.render(
 
 بیایید به طور خلاصه جمع‌بندی کنیم که چه اتفاقی ره می‌دهد و به ترتیب چه توابعی فراخوانی می‌شوند:
 
-1. زمانی که `<Clock />` به `ReactDOM.render()` پاس داده می‌شود، ری‌اکت سازنده کامپوننت `Clock` را فراخوانی می‌کند. از آن‌جایی که `Clock` زمان جاری را نمایش دهد، `this.state` را با شیء‌ای شامل زمان جاری مقداردهی اولیه می‌کند.
+1) هنگامی که `<Clock />` به `root.render()` منتقل می شود، React سازنده کامپوننت `Clock` را فراخوانی می کند. از آنجایی که `Clock` باید زمان جاری را نمایش دهد، `this.state`را با یک آبجکت شامل زمان فعلی مقداردهی اولیه می کند. ما بعداً این حالت (state) را به روز خواهیم کرد.
 
 2. سپس ری‌اکت تابع `render()` کامپوننت `Clock` را فرا می‌خواند. این روشی است که ری‌اکت می‌فهمد چه چیزی باید روی صفجه نمایش‌داده شود. سپس ری‌اکت DOM را به‌روز رسانی و با خروجی رندر `Clock` تطبیق می‌دهد.
 
@@ -446,11 +434,6 @@ function App() {
     </div>
   );
 }
-
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
 ```
 
 [**روی CodePen امتحان کنید**](https://codepen.io/gaearon/pen/vXdGmd?editors=0010)

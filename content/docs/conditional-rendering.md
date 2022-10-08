@@ -35,11 +35,9 @@ function Greeting(props) {
   return <GuestGreeting />;
 }
 
-ReactDOM.render(
-  // تغییر isLoggedIn={true} را امتحان کنید 
-  <Greeting isLoggedIn={false} />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root')); 
+// تغییر isLoggedIn={true} را امتحان کنید 
+root.render(<Greeting isLoggedIn={false} />);
 ```
 
 [**روی CodePen امتحان کنید**](https://codepen.io/gaearon/pen/ZpVxNq?editors=0011)
@@ -110,10 +108,8 @@ class LoginControl extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <LoginControl />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root')); 
+root.render(<LoginControl />);
 ```
 
 [**روی ‌CodePen امتحان کنید**](https://codepen.io/gaearon/pen/QKzAgB?editors=0010)
@@ -140,10 +136,9 @@ function Mailbox(props) {
 }
 
 const messages = ['React', 'Re: React', 'Re:Re: React'];
-ReactDOM.render(
-  <Mailbox unreadMessages={messages} />,
-  document.getElementById('root')
-);
+
+const root = ReactDOM.createRoot(document.getElementById('root')); 
+root.render(<Mailbox unreadMessages={messages} />);
 ```
 
 [**روی CodePen استفاده کنید**](https://codepen.io/gaearon/pen/ozJddz?editors=0010)
@@ -159,7 +154,7 @@ render() {
   const count = 0;
   return (
     <div>
-      { count && <h1>Messages: {count}</h1>}
+      {count && <h1>Messages: {count}</h1>}
     </div>
   );
 }
@@ -244,10 +239,8 @@ class Page extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <Page />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root')); 
+root.render(<Page />);
 ```
 
 [**روی CodePen امتحان کنید**](https://codepen.io/gaearon/pen/Xjoqwm?editors=0010)

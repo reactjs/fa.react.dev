@@ -59,7 +59,7 @@ expect(result.props.children).toEqual([
 
 این طور فرض کنید که shallowRenderer، " مکانی"  است برای رندر کردن کامپوننت مورد نظر شما، که خروجی کامپوننت شما را نمایش خواهد داد.
 
-`shallowRenderer.render()` مشابه [`ReactDOM.render()`](/docs/react-dom.html#render) می‌باشد، اما نیازی به DOM  ندارد و فقط در یک سطح رندر را انجام می‌دهد. به همین خاطر می‌توانید یک کامپوننت را در انزوا، و فارغ از کارکرد کامپوننت های فرزندنش اجرا کنید.
+`shallowRenderer.render()` مشابه [`root.render()`](/docs/react-dom-client.html#createroot) می‌باشد، اما نیازی به DOM  ندارد و فقط در یک سطح رندر را انجام می‌دهد. به همین خاطر می‌توانید یک کامپوننت را در انزوا، و فارغ از کارکرد کامپوننت های فرزندنش تست کنید.
 
 ### `shallowRenderer.getRenderOutput()` {#shallowrenderergetrenderoutput}
 

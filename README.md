@@ -51,7 +51,13 @@
     <a href="https://nodejs.org/en/">Node.js</a> نسخه ۱۲ (۱۲.۰.۰ به بالا)
   </li>
     <li>
-    <a href="https://yarnpkg.com/lang/en/docs/install/">Yarn</a>
+    <a href="https://yarnpkg.com/lang/en/docs/install/">Yarn v1</a>
+  </li>
+  <li>
+    یک فورک از رپو (برای مشارکت)
+  </li>
+  <li>
+    یک کلون از رپوی reactjs.org بر روی ماشینتون
   </li>
 </ul>
 
