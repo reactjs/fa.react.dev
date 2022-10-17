@@ -158,7 +158,7 @@
     - id: faq-styling
       title: اعمال style و CSS
     - id: faq-structure
-      title: File Structure
+      title: ساختار فایل
     - id: faq-versioning
       title: Versioning Policy
     - id: faq-internals
