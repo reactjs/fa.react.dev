@@ -6,11 +6,11 @@ prev: hooks-custom.html
 next: hooks-faq.html
 ---
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+*هوک‌ها* افزوده های جدیدی در React 16.8 هستند. آنها به شما اجازه می دهند از state و سایر ویژگی های React بدون نوشتن کلاس استفاده کنید.
 
-This page describes the APIs for the built-in Hooks in React.
+این صفحه API های Hook های داخلی در React را توضیح می دهد.
 
-If you're new to Hooks, you might want to check out [the overview](/docs/hooks-overview.html) first. You may also find useful information in the [frequently asked questions](/docs/hooks-faq.html) section.
+اگر در هوک‌ها تازه کار هستید، ممکن است بخواهید ابتدا [نمای کلی](/docs/hooks-overview.html) را بررسی کنید. همچنین می توانید اطلاعات مفیدی را در بخش [سوالات متداول](/docs/hooks-faq.html) پیدا کنید.
 
 - [Basic Hooks](#basic-hooks)
   - [`useState`](#usestate)
