@@ -339,11 +339,11 @@ In React, `useState`, as well as any other function starting with "`use`", is ca
 
 State is just one of those features, but you will meet the other Hooks later.
 
-<Gotcha>
+<Pitfall>
 
 **Hooks—functions starting with `use`—can only be called at the top level of your components or [your own Hooks.](/learn/reusing-logic-with-custom-hooks)** You can't call Hooks inside conditions, loops, or other nested functions. Hooks are functions, but it's helpful to think of them as unconditional declarations about your component's needs. You "use" React features at the top of your component similar to how you "import" modules at the top of your file.
 
-</Gotcha>
+</Pitfall>
 
 ### Anatomy of `useState` {/*anatomy-of-usestate*/}
 
@@ -924,7 +924,7 @@ export default function Gallery() {
   const [showMore, setShowMore] = useState(false);
 
   function handleNextClick() {
-    setIndex(index + 1000);
+    setIndex(index + 1);
   }
 
   function handleMoreClick() {

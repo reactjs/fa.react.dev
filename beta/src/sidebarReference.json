@@ -13,18 +13,15 @@
           "routes": [
             {
               "title": "Children",
-              "path": "/apis/react/Children",
-              "wip": true
+              "path": "/apis/react/Children"
             },
             {
               "title": "cloneElement",
-              "path": "/apis/react/cloneElement",
-              "wip": true
+              "path": "/apis/react/cloneElement"
             },
             {
               "title": "Component",
-              "path": "/apis/react/Component",
-              "wip": true
+              "path": "/apis/react/Component"
             },
             {
               "title": "createContext",
@@ -32,18 +29,15 @@
             },
             {
               "title": "createElement",
-              "path": "/apis/react/createElement",
-              "wip": true
+              "path": "/apis/react/createElement"
             },
             {
               "title": "createFactory",
-              "path": "/apis/react/createFactory",
-              "wip": true
+              "path": "/apis/react/createFactory"
             },
             {
               "title": "createRef",
-              "path": "/apis/react/createRef",
-              "wip": true
+              "path": "/apis/react/createRef"
             },
             {
               "title": "forwardRef",
@@ -55,8 +49,7 @@
             },
             {
               "title": "isValidElement",
-              "path": "/apis/react/isValidElement",
-              "wip": true
+              "path": "/apis/react/isValidElement"
             },
             {
               "title": "lazy",
@@ -68,8 +61,7 @@
             },
             {
               "title": "PureComponent",
-              "path": "/apis/react/PureComponent",
-              "wip": true
+              "path": "/apis/react/PureComponent"
             },
             {
               "title": "startTransition",
@@ -95,8 +87,7 @@
             },
             {
               "title": "useDebugValue",
-              "path": "/apis/react/useDebugValue",
-              "wip": true
+              "path": "/apis/react/useDebugValue"
             },
             {
               "title": "useDeferredValue",
@@ -114,13 +105,11 @@
             },
             {
               "title": "useId",
-              "path": "/apis/react/useId",
-              "wip": true
+              "path": "/apis/react/useId"
             },
             {
               "title": "useImperativeHandle",
-              "path": "/apis/react/useImperativeHandle",
-              "wip": true
+              "path": "/apis/react/useImperativeHandle"
             },
             {
               "title": "useInsertionEffect",
