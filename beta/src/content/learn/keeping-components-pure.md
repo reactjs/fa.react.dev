@@ -81,7 +81,7 @@ If you pass `drinkers={4}`, it will return JSX containing `4 cups of milk`. Alwa
 
 Just like a math formula. 
 
-You could think of your components as recipes: if you follow them and don't introduce new ingredients during the cooking process, you will get the same dish every time. That "dish" is the JSX that the component serves to React to [render.](render-and-commit)
+You could think of your components as recipes: if you follow them and don't introduce new ingredients during the cooking process, you will get the same dish every time. That "dish" is the JSX that the component serves to React to [render.](/learn/render-and-commit)
 
 <Illustration src="/images/docs/illustrations/i_puritea-recipe.png" alt="A tea recipe for x people: take x cups of water, add 2x spoons of spices, and x spoons of tea!" />
 
@@ -145,7 +145,9 @@ Now your component is pure, as the JSX it returns only depends on the `guest` pr
 
 In general, you should not expect your components to be rendered in any particular order. It doesn't matter if you call <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> before or after <Math><MathI>y</MathI> = 5<MathI>x</MathI></Math>: both formulas will resolve independently of each other. In the same way, each component should only "think for itself", and not attempt to coordinate with or depend upon others during rendering. Rendering is like a school exam: each component should calculate JSX on their own!
 
-<DeepDive title="Detecting impure calculations with StrictMode">
+<DeepDive>
+
+#### Detecting impure calculations with StrictMode {/*detecting-impure-calculations-with-strict-mode*/}
 
 Although you might not have used them all yet, in React there are three kinds of inputs that you can read while rendering: [props](/learn/passing-props-to-a-component), [state](/learn/state-a-components-memory), and [context.](/learn/passing-data-deeply-with-context) You should always treat these inputs as read-only.
 
@@ -197,7 +199,9 @@ If you've exhausted all other options and can't find the right event handler for
 
 When possible, try to express your logic with rendering alone. You'll be surprised how far this can take you!
 
-<DeepDive title="Why does React care about purity?">
+<DeepDive>
+
+#### Why does React care about purity? {/*why-does-react-care-about-purity*/}
 
 Writing pure functions takes some habit and discipline. But it also unlocks marvelous opportunities:
 
