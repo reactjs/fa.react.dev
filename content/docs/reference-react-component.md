@@ -121,11 +121,19 @@ render()
 
 هنگام فراخوانی، باید `this.props` و `this.state` را بررسی کند و یکی از موارد زیر را بازگرداند:
 
+<<<<<<< HEAD
 - **المنت‌های ری‌اکت.** معمولا با [JSX](/docs/introducing-jsx.html) ایجاد می‌شود. برای مثال، `<div />` و `<MyComponent />` المنت‌های ری‌اکت هستند که ری‌اکت را راهنمایی می‌کنند تا یک نود DOM، یا کامپوننت دیگری که توسط کاربر تعریف شده‌است را رندر کند.
 - **آرایه‌ها و فرگمنت‌ها.** به شما اجازه می‌دهد تا چند المنت را از رندر بازگردانید. مستندات [فرگمنت‌ها](/docs/fragments.html) را برای اطلاعات بیشتر مطالعه کنید.
 - **پرتال‌ها.** به شما اجازه می‌دهد تا فرزندان را در یک زیردرخت متفاوت DOM رندر کنید. مستندات [پرتال‌ها](/docs/portals.html) را برای اطلاعات بیشتر مطالعه کنید.
 - **رشته متنی و اعداد.** این‌ها به عنوان نودهای متنی در DOM رندر می‌شوند.
 - **متغیرهای بولی یا `null`.** چیزی رندر نمی‌کنند. (به طور کلی برای پشتیبانی از الگوی `return test && <Child />`، هنگامی که `test` یک متغیر بولی است وجود دارد.)
+=======
+- **React elements.** Typically created via [JSX](/docs/introducing-jsx.html). For example, `<div />` and `<MyComponent />` are React elements that instruct React to render a DOM node, or another user-defined component, respectively.
+- **Arrays and fragments.** Let you return multiple elements from render. See the documentation on [fragments](/docs/fragments.html) for more details.
+- **Portals**. Let you render children into a different DOM subtree. See the documentation on [portals](/docs/portals.html) for more details.
+- **String and numbers.** These are rendered as text nodes in the DOM.
+- **Booleans or `null` or `undefined`**. Render nothing. (Mostly exists to support `return test && <Child />` pattern, where `test` is boolean).
+>>>>>>> c883f623d597852b49f9314bb8133442ef9d3298
 
 تابع `render()` باید خالص باشد، به این معنی که نباید state را تغییر دهد، هر بار که فراخوانی می‌شود نتیجه یکسان بازمی‌گرداند و به صورت مستقیم با مرورگر تعاملی ندارد.
 

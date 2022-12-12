@@ -127,7 +127,7 @@ img { margin: 0 10px 10px 0; }
 * **During the initial render,** React will [create the DOM nodes](https://developer.mozilla.org/docs/Web/API/Document/createElement) for `<section>`, `<h1>`, and three `<img>` tags. 
 * **During a re-render,** React will calculate which of their properties, if any, have changed since the previous render. It won't do anything with that information until the next step, the commit phase.
 
-<Gotcha>
+<Pitfall>
 
 Rendering must always be a [pure calculation](/learn/keeping-components-pure):
 
@@ -136,9 +136,11 @@ Rendering must always be a [pure calculation](/learn/keeping-components-pure):
 
 Otherwise, you can encounter confusing bugs and unpredictable behavior as your codebase grows in complexity. When developing in "Strict Mode", React calls each component's function twice, which can help surface mistakes caused by impure functions.
 
-</Gotcha>
+</Pitfall>
 
-<DeepDive title="Optimizing performance">
+<DeepDive>
+
+#### Optimizing performance {/*optimizing-performance*/}
 
 The default behavior of rendering all components nested within the updated component is not optimal for performance if the updated component is very high in the tree. If you run into a performance issue, there are several opt-in ways to solve it described in the [Performance](https://reactjs.org/docs/optimizing-performance.html#gatsby-focus-wrapper) section. **Don't optimize prematurely!**
 
