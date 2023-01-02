@@ -374,9 +374,14 @@ function MyComponent() {
 در طول رندر سمت سرور، مرزهای Suspense به شما این امکان را می دهد که برنامه خود را در تکه‌های های کوچکتر با suspend کردن flush کنید.
 هنگامی که یک کامپوننت به حالت تعلیق (suspend) در می‌آید، ما یک تسک با اولویت پایین را برنامه‌ریزی می‌کنیم تا fallback مربوط به نزدیک‌ترین مرز Suspense را رندر کنیم. اگر کامپوننت قبل از flush کردن از حالت تعلیق خارج شود، محتوای واقعی را ارسال می کنیم و fallback را دور می اندازیم.
 
+<<<<<<< HEAD
 #### `React.Suspense` در طول hydration {#reactsuspense-during-hydration}
 مرزهای Suspense به این بستگی دارد که قبل از اینکه خودشان بتوانند hydrate شوند، مرزهای والدین آنها hydrate شوند، اما می توانند مستقل از مرزهای خواهر و برادر hydrate شوند. رویدادها (events) روی یک مرز (boundary) قبل از hydrate شدن آن باعث می‌شود تا این مرز
 با اولویت بالاتر از مرزهای همسایه hydrate شود. [بیشتر بخوانید](https://github.com/reactwg/react-18/discussions/130)
+=======
+#### `React.Suspense` during hydration {#reactsuspense-during-hydration}
+Suspense boundaries depend on their parent boundaries being hydrated before they can hydrate, but they can hydrate independently from sibling boundaries. Events on a boundary before it is hydrated will cause the boundary to hydrate at a higher priority than neighboring boundaries. [Read more](https://github.com/reactwg/react-18/discussions/130)
+>>>>>>> e77ba1e90338ff18f965c9b94c733b034b3ac18f
 
 ### `React.startTransition` {#starttransition}
 
