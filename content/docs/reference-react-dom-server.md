@@ -17,7 +17,11 @@ var ReactDOMServer = require('react-dom/server');
 
 ## مرور کلی{#overview}
 
+<<<<<<< HEAD
 این متدها فقط در **محیط‌های دارای [Node.js Streams](https://nodejs.dev/learn/nodejs-streams) در دسترس هستند:**
+=======
+These methods are only available in the **environments with [Node.js Streams](https://nodejs.org/api/stream.html):**
+>>>>>>> 38bf76a4a7bec6072d086ce8efdeef9ebb7af227
 
 - [`renderToPipeableStream()`](#rendertopipeablestream)
 - [`renderToNodeStream()`](#rendertonodestream) (کنارگذاشته‌شده)
