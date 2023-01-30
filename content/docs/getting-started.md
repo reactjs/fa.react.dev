@@ -18,7 +18,17 @@ redirect_from:
   - "docs/environments.html"
 ---
 
+<<<<<<< HEAD
 این صفحه مروری بر مستندات ری‌اکت و منابع مربوط به آن می‌باشد .
+=======
+> Try the new React documentation.
+> 
+> The new [Quick Start](https://beta.reactjs.org/learn) teaches modern React and includes live examples.
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+This page is an overview of the React documentation and related resources.
+>>>>>>> 5647a9485db3426d62b5a8203f4499c01bcd789b
 
 **ری‌‌اکت** یک کتابخانه جاوااسکریپت برای ساخت رابط‌های کاربری است. برای بهتر فهمیدن هر آنچه درباره مفهوم ری‌کت است می‌توانید به   [صفحه اصلی ری‌اکت](/) یا به [ بخش آموزش](/tutorial/tutorial.html) مراجعه کنید.
 

@@ -4,7 +4,20 @@ title: Context
 permalink: docs/context.html
 ---
 
+<<<<<<< HEAD
 Context راهی را برای انتقال داده در درخت کامپوننت بدون نیاز به انتقال دستی props به تمام سطح‌های پایینی فراهم می‌کند.
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Passing Data Deeply with Context](https://beta.reactjs.org/learn/passing-data-deeply-with-context)
+> - [`useContext`](https://beta.reactjs.org/reference/react/useContext)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+Context provides a way to pass data through the component tree without having to pass props down manually at every level.
+>>>>>>> 5647a9485db3426d62b5a8203f4499c01bcd789b
 
 در یک اپلیکیشن معمولی ری‌اکت، داده از طریق props از بالا به پایین (والدین به فرزند) منتقل می‌شود, اما این کار برای انواع خاصی از props ها (برای مثال: locale preference، تم رابط کاربری) که مورد نیاز بسیاری از کامپوننت ها در یک اپلیکیشن است می‌تواند سنگین باشد. Context راهی را برای به اشتراک‌گذاری مقادیری مانند این بین کامپوننت‌ها بدون نیاز به انتقال prop صریحا‍ً‌ از هر سطح درخت فراهم می‌کند.
 
