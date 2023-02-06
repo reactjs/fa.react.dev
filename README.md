@@ -143,6 +143,17 @@ yarn dev
 
 <h2 dir="rtl">مجوز</h2>
 
+<<<<<<< HEAD
 <p dir="rtl">
 محتوایی که در <a href="https://reactjs.org/">reactjs.org</a> قرار می‌گیرد، تخت مجوز CC-BY-4.0 منتشر می‌شود که جزئیات آن در <a href="https://github.com/open-source-explorer/reactjs.org/blob/master/LICENSE-DOCS.md">LICENSE-DOCS.md</a> آمده‌است.
 </p>
+=======
+If your language does not have a translation and you would like to create one, please follow the instructions at [reactjs.org Translations](https://github.com/reactjs/reactjs.org-translation#translating-reactjsorg).
+
+## Troubleshooting
+
+- `yarn reset` to clear the local cache
+
+## License
+Content submitted to [reactjs.org](https://reactjs.org/) is CC-BY-4.0 licensed, as found in the [LICENSE-DOCS.md](LICENSE-DOCS.md) file.
+>>>>>>> d4e42ab21f0cc7d8b79d1a619654e27c79e10af6

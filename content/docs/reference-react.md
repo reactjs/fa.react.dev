@@ -101,7 +101,15 @@ Suspense به کامپوننت‌ها اجازه می‌دهد تا قبل از 
 
 ### `React.Component` {#reactcomponent}
 
+<<<<<<< HEAD
 `React.Component` کلاس پایه است برای کامپوننت‌های ری‌اکت وقتی به روش [ کلاس‌های ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) تعریف شده باشند:
+=======
+> Try the new React documentation for [`Component`](https://beta.reactjs.org/reference/react/Component).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+`React.Component` is the base class for React components when they are defined using [ES6 classes](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes):
+>>>>>>> d4e42ab21f0cc7d8b79d1a619654e27c79e10af6
 
 ```javascript
 class Greeting extends React.Component {
@@ -117,7 +125,15 @@ class Greeting extends React.Component {
 
 ### `React.PureComponent` {#reactpurecomponent}
 
+<<<<<<< HEAD
 `React.PureComponent` به [`React.Component`](#reactcomponent) شبیه است. تفاوت آن‌ها این است که [`React.Component`](#reactcomponent) تابع [`()shouldComponentUpdate`](/docs/react-component.html#shouldcomponentupdate) را پیاده‌سازی نمی‌کند، ولی `React.PureComponent` آن‌را با یک قیاس سطحی props و state پیاده‌سازی می‌کند.
+=======
+> Try the new React documentation for [`PureComponent`](https://beta.reactjs.org/reference/react/PureComponent).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+`React.PureComponent` is similar to [`React.Component`](#reactcomponent). The difference between them is that [`React.Component`](#reactcomponent) doesn't implement [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate), but `React.PureComponent` implements it with a shallow prop and state comparison.
+>>>>>>> d4e42ab21f0cc7d8b79d1a619654e27c79e10af6
 
 اگر تابع `render()` کامپوننت ری‌اکت شما، در صورت یکسان بودن props و state، خروجی یکسان تولید می‌کند، برای ارتقای کارایی در برخی از موارد می‌توانید از `React.PureComponent` استفاده کنید.
 
@@ -130,6 +146,10 @@ class Greeting extends React.Component {
 * * *
 
 ### `React.memo` {#reactmemo}
+
+> Try the new React documentation for [`memo`](https://beta.reactjs.org/reference/react/memo).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 ```javascript
 const MyComponent = React.memo(function MyComponent(props) {
@@ -169,6 +189,10 @@ export default React.memo(MyComponent, areEqual);
 
 ### `()createElement` {#createelement}
 
+> Try the new React documentation for [`createElement`](https://beta.reactjs.org/reference/react/createElement).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 React.createElement(
   type,
@@ -184,6 +208,10 @@ React.createElement(
 * * *
 
 ### `()cloneElement` {#cloneelement}
+
+> Try the new React documentation for [`cloneElement`](https://beta.reactjs.org/reference/react/cloneElement).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 ```
 React.cloneElement(
@@ -209,6 +237,10 @@ React.cloneElement(
 
 ### `()createFactory` {#createfactory}
 
+> Try the new React documentation for [`createFactory`](https://beta.reactjs.org/reference/react/createFactory).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 React.createFactory(type)
 ```
@@ -223,6 +255,10 @@ React.createFactory(type)
 
 ### `()isValidElement` {#isvalidelement}
 
+> Try the new React documentation for [`isValidElement`](https://beta.reactjs.org/reference/react/isValidElement).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 React.isValidElement(object)
 ```
@@ -233,7 +269,15 @@ React.isValidElement(object)
 
 ### `React.Children` {#reactchildren}
 
+<<<<<<< HEAD
 `React.Children` ابزاری برای کار با ساختمان‌داده‌ی غیرشفاف`this.props.children` فراهم می‌کند.
+=======
+> Try the new React documentation for [`Children`](https://beta.reactjs.org/reference/react/Children).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+`React.Children` provides utilities for dealing with the `this.props.children` opaque data structure.
+>>>>>>> d4e42ab21f0cc7d8b79d1a619654e27c79e10af6
 
 #### `React.Children.map` {#reactchildrenmap}
 
@@ -291,7 +335,15 @@ React.Children.toArray(children)
 
 ### `React.Fragment` {#reactfragment}
 
+<<<<<<< HEAD
 کامپوننت `React.Fragment` به شما این توانایی را می‌دهد تا چندین المنت را در متد `render()` برگردانید، بدون آن‌که المنت DOM جدیدی بسازید:
+=======
+> Try the new React documentation for [`Fragment`](https://beta.reactjs.org/reference/react/Fragment).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+The `React.Fragment` component lets you return multiple elements in a `render()` method without creating an additional DOM element:
+>>>>>>> d4e42ab21f0cc7d8b79d1a619654e27c79e10af6
 
 ```javascript
 render() {
@@ -309,12 +361,28 @@ render() {
 
 ### `React.createRef` {#reactcreateref}
 
+<<<<<<< HEAD
 `React.createRef` یک [ref](/docs/refs-and-the-dom.html) می‌سازد که می‌تواند با استفاده از خصوصیت ref به المنت متصل شود.
+=======
+> Try the new React documentation for [`createRef`](https://beta.reactjs.org/reference/react/createRef).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+`React.createRef` creates a [ref](/docs/refs-and-the-dom.html) that can be attached to React elements via the ref attribute.
+>>>>>>> d4e42ab21f0cc7d8b79d1a619654e27c79e10af6
 `embed:16-3-release-blog-post/create-ref-example.js`
 
 ### `React.forwardRef` {#reactforwardref}
 
+<<<<<<< HEAD
 `React.forwardRef` یک کامپوننت ری‌اکت ایجاد می‌کند که خصوصیت [ref](/docs/refs-and-the-dom.html) دریافت شده را به کامپوننت زیرین در درخت فوروارد کند. این روش خیلی معمول نیست مگر در دو مورد:
+=======
+> Try the new React documentation for [`forwardRef`](https://beta.reactjs.org/reference/react/forwardRef).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+`React.forwardRef` creates a React component that forwards the [ref](/docs/refs-and-the-dom.html) attribute it receives to another component below in the tree. This technique is not very common but is particularly useful in two scenarios:
+>>>>>>> d4e42ab21f0cc7d8b79d1a619654e27c79e10af6
 
 * [فوروارد refها به کامپوننت‌های DOM](/docs/forwarding-refs.html#forwarding-refs-to-dom-components)
 * [فوروارد refها در کامپوننت‌های مرتبه‌ بالا](/docs/forwarding-refs.html#forwarding-refs-in-higher-order-components)
@@ -331,7 +399,15 @@ render() {
 
 ### `React.lazy` {#reactlazy}
 
+<<<<<<< HEAD
 `React.lazy()` به شما اجازه می‌دهد کامپوننتی تعریف کنید که به شکل پویا بارگذاری می‌شود. این کمک می‌کند تا حجم بسته‌ی نهایی(bundle) کاهش یابد تا بارگذاری کامپوننت‌هایی که در رندر ابتدایی استفاده نشده‌اند را به تعویق اندازد.
+=======
+> Try the new React documentation for [`lazy`](https://beta.reactjs.org/reference/react/lazy).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+`React.lazy()` lets you define a component that is loaded dynamically. This helps reduce the bundle size to delay loading components that aren't used during the initial render.
+>>>>>>> d4e42ab21f0cc7d8b79d1a619654e27c79e10af6
 
 می‌توانید برای یادگیری نحوه‌ی استفاده از آن به [سند بخش‌بندی کد](/docs/code-splitting.html#reactlazy) بروید. ممکن است بخواهید [این مقاله](https://medium.com/@pomber/lazy-loading-and-preloading-components-in-react-16-6-804de091c82d) را بررسی کنید، که در مورد چگونگی استفاده از آن با جزئیاتی بیشتر توضیح داده است .
 
@@ -344,7 +420,15 @@ const SomeComponent = React.lazy(() => import('./SomeComponent'));
 
 ### `React.Suspense` {#reactsuspense}
 
+<<<<<<< HEAD
 `React.Suspense` به شما امکان می‌دهد در صورتی که برخی از اجزای درخت زیر آن هنوز آماده رندر نیستند، نشانگر بارگذاری (loading indicator) را مشخص کنید. در آینده قصد داریم به `Suspense` اجازه دهیم سناریوهای بیشتری مانند fetch کردن داده را مدیریت کند. می‌توانید در این مورد در [نقشه راه ما](/blog/2018/11/27/react-16-roadmap.html) بخوانید.
+=======
+> Try the new React documentation for [`Suspense`](https://beta.reactjs.org/reference/react/Suspense).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+`React.Suspense` lets you specify the loading indicator in case some components in the tree below it are not yet ready to render. In the future we plan to let `Suspense` handle more scenarios such as data fetching. You can read about this in [our roadmap](/blog/2018/11/27/react-16-roadmap.html).
+>>>>>>> d4e42ab21f0cc7d8b79d1a619654e27c79e10af6
 
 امروزه، بارگذاری lazy کامپوننت‌ها **تنها** مورد استفاده است که توسط `<React.Suspense>` پشتیبانی می‌شود:
 
@@ -374,11 +458,20 @@ function MyComponent() {
 در طول رندر سمت سرور، مرزهای Suspense به شما این امکان را می دهد که برنامه خود را در تکه‌های های کوچکتر با suspend کردن flush کنید.
 هنگامی که یک کامپوننت به حالت تعلیق (suspend) در می‌آید، ما یک تسک با اولویت پایین را برنامه‌ریزی می‌کنیم تا fallback مربوط به نزدیک‌ترین مرز Suspense را رندر کنیم. اگر کامپوننت قبل از flush کردن از حالت تعلیق خارج شود، محتوای واقعی را ارسال می کنیم و fallback را دور می اندازیم.
 
+<<<<<<< HEAD
 #### `React.Suspense` در طول hydration {#reactsuspense-during-hydration}
 مرزهای Suspense به این بستگی دارد که قبل از اینکه خودشان بتوانند hydrate شوند، مرزهای والدین آنها hydrate شوند، اما می توانند مستقل از مرزهای خواهر و برادر hydrate شوند. رویدادها (events) روی یک مرز (boundary) قبل از hydrate شدن آن باعث می‌شود تا این مرز
 با اولویت بالاتر از مرزهای همسایه hydrate شود. [بیشتر بخوانید](https://github.com/reactwg/react-18/discussions/130)
+=======
+#### `React.Suspense` during hydration {#reactsuspense-during-hydration}
+Suspense boundaries depend on their parent boundaries being hydrated before they can hydrate, but they can hydrate independently from sibling boundaries. Events on a boundary before it is hydrated will cause the boundary to hydrate at a higher priority than neighboring boundaries. [Read more](https://github.com/reactwg/react-18/discussions/130)
+>>>>>>> d4e42ab21f0cc7d8b79d1a619654e27c79e10af6
 
 ### `React.startTransition` {#starttransition}
+
+> Try the new React documentation for [`startTransition`](https://beta.reactjs.org/reference/react/startTransition).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 ```js
 React.startTransition(callback)
