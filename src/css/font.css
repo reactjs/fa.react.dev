@@ -1,12 +1,10 @@
 @font-face {
-    font-family: 'Sahel';
+    font-family: Vazirmatn UI;
     font-style: normal;
     font-weight: 400;
-    src: local('Sahel'), local('Sahel'),
-         url('/fonts/Sahel.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-         url('/fonts/Sahel.woff2') format('woff2'), /* Super Modern Browsers */
-         url('/fonts/Sahel.woff') format('woff'), /* Modern Browsers */
-         url('/fonts/Sahel.ttf') format('truetype'), /* Safari, Android, iOS */
+    src:
+         url('/fonts/Vazirmatn-UI-FD-Medium.woff2') format('woff2'), /* Super Modern Browsers */
+         url('/fonts/Vazirmatn-UI-FD-Medium.ttf') format('truetype'), /* Safari, Android, iOS */
   }
 
   html {
