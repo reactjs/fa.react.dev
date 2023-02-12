@@ -1,22 +1,22 @@
 ---
 id: accessibility
-title: Accessibility
+title: دسترسی راحت
 permalink: docs/accessibility.html
 ---
 
-## Why Accessibility? {#why-accessibility}
+## چرا دسترسی راحت؟ {#why-accessibility}
 
-Web accessibility (also referred to as [**a11y**](https://en.wiktionary.org/wiki/a11y)) is the design and creation of websites that can be used by everyone. Accessibility support is necessary to allow assistive technology to interpret web pages.
+دسترسی راحت در وب (با این عنوان هم شناخته میشود [**a11y**](https://en.wiktionary.org/wiki/a11y)) طراحی و ایجاد صفحات وب به شکلی است که برای همه قابل استفاده باشد ، به شکلی که فرقی نکنه یه پیرمرد درحال استفاده از وب سایت باشه یا یک مهندس نرم افزار !
 
-React fully supports building accessible websites, often by using standard HTML techniques.
+ری اکت کاملا از طراحی صفحات وب باaccessibility پشتیبانی میکند، غالبا با استفاده از تکنیک های استاندارد HTML. 
 
-## Standards and Guidelines {#standards-and-guidelines}
+## استاندارد ها و دستورالعمل ها {#standards-and-guidelines}
 
 ### WCAG {#wcag}
 
-The [Web Content Accessibility Guidelines](https://www.w3.org/WAI/intro/wcag) provides guidelines for creating accessible web sites.
+در [Web Content Accessibility Guidelines](https://www.w3.org/WAI/intro/wcag) دستورالعمل هایی برای طراحی وب سایت ها با کاربری راحت ارائه میدهد.
 
-The following WCAG checklists provide an overview:
+در زیر WCAG چک لیست ها به شما دیدگاه کلی میدهند:
 
 - [WCAG checklist from Wuhcag](https://www.wuhcag.com/wcag-checklist/)
 - [WCAG checklist from WebAIM](https://webaim.org/standards/wcag/checklist)
@@ -24,7 +24,7 @@ The following WCAG checklists provide an overview:
 
 ### WAI-ARIA {#wai-aria}
 
-The [Web Accessibility Initiative - Accessible Rich Internet Applications](https://www.w3.org/WAI/intro/aria) document contains techniques for building fully accessible JavaScript widgets.
+دو مفهوم [ابتکار تعامل گرایی در وب - برنامه های تعامل گرا در سطح اینترنت](https://www.w3.org/WAI/intro/aria) اسنادی برای ساخت ویجت های کاملا تعامل گرا در سطح وب هستند.
 
 Note that all `aria-*` HTML attributes are fully supported in JSX. Whereas most DOM properties and attributes in React are camelCased, these attributes should be hyphen-cased (also known as kebab-case, lisp-case, etc) as they are in plain HTML:
 
