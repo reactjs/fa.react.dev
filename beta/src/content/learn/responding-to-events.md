@@ -67,7 +67,7 @@ You defined the `handleClick` function and then [passed it as a prop](/learn/pas
 * Are usually defined *inside* your components.
 * Have names that start with `handle`, followed by the name of the event.
 
-> By convention, it is common to name event handlers as `handle` followed by the event name. You'll often see `onClick={handleClick}`, `onMouseEnter={handleMouseEnter}`, and so on.
+By convention, it is common to name event handlers as `handle` followed by the event name. You'll often see `onClick={handleClick}`, `onMouseEnter={handleMouseEnter}`, and so on.
 
 Alternatively, you can define an event handler inline in the JSX:
 
@@ -87,12 +87,12 @@ Or, more concisely, using an arrow function:
 
 All of these styles are equivalent. Inline event handlers are convenient for short functions.
 
-<Gotcha>
+<Pitfall>
 
 Functions passed to event handlers must be passed, not called. For example:
 
-| passing a function (correct)           | calling a function (incorrect) |
-|----------------------------------------|--------------------------------|
+| passing a function (correct)     | calling a function (incorrect)     |
+| -------------------------------- | ---------------------------------- |
 | `<button onClick={handleClick}>` | `<button onClick={handleClick()}>` |
 
 The difference is subtle. In the first example, the `handleClick` function is passed as an `onClick` event handler. This tells React to remember it and only call your function when the user clicks the button.
@@ -101,8 +101,8 @@ In the second example, the `()` at the end of `handleClick()` fires the function
 
 When you write code inline, the same pitfall presents itself in a different way:
 
-| passing a function (correct)           | calling a function (incorrect) |
-|----------------------------------------|--------------------------------|
+| passing a function (correct)            | calling a function (incorrect)    |
+| --------------------------------------- | --------------------------------- |
 | `<button onClick={() => alert('...')}>` | `<button onClick={alert('...')}>` |
 
 
@@ -126,9 +126,9 @@ In both cases, what you want to pass is a function:
 * `<button onClick={handleClick}>` passes the `handleClick` function.
 * `<button onClick={() => alert('...')}>` passes the `() => alert('...')` function.
 
-> [Read more about arrow functions.](https://javascript.info/arrow-functions-basics)
+[Read more about arrow functions.](https://javascript.info/arrow-functions-basics)
 
-</Gotcha>
+</Pitfall>
 
 ### Reading props in event handlers {/*reading-props-in-event-handlers*/}
 
@@ -231,9 +231,9 @@ If you use a [design system](https://uxdesign.cc/everything-you-need-to-know-abo
 
 ### Naming event handler props {/*naming-event-handler-props*/}
 
-Built-in components like `<button>` and `<div>` only support [browser event names](TODO:/apis/react-dom/events) like `onClick`. However, when you're building your own components, you can name their event handler props any way that you like.
+Built-in components like `<button>` and `<div>` only support [browser event names](/reference/react-dom/components/common#common-props) like `onClick`. However, when you're building your own components, you can name their event handler props any way that you like.
 
-> By convention, event handler props should start with `on`, followed by a capital letter.
+By convention, event handler props should start with `on`, followed by a capital letter.
 
 For example, the `Button` component's `onClick` prop could have been called `onSmash`:
 
@@ -351,11 +351,11 @@ button { margin: 5px; }
 
 If you click on either button, its `onClick` will run first, followed by the parent `<div>`'s `onClick`. So two messages will appear. If you click the toolbar itself, only the parent `<div>`'s `onClick` will run.
 
-<Gotcha>
+<Pitfall>
 
 All events propagate in React except `onScroll`, which only works on the JSX tag you attach it to.
 
-</Gotcha>
+</Pitfall>
 
 ### Stopping propagation {/*stopping-propagation*/}
 
@@ -414,7 +414,9 @@ When you click on a button:
 
 As a result of `e.stopPropagation()`, clicking on the buttons now only shows a single alert (from the `<button>`) rather than the two of them (from the `<button>` and the parent toolbar `<div>`). Clicking a button is not the same thing as clicking the surrounding toolbar, so stopping the propagation makes sense for this UI.
 
-<DeepDive title="Capture phase events">
+<DeepDive>
+
+#### Capture phase events {/*capture-phase-events*/}
 
 In rare cases, you might need to catch all events on child elements, *even if they stopped propagation*. For example, maybe you want to log every click to analytics, regardless of the propagation logic. You can do this by adding `Capture` at the end of the event name:
 
@@ -586,7 +588,7 @@ export default function LightSwitch() {
 
 </Sandpack>
 
-Alternatively, you could wrap the call into another function, like `<button onClick={() => handleClick()}`:
+Alternatively, you could wrap the call into another function, like `<button onClick={() => handleClick()}>`:
 
 <Sandpack>
 

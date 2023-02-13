@@ -16,7 +16,20 @@ prev: rendering-elements.html
 next: state-and-lifecycle.html
 ---
 
+<<<<<<< HEAD
 کامپوننت‌ها به شما اجازه می‌دهند رابط کاربری را به بخش‌های مستقل قابل استفاده مجدد تقسیم کنید و این بخش‌ها را به صورت مجزا در نظر بگیرید. این صفحه مقدمه‌ای برای مفهوم کامپوننت به شما ارائه می‌دهد. شما می‌توانید مرجع API کامپوننت‌ با جزئیات بیشتر را [اینجا](/docs/react-component.html) پیدا کنید.
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Your First Component](https://beta.reactjs.org/learn/your-first-component)
+> - [Passing Props to a Component](https://beta.reactjs.org/learn/passing-props-to-a-component)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+Components let you split the UI into independent, reusable pieces, and think about each piece in isolation. This page provides an introduction to the idea of components. You can find a [detailed component API reference here](/docs/react-component.html).
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 از لحاظ مفهومی کامپوننت‌ها همانند توابع جاوااسکریپت هستند. آنها ورودی‌های دلخواه خود (props) را دریافت می‌کنند و المنت‌هایی از ری‌اکت را باز می‌گردانند که توصیف کننده آنچه باید روی صفحه نمایان شود است.  
 

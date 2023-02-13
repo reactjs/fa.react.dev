@@ -14,7 +14,24 @@ redirect_from:
   - "tips/dangerously-set-inner-html.html"
 ---
 
+<<<<<<< HEAD
 به دلیل کارایی و سازگاری با مرورگرهای مختلف، ری‌اکت سیستم DOM خود را، مستقل از مرورگر پیاده‌سازی می‌کند. ما از این فرصت استفاده کردیم تا مقداری به زمختی های پیاده‌سازی DOM در مرورگر نظم دهیم.
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Common components (e.g. `<div>`)](https://beta.reactjs.org/reference/react-dom/components/common)
+> - [`<input>`](https://beta.reactjs.org/reference/react-dom/components/input)
+> - [`<option>`](https://beta.reactjs.org/reference/react-dom/components/option)
+> - [`<progress>`](https://beta.reactjs.org/reference/react-dom/components/progress)
+> - [`<select>`](https://beta.reactjs.org/reference/react-dom/components/select)
+> - [`<textarea>`](https://beta.reactjs.org/reference/react-dom/components/textarea)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+React implements a browser-independent DOM system for performance and cross-browser compatibility. We took the opportunity to clean up a few rough edges in browser DOM implementations.
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 در ری‌اکت، تمامی ویژگی‌ها و صفات DOM (از جلمه event handler ها) باید به صورت camelCase باشند. برای مثال، صفت `tabindex` در HTML با صفت `tabIndex` در ری‌اکت مطابقت دارد. استثناهایی که وجود دارند یکی صفات `aria-*` و دیگری صفات `data-*` هستند که باید با حروف کوچک نوشته بشوند. برای مثال `aria-label` همان `aria-label` باقی می‌ماند.
 
