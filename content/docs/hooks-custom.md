@@ -6,7 +6,19 @@ next: hooks-reference.html
 prev: hooks-rules.html
 ---
 
+<<<<<<< HEAD
 *هوک‌ها* ضمیمه جدید ری‌اکت ۱۶.۸ هستند. آن‌ها به شما اجازه می‌دهند تا از state و سایر ویژگی‌های ری‌اکت بدون نوشتن کلاس استفاده کنید.
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Reusing Logic with Custom Hooks](https://beta.reactjs.org/learn/reusing-logic-with-custom-hooks)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+>>>>>>> 63c77695a95902595b6c2cc084a5c3650b15210a
 
 ساختن هوک‌های خودتان به شما کمک می‌کند تا منطق برنامه را به توابعی که می‌توان مجدد استفاده کرد تبدیل کنید.
 

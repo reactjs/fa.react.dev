@@ -8,7 +8,20 @@ redirect_from:
   - "docs/events-ko-KR.html"
 ---
 
+<<<<<<< HEAD
 مدیریت رویدادها (Handling Events) در المنت‌های ری‌اکت بسیار شبیه به مدیریت رویدادها در المنت‌های DOM است. بعضی تفاوت‌های نحوی وجود دارد:
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Responding to Events](https://beta.reactjs.org/learn/responding-to-events)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
+Handling events with React elements is very similar to handling events on DOM elements. There are some syntax differences:
+>>>>>>> 63c77695a95902595b6c2cc084a5c3650b15210a
 
 * رویدادهای ری‌اکت به جای حروف کوچک از نامگذاری camelCase استفاده می‌کنند.
 * با JSX، به جای یک رشته متنی یک تابع به عنوان event handler پاس می‌دهید.

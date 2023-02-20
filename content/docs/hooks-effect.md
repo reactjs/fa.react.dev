@@ -6,7 +6,21 @@ next: hooks-rules.html
 prev: hooks-state.html
 ---
 
+<<<<<<< HEAD
 *Hookها* ضمیمه جدید ری‌اکت ۱۶.۸ هستند. آن‌ها به شما اجازه می‌دهند تا از state و سایر ویژگی‌های ری‌اکت بدون نوشتن class استفاده کنید.
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Synchronizing with Effects](https://beta.reactjs.org/learn/synchronizing-with-effects)
+> - [You Might Not Need an Effect](https://beta.reactjs.org/learn/you-might-not-need-an-effect)
+> - [`useEffect`](https://beta.reactjs.org/reference/react/useEffect)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+>>>>>>> 63c77695a95902595b6c2cc084a5c3650b15210a
 
 *هوک effect* به شما اجازه می‌دهد تا اثرات جانبی را در کامپوننت‌های تابعی نمایش دهید:
 
