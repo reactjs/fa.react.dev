@@ -2,7 +2,7 @@
 id: hello-world
 title: سلام دنیا
 permalink: docs/hello-world.html
-prev: cdn-links.html
+prev: release-channels.html
 next: introducing-jsx.html
 ---
 

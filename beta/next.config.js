@@ -2,9 +2,6 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-const path = require('path');
-const redirects = require('./src/redirects.json');
-
 /**
  * @type {import('next').NextConfig}
  **/
@@ -17,19 +14,9 @@ const nextConfig = {
     legacyBrowsers: false,
     browsersListForSwc: true,
   },
-  async redirects() {
-    return redirects.redirects;
+  env: {
+    SANDPACK_BARE_COMPONENTS: process.env.SANDPACK_BARE_COMPONENTS,
   },
-  // TODO: this causes extra router.replace() on every page.
-  // Let's disable until we figure out what's going on.
-  // rewrites() {
-  //   return [
-  //     {
-  //       source: '/feed.xml',
-  //       destination: '/_next/static/feed.xml',
-  //     },
-  //   ];
-  // },
   webpack: (config, {dev, isServer, ...options}) => {
     if (process.env.ANALYZE) {
       const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
@@ -49,8 +36,16 @@ const nextConfig = {
     const {IgnorePlugin, NormalModuleReplacementPlugin} = require('webpack');
     config.plugins.push(
       new NormalModuleReplacementPlugin(
-        /@codemirror\/lang-markdown/,
-        require.resolve('./src/utils/codemirrorMarkdownShim.js')
+        /^@stitches\/core$/,
+        require.resolve('./src/utils/emptyShim.js')
+      ),
+      new NormalModuleReplacementPlugin(
+        /^raf$/,
+        require.resolve('./src/utils/rafShim.js')
+      ),
+      new NormalModuleReplacementPlugin(
+        /^process$/,
+        require.resolve('./src/utils/processShim.js')
       ),
       new IgnorePlugin({
         checkResource(resource, context) {
