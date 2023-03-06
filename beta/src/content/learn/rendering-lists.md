@@ -242,7 +242,7 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 </Sandpack>
 
-<Gotcha>
+<Pitfall>
 
 Arrow functions implicitly return the expression right after `=>`, so you didn't need a `return` statement:
 
@@ -262,7 +262,7 @@ const listItems = chemists.map(person => { // Curly brace
 
 Arrow functions containing `=> {` are said to have a ["block body".](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#function_body) They let you write more than a single line of code, but you *have to* write a `return` statement yourself. If you forget it, nothing gets returned!
 
-</Gotcha>
+</Pitfall>
 
 ## Keeping list items in order with `key` {/*keeping-list-items-in-order-with-key*/}
 
@@ -372,11 +372,13 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 </Sandpack>
 
-<DeepDive title="Displaying several DOM nodes for each list item">
+<DeepDive>
+
+#### Displaying several DOM nodes for each list item {/*displaying-several-dom-nodes-for-each-list-item*/}
 
 What do you do when each item needs to render not one, but several DOM nodes?
 
-The short [`<>...</>` Fragment](/apis/react/Fragment) syntax won't let you pass a key, so you need to either group them into a single `<div>`, or use the slightly longer and [more explicit `<Fragment>` syntax:](/apis/react/Fragment#rendering-a-list-of-fragments)
+The short [`<>...</>` Fragment](/reference/react/Fragment) syntax won't let you pass a key, so you need to either group them into a single `<div>`, or use the slightly longer and [more explicit `<Fragment>` syntax:](/reference/react/Fragment#rendering-a-list-of-fragments)
 
 ```js
 import { Fragment } from 'react';
@@ -413,7 +415,7 @@ Imagine that files on your desktop didn't have names. Instead, you'd refer to th
 
 File names in a folder and JSX keys in an array serve a similar purpose. They let us uniquely identify an item between its siblings. A well-chosen key provides more information than the position within the array. Even if the _position_ changes due to reordering, the `key` lets React identify the item throughout its lifetime.
 
-<Gotcha>
+<Pitfall>
 
 You might be tempted to use an item's index in the array as its key. In fact, that's what React will use if you don't specify a `key` at all. But the order in which you render items will change over time if an item is inserted, deleted, or if the array gets reordered. Index as a key often leads to subtle and confusing bugs.
 
@@ -421,7 +423,7 @@ Similarly, do not generate keys on the fly, e.g. with `key={Math.random()}`. Thi
 
 Note that your components won't receive `key` as a prop. It's only used as a hint by React itself. If your component needs an ID, you have to pass it as a separate prop: `<Profile key={id} userId={id} />`.
 
-</Gotcha>
+</Pitfall>
 
 <Recap>
 
@@ -762,7 +764,7 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 A very attentive reader might notice that with two `filter` calls, we check each person's profession twice. Checking a property is very fast, so in this example it's fine. If your logic was more expensive than that, you could replace the `filter` calls with a loop that manually constructs the arrays and checks each person once.
 
-In fact, if `people` never change, you could move this code out of your component. From React's perspective, all that matters if that you give it an array of JSX nodes in the end. It doesn't care how you produce that array:
+In fact, if `people` never change, you could move this code out of your component. From React's perspective, all that matters is that you give it an array of JSX nodes in the end. It doesn't care how you produce that array:
 
 <Sandpack>
 
@@ -882,7 +884,7 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 #### Nested lists in one component {/*nested-lists-in-one-component*/}
 
-Make a list of recipes from this array! For each recipe in the array, display its title as an `<h2>` and list its ingredients in a `<ul>`.
+Make a list of recipes from this array! For each recipe in the array, display its name as an `<h2>` and list its ingredients in a `<ul>`.
 
 <Hint>
 

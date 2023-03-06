@@ -9,7 +9,21 @@ redirect_from:
   - "docs/forms-zh-CN.html"
 ---
 
+<<<<<<< HEAD
 المنت‌های فرم HTML کمی متفاوت از سایر المنت‌های DOM در React عمل می کنند ، زیرا المنت‌های فرم به طور طبیعی مقداری state درونی ‌را حفظ می کنند. به عنوان مثال ، این فرم که ‌به‌صورت HTML ساده نوشته شده است یک نام را قبول می کند:
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [`<input>`](https://beta.reactjs.org/reference/react-dom/components/input)
+> - [`<select>`](https://beta.reactjs.org/reference/react-dom/components/select)
+> - [`<textarea>`](https://beta.reactjs.org/reference/react-dom/components/textarea)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+HTML form elements work a bit differently from other DOM elements in React, because form elements naturally keep some internal state. For example, this form in plain HTML accepts a single name:
+>>>>>>> ba290ad4e432f47a2a2f88d067dacaaa161b5200
 
 ```html
 <form>
