@@ -204,13 +204,15 @@ return (
 
 You can read it as *"if `isPacked` is true, then (`?`) render `name + ' ✔'`, otherwise (`:`) render `name`"*.
 
-<DeepDive title="Are these two examples fully equivalent?">
+<DeepDive>
+
+#### Are these two examples fully equivalent? {/*are-these-two-examples-fully-equivalent*/}
 
 If you're coming from an object-oriented programming background, you might assume that the two examples above are subtly different because one of them may create two different "instances" of `<li>`. But JSX elements aren't "instances" because they don't hold any internal state and aren't real DOM nodes. They're lightweight descriptions, like blueprints. So these two examples, in fact, *are* completely equivalent. [Preserving and Resetting State](/learn/preserving-and-resetting-state) goes into detail about how this works.
 
 </DeepDive>
 
-Now let's say you want to wrap the completed item's text into another HTML tag, like `<del>` to strike it out. You can add even more newlines and parentheses so that it's easier to nest more JSX each of the cases:
+Now let's say you want to wrap the completed item's text into another HTML tag, like `<del>` to strike it out. You can add even more newlines and parentheses so that it's easier to nest more JSX in each of the cases:
 
 <Sandpack>
 
@@ -311,7 +313,7 @@ export default function PackingList() {
 A [JavaScript && expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND) returns the value of its right side (in our case, the checkmark) if the left side (our condition) is `true`. But if the condition is `false`, the whole expression becomes `false`. React considers `false` as a "hole" in the JSX tree, just like `null` or `undefined`, and doesn't render anything in its place.
 
 
-<Gotcha>
+<Pitfall>
 
 **Don't put numbers on the left side of `&&`.**
 
@@ -321,7 +323,7 @@ For example, a common mistake is to write code like `messageCount && <p>New mess
 
 To fix it, make the left side a boolean: `messageCount > 0 && <p>New messages</p>`.
 
-</Gotcha>
+</Pitfall>
 
 ### Conditionally assigning JSX to a variable {/*conditionally-assigning-jsx-to-a-variable*/}
 

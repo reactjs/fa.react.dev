@@ -163,11 +163,11 @@ You can really see the JavaScript object inside the curly braces when you write 
 
 The next time you see `{{` and `}}` in JSX, know that it's nothing more than an object inside the JSX curlies!
 
-<Gotcha>
+<Pitfall>
 
 Inline `style` properties are written in camelCase. For example, HTML `<ul style="background-color: black">` would be written as `<ul style={{ backgroundColor: 'black' }}>`  in your component.
 
-</Gotcha>
+</Pitfall>
 
 ## More fun with JavaScript objects and curly braces {/*more-fun-with-javascript-objects-and-curly-braces*/}
 
@@ -469,7 +469,7 @@ export default function TodoList() {
 ```css
 body { padding: 0; margin: 0 }
 body > div > div { padding: 20px; }
-.avatar { border-radius: 50%; height: 90px; }
+.avatar { border-radius: 50%; }
 ```
 
 </Sandpack>
@@ -520,7 +520,7 @@ export default function TodoList() {
 ```css
 body { padding: 0; margin: 0 }
 body > div > div { padding: 20px; }
-.avatar { border-radius: 50%; height: 90px; }
+.avatar { border-radius: 50%; }
 ```
 
 </Sandpack>
@@ -575,7 +575,7 @@ export function getImageUrl(person) {
 ```css
 body { padding: 0; margin: 0 }
 body > div > div { padding: 20px; }
-.avatar { border-radius: 50%; height: 90px; }
+.avatar { border-radius: 50%; }
 ```
 
 </Sandpack>

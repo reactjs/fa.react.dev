@@ -9,8 +9,20 @@ redirect_from:
   - "docs/flux-todo-list.html"
 ---
 
+<<<<<<< HEAD
 اغلب، تغییر یک داده، منجر به واکنش چندین کامپوننت می‌شود. پیشنهاد ما انتقال state مشترک میان آن‌ها به نزدیک‌ترین کامپوننت بالادستی است که آن‌هار در بر دارد. بیایید با هم ببینیم در عمل چگونه کار می‌کند.
 در این بخش، ما یک دماسنج می‌سازیم که محاسبه می‌کند در دمای داده شده به آن آب جوش آمده است یا خیر.
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Sharing State Between Components](https://beta.reactjs.org/learn/sharing-state-between-components)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+Often, several components need to reflect the same changing data. We recommend lifting the shared state up to their closest common ancestor. Let's see how this works in action.
+>>>>>>> 19aa5b4852c3905757edb16dd62f7e7506231210
 
 ما با کامپوننتی شروع خواهیم کرد که به آن `BoilingVerdict` می‌گویند.
 این کامپوننت `celsius` را به عنوان prop دریافت می‌کند و درصورت کافی بودن آن برای به جوش آوردن آب آن را چاپ می‌کند.

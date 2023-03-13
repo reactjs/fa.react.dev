@@ -8,7 +8,17 @@ redirect_from:
 prev: composition-vs-inheritance.html
 ---
 
+<<<<<<< HEAD
 به عقیده ما، ری‌اکت بهترین راه برای ساخت وب اپلیکیشن هایی سریع و بزرگ، با استفاده از جاوااسکریپت است و برای ما در فیسبوک و اینستاگرام خیلی خوب جواب داده است.
+=======
+> Try the new React documentation.
+> 
+> The updated [Thinking in React](https://beta.reactjs.org/learn/thinking-in-react) guide teaches modern React and includes live examples.
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+React is, in our opinion, the premier way to build big, fast Web apps with JavaScript. It has scaled very well for us at Facebook and Instagram.
+>>>>>>> 19aa5b4852c3905757edb16dd62f7e7506231210
 
 ری‌اکت بخش‌های خیلی خوب زیادی دارد، اما یکی از بهترین آنها، چگونگی نگرش به اپ‌هایی است که مشغول به ساخت آنها هستید.
 در این سند (Document)، به فرایند تفکر در ساخت یک جدول محصولات با قابلیت جستجو خواهیم پرداخت، و برای ساخت این جدول از ری‌اکت استفاده میکنیم.
