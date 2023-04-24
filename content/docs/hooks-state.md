@@ -6,6 +6,17 @@ next: hooks-effect.html
 prev: hooks-overview.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [State: A Component's Memory](https://react.dev/learn/state-a-components-memory)
+> - [`useState`](https://react.dev/reference/react/useState)
+
+</div>
+
 *هوک‌ها* پس از انتشار نسخه‌ی 16.8 به ری‌اکت اضافه شده‌اند. آن‌ها به شما اجازه می‌دهند که از state و دیگر قابلیت های ری‌اکت بدون نوشتن کلاس استفاده کنید.
 
 در [صفحه‌ی معرفی](/docs/hooks-intro.html) از این مثال برای معرفی هوکها استفاده شد:

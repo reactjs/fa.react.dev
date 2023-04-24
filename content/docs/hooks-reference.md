@@ -6,6 +6,16 @@ prev: hooks-custom.html
 next: hooks-faq.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React:
+>
+> - [`react`: Hooks](https://react.dev/reference/react)
+
+</div>
+
 *Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
 
 This page describes the APIs for the built-in Hooks in React.
@@ -34,6 +44,14 @@ If you're new to Hooks, you might want to check out [the overview](/docs/hooks-o
 ## Basic Hooks {#basic-hooks}
 
 ### `useState` {#usestate}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useState`](https://react.dev/reference/react/useState).
+
+</div>
 
 ```js
 const [state, setState] = useState(initialState);
@@ -118,6 +136,14 @@ In the rare case that you need to force the DOM update to be applied synchronous
 
 ### `useEffect` {#useeffect}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useEffect`](https://react.dev/reference/react/useEffect).
+
+</div>
+
 ```js
 useEffect(didUpdate);
 ```
@@ -197,6 +223,15 @@ The array of dependencies is not passed as arguments to the effect function. Con
 
 ### `useContext` {#usecontext}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useContext`](https://react.dev/reference/react/useContext).
+
+</div>
+
+
 ```js
 const value = useContext(MyContext);
 ```
@@ -268,6 +303,15 @@ This example is modified for hooks from a previous example in the [Context Advan
 The following Hooks are either variants of the basic ones from the previous section, or only needed for specific edge cases. Don't stress about learning them up front.
 
 ### `useReducer` {#usereducer}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useReducer`](https://react.dev/reference/react/useReducer).
+
+</div>
+
 
 ```js
 const [state, dispatch] = useReducer(reducer, initialArg, init);
@@ -372,6 +416,14 @@ Note that React may still need to render that specific component again before ba
 
 ### `useCallback` {#usecallback}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useCallback`](https://react.dev/reference/react/useCallback).
+
+</div>
+
 ```js
 const memoizedCallback = useCallback(
   () => {
@@ -395,6 +447,15 @@ Pass an inline callback and an array of dependencies. `useCallback` will return 
 
 ### `useMemo` {#usememo}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useMemo`](https://react.dev/reference/react/useMemo).
+
+</div>
+
+
 ```js
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 ```
@@ -416,6 +477,15 @@ If no array is provided, a new value will be computed on every render.
 > We recommend using the [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) rule as part of our [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) package. It warns when dependencies are specified incorrectly and suggests a fix.
 
 ### `useRef` {#useref}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useRef`](https://react.dev/reference/react/useRef).
+
+</div>
+
 
 ```js
 const refContainer = useRef(initialValue);
@@ -454,6 +524,15 @@ Keep in mind that `useRef` *doesn't* notify you when its content changes. Mutati
 
 ### `useImperativeHandle` {#useimperativehandle}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useImperativeHandle`](https://react.dev/reference/react/useImperativeHandle).
+
+</div>
+
+
 ```js
 useImperativeHandle(ref, createHandle, [deps])
 ```
@@ -477,6 +556,15 @@ In this example, a parent component that renders `<FancyInput ref={inputRef} />`
 
 ### `useLayoutEffect` {#uselayouteffect}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useLayoutEffect`](https://react.dev/reference/react/useLayoutEffect).
+
+</div>
+
+
 The signature is identical to `useEffect`, but it fires synchronously after all DOM mutations. Use this to read layout from the DOM and synchronously re-render. Updates scheduled inside `useLayoutEffect` will be flushed synchronously, before the browser has a chance to paint.
 
 Prefer the standard `useEffect` when possible to avoid blocking visual updates.
@@ -490,6 +578,15 @@ Prefer the standard `useEffect` when possible to avoid blocking visual updates.
 >To exclude a component that needs layout effects from the server-rendered HTML, render it conditionally with `showChild && <Child />` and defer showing it with `useEffect(() => { setShowChild(true); }, [])`. This way, the UI doesn't appear broken before hydration.
 
 ### `useDebugValue` {#usedebugvalue}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useDebugValue`](https://react.dev/reference/react/useDebugValue).
+
+</div>
+
 
 ```js
 useDebugValue(value)
@@ -531,6 +628,15 @@ useDebugValue(date, date => date.toDateString());
 
 ### `useDeferredValue` {#usedeferredvalue}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useDeferredValue`](https://react.dev/reference/react/useDeferredValue).
+
+</div>
+
+
 ```js
 const deferredValue = useDeferredValue(value);
 ```
@@ -569,6 +675,15 @@ Memoizing the children tells React that it only needs to re-render them when `de
 
 ### `useTransition` {#usetransition}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useTransition`](https://react.dev/reference/react/useTransition).
+
+</div>
+
+
 ```js
 const [isPending, startTransition] = useTransition();
 ```
@@ -580,7 +695,7 @@ Returns a stateful value for the pending state of the transition, and a function
 ```js
 startTransition(() => {
   setCount(count + 1);
-})
+});
 ```
 
 `isPending` indicates when a transition is active to show a pending state:
@@ -593,7 +708,7 @@ function App() {
   function handleClick() {
     startTransition(() => {
       setCount(c => c + 1);
-    })
+    });
   }
 
   return (
@@ -612,6 +727,15 @@ function App() {
 > Updates in a transition will not show a fallback for re-suspended content. This allows the user to continue interacting with the current content while rendering the update.
 
 ### `useId` {#useid}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useId`](https://react.dev/reference/react/useId).
+
+</div>
+
 
 ```js
 const id = useId();
@@ -669,6 +793,15 @@ The following Hooks are provided for library authors to integrate libraries deep
 
 ### `useSyncExternalStore` {#usesyncexternalstore}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useSyncExternalStore`](https://react.dev/reference/react/useSyncExternalStore).
+
+</div>
+
+
 ```js
 const state = useSyncExternalStore(subscribe, getSnapshot[, getServerSnapshot]);
 ```
@@ -714,6 +847,14 @@ const selectedField = useSyncExternalStore(
 > As a convenience, we also provide a version of the API with automatic support for memoizing the result of getSnapshot published as `use-sync-external-store/with-selector`.
 
 ### `useInsertionEffect` {#useinsertioneffect}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useInsertionEffect`](https://react.dev/reference/react/useInsertionEffect).
+
+</div>
 
 ```js
 useInsertionEffect(didUpdate);

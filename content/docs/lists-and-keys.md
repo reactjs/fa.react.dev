@@ -6,6 +6,17 @@ prev: conditional-rendering.html
 next: forms.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Rendering Lists](https://react.dev/learn/rendering-lists)
+
+</div>
+
+
 ابتدا اجازه دهید به بررسی نحوه تبدیل لیست‌ها در جاوا‌اسکریپت بپردازیم.
 
 با توجه به کد زیر، ما از تابع[`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) استفاده می‌کنیم  تا آرایه‌‌ای از اعداد با نام  `numbers` را گرفته و مقادیرش را دو برابر کند. آرایه‌ی جدیدی که توسط `map()` برگشته را به متغیر `doubled`اختصاص می‌دهیم و آن را چاپ می‌کنیم.

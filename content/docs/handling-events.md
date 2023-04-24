@@ -8,6 +8,16 @@ redirect_from:
   - "docs/events-ko-KR.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Responding to Events](https://react.dev/learn/responding-to-events)
+
+</div>
+
 مدیریت رویدادها (Handling Events) در المنت‌های ری‌اکت بسیار شبیه به مدیریت رویدادها در المنت‌های DOM است. بعضی تفاوت‌های نحوی وجود دارد:
 
 * رویدادهای ری‌اکت به جای حروف کوچک از نامگذاری camelCase استفاده می‌کنند.

@@ -4,6 +4,18 @@ title: کامپوننت‌های کنترل‌نشده
 permalink: docs/uncontrolled-components.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [`<input>`](https://react.dev/reference/react-dom/components/input)
+> - [`<select>`](https://react.dev/reference/react-dom/components/select)
+> - [`<textarea>`](https://react.dev/reference/react-dom/components/textarea)
+
+</div>
+
 برای پیاده‌سازی فرم‌ها، توصیه می‌کنیم در اکثر موارد از [کامپوننت‌های کنترل‌شده](/docs/forms.html#controlled-components) استفاده کنید. در یک کامپوننت کنترل‌شده، اطلاعات مربوط به فرم توسط یک کامپوننتِ ری‌اکت مدیریت می‌شود. را‌هکار دیگر استفاده از کامپوننت‌های کنترل‌نشده است که در آن‌ها اطلاعات مربوط به فرم توسط خود DOM مدیریت می‌شود.
 
 برای نوشتن یک کامپوننت کنترل‌نشده، بجای نوشتن یک event handler و آپدیت کردن state در تک تک موارد، می‌توانید [از یک رفرنس استفاده کنید](/docs/refs-and-the-dom.html) و مقادیر فرم را از DOM دریافت کنید.  

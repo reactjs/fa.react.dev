@@ -4,6 +4,12 @@ title: ری‌اکت بدون ES6
 permalink: docs/react-without-es6.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+
+</div>
+
 شما به صورت عادی یک کامپوننت ری‌اکت را به عنوان یک کلاس جاوااسکریپت ساده تعریف می‌کنید:
 
 ```javascript

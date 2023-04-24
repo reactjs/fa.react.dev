@@ -3,6 +3,12 @@ title: "برنامه برای ری‌اکت ۱۸"
 author: [acdlite, bvaughn, abernathyca, gaearon, rachelnabors, rickhanlonii, sebmarkbage, sethwebster]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 > آپدیت: ۱۵ نوامبر ۲۰۲۱
 >
 > ری‌اکت ۱۸ اکنون در بتا قرار دارد. اطلاعات بیشتر درباره‌ی وضعیت عرضه در [پست گروه کاری ری‌اکت ۱۸ موجود می‌باشد](https://github.com/reactwg/react-18/discussions/112).

@@ -6,6 +6,16 @@ category: Reference
 permalink: docs/react-dom-server.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React:
+>
+> - [`react-dom`: Server APIs](https://react.dev/reference/react-dom/server)
+
+</div>
+
 آبجکت `ReactDOMServer` این امکان را فراهم می‌کند تا کامپوننت های خود را به حالت استاتیک رندر کنید. این معمولا در سرور  Node استفاده می‌شود.
 
 ```js
@@ -17,7 +27,7 @@ var ReactDOMServer = require('react-dom/server');
 
 ## مرور کلی{#overview}
 
-این متدها فقط در **محیط‌های دارای [Node.js Streams](https://nodejs.dev/learn/nodejs-streams) در دسترس هستند:**
+این متدها فقط در **محیط‌های دارای [Node.js Streams](https://nodejs.org/api/stream.html) در دسترس هستند:**
 
 - [`renderToPipeableStream()`](#rendertopipeablestream)
 - [`renderToNodeStream()`](#rendertonodestream) (کنارگذاشته‌شده)
@@ -35,6 +45,14 @@ var ReactDOMServer = require('react-dom/server');
 ## مرجع {#reference}
 
 ### `renderToPipeableStream()` {#rendertopipeablestream}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`renderToPipeableStream`](https://react.dev/reference/react-dom/server/renderToPipeableStream).
+
+</div>
 
 ```javascript
 ReactDOMServer.renderToPipeableStream(element, options)
@@ -90,6 +108,14 @@ const stream = renderToPipeableStream(
 * * *
 
 ### `renderToReadableStream()` {#rendertoreadablestream}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`renderToReadableStream`](https://react.dev/reference/react-dom/server/renderToReadableStream).
+
+</div>
 
 ```javascript
 ReactDOMServer.renderToReadableStream(element, options);
@@ -148,6 +174,14 @@ try {
 
 ### `renderToNodeStream()`  (کنارگذاشته‌شده) {#rendertonodestream}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`renderToNodeStream`](https://react.dev/reference/react-dom/server/renderToNodeStream).
+
+</div>
+
 ```javascript
 ReactDOMServer.renderToNodeStream(element)
 ```
@@ -165,6 +199,14 @@ ReactDOMServer.renderToNodeStream(element)
 * * *
 
 ### `renderToStaticNodeStream()` {#rendertostaticnodestream}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`renderToStaticNodeStream`](https://react.dev/reference/react-dom/server/renderToStaticNodeStream).
+
+</div>
 
 ```javascript
 ReactDOMServer.renderToStaticNodeStream(element)
@@ -186,6 +228,14 @@ HTML ساخته شده توسط این استریم دقیقا همانی است
 
 ### `renderToString()` {#rendertostring}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`renderToString`](https://react.dev/reference/react-dom/server/renderToString).
+
+</div>
+
 ```javascript
 ReactDOMServer.renderToString(element)
 ```
@@ -203,6 +253,14 @@ ReactDOMServer.renderToString(element)
 * * *
 
 ### `renderToStaticMarkup()` {#rendertostaticmarkup}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`renderToStaticMarkup`](https://react.dev/reference/react-dom/server/renderToStaticMarkup).
+
+</div>
 
 ```javascript
 ReactDOMServer.renderToStaticMarkup(element)

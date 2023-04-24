@@ -6,6 +6,19 @@ category: Reference
 permalink: docs/react-dom.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React:
+>
+> - [`react-dom`: Components](https://react.dev/reference/react-dom/components)
+> - [`react-dom`: APIs](https://react.dev/reference/react-dom)
+> - [`react-dom`: Client APIs](https://react.dev/reference/react-dom/client)
+> - [`react-dom`: Server APIs](https://react.dev/reference/react-dom/server)
+
+</div>
+
 بسته `react-dom` متدهای مخصوص DOM را ارائه می‌کند که می‌توانند در سطح بالای برنامه شما و به عنوان یک دریچه فرار برای خارج شدن از مدل React در صورت نیاز استفاده شوند.
 
 ```js
@@ -50,6 +63,14 @@ React از همه مرورگرهای مدرن پشتیبانی می‌کند، �
 
 ### `createPortal()` {#createportal}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`createPortal`](https://react.dev/reference/react-dom/createPortal).
+
+</div>
+
 ```javascript
 createPortal(child, container)
 ```
@@ -57,6 +78,14 @@ createPortal(child, container)
 یک پورتال ایجاد می کند. پورتال ها راهی برای [رندر children به یک گره (node) در DOM که خارج از سلسله مراتب کامپوننت DOM وجود دارد](/docs/portals.html) ارائه می دهند.
 
 ### `flushSync()` {#flushsync}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`flushSync`](https://react.dev/reference/react-dom/flushSync).
+
+</div>
 
 ```javascript
 flushSync(callback)
@@ -84,6 +113,15 @@ flushSync(() => {
 
 ## Legacy Reference {#legacy-reference}
 ### `render()` {#render}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`render`](https://react.dev/reference/react-dom/render).
+
+</div>
+
 ```javascript
 render(element, container[, callback])
 ```
@@ -114,6 +152,14 @@ render(element, container[, callback])
 
 ### `hydrate()` {#hydrate}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`hydrate`](https://react.dev/reference/react-dom/hydrate).
+
+</div>
+
 ```javascript
 hydrate(element, container[, callback])
 ```
@@ -136,6 +182,14 @@ hydrate(element, container[, callback])
 
 ### `unmountComponentAtNode()` {#unmountcomponentatnode}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`unmountComponentAtNode`](https://react.dev/reference/react-dom/unmountComponentAtNode).
+
+</div>
+
 ```javascript
 unmountComponentAtNode(container)
 ```
@@ -149,6 +203,14 @@ unmountComponentAtNode(container)
 * * *
 
 ### `()findDOMNode` {#finddomnode}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`findDOMNode`](https://react.dev/reference/react-dom/findDOMNode).
+
+</div>
 
 > توجه:
 > `findDOMNode`  یک راه فرار است که برای دسترسی به DOM نود زیرین استفاده می‌شود. در بیشتر موارد، استفاده از این راه فرار پیش‌نهاد نمی‌شود. زیرا نفوذی به [لایه] abstraction کامپوننت است. این قابلیت [در `StrictMode` منسوخ شده است.](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)

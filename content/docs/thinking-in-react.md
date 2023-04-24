@@ -8,6 +8,14 @@ redirect_from:
 prev: composition-vs-inheritance.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> The updated [Thinking in React](https://react.dev/learn/thinking-in-react) guide teaches modern React and includes live examples.
+
+</div>
+
 به عقیده ما، ری‌اکت بهترین راه برای ساخت وب اپلیکیشن هایی سریع و بزرگ، با استفاده از جاوااسکریپت است و برای ما در فیسبوک و اینستاگرام خیلی خوب جواب داده است.
 
 ری‌اکت بخش‌های خیلی خوب زیادی دارد، اما یکی از بهترین آنها، چگونگی نگرش به اپ‌هایی است که مشغول به ساخت آنها هستید.

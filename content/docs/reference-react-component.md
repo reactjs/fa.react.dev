@@ -15,6 +15,16 @@ redirect_from:
   - "tips/use-react-with-other-libraries.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React:
+>
+> - [`React.Component`](https://react.dev/reference/react/Component)
+
+</div>
+
 این صفحه شامل جزئیات دقیق منابع API ری‌اکت برای تعریف کامپوننت از جنس کلاس‌ است. فرض شده‌است که شما با مفاهیم بنادین ری‌اکت مانند [کامپوننت‌ها و Props](/docs/components-and-props.html) و [State و چرخه حیات](/docs/state-and-lifecycle.html) آشنا هستید. در غیر‌این‌صورت ابتدا آن‌ها را مطالعه نمایید.
 
 ## بررسی اجمالی {#overview}

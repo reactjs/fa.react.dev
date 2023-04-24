@@ -4,6 +4,16 @@ title: Portals
 permalink: docs/portals.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [`createPortal`](https://react.dev/reference/react-dom/createPortal)
+
+</div>
+
 Portals provide a first-class way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
 
 ```js
@@ -46,7 +56,7 @@ A typical use case for portals is when a parent component has an `overflow: hidd
 >
 > When working with portals, remember that [managing keyboard focus](/docs/accessibility.html#programmatically-managing-focus) becomes very important.
 >
-> For modal dialogs, ensure that everyone can interact with them by following the [WAI-ARIA Modal Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal).
+> For modal dialogs, ensure that everyone can interact with them by following the [WAI-ARIA Modal Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/).
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/yzMaBd)
 

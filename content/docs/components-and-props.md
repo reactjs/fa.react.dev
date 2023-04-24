@@ -16,6 +16,18 @@ prev: rendering-elements.html
 next: state-and-lifecycle.html
 ---
 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Your First Component](https://react.dev/learn/your-first-component)
+> - [Passing Props to a Component](https://react.dev/learn/passing-props-to-a-component)
+
+</div>
+
 کامپوننت‌ها به شما اجازه می‌دهند رابط کاربری را به بخش‌های مستقل قابل استفاده مجدد تقسیم کنید و این بخش‌ها را به صورت مجزا در نظر بگیرید. این صفحه مقدمه‌ای برای مفهوم کامپوننت به شما ارائه می‌دهد. شما می‌توانید مرجع API کامپوننت‌ با جزئیات بیشتر را [اینجا](/docs/react-component.html) پیدا کنید.
 
 از لحاظ مفهومی کامپوننت‌ها همانند توابع جاوااسکریپت هستند. آنها ورودی‌های دلخواه خود (props) را دریافت می‌کنند و المنت‌هایی از ری‌اکت را باز می‌گردانند که توصیف کننده آنچه باید روی صفحه نمایان شود است.  

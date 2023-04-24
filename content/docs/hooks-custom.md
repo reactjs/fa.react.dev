@@ -6,6 +6,16 @@ next: hooks-reference.html
 prev: hooks-rules.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Reusing Logic with Custom Hooks](https://react.dev/learn/reusing-logic-with-custom-hooks)
+
+</div>
+
 *هوک‌ها* ضمیمه جدید ری‌اکت ۱۶.۸ هستند. آن‌ها به شما اجازه می‌دهند تا از state و سایر ویژگی‌های ری‌اکت بدون نوشتن کلاس استفاده کنید.
 
 ساختن هوک‌های خودتان به شما کمک می‌کند تا منطق برنامه را به توابعی که می‌توان مجدد استفاده کرد تبدیل کنید.

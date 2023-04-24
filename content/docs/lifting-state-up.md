@@ -9,6 +9,16 @@ redirect_from:
   - "docs/flux-todo-list.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Sharing State Between Components](https://react.dev/learn/sharing-state-between-components)
+
+</div>
+
 اغلب، تغییر یک داده، منجر به واکنش چندین کامپوننت می‌شود. پیشنهاد ما انتقال state مشترک میان آن‌ها به نزدیک‌ترین کامپوننت بالادستی است که آن‌هار در بر دارد. بیایید با هم ببینیم در عمل چگونه کار می‌کند.
 در این بخش، ما یک دماسنج می‌سازیم که محاسبه می‌کند در دمای داده شده به آن آب جوش آمده است یا خیر.
 

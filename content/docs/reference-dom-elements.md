@@ -14,6 +14,21 @@ redirect_from:
   - "tips/dangerously-set-inner-html.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Common components (e.g. `<div>`)](https://react.dev/reference/react-dom/components/common)
+> - [`<input>`](https://react.dev/reference/react-dom/components/input)
+> - [`<option>`](https://react.dev/reference/react-dom/components/option)
+> - [`<progress>`](https://react.dev/reference/react-dom/components/progress)
+> - [`<select>`](https://react.dev/reference/react-dom/components/select)
+> - [`<textarea>`](https://react.dev/reference/react-dom/components/textarea)
+
+</div>
+
 به دلیل کارایی و سازگاری با مرورگرهای مختلف، ری‌اکت سیستم DOM خود را، مستقل از مرورگر پیاده‌سازی می‌کند. ما از این فرصت استفاده کردیم تا مقداری به زمختی های پیاده‌سازی DOM در مرورگر نظم دهیم.
 
 در ری‌اکت، تمامی ویژگی‌ها و صفات DOM (از جلمه event handler ها) باید به صورت camelCase باشند. برای مثال، صفت `tabindex` در HTML با صفت `tabIndex` در ری‌اکت مطابقت دارد. استثناهایی که وجود دارند یکی صفات `aria-*` و دیگری صفات `data-*` هستند که باید با حروف کوچک نوشته بشوند. برای مثال `aria-label` همان `aria-label` باقی می‌ماند.
