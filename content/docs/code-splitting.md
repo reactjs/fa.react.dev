@@ -4,6 +4,17 @@ title: تکه تکه کردن کد
 permalink: docs/code-splitting.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [`lazy`](https://react.dev/reference/react/lazy)
+> - [`<Suspense>`](https://react.dev/reference/react/Suspense)
+
+</div>
+
 ## بسته‌بندی کردن (bundling) {#bundling}
 
 فایل‌های بیشتر برنامه‌های ری‌اکت با کمک ابزار‌هایی مانند [Webpack](https://webpack.js.org/)، [Rollup](https://rollupjs.org/) یا [Browserify](http://browserify.org/) بسته‌بندی (bundle) می‌شود. فرآیند بسته بندی کردن فایل‌ها به پیدا کردن فایل‌های ایمپورت شده و قرار دادن محتوای همه‌ آن‌ها در یک فایل "بسته" گفته می‌شود. می‌توان این بسته را در یک صفحه وب بارگذاری کرد که تمام برنامه یک‌جا بارگذاری شود.

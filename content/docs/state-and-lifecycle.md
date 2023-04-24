@@ -8,6 +8,18 @@ prev: components-and-props.html
 next: handling-events.html
 ---
 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React and include live examples:
+>
+> - [State: A Component's Memory](https://react.dev/learn/state-a-components-memory)
+> - [Synchronizing with Effects](https://react.dev/learn/synchronizing-with-effects)
+
+</div>
+
 این صفحه مفهوم state و lifecycle را در یک کامپوننت ری‌اکتی معرفی می‌کند. برای مطالعه [مرجع API کامپوننت با جزئیات به اینجا](/docs/react-component.html) مراجعه کنید.
 
 مثال تیک تاک ساعت از [یکی از بخش‌های قبلی](/docs/rendering-elements.html#updating-the-rendered-element) را در نظر بگیرید. در [رندرکردن المنت‌ها](/docs/rendering-elements.html#rendering-an-element-into-the-dom)، ما فقط یک راه برای به روز رسانی رابط کاربری یاد گرفته ایم. برای تغییر خروجی رندر شده `root.render()` را فراخوانی می کنیم:

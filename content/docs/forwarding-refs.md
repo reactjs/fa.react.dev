@@ -4,6 +4,17 @@ title: فوروارد کردن ref ها
 permalink: docs/forwarding-refs.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Manipulating the DOM with Refs](https://react.dev/learn/manipulating-the-dom-with-refs)
+> - [`forwardRef`](https://react.dev/reference/react/forwardRef)
+
+</div>
+
 ref فوروارد کردن یک تکنیک برای ارسال خودکار یک  [ref](/docs/refs-and-the-dom.html) از طریق یک کامپوننت به فرزندانش می‌باشد. این کار معمولا برای بسیاری از کامپوننت‌ها در اپلیکیشن لازم نیست. به هر حال، در بعضی از کامپوننت‌ها، به خصوص در کامپوننت‌های کتابخانه‌ای با قابلیت استفاده مجدد می‌تواند مفید باشد. رایج‌ترین حالات ممکن در ادامه شرح داده شده‌اند.
 
 ## فوروارد کردن ref ها به کامپوننت‌های DOM {#forwarding-refs-to-dom-components}

@@ -4,6 +4,12 @@ title: ری‌اکت بدون JSX
 permalink: docs/react-without-jsx.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+
+</div>
+
 برای استفاده از ری‌اکت شما نیاز به JSX ندارید.استفاده نکردن از JSX در ری‌اکت هنگامی راحت‌تر است که نیاز به راه اندازی یک محیط تولید(build environment) ندارید.
 
 هر المنت JSX فقط کدی (syntactic sugar) برای فراخوانی `React.createElement(component, props, ...children)` است. بنابراین هرکاری که با JSX می‌توانید انجام دهید، می شود با جاوااسکریپت ساده هم انجام داد.

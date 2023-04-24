@@ -18,6 +18,15 @@ redirect_from:
   - "docs/environments.html"
 ---
 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> The new [Quick Start](https://react.dev/learn) teaches modern React and includes live examples.
+
+</div>
+
 این صفحه مروری بر مستندات ری‌اکت و منابع مربوط به آن می‌باشد .
 
 **ری‌‌اکت** یک کتابخانه جاوااسکریپت برای ساخت رابط‌های کاربری است. برای بهتر فهمیدن هر آنچه درباره مفهوم ری‌کت است می‌توانید به   [صفحه اصلی ری‌اکت](/) یا به [ بخش آموزش](/tutorial/tutorial.html) مراجعه کنید.

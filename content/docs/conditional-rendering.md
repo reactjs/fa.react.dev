@@ -8,6 +8,17 @@ redirect_from:
   - "tips/false-in-jsx.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Conditional Rendering](https://react.dev/learn/conditional-rendering)
+
+</div>
+
+
  در ری اکت، شما می‌توانید کامپوننت‌های مجزایی بسازید که رفتار مورد نیاز شما را کپسوله سازی کنند. سپس می‌توانید فقط بعضی از این کامپوننت‌ها را بسته به state برنامه رندر کنید .
 
 رندر کردن شرطی در ری‌اکت همان‌طور کار می‌کند که شرط‌ها در جاوا‌اسکریپت کار می‌کنند. از عملگرهای جاوااسکریپت مانند [if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) یا [عملگر شرطی (conditional operator)](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) برای ساختن المنت‌هایی که نمایانگر state کنونی هستند، استفاده کنید و بگذارید ری‌اکت UI را به‌روز رسانی کند تا با آن‌ها منطبق شود.

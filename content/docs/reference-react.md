@@ -13,6 +13,19 @@ redirect_from:
   - "docs/top-level-api-zh-CN.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React:
+>
+> - [`react`: Components](https://react.dev/reference/react/components)
+> - [`react`: Hooks](https://react.dev/reference/react/)
+> - [`react`: APIs](https://react.dev/reference/react/apis)
+> - [`react`: Legacy APIs](https://react.dev/reference/react/legacy)
+
+</div>
+
 `React` نقطه‌ی ورود به کتابخانه‌ی ری‌اکت است. اگر شما React را از تگ `<script>` بارگذاری کنید، این APIهای سطح بالا از  `React` گلوبال قابل دسترسی هستند. اگر شما از ES6 ‌به‌همراه npm استفاده می‌کنید، می‌توانید بنویسید `import React from 'react'`. اگر از ES5 به‌همراه npm استفاده می‌کنید، می‌توانید بنویسید `var React = require('react')`.
 
 ## مرور کلی {#overview}
@@ -101,6 +114,14 @@ Suspense به کامپوننت‌ها اجازه می‌دهد تا قبل از 
 
 ### `React.Component` {#reactcomponent}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`Component`](https://react.dev/reference/react/Component).
+
+</div>
+
 `React.Component` کلاس پایه است برای کامپوننت‌های ری‌اکت وقتی به روش [ کلاس‌های ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) تعریف شده باشند:
 
 ```javascript
@@ -117,6 +138,14 @@ class Greeting extends React.Component {
 
 ### `React.PureComponent` {#reactpurecomponent}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`PureComponent`](https://react.dev/reference/react/PureComponent).
+
+</div>
+
 `React.PureComponent` به [`React.Component`](#reactcomponent) شبیه است. تفاوت آن‌ها این است که [`React.Component`](#reactcomponent) تابع [`()shouldComponentUpdate`](/docs/react-component.html#shouldcomponentupdate) را پیاده‌سازی نمی‌کند، ولی `React.PureComponent` آن‌را با یک قیاس سطحی props و state پیاده‌سازی می‌کند.
 
 اگر تابع `render()` کامپوننت ری‌اکت شما، در صورت یکسان بودن props و state، خروجی یکسان تولید می‌کند، برای ارتقای کارایی در برخی از موارد می‌توانید از `React.PureComponent` استفاده کنید.
@@ -130,6 +159,14 @@ class Greeting extends React.Component {
 * * *
 
 ### `React.memo` {#reactmemo}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`memo`](https://react.dev/reference/react/memo).
+
+</div>
 
 ```javascript
 const MyComponent = React.memo(function MyComponent(props) {
@@ -169,6 +206,14 @@ export default React.memo(MyComponent, areEqual);
 
 ### `()createElement` {#createelement}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`createElement`](https://react.dev/reference/react/createElement).
+
+</div>
+
 ```javascript
 React.createElement(
   type,
@@ -184,6 +229,14 @@ React.createElement(
 * * *
 
 ### `()cloneElement` {#cloneelement}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`cloneElement`](https://react.dev/reference/react/cloneElement).
+
+</div>
 
 ```
 React.cloneElement(
@@ -209,6 +262,14 @@ React.cloneElement(
 
 ### `()createFactory` {#createfactory}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`createFactory`](https://react.dev/reference/react/createFactory).
+
+</div>
+
 ```javascript
 React.createFactory(type)
 ```
@@ -223,6 +284,14 @@ React.createFactory(type)
 
 ### `()isValidElement` {#isvalidelement}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`isValidElement`](https://react.dev/reference/react/isValidElement).
+
+</div>
+
 ```javascript
 React.isValidElement(object)
 ```
@@ -232,6 +301,14 @@ React.isValidElement(object)
 * * *
 
 ### `React.Children` {#reactchildren}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`Children`](https://react.dev/reference/react/Children).
+
+</div>
 
 `React.Children` ابزاری برای کار با ساختمان‌داده‌ی غیرشفاف`this.props.children` فراهم می‌کند.
 
@@ -291,6 +368,14 @@ React.Children.toArray(children)
 
 ### `React.Fragment` {#reactfragment}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`Fragment`](https://react.dev/reference/react/Fragment).
+
+</div>
+
 کامپوننت `React.Fragment` به شما این توانایی را می‌دهد تا چندین المنت را در متد `render()` برگردانید، بدون آن‌که المنت DOM جدیدی بسازید:
 
 ```javascript
@@ -309,10 +394,26 @@ render() {
 
 ### `React.createRef` {#reactcreateref}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`createRef`](https://react.dev/reference/react/createRef).
+
+</div>
+
 `React.createRef` یک [ref](/docs/refs-and-the-dom.html) می‌سازد که می‌تواند با استفاده از خصوصیت ref به المنت متصل شود.
 `embed:16-3-release-blog-post/create-ref-example.js`
 
 ### `React.forwardRef` {#reactforwardref}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`forwardRef`](https://react.dev/reference/react/forwardRef).
+
+</div>
 
 `React.forwardRef` یک کامپوننت ری‌اکت ایجاد می‌کند که خصوصیت [ref](/docs/refs-and-the-dom.html) دریافت شده را به کامپوننت زیرین در درخت فوروارد کند. این روش خیلی معمول نیست مگر در دو مورد:
 
@@ -331,6 +432,14 @@ render() {
 
 ### `React.lazy` {#reactlazy}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`lazy`](https://react.dev/reference/react/lazy).
+
+</div>
+
 `React.lazy()` به شما اجازه می‌دهد کامپوننتی تعریف کنید که به شکل پویا بارگذاری می‌شود. این کمک می‌کند تا حجم بسته‌ی نهایی(bundle) کاهش یابد تا بارگذاری کامپوننت‌هایی که در رندر ابتدایی استفاده نشده‌اند را به تعویق اندازد.
 
 می‌توانید برای یادگیری نحوه‌ی استفاده از آن به [سند بخش‌بندی کد](/docs/code-splitting.html#reactlazy) بروید. ممکن است بخواهید [این مقاله](https://medium.com/@pomber/lazy-loading-and-preloading-components-in-react-16-6-804de091c82d) را بررسی کنید، که در مورد چگونگی استفاده از آن با جزئیاتی بیشتر توضیح داده است .
@@ -343,6 +452,14 @@ const SomeComponent = React.lazy(() => import('./SomeComponent'));
 توجه کنید که کامپوننت‌های `lazy` نیازمند وجود یک کامپوننت `<React.Suspense>` در سطوح بالاتر درخت رندر هستند. این نحوه‌ی مشخص کردن یک loading indicator است.
 
 ### `React.Suspense` {#reactsuspense}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`Suspense`](https://react.dev/reference/react/Suspense).
+
+</div>
 
 `React.Suspense` به شما امکان می‌دهد در صورتی که برخی از اجزای درخت زیر آن هنوز آماده رندر نیستند، نشانگر بارگذاری (loading indicator) را مشخص کنید. در آینده قصد داریم به `Suspense` اجازه دهیم سناریوهای بیشتری مانند fetch کردن داده را مدیریت کند. می‌توانید در این مورد در [نقشه راه ما](/blog/2018/11/27/react-16-roadmap.html) بخوانید.
 
@@ -379,6 +496,14 @@ function MyComponent() {
 با اولویت بالاتر از مرزهای همسایه hydrate شود. [بیشتر بخوانید](https://github.com/reactwg/react-18/discussions/130)
 
 ### `React.startTransition` {#starttransition}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`startTransition`](https://react.dev/reference/react/startTransition).
+
+</div>
 
 ```js
 React.startTransition(callback)

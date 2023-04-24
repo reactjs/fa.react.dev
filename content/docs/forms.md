@@ -9,6 +9,18 @@ redirect_from:
   - "docs/forms-zh-CN.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [`<input>`](https://react.dev/reference/react-dom/components/input)
+> - [`<select>`](https://react.dev/reference/react-dom/components/select)
+> - [`<textarea>`](https://react.dev/reference/react-dom/components/textarea)
+
+</div>
+
 المنت‌های فرم HTML کمی متفاوت از سایر المنت‌های DOM در React عمل می کنند ، زیرا المنت‌های فرم به طور طبیعی مقداری state درونی ‌را حفظ می کنند. به عنوان مثال ، این فرم که ‌به‌صورت HTML ساده نوشته شده است یک نام را قبول می کند:
 
 ```html

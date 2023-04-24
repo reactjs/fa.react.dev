@@ -12,6 +12,14 @@ redirect_from:
   - "docs/tutorial-zh-CN.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> The updated [Tutorial](https://react.dev/learn/tutorial-tic-tac-toe) teaches modern React and includes live examples.
+
+</div>
+
 فرض این آموزش بر این است که شما هیچ دانش قبلی از ری‌اکت ندارید.
 
 ## قبل از اینکه آموزش را شروع کنیم {#before-we-start-the-tutorial}
