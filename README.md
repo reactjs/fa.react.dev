@@ -33,6 +33,11 @@
       واژه‌نامه
     </a>
   </li>
+  <li>
+    <a href="https://github.com/reactjs/fa.react.dev/issues/328">
+      ثبت درخواست ترجمه
+    </a>
+  </li>
 </ul>
 
 <h2 dir="rtl">
