@@ -1,11 +1,11 @@
-<h1 dir="rtl">نسخه فارسی <a href="https://reactjs.org/">reactjs.org</a></h1>
-
+<h1 dir="rtl">نسخه فارسی <a href="https://reactjs.org/">reactjs.dev</a></h1>
+dev
 <p dir="rtl">
 اگر این صفحه را مشاهده می‌کنید، احتمالا به ترجمه فارسی اسناد ری‌اکت (react) علاقه‌مند هستید. پس خوش‌ آمدید!
 </p>
 
 <p dir="rtl">
-این مخزن کد (repo) با هدف توسعه اسناد ری‌اکت به زبان فارسی، از <a href="https://github.com/reactjs/reactjs.org">reactjs/reactjs.org</a> انشعاب (fork) گرفته‌است و پیوسته با نسخه اصلی همگام‌سازی می‌شود.
+این مخزن کد (repo) با هدف توسعه اسناد ری‌اکت به زبان فارسی، از <a href="https://github.com/reactjs/reactjs.dev">reactjs/reactjs.dev</a> انشعاب (fork) گرفته‌است و پیوسته با نسخه اصلی همگام‌سازی می‌شود.
 </p>
 
 <p dir="rtl">
