@@ -1,5 +1,5 @@
-<h1 dir="rtl">نسخه فارسی <a href="https://reactjs.org/">reactjs.dev</a></h1>
-dev
+<h1 dir="rtl">نسخه فارسی <a href="https://reactjs.dev/">reactjs.dev</a></h1>
+
 <p dir="rtl">
 اگر این صفحه را مشاهده می‌کنید، احتمالا به ترجمه فارسی اسناد ری‌اکت (react) علاقه‌مند هستید. پس خوش‌ آمدید!
 </p>
