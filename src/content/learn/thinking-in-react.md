@@ -507,7 +507,9 @@ function FilterableProductTable({ products }) {
         onInStockOnlyChange={setInStockOnly} />
 ```
 
-Inside the `SearchBar`, you will add the `onChange` event handlers and set the parent state from them:
+<p dir="rtl">
+شما روی‌داد `onChange` را درون `SearchBar` اضافه خواهید کرد و استیت پدر را از آنجا تنظیم می‌کنید.
+</p>
 
 ```js {5}
 <input
@@ -517,8 +519,10 @@ Inside the `SearchBar`, you will add the `onChange` event handlers and set the p
   onChange={(e) => onFilterTextChange(e.target.value)}
 />
 ```
-
+<p dir="rtl">
 حالا اپلیکیشن کار میکند !
+</p>
+
 <Sandpack>
 
 ```jsx App.js
@@ -663,8 +667,7 @@ td {
 
 </Sandpack>
 
-بیشتر درمورد استیت و پراپس 
-[Adding Interactivity](/learn/adding-interactivity) section.
+برای کسب اطلاعات بیشتر در مورد کنترل روی‌داد‌ها و به روز‌رسانی استیت متوانید به قسمت [افزودن تعاملات](/learn/adding-interactivity) مراجعه کنید.
 
 ## Where to go from here {/* where-to-go-from-here */}
 
