@@ -8,16 +8,16 @@
 </p>
 
 <p dir="rtl">
-  این مخزن کد (repo) با هدف توسعه اسناد ری‌اکت به زبان فارسی، از{' '}
-  <a href="https://github.com/reactjs/reactjs.dev">reactjs/reactjs.dev</a>{' '}
+  این مخزن کد (repo) با هدف توسعه اسناد ری‌اکت به زبان فارسی، از
+  <a href="https://github.com/reactjs/reactjs.dev">reactjs/reactjs.dev</a>
   انشعاب (fork) گرفته‌است و پیوسته با نسخه اصلی همگام‌سازی می‌شود.
 </p>
 
 <p dir="rtl">
-  نسخه فارسی اسناد ری‌اکت را در{' '}
+  نسخه فارسی اسناد ری‌اکت را در
   <a href="https://fa.reactjs.org/" target="_blank">
     fa.reactjs.org
-  </a>{' '}
+  </a>
   ببینید.
 </p>
 
