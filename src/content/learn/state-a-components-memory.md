@@ -1,26 +1,27 @@
 ---
-title: "State: A Component's Memory"
+title: "State: حافظه ی یک کامپوننت"
 ---
-
 <Intro>
 
-Components often need to change what's on the screen as a result of an interaction. Typing into the form should update the input field, clicking "next" on an image carousel should change which image is displayed, clicking "buy" should put a product in the shopping cart. Components need to "remember" things: the current input value, the current image, the shopping cart. In React, this kind of component-specific memory is called *state*.
+کامپوننتها  اغلب نیاز دارند که به خاطر تعاملات، آنچه در صفحه نمایش داده می‌شود را تغییر دهند. تایپ کردن در فرم باید مقدار ورودی را به‌روزرسانی کند، کلیک بر روی "بعدی" در گالری تصاویر باید تصویر نمایش داده شده را تغییر دهد، کلیک بر روی "خرید" باید محصولی را به سبد خرید اضافه کند. کامپوننت ها نیاز به "یادآوری" چیزها دارند: مقدار ورودی فعلی، تصویر فعلی، سبد خرید. در React، این نوع حافظهٔ مختص به جزئیات کامپوننت  به عنوان *وضعیت* شناخته می‌شود.
 
 </Intro>
 
-<YouWillLearn>
+<YouWillLearn dir='rtl'>
 
-* How to add a state variable with the [`useState`](/reference/react/useState) Hook
-* What pair of values the `useState` Hook returns
-* How to add more than one state variable
-* Why state is called local
+چگونه متغیر وضعیتی (state) را با استفاده از هوک ها (Hook)  اضافه کنیم؟*
+[`useState`](/reference/react/useState)
+چه جفت مقداری (values) گوی (Hook) useState برمی‌گرداند؟*
+چگونه بیش از یک متغیر وضعیتی (state) اضافه کنیم؟*
+چرا وضعیت (state) به عنوان محلی (local) نامیده می‌شود؟*
 
 </YouWillLearn>
 
 ## When a regular variable isn’t enough {/*when-a-regular-variable-isnt-enough*/}
-
-Here's a component that renders a sculpture image. Clicking the "Next" button should show the next sculpture by changing the `index` to `1`, then `2`, and so on. However, this **won't work** (you can try it!):
-
+<p dir='rtl'>
+اینجا یک کامپوننت است که یک تصویر مجسمه را نمایش می‌دهد. با کلیک بر روی دکمه "بعدی" باید مجسمه‌ی بعدی را با تغییر دادن مقدار index به 1، سپس 2 و به همین ترتیب نشان دهد. با این حال، این کار نخواهد کرد (می‌توانید امتحان کنید!):
+</p>
+(با دقت داخل کد را بخوانید!)
 <Sandpack>
 
 ```js
@@ -150,21 +151,27 @@ button {
 ```
 
 </Sandpack>
+<p dir='rtl'>
+در اینجا، رویداد handleClick یک دستگیره را به نام index به‌روز می‌کند. اما دو مورد مانع از دیده‌شدن این تغییر می‌شوند:
+1. **Local variables don't persist between renders.**
+متغیرهای محلی بین رندرها ثابت نمی‌مانند. وقتی ری‌اکت این- کامپوننت را بار دیگر رندر می‌کند، آن را از ابتدا رندر می‌کند، و هیچ تغییری در متغیرهای محلی را در نظر نمی‌گیرد.
 
-The `handleClick` event handler is updating a local variable, `index`. But two things prevent that change from being visible:
+2. **Changes to local variables won't trigger renders.**
+تغییرات در متغیرهای محلی رندرها را فراخوانی نمی‌کنند-.ری اکت   درک نمی‌کند که نیاز به دوباره رندر کردن کامپوننت با داده‌های جدید دارد.
+برای به‌روز‌رسانی یک کامپوننت با داده‌های جدید، دو مورد نیاز است که اتفاق بیافت
 
-1. **Local variables don't persist between renders.** When React renders this component a second time, it renders it from scratch—it doesn't consider any changes to the local variables.
-2. **Changes to local variables won't trigger renders.** React doesn't realize it needs to render the component again with the new data.
+1. **Retain** داده‌ها را حفظ کنید تا بین رندرها باقی بمانند.
+2. **Trigger**به React علامت بزنید تا کامپوننت را با داده‌های جدید رندر کند (دوباره رندر کند).
+گوی (Hook) useState این دو ویژگی را ارائه می‌دهد:
 
-To update a component with new data, two things need to happen:
+1. A **state variable** متغیر وضعیت برای حفظ داده‌ها بین رندرها.
+2. A **state setter function**  تابع تنظیم‌کننده وضعیت برای به‌روزرسانی متغیر و ایجاد علامتی برای React تا کامپوننت را مجدداً رندر کند.
 
-1. **Retain** the data between renders.
-2. **Trigger** React to render the component with new data (re-rendering).
+[`useState`](/reference/react/useState) 
 
-The [`useState`](/reference/react/useState) Hook provides those two things:
 
-1. A **state variable** to retain the data between renders.
-2. A **state setter function** to update the variable and trigger React to render the component again.
+
+</p>
 
 ## Adding a state variable {/*adding-a-state-variable*/}
 
