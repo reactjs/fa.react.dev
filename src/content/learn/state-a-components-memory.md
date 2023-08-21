@@ -1430,8 +1430,7 @@ export default function FeedbackForm() {
 ```
 
 </Sandpack>
-
-Remember, Hooks must be called unconditionally and always in the same order!
+به یاد داشته باشید٬ هوک ها باید بدون قید و شرط و. همیشه به یک ترتیب فراخوانده شوند.
 
 You could also remove the unnecessary `else` branch to reduce the nesting. However, it's still important that all calls to Hooks happen *before* the first `return`.
 
@@ -1476,12 +1475,11 @@ If your linter is [configured for React](/learn/editor-setup#linting), you shoul
 
 #### Remove unnecessary state {/*remove-unnecessary-state*/}
 
-When the button is clicked, this example should ask for the user's name and then display an alert greeting them. You tried to use state to keep the name, but for some reason it always shows "Hello, !".
+سعی کنید فراخوانی دوم `useState` را پس از شرط `if` قرار دهید و مشاهده کنید که چگونه این باعث شکست آن می‌شود.
 
-To fix this code, remove the unnecessary state variable. (We will discuss about [why this didn't work](/learn/state-as-a-snapshot) later.)
+اگر لینتر شما [برای React پیکربندی شده است](/learn/editor-setup#linting)، باید هنگامی که مانند این اشتباه را انجام می‌دهید، یک خطای لینت ببینید. اگر هنگام تست کد خراب را در محلی اجرا می‌کنید و خطایی نمی‌بینید، باید برای پروژه خود لینتینگ را پیکربندی کنید.
 
-Can you explain why this state variable was unnecessary?
-
+آیا میتوانید توضیح دهید چرا این متغیر استیت الزامی نیست؟
 <Sandpack>
 
 ```js
@@ -1530,7 +1528,8 @@ export default function FeedbackForm() {
 
 </Sandpack>
 
-A state variable is only necessary to keep information between re-renders of a component. Within a single event handler, a regular variable will do fine. Don't introduce state variables when a regular variable works well.
+یک متغیر وضعیت فقط زمانی ضروری است که بخواهید اطلاعات را بین بازنمایی‌های مجدد یک کامپوننت نگه دارید. در داخل یک کنترل‌کننده رویداد - یک متغیر معمولی کافی است. زمانی که یک متغیر معمولی به خوبی کار می‌کند، متغیرهای استیت را معرفی نکنید.
+
 
 </Solution>
 
