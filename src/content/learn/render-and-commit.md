@@ -3,25 +3,25 @@ title: Render and Commit
 ---
 
 <Intro>
-
-Before your components are displayed on screen, they must be rendered by React. Understanding the steps in this process will help you think about how your code executes and explain its behavior.
-
+قبل از اینکه اجزای شما روی صفحه نمایش نمایش داده شوند، باید توسط ری ‌‌اکت رندر شوند. درک مراحل این فرآیند به شما کمک خواهد کرد تا در مورد اجرای کد  فکر کنید و رفتار آن را توضیح دهید.
 </Intro>
 
 <YouWillLearn>
 
-* What rendering means in React
-* When and why React renders a component
-* The steps involved in displaying a component on screen
-* Why rendering does not always produce a DOM update
+* رندرینگ در ری اکت چیست؟
+*چه زمانی و چرا ری‌اکت یک کامپوننت را راندر میکند؟
+*گامهایی که در نشان دادن یک کامپوننت روی صفحه برداشته می‌شوند
+*چرا رندرینگ همیشه باعث تغییر در دام نمیشود (دامین ابجکت مدل)
 
 </YouWillLearn>
+<p dir="rtl">
+تصور کنید که کامپوننت‌های شما در اشپزخانه پخته می‌شوند٬ مثل ساختن بشقاب‌های غذای خوشمزه از مواد اولیه.
+در این سناریو ری‌اکت مثل یک گارسون است که درخواست مشتریان را تحویل می‌دهد و غذا آنها را تحویلشان می‌دهد.این فرآیند درخواست دادن و ارائه به یوآی سه مرحله دارد:
 
-Imagine that your components are cooks in the kitchen, assembling tasty dishes from ingredients. In this scenario, React is the waiter who puts in requests from customers and brings them their orders. This process of requesting and serving UI has three steps:
-
-1. **Triggering** a render (delivering the guest's order to the kitchen)
-2. **Rendering** the component (preparing the order in the kitchen)
-3. **Committing** to the DOM (placing the order on the table)
+1. **Triggering** a render (رساندن سفارش مشتری به اشپزخانه)
+2. **Rendering** the component (ساختن سفارش در اشپزخانه)
+3. **Committing** to the DOM (گذاشتن سفارش روی میز مشتری)
+</p>
 
 <IllustrationBlock sequential>
   <Illustration caption="Trigger" alt="React as a server in a restaurant, fetching orders from the users and delivering them to the Component Kitchen." src="/images/docs/illustrations/i_render-and-commit1.png" />
@@ -31,15 +31,14 @@ Imagine that your components are cooks in the kitchen, assembling tasty dishes f
 
 ## Step 1: Trigger a render {/*step-1-trigger-a-render*/}
 
-There are two reasons for a component to render:
-
+دو دلیل برای کامپوننت وجود دارد تا رندر شود:
 1. It's the component's **initial render.**
 2. The component's (or one of its ancestors') **state has been updated.**
-
+۱-رندر اولیه ی کامپوننت
+۲-استیت خود کامپوننت یا یکی از والدینش اپدیت شده است
 ### Initial render {/*initial-render*/}
 
-When your app starts, you need to trigger the initial render. Frameworks and sandboxes sometimes hide this code, but it's done by calling [`createRoot`](/reference/react-dom/client/createRoot) with the target DOM node, and then calling its `render` method with your component:
-
+زمانی که برنامه‌ی شما شروع می‌شود، باید اقدام به اجرای اولیه کنید. گاهی اوقات چارچوب‌ها و محیط‌های مجازی این کد را مخفی می‌کنند، اما این کار با فراخوانی [`createRoot`](/reference/react-dom/client/createRoot) باگرفتن گره DOM مورد نظر انجام می‌شود و سپس با فراخوانی متد `render` آن با کامپوننت شما:
 <Sandpack>
 
 ```js index.js active
@@ -63,12 +62,10 @@ export default function Image() {
 
 </Sandpack>
 
-Try commenting out the `root.render()` call and see the component disappear!
-
+سعی کنید فراخوانی `root.render()` را کامنت کنید و مشاهده کنید که کامپوننت ناپدید می‌شود!
 ### Re-renders when state updates {/*re-renders-when-state-updates*/}
 
-Once the component has been initially rendered, you can trigger further renders by updating its state with the [`set` function.](/reference/react/useState#setstate) Updating your component's state automatically queues a render. (You can imagine these as a restaurant guest ordering tea, dessert, and all sorts of things after putting in their first order, depending on the state of their thirst or hunger.)
-
+پس از اینکه کامپوننت ابتدا رندر شده باشد، می‌توانید با به روزرسانی وضعیت آن با استفاده از [تابع `set`](/reference/react/useState#setstate) رندرهای بیشتری را فراخوانی کنید. به‌روزرسانی وضعیت کامپوننت شما به طور خودکار یک رندر را در صف قرار می‌دهد. (می‌توانید این را تصور کنید که یک میهمان در یک رستوران پس از دادن سفارش اولیه‌اش، به ترتیب بر اساس وضعیت تشنگی یا گرسنگی خود، چای، دسر و انواع چیزهای دیگری سفارش می‌دهد.)
 <IllustrationBlock sequential>
   <Illustration caption="State update..." alt="React as a server in a restaurant, serving a Card UI to the user, represented as a patron with a cursor for their head. They patron expresses they want a pink card, not a black one!" src="/images/docs/illustrations/i_rerender1.png" />
   <Illustration caption="...triggers..." alt="React returns to the Component Kitchen and tells the Card Chef they need a pink Card." src="/images/docs/illustrations/i_rerender2.png" />
@@ -76,16 +73,14 @@ Once the component has been initially rendered, you can trigger further renders 
 </IllustrationBlock>
 
 ## Step 2: React renders your components {/*step-2-react-renders-your-components*/}
+<p dir="rtl">
+بعد از اجرای یک رندر، React اجزای شما را فراخوانی می‌کند تا بفهمد چه چیزی را در صفحه نمایش نشان دهد. **"رندر کردن" به معنای فراخوانی اجزای شما توسط React است.**
 
-After you trigger a render, React calls your components to figure out what to display on screen. **"Rendering" is React calling your components.**
+- **در رندر اولیه،** React اجزای ریشه (root) را فراخوانی خواهد کرد.
+- **برای رندرهای بعدی،** React تابع کامپوننتی را که به روزرسانی وضعیت آن رندر را فراخوانی کرده است، فراخوانی می‌کند.
 
-* **On initial render,** React will call the root component.
-* **For subsequent renders,** React will call the function component whose state update triggered the render.
-
-This process is recursive: if the updated component returns some other component, React will render _that_ component next, and if that component also returns something, it will render _that_ component next, and so on. The process will continue until there are no more nested components and React knows exactly what should be displayed on screen.
-
-In the following example, React will call `Gallery()` and  `Image()` several times:
-
+این فرآیند بازگشتی است: اگر کامپوننت به‌روزرسانی شده، کامپوننت دیگری را برگرداند، React بعدی را نیز رندر خواهد کرد، و اگر آن کامپوننت نیز چیزی را برگرداند، کامپوننت بعدی را رندر می‌کند و این عملیات تا زمانی ادامه دارد که کامپوننت‌های تو در تو دیگری نباشند و React دقیقاً بداند چه چیزی باید در صفحه نمایش نمایش داده شود.
+</p>
 <Sandpack>
 
 ```js Gallery.js active
