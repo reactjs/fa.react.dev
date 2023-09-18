@@ -1,19 +1,17 @@
 ---
-title: State as a Snapshot
+title: State به عنوان یک عکس
 ---
 
 <Intro>
-
-State variables might look like regular JavaScript variables that you can read and write to. However, state behaves more like a snapshot. Setting it does not change the state variable you already have, but instead triggers a re-render.
-
+متغیرهای استیت ممکن است مانند متغیرهای معمولی جاوااسکریپت به نظر بیایند که شما میتوانید از آنها بخوانید یا آنها را تغییر دهید.
+اما متغیرهای استیت بیشتر شبیه یک عکس گرفته شده عمل میکنند. ست کردن آنها لزوما استیت متغیرهایی که داشتید را عوض نخواهد کرد بلکه به جای این ریرندر را باعث میشود
 </Intro>
 
 <YouWillLearn>
-
-* How setting state triggers re-renders
-* When and how state updates
-* Why state does not update immediately after you set it
-* How event handlers access a "snapshot" of the state
+*چطور ست کردن استیت باعث تریگر دوباره رندر شدن می شود
+*چه زمانی و چطور استیت تغییر می‌کند
+*چرا استیت بالافاصله اپدیت نمیشود وقتی آن را ست میکنید
+*چطور هندل کننده های ایونت به اسنپ شات یا عکسی از استیت دسترسی دارند
 
 </YouWillLearn>
 
