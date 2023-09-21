@@ -1,24 +1,24 @@
 ---
-title: Your First Component
+title: اولین کامپوننت شما
 ---
 
 <Intro>
 
-*Components* are one of the core concepts of React. They are the foundation upon which you build user interfaces (UI), which makes them the perfect place to start your React journey!
+*کامپوننت ها* یکی از مهمترین مباحث اصلی در ریکت است. آنها پایه و اساس رابط های کاربری هستند که مکان خوبی را برای سفر ریکتی شما فراهم میکند!
 
 </Intro>
 
 <YouWillLearn>
 
-* What a component is
-* What role components play in a React application
-* How to write your first React component
+* کامپوننت چیست
+* قوانین اجرا و پیاده سازی کامپوننت در ریکت به چه صورت است
+* چطور اولین کامپوننت خود را بنویسید
 
 </YouWillLearn>
 
-## Components: UI building blocks {/*components-ui-building-blocks*/}
+## کامپوننت ها: بلوک های تشکیل دهنده یک UI {/*components-ui-building-blocks*/}
 
-On the Web, HTML lets us create rich structured documents with its built-in set of tags like `<h1>` and `<li>`:
+در وب, HTML به ما اجازه میدهد تا یک سند پیشرفته ای را توسط تگ هایی مانند `<h1>` و`<li>` بسازیم:
 
 ```html
 <article>
@@ -31,11 +31,11 @@ On the Web, HTML lets us create rich structured documents with its built-in set 
 </article>
 ```
 
-This markup represents this article `<article>`, its heading `<h1>`, and an (abbreviated) table of contents as an ordered list `<ol>`. Markup like this, combined with CSS for style, and JavaScript for interactivity, lies behind every sidebar, avatar, modal, dropdown—every piece of UI you see on the Web.
+در این بخش ما یک بخشی را با تگ `article` مشخص کردیم و یک تگ `h1` داریم که داخل آن متن داریم. یک لیست بعد از آن داریم که با تگ `ol` مشخص کردیم و این لیست دارای سه آیتم است. کد مانند بالا مسلما دارای یکسری کد CSS برای استایل دهی و کد Javascript برای داینامیک بودن هست. مثل منو ها, لیست های کشویی و آکاردئونی, مودال ها یا هرآن چیزی که در صفحات وب مشاهده میکنید.
 
-React lets you combine your markup, CSS, and JavaScript into custom "components", **reusable UI elements for your app.** The table of contents code you saw above could be turned into a `<TableOfContents />` component you could render on every page. Under the hood, it still uses the same HTML tags like `<article>`, `<h1>`, etc.
+ریکت به شما اجازه میدهد بخش های سایتتان را داختل یک "کامپوننت" همراه با استایل و اسکریپت های مربوطه ذخیره کنید. در فهرست  **reusable UI elements for your app.** شما خواهید دید که یک کامپوننتی مانند `<TableOfContents />` را میتوانید در هر صفحه ای از آن استفاده کنید و سپس در پشت صفحه همین کامپوننت تبدیل به تگ هایی مانند `<h1>` و `<article>` شده است.
 
-Just like with HTML tags, you can compose, order and nest components to design whole pages. For example, the documentation page you're reading is made out of React components:
+درست مانند تگ های HTML, شما میتوانید کامپوننت هارا برای همه صفحات بسازید, سفارشی سازی و ذخیره کنید. مانند همین داکیومنتی که الان درحال خواندن آن هستید متشکل از کامپوننت های React است.
 
 ```js
 <PageLayout>
