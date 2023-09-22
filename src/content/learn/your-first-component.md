@@ -1,5 +1,5 @@
 ---
-title: اولین کامپوننت شما
+title: Your First Component
 ---
 
 <Intro>
@@ -51,11 +51,11 @@ title: اولین کامپوننت شما
 </PageLayout>
 ```
 
-As your project grows, you will notice that many of your designs can be composed by reusing components you already wrote, speeding up your development. Our table of contents above could be added to any screen with `<TableOfContents />`! You can even jumpstart your project with the thousands of components shared by the React open source community like [Chakra UI](https://chakra-ui.com/) and [Material UI.](https://material-ui.com/)
+همانطور که پروژه شما بزرگ و بزرگتر میشود, توجه خواهید کرد که بسیاری از دیزاین هایی که تبدیل به کامپوننت شدند را میتوانید در هرجایی از صفحات پروژه استفاده کنید و سرعت توسعه را بالا ببرید. همچنین میتوانید در پروژه های خود از کامپوننت یا کتابخانه های آماده ای که تیم React منتشر کرده اند مثل [Material UI.](https://material-ui.com/) و  [Chakra UI](https://chakra-ui.com/)  استفاده کنید.
 
-## Defining a component {/*defining-a-component*/}
+## تعریف یک کامپوونت {/*defining-a-component*/}
 
-Traditionally when creating web pages, web developers marked up their content and then added interaction by sprinkling on some JavaScript. This worked great when interaction was a nice-to-have on the web. Now it is expected for many sites and all apps. React puts interactivity first while still using the same technology: **a React component is a JavaScript function that you can _sprinkle with markup_.** Here's what that looks like (you can edit the example below):
+قبلا برای ساخت صفحات وب از تگ های HTML استفاده و برای داینامیک کردن آنها کد های جاوااسکریپتی نوشته میشد, که در زمان خود راه خوبی بود. ولی امروزه چون توی صفحات وب میخواهیم اینتراکشن و پویای بیشتری داشته باشند باید اسکریپت های بیشتری اضافه کنیم. که React تعامل را اولویت قرار میدهد ولی هنوز از همان تکنولوژی استفاده میکند: **یک کامپوننت React تابع جاوااسکریپتی است که شما میتوانید تگ های HTML را در آن بنویسید**که به این صورت نوشته میشود (میتوانید مثال زیر را تغییر دهید)
 
 <Sandpack>
 
@@ -76,15 +76,15 @@ img { height: 200px; }
 
 </Sandpack>
 
-And here's how to build a component:
+نحوه ساخت کامپوننت:
 
-### Step 1: Export the component {/*step-1-export-the-component*/}
+### قدم اول: خروجی گرفتن (Export) یک کامپوننت {/*step-1-export-the-component*/}
+ 
+دستور `export default` یک پیشوند در زبان جاوااسکریپت است [standard JavaScript syntax](https://developer.mozilla.org/docs/web/javascript/reference/statements/export) (نه فقط در React), به شما اجازه میدهد که تابع اصلی خود را در فایل مشخص کنید و در فایل دیگر import کنید. (درباره Import بدانید [Importing and Exporting Components](/learn/importing-and-exporting-components)!)
 
-The `export default` prefix is a [standard JavaScript syntax](https://developer.mozilla.org/docs/web/javascript/reference/statements/export) (not specific to React). It lets you mark the main function in a file so that you can later import it from other files. (More on importing in [Importing and Exporting Components](/learn/importing-and-exporting-components)!)
+### Step 2: تعریف و ایجاد تابع {/*step-2-define-the-function*/}
 
-### Step 2: Define the function {/*step-2-define-the-function*/}
-
-With `function Profile() { }` you define a JavaScript function with the name `Profile`.
+با دستور `function Profile() { }` شما میتوانید یک تابع جاوااسکریپتی با نام `Profile` تعریف کنید.
 
 <Pitfall>
 
