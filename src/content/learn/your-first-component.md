@@ -82,27 +82,27 @@ img { height: 200px; }
  
 دستور `export default` یک پیشوند در زبان جاوااسکریپت است [standard JavaScript syntax](https://developer.mozilla.org/docs/web/javascript/reference/statements/export) (نه فقط در React), به شما اجازه میدهد که تابع اصلی خود را در فایل مشخص کنید و در فایل دیگر import کنید. (درباره Import بدانید [Importing and Exporting Components](/learn/importing-and-exporting-components)!)
 
-### Step 2: تعریف و ایجاد تابع {/*step-2-define-the-function*/}
+### قدم دوم: ساخت و تعریف توابع {/*step-2-define-the-function*/}
 
 با دستور `function Profile() { }` شما میتوانید یک تابع جاوااسکریپتی با نام `Profile` تعریف کنید.
 
 <Pitfall>
 
-React components are regular JavaScript functions, but **their names must start with a capital letter** or they won't work!
+کامپوننت های React همان توابع معمولی در جاوااسکریپت هستند, با این تفاوت که باید  **حرف اول اسم آن از حروف بزرگ باشد** وگرنه ارور میدهد!
 
 </Pitfall>
 
-### Step 3: Add markup {/*step-3-add-markup*/}
+### قدم سوم: اضافه کردن تگ HTML {/*step-3-add-markup*/}
 
-The component returns an `<img />` tag with `src` and `alt` attributes. `<img />` is written like HTML, but it is actually JavaScript under the hood! This syntax is called [JSX](/learn/writing-markup-with-jsx), and it lets you embed markup inside JavaScript.
+کامپوننت زیر یک تگ `<img />` را به همراه اتریبیوت های `src` و `alt` برمیگرداند. `<img />` مانند HTML نوشته میشود ولی این یک دستور جاوااسکریپتی است! این سینتکس [JSX](/learn/writing-markup-with-jsx) نام دارد, و به شما اجازه میدهد تا تگ های HTML را مستقیما در یک فایل جاوااسکریپت بنویسید.
 
-Return statements can be written all on one line, as in this component:
+دستور return را هم میتوان به این صورت در یک خط نوشت:
 
 ```js
 return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />;
 ```
 
-But if your markup isn't all on the same line as the `return` keyword, you must wrap it in a pair of parentheses:
+اما اگر نمیتوانید کل تگ های HTML را در یک خط بنویسید فقط کافیست بعد از دستور return یک جفت پرانتز قرار بدهید و تگ هارا داخل آن بنویسید:
 
 ```js
 return (
@@ -114,13 +114,13 @@ return (
 
 <Pitfall>
 
-Without parentheses, any code on the lines after `return` [will be ignored](https://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi)!
+بدون پرانتز, خط های بعد از دستور `return` [نادیده گرفته میشوند](https://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi)!
 
 </Pitfall>
 
-## Using a component {/*using-a-component*/}
+## استفاده از یک کامپوننت {/*using-a-component*/}
 
-Now that you've defined your `Profile` component, you can nest it inside other components. For example, you can export a `Gallery` component that uses multiple `Profile` components:
+بعد از اینکه کامپونت `Profile` خود را ساخته اید, الان وقت آن است که همان کامپوننت را در میان کامپوننت های دیگر قرار بدهید. به عنوان مثال شما میتوانید کامپوننت `Gallery` را به همراه چند کامپوننت `Profile` که داخل آن استفاده شده است را export بگیرید:
 
 <Sandpack>
 
@@ -152,14 +152,14 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-### What the browser sees {/*what-the-browser-sees*/}
+### از دید مرورگر ها چه میگذرد {/*what-the-browser-sees*/}
 
-Notice the difference in casing:
+به تفاوت های زیر توجه کنید:
 
-* `<section>` is lowercase, so React knows we refer to an HTML tag.
-* `<Profile />` starts with a capital `P`, so React knows that we want to use our component called `Profile`.
+* `<section>` با حرف کوچک شروع شده پس React میداند که این یک تگ HTML است.
+* `<Profile />` با حرف بزرگ `P` شروع شده پس ریکت متوجه میشود که ما کامپوننتی به نام `Profile` داریم. پس باید رندر شود.
 
-And `Profile` contains even more HTML: `<img />`. In the end, this is what the browser sees:
+و کامپوننت Profile شامل یکسری تگ HTML است: `<img />`. و درآخر, کد زیر چیزی هست که مرورگر میبیند:
 
 ```html
 <section>
