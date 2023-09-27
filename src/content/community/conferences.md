@@ -10,10 +10,47 @@ Do you know of a local React.js conference? Add it here! (Please keep the list c
 
 ## Upcoming Conferences {/*upcoming-conferences*/}
 
-### React Miami 2023 {/*react-miami-2023*/}
-April 20 - 21, 2023. Miami, FL, USA
+### React Norway 2023 {/*react-norway-2023*/}
+June 16th, 2023. Larvik, Norway
 
-[Website](https://www.reactmiami.com/) - [Twitter](https://twitter.com/ReactMiamiConf)
+[Website](https://reactnorway.com/) - [Twitter](https://twitter.com/ReactNorway/) - [Facebook](https://www.facebook.com/reactdaynorway/)
+
+### ReactNext 2023 {/*reactnext-2023*/}
+June 27th, 2023. Tel Aviv, Israel
+
+[Website](https://www.react-next.com/) - [Facebook](https://www.facebook.com/ReactNextConf) - [Youtube](https://www.youtube.com/@ReactNext)
+
+### React Nexus 2023 {/*react-nexus-2023*/}
+July 07 & 08, 2023. Bangalore, India (In-person event)
+
+[Website](https://reactnexus.com/) - [Twitter](https://twitter.com/ReactNexus) - [Linkedin](https://www.linkedin.com/company/react-nexus) - [YouTube](https://www.youtube.com/reactify_in)
+
+### React Rally 2023 🐙 {/*react-rally-2023*/}
+August 17 & 18, 2023. Salt Lake City, UT, USA
+
+[Website](https://www.reactrally.com/) - [Twitter](https://twitter.com/ReactRally) - [Instagram](https://www.instagram.com/reactrally/)
+
+### React India 2023 {/*react-india-2023*/}
+Oct 5 - 7, 2023. In-person in Goa, India (hybrid event) + Oct 3 2023 - remote day
+
+[Website](https://www.reactindia.io) - [Twitter](https://twitter.com/react_india) - [Facebook](https://www.facebook.com/ReactJSIndia) - [Youtube](https://www.youtube.com/channel/UCaFbHCBkPvVv1bWs_jwYt3w)
+
+### React Advanced 2023 {/*react-advanced-2023*/}
+October 20 & 23, 2023. In-person in London, UK + remote first interactivity (hybrid event)
+
+[Website](https://www.reactadvanced.com/) - [Twitter](https://twitter.com/ReactAdvanced) - [Facebook](https://www.facebook.com/ReactAdvanced) - [Videos](https://portal.gitnation.org/events/react-advanced-conference-2023)
+
+### React Summit US 2023 {/*react-summit-us-2023*/}
+November 13 & 15, 2023. In-person in New York, US + remote first interactivity (hybrid event)
+
+[Website](https://reactsummit.us) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://portal.gitnation.org/events/react-summit-us-2023)
+
+### React Day Berlin 2023 {/*react-day-berlin-2023*/}
+December 8 & 12, 2023. In-person in Berlin, Germany + remote first interactivity (hybrid event)
+
+[Website](https://reactday.berlin) - [Twitter](https://twitter.com/reactdayberlin) - [Facebook](https://www.facebook.com/reactdayberlin/) - [Videos](https://portal.gitnation.org/events/react-day-berlin-2023)
+
+## Past Conferences {/*past-conferences*/}
 
 ### Reactathon 2023 {/*reactathon-2023*/}
 May 2 - 3, 2023. San Francisco, CA, USA
@@ -45,52 +82,10 @@ June 2 & 6, 2023. In-person in Amsterdam, Netherlands + remote first interactivi
 
 [Website](https://reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://portal.gitnation.org/events/react-summit-2023)
 
-### React Norway 2023 {/*react-norway-2023*/}
-June 16th, 2023. Larvik, Norway
+### React Miami 2023 {/*react-miami-2023*/}
+April 20 - 21, 2023. Miami, FL, USA
 
-[Website](https://reactnorway.com/) - [Twitter](https://twitter.com/ReactNorway/) - [Facebook](https://www.facebook.com/reactdaynorway/)
-
-### ReactNext 2023 {/*reactnext-2023*/}
-June 27th, 2023. Tel Aviv, Israel
-
-[Website](https://www.react-next.com/) - [Facebook](https://www.facebook.com/ReactNextConf) - [Youtube](https://www.youtube.com/@ReactNext)
-
-### React Nexus 2023 {/*react-nexus-2023*/}
-July 07 & 08, 2023. Bangalore, India (In-person event)
-
-[Website](https://reactnexus.com/) - [Twitter](https://twitter.com/ReactNexus) - [Linkedin](https://www.linkedin.com/company/react-nexus) - [YouTube](https://www.youtube.com/reactify_in)
-
-### React Rally 2023 🐙 {/*react-rally-2023*/}
-August 17 & 18, 2023. Salt Lake City, UT, USA
-
-[Website](https://www.reactrally.com/) - [Twitter](https://twitter.com/ReactRally) - [Instagram](https://www.instagram.com/reactrally/)
-
-### React On The Beach 2023 {/*react-on-the-beach-2023*/}
-September 07, 2023. Amsterdam, Netherlands (In-person event)
-
-[Website](https://reactonthebeach.com/) - [Twitter](https://twitter.com/reactonthebeach)
-
-### React India 2023 {/*react-india-2023*/}
-Oct 5 - 7, 2023. In-person in Goa, India (hybrid event) + Oct 3 2023 - remote day
-
-[Website](https://www.reactindia.io) - [Twitter](https://twitter.com/react_india) - [Facebook](https://www.facebook.com/ReactJSIndia) - [Youtube](https://www.youtube.com/channel/UCaFbHCBkPvVv1bWs_jwYt3w)
-
-### React Advanced 2023 {/*react-advanced-2023*/}
-October 20 & 23, 2023. In-person in London, UK + remote first interactivity (hybrid event)
-
-[Website](https://www.reactadvanced.com/) - [Twitter](https://twitter.com/ReactAdvanced) - [Facebook](https://www.facebook.com/ReactAdvanced) - [Videos](https://portal.gitnation.org/events/react-advanced-conference-2023)
-
-### React Summit US 2023 {/*react-summit-us-2023*/}
-November 13 & 15, 2023. In-person in New York, US + remote first interactivity (hybrid event)
-
-[Website](https://reactsummit.us) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://portal.gitnation.org/events/react-summit-us-2023)
-
-### React Day Berlin 2023 {/*react-day-berlin-2023*/}
-December 8 & 12, 2023. In-person in Berlin, Germany + remote first interactivity (hybrid event)
-
-[Website](https://reactday.berlin) - [Twitter](https://twitter.com/reactdayberlin) - [Facebook](https://www.facebook.com/reactdayberlin/) - [Videos](https://portal.gitnation.org/events/react-day-berlin-2023)
-
-## Past Conferences {/*past-conferences*/}
+[Website](https://www.reactmiami.com/) - [Twitter](https://twitter.com/ReactMiamiConf)
 
 ### React Day Berlin 2022 {/*react-day-berlin-2022*/}
 December 2, 2022. In-person in Berlin, Germany + remote (hybrid event)
