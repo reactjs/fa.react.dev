@@ -10,23 +10,8 @@ Do you know of a local React.js conference? Add it here! (Please keep the list c
 
 ## Upcoming Conferences {/*upcoming-conferences*/}
 
-### RedwoodJS Conference 2023 {/*redwoodjs-conference-2023*/}
-September 26 - 29, 2023. Grants Pass, Oregon + remote (hybrid event) 
-
-[Website](https://www.redwoodjsconf.com/) - [Twitter](https://twitter.com/redwoodjs)
-
-### React Alicante 2023 {/*react-alicante-2023*/}
-September 28 - 30, 2023. Alicante, Spain
-
-[Website](https://reactalicante.es/) - [Twitter](https://twitter.com/reactalicante)
-
-### React Live 2023 {/*react-live-2023*/}
-September 29, 2023. Amsterdam, Netherlands
-
-[Website](https://reactlive.nl/)
-
-### React Native EU 2023 {/*react-native-eu-2023*/}
-September 7 & 8, 2023. Wrocław, Poland
+### React Rally 2023 🐙 {/*react-rally-2023*/}
+August 17 & 18, 2023. Salt Lake City, UT, USA
 
 [Website](https://react-native.eu) - [Twitter](https://twitter.com/react_native_eu) - [Facebook](https://www.facebook.com/reactnativeeu)
 
@@ -76,11 +61,6 @@ June 12 - June 14, 2024. Atlanta, GA, USA
 [Website](https://renderatl.com) - [Discord](https://www.renderatl.com/discord) - [Twitter](https://twitter.com/renderATL) - [Instagram](https://www.instagram.com/renderatl/) - [Facebook](https://www.facebook.com/renderatl/) - [LinkedIn](https://www.linkedin.com/company/renderatl) - [Podcast](https://www.renderatl.com/culture-and-code#/)
 
 ## Past Conferences {/*past-conferences*/}
-
-### React Rally 2023 🐙 {/*react-rally-2023*/}
-August 17 & 18, 2023. Salt Lake City, UT, USA
-
-[Website](https://www.reactrally.com/) - [Twitter](https://twitter.com/ReactRally) - [Instagram](https://www.instagram.com/reactrally/)
 
 ### React Nexus 2023 {/*react-nexus-2023*/}
 July 07 & 08, 2023. Bangalore, India (In-person event)
