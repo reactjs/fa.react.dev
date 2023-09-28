@@ -545,14 +545,13 @@ It is a good idea to have multiple state variables if their state is unrelated, 
 <DeepDive>
 
 #### How does React know which state to return? {/*how-does-react-know-which-state-to-return*/}
-<p dir='rtl>
 شاید متوجه شده باشید که فراخوانی `useState` هیچ اطلاعاتی درباره *کدام* متغیر وضعیت به آن ارجاع داده می‌شود، دریافت نمی‌کند. هیچ "شناسه"‌ای که به `useState` منتقل شود وجود ندارد، پس چگونه می‌داند کدام یک از متغیرهای استیت را برگرداند؟ آیا بر اساس یک جادویی مانند تجزیه و تحلیل توابع  عمل می‌کند؟ پاسخ نه است.
 
 بدلاً از آن، برای فعال کردن دستور زبان مختصر آن‌ها، هوک‌ها **بر اعتماد به ترتیب فراخوانی پایدار در هر بار رندر کامپوننت یکسان تکیه می‌کنند.** این در عمل به خوبی کار می‌کند زیرا اگر قانون فوق را رعایت کنید ("تنها در سطح بالایی دستورهای هوک را فراخوانی کنید")، هوک‌ها همیشه به همان ترتیب فراخوانی می‌شوند. علاوه بر این، یک [افزونه لینتر](https://www.npmjs.com/package/eslint-plugin-react-hooks) اکثر اشتباهات را گرفتار می‌کند.
 در داخل، React یک آرایه از زوج‌های استیت برای هر کامپوننت نگه می‌دارد. همچنین شاخص زوج فعلی را که قبل از رندر شدن به `0` تنظیم شده است، حفظ می‌کند. هر بار که `useState` را فراخوانی می‌کنید، React زوج وضعیت بعدی را به شما ارائه می‌دهد و شاخص را افزایش می‌دهد. می‌توانید بیشتر در مورد این مکانیزم در [React Hooks: Not Magic, Just Arrays.](https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e) مطالعه کنید.
 
 [React Hooks: Not Magic, Just Arrays.](https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e)
-</p>
+
 This example **doesn't use React** but it gives you an idea of how `useState` works internally:
 
 <Sandpack>
