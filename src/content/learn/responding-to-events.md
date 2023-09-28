@@ -3,14 +3,11 @@ title: پاسخگویی به رویداد‌ها
 ---
 
 <Intro>
-<div dir="rtl">
 
 ری‌اکت به شما اجازه می‌دهد که به ‌JSX خود ‌*event handler*ها را اضافه. Event handlerها توابع خود شما هستند که در زمان پاسخگویی به تعاملاتی مانند کلیک کردن‌‌، hover کردن، تمرکز کردن روی input های فرم و دیگر چیزها فعال می‌شوند.
 
-</div>
 </Intro>
 
-<div dir="rtl">
 <YouWillLearn>
 
 * روش های مختلف برای نوشتن یک event handler
@@ -18,17 +15,11 @@ title: پاسخگویی به رویداد‌ها
 * نحوه انتشار رویداد‌ها و چگونگی توقف آن‌ها
 
 </YouWillLearn>
-</div>
-<div dir="rtl">
-
 ## اضافه کردن event handlerها {/*adding-event-handlers*/}
 
-</div>
-<div dir="rtl">
 
 برای افزودن یک event handler، ابتدا یک تابع تعریف می‌کنید و سپس [آن را به عنوان props](/learn/passing-props-to-a-component) به تگ JSX مناسب پاس می‌دهید. به عنوان مثال، در اینجا دکمه ای وجود دارد که هنوز هیچ کاری انجام نمی دهد:
 
-</div>
 <Sandpack>
 
 ```js
@@ -42,15 +33,12 @@ export default function Button() {
 ```
 
 </Sandpack>
-<div dir="rtl">
-
 با دنبال کردن این سه مرحله می توانید کاری کنید که وقتی کاربر کلیک می کند پیامی نشان دهد:
 
 1. تابعی به نام `handleClick` *در داخل* کامپوننت `Button` خود تعریف کنید.
 2. منطق را در داخل آن تابع پیاده سازی کنید (از `alert` برای نمایش پیام استفاده کنید).
 3. `onClick={handleClick}` را به JSX المنت `<button>` اضافه کنید.
 
-</div>
 
 <Sandpack>
 
@@ -74,8 +62,6 @@ button { margin-right: 10px; }
 
 </Sandpack>
 
-<div dir="rtl">
-
 شما تابع `handleClick` را تعریف کردید و سپس [آن را به عنوان یک prop](/learn/passing-props-to-a-component) به `<button>` پاس دادید. `handleClick` یک **event handler** است. عملکردهای event handler:
 
 * معمولاً *داخل* کامپوننت شما تعریف می شوند.
@@ -85,18 +71,15 @@ button { margin-right: 10px; }
 
 از طرف دیگر، می توانید یک event handler به صورت درخط (inline) در JSX تعریف کنید:
 
-</div>
 
 ```jsx
 <button onClick={function handleClick() {
   alert('You clicked me!');
 }}>
 ```
-<div dir="rtl">
 
 یا به طور خلاصه تر، استفاده از یک arrow function:
 
-</div>
 
 ```jsx
 <button onClick={() => {
@@ -104,23 +87,17 @@ button { margin-right: 10px; }
 }}>
 ```
 
-<div dir="rtl">
 
 همه این مدل‌ها معادل هستند. event handler های درخط (inline) برای عملکردهای کوتاه مناسب هستند.
 
-</div>
-<div dir="rtl">
 <Pitfall>
 
 توابع پاس داده شده به event handlerها باید پاس داده شوند، نه اینکه فراخوانی شوند. مثلا:
-
-<div dir="ltr">
 
 | passing a function (correct)     | calling a function (incorrect)     |
 | -------------------------------- | ---------------------------------- |
 | `<button onClick={handleClick}>` | `<button onClick={handleClick()}>` |
 
-</div>
 
 تفاوت ظریف است. در مثال اول، تابع `handleClick` به عنوان یک event handler از نوع `onClick` پاس داده می‌شود. این به ری‌اکت می‌گوید که آن را به خاطر بسپارد و تنها زمانی که کاربر روی دکمه کلیک کرد، تابع شما را فراخوانی کند.
 
@@ -128,34 +105,27 @@ button { margin-right: 10px; }
 
 هنگامی که کد را به صورت درخط (inline) می نویسید، همان دام به شکل دیگری خود را نشان می دهد:
 
-<div dir="ltr">
 
 | passing a function (correct)            | calling a function (incorrect)    |
 | --------------------------------------- | --------------------------------- |
 | `<button onClick={() => alert('...')}>` | `<button onClick={alert('...')}>` |
 
-</div>
 
 پاس دادن کدهای درخط (inline) مانند این، هنگام کلیک کردن فراخوانی نمی‌شود—هر بار که کامپوننت رندر می‌شود فراخوانی می‌شود:
 
-<div dir="ltr">
 
 ```jsx
 // This alert fires when the component renders, not when clicked!
 <button onClick={alert('You clicked me!')}>
 ```
 
-</div>
 
 اگر می خواهید event handler خود را به صورت درخط (inline) تعریف کنید، آن را در یک تابع ناشناس مانند زیر قرار دهید:
-
-<div dir="ltr">
 
 ```jsx
 <button onClick={() => alert('You clicked me!')}>
 ```
 
-</div>
 
 این کار به جای اجرای کد داخل با هر رندر، تابعی ایجاد می کند که بعدا فراخوانی می شود.
 
@@ -167,14 +137,11 @@ button { margin-right: 10px; }
 [درباره arrow functions بیشتر بخوانید.](https://javascript.info/arrow-functions-basics)
 
 </Pitfall>
-</div>
-<div dir="rtl">
 
 ### خواندن props در event handlerها {/*reading-props-in-event-handlers*/}
 
 از آنجایی که event handlerها در داخل یک کامپوننت تعریف می‌شوند، به propهای آن کامپوننت دسترسی دارند. در اینجا دکمه‌ای وجود دارد که با کلیک روی آن، یک هشدار با prop `message` خود نشان می دهد:
 
-</div>
 <Sandpack>
 
 ```js
@@ -205,12 +172,8 @@ button { margin-right: 10px; }
 ```
 
 </Sandpack>
-<div dir="rtl">
 
 این به دو دکمه اجازه می دهد پیام های متفاوتی را نشان دهند. امتحان کنید پیام های پاس داده شده به آنها را تغییر دهید.
-
-</div>
-<div dir="rtl">
 
 ### پاس دادن event handlerها به عنوان props {/*passing-event-handlers-as-props*/}
 
@@ -218,7 +181,6 @@ button { margin-right: 10px; }
 
 برای انجام این کار، propی را که کامپوننت از پدر خود به عنوان event handler  دریافت می‌کند، پاس دهید:
 
-</div>
 <Sandpack>
 
 ```js
@@ -265,7 +227,6 @@ button { margin-right: 10px; }
 ```
 
 </Sandpack>
-<div dir="rtl">
 
 در اینجا، کامپوننت `Toolbar` یک `PlayButton` و یک `UploadButton` را رندر می‌کند:
 
@@ -276,8 +237,6 @@ button { margin-right: 10px; }
 
 اگر از [design system](https://uxdesign.cc/everything-you-need-to-know-about-design-systems-54b109851969) استفاده می کنید، معمولاً کامپوننت‌هایی مانند دکمه ها دارای استایل هستند، اما رفتار را مشخص نمی کنند. در عوض، کامپوننت‌هایی مانند `PlayButton` و event handler `UploadButton` ها را به پایین پاس می‌دهند.
 
-</div>
-<div dir="rtl">
 
 ### نامگذاری propهای event handler {/*naming-event-handler-props*/}
 
@@ -286,8 +245,6 @@ button { margin-right: 10px; }
 طبق قرارداد، propهای event handler باید با `on` شروع شوند و به دنبال آن یک حرف بزرگ بیاید.
 
 به عنوان مثال، `onClick` prop کامپوننت `Button` را می‌توان `onSmash` نامید:
-
-</div>
 <Sandpack>
 
 ```js
@@ -318,13 +275,10 @@ button { margin-right: 10px; }
 ```
 
 </Sandpack>
-<div dir="rtl">
 
 در این مثال، `<button onClick={onSmash}>` نشان می دهد که `<button>` (حروف کوچک) مرورگر همچنان به یک prop به نام `onClick` نیاز دارد، اما نام prop دریافت شده توسط کامپوننت `Button` سفارشی شما، در اختیار شما است.
 
 هنگامی که کامپوننت شما از تعاملات متعدد پشتیبانی می کند، ممکن است براساس مفاهیم خاص برنامه، propهای event handler را نامگذاری کنید. برای مثال، این کامپوننت event handler ،`Toolbar`های `onPlayMovie` و `onUploadImage` را دریافت می‌کند:
-
-</div>
 <Sandpack>
 
 ```js
@@ -364,7 +318,6 @@ button { margin-right: 10px; }
 ```
 
 </Sandpack>
-<div dir="rtl">
 
 
 توجه کنید که چگونه کامپوننت `App` نیازی به دانستن اینکه `Toolbar` *چه کاری* با `onPlayMovie` یا `onUploadImage` می‌خوهد انجام دهد، ندارد. این جزییات پیاده سازی `Toolbar` است. در اینجا، `Toolbar` آن‌ها را به‌عنوان کنترل‌کننده `onClick` به `Button`های خود پاس می‌دهد، اما بعداً می‌تواند آنها را با کلیک نیز فعال کند. نام‌گذاری ابزارها بر اساس مفاهیم خاص برنامه مانند `onPlayMovie` به شما این امکان را می‌دهد که نحوه استفاده از آنها را بتوانید بعداً تغییر دهید.
@@ -382,7 +335,6 @@ event handlerها همچنین رویدادها را از هر فرزندی که
 
 این `<div>` حاوی دو دکمه است. هم `<div>` *و* هم دکمه‌ها، کنترل کننده های `onClick` خود را دارند. فکر می‌کنید با کلیک روی یک دکمه، کدام کنترل کننده‌ها فعال می‌شوند؟
 
-</div>
 <Sandpack>
 
 ```js
@@ -411,7 +363,6 @@ button { margin: 5px; }
 ```
 
 </Sandpack>
-<div dir="rtl">
 
 اگر روی هر یک از دکمه‌ها کلیک کنید، `onClick` آن ابتدا اجرا می‌شود و سپس `onClick` المنت `<div>` پدر اجرا می‌شود. بنابراین دو پیام ظاهر می شود. اگر روی نوار ابزار کلیک کنید، فقط `onClick` المنت `<div>` پدر اجرا خواهد شد.
 
@@ -426,8 +377,6 @@ button { margin: 5px; }
 event handlerها یک **event object** را به عنوان تنها آرگومان خود دریافت می کند. طبق قرارداد، معمولا `e` نامیده می شود که مخفف "event" است. می توانید از این شی برای خواندن اطلاعات مربوط به رویداد استفاده کنید.
 
 این event object همچنین به شما امکان می دهد انتشار را متوقف کنید. اگر می‌خواهید از رسیدن یک رویداد به کامپوننت‌های پدر جلوگیری کنید، باید `()e.stopPropagation` را مانند این کامپوننت `Button` فراخوانی کنید:
-
-</div>
 <Sandpack>
 
 ```js
@@ -467,7 +416,6 @@ button { margin: 5px; }
 ```
 
 </Sandpack>
-<div dir="rtl">
 
 وقتی روی دکمه‌ای کلیک می کنید:
 
@@ -480,15 +428,12 @@ button { margin: 5px; }
 
 در نتیجه‌ی `()e.stopPropagation`، کلیک کردن روی دکمه‌ها فقط یک هشدار (از `<button>`) به جای دو مورد (از`<button>` و  `<div>` نوارابزار پدر ) را نشان می‌دهد. کلیک کردن روی یک دکمه با کلیک کردن روی نوار ابزار اطراف یکسان نیست، بنابراین توقف انتشار برای این رابط کاربری منطقی است.
 
-</div>
-<div dir="rtl">
 <DeepDive>
 
 #### ثبت رویدادهای فاز {/*capture-phase-events*/}
 
 در موارد نادر، ممکن است لازم باشد همه رویدادهای المنت‌های فرزند را دریافت کنید، *حتی اگر انتشار آنها متوقف شود*. برای مثال، شاید بخواهید بدون در نظر گرفتن منطق انتشار، هر کلیک را برای تجزیه و تحلیل ثبت کنید. می توانید این کار را با افزودن `Capture` در انتهای نام رویداد انجام دهید:
 
-<div dir="ltr">
 
 ```js
 <div onClickCapture={() => { /* this runs first */ }}>
@@ -497,7 +442,6 @@ button { margin: 5px; }
 </div>
 ```
 
-</div>
 هر رویداد در سه فاز منتشر می شود:
 
 1. به سمت پایین حرکت می‌کند و همه کنترل‌کننده‌های `onClickCapture` را فراخوانی می‌کند.
@@ -507,14 +451,11 @@ button { margin: 5px; }
 capture eventها برای کدهایی مانند روترها یا تجزیه و تحلیل مفید هستند، اما احتمالاً از آنها در کد برنامه استفاده نخواهید کرد.
 
 </DeepDive>
-</div>
-<div dir="rtl">
 
 ### پاس‌دادن کنترل‌کننده‌ها به ​​عنوان جایگزینی برای انتشار {/*passing-handlers-as-alternative-to-propagation*/}
 
 توجه داشته باشید که چگونه این کنترل کننده کلیک، یک خط کد را اجرا می کند _و سپس_  `onClick` prop را که توسط پدر پاس داده شده است فراخوانی می کند:
 
-</div>
 
 ```js {4,5}
 function Button({ onClick, children }) {
@@ -529,8 +470,6 @@ function Button({ onClick, children }) {
 }
 ```
 
-<div dir="rtl">
-
 می‌توانید قبل از فراخوانی `onClick` event handler پدر، کد بیشتری به این کنترل‌کننده اضافه کنید. این الگو یک *جایگزین* برای انتشار فراهم می کند. به کامپوننت فرزند اجازه می دهد رویداد را مدیریت کند، در حالی که همچنین به کامپوننت پدر هم اجازه می دهد برخی رفتارهای اضافی را مشخص کند. برخلاف انتشار، این کار خودکار نیست. اما مزیت این الگو این است که می توانید به وضوح کل زنجیره کدی را که در نتیجه یک رویداد اجرا می شود دنبال کنید.
 
 اگر به انتشار تکیه می‌کنید و ردیابی اینکه کدام کنترل‌کننده‌ها اجرا می‌شوند و چرا، دشوار است، این روش را امتحان کنید.
@@ -539,7 +478,6 @@ function Button({ onClick, children }) {
 
 برخی از رویدادهای مرورگر دارای رفتار پیش‌فرض مرتبط با آنها هستند. به عنوان مثال، یک رویداد ارسال `<form>` که زمانی اتفاق می‌افتد که روی دکمه‌ای در داخل آن کلیک می‌شود، به‌طور پیش‌فرض کل صفحه را دوباره reload می‌کند:
 
-</div>
 <Sandpack>
 
 ```js
@@ -558,11 +496,9 @@ button { margin-left: 5px; }
 ```
 
 </Sandpack>
-<div dir="rtl">
 
 می‌توانید `()e.preventDefault` را روی event object فراخوانی کنید تا این اتفاق نیفتد:
 
-</div>
 <Sandpack>
 
 ```js
@@ -584,7 +520,6 @@ button { margin-left: 5px; }
 ```
 
 </Sandpack>
-<div dir="rtl">
 
 `()e.stopPropagation` و `()e.preventDefault` را با هم اشتباه نگیرید. هر دو مفید هستند، اما ارتباطی به هم ندارند:
 
@@ -609,9 +544,7 @@ button { margin-left: 5px; }
 * فراخوانی صریح یک event handler prop از یک کنترل‌کننده فرزند جایگزین خوبی برای انتشار است.
 
 </Recap>
-</div>
 
-<div dir="rtl">
 <Challenges>
 
 
@@ -620,7 +553,6 @@ button { margin-left: 5px; }
 
 با کلیک بر روی این دکمه، پس‌زمینه صفحه بین سفید و سیاه تغییر می‌کند. با این حال، وقتی روی آن کلیک می کنید، هیچ اتفاقی نمی افتد. مشکل را حل کنید. (نگران منطق داخل `handleClick` نباشید - این بخش درست خواهد بود.)
 
-<div dir="ltr">
 <Sandpack>
 
 ```js
@@ -643,13 +575,11 @@ export default function LightSwitch() {
 ```
 
 </Sandpack>
-</div>
 
 <Solution>
 
 مشکل این است که `<button onClick={handleClick()}>` تابع `handleClick` را در حین رندر کردن _فراخوانی می‌کند_ به جای اینکه آن را پاس دهد. با حذف فراخوانی `()` به گونه‌ای که `<button onClick={handleClick}>` باشد، مشکل برطرف می‌شود:
 
-<div dir="ltr">
 <Sandpack>
 
 ```js
@@ -672,11 +602,9 @@ export default function LightSwitch() {
 ```
 
 </Sandpack>
-</div>
 
 یا می‌توانید فراخوانی را در تابع دیگری بپیچید، مانند `<button onClick={() => handleClick()}>`:
 
-<div dir="ltr">
 <Sandpack>
 
 ```js
@@ -699,7 +627,6 @@ export default function LightSwitch() {
 ```
 
 </Sandpack>
-</div>
 
 </Solution>
 
@@ -708,8 +635,6 @@ export default function LightSwitch() {
 این کامپوننت `ColorSwitch` یک دکمه را رندر می‌کند. قرار است رنگ صفحه را تغییر دهد. آن را به event handler `onChangeColor` prop که از پدر دریافت می‌کند، وصل کنید تا با کلیک روی دکمه، رنگ تغییر کند.
 
 پس از انجام این کار، توجه کنید که با کلیک بر روی دکمه، شمارشگر کلیک صفحه نیز افزایش می یابد. همکار شما که کامپوننت پدر را نوشته است اصرار دارد که `onChangeColor` هیچ شمارنده‌ای را افزایش نمی‌دهد. چه اتفاقی می‌افتد؟ آن را طوری درست کنید که کلیک کردن روی دکمه *فقط* رنگ را تغییر دهد و شمارنده را افزایش _ندهد_ .
-
-<div dir="ltr">
 <Sandpack>
 
 ```js ColorSwitch.js active
@@ -759,7 +684,6 @@ export default function App() {
 ```
 
 </Sandpack>
-</div>
 
 <Solution>
 
@@ -767,7 +691,6 @@ export default function App() {
 
 با این حال، این مشکل شمارنده افزایشی را مطرح می کند. اگر `onChangeColor` این کار را انجام ندهد، همانطور که همکارتان اصرار دارد، مشکل این است که این رویداد به بالا منتشر می‌شود و برخی از کنترل‌کننده‌های بالا این کار را انجام می‌دهند. برای حل این مشکل، باید انتشار را متوقف کنید. اما فراموش نکنید که همچنان باید `onChangeColor` را فراخوانی کنید.
 
-<div dir="ltr">
 <Sandpack>
 
 ```js ColorSwitch.js active
@@ -820,9 +743,7 @@ export default function App() {
 ```
 
 </Sandpack>
-</div>
 
 </Solution>
 
 </Challenges>
-</div>
