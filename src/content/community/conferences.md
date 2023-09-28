@@ -92,9 +92,6 @@ June 16th, 2023. Larvik, Norway
 
 [Website](https://reactnorway.com/) - [Twitter](https://twitter.com/ReactNorway/) - [Facebook](https://www.facebook.com/reactdaynorway/)
 
-### React Summit 2023 {/*react-summit-2023*/}
-June 2 & 6, 2023. In-person in Amsterdam, Netherlands + remote first interactivity (hybrid event)
-
 [Website](https://reactathon.com) - [Twitter](https://twitter.com/reactathon) - [YouTube](https://www.youtube.com/realworldreact)
 
 ### RemixConf 2023 {/*remixconf-2023*/}
