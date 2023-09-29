@@ -7,7 +7,7 @@ exports.siteConfig = {
   // Translations should replace these lines:
   languageCode: 'en',
   hasLegacySite: true,
-  isRTL: false,
+  isRTL: true,
   // --------------------------------------
   copyright: `Copyright © ${new Date().getFullYear()} Facebook Inc. All Rights Reserved.`,
   repoUrl: 'https://github.com/facebook/react',
