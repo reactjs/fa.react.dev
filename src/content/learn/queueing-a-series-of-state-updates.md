@@ -296,17 +296,17 @@ export default function RequestTracker() {
   }
 
   return (
-    <div dir="rtl">
+    <>
       <h3>
-        در انتظار: {pending}
+        Pending: {pending}
       </h3>
       <h3>
-        کامل شده: {completed}
+        Completed: {completed}
       </h3>
       <button onClick={handleClick}>
-        خرید     
+        Buy     
       </button>
-    </div>
+    </>
   );
 }
 
@@ -340,17 +340,17 @@ export default function RequestTracker() {
   }
 
   return (
-    <div dir="rtl">
+    <>
       <h3>
-        در انتظار: {pending}
+        Pending: {pending}
       </h3>
       <h3>
-        کامل شده: {completed}
+        Completed: {completed}
       </h3>
       <button onClick={handleClick}>
-        خرید     
+        Buy     
       </button>
-    </div>
+    </>
   );
 }
 
@@ -469,10 +469,10 @@ function TestCase({
 }) {
   const actual = getFinalState(baseState, queue);
   return (
-    <div dir="rtl">
-      <p><span style={{display: "inline-block"}}>مقدار اولیه state: </span><b>{baseState}</b></p>
-      <p>صف: <b>[{queue.join(', ')}]</b></p>
-      <p>نتیجه&zwnj;ی مورد انتظار: <b>{expected}</b></p>
+    <>
+      <p>Base state: <b>{baseState}</b></p>
+      <p>Queue: <b>[{queue.join(', ')}]</b></p>
+      <p>Expected result: <b>{expected}</b></p>
       <p style={{
         color: actual === expected ?
           'green' :
@@ -481,11 +481,11 @@ function TestCase({
         نتیجه&zwnj;ی کار شما: <b>{actual}</b>
         {' '}
         ({actual === expected ?
-          'صحیح' :
-          'اشتباه'
+          'correct' :
+          'wrong'
         })
       </p>
-    </div>
+    </>
   );
 }
 ```
@@ -573,19 +573,19 @@ function TestCase({
   const actual = getFinalState(baseState, queue);
   return (
     <div dir="rtl">
-      <p><span style={{display: "inline-block"}}>مقدار اولیه state:</span> <b>{baseState}</b></p>
-      <p>صف: <b>[{queue.join(', ')}]</b></p>
-      <p>نتیجه&zwnj;ی مورد انتظار: <b>{expected}</b></p>
+      <p>Base state: <b>{baseState}</b></p>
+      <p>Queue: <b>[{queue.join(', ')}]</b></p>
+      <p>Expected result: <b>{expected}</b></p>
       <p style={{
         color: actual === expected ?
           'green' :
           'red'
       }}>
-        نتیجه&zwnj;ی کار شما: <b>{actual}</b>
+        Expected result: <b>{actual}</b>
         {' '}
         ({actual === expected ?
-          'صحیح' :
-          'اشتباه'
+          'correct' :
+          'wrong'
         })
       </p>
     </div>
