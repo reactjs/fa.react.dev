@@ -1,37 +1,37 @@
 ---
-title: Reacting to Input with State
+title: پاسخ به ورودی به کمک state
 ---
 
-<Intro>
-
-React provides a declarative way to manipulate the UI. Instead of manipulating individual pieces of the UI directly, you describe the different states that your component can be in, and switch between them in response to the user input. This is similar to how designers think about the UI.
+<Intro dir="rtl">
+ری اکت یک روش اعلانی برای ایجاد تغییر در رابط کاربری فراهم کرده است.به جای دستکاری مستقیم
+هر بخش رابط کاربری به تنهایی،شما state های متفاوتی را که کامپوننت مورد نظرتان می تواند داشته
+باشد تعریف کرده،و در پاسخ به ورودی کاربر بین آنها جا به جا شوید.این روش مشابه
+دیدگاه طراحان درباره رابط کاربری است.
 
 </Intro>
 
 <YouWillLearn>
-
-* How declarative UI programming differs from imperative UI programming
-* How to enumerate the different visual states your component can be in
-* How to trigger the changes between the different visual states from code
+* تفاوت برنامه نویسی رابط کاربری اعلانی و برنامه نویسی رابط کاربری دستوری
+* برشمردن state های بصری که کامپوننت شما می تواند داشته باشد
+* چگونه تغییرات بین state های بصری مختلف را از طریق کد اجرا کنیم؟
 
 </YouWillLearn>
 
-## How declarative UI compares to imperative {/*how-declarative-ui-compares-to-imperative*/}
+## چگونه رابط کاربری اعلانی با دستوری مقایسه می شود {/*how-declarative-ui-compares-to-imperative*/}
+وقتی شما تعاملات رابط کاربری را طراحی می کنید،احتمالا به چگونگی *تغییرات* رابط کاربری در پاسخ به اقدامات کاربر فکر می کنید.فرمی را در نظر بگیرید که امکان ارسال یک پاسخ را به کاربر می دهد:
+* وقتی شما چیزی داخل فرم تایپ می کنید،دکمه "ارسال" **فعال می شود.**
+* وقتی شما دکمه "ارسال" را فشار می دهید،دکمه و فرم **غیرفعال میشوند.** و یک اسپینر **ظاهر می شود.**
+* اگر درخواست شبکه موفقیت آمیز باشد،فرم **پنهان می شود،** و پیام "تشکر" **ظاهر می شود.**
+* اگر درخواست شبکه ناموفق باشد، یک پیغام خطا **ظاهر می شود،** و فرم دوباره **فعال می شود**.
 
-When you design UI interactions, you probably think about how the UI *changes* in response to user actions. Consider a form that lets the user submit an answer:
+در **برنامه نویسی دستوری،** موارد فوق مستقیما با نحوه پیاده سازی تعامل توسط شما مرتبط است. شما ملزم هستید که دستورالعمل های دقیق برای دستکاری رابط کاربری بر اساس آنچه رخ می دهد را، بنویسید.روش دیگری برای تصور این موضوع این است که: فرض کنید که در کنار شخصی در یک ماشین سوار می شوید و قدم به قدم به او می گویید که کجا برود.
 
-* When you type something into the form, the "Submit" button **becomes enabled.**
-* When you press "Submit", both the form and the button **become disabled,** and a spinner **appears.**
-* If the network request succeeds, the form **gets hidden,** and the "Thank you" message **appears.**
-* If the network request fails, an error message **appears,** and the form **becomes enabled** again.
 
-In **imperative programming,** the above corresponds directly to how you implement interaction. You have to write the exact instructions to manipulate the UI depending on what just happened. Here's another way to think about this: imagine riding next to someone in a car and telling them turn by turn where to go.
+<Illustration src="/images/docs/illustrations/i_imperative-ui-programming.png"  alt="در خودرویی که توسط شخصی مضطرب به عنوان نماینده جاوااسکریپت رانده می شود، مسافری به راننده دستور می دهد تا دنباله ای از مسیریابی های قدم به قدم و پیچیده را اجرا کند." />
 
-<Illustration src="/images/docs/illustrations/i_imperative-ui-programming.png"  alt="In a car driven by an anxious-looking person representing JavaScript, a passenger orders the driver to execute a sequence of complicated turn by turn navigations." />
+آنها نمی دانند که شما می خواهید به کجا بروید،آنها تنها دستورات شما را دنبال می کنند.(و اگر مسیرها را اشتباه بروید، به مقصد اشتباه می رسید!) به این روش،دستوری می گویند زیرا شما باید به هر المنت اعم از اسپینر و دکمه فرمان بدهید و به کامپیوتر بگویید که رابط کاربری را **چگونه** بروزرسانی کند.
 
-They don't know where you want to go, they just follow your commands. (And if you get the directions wrong, you end up in the wrong place!) It's called *imperative* because you have to "command" each element, from the spinner to the button, telling the computer *how* to update the UI.
-
-In this example of imperative UI programming, the form is built *without* React. It only uses the browser [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model):
+در این مثال از برنامه نویسی رابط کاربری دستوری، فرم **بدون استفاده** از ری اکت ساخته می شود؛ و تنها از[DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) مرورگر استفاده می کند :
 
 <Sandpack>
 
@@ -131,37 +131,35 @@ body { font-family: sans-serif; margin: 20px; padding: 0; }
 
 </Sandpack>
 
-Manipulating the UI imperatively works well enough for isolated examples, but it gets exponentially more difficult to manage in more complex systems. Imagine updating a page full of different forms like this one. Adding a new UI element or a new interaction would require carefully checking all existing code to make sure you haven't introduced a bug (for example, forgetting to show or hide something).
+دستکاری رابط کاربری به شکل دستوری برای مثالهای خاص به خوبی عمل می کند،اما مدیریت آن در سیستمهای پیچیده تر بطور تصاعدی دشوارتر می شود.بروزرسانی صفحه ای پر از فرم های مختلف مانند این مورد را در نظر بگیرید.اضافه کردن یک المنت جدید رابط کاربری یا یک تعامل جدید نیازمند بررسی دقیق کدهای موجود است که مطمئن شوید باگ جدیدی تولید نکرده اید (مثلا فراموش کردن نمایش دادن یا پنهان کردن چیزی).
 
-React was built to solve this problem.
+ری اکت به وجود آمد تااین مشکل را حل کند.
+در ری اکت، شما مجبور نیستید مستقیما رابط کاربری را دستکاری کنید--به این معنا که فعال کردن،غیرفعال کردن،نمایش، و یا پنهان کردن کامپوننتها را به طور مستقیم انجام نمی دهید. درعوض، شما **چیزی که می خواهید نمایش دهید را اعلام می کنید،** و ری اکت می فهمد چگونه رابط کاربری را بروزرسانی کند.فرض کنید که سوار تاکسی شوید و به جای آنکه به راننده بگویید دقیقا به کدام طرف بپیچد،بگویید که کجا می خواهید بروید.این وظیفه راننده است که شمارا به مقصد برساند، وممکن است حتی میانبرهایی را بلد باشد که شما در نظر نگرفته اید!
 
-In React, you don't directly manipulate the UI--meaning you don't enable, disable, show, or hide components directly. Instead, you **declare what you want to show,** and React figures out how to update the UI. Think of getting into a taxi and telling the driver where you want to go instead of telling them exactly where to turn. It's the driver's job to get you there, and they might even know some shortcuts you haven't considered!
+<Illustration src="/images/docs/illustrations/i_declarative-ui-programming.png" alt="در خودرویی که توسط ری اکت هدایت می شود،مسافری درخواست می کند که او را به مکان خاصی روی نقشه ببرند.ری اکت می فهمد که چگونه این کار را انجام دهد" />
 
-<Illustration src="/images/docs/illustrations/i_declarative-ui-programming.png" alt="In a car driven by React, a passenger asks to be taken to a specific place on the map. React figures out how to do that." />
+## فکر کردن درباره رابط کاربری بصورت اعلانی {/*thinking-about-ui-declaratively*/}
+ شما نحوه پیاده سازی یک فرم به صورت دستوری را بالاتر دیدید.برای درک بهتر نحوه تفکر در ری اکت، درزیر به پیاده سازی مجدد این رابط کاربری در ری اکت خواهید پرداخت :
 
-## Thinking about UI declaratively {/*thinking-about-ui-declaratively*/}
+1. state های بصری مختلف کامپوننت خود را **شناسایی کنید**
+2. **تعیین کنید** چه چیزی باعث آن تغییرات state می شود.
+3. state را در حافظه با استفاده از `useState` **نشان دهید**
+4. هرگونه متغیر state غیرضروری را **حذف کنید**
+5. event handler ها را برای مقداردهی state **متصل کنید**
 
-You've seen how to implement a form imperatively above. To better understand how to think in React, you'll walk through reimplementing this UI in React below:
 
-1. **Identify** your component's different visual states
-2. **Determine** what triggers those state changes
-3. **Represent** the state in memory using `useState`
-4. **Remove** any non-essential state variables
-5. **Connect** the event handlers to set the state
+### قدم اول : state های بصری مختلف کامپوننت خود را شناسایی کنید {/*step-1-identify-your-components-different-visual-states*/}
+در علوم کامپیوتر،ممکن است درباره ["state machine"](https://en.wikipedia.org/wiki/ماشین_حالات_متناهی) که در یکی از چندین “states” قرار دارد بشنوید.اگر با یک طراح کار می کنید،ممکن است نمونه هایی برای "state های بصری" مختلف دیده باشید.React در تقاطع طراحی و علوم کامپیوتر قرار دارد، بنابراین هر دوی این ایده ها منابع الهام هستند.
 
-### Step 1: Identify your component's different visual states {/*step-1-identify-your-components-different-visual-states*/}
+ابتدا،شما نیاز دارید که تمام "state" های مختلف رابط کاربری را که کاربر ممکن است ببیند را بصری سازی کنید :
 
-In computer science, you may hear about a ["state machine"](https://en.wikipedia.org/wiki/Finite-state_machine) being in one of several “states”. If you work with a designer, you may have seen mockups for different "visual states". React stands at the intersection of design and computer science, so both of these ideas are sources of inspiration.
+* **خالی**: فرم دارای یک دکمه "ارسال" غیرفعال است.
+* **در حال تایپ**: فرم دارای یک دکمه "ارسال" فعال است.
+* **در حال ارسال**: فرم کاملاً غیرفعال است.اسپینر نشان داده می شود.
+* **موفقیت**: پیام "متشکرم" به جای فرم نمایش داده می شود.
+* **خطا**: مانند در حال تایپ، اما با یک پیغام خطای اضافی.
 
-First, you need to visualize all the different "states" of the UI the user might see:
-
-* **Empty**: Form has a disabled "Submit" button.
-* **Typing**: Form has an enabled "Submit" button.
-* **Submitting**: Form is completely disabled. Spinner is shown.
-* **Success**: "Thank you" message is shown instead of a form.
-* **Error**: Same as Typing state, but with an extra error message.
-
-Just like a designer, you'll want to "mock up" or create "mocks" for the different states before you add logic. For example, here is a mock for just the visual part of the form. This mock is controlled by a prop called `status` with a default value of `'empty'`:
+درست مانند یک طراح، قبل از اینکه منطق را اضافه کنید، می خواهید برای state های مختلف "نمونه های اولیه" یا "نمونه" ایجاد کنید.برای مثال، در اینجا یک نمونه فقط برای بخش بصری فرم آورده شده است.این نمونه با یک prop به نام `status` با مقدار پیشفرض `'empty'` کنترل می شود:
 
 <Sandpack>
 
@@ -191,14 +189,13 @@ export default function Form({
 ```
 
 </Sandpack>
-
-You could call that prop anything you like, the naming is not important. Try editing `status = 'empty'` to `status = 'success'` to see the success message appear. Mocking lets you quickly iterate on the UI before you wire up any logic. Here is a more fleshed out prototype of the same component, still "controlled" by the `status` prop:
+شما می توانستید آن prop را هرچیزی بنامید، نام گذاری اهمیتی ندارد.`status = 'empty'`را به `status = 'success'` ویرایش کنید تا پیغام موفقیت ظاهر شود.نمونه سازی به شما اجازه می دهد قبل از وارد کردن منطق به کد،روی رابط کاربری تکرار انجام دهید. اینجا یک نمونه پیاده سازی بیشتر از همان کامپوننت وجود دارد که همچنان با `status` prop "کنترل می شود":
 
 <Sandpack>
 
 ```js
 export default function Form({
-  // Try 'submitting', 'error', 'success':
+  // 'در حال ارسال','خطا','موفقیت' را امتحان امتحان کنید:
   status = 'empty'
 }) {
   if (status === 'success') {
@@ -240,9 +237,8 @@ export default function Form({
 
 <DeepDive>
 
-#### Displaying many visual states at once {/*displaying-many-visual-states-at-once*/}
-
-If a component has a lot of visual states, it can be convenient to show them all on one page:
+#### نمایش همزمان چند state بصری {/*displaying-many-visual-states-at-once*/}
+اگر یک کامپوننت دارای تعداد زیادی state های بصری باشد،نمایش همه آنها در یک صفحه راحت تر خواهد بود :
 
 <Sandpack>
 
@@ -307,61 +303,59 @@ body { margin: 0; }
 
 </Sandpack>
 
-Pages like this are often called "living styleguides" or "storybooks".
+صفحاتی مانند این اغلب به نام 'راهنمای سبک زنده'یا'کتاب های داستانی' شناخته می شوند.
 
 </DeepDive>
 
-### Step 2: Determine what triggers those state changes {/*step-2-determine-what-triggers-those-state-changes*/}
+### قدم دوم : تعیین کنید چه چیزی باعث آن تغییرات state می شود {/*step-2-determine-what-triggers-those-state-changes*/}
 
-You can trigger state updates in response to two kinds of inputs:
-
-* **Human inputs,** like clicking a button, typing in a field, navigating a link.
-* **Computer inputs,** like a network response arriving, a timeout completing, an image loading.
+شما می توانید در پاسخ به دو نوع ورودی بروزرسانی های state را فعال کنید:
+* **ورودی های کاربر** مانند کلیک یک دکمه، تایپ کردن در یک فیلد، پیمایش یک پیوند.
+* **ورودی های کامپیوتر** مانند دریافت پاسخ از شبکه، اتمام زمان مقرر، بارگذاری یک تصویر.
 
 <IllustrationBlock>
-  <Illustration caption="Human inputs" alt="A finger." src="/images/docs/illustrations/i_inputs1.png" />
-  <Illustration caption="Computer inputs" alt="Ones and zeroes." src="/images/docs/illustrations/i_inputs2.png" />
+  <Illustration caption="ورودی کاربر" alt="A finger." src="/images/docs/illustrations/i_inputs1.png" />
+  <Illustration caption="ورودی کامپیوتر" alt="Ones and zeroes." src="/images/docs/illustrations/i_inputs2.png" />
 </IllustrationBlock>
 
-In both cases, **you must set [state variables](/learn/state-a-components-memory#anatomy-of-usestate) to update the UI.** For the form you're developing, you will need to change state in response to a few different inputs:
+در هر دو مورد، **شما باید برای بروزرسانی رابط کاربری [متغیرهای state](/learn/state-a-components-memory#anatomy-of-usestate) را تنظیم کنید.** برای فرمی که در حال توسعه آن هستید، نیاز به تغییر state در پاسخ به چند ورودی متفاوت دارید: 
 
-* **Changing the text input** (human) should switch it from the *Empty* state to the *Typing* state or back, depending on whether the text box is empty or not.
-* **Clicking the Submit button** (human) should switch it to the *Submitting* state.
-* **Successful network response** (computer) should switch it to the *Success* state.
-* **Failed network response** (computer) should switch it to the *Error* state with the matching error message.
+* **تغییر ورودی متن** (کاربر) باید آن را از state *خالی* به *درحال تایپ* یا برعکس تغییر دهد، بسته به اینکه ورودی متن خالی است یا خیر.
+* **کلیک بر روی دکمه ارسال** (کاربر) باید آن را به state در حال ارسال تغییر دهد.
+* **پاسخ موفق شبکه** (کامپیوتر) باید آن را به state موفقیت تغییر دهد.
+* **پاسخ ناموفق شبکه** (کامپیوتر) باید آن را به state *خطا* با پیغام خطای متناسب تغییر دهد.
 
 <Note>
 
-Notice that human inputs often require [event handlers](/learn/responding-to-events)!
+توجه کنید که ورودی های کاربر اغلب نیازمند [event handlers](/learn/responding-to-events) هستند!
 
 </Note>
-
-To help visualize this flow, try drawing each state on paper as a labeled circle, and each change between two states as an arrow. You can sketch out many flows this way and sort out bugs long before implementation.
+برای کمک به تصویر سازی این گردش کار، سعی کنید هر state را به عنوان یک دایره برچسب دار، و هر تغییر بین دو state را به عنوان یک پیکان ترسیم کنید.به این ترتیب می توانید چندین گردش کار را ترسیم کرده و باگ ها را قبل از پیاده سازی حل کنید.
 
 <DiagramGroup>
 
 <Diagram name="responding_to_input_flow" height={350} width={688} alt="Flow chart moving left to right with 5 nodes. The first node labeled 'empty' has one edge labeled 'start typing' connected to a node labeled 'typing'. That node has one edge labeled 'press submit' connected to a node labeled 'submitting', which has two edges. The left edge is labeled 'network error' connecting to a node labeled 'error'. The right edge is labeled 'network success' connecting to a node labeled 'success'.">
 
-Form states
+state های فرم
 
 </Diagram>
 
 </DiagramGroup>
 
-### Step 3: Represent the state in memory with `useState` {/*step-3-represent-the-state-in-memory-with-usestate*/}
+### قدم سوم:  state را در حافظه با استفاده از `useState`نشان دهید {/*step-3-represent-the-state-in-memory-with-usestate*/}
 
-Next you'll need to represent the visual states of your component in memory with [`useState`.](/reference/react/useState) Simplicity is key: each piece of state is a "moving piece", and **you want as few "moving pieces" as possible.** More complexity leads to more bugs!
+حال شما باید state های بصری کامپوننت خود را در حافظه با [`useState`](/reference/react/useState) نشان دهید. سادگی کلید است: هر قطعه state یک "قطعه متحرک" است، و **شما کمترین تعداد "قطعه متحرک" ممکن را می خواهید.** پیچیدگی بیشتر به باگهای بیشتر منجر می شود!
 
-Start with the state that *absolutely must* be there. For example, you'll need to store the `answer` for the input, and the `error` (if it exists) to store the last error:
+با state ای شروع کنید که *حتما باید* وجود داشته باشد. مثلا شما به `answer` برای ذخیره ورودی، و به `error`(اگر موجود باشد) برای ذخیره آخرین error نیاز دارید:
 
 ```js
 const [answer, setAnswer] = useState('');
 const [error, setError] = useState(null);
 ```
 
-Then, you'll need a state variable representing which one of the visual states that you want to display. There's usually more than a single way to represent that in memory, so you'll need to experiment with it.
+سپس، شما نیاز به یک متغیر state دارید که نمایانگر state های بصری که می خواهید نمایش داده شوند باشد. معمولا بیش از یک راه برای نمایش آن در حافظه وجود دارد،پس شما باید با آن آزمایش کنید.
 
-If you struggle to think of the best way immediately, start by adding enough state that you're *definitely* sure that all the possible visual states are covered:
+اگر شما در تلاش هستید که به سرعت به بهترین راه دست یابید با افزودن تعداد کافی state آغاز کنید که *قطعا* مطمئن باشید تمام حالات بصری ممکن پوشش داده شده است:
 
 ```js
 const [isEmpty, setIsEmpty] = useState(true);
@@ -370,14 +364,12 @@ const [isSubmitting, setIsSubmitting] = useState(false);
 const [isSuccess, setIsSuccess] = useState(false);
 const [isError, setIsError] = useState(false);
 ```
+احتمالا اولین ایده شما بهترین نخواهد بود، اما اشکالی ندارد--بازسازی state بخشی از فرایند است!
 
-Your first idea likely won't be the best, but that's ok--refactoring state is a part of the process!
+### قدم چهارم: هرگونه متغیر غیرضروری state را حذف کنید {/*step-4-remove-any-non-essential-state-variables*/}
+شما می خواهید از تکرار محتوای state جلوگیری کنید بنابراین فقط چیزی که ضروری است را دنبال می کنید. صرف زمان اندک روی بازسازی ساختار state باعث فهم ساده تر کامپوننت شما، کاهش تکرار، و اجتناب از معانی ناخواسته خواهد شد. هدف شما **جلوگیری از مواردی است که state موجود در حافظه رابط کاربری صحیحی که شما بخواهید کاربر ببیند را نمایش نمی دهد.** (مثلا، شما هرگز نمی خواهید که همزمان پیغام خطا نمایش داده شود و فیلد ورودی هم غیرفعال باشد، یا کاربر قادر به تصحیح خطا نباشد!)
+اینجا تعدادی پرسش وجود دارد که می توانید درباره متغیرهای state بپرسید:
 
-### Step 4: Remove any non-essential state variables {/*step-4-remove-any-non-essential-state-variables*/}
-
-You want to avoid duplication in the state content so you're only tracking what is essential. Spending a little time on refactoring your state structure will make your components easier to understand, reduce duplication, and avoid unintended meanings. Your goal is to **prevent the cases where the state in memory doesn't represent any valid UI that you'd want a user to see.** (For example, you never want to show an error message and disable the input at the same time, or the user won't be able to correct the error!)
-
-Here are some questions you can ask about your state variables:
 
 * **Does this state cause a paradox?** For example, `isTyping` and `isSubmitting` can't both be `true`. A paradox usually means that the state is not constrained enough. There are four possible combinations of two booleans, but only three correspond to valid states. To remove the "impossible" state, you can combine these into a `status` that must be one of three values: `'typing'`, `'submitting'`, or `'success'`.
 * **Is the same information available in another state variable already?** Another paradox: `isEmpty` and `isTyping` can't be `true` at the same time. By making them separate state variables, you risk them going out of sync and causing bugs. Fortunately, you can remove `isEmpty` and instead check `answer.length === 0`.
@@ -498,8 +490,6 @@ Although this code is longer than the original imperative example, it is much le
   5. Connect the event handlers to set state.
 
 </Recap>
-
-
 
 <Challenges>
 
