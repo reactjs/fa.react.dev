@@ -329,6 +329,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 اینجا یک مؤلفه چراغ عبور پیاده‌روی است که هنگام فشار دادن دکمه فعال می‌شود:
 
+
 <Sandpack>
 
 ```js

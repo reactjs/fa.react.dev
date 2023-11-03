@@ -1,31 +1,34 @@
 ---
-title: Sharing State Between Components
+title: بین کامپوننت‌ها state  به اشتراک گذاشتن
 ---
 
 <Intro>
 
-Sometimes, you want the state of two components to always change together. To do it, remove state from both of them, move it to their closest common parent, and then pass it down to them via props. This is known as *lifting state up,* and it's one of the most common things you will do writing React code.
+گاهی اوقات، شما میخواهید که state دو کامپوننت همیشه با هم تغییر کند. برای انجام این کار، state را از هر دو کامپوننت حذف کنید، آن را به نزدیکترین والد مشترک آنها منتقل کنید، و سپس آن را از طریق props به آنها منتقل کنید. این به عنوان بالا بردن state شناخته میشود، و این یکی از متداول ترین کارهایی است که شما در حین نوشتن کد ری‌اکت انجام خواهید داد.
 
 </Intro>
 
 <YouWillLearn>
 
-- How to share state between components by lifting it up
-- What are controlled and uncontrolled components
+- چگونه state را با بالا بردن آن بین کامپوننت‌ها به اشتراک بگذارید
+- کامپوننت‌ های کنترل شده و کنترل نشده چیست
 
 </YouWillLearn>
 
-## Lifting state up by example {/*lifting-state-up-by-example*/}
 
-In this example, a parent `Accordion` component renders two separate `Panel`s:
+
+## بالا بردن state با مثال {/*lifting-state-up-by-example*/}
+
+در این مثال یک کامپوننت والد `Accordion` دو کامپوننت جداگانه `Panel` را رندر میکند:
+
 
 * `Accordion`
-  - `Panel`
-  - `Panel`
+    - `Panel`
+    - `Panel`
 
-Each `Panel` component has a boolean `isActive` state that determines whether its content is visible.
+هر کامپوننت `Panel` یک `isActive` state دارد که مشخص میکند که آیا محتوای آن قابل مشاهده است یا خیر.
 
-Press the Show button for both panels:
+برای هر دو کامپوننت `Panel` دکمه Show را فشار دهید:
 
 <Sandpack>
 
@@ -73,59 +76,63 @@ h3, p { margin: 5px 0px; }
 
 </Sandpack>
 
-Notice how pressing one panel's button does not affect the other panel--they are independent.
+توجه کنید که فشار دادن دکمه یکی از پنل‌ها بر روی پنل دیگر تاثیری ندارد--آنها مستقل هستند.
 
 <DiagramGroup>
 
 <Diagram name="sharing_state_child" height={367} width={477} alt="Diagram showing a tree of three components, one parent labeled Accordion and two children labeled Panel. Both Panel components contain isActive with value false.">
 
-Initially, each `Panel`'s `isActive` state is `false`, so they both appear collapsed
+
+در ابتدا، `isActive` state هر `Panel` برابر `false` است، بنابراین هر دو به صورت فشرده نمایش داده میشوند.
 
 </Diagram>
 
 <Diagram name="sharing_state_child_clicked" height={367} width={480} alt="The same diagram as the previous, with the isActive of the first child Panel component highlighted indicating a click with the isActive value set to true. The second Panel component still contains value false." >
 
-Clicking either `Panel`'s button will only update that `Panel`'s `isActive` state alone
+کلیک کردن روی دکمه هر `Panel` فقط state `isActive` آن `Panel` را به روز میکند.
 
 </Diagram>
 
 </DiagramGroup>
 
-**But now let's say you want to change it so that only one panel is expanded at any given time.** With that design, expanding the second panel should collapse the first one. How would you do that?
+**اما حالا فرض کنید که میخواهید فقط یک پنل در هر زمان باز شود.** در این طراحی، باز کردن پنل دوم باید پنل اول را ببندد. چگونه این کار را انجام میدهید؟
 
-To coordinate these two panels, you need to "lift their state up" to a parent component in three steps:
+برای هماهنگ کردن این دو پنل، شما باید state آنها را به یک کامپوننت والد در سه مرحله "بالا ببرید":
 
-1. **Remove** state from the child components.
-2. **Pass** hardcoded data from the common parent.
-3. **Add** state to the common parent and pass it down together with the event handlers.
+1. **حذف** state از کامپوننت‌های فرزند.
+2. **انتقال** داده‌های ثابت از والد مشترک.
+3. **اضافه کردن** state به والد مشترک و انتقال آن همراه با event handlers.
 
-This will allow the `Accordion` component to coordinate both `Panel`s and only expand one at a time.
+این به کامپوننت `Accordion` اجازه میدهد که هر دو `Panel` را هماهنگ کند و فقط یکی را در هر زمان باز کند.
 
-### Step 1: Remove state from the child components {/*step-1-remove-state-from-the-child-components*/}
+###   قدم ۱: حذف state از کامپوننت‌های فرزند {/*step-1-remove-state-from-the-child-components*/}
 
-You will give control of the `Panel`'s `isActive` to its parent component. This means that the parent component will pass `isActive` to `Panel` as a prop instead. Start by **removing this line** from the `Panel` component:
+شما کنترل `isActive` را به کامپوننت والد `Panel` میدهید. این به این معنی است که کامپوننت والد `isActive` را به عنوان یک prop به `Panel` منتقل میکند. با **حذف این خط** از کامپوننت `Panel` شروع کنید:
 
 ```js
 const [isActive, setIsActive] = useState(false);
 ```
 
-And instead, add `isActive` to the `Panel`'s list of props:
+
+و به جای آن، `isActive` را به لیست prop های `Panel` اضافه کنید:
+
 
 ```js
 function Panel({ title, children, isActive }) {
 ```
 
-Now the `Panel`'s parent component can *control* `isActive` by [passing it down as a prop.](/learn/passing-props-to-a-component) Conversely, the `Panel` component now has *no control* over the value of `isActive`--it's now up to the parent component!
+حالا کامپوننت والد `Panel` میتواند `isActive` را با [انتقال آن به عنوان prop](/learn/passing-props-to-a-component) کنترل کند. متقابلا، کامپوننت `Panel` دیگر کنترلی بر روی مقدار `isActive` ندارد--حالا این کار به عهده کامپوننت والد است!
 
-### Step 2: Pass hardcoded data from the common parent {/*step-2-pass-hardcoded-data-from-the-common-parent*/}
+### قدم ۲: انتقال داده‌های ثابت از والد مشترک {/*step-2-pass-hardcoded-data-from-the-common-parent*/}
 
-To lift state up, you must locate the closest common parent component of *both* of the child components that you want to coordinate:
 
-* `Accordion` *(closest common parent)*
-  - `Panel`
-  - `Panel`
+برای بالا بردن state، شما باید نزدیکترین کامپوننت والد مشترک میان دو کامپوننت فرزند که میخواهید آن ها را هماهنگ کنید، پیدا کنید:
 
-In this example, it's the `Accordion` component. Since it's above both panels and can control their props, it will become the "source of truth" for which panel is currently active. Make the `Accordion` component pass a hardcoded value of `isActive` (for example, `true`) to both panels:
+* `Accordion` *(نزدیک ترین والد مشترک)*
+    - `Panel`
+    - `Panel`
+
+در این مثال، این کامپوننت `Accordion` است. از آنجایی که این کامپوننت بالاتر از هر دو پنل قرار دارد و میتواند prop های آنها را کنترل کند، این کامپوننت منبع اصلی برای اینکه کدام پنل در حال حاضر فعال است میباشد. کامپوننت `Accordion` را طوری تغییر دهید که مقدار ثابت `isActive` را (به عنوان مثال، `true`) به هر دو پنل منتقل کند:
 
 <Sandpack>
 
@@ -172,21 +179,21 @@ h3, p { margin: 5px 0px; }
 
 </Sandpack>
 
-Try editing the hardcoded `isActive` values in the `Accordion` component and see the result on the screen.
+سعی کنید مقادیر `isActive` را در کامپوننت `Accordion` ویرایش کنید و نتیجه را در صفحه مشاهده کنید.
 
-### Step 3: Add state to the common parent {/*step-3-add-state-to-the-common-parent*/}
+### قدم ۳: اضافه کردن state به والد مشترک {/*step-3-add-state-to-the-common-parent*/}
 
-Lifting state up often changes the nature of what you're storing as state.
+بالا بردن state معمولا طبیعت آنچه را که به عنوان state ذخیره میکنید تغییر میدهد.
 
-In this case, only one panel should be active at a time. This means that the `Accordion` common parent component needs to keep track of *which* panel is the active one. Instead of a `boolean` value, it could use a number as the index of the active `Panel` for the state variable:
+در این مثال، فقط یک پنل در هر زمان باید فعال باشد. این به این معنی است که کامپوننت والد مشترک `Accordion` باید اینکه کدام پنل فعال است را پیگیری کند. به جای یک مقدار `boolean`، میتوانید از یک عدد به عنوان ایندکس پنل فعال برای متغیر state استفاده کنید:
 
 ```js
 const [activeIndex, setActiveIndex] = useState(0);
 ```
 
-When the `activeIndex` is `0`, the first panel is active, and when it's `1`, it's the second one.
+هنگامی که `activeIndex` برابر `0` است، پنل اول فعال است، و هنگامی که برابر `1` است، پنل دوم فعال است.
 
-Clicking the "Show" button in either `Panel` needs to change the active index in `Accordion`. A `Panel` can't set the `activeIndex` state directly because it's defined inside the `Accordion`. The `Accordion` component needs to *explicitly allow* the `Panel` component to change its state by [passing an event handler down as a prop](/learn/responding-to-events#passing-event-handlers-as-props):
+کلیک کردن روی دکمه "Show" در هر `Panel` باید ایندکس فعال در `Accordion` را تغییر دهد. یک `Panel` نمیتواند state `activeIndex` را مستقیما تغییر دهد زیرا در داخل `Accordion` تعریف شده است. کامپوننت `Accordion` باید به صورت صریح به کامپوننت `Panel` اجازه دهد که state آن را تغییر دهد با [انتقال یک event handler به عنوان prop](/learn/responding-to-events#passing-event-handlers-as-props):
 
 ```js
 <>
@@ -205,7 +212,7 @@ Clicking the "Show" button in either `Panel` needs to change the active index in
 </>
 ```
 
-The `<button>` inside the `Panel` will now use the `onShow` prop as its click event handler:
+`<button>` داخل `Panel` اکنون از `onShow` prop به عنوان event handler کلیک استفاده میکند:
 
 <Sandpack>
 
@@ -266,19 +273,22 @@ h3, p { margin: 5px 0px; }
 
 </Sandpack>
 
-This completes lifting state up! Moving state into the common parent component allowed you to coordinate the two panels. Using the active index instead of two "is shown" flags ensured that only one panel is active at a given time. And passing down the event handler to the child allowed the child to change the parent's state.
+این بالا بردن state را کامل میکند! انتقال state به کامپوننت والد مشترک به شما اجازه داد که دو پنل را هماهنگ کنید. استفاده از ایندکس فعال به جای دو پرچم "نمایش داده شده" اطمینان حاصل میکند که تنها یک پنل در یک زمان فعال است. و انتقال event handler به کامپوننت فرزند به آن اجازه میدهد که state والد را تغییر دهد.
+
+
 
 <DiagramGroup>
 
 <Diagram name="sharing_state_parent" height={385} width={487} alt="Diagram showing a tree of three components, one parent labeled Accordion and two children labeled Panel. Accordion contains an activeIndex value of zero which turns into isActive value of true passed to the first Panel, and isActive value of false passed to the second Panel." >
 
-Initially, `Accordion`'s `activeIndex` is `0`, so the first `Panel` receives `isActive = true`
+در ابتدا ، `Accordion` `activeIndex` برابر `0` است ، بنابراین `Panel` اول `isActive = true` را دریافت می کند
+
 
 </Diagram>
 
 <Diagram name="sharing_state_parent_clicked" height={385} width={521} alt="The same diagram as the previous, with the activeIndex value of the parent Accordion component highlighted indicating a click with the value changed to one. The flow to both of the children Panel components is also highlighted, and the isActive value passed to each child is set to the opposite: false for the first Panel and true for the second one." >
 
-When `Accordion`'s `activeIndex` state changes to `1`, the second `Panel` receives `isActive = true` instead
+هنگامی که `Accordion` `activeIndex` state به `1` تغییر میکند، `Panel` دوم `isActive = true` را دریافت میکند
 
 </Diagram>
 
@@ -286,49 +296,49 @@ When `Accordion`'s `activeIndex` state changes to `1`, the second `Panel` receiv
 
 <DeepDive>
 
-#### Controlled and uncontrolled components {/*controlled-and-uncontrolled-components*/}
+#### کامپوننت‌های کنترل شده و کنترل نشده {/*controlled-and-uncontrolled-components*/}
 
-It is common to call a component with some local state "uncontrolled". For example, the original `Panel` component with an `isActive` state variable is uncontrolled because its parent cannot influence whether the panel is active or not.
+به طور معمول، یک کامپوننت با چند state محلی "کنترل نشده" نامیده میشود. به عنوان مثال، کامپوننت اصلی `Panel` با یک متغیر state `isActive` کنترل نشده است زیرا والد آن نمیتواند تاثیری بر روی فعال بودن یا نبودن پنل داشته باشد.
 
-In contrast, you might say a component is "controlled" when the important information in it is driven by props rather than its own local state. This lets the parent component fully specify its behavior. The final `Panel` component with the `isActive` prop is controlled by the `Accordion` component.
+متقابلا ، میتوانید بگویید که یک کامپوننت "کنترل شده" است زمانی که اطلاعات مهم در آن توسط prop ها و نه state محلی آن هدایت میشوند. این به کامپوننت والد اجازه میدهد که رفتار آن را به طور کامل مشخص کند. کامپوننت نهایی `Panel` با `isActive` prop توسط کامپوننت `Accordion` کنترل میشود.
 
-Uncontrolled components are easier to use within their parents because they require less configuration. But they're less flexible when you want to coordinate them together. Controlled components are maximally flexible, but they require the parent components to fully configure them with props.
+استفاده از کامپوننت های کنترل نشده درون کامپوننت های والدشان آسان تر است زیرا نیاز به کانفیگ کمتری دارند. اما زمانی که میخواهید آنها را با هم هماهنگ کنید، کمتر از کامپوننت های کنترل شده انعطاف‌ پذیر هستند. کامپوننت های کنترل شده حداکثر انعطاف‌ پذیری را دارند، اما نیاز به کانفیگ کامل تری از طرف کامپوننت های والد با prop ها را دارند.
 
-In practice, "controlled" and "uncontrolled" aren't strict technical terms--each component usually has some mix of both local state and props. However, this is a useful way to talk about how components are designed and what capabilities they offer.
+در عمل، "کنترل شده" و "کنترل نشده" اصطلاحات فنی دقیقی نیستند--هر کامپوننت معمولاً مجموعه ای از state محلی و prop ها را دارد. با این حال، این یک روش مفید برای صحبت در مورد نحوه طراحی کامپوننت ها و قابلیت هایی است که ارائه می دهند.
 
-When writing a component, consider which information in it should be controlled (via props), and which information should be uncontrolled (via state). But you can always change your mind and refactor later.
+هنگام نوشتن یک کامپوننت، در نظر داشته باشید که اطلاعاتی که در آن باید کنترل شده باشد (از طریق prop ها) و اطلاعاتی که باید کنترل نشده باشد (از طریق state) چیست. اما همیشه میتوانید نظر خود را تغییر دهید و بعداً بازطراحی کنید.
 
 </DeepDive>
 
-## A single source of truth for each state {/*a-single-source-of-truth-for-each-state*/}
+## یک منبع اصلی برای هر state {/*a-single-source-of-truth-for-each-state*/}
 
-In a React application, many components will have their own state. Some state may "live" close to the leaf components (components at the bottom of the tree) like inputs. Other state may "live" closer to the top of the app. For example, even client-side routing libraries are usually implemented by storing the current route in the React state, and passing it down by props!
+در یک برنامه ری‌اکت، بسیاری از کامپوننت‌ها state مخصوص به خود را دارند. برخی از state ممکن است "زندگی" خود را نزدیک به کامپوننت‌های برگ (کامپوننت‌های در پایین درخت) مانند ورودی‌ها داشته باشند. دیگر state ها ممکن است "زندگی" خود را نزدیک به بالای برنامه داشته باشد. به عنوان مثال، حتی کتابخانه‌های مسیریابی سمت-کلاینت معمولا با ذخیره مسیر فعلی در state ری‌اکت پیاده‌سازی میشوند و از طریق prop ها به پایین منتقل میشوند!
 
-**For each unique piece of state, you will choose the component that "owns" it.** This principle is also known as having a ["single source of truth".](https://en.wikipedia.org/wiki/Single_source_of_truth) It doesn't mean that all state lives in one place--but that for _each_ piece of state, there is a _specific_ component that holds that piece of information. Instead of duplicating shared state between components, *lift it up* to their common shared parent, and *pass it down* to the children that need it.
+**برای هر قطعه state منحصر به فرد، شما کامپوننتی که "مالک" آن است را انتخاب خواهید کرد.** این اصل همچنین به عنوان داشتن یک ["منبع اصلی برای هر state".](https://en.wikipedia.org/wiki/Single_source_of_truth) شناخته میشود. این به این معنی نیست که همه state در یک مکان زندگی میکنند--اما برای هر قطعه state، یک کامپوننت خاص وجود دارد که آن قطعه اطلاعات را نگه میدارد. به جای تکرار state های مشترک بین کامپوننت ها، آنها را به والد مشترک خود بالا ببرید، و آنها را به کامپوننت های فرزندی که نیاز به آنها دارند، منتقل کنید.
 
-Your app will change as you work on it. It is common that you will move state down or back up while you're still figuring out where each piece of the state "lives". This is all part of the process!
+برنامه شما هنگام کار بر روی آن تغییر خواهد کرد. معمول است که در حین کار بر روی آن، state را به پایین یا به بالا ببرید در حالی که هنوز در حال یافتن مکان زندگی هر قطعه state هستید. این ها همه بخشی از فرایند است!
 
-To see what this feels like in practice with a few more components, read [Thinking in React.](/learn/thinking-in-react)
+برای دیدن اینکه این در عمل با چند کامپوننت دیگر چگونه است، [Thinking in React](/learn/thinking-in-react) را بخوانید.
 
 <Recap>
 
-* When you want to coordinate two components, move their state to their common parent.
-* Then pass the information down through props from their common parent.
-* Finally, pass the event handlers down so that the children can change the parent's state.
-* It's useful to consider components as "controlled" (driven by props) or "uncontrolled" (driven by state).
+* وقتی میخواهید دو کامپوننت را هماهنگ کنید، state آنها را به والد مشترک آنها منتقل کنید.
+* سپس اطلاعات را از طریق prop ها از والد مشترک به پایین منتقل کنید.
+* در نهایت، event handler ها را به پایین منتقل کنید تا کامپوننت های فرزند بتوانند state والد را تغییر دهند.
+* مفید است که کامپوننت ها را به عنوان "کنترل شده" (توسط prop ها) یا "کنترل نشده" (توسط state) در نظر بگیرید.
+
 
 </Recap>
 
 <Challenges>
 
-#### Synced inputs {/*synced-inputs*/}
+####  ورودی های هماهنگ {/*synced-inputs*/}
 
-These two inputs are independent. Make them stay in sync: editing one input should update the other input with the same text, and vice versa. 
+این دو ورودی مستقل هستند. آنها را هماهنگ کنید: ویرایش یک ورودی باید ورودی دیگر را با همان متن به روز کند، و بالعکس.
 
 <Hint>
 
-You'll need to lift their state up into the parent component.
-
+شما باید state آنها را به درون والد بالا ببرید.
 </Hint>
 
 <Sandpack>
@@ -374,7 +384,7 @@ label { display: block; }
 
 <Solution>
 
-Move the `text` state variable into the parent component along with the `handleChange` handler. Then pass them down as props to both of the `Input` components. This will keep them in sync.
+state متغیر `text` را به کامپوننت والد همراه با `handleChange` handler منتقل کنید. سپس آنها را به عنوان prop به هر دو کامپوننت `Input` منتقل کنید. این کار باعث میشود آنها هماهنگ شوند.
 
 <Sandpack>
 
@@ -427,17 +437,17 @@ label { display: block; }
 
 </Solution>
 
-#### Filtering a list {/*filtering-a-list*/}
+#### فیلتر کردن یک لیست {/*filtering-a-list*/}
 
-In this example, the `SearchBar` has its own `query` state that controls the text input. Its parent `FilterableList` component displays a `List` of items, but it doesn't take the search query into account.
+در این مثال ، `SearchBar` دارای `query` state خود است که ورودی متن را کنترل می کند. والد آن کامپوننت `FilterableList` یک `List` از آیتم ها را نمایش می دهد ، اما `query` را در نظر نمی گیرد.
 
-Use the `filterItems(foods, query)` function to filter the list according to the search query. To test your changes, verify that typing "s" into the input filters down the list to "Sushi", "Shish kebab", and "Dim sum".
+از تابع `filterItems(foods, query)` برای فیلتر کردن لیست بر اساس کوئری استفاده کنید. برای تست تغییرات خود، بازبینی کنید که نوشتن "s" در ورودی تایپ کنید لیست را به "Sushi" ، "Shish kebab" و "Dim sum" فیلتر میکند.
 
-Note that `filterItems` is already implemented and imported so you don't need to write it yourself!
+توجه کنید که تابع `filterItems` از قبل پیاده‌سازی و import شده است، بنابراین شما نیازی به نوشتن آن ندارید!
 
 <Hint>
 
-You will want to remove the `query` state and the `handleChange` handler from the `SearchBar`, and move them to the `FilterableList`. Then pass them down to `SearchBar` as `query` and `onChange` props.
+شما باید `query` state و `handleChange` handler را از `SearchBar` حذف کنید و آنها را به `FilterableList` منتقل کنید. سپس آنها را به عنوان `query` و `onChange` props به `SearchBar` منتقل کنید.
 
 </Hint>
 
@@ -528,7 +538,8 @@ export const foods = [{
 
 <Solution>
 
-Lift the `query` state up into the `FilterableList` component. Call `filterItems(foods, query)` to get the filtered list and pass it down to the `List`. Now changing the query input is reflected in the list:
+`query` state را به بالا ببرید و به `FilterableList` منتقل کنید. `filterItems(foods, query)` را برای گرفتن لیست فیلتر شده فراخوانی کنید و آن را به `List` منتقل کنید. حالا تغییر ورودی کوئری در لیست نمایش داده میشود:
+
 
 <Sandpack>
 

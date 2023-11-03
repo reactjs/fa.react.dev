@@ -11,6 +11,11 @@
       "path": "/reference/react",
       "routes": [
         {
+          "title": "use",
+          "path": "/reference/react/use",
+          "canary": true
+        },
+        {
           "title": "useCallback",
           "path": "/reference/react/useCallback"
         },
@@ -99,6 +104,11 @@
       "path": "/reference/react/apis",
       "routes": [
         {
+          "title": "cache",
+          "path": "/reference/react/cache",
+          "canary": true
+        },
+        {
           "title": "createContext",
           "path": "/reference/react/createContext"
         },
@@ -117,12 +127,50 @@
         {
           "title": "startTransition",
           "path": "/reference/react/startTransition"
+        },
+        {
+          "title": "experimental_taintObjectReference",
+          "path": "/reference/react/experimental_taintObjectReference",
+          "canary": true
+        },
+        {
+          "title": "experimental_taintUniqueValue",
+          "path": "/reference/react/experimental_taintUniqueValue",
+          "canary": true
+        }
+      ]
+    },
+    {
+      "title": "Directives",
+      "path": "/reference/react/directives",
+      "canary": true,
+      "routes": [
+        {
+          "title": "'use client'",
+          "path": "/reference/react/use-client",
+          "canary": true
+        },
+        {
+          "title": "'use server'",
+          "path": "/reference/react/use-server",
+          "canary": true
         }
       ]
     },
     {
       "hasSectionHeader": true,
       "sectionHeader": "react-dom@18.2.0"
+    },
+    {
+      "title": "Hooks",
+      "path": "/reference/react-dom/hooks",
+      "routes": [
+        {
+          "title": "useFormStatus",
+          "path": "/reference/react-dom/hooks/useFormStatus",
+          "canary": true
+        }
+      ]
     },
     {
       "title": "Components",

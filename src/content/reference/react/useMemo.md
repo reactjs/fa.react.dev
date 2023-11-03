@@ -647,7 +647,7 @@ In this example, the `List` component is **artificially slowed down** so that yo
 
 Switching the tabs feels slow because it forces the slowed down `List` to re-render. That's expected because the `tab` has changed, and so you need to reflect the user's new choice on the screen.
 
-Next, try toggling the theme. **Thanks to `useMemo` together with [`memo`](/reference/react/memo), it’s fast despite the artificial slowdown!** The `List` skipped re-rendering because the `visibleItems` array has not changed since the last render. The `visibleItems` array has not changed because both `todos` and `tab` (which you pass as dependencies to `useMemo`) haven't changed since the last render.
+Next, try toggling the theme. **Thanks to `useMemo` together with [`memo`](/reference/react/memo), it’s fast despite the artificial slowdown!** The `List` skipped re-rendering because the `visibleTodos` array has not changed since the last render. The `visibleTodos` array has not changed because both `todos` and `tab` (which you pass as dependencies to `useMemo`) haven't changed since the last render.
 
 <Sandpack>
 
@@ -1126,7 +1126,7 @@ To memoize a function with `useMemo`, your calculation function would have to re
 export default function Page({ productId, referrer }) {
   const handleSubmit = useMemo(() => {
     return (orderDetails) => {
-      post('/product/' + product.id + '/buy', {
+      post('/product/' + productId + '/buy', {
         referrer,
         orderDetails
       });
@@ -1142,7 +1142,7 @@ This looks clunky! **Memoizing functions is common enough that React has a built
 ```js {2,7}
 export default function Page({ productId, referrer }) {
   const handleSubmit = useCallback((orderDetails) => {
-    post('/product/' + product.id + '/buy', {
+    post('/product/' + productId + '/buy', {
       referrer,
       orderDetails
     });
