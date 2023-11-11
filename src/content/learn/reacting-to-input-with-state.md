@@ -370,32 +370,28 @@ const [isError, setIsError] = useState(false);
 شما می خواهید از تکرار محتوای state جلوگیری کنید بنابراین فقط چیزی که ضروری است را دنبال می کنید. صرف زمان اندک روی بازسازی ساختار state باعث فهم ساده تر کامپوننت شما، کاهش تکرار، و اجتناب از معانی ناخواسته خواهد شد. هدف شما **جلوگیری از مواردی است که state موجود در حافظه رابط کاربری صحیحی که شما بخواهید کاربر ببیند را نمایش نمی دهد.** (مثلا، شما هرگز نمی خواهید که همزمان پیغام خطا نمایش داده شود و فیلد ورودی هم غیرفعال باشد، یا کاربر قادر به تصحیح خطا نباشد!)
 اینجا تعدادی پرسش وجود دارد که می توانید درباره متغیرهای state بپرسید:
 
+* **آیا این state باعث تناقض می شود؟** مثلا، `درحال تایپ` و `درحال ارسال` نمیتوانند همزمان `true` باشند. یک تناقض معمولا به این معناست که یک state به اندازه کافی محدود نیست. جهار ترکیب ممکن از دو مقدار بولین وجود دارد، اما تنها سه مورد با state های معتبر مطابقت دارند. برای حذف state "غیرممکن"، می توانید اینها را در یک "وضعیت" ترکیب کنید که باید یکی از این سه مقادیر باشد: `'درحال تایپ'`، `'درحال ارسال'`، یا `'موفق'`.
+* **آیا همان اطلاعات از قبل در state دیگری موجود است؟** یک تناقض دیگر: `خالی` و `درحال تایپ` نمی توانند همزمان `true` باشند. با جدا کردن آن ها به عنوان متغیرهای state، خطر عدم هماهنگی بین آنها و تولید باگ وجود دارد. خوشبختانه، شما می توانید `خالی` را حذف کنید و به جای آن `answer.length === 0` را بررسی کنید.
+* **آیا می توانید همان اطلاعات را از معکوس یک متغیر state دیگر به دست آورید؟** نیازی به `خطا` نیست زیرا شما می توانید `error !== null` را به جای آن بررسی کنید.
 
-* **Does this state cause a paradox?** For example, `isTyping` and `isSubmitting` can't both be `true`. A paradox usually means that the state is not constrained enough. There are four possible combinations of two booleans, but only three correspond to valid states. To remove the "impossible" state, you can combine these into a `status` that must be one of three values: `'typing'`, `'submitting'`, or `'success'`.
-* **Is the same information available in another state variable already?** Another paradox: `isEmpty` and `isTyping` can't be `true` at the same time. By making them separate state variables, you risk them going out of sync and causing bugs. Fortunately, you can remove `isEmpty` and instead check `answer.length === 0`.
-* **Can you get the same information from the inverse of another state variable?** `isError` is not needed because you can check `error !== null` instead.
+با پاکسازی این بخش، شما به سه متغیر state *ضروری* محدود شده اید (کاهش یافته از 7!):
 
-After this clean-up, you're left with 3 (down from 7!) *essential* state variables:
 
 ```js
 const [answer, setAnswer] = useState('');
 const [error, setError] = useState(null);
-const [status, setStatus] = useState('typing'); // 'typing', 'submitting', or 'success'
+const [status, setStatus] = useState('typing'); // 'درحال تایپ'، 'درحال ارسال'، یا 'موفق'.
 ```
-
-You know they are essential, because you can't remove any of them without breaking the functionality.
+شما می‌دانید که این سه متغیر ضروری هستند چرا که نمی‌توانید هیچ‌کدام از آن‌ها را  بدون اینکه عملکرد برنامه را دچار مشکل کنید حذف کنید.
 
 <DeepDive>
+#### حذف state های "غیرممکن" با استفاده از یک reducer {/*eliminating-impossible-states-with-a-reducer*/}
 
-#### Eliminating “impossible” states with a reducer {/*eliminating-impossible-states-with-a-reducer*/}
-
-These three variables are a good enough representation of this form's state. However, there are still some intermediate states that don't fully make sense. For example, a non-null `error` doesn't make sense when `status` is `'success'`. To model the state more precisely, you can [extract it into a reducer.](/learn/extracting-state-logic-into-a-reducer) Reducers let you unify multiple state variables into a single object and consolidate all the related logic!
+این سه متغیر نمایانگری مناسب از state این فرم هستند. اگرچه هنوز برخی از state های میانی وجود دارند که کاملا منطقی نیستند. مثلا، وقتی که `وضعیت` `'موفقیت'` است یک `خطا` غیرخالی منطقی نیست. برای مدلسازی دقیقتر state، شما می توانید [آن را به یک reducer منتقل کنید.](/learn/extracting-state-logic-into-a-reducer) Reducer ها به شما این امکان را می دهند که چندین متغیر state را در یک شی واحد ترکیب کنید و تمامی منطق مربوطه را یکپارچه سازید!
 
 </DeepDive>
-
-### Step 5: Connect the event handlers to set state {/*step-5-connect-the-event-handlers-to-set-state*/}
-
-Lastly, create event handlers that update the state. Below is the final form, with all event handlers wired up:
+### قدم پنجم: event handler ها را به منظور مقداردهی state متصل کنید {/*step-5-connect-the-event-handlers-to-set-state*/}
+در نهایت، event handler هایی را ایجاد کنید که state را بروزرسانی کند. در زیر فرم نهایی، با تمامی event handler های متصل موجود است:
 
 <Sandpack>
 
@@ -457,7 +453,7 @@ export default function Form() {
 }
 
 function submitForm(answer) {
-  // Pretend it's hitting the network.
+  // فرض کنید که درحال ارتباط با شبکه است.
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       let shouldError = answer.toLowerCase() !== 'lima'
@@ -477,13 +473,13 @@ function submitForm(answer) {
 
 </Sandpack>
 
-Although this code is longer than the original imperative example, it is much less fragile. Expressing all interactions as state changes lets you later introduce new visual states without breaking existing ones. It also lets you change what should be displayed in each state without changing the logic of the interaction itself.
+با وجود اینکه این کد طولانی تر از مثال دستوری اصلی است، اما به مراتب حساسیت کمتری دارد. تشریح همه تعاملها به عنوان تغییرات state بعدا به شما اجازه معرفی state های جدید بصری را بدون تاثیر روی موارد موجود می دهد. همچنین به شما اجازه می دهد هرآنچه که باید در هر state نمایش داده شود را بدون تغییر منطق تعامل تغییر دهید.
 
 <Recap>
-
-* Declarative programming means describing the UI for each visual state rather than micromanaging the UI (imperative).
-* When developing a component:
-  1. Identify all its visual states.
+* برنامه نویسی اعلانی به معنای توصیف رابط کاربری برای هر state بصری به جای مدیریت جزئیات رابط کاربری است (دستوری).
+* هنگام توسعه یک کامپوننت:
+  1. تمامی state های بصری آن را شناسایی کنید.
+  2.
   2. Determine the human and computer triggers for state changes.
   3. Model the state with `useState`.
   4. Remove non-essential state to avoid bugs and paradoxes.
