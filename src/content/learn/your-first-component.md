@@ -170,19 +170,19 @@ img { margin: 0 10px 10px 0; height: 90px; }
 </section>
 ```
 
-### Nesting and organizing components {/*nesting-and-organizing-components*/}
+### قرار دادن کامپوننت داخل یک کامپوننت دیگر {/*nesting-and-organizing-components*/}
 
-Components are regular JavaScript functions, so you can keep multiple components in the same file. This is convenient when components are relatively small or tightly related to each other. If this file gets crowded, you can always move `Profile` to a separate file. You will learn how to do this shortly on the [page about imports.](/learn/importing-and-exporting-components)
+کامپوننت ها درواقع فانکشن های معمولی جاوااسکریپت هستند, پس شما میتوانید در یک فایل چند کامپوننت تعریف کنید که معمولا زمانی استفاده میشود که کامپوننت ها نسبتا کوچک یا باهم ربطی داشته باشند و اگر فایل شلوغ شد آنها را در فایل های جداگانه ای قرار بدهید. درباره انجام دادن آن و [دستور Import](/learn/importing-and-exporting-components) میتوانید مطالعه کنید.
 
-Because the `Profile` components are rendered inside `Gallery`—even several times!—we can say that `Gallery` is a **parent component,** rendering each `Profile` as a "child". This is part of the magic of React: you can define a component once, and then use it in as many places and as many times as you like.
+چون کامپوننت `Profile` داخل کامپوننت `Gallery` هست و چند باری هم تکرار شده, بنابراین کامپوننت `Gallery` یک کامپوننت والد یا **parent component** که کامپوننت `Gallery` که فرزندان خودش هست را اجرا یا رندر گیری میکند. این بخشی از جادو ریکت است: که میتوانید کامپوننت را یکبار تعریف کنید و هرچند باری که لازم داشتید صدا بزنید.
 
 <Pitfall>
 
-Components can render other components, but **you must never nest their definitions:**
+کامپوننت ها میتوانند کامپوننت های داختلی خود را رندر بگیرند, اما **به هیچ وجه کامپوننت هارا تودرتو تعریف نکنید:**
 
 ```js {2-5}
 export default function Gallery() {
-  // 🔴 Never define a component inside another component!
+  // 🔴 به هیچ وجه کامپوننتی داخل یک کامپوننت تعریف نشود
   function Profile() {
     // ...
   }
