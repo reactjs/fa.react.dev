@@ -479,21 +479,20 @@ function submitForm(answer) {
 * برنامه نویسی اعلانی به معنای توصیف رابط کاربری برای هر state بصری به جای مدیریت جزئیات رابط کاربری است (دستوری).
 * هنگام توسعه یک کامپوننت:
   1. تمامی state های بصری آن را شناسایی کنید.
-  2.
-  2. Determine the human and computer triggers for state changes.
-  3. Model the state with `useState`.
-  4. Remove non-essential state to avoid bugs and paradoxes.
-  5. Connect the event handlers to set state.
+  2. تغییرات state توسط عاملهای انسانی و کامپیوتری را تعیین کنید.
+  3. state را با استفاده از `useState` مدل کنید.
+  4. state های غیرضروری را به منظور اجتناب از باگها و تناقضات حذف کنید.
+  5. Event handler ها را برای تنظیم state متصل کنید.
 
 </Recap>
 
 <Challenges>
 
-#### Add and remove a CSS class {/*add-and-remove-a-css-class*/}
+#### حذف و اضافه کردن یک کلاس CSS {/*add-and-remove-a-css-class*/}
 
-Make it so that clicking on the picture *removes* the `background--active` CSS class from the outer `<div>`, but *adds* the `picture--active` class to the `<img>`. Clicking the background again should restore the original CSS classes.
-
-Visually, you should expect that clicking on the picture removes the purple background and highlights the picture border. Clicking outside the picture highlights the background, but removes the picture border highlight.
+طوری برنامه ریزی کنید که با کلیک روی تصویر کلاس CSS `background--active` از `<div>` بیرونی *حذف شود*، اما کلاس `picture--active` به `<img>` *اضافه شود*.
+کلیک مجدد برروی پس زمینه باید کلاسهای اصلی CSS را بازیابی کند.
+از نظر بصری، انتظار می رود که با کلیک روی تصویر،پس زمینه بنفش حذف شود و حاشیه تصویر برجسته شود. کلیک خارج از تصویر باعث برجسته سازی پس زمینه می شود، اما برجستگی حاشیه تصویر را حذف می کند.
 
 <Sandpack>
 
@@ -541,15 +540,13 @@ body { margin: 0; padding: 0; height: 250px; }
 </Sandpack>
 
 <Solution>
+این کامپوننت دو نوع state بصری دارد: زمانی که تصویر فعال است، و زمانی که تصویر غیرفعال است:
 
-This component has two visual states: when the image is active, and when the image is inactive:
+* زمانی که تصویر فعال است، کلاسهای CSS، `background` و `picture picture--active` هستند.
+* زمانی که تصویر غیرفعال است، کلاسهای CSS، `background background--active` و `picture` هستند.
+یک متغیر state بولین به تنهایی کافی است تا فعال یا غیرفعال بودن تصویر را نگهداری کند. وظیفه اصلی حذف یا اضافه کردن کلاسهای CSS بود. اگرچه، در ری اکت شما نیاز دارید به جای آنکه المنت های رابط کاربری را *دستکاری کنید* آنچه که می خواهید ببینید را *توصیف کنید*. بنابراین لازم است که هر دو کلاس CSS را براساس state فعلی محاسبه کنید. همچنین شما باید [انتشار را متوقف کنید](/learn/responding-to-events#stopping-propagation) تا کلیک روی تصویر به عنوان کلیک بر روی پس زمینه ثبت نگردد.
 
-* When the image is active, the CSS classes are `background` and `picture picture--active`.
-* When the image is inactive, the CSS classes are `background background--active` and `picture`.
-
-A single boolean state variable is enough to remember whether the image is active. The original task was to remove or add CSS classes. However, in React you need to *describe* what you want to see rather than *manipulate* the UI elements. So you need to calculate both CSS classes based on the current state. You also need to [stop the propagation](/learn/responding-to-events#stopping-propagation) so that clicking the image doesn't register as a click on the background.
-
-Verify that this version works by clicking the image and then outside of it:
+بررسی کنید که این نسخه با کلیک بر روی تصویر و سپس خارج از آن کار می‌کند:
 
 <Sandpack>
 
@@ -615,8 +612,7 @@ body { margin: 0; padding: 0; height: 250px; }
 ```
 
 </Sandpack>
-
-Alternatively, you could return two separate chunks of JSX:
+از سوی دیگر، شما می توانید دو قطعه جداگانه از JSX را برگردانید:
 
 <Sandpack>
 
@@ -682,15 +678,13 @@ body { margin: 0; padding: 0; height: 250px; }
 ```
 
 </Sandpack>
-
-Keep in mind that if two different JSX chunks describe the same tree, their nesting (first `<div>` → first `<img>`) has to line up. Otherwise, toggling `isActive` would recreate the whole tree below and [reset its state.](/learn/preserving-and-resetting-state) This is why, if a similar JSX tree gets returned in both cases, it is better to write them as a single piece of JSX.
+بخاطر داشته باشید که اگر دو قطعه مختلف JSX یک درخت مشابه را توصیف کنند، تودرتویی آنها (اولین `<div>` → اولین `<img>`) باید منظم باشد.
+درغیراینصورت، تغییر وضعیت `isActive` باعث بازسازی کل زیردرخت شده و [state آن را بازنشانی می کند.](/learn/preserving-and-resetting-state) به این دلیل است که اگر یک درخت JSX مشابه در هردو حالت بازگردانده شود، بهتر است آنها را به عنوان یک قطعه JSX واحد بنویسید.
 
 </Solution>
+#### ویرایشگر پروفایل {/*profile-editor*/}
 
-#### Profile editor {/*profile-editor*/}
-
-Here is a small form implemented with plain JavaScript and DOM. Play with it to understand its behavior:
-
+در زیر یک فرم کوچک با استفاده از جاوااسکریپت خام و DOM پیاده سازی شده است. با آن بازی کنید تا رفتار آن را درک کنید:
 <Sandpack>
 
 ```js index.js active
@@ -785,12 +779,10 @@ label { display: block; margin-bottom: 20px; }
 ```
 
 </Sandpack>
+این فرم بین دو حالت جابجا می‌شود: در حالت ویرایش، ورودی‌ها را مشاهده می‌کنید و در حالت مشاهده، تنها نتیجه را مشاهده می‌کنید. عنوان دکمه براساس حالتی که در آن قرار دارید بین "ویرایش" و "ذخیره" تغییر می کند. وقتی که ورودی ها را تغییر می دهید، پیام خوشامدگویی در پایین، به شکل بلادرنگ بروزرسانی می شود.
+وظیفه شما این است که آن را در محیط تستی ری اکت زیر دوباره پیاده سازی کنید. برای راحتی شما، نشانه گذاری از قبل به JSX تبدیل شده است، اما شما باید ورودی ها را مانند نسخه اصلی نمایش داده و پنهان کنید.
 
-This form switches between two modes: in the editing mode, you see the inputs, and in the viewing mode, you only see the result. The button label changes between "Edit" and "Save" depending on the mode you're in. When you change the inputs, the welcome message at the bottom updates in real time.
-
-Your task is to reimplement it in React in the sandbox below. For your convenience, the markup was already converted to JSX, but you'll need to make it show and hide the inputs like the original does.
-
-Make sure that it updates the text at the bottom, too!
+مطمئن شوید که متن پایین را هم بروزرسانی می کند!
 
 <Sandpack>
 
@@ -824,10 +816,8 @@ label { display: block; margin-bottom: 20px; }
 </Sandpack>
 
 <Solution>
-
-You will need two state variables to hold the input values: `firstName` and `lastName`. You're also going to need an `isEditing` state variable that holds whether to display the inputs or not. You should _not_ need a `fullName` variable because the full name can always be calculated from the `firstName` and the `lastName`.
-
-Finally, you should use [conditional rendering](/learn/conditional-rendering) to show or hide the inputs depending on `isEditing`.
+شما به دو متغیر state برای نگهداری مقادیر ورودی نیاز خواهی داشت: `firstName` و `lastName`. همچنین شما به یک متغیر state `isEditing` نیاز دارید که نگهدارنده وضعیت نمایش یا عدم نمایش ورودی ها باشد. شما _نباید_ به یک متغیر `fullName` نیاز داشته باشید چرا که نام کامل همیشه از `firstName` و `lastName` به دست می آید.
+درنهایت، شما باید از [رندر کردن شرطی](/learn/conditional-rendering) برای نمایش یا مخفی کردن ورودی ها براساس `isEditing` استفاده کنید.
 
 <Sandpack>
 
@@ -884,14 +874,11 @@ label { display: block; margin-bottom: 20px; }
 ```
 
 </Sandpack>
-
-Compare this solution to the original imperative code. How are they different?
+این راه حل را با کد دستوری اصلی مقایسه کنید. چقدر تفاوت دارند؟
 
 </Solution>
-
-#### Refactor the imperative solution without React {/*refactor-the-imperative-solution-without-react*/}
-
-Here is the original sandbox from the previous challenge, written imperatively without React:
+#### راه حل دستوری را بدون استفاده از ری اکت بازسازی کنید {/*refactor-the-imperative-solution-without-react*/}
+در زیر محیط تستی اصلی از چالش قبلی آورده شده، که به شکل دستوری و بدون ری اکت نوشته شده است:
 
 <Sandpack>
 
@@ -987,10 +974,10 @@ label { display: block; margin-bottom: 20px; }
 ```
 
 </Sandpack>
+تصور کنید ری اکت وجود نداشت. آیا می توانید این کد را به گونه ای بازسازی کنید که منطق با حساسیت کمتر و بیشتر شبیه نسخه ری اکت شود؟
 
-Imagine React didn't exist. Can you refactor this code in a way that makes the logic less fragile and more similar to the React version? What would it look like if the state was explicit, like in React?
-
-If you're struggling to think where to start, the stub below already has most of the structure in place. If you start here, fill in the missing logic in the `updateDOM` function. (Refer to the original code where needed.)
+اگر مانند ری اکت state به صورت صریح باشد، به چه شکل خواهد بود؟
+اگر برای شروع درحال تقلا هستید، بخش زیر هم اکنون بیشتر ساختار را در خود جای داده است. اگر از اینجا شروع می کنید، مطق جاافتاده در تابع `updateDOM` تکمیل کنید. (برای اطلاعات بیشتر به کد اصلی مراجعه کنید.)
 
 <Sandpack>
 
@@ -1030,12 +1017,12 @@ function setIsEditing(value) {
 function updateDOM() {
   if (isEditing) {
     editButton.textContent = 'Save Profile';
-    // TODO: show inputs, hide content
+    // TODO: نمایش ورودی ها، مخفی کردن محتوا
   } else {
     editButton.textContent = 'Edit Profile';
-    // TODO: hide inputs, show content
+    // TODO: نمایش محتوا، مخفی کردن ورودی ها
   }
-  // TODO: update text labels
+  // TODO: بروزسانی عناوین متن
 }
 
 function hide(el) {
@@ -1096,8 +1083,7 @@ label { display: block; margin-bottom: 20px; }
 </Sandpack>
 
 <Solution>
-
-The missing logic included toggling the display of inputs and content, and updating the labels:
+منطق جاافتاده شامل تغییر نمایش ورودی ها و محتوا، و بروزرسانی عناوین بود:
 
 <Sandpack>
 
@@ -1213,7 +1199,7 @@ label { display: block; margin-bottom: 20px; }
 ```
 
 </Sandpack>
-
+تابع `updateDOM` که نوشتید نشان می دهد وقتی که شما state را ست می کنید ری اکت در پس زمینه چه کاری انجام می دهد. (اگرچه، ری اکت از تغییر ویژگیهای DOM پس از آخرین مرتبه ست شدن تغییری نداشته اند اجتناب می کند.) 
 The `updateDOM` function you wrote shows what React does under the hood when you set the state. (However, React also avoids touching the DOM for properties that have not changed since the last time they were set.)
 
 </Solution>
