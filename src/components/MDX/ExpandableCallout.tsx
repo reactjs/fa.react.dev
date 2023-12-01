@@ -26,7 +26,7 @@ const variantMap = {
       'linear-gradient(rgba(249, 247, 243, 0), rgba(249, 247, 243, 1)',
   },
   note: {
-    title: 'توجه',
+    title: 'Note',
     Icon: IconNote,
     containerClasses:
       'bg-green-5 dark:bg-green-60 dark:bg-opacity-20 text-primary dark:text-primary-dark text-lg',
