@@ -190,20 +190,20 @@ export default function Gallery() {
 }
 ```
 
-The snippet above is [very slow and causes bugs.](/learn/preserving-and-resetting-state#different-components-at-the-same-position-reset-state) Instead, define every component at the top level:
+کد بالا [کند است و ممکن است مشکلاتی به بار بیاورد](/learn/preserving-and-resetting-state#different-components-at-the-same-position-reset-state) به جای آن, کامپوننت هارا زیر هم دیگر تعریف کنید. به این صورت:
 
 ```js {5-8}
 export default function Gallery() {
   // ...
 }
 
-// ✅ Declare components at the top level
+// ✅ تعریف کامپوننت زیر همدیگر
 function Profile() {
   // ...
 }
 ```
 
-When a child component needs some data from a parent, [pass it by props](/learn/passing-props-to-a-component) instead of nesting definitions.
+زمانی که لازم است داده هاای کامپوننت پدر به کامپوننت فرزند انتقال شود و بجای اینکه کامپوننت هارا داخل همدیگر تعریف کنیم, بهتر است از [props](/learn/passing-props-to-a-component) استفاده میکنیم.
 
 </Pitfall>
 
@@ -211,7 +211,7 @@ When a child component needs some data from a parent, [pass it by props](/learn/
 
 #### Components all the way down {/*components-all-the-way-down*/}
 
-Your React application begins at a "root" component. Usually, it is created automatically when you start a new project. For example, if you use [CodeSandbox](https://codesandbox.io/) or [Create React App](https://create-react-app.dev/), the root component is defined in `src/App.js`. If you use the framework [Next.js](https://nextjs.org/), the root component is defined in `pages/index.js`. In these examples, you've been exporting root components.
+اپلیکیشن ریکتی شما از کامپوننت `root` شروع میشود. معمولا زمانی که یک پروژه جدید میسازید این کامپوننت ساخته میشود, مثلا اگر شما از [CodeSandbox](https://codesandbox.io/) یا [Create React App](https://create-react-app.dev/) استفاده میکنید, به طور پیش فرض داخل `src/App.js` تعریف شده. اگر از فریمورک [Next.js](https://nextjs.org/) استفاده میکنید, کامپوننت `root` داخل `pages/index.js` تعریف شده است.
 
 Most React apps use components all the way down. This means that you won't only use components for reusable pieces like buttons, but also for larger pieces like sidebars, lists, and ultimately, complete pages! Components are a handy way to organize UI code and markup, even if some of them are only used once.
 
