@@ -209,28 +209,28 @@ function Profile() {
 
 <DeepDive>
 
-#### Components all the way down {/*components-all-the-way-down*/}
+#### استفاده از کامپوننت ها {/*components-all-the-way-down*/}
 
 اپلیکیشن ریکتی شما از کامپوننت `root` شروع میشود. معمولا زمانی که یک پروژه جدید میسازید این کامپوننت ساخته میشود, مثلا اگر شما از [CodeSandbox](https://codesandbox.io/) یا [Create React App](https://create-react-app.dev/) استفاده میکنید, به طور پیش فرض داخل `src/App.js` تعریف شده. اگر از فریمورک [Next.js](https://nextjs.org/) استفاده میکنید, کامپوننت `root` داخل `pages/index.js` تعریف شده است.
 
-Most React apps use components all the way down. This means that you won't only use components for reusable pieces like buttons, but also for larger pieces like sidebars, lists, and ultimately, complete pages! Components are a handy way to organize UI code and markup, even if some of them are only used once.
+اکثر برنامه های ریکتی از کامپوننت استفاده میکنند. به این معنی است که نه تنها از کامپوننت ها برای بخش های کوچکی مانند دکمه استفاده میکنیم, بلکه برای بخش های بزرگتری مانند منو ها یا لیست ها استفاده میکنیم. درکل از کامپوننت ها برای سازماندهی صفحات استفاده میکنیم.
 
-[React-based frameworks](/learn/start-a-new-react-project) take this a step further. Instead of using an empty HTML file and letting React "take over" managing the page with JavaScript, they *also* generate the HTML automatically from your React components. This allows your app to show some content before the JavaScript code loads.
+[React-based frameworks](/learn/start-a-new-react-project) کار مارا جلوتر میاندازد. بجای اینکه فایل های HTML برای صفحات سایت تعریف کنیم, با استفاده از فایل های جاوااسکریپتی صفحات را توسعه میدهیم و آنهارا مدیریت میکنیم.
 
-Still, many websites only use React to [add interactivity to existing HTML pages.](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page) They have many root components instead of a single one for the entire page. You can use as much—or as little—React as you need.
+همچنان بسیاری از وبسایت ها از React برای [اضافه کردن تعامل در صفحه فعلی.](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page) استفاده میشود. انها بجای یک کامپوننت ریشه از کامپوننت بیشتر و ریزتری استفاده کردند. شما میتوانید هرچقدر که نیاز دارید از کتابخانه ریکت استفاده کنید.
 
 </DeepDive>
 
 <Recap>
 
-You've just gotten your first taste of React! Let's recap some key points.
+شما اکنون برای اولین بار طعم React را چشیده اید! اجازه بدهید یکسری موارد را درباره آن مرور کنیم:
 
-* React lets you create components, **reusable UI elements for your app.**
-* In a React app, every piece of UI is a component.
-* React components are regular JavaScript functions except:
+* ریکت به شما اجازه میدهد کامپوننت های خود را, **که اجزایی هستند که میتوان چندین بار داخل اپلیکیشن استفاده کرد .** را توسعه دهید.
+* در یک اپلیکیشن ریکتی, هر جایی از صفحه (دراینجا رابط کاربری) یک کامپوننت است.
+* کامپوننت های ریکتی درواقع توابع معمولی جاوااسکریپتی هستند. البته باید :
 
-  1. Their names always begin with a capital letter.
-  2. They return JSX markup.
+  1. اسم آنها با حروف بزرگ شروع شود.
+  2. کد JSX برگردانند.
 
 </Recap>
 
@@ -238,9 +238,9 @@ You've just gotten your first taste of React! Let's recap some key points.
 
 <Challenges>
 
-#### Export the component {/*export-the-component*/}
+#### خروجی گرفتن (export) از کامپوننت {/*export-the-component*/}
 
-This sandbox doesn't work because the root component is not exported:
+کد زیر قاعدتا کار نخواهد کرد. چون کامپوننت اصلی (root) را اکسپورت نکرده ایم:
 
 <Sandpack>
 
@@ -261,7 +261,7 @@ img { height: 181px; }
 
 </Sandpack>
 
-Try to fix it yourself before looking at the solution!
+برای رفع این مشکل, به راه حل زیر دقت کنید!
 
 <Solution>
 
