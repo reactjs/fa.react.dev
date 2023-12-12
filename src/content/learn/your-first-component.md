@@ -265,7 +265,7 @@ img { height: 181px; }
 
 <Solution>
 
-Add `export default` before the function definition like so:
+دستور `export default` را قبل از تابع اضافه کنید, مانند مثال زیر:
 
 <Sandpack>
 
@@ -286,17 +286,18 @@ img { height: 181px; }
 
 </Sandpack>
 
-You might be wondering why writing `export` alone is not enough to fix this example. You can learn the difference between `export` and `export default` in [Importing and Exporting Components.](/learn/importing-and-exporting-components)
+شاید برایتان سوال باشد که تنها دستور `export` برای حل مشکل بالا کافی بود. شما میتوانید تفاوت های بین `export` و `export default` را در [import و export کردن یک کامپوننت](/learn/importing-and-exporting-components) بخوانید
 
 </Solution>
 
-#### Fix the return statement {/*fix-the-return-statement*/}
+#### رفع مشکل دستور return {/*fix-the-return-statement*/}
 
-Something isn't right about this `return` statement. Can you fix it?
+
+عبارت `return` در این کد اشتباه است. میتونی درستش کنی؟!
 
 <Hint>
 
-You may get an "Unexpected token" error while trying to fix this. In that case, check that the semicolon appears *after* the closing parenthesis. Leaving a semicolon inside `return ( )` will cause an error.
+شاید شما در حین رفع مشکل این دستور به ارور "Unexpected token" برخورد کرده باشید. توجه کنید که حتما سمی کالن بعد از پرانتز بسته `return ( )` باشد. درغیراینصورت به ارور برخورد میکنید.
 
 </Hint>
 
@@ -318,7 +319,7 @@ img { height: 180px; }
 
 <Solution>
 
-You can fix this component by moving the return statement to one line like so:
+برای رفع مشکل این کامپوننت, میتوانید دستور JSX را در یک خط تایپ کنید:
 
 <Sandpack>
 
@@ -334,7 +335,7 @@ img { height: 180px; }
 
 </Sandpack>
 
-Or by wrapping the returned JSX markup in parentheses that open right after `return`:
+یا دستور JSX را مابین پرانتز باز و بسته بعد از `return` قرار بدهید:
 
 <Sandpack>
 
@@ -359,7 +360,7 @@ img { height: 180px; }
 
 #### Spot the mistake {/*spot-the-mistake*/}
 
-Something's wrong with how the `Profile` component is declared and used. Can you spot the mistake? (Try to remember how React distinguishes components from the regular HTML tags!)
+کامپوننت `Profile` را در اینجا تعریف کردیم و زمانی که داریم استفاده میکنیم به ما خطا میدهد! به این معنا است که ریکت, کامپوننت را با یک تگ HTML اشتباه گرفته!
 
 <Sandpack>
 
@@ -393,9 +394,9 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 <Solution>
 
-React component names must start with a capital letter.
+نامگذاری کامپونت های ریکتی حتما باید با حرف بزرگ شروع شود!
 
-Change `function profile()` to `function Profile()`, and then change every `<profile />` to `<Profile />`:
+دستور `function profile()` را به `function Profile()` تغییر دهید, سپس `<profile />` را `<Profile />` تغییر دهید:
 
 <Sandpack>
 
@@ -429,14 +430,14 @@ img { margin: 0 10px 10px 0; }
 
 </Solution>
 
-#### Your own component {/*your-own-component*/}
+#### یک کامپوننت بسازید! {/*your-own-component*/}
 
-Write a component from scratch. You can give it any valid name and return any markup. If you're out of ideas, you can write a `Congratulations` component that shows `<h1>Good job!</h1>`. Don't forget to export it!
+یک کامپوننتی را از پایه بنویسید. شما میتوانید هر اسمی را بدهید و هر JSX یی را return کنید. ایده ای ندارید؟ ابتدا یک کامپوننت با نام `Congratulations` بسازید و کاری کنید که کد JSX یی `<h1>Good job!</h1>` را برگرداند. فقط یادتان باشد حتما آن را export کنید!
 
 <Sandpack>
 
 ```js
-// Write your component below!
+// اینجا کامپوننت خود را بنویسید
 
 ```
 
