@@ -1,29 +1,29 @@
 ---
-title: Quick Start
+title: شروع سریع
 ---
 
 <Intro>
 
-Welcome to the React documentation! This page will give you an introduction to the 80% of React concepts that you will use on a daily basis.
+ به داکیومنت ری‌اکت خوش‌امدید. این صفحه  به شما مقدمه‌ای  به ۸۰ درصد از مفاهیم ری‌اکت که روزانه استفاده می‌کنید ٬می‌دهد.
 
 </Intro>
 
 <YouWillLearn>
 
-- How to create and nest components
-- How to add markup and styles
-- How to display data
-- How to render conditions and lists
-- How to respond to events and update the screen
-- How to share data between components
+- چطور کامپوننت ها را درست کنید و نست کنید
+- چطور مارکاپ و استایل اضافه کنید
+- چطور دیتا را نمایش دهید
+- چطور شروط و لیست ها را رندر کنید
+- چطور به رویدادها پاسخ دهید و اسکرین را اپدیت کنید
+- چطور دیتا را بین دو کامپوننت به اشتراک بگذارید
 
 </YouWillLearn>
 
-## Creating and nesting components {/*components*/}
+## ایجاد و نست کامپوننت‌ها {/*components*/}
 
-React apps are made out of *components*. A component is a piece of the UI (user interface) that has its own logic and appearance. A component can be as small as a button, or as large as an entire page.
+برنامه‌های React از *مؤلفه‌ها* ساخته می‌شوند. یک مؤلفه قطعه‌ای از رابط کاربری (UI) است که منطق و ظاهر خود را دارد. یک مؤلفه می‌تواند به اندازه یک دکمه کوچک یا به اندازه یک صفحه کامل باشد.
 
-React components are JavaScript functions that return markup:
+کامپوننت‌های ری‌اکت توابع جاوااسکریپتی هستند که مارک‌اپ برمیگردانند
 
 ```js
 function MyButton() {
@@ -33,7 +33,7 @@ function MyButton() {
 }
 ```
 
-Now that you've declared `MyButton`, you can nest it into another component:
+`MyButton` را تعریف کرده اید٬ میتوانید آن را درون کامپوننت دیگری استفاده کنید.حالا که شما ‍
 
 ```js {5}
 export default function MyApp() {
@@ -46,9 +46,9 @@ export default function MyApp() {
 }
 ```
 
-Notice that `<MyButton />` starts with a capital letter. That's how you know it's a React component. React component names must always start with a capital letter, while HTML tags must be lowercase.
+`<MyButton />` با حرف بزرگ شروع می‌شود. پس از این طریق می‌دانید که یک کامپوننت ری‌اکت است. کامپوننت‌های ری اکت همیشه باید با حروف بزرگ شروع شوند٬ درصورتی که تگ‌های اچ‌تی‌ام ال با حروف کوچک.توجه کنید که 
 
-Have a look at the result:
+به نتیجه نگاه کنید:
 
 <Sandpack>
 
@@ -73,13 +73,13 @@ export default function MyApp() {
 
 </Sandpack>
 
-The `export default` keywords specify the main component in the file. If you're not familiar with some piece of JavaScript syntax, [MDN](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export) and [javascript.info](https://javascript.info/import-export) have great references.
+کلمات کلیدی `export default` مؤلفه اصلی در این فایل را مشخص می‌کنند. اگر با بخشی از دستورات جاوااسکریپت آشنا نیستید، [MDN](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export) و [javascript.info](https://javascript.info/import-export) منابع عالی برای مراجعه هستند.
 
-## Writing markup with JSX {/*writing-markup-with-jsx*/}
+## نوشتن markup با JSX {/*writing-markup-with-jsx*/}
 
-The markup syntax you've seen above is called *JSX*. It is optional, but most React projects use JSX for its convenience. All of the [tools we recommend for local development](/learn/installation) support JSX out of the box.
+نحوهٔ نشانه‌گذاری کدی که در بالا دیده‌اید، *JSX* نام دارد. استفاده از آن اختیاری است، اما بیشتر پروژه‌های React به دلیل راحتی‌اش از JSX استفاده می‌کنند. تمامی [ابزارهایی که ما برای توسعه محلی توصیه می‌کنیم](/learn/installation) از ابتدا JSX را پشتیبانی می‌کنند.
 
-JSX is stricter than HTML. You have to close tags like `<br />`. Your component also can't return multiple JSX tags. You have to wrap them into a shared parent, like a `<div>...</div>` or an empty `<>...</>` wrapper:
+JSX سخت‌گیرانه‌تر از HTML است. شما باید تگ‌ها را مانند `<br />` ببندید. همچنین مؤلفه شما نمی‌تواند چندین تگ JSX را برگرداند. شما باید آن‌ها را درون یک والد مشترک، مثل `<div>...</div>` یا یک بسته‌بندی خالی `<>...</>` قرار دهید:
 
 ```js {3,6}
 function AboutPage() {
@@ -92,17 +92,17 @@ function AboutPage() {
 }
 ```
 
-If you have a lot of HTML to port to JSX, you can use an [online converter.](https://transform.tools/html-to-jsx)
+اگر بخواهید تعداد زیادی از کدهای HTML را به JSX تبدیل کنید، می‌توانید از یک [تبدیل‌کننده آنلاین](https://transform.tools/html-to-jsx) استفاده کنید.
 
-## Adding styles {/*adding-styles*/}
+## اضافه کردن استایل {/*adding-styles*/}
 
-In React, you specify a CSS class with `className`. It works the same way as the HTML [`class`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class) attribute:
+در React، شما یک کلاس CSS را با استفاده از `className` مشخص می‌کنید. این به همان شکلی کار می‌کند که ویژگی [`class`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class) در HTML کار می‌کند.
 
 ```js
 <img className="avatar" />
 ```
 
-Then you write the CSS rules for it in a separate CSS file:
+سپس شما قوانین سی‌اس‌اس را در یک فایل جدا برای آن می‌نویسید
 
 ```css
 /* In your CSS */
@@ -111,11 +111,11 @@ Then you write the CSS rules for it in a separate CSS file:
 }
 ```
 
-React does not prescribe how you add CSS files. In the simplest case, you'll add a [`<link>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link) tag to your HTML. If you use a build tool or a framework, consult its documentation to learn how to add a CSS file to your project.
+React تعیین نمی‌کند که چگونه فایل‌های CSS را اضافه کنید. در ساده‌ترین حالت، شما یک تگ [`<link>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link) به HTML خود اضافه می‌کنید. اگر از یک ابزار ساخت یا یک چارچوب (framework) استفاده می‌کنید، به مستندات آن مراجعه کنید تا یاد بگیرید چگونه یک فایل CSS را به پروژه خود اضافه کنید.
 
-## Displaying data {/*displaying-data*/}
+## نمایش اطلاعات {/*displaying-data*/}
 
-JSX lets you put markup into JavaScript. Curly braces let you "escape back" into JavaScript so that you can embed some variable from your code and display it to the user. For example, this will display `user.name`:
+JSX به شما این امکان را می‌دهد که نشانه‌گذاری (markup) را در داخل جاوااسکریپت قرار دهید. کرلی بریسز به شما امکان می‌دهد که به جاوااسکریپت برگردید تا بتوانید یک متغیر از کد خود تعبیه کنید و آن را به کاربر نمایش دهید. به عنوان مثال، این دستور `user.name` را نمایش می‌دهد:
 
 ```js {3}
 return (
@@ -125,7 +125,7 @@ return (
 );
 ```
 
-You can also "escape into JavaScript" from JSX attributes, but you have to use curly braces *instead of* quotes. For example, `className="avatar"` passes the `"avatar"` string as the CSS class, but `src={user.imageUrl}` reads the JavaScript `user.imageUrl` variable value, and then passes that value as the `src` attribute:
+شما همچنین می‌توانید از ویژگی‌های JSX به جاوااسکریپت "بپریدید"، اما باید از کرلی بریسز به جای نقل‌قول استفاده کنید. به عنوان مثال، `className="avatar"` رشته `"avatar"` را به عنوان کلاس CSS منتقل می‌کند، اما `src={user.imageUrl}` مقدار متغیر جاوااسکریپت `user.imageUrl` را می‌خواند و سپس این مقدار را به عنوان ویژگی `src` منتقل می‌کند:
 
 ```js {3,4}
 return (
@@ -136,7 +136,7 @@ return (
 );
 ```
 
-You can put more complex expressions inside the JSX curly braces too, for example, [string concatenation](https://javascript.info/operators#string-concatenation-with-binary):
+شما می‌توانید عبارات پیچیده‌تری را هم درون کرلی بریسز JSX قرار دهید، به عنوان مثال، [اتصال رشته](https://javascript.info/operators#string-concatenation-with-binary) را نیز می‌توانید انجام دهید:
 
 <Sandpack>
 
@@ -177,11 +177,11 @@ export default function Profile() {
 
 </Sandpack>
 
-In the above example, `style={{}}` is not a special syntax, but a regular `{}` object inside the `style={ }` JSX curly braces. You can use the `style` attribute when your styles depend on JavaScript variables.
+در مثال بالا، `style={{}}` نه نوعی دستور خاص است، بلکه یک شی `{}` معمولی درون کرلی بریسز JSX است. شما می‌توانید ویژگی `style` را استفاده کنید زمانی که استایل‌های شما به متغیرهای جاوااسکریپت وابسته هستند.
 
 ## Conditional rendering {/*conditional-rendering*/}
 
-In React, there is no special syntax for writing conditions. Instead, you'll use the same techniques as you use when writing regular JavaScript code. For example, you can use an [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statement to conditionally include JSX:
+در React، نه ترکیب نحوی خاصی برای نوشتن شرایط وجود دارد. به جای آن، شما از تکنیک‌های همانند نوشتن کد جاوااسکریپت عمومی استفاده می‌کنید. به عنوان مثال، می‌توانید از دستور [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) برای اضافه کردن JSX به صورت شرطی استفاده کنید:
 
 ```js
 let content;
@@ -197,7 +197,7 @@ return (
 );
 ```
 
-If you prefer more compact code, you can use the [conditional `?` operator.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) Unlike `if`, it works inside JSX:
+اگر ترجیح می‌دهید کد خود را متداول‌تر نوشته نمایید، می‌توانید از [اپراتور شرطی `?`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) استفاده کنید. بر خلاف `if`، این اپراتور درون JSX کار می‌کند:
 
 ```js
 <div>
@@ -209,7 +209,7 @@ If you prefer more compact code, you can use the [conditional `?` operator.](htt
 </div>
 ```
 
-When you don't need the `else` branch, you can also use a shorter [logical `&&` syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND#short-circuit_evaluation):
+وقتی شاخه `else` نیاز ندارید، همچنین می‌توانید از نحوه‌ی کوتاهتر [عبارت `&&` منطقی](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND#short-circuit_evaluation) استفاده کنید:
 
 ```js
 <div>
@@ -217,13 +217,13 @@ When you don't need the `else` branch, you can also use a shorter [logical `&&` 
 </div>
 ```
 
-All of these approaches also work for conditionally specifying attributes. If you're unfamiliar with some of this JavaScript syntax, you can start by always using `if...else`.
+تمامی این روش‌ها نیز برای مشخص کردن ویژگی‌ها به صورت شرطی کار می‌کنند. اگر با برخی از این نحوه‌نویسی‌های جاوااسکریپت آشنا نیستید، می‌توانید با همیشه استفاده از `if...else` شروع کنید.
 
-## Rendering lists {/*rendering-lists*/}
+## نمایش لیست‌ها {/*rendering-lists*/}
 
-You will rely on JavaScript features like [`for` loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for) and the [array `map()` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) to render lists of components.
+برای رندر کردن لیست‌های مؤلفه‌ها، شما به ویژگی‌های جاوااسکریپت مانند [حلقه `for`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for) و تابع [`map()` آرایه](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) اعتماد خواهید کرد.
 
-For example, let's say you have an array of products:
+برای مثال٬ فرض کنید ارایه ای از محصولات داریم:
 
 ```js
 const products = [
@@ -233,7 +233,7 @@ const products = [
 ];
 ```
 
-Inside your component, use the `map()` function to transform an array of products into an array of `<li>` items:
+در داخل مؤلفه‌تان، از تابع `map()` برای تبدیل یک آرایه از محصولات به یک آرایه از موارد `<li>` استفاده کنید:
 
 ```js
 const listItems = products.map(product =>
@@ -247,7 +247,7 @@ return (
 );
 ```
 
-Notice how `<li>` has a `key` attribute. For each item in a list, you should pass a string or a number that uniquely identifies that item among its siblings. Usually, a key should be coming from your data, such as a database ID. React uses your keys to know what happened if you later insert, delete, or reorder the items.
+توجه داشته باشید که موارد `<li>` دارای ویژگی `key` هستند. برای هر مورد در یک لیست، باید یک رشته یا یک عدد ارائه دهید که این مورد را به صورت منحصر به فرد میان همکاران خود شناسایی کند. معمولاً، یک کلید باید از داده‌های شما، مانند یک شناسه پایگاه‌داده، مشتق شود. React از کلیدهای شما برای شناختن چه اتفاقی می‌افتد، اگر بعداً موارد را درج، حذف یا مرتب‌سازی کنید.
 
 <Sandpack>
 
@@ -278,9 +278,9 @@ export default function ShoppingList() {
 
 </Sandpack>
 
-## Responding to events {/*responding-to-events*/}
+##  پاسخ‌دهی به وقایع {/*responding-to-events*/}
 
-You can respond to events by declaring *event handler* functions inside your components:
+شما می‌توانید با تعریف توابع *دستگیرنده رویداد* درون مؤلفه‌های خود به رویدادها پاسخ دهید:
 
 ```js {2-4,7}
 function MyButton() {
@@ -296,19 +296,19 @@ function MyButton() {
 }
 ```
 
-Notice how `onClick={handleClick}` has no parentheses at the end! Do not _call_ the event handler function: you only need to *pass it down*. React will call your event handler when the user clicks the button.
+توجه داشته باشید که `onClick={handleClick}` پرانتز در انتهای خود ندارد! تابع دستگیرنده رویداد را *فراخوانی نکنید*: شما تنها باید آن را *پاس دهید*. React هنگامی که کاربر دکمه را کلیک می‌کند، تابع دستگیرنده رویداد شما را فراخوانی می‌کند.
 
-## Updating the screen {/*updating-the-screen*/}
+## به روزرسانی صفحه {/*updating-the-screen*/}
 
-Often, you'll want your component to "remember" some information and display it. For example, maybe you want to count the number of times a button is clicked. To do this, add *state* to your component.
+بسیار اوقات، شما می‌خواهید مؤلفه‌تان برخی اطلاعات را "یادآوری" کند و نمایش دهد. به عنوان مثال، شاید بخواهید تعداد باری که یک دکمه کلیک شده را محاسبه کنید. برای انجام این کار، به مؤلفه‌تان *وضعیت* (state) اضافه کنید.
 
-First, import [`useState`](/reference/react/useState) from React:
+ابتدا، [`useState`](/reference/react/useState) را از React وارد کنید:
 
 ```js
 import { useState } from 'react';
 ```
 
-Now you can declare a *state variable* inside your component:
+حالا می‌توانید یک *متغیر وضعیت* (state variable) را درون مؤلفه‌تان اعلام کنید:
 
 ```js
 function MyButton() {
@@ -316,9 +316,9 @@ function MyButton() {
   // ...
 ```
 
-You’ll get two things from `useState`: the current state (`count`), and the function that lets you update it (`setCount`). You can give them any names, but the convention is to write `[something, setSomething]`.
+از `useState` دو چیز دریافت خواهید کرد: وضعیت فعلی (`count`) و تابعی که به شما امکان به‌روزرسانی آن را می‌دهد (`setCount`). شما می‌توانید به آن‌ها هر نامی دهید، اما عرفا به نوشتن `[چیزی، setچیزی]` عمل می‌کنند.
 
-The first time the button is displayed, `count` will be `0` because you passed `0` to `useState()`. When you want to change state, call `setCount()` and pass the new value to it. Clicking this button will increment the counter:
+اولین باری که دکمه نمایش داده می‌شود، `count` برابر با `0` خواهد بود چرا که شما `0` را به `useState()` پاس داده‌اید. وقتی می‌خواهید وضعیت را تغییر دهید، تابع `setCount()` را فراخوانی کنید و مقدار جدید را به آن بدهید. با کلیک بر روی این دکمه، شمارنده افزایش می‌یابد:
 
 ```js {5}
 function MyButton() {
@@ -336,9 +336,9 @@ function MyButton() {
 }
 ```
 
-React will call your component function again. This time, `count` will be `1`. Then it will be `2`. And so on.
+React تابع مؤلفه شما را دوباره فراخوانی خواهد کرد. این بار، `count` برابر با `1` خواهد بود. سپس به `2` خواهد رسید و به همین ترتیب.
 
-If you render the same component multiple times, each will get its own state. Click each button separately:
+اگر شما چندین بار همان مؤلفه را رندر کنید، هر کدام وضعیت خود را خواهند داشت. هر دکمه را به تنهایی کلیک کنید:
 
 <Sandpack>
 
@@ -379,39 +379,39 @@ button {
 
 </Sandpack>
 
-Notice how each button "remembers" its own `count` state and doesn't affect other buttons.
+توجه داشته باشید که هر دکمه وضعیت `count` خود را "یاد می‌آورد" و بر روی دکمه‌های دیگر تأثیر نمی‌گذارد.
 
-## Using Hooks {/*using-hooks*/}
+## استفاده از هوک‌ها {/*using-hooks*/}
 
-Functions starting with `use` are called *Hooks*. `useState` is a built-in Hook provided by React. You can find other built-in Hooks in the [API reference.](/reference/react) You can also write your own Hooks by combining the existing ones.
+توابعی که با `use` آغاز می‌شوند به نام *هوک‌ها* شناخته می‌شوند. `useState` یک هوک تعبیه‌شده است که توسط React ارائه شده است. شما می‌توانید هوک‌های دیگر تعبیه‌شده را در [مرجع API](/reference/react) پیدا کنید. همچنین می‌توانید هوک‌های خودتان را با ترکیب هوک‌های موجود بسازید.
 
-Hooks are more restrictive than other functions. You can only call Hooks *at the top* of your components (or other Hooks). If you want to use `useState` in a condition or a loop, extract a new component and put it there.
+هوک‌ها محدود‌تر از توابع دیگر هستند. شما تنها می‌توانید هوک‌ها را *در بالای* مؤلفه‌های خود (یا هوک‌های دیگر) فراخوانی کنید. اگر می‌خواهید `useState` را در یک شرط یا حلقه استفاده کنید، یک مؤلفه جدید استخراج کرده و آن را در آنجا قرار دهید.
 
-## Sharing data between components {/*sharing-data-between-components*/}
+## به اشتراک‌گذاری دیتا بین کامپوننت‌ها {/*sharing-data-between-components*/}
 
-In the previous example, each `MyButton` had its own independent `count`, and when each button was clicked, only the `count` for the button clicked changed:
+در مثال قبلی، هر `MyButton` وضعیت مستقل خود را داشت و هنگام کلیک بر روی هر دکمه، تنها `count` برای دکمه مورد نظر تغییر می‌کرد:
 
 <DiagramGroup>
 
 <Diagram name="sharing_data_child" height={367} width={407} alt="Diagram showing a tree of three components, one parent labeled MyApp and two children labeled MyButton. Both MyButton components contain a count with value zero.">
 
-Initially, each `MyButton`'s `count` state is `0`
+از ابتدا، وضعیت `count` هر `MyButton` برابر با `0` است.
 
 </Diagram>
 
 <Diagram name="sharing_data_child_clicked" height={367} width={407} alt="The same diagram as the previous, with the count of the first child MyButton component highlighted indicating a click with the count value incremented to one. The second MyButton component still contains value zero." >
 
-The first `MyButton` updates its `count` to `1`
+اولین `MyButton` وضعیت `count` خود را به `1` به‌روز می‌کند.
 
 </Diagram>
 
 </DiagramGroup>
 
-However, often you'll need components to *share data and always update together*.
+به هر حال، بسیار اوقات شما نیاز دارید که مؤلفه‌ها اطلاعات را *به اشتراک بگذارند و همواره همراه به‌روز شوند*.
 
-To make both `MyButton` components display the same `count` and update together, you need to move the state from the individual buttons "upwards" to the closest component containing all of them.
+برای اینکه هر دو مؤلفه `MyButton` از یک `count` مشترک نمایش دهند و همزمان به‌روز شوند، باید وضعیت را از دکمه‌های فردی به "بالا" به مؤلفه نزدیکتری انتقال دهید که تمام آن‌ها را شامل می‌شود.
 
-In this example, it is `MyApp`:
+در این مثال، مؤلفه `MyApp` است:
 
 <DiagramGroup>
 
@@ -429,9 +429,9 @@ On click, `MyApp` updates its `count` state to `1` and passes it down to both ch
 
 </DiagramGroup>
 
-Now when you click either button, the `count` in `MyApp` will change, which will change both of the counts in `MyButton`. Here's how you can express this in code.
+حالا وقتی بر روی هر دکمه کلیک می‌کنید، `count` در `MyApp` تغییر می‌کند، که باعث تغییر هر دو `count` در `MyButton` خواهد شد. اینجا چگونه می‌توانید این موضوع را در کد بیان کنید:
 
-First, *move the state up* from `MyButton` into `MyApp`:
+ابتدا، *وضعیت را به بالا انتقال دهید* از `MyButton` به `MyApp`:
 
 ```js {2-6,18}
 export default function MyApp() {
@@ -456,7 +456,7 @@ function MyButton() {
 
 ```
 
-Then, *pass the state down* from `MyApp` to each `MyButton`, together with the shared click handler. You can pass information to `MyButton` using the JSX curly braces, just like you previously did with built-in tags like `<img>`:
+سپس، *وضعیت را به پائین ارسال کنید* از `MyApp` به هر `MyButton`، همراه با دستگیرنده کلیک مشترک. شما می‌توانید اطلاعات را با استفاده از پرانتز زیگ‌زاگ JSX به `MyButton` منتقل کنید، به همان نحوی که قبلاً با تگ‌های تعبیه‌شده مانند `<img>` انجام داده‌اید:
 
 ```js {11-12}
 export default function MyApp() {
@@ -476,9 +476,9 @@ export default function MyApp() {
 }
 ```
 
-The information you pass down like this is called _props_. Now the `MyApp` component contains the `count` state and the `handleClick` event handler, and *passes both of them down as props* to each of the buttons.
+اطلاعاتی که به این شکل به پائین ارسال می‌کنید _ویژگی‌ها_ (props) نامیده می‌شوند. اکنون مؤلفه `MyApp` حاوی وضعیت `count` و دستگیرنده رویداد `handleClick` است و *هر دوی آن‌ها را به عنوان ویژگی به هر یک از دکمه‌ها ارسال می‌کند*.
 
-Finally, change `MyButton` to *read* the props you have passed from its parent component:
+سرانجام، `MyButton` را تغییر دهید تا *ویژگی‌هایی که از مؤلفه والد خود به آن منتقل کرده‌اید را بخواند*:
 
 ```js {1,3}
 function MyButton({ count, onClick }) {
@@ -490,7 +490,7 @@ function MyButton({ count, onClick }) {
 }
 ```
 
-When you click the button, the `onClick` handler fires. Each button's `onClick` prop was set to the `handleClick` function inside `MyApp`, so the code inside of it runs. That code calls `setCount(count + 1)`, incrementing the `count` state variable. The new `count` value is passed as a prop to each button, so they all show the new value. This is called "lifting state up". By moving state up, you've shared it between components.
+وقتی روی دکمه کلیک می‌کنید، دستگیرنده `onClick` فعال می‌شود. هر `onClick` ویژگی دکمه به تابع `handleClick` داخل `MyApp` تنظیم شده است، بنابراین کد داخل آن اجرا می‌شود. این کد `setCount(count + 1)` را فراخوانی می‌کند و متغیر وضعیت `count` را افزایش می‌دهد. مقدار جدید `count` به عنوان ویژگی به هر دکمه ارسال می‌شود، بنابراین همه آنها مقدار جدید را نمایش می‌دهند. این به نام "انتقال وضعیت به بالا" خوانده می‌شود. با انتقال وضعیت به بالا، شما آن را بین مؤلفه‌ها به اشتراک گذاشته‌اید.
 
 <Sandpack>
 
@@ -533,6 +533,6 @@ button {
 
 ## Next Steps {/*next-steps*/}
 
-By now, you know the basics of how to write React code!
+تا این لحظه، شما اصول اساسی نوشتن کد React را می‌شناسید!
 
-Check out the [Tutorial](/learn/tutorial-tic-tac-toe) to put them into practice and build your first mini-app with React.
+برای قرار دادن آنها در عمل و ساخت اولین نرم‌افزار کوچک خود با React، [آموزش](/learn/tutorial-tic-tac-toe) را بررسی کنید.

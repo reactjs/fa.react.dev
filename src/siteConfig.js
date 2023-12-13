@@ -7,6 +7,7 @@ exports.siteConfig = {
   // Translations should replace these lines:
   languageCode: 'en',
   hasLegacySite: true,
+  isRTL: true,
   // --------------------------------------
   copyright: `Copyright © ${new Date().getFullYear()} Facebook Inc. All Rights Reserved.`,
   repoUrl: 'https://github.com/facebook/react',
@@ -16,4 +17,5 @@ exports.siteConfig = {
     apiKey: 'e8451218980a351815563de007648b00',
     indexName: 'beta-react',
   },
+  googleAnalyticsTagId: 'G-B1E83PJ3RT',
 };
