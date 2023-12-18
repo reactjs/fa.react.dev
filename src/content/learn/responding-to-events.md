@@ -637,7 +637,7 @@ export default function LightSwitch() {
 پس از انجام این کار، توجه کنید که با کلیک بر روی دکمه، شمارشگر کلیک صفحه نیز افزایش می یابد. همکار شما که کامپوننت پدر را نوشته است اصرار دارد که `onChangeColor` هیچ شمارنده‌ای را افزایش نمی‌دهد. چه اتفاقی می‌افتد؟ آن را طوری درست کنید که کلیک کردن روی دکمه *فقط* رنگ را تغییر دهد و شمارنده را افزایش _ندهد_ .
 <Sandpack>
 
-```js ColorSwitch.js active
+```js src/ColorSwitch.js active
 export default function ColorSwitch({
   onChangeColor
 }) {
@@ -649,7 +649,7 @@ export default function ColorSwitch({
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import { useState } from 'react';
 import ColorSwitch from './ColorSwitch.js';
 
@@ -693,7 +693,7 @@ export default function App() {
 
 <Sandpack>
 
-```js ColorSwitch.js active
+```js src/ColorSwitch.js active
 export default function ColorSwitch({
   onChangeColor
 }) {
@@ -708,7 +708,7 @@ export default function ColorSwitch({
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import { useState } from 'react';
 import ColorSwitch from './ColorSwitch.js';
 
