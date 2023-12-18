@@ -243,10 +243,23 @@ yarn dev
         </sub>
       </a>
     </td>
+    <td align="center">
+      <a href="https://avatars.githubusercontent.com/u/22578309?v=4">
+        <img
+          src="https://avatars.githubusercontent.com/u/22578309?v=4"
+          width="64px;"
+          alt=""
+        />
+        <br />
+        <sub>
+          <b>Anna Abadi </b>
+        </sub>
+      </a>
+    </td>
   </tr>
 </table>
 <p dir="rtl">
-  اسم شما فراموش شده‌است؟‌{' '}
+  اسم شما فراموش شده‌است؟‌
   <a href="https://github.com/reactjs/fa.reactjs.org/issues/new">
     به ما تذکر دهید!
   </a>
@@ -256,9 +269,9 @@ yarn dev
 
 <p dir="rtl">
   محتوایی که در <a href="https://reactjs.org/">reactjs.org</a> قرار می‌گیرد، تخت
-  مجوز CC-BY-4.0 منتشر می‌شود که جزئیات آن در{' '}
+  مجوز CC-BY-4.0 منتشر می‌شود که جزئیات آن د
   <a href="https://github.com/open-source-explorer/reactjs.org/blob/master/LICENSE-DOCS.md">
     LICENSE-DOCS.md
-  </a>{' '}
+  </a>
   آمده‌است.
 </p>

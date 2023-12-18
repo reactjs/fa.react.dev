@@ -735,11 +735,15 @@ export default function PackingList() {
 
 <div dir="rtl">
 
+<<<<<<< HEAD
 توجه داشته باشید که باید به جای `importance > 0 && ...` بنویسید `importance && ...` تا اگر `importance` برابر با `0` باشد، `0` به عنوان نتیجه رندر نشود!
 
 در این راه حل، از دو شرط مجزا برای درج فاصله بین نام و label اهمیت استفاده می شود. همچنین، می‌توانید از یک fragment با یک فاصله در ابتدا استفاده کنید: `importance > 0 && <> <i>...</i></>` یا بلافاصله یک فاصله در داخل `<i>` اضافه کنید: `importance > 0 && <i> ...</i>`.
 
 </div>
+=======
+In this solution, two separate conditions are used to insert a space between the name and the importance label. Alternatively, you could use a fragment with a leading space: `importance > 0 && <> <i>...</i></>` or add a space immediately inside the `<i>`:  `importance > 0 && <i> ...</i>`.
+>>>>>>> 819e4e26cc44adbb78921c0d540b1fad539ebfca
 
 </Solution>
 
