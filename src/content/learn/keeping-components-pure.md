@@ -4,38 +4,38 @@ title: Keeping Components Pure
 
 <Intro>
 
-Some JavaScript functions are *pure.* Pure functions only perform a calculation and nothing more. By strictly only writing your components as pure functions, you can avoid an entire class of baffling bugs and unpredictable behavior as your codebase grows. To get these benefits, though, there are a few rules you must follow.
+تعدادی از توابع جاوااسکریپت *pure.* هستند. Pure functionها تنها یک محاسبه را انجام می‌دهند. با کاملاً نوشتن اجزای کد خود به عنوان Pure functionها، می‌توانید از  اشکال مختلف باگ های گیج‌کننده و رفتارهای غیرقابل پیش‌بینی در کدتان  جلوگیری کنید.با این حال برای بهره‌مندی از این مزایا قوانینی وجود دارد که باید پیروی شود.
 
 </Intro>
 
 <YouWillLearn>
 
-* What purity is and how it helps you avoid bugs
-* How to keep components pure by keeping changes out of the render phase
-* How to use Strict Mode to find mistakes in your components
+* purity چیست و چگونه به شما کمک می کند تا از باگ ها جلوگیری کنید
+* چگونه کامپوننت ها را با دور نگه داشتن از تغییرات خارج از فاز رندر pure نگه داریم
+* چگونه  از حالت Strict برای یافتن اشتباهات در کامپوننت ها استفاده کنیم
 
 </YouWillLearn>
 
-## Purity: Components as formulas {/*purity-components-as-formulas*/}
+## Purity: کامپوننت ها به عنوان فرمول {/*purity-components-as-formulas*/}
 
-In computer science (and especially the world of functional programming), [a pure function](https://wikipedia.org/wiki/Pure_function) is a function with the following characteristics:
+در علوم کامپیوتر (و به ویژه دنیای برنامه نویسی تابعی)، [یک تابعpure](https://wikipedia.org/wiki/Pure_function) تابعی با ویژگی های زیر است:
 
-* **It minds its own business.** It does not change any objects or variables that existed before it was called.
-* **Same inputs, same output.** Given the same inputs, a pure function should always return the same result.
+* **سرش تو کار خودشه.** هیچ شی یا متغیری را که قبل از فراخوانی وجود داشته است تغییر نمی دهد.
+* **ورودی های یکسان، خروجی یکسان.** با توجه به ورودی های یکسان، یک تابع pure همیشه باید همان نتیجه را برگرداند.
 
-You might already be familiar with one example of pure functions: formulas in math.
+شاید قبلاً با یک مثال از توابع pure آشنا شده باشید: فرمول‌ها در ریاضی
 
-Consider this math formula: <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math>.
+این فرمول ریاضی را در نظر بگیرید: <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math>.
 
-If <Math><MathI>x</MathI> = 2</Math> then <Math><MathI>y</MathI> = 4</Math>. Always. 
+اگر <Math><MathI>x</MathI> = 2</Math> آنوقت <Math><MathI>y</MathI> = 4</Math>. همیشه. 
 
-If <Math><MathI>x</MathI> = 3</Math> then <Math><MathI>y</MathI> = 6</Math>. Always. 
+If <Math><MathI>x</MathI> = 3</Math> آنوقت <Math><MathI>y</MathI> = 6</Math>. همیشه. 
 
-If <Math><MathI>x</MathI> = 3</Math>, <MathI>y</MathI> won't sometimes be <Math>9</Math> or <Math>–1</Math> or <Math>2.5</Math> depending on the time of day or the state of the stock market. 
+اگر <Math><MathI>x</MathI> = 3</Math>آنگاه <MathI>y</MathI> گاهی <Math>9</Math> یا <Math>–1</Math> یا <Math>2.5</Math> بسته به زمان روز یا وضعیت بازار سهام نخواهد بود.
 
-If <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> and <Math><MathI>x</MathI> = 3</Math>, <MathI>y</MathI> will _always_ be <Math>6</Math>. 
+اگر <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> و <Math><MathI>x</MathI> = 3</Math>آنگاه <MathI>y</MathI> همیشه <Math>6</Math>خواهد بود. 
 
-If we made this into a JavaScript function, it would look like this:
+اگر این را به یک تابع جاوا اسکریپت تبدیل کنیم، به این شکل خواهد بود:
 
 ```js
 function double(number) {
@@ -43,9 +43,9 @@ function double(number) {
 }
 ```
 
-In the above example, `double` is a **pure function.** If you pass it `3`, it will return `6`. Always.
+در مثال بالا، `double` یک **تابع pure است.** اگر به آن مقدار `3` را بدهید ، `6` برمی گرداند. همیشه.
 
-React is designed around this concept. **React assumes that every component you write is a pure function.** This means that React components you write must always return the same JSX given the same inputs:
+ری‌اکت حول این مفهوم طراحی شده است. **ری‌اکت فرض می کند که هر کامپوننتی که می نویسید یک تابع pure است.** این بدان معنی است که کامپوننت های ری‌اکتی که می نویسید باید همیشه همان JSX را با توجه به ورودی های یکسان برگردانند:
 
 <Sandpack>
 
@@ -75,21 +75,21 @@ export default function App() {
 
 </Sandpack>
 
-When you pass `drinkers={2}` to `Recipe`, it will return JSX containing `2 cups of water`. Always. 
+وقتی `drinkers={2}` را به `Recipe` می‌دهید، JSX حاوی `2 cups of water` را برمی‌گرداند. همیشه.
 
-If you pass `drinkers={4}`, it will return JSX containing `4 cups of water`. Always.
+اگر  `drinkers={4}` را بدهید، JSX حاوی `4 cups of water` را برمی‌گرداند. همیشه.
 
-Just like a math formula. 
+درست مثل یک فرمول ریاضی. 
 
-You could think of your components as recipes: if you follow them and don't introduce new ingredients during the cooking process, you will get the same dish every time. That "dish" is the JSX that the component serves to React to [render.](/learn/render-and-commit)
+تصور کنید کامپوننت‌هایتان مثل دستور غذا هستند: اگر دستور را دقیقا دنبال کنید و مواد جدیدی به آن اضافه نکنید، هر بار همان غذای خوشمزه را خواهید داشت. در ری‌اکت این "غذای خوشمزه" همان JSX است که کامپوننت برای رندر[render](/learn/render-and-commit) شدن به ری‌اکت تحویل می‌دهد.
 
 <Illustration src="/images/docs/illustrations/i_puritea-recipe.png" alt="A tea recipe for x people: take x cups of water, add x spoons of tea and 0.5x spoons of spices, and 0.5x cups of milk" />
 
-## Side Effects: (un)intended consequences {/*side-effects-unintended-consequences*/}
+## عوارض جانبی: پیامدهای (غیر) عمدی {/*side-effects-unintended-consequences*/}
 
-React's rendering process must always be pure. Components should only *return* their JSX, and not *change* any objects or variables that existed before rendering—that would make them impure!
+فرایند رندر React همواره باید خالص (pure) باشد. یعنی کامپوننت‌ها فقط باید JSX خود را برگردانند و هیچ‌گونه تغییری در اشیاء یا متغیرهایی که قبل از رندر وجود داشته‌اند، ایجاد نکنند. این کار باعث ایجاد ناخالصی می‌شود!
 
-Here is a component that breaks this rule:
+در اینجا یک کامپوننت است که این قانون را زیر پا می گذارد:
 
 <Sandpack>
 
