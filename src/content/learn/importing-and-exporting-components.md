@@ -4,23 +4,23 @@ title: Importing and Exporting Components
 
 <Intro>
 
-The magic of components lies in their reusability: you can create components that are composed of other components. But as you nest more and more components, it often makes sense to start splitting them into different files. This lets you keep your files easy to scan and reuse components in more places.
+کاربرد اصلی کامپوننت ها, قابلیت استفاده مجدد آنهاست: شما میتوانید کامپوننت هایی بسازید که متشکل از کامپوننت های دیگر هستند ولی درگل بهتر است که هربخشی را تبدیل به کامپوننت کنید چون اسکن کردن آنها توسط اجرا کننده آسان تر است.
 
 </Intro>
 
 <YouWillLearn>
 
-* What a root component file is
-* How to import and export a component
-* When to use default and named imports and exports
-* How to import and export multiple components from one file
-* How to split components into multiple files
+* کامپوننت ریشه (root) چیست
+* چگونه کامپوننتی را ایمپورت یا اکسپورت (import - export) کنیم
+* از دستور default استفاده کنم
+* چگونه چندین کامپوننت که داخل یک فایل هستند را export کنم.
+* چگونه در چندین فایل کامپوننت هارا تقسیم کنم
 
 </YouWillLearn>
 
-## The root component file {/*the-root-component-file*/}
+## فایل کامپوننت اصلی {/*the-root-component-file*/}
 
-In [Your First Component](/learn/your-first-component), you made a `Profile` component and a `Gallery` component that renders it:
+در بخش [Your First Component](/learn/your-first-component), شما یک `Profile` کامپوننت ساختید و یک کامپوننت `Gallery` داخل آن رندر میشود:
 
 <Sandpack>
 
