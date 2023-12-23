@@ -52,17 +52,17 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-These currently live in a **root component file,** named `App.js` in this example. Depending on your setup, your root component could be in another file, though. If you use a framework with file-based routing, such as Next.js, your root component will be different for every page.
+در این مثال, کامپوننت ریشه فایل `App.js` است. ممکن است این فایل در پروژه های مختلفی مانند NextJS متفاوت است
 
-## Exporting and importing a component {/*exporting-and-importing-a-component*/}
+## ایمپورت و اکسپورت کردن کامپوننت ها {/*exporting-and-importing-a-component*/}
 
-What if you want to change the landing screen in the future and put a list of science books there? Or place all the profiles somewhere else? It makes sense to move `Gallery` and `Profile` out of the root component file. This will make them more modular and reusable in other files. You can move a component in three steps:
+به عنوان مثال فرض کنید در یک لیست چند کامپوننت `Gallery` یا `Profile` داشته باشید. بهتر است داخل فایل کامپوننت اصلی نباشند و در کامپوننت های جداگانه ای قرار بدهید.
 
-1. **Make** a new JS file to put the components in.
-2. **Export** your function component from that file (using either [default](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/export#using_the_default_export) or [named](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/export#using_named_exports) exports).
-3. **Import** it in the file where you’ll use the component (using the corresponding technique for importing [default](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/import#importing_defaults) or [named](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/import#import_a_single_export_from_a_module) exports).
+1. یک فایل جاوااسکریپتی **بسازید** و تبدیل به یک کامپوننت کنید
+2. در آن فایل, کامپوننت های خود را اکسپورت کنید (از  [default](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/export#using_the_default_export) یا  [name export](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/export#using_named_exports) کنید).
+3. همان کامپوننت را در هر فایلی که میخواهید از آن استفاده کنید ایمپورت کنید (استفاده از تکنیک ایمپورت [default](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/import#importing_defaults) یا [named](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/import#import_a_single_export_from_a_module) exports).
 
-Here both `Profile` and `Gallery` have been moved out of `App.js` into a new file called `Gallery.js`. Now you can change `App.js` to import `Gallery` from `Gallery.js`:
+خب, اینجا کامپوننت های `Profile` و `Gallery` را ساخته ایم و داخل فایل `App.js` ایمپورت کردیم و داریم از آنها استفاده کنیم. حال در دستور ایمپورت مربوط به کامپوننت `Gallery`, بجای `Gallery` نام آن را به `Gallery.js` تغییر دهید
 
 <Sandpack>
 
@@ -104,25 +104,25 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-Notice how this example is broken down into two component files now:
+به موارد زیر که به دو کامپوننت تقسیم شدند دقت کنید:
 
 1. `Gallery.js`:
-     - Defines the `Profile` component which is only used within the same file and is not exported.
-     - Exports the `Gallery` component as a **default export.**
+     - کامپوننت `Profile` را صرفا تعریف کرده و آن را اکسپورت نکرده
+     - از کامپوننت `Gallery` به عنوان **default export.** اکسپورت گرفته
 2. `App.js`:
-     - Imports `Gallery` as a **default import** from `Gallery.js`.
-     - Exports the root `App` component as a **default export.**
+     - کامپوننت `Gallery` را به عنوان **default import** از `Gallery.js` ایمپورت کرده
+     - کامپوننت اصلی یا `App` را به عنوان **default export.** اکسپورت کرده
 
 
 <Note>
 
-You may encounter files that leave off the `.js` file extension like so:
+ممکن است با فایل هایی مواجه بشوید که پسوند `.js` را نداشته باشند:
 
 ```js 
 import Gallery from './Gallery';
 ```
 
-Either `'./Gallery.js'` or `'./Gallery'` will work with React, though the former is closer to how [native ES Modules](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules) work.
+دو آدرس `'./Gallery.js'` یا `'./Gallery'` داخل ریکت کار میکنند, اگر چه مورد اول به سازوکار [native ES Modules](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules) نزدیک تر است.
 
 </Note>
 
