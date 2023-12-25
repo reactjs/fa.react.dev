@@ -16,7 +16,7 @@ title: Keeping Components Pure
 
 </YouWillLearn>
 
-## Purity: کامپوننت ها به عنوان فرمول {/*purity-components-as-formulas*/}
+## Purity: کامپوننت ها به عنوان فرمول ها {/*purity-components-as-formulas*/}
 
 در علوم کامپیوتر (و به ویژه دنیای برنامه نویسی تابعی)، [یک تابعpure](https://wikipedia.org/wiki/Pure_function) تابعی با ویژگی های زیر است:
 
