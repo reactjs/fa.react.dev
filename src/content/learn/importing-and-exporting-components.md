@@ -128,36 +128,36 @@ import Gallery from './Gallery';
 
 <DeepDive>
 
-#### Default vs named exports {/*default-vs-named-exports*/}
+#### دستور default و export {/*default-vs-named-exports*/}
 
-There are two primary ways to export values with JavaScript: default exports and named exports. So far, our examples have only used default exports. But you can use one or both of them in the same file. **A file can have no more than one _default_ export, but it can have as many _named_ exports as you like.**
+در اینجا دو راه اصلی وجود دارد که کامپوننت ها یا توابع و یا متغیر هایمان را export کنیم: default export و export خالی. تا اینجا در مثال ها از default export استفاده شده اما از این به بعد شما میتوانید از دستور export خالی هم استفاده کنید.
 
 ![Default and named exports](/images/docs/illustrations/i_import-export.svg)
 
-How you export your component dictates how you must import it. You will get an error if you try to import a default export the same way you would a named export! This chart can help you keep track:
+اینکه چطور کامپوننت را ایمپورت کنید بستگی دارد به اینکه چطور آن را اکسپورت کنید. و اگر در جای خود استفاده نکنید به ارور برمیخورید.
 
 | Syntax           | Export statement                           | Import statement                          |
 | -----------      | -----------                                | -----------                               |
 | Default  | `export default function Button() {}` | `import Button from './Button.js';`     |
 | Named    | `export function Button() {}`         | `import { Button } from './Button.js';` |
 
-When you write a _default_ import, you can put any name you want after `import`. For example, you could write `import Banana from './Button.js'` instead and it would still provide you with the same default export. In contrast, with named imports, the name has to match on both sides. That's why they are called _named_ imports!
+زمانی که شما به صورت پیش فرض ایمپورت میکنید (default import), شما میتوانید هر اسمی را بعد از import به عنوان نام متغیر بنویسید, حتی میتوانید مثلا بنویسید `import Banana from './Button.js'` ولی در ایمپورت هایی دیگر باید اسمی که در همان فایل اکسپورت کردید را بنویسید.
 
-**People often use default exports if the file exports only one component, and use named exports if it exports multiple components and values.** Regardless of which coding style you prefer, always give meaningful names to your component functions and the files that contain them. Components without names, like `export default () => {}`, are discouraged because they make debugging harder.
+**معمولا از  ایمپورت پیش فرض استفاده میشود, مخصوصا زمانی که یک کامپوننت یا تابع داخل یک فایل داریم. و زمانی که از ایمپورت معمولی  (named import)  که در یک فایل چندین تابع یا کامپوننت داشته باشیم** صرف نظر از اینکه از کدام روش استفاده میکنید, سعی کنید نام های مناسبی برای توابع و کامپوننت ها و ایمپورت ها انتخاب کنید. دستوری مانند `export default () => {}` مشکل زا هست و حذف میشود.
 
 </DeepDive>
 
-## Exporting and importing multiple components from the same file {/*exporting-and-importing-multiple-components-from-the-same-file*/}
+## اکسپورت و ایمپورت کردن چند کامپوننت از یک فایل {/*exporting-and-importing-multiple-components-from-the-same-file*/}
 
-What if you want to show just one `Profile` instead of a gallery? You can export the `Profile` component, too. But `Gallery.js` already has a *default* export, and you can't have _two_ default exports. You could create a new file with a default export, or you could add a *named* export for `Profile`. **A file can only have one default export, but it can have numerous named exports!**
+برگردیم به مثال قبلی, فرض کنیم دو کامپوننت `Profile` و `Gallery` را داخل یک فایل داشته باشیم. نمیتوانیم به صورت پیش فرض از آنها اکسپورت بگیریم (export default). پس چکار کنیم؟ از اکسپورت معمولی (export) استفاده میکنیم. **در یک فایل فقط یک export default داشته باشد ولی به تعداد مدنظر میتوانید اکسپورت معمولی داشته باشید**
 
 <Note>
 
-To reduce the potential confusion between default and named exports, some teams choose to only stick to one style (default or named), or avoid mixing them in a single file. Do what works best for you!
+شاید پیش خود سوال کنید که از کدام استفاده کنم؟ یکسری از تیم ها فقط از export default استفاده کنند و مابقی توابع داخل فایل را با آن ادغام کنند. یا از export سراسر فایل استفاده کنند. اینکه کدام بهتر است به خودتان بستگی دارد.
 
 </Note>
 
-First, **export** `Profile` from `Gallery.js` using a named export (no `default` keyword):
+ابتدا, کامپوننت `Profile` را که در فایل `Gallery.js` موجود است را به اکسپورت بگیرید (از کلمه کلیدی `default` استفاده نکنید):
 
 ```js
 export function Profile() {
@@ -165,13 +165,13 @@ export function Profile() {
 }
 ```
 
-Then, **import** `Profile` from `Gallery.js` to `App.js` using a named import (with the curly braces):
+سپس, کامپوننت `Profile` را از فایل `Gallery.js` به فایل `App.js` ایمپورت کنید (از علامت آکولاد استفاده کنید):
 
 ```js
 import { Profile } from './Gallery.js';
 ```
 
-Finally, **render** `<Profile />` from the `App` component:
+و در آخر, کامپوننت `<Profile />` در کامپوننت `App` رندر میشود:
 
 ```js
 export default function App() {
