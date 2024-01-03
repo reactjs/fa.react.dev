@@ -247,13 +247,13 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 <Challenges>
 
-#### Split the components further {/*split-the-components-further*/}
+#### تا جایی که میتوانید کامپوننت هارا به کامپوننت های کوچک تری تقسیم کنید {/*split-the-components-further*/}
 
-Currently, `Gallery.js` exports both `Profile` and `Gallery`, which is a bit confusing.
+در حال حاضر, فایل `Gallery.js` دو کامپوننت `Profile` و `Gallery` را اکسپورت میکند, که یک مقداری گیج کنندست.
 
-Move the `Profile` component to its own `Profile.js`, and then change the `App` component to render both `<Profile />` and `<Gallery />` one after another.
+یک فایلی را با نام `Profile.js` بسازید و کامپوننت `Profile` را درون آن بیاورید و اکسپورت کنید. سپس در کامپوننت `App` همان را ایمپورت کنید.
 
-You may use either a default or a named export for `Profile`, but make sure that you use the corresponding import syntax in both `App.js` and `Gallery.js`! You can refer to the table from the deep dive above:
+هنگام استفاده از دستور export و import مطمئن شوید از کدام روش استفاده میکنید. برای این منظور جدول زیر را چک کنید:
 
 | Syntax           | Export statement                           | Import statement                          |
 | -----------      | -----------                                | -----------                               |
@@ -262,7 +262,7 @@ You may use either a default or a named export for `Profile`, but make sure that
 
 <Hint>
 
-Don't forget to import your components where they are called. Doesn't `Gallery` use `Profile`, too?
+زمانی که کامپوننت هارا صدا میزنید, حتما کامپوننت هارا import کنید. به نظر شما تا اینجا ما کامپوننت `Profile` را هم در فایل `Gallery.js` داریم؟
 
 </Hint>
 
@@ -282,7 +282,7 @@ export default function App() {
 ```
 
 ```js Gallery.js active
-// Move me to Profile.js!
+// Profile.js منو بیار توی فایل
 export function Profile() {
   return (
     <img
@@ -313,11 +313,11 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-After you get it working with one kind of exports, make it work with the other kind.
+خب بسیار هم عالی! الان وقت آن رسیده که با نوع دیگری از export کار کنید.
 
 <Solution>
 
-This is the solution with named exports:
+این تکه کد از named export (دستور اکسپورت معمولی) استفاده کرده است:
 
 <Sandpack>
 
@@ -367,7 +367,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-This is the solution with default exports:
+و همچنین کد زیر هم با default export (اکسپورت پیش فرض) نوشته شده است:
 
 <Sandpack>
 
