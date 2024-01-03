@@ -179,7 +179,7 @@ export default function App() {
 }
 ```
 
-Now `Gallery.js` contains two exports: a default `Gallery` export, and a named `Profile` export. `App.js` imports both of them. Try editing `<Profile />` to `<Gallery />` and back in this example:
+حال در اینجا فایل `Gallery.js` دو export دارد: یک default export مربوط به کامپوننت `Gallery`, و یک named export مربوط به کامپوننت `Profile`. در فایل `App.js` هردوی آنها ایمپورت میشوند. حال دستور `<Profile />` را به `<Gallery />` تغییر بدهید و به مثال بازگردید:
 
 <Sandpack>
 
@@ -222,24 +222,24 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-Now you're using a mix of default and named exports:
+حال شما از هر دو نوع از دستور export استفاده کردید:
 
 * `Gallery.js`:
-  - Exports the `Profile` component as a **named export called `Profile`.**
-  - Exports the `Gallery` component as a **default export.**
+  - کامپوننت `Profile` به عنوان  **named export** که نام آن `Profile` است اکسپورت شده.
+  - کامپوننت `Gallery` به عنوان  **default export** اکسپورت شده است
 * `App.js`:
-  - Imports `Profile` as a **named import called `Profile`** from `Gallery.js`.
-  - Imports `Gallery` as a **default import** from `Gallery.js`.
-  - Exports the root `App` component as a **default export.**
+  - کامپوننت `Profile` به عنوان  **named import** که نام آن `Profile` است در `Gallery.js` ایمپورت شده.
+  - کامپوننت `Gallery` به عنوان  **default import** در فایل `Gallery.js` ایمپورت شده.
+  - کامپوننت `App` که کامپوننت ریشه است به عنوان  **default export** اکسپورت شده است.
 
 <Recap>
 
-On this page you learned:
+مواردی که در این صفحه یاد گرفتید:
 
-* What a root component file is
-* How to import and export a component
-* When and how to use default and named imports and exports
-* How to export multiple components from the same file
+* کامپوننت اصلی (root) چیست
+* چگونه یک کامپوننت را export/import کنیم
+* چه زمانی از export/import پیش فرض یا معمولی استفاده کنیم
+* چگونه چندین کامپوننت را که داخل یک فایل هستند را اکسپورت کنیم
 
 </Recap>
 
