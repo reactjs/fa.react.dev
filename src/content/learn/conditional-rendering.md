@@ -3,9 +3,10 @@ title: رندر‌کردن شرطی
 ---
 
 <Intro>
+
 <div dir="rtl">
 
-کامپوننت‌های شما معمولا بسته به شرایط مختلف نیاز به نمایش چیزهای مختلفی دارند. در ری‌اکت، می‌توانید ‌JSX را با سینتکس جاوااسکریپت با استفاده از دستوراتی مانند `if`،‌ `&&`،‌و `? :` به صورت شرطی رندر کنید.
+کامپوننت‌های شما معمولا بسته به شرایط مختلف نیاز به نمایش چیزهای مختلفی دارند. در ری‌اکت، می‌توانید ‌JSX را با سینتکس جاوااسکریپت با استفاده از دستوراتی مانند `if`،‌ `&&`،‌ و `? :` به صورت شرطی رندر کنید.
 
 </div>
 </Intro>
@@ -14,7 +15,7 @@ title: رندر‌کردن شرطی
 <YouWillLearn>
 
 * نحوه برگرداندن JSX های مختلف بسته به یک شرط
-* نحوه گنجاندن یا حذف مشروط یک قطعه از JSX
+* نحوه گنجاندن یا حذف کردن شرطی یک قطعه از JSX
 * میانبرهای سینتکسی شرطی رایج که در کد‌های ری‌اکت با آنها مواجه خواهید شد
 
 </YouWillLearn>
@@ -64,7 +65,7 @@ export default function PackingList() {
 
 توجه داشته باشید که برای برخی از کامپوننت‌های   props ،`isPacked` آن ها به جای true ،false  داده شده است. شما می‌خواهید اگر `isPacked={true}` باشد،  یک علامت (✔) به موارد بسته‌بندی شده اضافه کنید.
 
-می توانید این را به عنوان یک عبارت [`if`/`else` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) بنویسید:
+می توانید این را به عنوان یک عبارت <span dir="ltr">[`if`/`else` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else)</span> بنویسید:
 
 </div>
 
@@ -217,7 +218,7 @@ return <li className="item">{name}</li>;
 
 <div dir="rtl">
 
-اگرچه این تکرار مضر نیست، اما می‌تواند نگهداری کد شما را سخت‌تر کند. اگر بخواهید `className` را تغییر دهید چه؟ شما باید این کار را در دو مکان از کد خود انجام دهید! در چنین شرایطی، می‌توانید به صورت شرطی، کمی JSX اضافه کنید تا کدتان بیشتر [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) شود. 
+اگرچه این تکرار مضر نیست، اما می‌تواند نگهداری کد شما را سخت‌تر کند. اگر بخواهید `className` را تغییر دهید چه؟ شما باید این کار را در دو جا از کد خود انجام دهید! در چنین شرایطی، می‌توانید به صورت شرطی، کمی JSX اضافه کنید تا کدتان بیشتر [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) شود. 
 
 </div>
 <div dir="rtl">
@@ -252,23 +253,23 @@ return (
   </li>
 );
 ```
+
 <div dir="rtl">
 
-شما می توانید آن را به صورت *"اگر `isPacked`  (`?`)درست است، سپس `name + ' ✔'` را رندر کنید، در غیر این صورت (`:`) `name` را اجرا کنید "*  بخوانید.
+شما می توانید آن را به صورت *"اگر `isPacked` درست است، سپس  (`?`) `name + ' ✔'` را رندر کنید، در غیر این صورت (`:`) `name` را اجرا کنید "*  بخوانید.
 
 </div>
-<DeepDive>
 
-<div dir="rtl">
+<DeepDive>
 
 #### آیا این دو مثال کاملاً معادل هستند؟ {/*are-these-two-examples-fully-equivalent*/}
 
-</div>
 <div dir="rtl">
 
-اگر از یک پس‌زمینه برنامه‌نویسی شی‌گرا می‌آیید، ممکن است فرض کنید که دو مثال بالا به طور ظاهری متفاوت هستند، زیرا یکی از آنها ممکن است دو "نمونه" متفاوت از `<li>` ایجاد کند. اما المنت‌های JSX "نمونه" نیستند زیرا هیچ حالت داخلی ندارند و نودهای  واقعی DOM نیستند. آنها توصیف های سبک وزن هستند، مانند blueprintها. بنابراین، این دو مثال، در واقع کاملاً معادل *هستند*. [نگهداری و بازنشانی وضعیت](/learn/preserving-and-resetting-state) به تفصیل درباره اینکه چگونه این کار می‌کند توضیح می‌دهد.
+اگر از یک پس‌زمینه برنامه‌نویسی شی‌گرا می‌آیید، ممکن است فرض کنید که دو مثال بالا به طور ظاهری متفاوت هستند، زیرا یکی از آنها ممکن است دو "نمونه" متفاوت از `<li>` ایجاد کند. اما المنت‌های JSX "نمونه" نیستند زیرا هیچ حالت داخلی ندارند و نودهای  واقعی DOM نیستند. آنها توصیف های سبک وزن هستند، مانند blueprintها. بنابراین، این دو مثال، در واقع کاملاً معادل *هستند*. [نگهداری و بازنشانی وضعیت](/learn/preserving-and-resetting-state) به تفصیل درباره اینکه چگونه این، کار می‌کند توضیح می‌دهد.
 
 </div>
+
 </DeepDive>
 
 <div dir="rtl">
@@ -330,7 +331,7 @@ export default function PackingList() {
 </div>
 <div dir="rtl">
 
-یکی دیگر از میانبرهای رایجی که با آن مواجه خواهید شد، [عملگر منطقی جاوا اسکریپت AND (`&&`) است.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND#:~:text=The%20logical%20AND%20(%20%26%26%20)%20operator,it%20returns%20a%20Boolean%20value.) در داخل کامپوننت های ری‌اکت، اغلب زمانی می‌آید که می خواهید مقداری JSX را وقتی شرطی درست است، رندر کنید، **یا هیچ چیزی را رندر نکنید.** با `&&`، فقط در صورتی می توانید علامت را به صورت شرطی ارائه دهید که  `true` ،`isPacked` باشد:
+یکی دیگر از میانبرهای رایجی که با آن مواجه خواهید شد، [عملگر منطقی AND (`&&`) جاوا اسکریپت است.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND#:~:text=The%20logical%20AND%20(%20%26%26%20)%20operator,it%20returns%20a%20Boolean%20value.) در داخل کامپوننت های ری‌اکت، اغلب زمانی می‌آید که می خواهید مقداری JSX را وقتی شرطی درست است، رندر کنید، **یا هیچ چیزی را رندر نکنید.** با `&&`، فقط در صورتی می توانید علامت را به صورت شرطی ارائه دهید که  `true` ،`isPacked` باشد:
 
 </div>
 
@@ -345,7 +346,7 @@ return (
 
 می توانید این را به صورت *"اگر `isPacked`، آنگاه (`&&`) علامت چک‌مارک را ارائه دهید، در غیر این صورت، هیچ چیزی را رندر نکنید"*، بخوانید.
 
-اینجا در عمل است:
+اینجا در عمل داریم:
 
 </div>
 
@@ -386,7 +387,7 @@ export default function PackingList() {
 </Sandpack>
 <div dir="rtl">
 
-یک [JavaScript && expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND) اگر سمت چپ (شرط ما) `true` است، مقدار سمت راست خود (در مورد ما، علامت چکمارک) را برمی گرداند. اما اگر شرط `false` باشد، کل عبارت `false` می شود. ری‌اکت 'false' را به عنوان "سوراخ" در درخت JSX، درست مانند `null` یا `undefined` در نظر می‌گیرد و هیچ چیزی را در جای آن ارائه نمی‌کند.
+یک [عبارت && جاوااسکریپت](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND) اگر سمت چپ (شرط ما) `true` است، مقدار سمت راست خود (در مورد ما، علامت چکمارک) را برمی گرداند. اما اگر شرط `false` باشد، کل عبارت `false` می شود. ری‌اکت `false` را به عنوان "سوراخ" در درخت JSX، درست مانند `null` یا `undefined` در نظر می‌گیرد و هیچ چیزی را در جای آن ارائه نمی‌کند.
 
 </div>
 
@@ -549,12 +550,12 @@ export default function PackingList() {
 
 </Recap>
 
-
-
 <Challenges>
-<div dir="rtl">
+
 
 #### نمادی برای مواردی که کامل‌نشده با `? :` نشان بده {/*show-an-icon-for-incomplete-items-with--*/}
+
+<div dir="rtl">
 
 اگر `true` ،`isPacked` نباشد،‌ از عملگر شرطی (`cond ? a : b`) برای رندر‌کردن ❌ استفاده کن.
 
@@ -635,9 +636,10 @@ export default function PackingList() {
 </Sandpack>
 
 </Solution>
-<div dir="rtl">
 
 #### اهمیت مورد را با `&&` نشان بده {/*show-the-item-importance-with-*/}
+
+<div dir="rtl">
 
 در این مثال، هر `Item` یک `importance` عددی دریافت می‌کند. از عملگر `&&` برای نمایش "_(Importance: X)_" به صورت italics استفاده کنید، اما فقط برای مواردی که اهمیت غیر صفر دارند. لیست اقلام شما باید به این شکل باشد:
 
@@ -735,21 +737,17 @@ export default function PackingList() {
 
 <div dir="rtl">
 
-<<<<<<< HEAD
-توجه داشته باشید که باید به جای `importance > 0 && ...` بنویسید `importance && ...` تا اگر `importance` برابر با `0` باشد، `0` به عنوان نتیجه رندر نشود!
+توجه داشته باشید که باید به جای `importance && ...` بنویسید `importance > 0 && ...` تا اگر `importance` برابر با `0` باشد، `0` به عنوان نتیجه رندر نشود!
 
 در این راه حل، از دو شرط مجزا برای درج فاصله بین نام و label اهمیت استفاده می شود. همچنین، می‌توانید از یک fragment با یک فاصله در ابتدا استفاده کنید: `importance > 0 && <> <i>...</i></>` یا بلافاصله یک فاصله در داخل `<i>` اضافه کنید: `importance > 0 && <i> ...</i>`.
 
 </div>
-=======
-In this solution, two separate conditions are used to insert a space between the name and the importance label. Alternatively, you could use a fragment with a leading space: `importance > 0 && <> <i>...</i></>` or add a space immediately inside the `<i>`:  `importance > 0 && <i> ...</i>`.
->>>>>>> 819e4e26cc44adbb78921c0d540b1fad539ebfca
 
 </Solution>
 
-<div dir="rtl">
-
 #### ری‌فکتور یک سری از `? :` به `if` و متغیر‌ها {/*refactor-a-series-of---to-if-and-variables*/}
+
+<div dir="rtl">
 
 این کامپوننت `Drink` از یک سری شرط‌های `? :` برای نشان دادن اطلاعات مختلف بسته به اینکه prop `name` برابر با `"tea"` باشد یا  `"coffee"` ،‌ استفاده می‌کند. مشکل این است که اطلاعات مربوط به هر نوشیدنی در شرط‌های مختلف پخش می شود. این کد را برای استفاده از یک عبارت `if` به جای سه شرط‌ `? :` ری‌فکتور کنید 
 
