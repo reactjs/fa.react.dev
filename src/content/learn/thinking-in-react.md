@@ -105,8 +105,13 @@ title: تفکر به سبک ری‌اکت
 
 <Sandpack>
 
+<<<<<<< HEAD
 ```jsx App.js
 function ProductCategoryRow({category}) {
+=======
+```jsx src/App.js
+function ProductCategoryRow({ category }) {
+>>>>>>> 315cb7a38a1645623fc55501429285ab680b8a6a
   return (
     <tr>
       <th colSpan="2">{category}</th>
@@ -337,8 +342,13 @@ function FilterableProductTable({ products }) {
 
 <Sandpack>
 
+<<<<<<< HEAD
 ```jsx App.js
 import {useState} from 'react';
+=======
+```jsx src/App.js
+import { useState } from 'react';
+>>>>>>> 315cb7a38a1645623fc55501429285ab680b8a6a
 
 function FilterableProductTable({products}) {
   const [filterText, setFilterText] = useState('');
@@ -527,8 +537,13 @@ function FilterableProductTable({ products }) {
 
 <Sandpack>
 
+<<<<<<< HEAD
 ```jsx App.js
 import {useState} from 'react';
+=======
+```jsx src/App.js
+import { useState } from 'react';
+>>>>>>> 315cb7a38a1645623fc55501429285ab680b8a6a
 
 function FilterableProductTable({products}) {
   const [filterText, setFilterText] = useState('');
