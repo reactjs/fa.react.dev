@@ -4,6 +4,7 @@
 
 import {useState} from 'react';
 import {useRouter} from 'next/router';
+import cn from 'classnames';
 
 export function Feedback({onSubmit = () => {}}: {onSubmit?: () => void}) {
   const {asPath} = useRouter();
@@ -45,20 +46,26 @@ const thumbsDownIcon = (
 );
 
 function sendGAEvent(isPositive: boolean) {
+  const category = isPositive ? 'like_button' : 'dislike_button';
+  const value = isPositive ? 1 : 0;
   // Fragile. Don't change unless you've tested the network payload
   // and verified that the right events actually show up in GA.
   // @ts-ignore
   gtag('event', 'feedback', {
-    event_category: 'button',
+    event_category: category,
     event_label: window.location.pathname,
-    value: isPositive ? 1 : 0,
+    event_value: value,
   });
 }
 
 function SendFeedback({onSubmit}: {onSubmit: () => void}) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   return (
-    <div className="max-w-xs w-80 lg:w-auto py-3 shadow-lg rounded-lg m-4 bg-wash dark:bg-gray-95 px-4 flex">
+    <div
+      className={cn(
+        'max-w-xs w-80 lg:w-auto py-3 shadow-lg rounded-lg m-4 bg-wash dark:bg-gray-95 px-4 flex',
+        {exit: isSubmitted}
+      )}>
       <p className="w-full font-bold text-primary dark:text-primary-dark text-lg me-4">
         {isSubmitted ? 'Thank you for your feedback!' : 'Is this page useful?'}
       </p>
