@@ -111,7 +111,7 @@ function ProductCategoryRow({category}) {
 =======
 ```jsx src/App.js
 function ProductCategoryRow({ category }) {
->>>>>>> bb3a0f5c10aaeba6e6fb35f31f36b47812ece158
+>>>>>>> 5d2f7105bd6374e465b8bdce8efceaeb8f01c937
   return (
     <tr>
       <th colSpan="2">{category}</th>
@@ -348,7 +348,7 @@ import {useState} from 'react';
 =======
 ```jsx src/App.js
 import { useState } from 'react';
->>>>>>> bb3a0f5c10aaeba6e6fb35f31f36b47812ece158
+>>>>>>> 5d2f7105bd6374e465b8bdce8efceaeb8f01c937
 
 function FilterableProductTable({products}) {
   const [filterText, setFilterText] = useState('');
@@ -552,7 +552,7 @@ function SearchBar({
           type="checkbox"
           checked={inStockOnly}
           onChange={(e) => onInStockOnlyChange(e.target.checked)}
->>>>>>> bb3a0f5c10aaeba6e6fb35f31f36b47812ece158
+>>>>>>> 5d2f7105bd6374e465b8bdce8efceaeb8f01c937
 ```
 <p dir="rtl">
 حالا اپلیکیشن کار میکند !
@@ -566,7 +566,7 @@ import {useState} from 'react';
 =======
 ```jsx src/App.js
 import { useState } from 'react';
->>>>>>> bb3a0f5c10aaeba6e6fb35f31f36b47812ece158
+>>>>>>> 5d2f7105bd6374e465b8bdce8efceaeb8f01c937
 
 function FilterableProductTable({products}) {
   const [filterText, setFilterText] = useState('');
