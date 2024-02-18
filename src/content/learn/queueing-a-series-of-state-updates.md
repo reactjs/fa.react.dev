@@ -1,23 +1,23 @@
 ---
-title: Queueing a Series of State Updates
+title: صف بندی مجموعه ای از بروزرسانی های State
 ---
 
 <Intro>
 
-Setting a state variable will queue another render. But sometimes you might want to perform multiple operations on the value before queueing the next render. To do this, it helps to understand how React batches state updates.
+مقداردهی یک متغیر state، باعث ارسال درخواست برای رندر شدن صفحه می&zwnj;شود. اما گاهی اوقات ممکن است بخواهید قبل از اینکه رندر بعدی را در صف قرار دهید چندین عملیات روی مقدار یک متغیر state انجام دهید. برای انجام این کار درک مفهوم بروزرسانی&zwnj;های دسته&zwnj;ای یک متغیر state به شما کمک خواهد کرد.
 
 </Intro>
 
-<YouWillLearn>
+<YouWillLearn dir='rtl'>
 
-* What "batching" is and how React uses it to process multiple state updates
-* How to apply several updates to the same state variable in a row
+* مفهوم "دسته&zwnj;بندی" چیست و چطور ری&zwnj;اکت با استفاده از آن چندین بروزرسانی state را پردازش می&zwnj;کند
+* چطور می&zwnj;توان چند بروزرسانی یک متغییر state را طی یک رندر انجام داد
 
 </YouWillLearn>
 
-## React batches state updates {/*react-batches-state-updates*/}
+## بروزرسانی&zwnj;های دسته&zwnj;ای state در ری&zwnj;اکت {/*react-batches-state-updates*/}
 
-You might expect that clicking the "+3" button will increment the counter three times because it calls `setNumber(number + 1)` three times:
+ممکن است انتظار داشته باشید که با کلیک بر روی دکمه <span dir='ltr'>"+3"</span> شمارنده سه واحد افزایش یابد زیرا `setNumber(number + 1)` را سه بار فراخوانی می&zwnj;کند:
 
 <Sandpack>
 
@@ -47,7 +47,7 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 
 </Sandpack>
 
-However, as you might recall from the previous section, [each render's state values are fixed](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time), so the value of `number` inside the first render's event handler is always `0`, no matter how many times you call `setNumber(1)`:
+با این حال، همانطور که ممکن است از بخش قبل به خاطر داشته باشید، [در هر رندر مقدار state ثابت است](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time)، بنابراین مقدار `number` همیشه در اولین رندرِ حاصل از اجرای کنترل رویداد کلیک  `0` است، فارغ از این که چند بار `setNumber(1)` را فراخوانی کنید:
 
 ```js
 setNumber(0 + 1);
@@ -55,21 +55,21 @@ setNumber(0 + 1);
 setNumber(0 + 1);
 ```
 
-But there is one other factor at play here. **React waits until *all* code in the event handlers has run before processing your state updates.** This is why the re-render only happens *after* all these `setNumber()` calls.
+اما لازم است در اینجا به یک نکته&zwnj;ی دیگر توجه داشته باشیم. **ری&zwnj;اکت پردازش بروزرسانی state را بعد از اجرای *تمام* کدهای داخل کنترل کننده&zwnj;ی رویداد انجام می&zwnj;دهد.** به همین دلیل است که رندر مجدد تنها *بعد از* تمام فراخوانی&zwnj;های `setNumber()` اتفاق می&zwnj;افتد.
 
-This might remind you of a waiter taking an order at the restaurant. A waiter doesn't run to the kitchen at the mention of your first dish! Instead, they let you finish your order, let you make changes to it, and even take orders from other people at the table.
+این ممکن است شما را به یاد گارسونی بیاندازد که در رستوران در حال گرفتن یک سفارش است. گارسون با ذکر اولین غذا توسط شما به سمت آشپزخانه نمی&zwnj;دود! در عوض، آن&zwnj;ها به شما اجازه می&zwnj;دهند که شفارشتان را تمام کنید، آن را تغییر دهید، و حتی سفارش سایر افراد حاضر در میز را نیز دریافت می&zwnj;کنند.
 
 <Illustration src="/images/docs/illustrations/i_react-batching.png"  alt="An elegant cursor at a restaurant places and order multiple times with React, playing the part of the waiter. After she calls setState() multiple times, the waiter writes down the last one she requested as her final order." />
 
-This lets you update multiple state variables--even from multiple components--without triggering too many [re-renders.](/learn/render-and-commit#re-renders-when-state-updates) But this also means that the UI won't be updated until _after_ your event handler, and any code in it, completes. This behavior, also known as **batching,** makes your React app run much faster. It also avoids dealing with confusing "half-finished" renders where only some of the variables have been updated.
+این به شما این امکان را می&zwnj;دهد که چندین متغییر state را بدون انجام [رندرهای مجدد](/learn/render-and-commit#re-renders-when-state-updates) زیاد  بروزرسانی کنید--حتی از چندین کامپوننت متفاوت--. اما باعث این هم می&zwnj;شود که UI تا _بعد_ از اجرای کامل کنترل کننده رویداد، و تمام کدهای داخل آن بروزرسانی نشود. این رفتار، که به عنوان **دسته&zwnj;بندی** نیز شناخته می&zwnj;شود، باعث می&zwnj;شود برنامه&zwnj;ی ری&zwnj;اکت شما خیلی سریع&zwnj;تر اجرا شود. همچنین از مواجه شدن با بروزرسانی&zwnj;های "نیمه کاره&zwnj;ی" گیج کننده که در آن&zwnj;ها فقط برخی متغییر&zwnj;ها بروزرسانی می&zwnj;شوند جلوگیری می&zwnj;کند.
 
-**React does not batch across *multiple* intentional events like clicks**--each click is handled separately. Rest assured that React only does batching when it's generally safe to do. This ensures that, for example, if the first button click disables a form, the second click would not submit it again.
+**ری&zwnj;اکت مدیریت *چند رویداد* مانند چند بار کلیک کردن عمدی و پشت سر هم را دسته&zwnj;بندی نمی&zwnj;کند**--مدیریت هر رویداد به صورت جداگانه انجام می&zwnj;شود. مطمئن باشید ری&zwnj;اکت تنها زمانی دسته&zwnj;بندی را انجام می&zwnj;دهد که استفاده از آن کاملا ایمن باشد. این به عنوان مثال تضمین می&zwnj;کند که اگر اولین کلیک یک فرم را غیر فعال کرد، کلیک دوم آن را دوباره ارسال نکند.
 
-## Updating the same state multiple times before the next render {/*updating-the-same-state-multiple-times-before-the-next-render*/}
+## انجام چند بروزرسانی روی یک state قبل از رندر بعدی {/*updating-the-same-state-multiple-times-before-the-next-render*/}
 
-It is an uncommon use case, but if you would like to update the same state variable multiple times before the next render, instead of passing the *next state value* like `setNumber(number + 1)`, you can pass a *function* that calculates the next state based on the previous one in the queue, like `setNumber(n => n + 1)`. It is a way to tell React to "do something with the state value" instead of just replacing it.
+این یک استفاده&zwnj;ی غیر معمول است، اما اگر می&zwnj;خواهید یک متغییر state را قبل از رندر بعدی، چند بار بروزرسانی کنید، به جای ارسال *مقدار بعدی state* مثل `setNumber(number + 1)`، می&zwnj;توانید *تابعی* را ارسال کنید تا مقدار بعدی state را بر اساس مقدار قبلی آن که در صف هست محاسبه کند، مثل `setNumber(n => n + 1)`. این راهی است تا به ری&zwnj;اکت بگوییم "با مقدار state کاری انجام بده" به جای آن که جایگزینش کنی.
 
-Try incrementing the counter now:
+حالا شمارنده را افزایش دهید:
 
 <Sandpack>
 
@@ -99,10 +99,10 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 
 </Sandpack>
 
-Here, `n => n + 1` is called an **updater function.** When you pass it to a state setter:
+در اینجا `n => n + 1` یک **تابع بروزرسانی** نامیده می&zwnj;شود. زمانی که شما آن را به یک تنظیم کننده&zwnj;ی state ارسال می&zwnj;کنید:
 
-1. React queues this function to be processed after all the other code in the event handler has run.
-2. During the next render, React goes through the queue and gives you the final updated state.
+1. ری&zwnj;اکت این تابع را در صف قرار می&zwnj;دهد تا پس از اجرای سایر کدهای کنترل کننده&zwnj;ی رویداد پردازش شود.
+2. در رندر بعدی ری&zwnj;اکت صف را تا اتنها پیمایش می&zwnj;کند و state آپدیت شده&zwnj;ی نهایی را به شما می&zwnj;دهد.
 
 ```js
 setNumber(n => n + 1);
@@ -110,13 +110,13 @@ setNumber(n => n + 1);
 setNumber(n => n + 1);
 ```
 
-Here's how React works through these lines of code while executing the event handler:
+در اینجا نحوه&zwnj;ی عملکرد ری&zwnj;اکت، هنگام پیمایش این خطوط کد که در کنترل کننده&zwnj;ی رویداد اجرا می&zwnj;شوند آمده است:
 
-1. `setNumber(n => n + 1)`: `n => n + 1` is a function. React adds it to a queue.
-1. `setNumber(n => n + 1)`: `n => n + 1` is a function. React adds it to a queue.
-1. `setNumber(n => n + 1)`: `n => n + 1` is a function. React adds it to a queue.
+1. `setNumber(n => n + 1)`: `n => n + 1` یک تابع است. ری&zwnj;اکت آن را به یک صف اضافه می&zwnj;کند.
+1. `setNumber(n => n + 1)`: `n => n + 1` یک تابع است. ری&zwnj;اکت آن را به یک صف اضافه می&zwnj;کند.
+1. `setNumber(n => n + 1)`: `n => n + 1` یک تابع است. ری&zwnj;اکت آن را به یک صف اضافه می&zwnj;کند.
 
-When you call `useState` during the next render, React goes through the queue. The previous `number` state was `0`, so that's what React passes to the first updater function as the `n` argument. Then React takes the return value of your previous updater function and passes it to the next updater as `n`, and so on:
+زمانی که شما `useState` را فراخوانی می&zwnj;کنید، در رندر بعدی، ری&zwnj;اکت به صف مراجعه می&zwnj;کند. مقدار قبلی `number` برابر `0` است، پس این همان چیزی است که ری&zwnj;اکت به عنوان اولین مقدار به عنوان آرگومان `n` به تابع بروزرسانی ارسال می&zwnj;کند. سپس ری&zwnj;اکت مقدار بازگشتی از تابع بروزرسانی را دریافت می&zwnj;کند و آن را به عنوان آرگومان `n`به تابع بروزرسانی بعدی ارسال می&zwnj;کند، و به همین ترتیب تا اتنها ادامه می&zwnj;دهد:
 
 |  queued update | `n` | returns |
 |--------------|---------|-----|
@@ -124,12 +124,12 @@ When you call `useState` during the next render, React goes through the queue. T
 | `n => n + 1` | `1` | `1 + 1 = 2` |
 | `n => n + 1` | `2` | `2 + 1 = 3` |
 
-React stores `3` as the final result and returns it from `useState`.
+ری&zwnj;اکت `3` را به عنوان مقدار نهایی ذخیره می&zwnj;کند و آن را از `useState` برمی&zwnj;گرداند.
 
-This is why clicking "+3" in the above example correctly increments the value by 3.
-### What happens if you update state after replacing it {/*what-happens-if-you-update-state-after-replacing-it*/}
+به همین دلیل است که کلیک کردن روی دکمه&zwnj;ی <span dir="ltr">"+3"</span> در مثال بالا مقدار را به درستی 3 واحد افزایش می&zwnj;دهد.
+### چه اتفاقی خواهد افتاد اگر state را بعد از جایگزینی بروزرسانی کنید {/*what-happens-if-you-update-state-after-replacing-it*/}
 
-What about this event handler? What do you think `number` will be in the next render?
+در مورد کنترل کننده&zwnj;ی زیر چطور؟ به نظر شما در رندر بعدی `number` چه مقداری خواهد داشت؟
 
 ```js
 <button onClick={() => {
@@ -165,29 +165,29 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 
 </Sandpack>
 
-Here's what this event handler tells React to do:
+چیزی که کنترل کننده&zwnj;ی رویداد در مثال بالا به ری&zwnj;اکت می&zwnj;گوید انجام بدهد به صورت زیر است:
 
-1. `setNumber(number + 5)`: `number` is `0`, so `setNumber(0 + 5)`. React adds *"replace with `5`"* to its queue.
-2. `setNumber(n => n + 1)`: `n => n + 1` is an updater function. React adds *that function* to its queue.
+1. `setNumber(number + 5)`: مقدار `number` برابر `0` است، بنابراین `setNumber(number + 5)` همان <br/>`setNumber(0 + 5)` است و ری&zwnj;اکت *"جایگزینی با `5`"* را به صف اضافه می&zwnj;کند.
+2. `setNumber(n => n + 1)`: `n => n + 1` یک تابع بروزرسانی است. ری&zwnj;اکت  *این تابع* را به صف اضافه می&zwnj;کند.
 
-During the next render, React goes through the state queue:
+در رندر بعدی، ری&zwnj;اکت صف state را پیماش می&zwnj;کند:
 
 |   queued update       | `n` | returns |
 |--------------|---------|-----|
 | "replace with `5`" | `0` (unused) | `5` |
 | `n => n + 1` | `5` | `5 + 1 = 6` |
 
-React stores `6` as the final result and returns it from `useState`. 
+ری&zwnj;اکت مقدار `6` را به عنوان نتیجه&zwnj;ی نهایی ذخیره می&zwnj;کند و آن را از `useState` بر می&zwnj;گرداند. 
 
 <Note>
 
-You may have noticed that `setState(5)` actually works like `setState(n => 5)`, but `n` is unused!
+شاید متوجه شده باشید که `setState(5)` در واقع شبیه `setState(n => 5)` عمل می&zwnj;کند، اما `n` در آن استفاده نشده است!
 
 </Note>
 
-### What happens if you replace state after updating it {/*what-happens-if-you-replace-state-after-updating-it*/}
+### چه اتفاقی خواهد افتاد اگر state را بعد از بروزرسانی با تابع، جایگزین کنید {/*what-happens-if-you-replace-state-after-updating-it*/}
 
-Let's try one more example. What do you think `number` will be in the next render?
+بیایید یک مثال دیگر را امتحان کنیم. به نظر شما در رندر بعدی `number` چه مقداری خواهد داشت؟
 
 ```js
 <button onClick={() => {
@@ -225,13 +225,13 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 
 </Sandpack>
 
-Here's how React works through these lines of code while executing this event handler:
+در زیر نحوه&zwnj;ی عملکرد ری&zwnj;اکت هنگام اجرای کدهای تابع کنترل کننده&zwnj;ی رویداد مثال بالا آمده است:
 
-1. `setNumber(number + 5)`: `number` is `0`, so `setNumber(0 + 5)`. React adds *"replace with `5`"* to its queue.
-2. `setNumber(n => n + 1)`: `n => n + 1` is an updater function. React adds *that function* to its queue.
-3. `setNumber(42)`: React adds *"replace with `42`"* to its queue.
+1. `setNumber(number + 5)`: مقدار `number` برابر `0` است، پس `setNumber(number + 5)` با `setNumber(0 + 5)` یکسان است. ری&zwnj;اکت *"جایگزینی با `5`"* را به صف این state اضافه می&zwnj;کند.
+2. `setNumber(n => n + 1)`: `n => n + 1` یک تابع بروزرسانی است. ری&zwnj;اکت *این تابع* را به صف اضافه می&zwnj;کند.
+3. `setNumber(42)`: ری&zwnj;اکت *"جایگزینی با `42`"* را به صف اضافه می&zwnj;کند.
 
-During the next render, React goes through the state queue:
+در رندر بعدی, ری&zwnj;اکت صف state را پیمایش می&zwnj;کند:
 
 |   queued update       | `n` | returns |
 |--------------|---------|-----|
@@ -239,18 +239,18 @@ During the next render, React goes through the state queue:
 | `n => n + 1` | `5` | `5 + 1 = 6` |
 | "replace with `42`" | `6` (unused) | `42` |
 
-Then React stores `42` as the final result and returns it from `useState`.
+سپس ری&zwnj;اکت `42` را به عنوان نتیجه نهایی ذخیره می&zwnj;کند و آن را از `useState` برمی&zwnj;گرداند.
 
-To summarize, here's how you can think of what you're passing to the `setNumber` state setter:
+به طور خلاصه، پارامتری که به `setNumber` ارسال می&zwnj;کنید، به یکی از دو حالت زیر منجر خواهد شد:
 
-* **An updater function** (e.g. `n => n + 1`) gets added to the queue.
-* **Any other value** (e.g. number `5`) adds "replace with `5`" to the queue, ignoring what's already queued.
+* **یک تابع بروزرسانی:** (به عنوان مثال `n => n + 1`) به صف اضافه می شود.
+* **هر مقدار دیگری:** (به عنوان مثال عدد `5`) سبب اضافه شدن "جایگزینی با `5`" به صف می&zwnj;شود و هر آنچه از قبل در صف قرار گرفته است را بی&zwnj;اثر می&zwnj;کند.
 
-After the event handler completes, React will trigger a re-render. During the re-render, React will process the queue. Updater functions run during rendering, so **updater functions must be [pure](/learn/keeping-components-pure)** and only *return* the result. Don't try to set state from inside of them or run other side effects. In Strict Mode, React will run each updater function twice (but discard the second result) to help you find mistakes.
+پس از اجرای کنترل کننده&zwnj;ی رویداد، ری&zwnj;اکت یک رندر مجدد را راه انداری می&zwnj;کند. طی این رندر مجدد ، ری&zwnj;اکت صف را پردازش خواهد کرد. تابع بروزرسانی در حین رندر اجرا می&zwnj;شود، بنابراین **توابع بروزرسانی باید [خالص](/learn/keeping-components-pure) باشند** و فقط *نتیجه را برگردانند*. سعی نکنید state را از داخل توابع بروزرسانی مقداردهی کنید یا از سایر کنترل کننده&zwnj;های جانبی مانند `useState()‍` استفاده کنید. در حالت Strict Mode، ری&zwnj;اکت هر تابع بروزرسانی را دو بار اجرا می&zwnj;کند(اما نتیجه دوم را نادیده می&zwnj;گیرد) تا به شما در یافتن اشتباهات کمک کند.
 
-### Naming conventions {/*naming-conventions*/}
+### قرارداد&zwnj;های نام&zwnj;گذاری {/*naming-conventions*/}
 
-It's common to name the updater function argument by the first letters of the corresponding state variable:
+معمولا آرگومان تابع بروزرسانی را با حروف اول متغییر state مربوطه نام&zwnj;گذاری می&zwnj;کنند:
 
 ```js
 setEnabled(e => !e);
@@ -258,13 +258,13 @@ setLastName(ln => ln.reverse());
 setFriendCount(fc => fc * 2);
 ```
 
-If you prefer more verbose code, another common convention is to repeat the full state variable name, like `setEnabled(enabled => !enabled)`, or to use a prefix like `setEnabled(prevEnabled => !prevEnabled)`.
+اگر کد طولانی&zwnj;تر را ترجیح می&zwnj;دهید، یکی دیگر از شیوه&zwnj;های رایج، تکرار نام کامل متغییر state است، مثلا `setEnabled(enabled => !enabled)`، یا استفاده از پیشوند مثل `setEnabled(prevEnabled => !prevEnabled)`.
 
 <Recap>
 
-* Setting state does not change the variable in the existing render, but it requests a new render.
-* React processes state updates after event handlers have finished running. This is called batching.
-* To update some state multiple times in one event, you can use `setNumber(n => n + 1)` updater function.
+* بروزرسانی یک state مقدار آن را در رندر فعلی تغییر نمی&zwnj;دهد، اما برای یک رندر جدید درخواست می&zwnj;دهد.
+* ری&zwnj;اکت بروزرسانی state را پس از پایان اجرای کنترل کننده&zwnj;های رویداد پردازش می&zwnj;کند، به این دسته&zwnj;بندی می&zwnj;گویند.
+* برای چند بار بروزرسانی یک state در وقوع یک رویداد می&zwnj;توانید از تابع بروزرسانی مثل `setNumber(n => n + 1)` استفاده کنید.
 
 </Recap>
 
@@ -272,14 +272,13 @@ If you prefer more verbose code, another common convention is to repeat the full
 
 <Challenges>
 
-#### Fix a request counter {/*fix-a-request-counter*/}
+#### شمارنده درخواست را درست کنید {/*fix-a-request-counter*/}
 
-You're working on an art marketplace app that lets the user submit multiple orders for an art item at the same time. Each time the user presses the "Buy" button, the "Pending" counter should increase by one. After three seconds, the "Pending" counter should decrease, and the "Completed" counter should increase.
+شما در حال کار روی یک برنامه&zwnj;ی بازار هنری هستید که به کاربر امکان می&zwnj;دهد چندین سفارش را برای یک کالای هنری به طور همزمان ارسال کند. هر بار که کاربر دکمه&zwnj;ی "خرید" را فشار می&zwnj;دهد, شمارنده&zwnj;ی "در انتظار" باید یک واحد افزایش یابد. بعد از سه ثانیه باید شمارنده&zwnj;ی "در انتظار" کاهش یابد و شمارنده&zwnj;ی "کامل شده" افزایش یابد.
 
-However, the "Pending" counter does not behave as intended. When you press "Buy", it decreases to `-1` (which should not be possible!). And if you click fast twice, both counters seem to behave unpredictably.
+با این حال شمارنده&zwnj;ی "در انتظار" طوری که مورد نظر ما است رفتار نمی&zwnj;کند. وقتی "خرید" را فشار می&zwnj;دهید، به `-1` کاهش می&zwnj;یابد (که نباید امکان&zwnj;پذیر باشد!). و اگر دو بار سریع کلیک کنید، شاهد رفتار غیرقابل پیش&zwnj;بینی از هر دو شمارنده خواهید بود.
 
-Why does this happen? Fix both counters.
-
+چرا این اتفاق می&zwnj;افتد؟ هر دو شمارنده را درست کنید.
 <Sandpack>
 
 ```js
@@ -322,7 +321,7 @@ function delay(ms) {
 
 <Solution>
 
-Inside the `handleClick` event handler, the values of `pending` and `completed` correspond to what they were at the time of the click event. For the first render, `pending` was `0`, so `setPending(pending - 1)` becomes `setPending(-1)`, which is wrong. Since you want to *increment* or *decrement* the counters, rather than set them to a concrete value determined during the click, you can instead pass the updater functions:
+در تابع کنترل رویداد `handleClick` مقادیر `pending` و `completed` برابر با زمانی است که رویداد کلیک اتفاق افتاده است. در اولین رندر، `pending` برابر `0` است، در نتیجه `setPending(pending - 1)` معادل `setPending(-1)` خواهد بود، که اشتباه است. از آنجایی که می&zwnj;خواهید شمارنده&zwnj;ها را *زیاد* یا *کم* کنید، هنگام کلیک می&zwnj;توانید به جای بروزرسانی متغییر state با مقدار مشخص، از توابع بروزرسانی استفاده کنید:
 
 <Sandpack>
 
@@ -364,23 +363,23 @@ function delay(ms) {
 
 </Sandpack>
 
-This ensures that when you increment or decrement a counter, you do it in relation to its *latest* state rather than what the state was at the time of the click.
+این تضمین می&zwnj;کند که وقتی یک شمارنده را افزایش یا کاهش می&zwnj;دهید، این کار را در رابطه با آخرین مقدار state آن انجام دهید، نه مقداری که در زمان کلیک داشته است.
 
 </Solution>
 
-#### Implement the state queue yourself {/*implement-the-state-queue-yourself*/}
+#### صف state را خودتان پیاده&zwnj;سازی کنید {/*implement-the-state-queue-yourself*/}
 
-In this challenge, you will reimplement a tiny part of React from scratch! It's not as hard as it sounds.
+در این چالش، بخش کوچکی از ری&zwnj;اکت را دوباره از ابتدا پیاده&zwnj;سازی خواهید کرد! آنقدر&zwnj;ها هم که به نظر می&zwnj;رسد سخت نیست.
 
-Scroll through the sandbox preview. Notice that it shows **four test cases.** They correspond to the examples you've seen earlier on this page. Your task is to implement the `getFinalState` function so that it returns the correct result for each of those cases. If you implement it correctly, all four tests should pass.
+اگر به قسمت ویرایشگر کد که کمی پایین&zwnj;تر است بروید، متوجه خواهید شده که **چهار تست موردی** در آنجا وجود دارد. آن&zwnj;ها با مثال&zwnj;هایی که در این صفحه دیدم مطابقت دارند. وظیفه شما این است که تابع `getFinalState` را طوری پیاده&zwnj;سازی کنید که مقدار بازگشت داده شده برای هر یک از موارد تست منجر به نتیجه&zwnj;ی صحیح شود. اگر آن را به درستی پیاده سازی کنید، هر چهار تست عبارت صحیح را نشان خواهند داد.
 
-You will receive two arguments: `baseState` is the initial state (like `0`), and the `queue` is an array which contains a mix of numbers (like `5`) and updater functions (like `n => n + 1`) in the order they were added.
+شما دو آرگومان دریافت خواهید کرد: `baseState` که مقدار اولیه state است (مثل `0`)، و `queue` که آرایه&zwnj;ای است شامل ترکیبی از اعداد (مثلا `5`) و توابع بروزرسانی (مثل `n => n + 1`) با همان ترتیبی که به صف اضافه شده&zwnj;اند.
 
-Your task is to return the final state, just like the tables on this page show!
+کار شما این است که state نهایی را برگردانید، درست مانند جداولی که قبل&zwnj;تر در این صفحه دیدید!
 
 <Hint>
 
-If you're feeling stuck, start with this code structure:
+اگر احساس می&zwnj;کنید گیر کردید، با ساختار زیر شروع کنید:
 
 ```js
 export function getFinalState(baseState, queue) {
@@ -398,13 +397,13 @@ export function getFinalState(baseState, queue) {
 }
 ```
 
-Fill out the missing lines!
+کد&zwnj;های از قلم افتاده را شما بنویسید!
 
 </Hint>
 
 <Sandpack>
 
-```js processQueue.js active
+```js src/processQueue.js active
 export function getFinalState(baseState, queue) {
   let finalState = baseState;
 
@@ -414,7 +413,7 @@ export function getFinalState(baseState, queue) {
 }
 ```
 
-```js App.js
+```js src/App.js
 import { getFinalState } from './processQueue.js';
 
 function increment(n) {
@@ -495,11 +494,11 @@ function TestCase({
 
 <Solution>
 
-This is the exact algorithm described on this page that React uses to calculate the final state:
+این همان الگوریتم دقیقی است که در این صفحه توضیح داده شد و ری&zwnj;اکت برای محاسبه&zwnj;ی مقدار نهایی state از آن استفاده می&zwnj;کند: 
 
 <Sandpack>
 
-```js processQueue.js active
+```js src/processQueue.js active
 export function getFinalState(baseState, queue) {
   let finalState = baseState;
 
@@ -517,7 +516,7 @@ export function getFinalState(baseState, queue) {
 }
 ```
 
-```js App.js
+```js src/App.js
 import { getFinalState } from './processQueue.js';
 
 function increment(n) {
@@ -573,7 +572,7 @@ function TestCase({
 }) {
   const actual = getFinalState(baseState, queue);
   return (
-    <>
+    <div dir="rtl">
       <p>Base state: <b>{baseState}</b></p>
       <p>Queue: <b>[{queue.join(', ')}]</b></p>
       <p>Expected result: <b>{expected}</b></p>
@@ -589,14 +588,14 @@ function TestCase({
           'wrong'
         })
       </p>
-    </>
+    </div>
   );
 }
 ```
 
 </Sandpack>
 
-Now you know how this part of React works!
+اکنون می&zwnj;دانید که این بخش از ری&zwnj;اکت چطور کار می&zwnj;کند!
 
 </Solution>
 

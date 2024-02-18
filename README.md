@@ -1,5 +1,5 @@
 <h1 dir="rtl">
-  نسخه فارسی <a href="https://reactjs.dev/">reactjs.dev</a>
+  نسخه فارسی <a href="https://react.dev/">react.dev</a>
 </h1>
 
 <p dir="rtl">
@@ -9,14 +9,14 @@
 
 <p dir="rtl">
   این مخزن کد (repo) با هدف توسعه اسناد ری‌اکت به زبان فارسی، از
-  <a href="https://github.com/reactjs/reactjs.dev">reactjs/reactjs.dev</a>
+  <a href="https://github.com/reactjs/react.dev">reactjs/react.dev</a>
   انشعاب (fork) گرفته‌است و پیوسته با نسخه اصلی همگام‌سازی می‌شود.
 </p>
 
 <p dir="rtl">
   نسخه فارسی اسناد ری‌اکت را در
-  <a href="https://fa.reactjs.org/" target="_blank">
-    fa.reactjs.org
+  <a href="https://fa.react.dev/" target="_blank">
+    fa.react.dev
   </a>
   ببینید.
 </p>
@@ -26,17 +26,17 @@
 <p dir="rtl">پیشنهاد می‌شود به‌ترتیب از لینک‌های زیر شروع کنید:</p>
 <ul dir="rtl">
   <li>
-    <a href="https://github.com/reactjs/fa.reactjs.org/blob/master/CONTRIBUTING.md">
+    <a href="https://github.com/reactjs/fa.react.dev/blob/master/CONTRIBUTING.md">
       راهنمای مشارکت‌کنندگان
     </a>
   </li>
   <li>
-    <a href="https://github.com/reactjs/fa.reactjs.org/blob/master/STYLE-GUIDE.md">
+    <a href="https://github.com/reactjs/fa.react.dev/blob/master/STYLE-GUIDE.md">
       شیوه نگارش
     </a>
   </li>
   <li>
-    <a href="https://github.com/reactjs/fa.reactjs.org/blob/master/TRANSLATION.md">
+    <a href="https://github.com/reactjs/fa.react.dev/blob/master/TRANSLATION.md">
       واژه‌نامه
     </a>
   </li>
@@ -84,7 +84,7 @@ git clone https://github.com/reactjs/fa.react.dev.git
 # ۳. به شاخه اصلی پروژه بروید
 
 ```bash
-cd fa.reactjs.org
+cd fa.react.dev
 ```
 
 # ۴. وابستگی‌های npm پروژه را نصب کنید
@@ -109,7 +109,7 @@ yarn dev
 <h3 dir="rtl">سوالی دارید؟</h3>
 
 ‌<p dir="rtl">
-اگر سوالی دارید با نگاه‌دارندگان تماس بگیرید یا <a href="https://github.com/reactjs/fa.reactjs.org/issues/new">یک موضوع (issue) جدید</a> ثبت کنید!
+اگر سوالی دارید با نگاه‌دارندگان تماس بگیرید یا <a href="https://github.com/reactjs/fa.react.dev/issues/new">یک موضوع (issue) جدید</a> ثبت کنید!
 
 </p>
 
@@ -260,7 +260,7 @@ yarn dev
 </table>
 <p dir="rtl">
   اسم شما فراموش شده‌است؟‌
-  <a href="https://github.com/reactjs/fa.reactjs.org/issues/new">
+  <a href="https://github.com/reactjs/fa.react.dev/issues/new">
     به ما تذکر دهید!
   </a>
 </p>
@@ -268,7 +268,7 @@ yarn dev
 <h2 dir="rtl">مجوز</h2>
 
 <p dir="rtl">
-  محتوایی که در <a href="https://reactjs.org/">reactjs.org</a> قرار می‌گیرد، تخت
+  محتوایی که در <a href="https://react.dev/">react.dev</a> قرار می‌گیرد، تخت
   مجوز CC-BY-4.0 منتشر می‌شود که جزئیات آن د
   <a href="https://github.com/open-source-explorer/reactjs.org/blob/master/LICENSE-DOCS.md">
     LICENSE-DOCS.md

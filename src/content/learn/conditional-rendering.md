@@ -743,6 +743,7 @@ export default function PackingList() {
 
 </div>
 
+
 </Solution>
 
 #### ری‌فکتور یک سری از `? :` به `if` و متغیر‌ها {/*refactor-a-series-of---to-if-and-variables*/}
