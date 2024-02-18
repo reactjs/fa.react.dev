@@ -105,13 +105,8 @@ title: تفکر به سبک ری‌اکت
 
 <Sandpack>
 
-<<<<<<< HEAD
-```jsx App.js
-function ProductCategoryRow({category}) {
-=======
 ```jsx src/App.js
 function ProductCategoryRow({ category }) {
->>>>>>> bb3a0f5c10aaeba6e6fb35f31f36b47812ece158
   return (
     <tr>
       <th colSpan="2">{category}</th>
@@ -342,13 +337,8 @@ function FilterableProductTable({ products }) {
 
 <Sandpack>
 
-<<<<<<< HEAD
-```jsx App.js
-import {useState} from 'react';
-=======
 ```jsx src/App.js
 import { useState } from 'react';
->>>>>>> bb3a0f5c10aaeba6e6fb35f31f36b47812ece158
 
 function FilterableProductTable({products}) {
   const [filterText, setFilterText] = useState('');
@@ -523,15 +513,6 @@ function FilterableProductTable({ products }) {
 شما روی‌داد `onChange` را درون `SearchBar` اضافه خواهید کرد و استیت پدر را از آنجا تنظیم می‌کنید.
 </p>
 
-<<<<<<< HEAD
-```js {5}
-<input
-  type="text"
-  value={filterText}
-  placeholder="Search..."
-  onChange={(e) => onFilterTextChange(e.target.value)}
-/>
-=======
 ```js {4,5,13,19}
 function SearchBar({
   filterText,
@@ -552,7 +533,6 @@ function SearchBar({
           type="checkbox"
           checked={inStockOnly}
           onChange={(e) => onInStockOnlyChange(e.target.checked)}
->>>>>>> bb3a0f5c10aaeba6e6fb35f31f36b47812ece158
 ```
 <p dir="rtl">
 حالا اپلیکیشن کار میکند !
@@ -560,13 +540,8 @@ function SearchBar({
 
 <Sandpack>
 
-<<<<<<< HEAD
-```jsx App.js
-import {useState} from 'react';
-=======
 ```jsx src/App.js
 import { useState } from 'react';
->>>>>>> bb3a0f5c10aaeba6e6fb35f31f36b47812ece158
 
 function FilterableProductTable({products}) {
   const [filterText, setFilterText] = useState('');
