@@ -1,24 +1,24 @@
 ---
-title: Scaling Up with Reducer and Context
+title: توسعه با Reducer و Context
 ---
 
 <Intro>
 
-Reducers let you consolidate a component's state update logic. Context lets you pass information deep down to other components. You can combine reducers and context together to manage state of a complex screen.
+reducer  به شما این امکان رو میدهد که بتوانید state کامپوننت مورد نظرتان را یکپارچه کنید. Context  این امکان رو به شما می دهد که اطلاعات را به کامپوننت های دیگر انتقال دهید. شما میتوانید با ادغام reducers و context با هم دیگر  state محتواهای پیچیده را مدیریت کنید.
 
 </Intro>
 
 <YouWillLearn>
 
-* How to combine a reducer with context
-* How to avoid passing state and dispatch through props
-* How to keep context and state logic in a separate file
+* چگونه reducer و context را با یکدیگر ترکیب کنید
+* چگونه از پاسکاری state و dispatch به وسیله props جلوگیری کنید
+* چگونه از context و منطق state در فایل های جداگانه، نگهداری کنید
 
 </YouWillLearn>
 
-## Combining a reducer with context {/*combining-a-reducer-with-context*/}
+## ترکیب یک reducer با context {/*combining-a-reducer-with-context*/}
 
-In this example from [the introduction to reducers](/learn/extracting-state-logic-into-a-reducer), the state is managed by a reducer. The reducer function contains all of the state update logic and is declared at the bottom of this file:
+در این مثال از  [معرفی reducers](/learn/extracting-state-logic-into-a-reducer)، استیت توسط یک reducer مدیریت می شود. تابع reducer شامل تمام آپدیت های منطق state می باشد و در انتهای این فایل نیز تعریف شده است:
 
 <Sandpack>
 
@@ -207,9 +207,9 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-A reducer helps keep the event handlers short and concise. However, as your app grows, you might run into another difficulty. **Currently, the `tasks` state and the `dispatch` function are only available in the top-level `TaskApp` component.** To let other components read the list of tasks or change it, you have to explicitly [pass down](/learn/passing-props-to-a-component) the current state and the event handlers that change it as props.
+یک reducer به کوتاه و مختصر بودن event handler ها کمک میکند. به هر حال زمانی که مقیاس برنامه شما بزرگتر می شود، ممکن است با مشکل دیگری رو به رو شوید. **در حال حاضر، state `tasks` و تابع `dispatch` تنها در بالاترین لایه‌ی کامپوننت ‍‍‍`TaskApp‍‍‍` در دسترس هستند.** برای اینکه باقی کامپوننت ها نیز قابلیت دسترسی و تغییر لیست تسک ها را داشته باشند، باید state فعلی و event handler هایی که به عنوان props آن را تغییر میدهند، را [منتقل کنید](/learn/passing-props-to-a-component).
 
-For example, `TaskApp` passes a list of tasks and the event handlers to `TaskList`:
+به عنوان مثال، `TaskApp` یک لیست از tasks و event handlers را به `TaskList` منتقل می‌کند:
 
 ```js
 <TaskList
@@ -219,7 +219,7 @@ For example, `TaskApp` passes a list of tasks and the event handlers to `TaskLis
 />
 ```
 
-And `TaskList` passes the event handlers to `Task`:
+و `TaskList` event handler ها را به `Task` ارسال می کند:
 
 ```js
 <Task
@@ -229,30 +229,30 @@ And `TaskList` passes the event handlers to `Task`:
 />
 ```
 
-In a small example like this, this works well, but if you have tens or hundreds of components in the middle, passing down all state and functions can be quite frustrating!
+در مثال های کوچک مانند این مساله، این روش خوب کار می‌کند، اما اگر شما ده‌ها یا صدها کامپوننت در میانه داشته باشید، انتقال تمام state  و توابع می‌تواند کاری خسته‌کننده باشد!
 
-This is why, as an alternative to passing them through props, you might want to put both the `tasks` state and the `dispatch` function [into context.](/learn/passing-data-deeply-with-context) **This way, any component below `TaskApp` in the tree can read the tasks and dispatch actions without the repetitive "prop drilling".**
+در همین راستا، به عنوان یک جایگزین برای انتقال آنها از طریق props، ممکن است بخواهید هم state `tasks` و هم تابع `dispatch` را در [context قرار دهید   .](/learn/passing-data-deeply-with-context) **به این ترتیب، هر کامپوننتی زیر `TaskApp` در درخت می‌تواند وظایف را بخواند و اقدامات dispatch را بدون تکرار "prop drilling" انجام دهد.**
 
-Here is how you can combine a reducer with context:
+در ادامه نحوه ترکیب یک reducer با context را مشاهده می‌کنید:
 
-1. **Create** the context.
-2. **Put** state and dispatch into context.
-3. **Use** context anywhere in the tree.
+1. **ایجاد** context.
+2. **قراردادن** state و dispatch در context.
+3. **استفاده از** context در هر قسمتی از این درخت.
 
-### Step 1: Create the context {/*step-1-create-the-context*/}
+### گام 1: ایجاد context {/*step-1-create-the-context*/}
 
-The `useReducer` Hook returns the current `tasks` and the `dispatch` function that lets you update them:
+هوک `useReducer` مقدار `tasks` را برمیگرداند و تابع `dispatch` امکان به روزرسانی آنها را فراهم می‌کند:
 
 ```js
 const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
 ```
 
-To pass them down the tree, you will [create](/learn/passing-data-deeply-with-context#step-2-use-the-context) two separate contexts:
+برای انتقال آنها در درخت، شما میتوانید دو context جداگانه [ایجاد کنید](/learn/passing-data-deeply-with-context#step-2-use-the-context):
 
-- `TasksContext` provides the current list of tasks.
-- `TasksDispatchContext` provides the function that lets components dispatch actions.
+- `TasksContext` لیستی از task ها را فراهم می‌کند.
+- `TasksDispatchContext` تابعی را می‌سازد که کامپوننت ها بتوانند اکشن ها را dispatch کنند.
 
-Export them from a separate file so that you can later import them from other files:
+آن‌ها را از یک فایل جداگانه export کنید تا بتوانید بعداً آن‌ها را از فایل‌های دیگر import کنید:
 
 <Sandpack>
 
@@ -448,11 +448,11 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-Here, you're passing `null` as the default value to both contexts. The actual values will be provided by the `TaskApp` component.
+در اینجا، شما `null` را به عنوان مقدار پیش‌فرض به هر دو context ارسال می‌کنید. مقادیر واقعی توسط کامپوننت `TaskApp` ارائه خواهد شد.
 
-### Step 2: Put state and dispatch into context {/*step-2-put-state-and-dispatch-into-context*/}
+### گام 2: قراردادن state و dispatch در context {/*step-2-put-state-and-dispatch-into-context*/}
 
-Now you can import both contexts in your `TaskApp` component. Take the `tasks` and `dispatch` returned by `useReducer()` and [provide them](/learn/passing-data-deeply-with-context#step-3-provide-the-context) to the entire tree below:
+الان می‌توانید هر دوی context ها را در کامپوننت `TaskApp` import کنید. `tasks` و `dispatch` برگردانده شده از `useReducer()` را دریافت کنید و در درخت مانند کد زیر  [وارد کنید](/learn/passing-data-deeply-with-context#step-3-provide-the-context) :
 
 ```js {4,7-8}
 import { TasksContext, TasksDispatchContext } from './TasksContext.js';
@@ -470,7 +470,7 @@ export default function TaskApp() {
 }
 ```
 
-For now, you pass the information both via props and in context:
+در حال حاضر، شما اطلاعات را هم از طریق props و هم در context ارسال می‌کنید:
 
 <Sandpack>
 
@@ -669,11 +669,11 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-In the next step, you will remove prop passing.
+در گام بعدی، شما پاس دادن props را حذف خواهید کرد.
 
-### Step 3: Use context anywhere in the tree {/*step-3-use-context-anywhere-in-the-tree*/}
+### گام 3: استفاده از context در هر قسمتی از درخت {/*step-3-use-context-anywhere-in-the-tree*/}
 
-Now you don't need to pass the list of tasks or the event handlers down the tree:
+اکنون نیازی به انتقال لیست task ها یا event handler به پایین درخت ندارید:
 
 ```js {4-5}
 <TasksContext.Provider value={tasks}>
@@ -685,7 +685,7 @@ Now you don't need to pass the list of tasks or the event handlers down the tree
 </TasksContext.Provider>
 ```
 
-Instead, any component that needs the task list can read it from the `TaskContext`:
+به جای آن، هر کامپوننتی که به لیست tasks نیاز دارد، می‌تواند آن را از ‍‍‍`TaskContext` بخواند:
 
 ```js {2}
 export default function TaskList() {
@@ -693,7 +693,7 @@ export default function TaskList() {
   // ...
 ```
 
-To update the task list, any component can read the `dispatch` function from context and call it:
+برای به‌روزرسانی لیست tasks، هر کامپوننت می‌تواند تابع `dispatch` را از context بخواند و آن را فراخوانی کند:
 
 ```js {3,9-13}
 export default function AddTask() {
@@ -713,7 +713,7 @@ export default function AddTask() {
     // ...
 ```
 
-**The `TaskApp` component does not pass any event handlers down, and the `TaskList` does not pass any event handlers to the `Task` component either.** Each component reads the context that it needs:
+**کامپوننت `TaskApp` دیگر هیچ event handler را به پایین منتقل نمی‌کند، و `TaskList` نیز هیچ event handler را به کامپوننت `Task` منتقل نمی‌کند.** هر کامپوننت context مورد نیاز خود را می‌خواند:
 
 <Sandpack>
 
@@ -897,11 +897,11 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-**The state still "lives" in the top-level `TaskApp` component, managed with `useReducer`.** But its `tasks` and `dispatch` are now available to every component below in the tree by importing and using these contexts.
+**وضعیت هنوز در کامپوننت بالادستی `TaskApp` "زندگی می‌کند" و با `useReducer` مدیریت می‌شود.** اما `tasks` و `dispatch` آن اکنون توسط هر کامپوننت زیرین در درخت با وارد کردن و استفاده از این contextها در دسترس است.
 
-## Moving all wiring into a single file {/*moving-all-wiring-into-a-single-file*/}
+## جابجایی تمام اتصالات به یک فایل {/*moving-all-wiring-into-a-single-file*/}
 
-You don't have to do this, but you could further declutter the components by moving both reducer and context into a single file. Currently, `TasksContext.js` contains only two context declarations:
+شما نیازی به انجام این کار ندارید، اما می‌توانید با جابجایی هم reducer و هم context را در یک فایل تمیزتر کنید. در حال حاضر، `TasksContext.js` فقط شامل دو اعلان context است:
 
 ```js
 import { createContext } from 'react';
@@ -910,11 +910,11 @@ export const TasksContext = createContext(null);
 export const TasksDispatchContext = createContext(null);
 ```
 
-This file is about to get crowded! You'll move the reducer into that same file. Then you'll declare a new `TasksProvider` component in the same file. This component will tie all the pieces together:
+این فایل در حال شلوغ و پیچیده شدن می‌باشد! reducer را به فایل مشابه منتقل کنید، سپس یک کامپوننت ‍`TasksProvider` را در همان فایل ایجاد کنید. این کامپوننت تمام قطعات را به هم متصل می کند:
 
-1. It will manage the state with a reducer.
-2. It will provide both contexts to components below.
-3. It will [take `children` as a prop](/learn/passing-props-to-a-component#passing-jsx-as-children) so you can pass JSX to it.
+1. state را همراه با یک reducer مدیریت می‌کند.
+2. هر دو context را برای کامپوننت‌های زیرین فراهم می‌کند.
+3. [`children` را به عنوان یک prop منتقل میکند](/learn/passing-props-to-a-component#passing-jsx-as-children) تا بتوانید JSX را هم به آن ارسال کنید.
 
 ```js
 export function TasksProvider({ children }) {
@@ -930,7 +930,7 @@ export function TasksProvider({ children }) {
 }
 ```
 
-**This removes all the complexity and wiring from your `TaskApp` component:**
+**این عمل تمام پیچیدگی و اتصالات را از کامپوننت `TaskApp` شما حذف می‌کند:**
 
 <Sandpack>
 
@@ -1121,7 +1121,7 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-You can also export functions that _use_ the context from `TasksContext.js`:
+همچنین می‌توانید توابعی را که از context استفاده می‌کنند از `TasksContext.js` export کنید.
 
 ```js
 export function useTasks() {
@@ -1133,14 +1133,14 @@ export function useTasksDispatch() {
 }
 ```
 
-When a component needs to read context, it can do it through these functions:
+هنگامی که یک کامپوننت نیاز به خواندن context دارد، می‌تواند این کار را از طریق این توابع انجام دهد.
 
 ```js
 const tasks = useTasks();
 const dispatch = useTasksDispatch();
 ```
 
-This doesn't change the behavior in any way, but it lets you later split these contexts further or add some logic to these functions. **Now all of the context and reducer wiring is in `TasksContext.js`. This keeps the components clean and uncluttered, focused on what they display rather than where they get the data:**
+این به هیچ وجه رفتار را تغییر نمی‌دهد، اما به شما امکان می‌دهد که در آینده این context را بیشتر تقسیم کنید یا برخی منطق به این توابع اضافه کنید. **اکنون تمام اتصالات context و reducer در `TasksContext.js` است. این باعث می‌شود کامپوننت‌ها تمیز و بدون اشتباه باقی بمانند و بیشتر بر روی نمایش دادن داده‌ها تمرکز داشته باشند تا آنکه از کجا داده‌ها را بگیرند:**
 
 <Sandpack>
 
@@ -1340,27 +1340,27 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-You can think of `TasksProvider` as a part of the screen that knows how to deal with tasks, `useTasks` as a way to read them, and `useTasksDispatch` as a way to update them from any component below in the tree.
+می‌توانید به `TasksProvider` به عنوان یک بخش از صفحه فکر کنید که نحوه برخورد با task ها را می‌شناسد، `useTasks` را به عنوان یک روش برای خواندن آنها و `useTasksDispatch` را به عنوان یک راه برای به‌روزرسانی آنها از هر کامپوننتی در زیر درخت، در نظر بگیرید.
 
 <Note>
 
-Functions like `useTasks` and `useTasksDispatch` are called *[Custom Hooks.](/learn/reusing-logic-with-custom-hooks)* Your function is considered a custom Hook if its name starts with `use`. This lets you use other Hooks, like `useContext`, inside it.
+توابعی مانند `useTasks` و `useTasksDispatch` ،  *[Custom Hooks](/learn/reusing-logic-with-custom-hooks)* نامیده می‌شوند. اگر نام یک تابع با `use` شروع شود، تابع شما به عنوان یک Custom Hook محسوب می‌شود. این قابلیت را برای استفاده از دیگر Hook ها مانند `useContext` داخل آن نیز ممکن می‌کند.
 
 </Note>
 
-As your app grows, you may have many context-reducer pairs like this. This is a powerful way to scale your app and [lift state up](/learn/sharing-state-between-components) without too much work whenever you want to access the data deep in the tree.
+هر چقدر که برنامه‌ی شما بزرگ‌تر می‌شود، ممکن است چندین جفت context-reducer هایی را داشته باشید. این روشی قدرتمند برای افزایش مقیاس برنامه شماست و به شما امکان می‌دهد که [state را در درخت پخش کنید](/learn/sharing-state-between-components) بدون نیاز به انجام کار بیشتر، هر زمان که می‌خواهید به داده‌های درون درخت دسترسی داشته باشید.
 
 <Recap>
 
-- You can combine reducer with context to let any component read and update state above it.
-- To provide state and the dispatch function to components below:
-  1. Create two contexts (for state and for dispatch functions).
-  2. Provide both contexts from the component that uses the reducer.
-  3. Use either context from components that need to read them.
-- You can further declutter the components by moving all wiring into one file.
-  - You can export a component like `TasksProvider` that provides context.
-  - You can also export custom Hooks like `useTasks` and `useTasksDispatch` to read it.
-- You can have many context-reducer pairs like this in your app.
+- شما می‌توانید یک reducer را با context ترکیب کنید تا هر کامپوننتی بتواند state را خوانده و به‌روزرسانی کند.
+- برای انتشار state و تابع dispatch به کامپوننت‌های پایین‌تر:
+  1. دو context (برای state و برای توابع dispatch) ایجاد کنید.
+  2. هر دو context را با توجه به کامپوننتی که از reducer استفاده می‌کند، ایجاد کنید.
+  3. از context ای استفاده کنید که مرتبط با کامپوننت‌هایی که نیاز به خواندن دارند، باشد.
+- می‌توانید با جابجایی همه اتصالات در یک فایل، کامپوننت‌ها را بهتر مدیریت کنید.
+  - می‌توانید یک کامپوننت مانند `TasksProvider` را که context فراهم می‌کند، export کنید.
+  - همچنین می‌توانید Custom Hookهایی مانند `useTasks` و `useTasksDispatch` برای خواندن آن استفاده کنید.
+- می‌توانید در برنامه‌ی خود چندین جفت context-reducer مانند این داشته باشید.
 
 </Recap>
 
