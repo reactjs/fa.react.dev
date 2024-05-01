@@ -14,7 +14,7 @@ React's extensions to `<style>` are currently only available in React's canary a
 The [built-in browser `<style>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style) lets you add inline CSS stylesheets to your document.
 
 ```js
-<style> p { color: red; } </style>
+<style>{` p { color: red; } `}</style>
 ```
 
 </Intro>
@@ -30,7 +30,7 @@ The [built-in browser `<style>` component](https://developer.mozilla.org/en-US/d
 To add inline styles to your document, render the [built-in browser `<style>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style). You can render `<style>` from any component and React will [in certain cases](#special-rendering-behavior) place the corresponding DOM element in the document head and de-duplicate identical styles.
 
 ```js
-<style> p { color: red; } </style>
+<style>{` p { color: red; } `}</style>
 ```
 
 [See more examples below.](#usage)
@@ -52,7 +52,7 @@ Props that are **not recommended** for use with React:
 
 #### Special rendering behavior {/*special-rendering-behavior*/}
 
-React can move `<style>` components to the document's `<head>`, de-duplicate identical stylesheets, and [suspend](http://localhost:3000/reference/react/Suspense) while the stylesheet is loading.
+React can move `<style>` components to the document's `<head>`, de-duplicate identical stylesheets, and [suspend](/reference/react/Suspense) while the stylesheet is loading.
 
 To opt into this behavior, provide the `href` and `precedence` props. React will de-duplicate styles if they have the same `href`. The precedence prop tells React where to rank the `<style>` DOM node relative to others in the document `<head>`, which determines which stylesheet can override the other.
 
