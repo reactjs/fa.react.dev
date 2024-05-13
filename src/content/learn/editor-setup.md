@@ -40,7 +40,11 @@ title: تنظیم اولیه ویرایشگر
 
 ### قالب‌بندی {/*formatting*/}
 
+<<<<<<< HEAD
 آخرین کاری که می‌خواهید هنگام اشتراک‌گذاری کد خود با مشارکت‌کننده دیگری انجام دهید، وارد شدن به بحث در مورد [tab‌ها در مقابل space‌ها](https://www.google.com/search?q=tabs+vs+spaces) است! خوشبختانه، [Prettier](https://prettier.io/) کد شما را با فرمت مجدد آن برای مطابقت با قوانین از پیش تعیین شده و قابل تنظیم، تمیز می کند. Prettier را اجرا کنید، و همه tab های شما به space تبدیل می‌شوند - و تورفتگی، نقل قول‌ها و غیره نیز برای مطابقت با پیکربندی تغییر می‌کنند. در تنظیمات ایده‌آل، وقتی فایل خود را ذخیره می‌کنید، Prettier اجرا می‌شود و به سرعت این ویرایش‌ها را برای شما انجام می‌دهد.
+=======
+The last thing you want to do when sharing your code with another contributor is get into a discussion about [tabs vs spaces](https://www.google.com/search?q=tabs+vs+spaces)! Fortunately, [Prettier](https://prettier.io/) will clean up your code by reformatting it to conform to preset, configurable rules. Run Prettier, and all your tabs will be converted to spaces—and your indentation, quotes, etc will also all be changed to conform to the configuration. In the ideal setup, Prettier will run when you save your file, quickly making these edits for you.
+>>>>>>> b7bf6c16fb3152626a71c115b3242df6eb93bc6e
 
 شما می‌توانید با دنبال کردن مراحل ذیل [افزونه‌ی Prettier را در VSCode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) نصب کنید.
 
