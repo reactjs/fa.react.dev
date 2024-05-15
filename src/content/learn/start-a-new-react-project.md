@@ -22,7 +22,7 @@ title: پروژه ری اکتی را شروع کنید
 
 حتی اگر در ابتدا به مسیریابی یا دریافت داده نیاز نداشته باشید، احتمالاً می‌خواهید برخی کتابخانه‌ها برای آنها اضافه کنید. هرچه باندل جاوا اسکریپت شما با افزودن هر ویژگی جدید بزرگ‌تر می‌شود، شما ممکن است بخواهید روش تقسیم کد را برای هر مسیر به صورت جداگانه بررسی کنید. هرچه نیازهای دریافت داده شما پیچیده‌تر شود، احتمالاً با شکل‌گیری شکل‌آبشاری ( waterfalls ) شبکه سرور-کلاینت روبرو می‌شوید که باعث احساس بسیار کندی برنامه شما می‌شود. همچنین هرچه مخاطب شما شامل بیشتر کاربران با شرایط شبکه ضعیف و دستگاه‌های کم‌توان‌تر باشد، ممکن است نیاز داشته باشید تا HTML را از اجزای خود تولید کنید تا محتوا را به طور زودهنگام نمایش دهید — یا در سمت سرور، یا در زمان ساخت. تغییر تنظیمات خود برای اجرای برخی از کدهای خود در سرور یا در زمان ساخت ممکن است بسیار پیچیده باشد.
 
-**این مشکلات مختص ری اکت نیست. به همین دیلیل است که  Svelte با Vue ، SvelteKit با Nuxt و غیره  ...  را حل هایی دارند.** برای حل این مشکلات به تنهایی، شما نیاز خواهید داشت که باندلر خود را  با مسیردهنده و کتابخانه دریافت داده خود یکپارچه کنید. ایجاد اولیه آن دشوار نیست، اما در تولید یک برنامه که همچنان با افزایش اندازه به سرعت بارگذاری شود، بسیار  جزئیات وجود دارد. شما می خواهید کد حداقلی برنامه خود را به سمت کلاینت ارسال کنید، اما این کار در یک roundtrip مشترک بین کلاینت و  سرور انجام خواهد شد، همزمان با هر داده ای که برای صفحه لازم است. احتمالاً میخواهید صفحه را قبل از اجرای کد جاوا اسکریپت خود لود کنید، تا پشتیبانی از ارتقاء تدریجی را داشته باشید. ممکن است بخواهیدیک پوشه از فایل های HTML کاملا استاتیک برای صفحات بازاریابی خود تولید کنید که میتوانید در هر جایی میزبانی شود و همچنان با غیر فعال شدن جاوا اسکریپت کار کند. ایجاد این قابلیت ها نیازمند کار واقعی است.
+**این مشکلات مختص ری اکت نیست. به همین دلیل است که  Svelte با Vue ، SvelteKit با Nuxt و غیره  ...  را حل هایی دارند.** برای حل این مشکلات به تنهایی، شما نیاز خواهید داشت که باندلر خود را  با مسیردهنده و کتابخانه دریافت داده خود یکپارچه کنید. ایجاد اولیه آن دشوار نیست، اما در تولید یک برنامه که همچنان با افزایش اندازه به سرعت بارگذاری شود، بسیار  جزئیات وجود دارد. شما می خواهید کد حداقلی برنامه خود را به سمت کلاینت ارسال کنید، اما این کار در یک roundtrip مشترک بین کلاینت و  سرور انجام خواهد شد، همزمان با هر داده ای که برای صفحه لازم است. احتمالاً میخواهید صفحه را قبل از اجرای کد جاوا اسکریپت خود لود کنید، تا پشتیبانی از ارتقاء تدریجی را داشته باشید. ممکن است بخواهیدیک پوشه از فایل های HTML کاملا استاتیک برای صفحات بازاریابی خود تولید کنید که میتوانید در هر جایی میزبانی شود و همچنان با غیر فعال شدن جاوا اسکریپت کار کند. ایجاد این قابلیت ها نیازمند کار واقعی است.
 
 
 **فریمورک های موجود ری اکت در این صفحه به طور پیش فرض این مشکلات را حل می کنند، بدون نیاز به کار اضافی از سمت شما.** این فریمورک ها به شما امکان می دهد که پروژه خود را بسیار سبک شروع کنید و سپس برنامه‌ی خود را با توجه به نیازهایتان مقایس پذیر کنید. هر فریمورک ری اکت دارای یک جامعه است، بنابراین پیدا کردن پاسخ به سوالات و ارتقاء ابزار ها آسان تر است، فریمورک ها همچنان ساختار به کد شما می دهند، به شما و دیگران کمک می کنند تا محتوا و مهارت های خود را در پروژه های مختلف حفظ کیند. به عبارت دیگر، با یک تنظیم دلخواه،آسان تر است که در نسخه‌های وابسته پشتیبانی نشده گیر کنید، و به طور اساسی در حال ایجاد یک فریمورک برای خودتان هستید --گرچه مسیری بدون جامعه و ارتقاء (و اگر چیزی شبیه به آنچه در گذشته ساخته ایم، به طور تصادفی طراحی شده باشد) باشد.
@@ -32,93 +32,102 @@ title: پروژه ری اکتی را شروع کنید
 
 </DeepDive>
 
-## Production-grade React frameworks {/*production-grade-react-frameworks*/}
+## فریمورک های ری اکت برای تولید {/*production-grade-react-frameworks*/}
 
-These frameworks support all the features you need to deploy and scale your app in production and are working towards supporting our [full-stack architecture vision](#which-features-make-up-the-react-teams-full-stack-architecture-vision). All of the frameworks we recommend are open source with active communities for support, and can be deployed to your own server or a hosting provider. If you’re a framework author interested in being included on this list, [please let us know](https://github.com/reactjs/react.dev/issues/new?assignees=&labels=type%3A+framework&projects=&template=3-framework.yml&title=%5BFramework%5D%3A+).
+این فریمورک ها تمام ویژگی‌هایی را که نیاز دارید برای استقرار و مقیاس‌پذیری برنامه خود در محیط تولید پشتیبانی می‌کنند و به سمت پشتیبانی از دیدگاه [معماری full-stack](#which-features-make-up-the-react-teams-full-stack-architecture-vision) ما حرکت می‌کنند. تمام فریمورک هایی که ما توصیه می‌کنیم از جوامع فعال برای پشتیبانی پشتیبانی می‌کنند و می‌توانند بر روی سرور خود یا ارائه دهنده میزبانی استقرار یابند. اگر شما یک نویسنده فریمورک هستید که علاقه‌مند به اضافه شدن به این لیست هستید، [لطفا به ما اطلاع دهید](https://github.com/reactjs/react.dev/issues/new?assignees=&labels=type%3A+framework&projects=&template=3-framework.yml&title=%5BFramework%5D%3A+).
+
+
 
 ### Next.js {/*nextjs-pages-router*/}
 
-**[Next.js' Pages Router](https://nextjs.org/) is a full-stack React framework.** It's versatile and lets you create React apps of any size--from a mostly static blog to a complex dynamic application. To create a new Next.js project, run in your terminal:
-
+**[Next.js' Pages Router](https://nextjs.org/) یک فریمورک full stack ری اکتی است.**به شما این امکان را می دهد که برنامه های ری اکتی را بر هر مقایسی اجرا کیند - از یک وبلاگ عمدتا استاتیک تا یک برنامه پیجیده پویا. برای ایجاد یک پروژه Next.js جدید، در ترمینال خود دستور زیر را اجرا کنید:
 <TerminalBlock>
 npx create-next-app@latest
 </TerminalBlock>
 
-If you're new to Next.js, check out the [learn Next.js course.](https://nextjs.org/learn)
+اگر Next.js برای شما جدید است، [دوره یاد گرفتن Next.js](https://nextjs.org/learn) را بررسی کنید.
 
-Next.js is maintained by [Vercel](https://vercel.com/). You can [deploy a Next.js app](https://nextjs.org/docs/app/building-your-application/deploying) to any Node.js or serverless hosting, or to your own server. Next.js also supports a [static export](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports) which doesn't require a server.
+Next.js توسط [Vercel](https://vercel.com/) نگهداری می‌شود. شما می‌توانید یک برنامه Next.js را به هر سرور Node.js یا serverless، یا به سرور خودتان [دیپلوی](https://nextjs.org/docs/app/building-your-application/deploying) کنید. Next.js همچنین از [خروجی استاتیک](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports) پشتیبانی می‌کند که نیازی به سرور ندارد.
+
 
 ### Remix {/*remix*/}
 
-**[Remix](https://remix.run/) is a full-stack React framework with nested routing.** It lets you break your app into nested parts that can load data in parallel and refresh in response to the user actions. To create a new Remix project, run:
+**[Remix](https://remix.run/) یک فریمورک full stack ری اکتی با مسیریابی تو در تو است.** Remix به شما امکان می دهد برنامه خود را به بخش های تو در تو تقسیم کنید که باعث میشود داده ها را به صورت موازی دریافت کنید و در پاسخ به اقدامات کاربر به روز شوید. برای ایجاد یک پروژه Remix جدید، در ترمینال خود دستور زیر را اجرا کنید:
 
 <TerminalBlock>
 npx create-remix
 </TerminalBlock>
 
-If you're new to Remix, check out the Remix [blog tutorial](https://remix.run/docs/en/main/tutorials/blog) (short) and [app tutorial](https://remix.run/docs/en/main/tutorials/jokes) (long).
+اگر Remix برای شما جدید است، آموزش Remix ([کوتاه مدت](https://remix.run/docs/en/main/tutorials/blog)) و آموزش ([بلند مدت](https://remix.run/docs/en/main/tutorials/jokes)) را بررسی کنید.
 
-Remix is maintained by [Shopify](https://www.shopify.com/). When you create a Remix project, you need to [pick your deployment target](https://remix.run/docs/en/main/guides/deployment). You can deploy a Remix app to any Node.js or serverless hosting by using or writing an [adapter](https://remix.run/docs/en/main/other-api/adapter).
+Remix توسط [Shopify](https://www.shopify.com/) نگهداری می‌شود. وقتی یک پروژه Remix ایجاد می‌کنید، باید [هدف انتشار خود را انتخاب](https://remix.run/docs/en/main/guides/deployment) کنید. می‌توانید یک برنامه Remix را با استفاده از یک [آداپتور](https://remix.run/docs/en/main/other-api/adapter) یا نوشتن آداپتور، بر روی هر سرور Node.js یا serverless انتشار دهید.
+
 
 ### Gatsby {/*gatsby*/}
 
-**[Gatsby](https://www.gatsbyjs.com/) is a React framework for fast CMS-backed websites.** Its rich plugin ecosystem and its GraphQL data layer simplify integrating content, APIs, and services into one website. To create a new Gatsby project, run:
+Gatsby یک چارچوب React برای وب‌سایت‌های سریع با CMS است. اکوسیستم پلاگین‌های پربار و لایه داده GraphQL آن ادغام محتوا، رابط‌های برنامه‌نویسی (API) و خدمات را در یک وب‌سایت ساده می‌کند. برای ایجاد یک پروژه جدید Gatsby، اجرا کنید:
+
+
+**[Gatsby](https://www.gatsbyjs.com/) یک فریمورک برای وبسایت های سریع با CMS است.** اکوسیستم پلاگین های متنوع و GraphQL data layer، APIs،  سرویس را در یک وب سایت ساده می کند. برای ایجاد یک پروژه جدید Gatsby دستور زیر را در ترمینال اجرا کنید:
 
 <TerminalBlock>
 npx create-gatsby
 </TerminalBlock>
 
-If you're new to Gatsby, check out the [Gatsby tutorial.](https://www.gatsbyjs.com/docs/tutorial/)
+اگر Gatsby برای شما جدید است، [دوره Gatsby](https://www.gatsbyjs.com/docs/tutorial/) را بررسی کنید.
 
-Gatsby is maintained by [Netlify](https://www.netlify.com/). You can [deploy a fully static Gatsby site](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting) to any static hosting. If you opt into using server-only features, make sure your hosting provider supports them for Gatsby.
+Gatsby توسط Netlify نگهداری می شود.شما می‌توانید یک وب‌سایت کاملاً استاتیک Gatsby را بر روی هر سروری استاتیک انتشار دهید. اگر انتخاب کنید از ویژگی‌های فقط سرور استفاده کنید، مطمئن شوید که ارائه‌دهنده سرور شما این ویژگی‌ها را برای Gatsby پشتیبانی می‌کند.
+
 
 ### Expo (for native apps) {/*expo*/}
 
-**[Expo](https://expo.dev/) is a React framework that lets you create universal Android, iOS, and web apps with truly native UIs.** It provides an SDK for [React Native](https://reactnative.dev/) that makes the native parts easier to use. To create a new Expo project, run:
+**[Expo](https://expo.dev/) یک فریمورک ری اکتی است که به شما امکان می دهد برنامه اندروید، و ios و وب را با رابط کاربری ایجاد کنید.** این یک SDK برای React Native ارائه می کند که استفاده از بخش های native را آسان تر می کند. برای ایجاد یک پروژه Expo جدید، دستور زیر را در ترمینال اجرا کنید:
 
 <TerminalBlock>
 npx create-expo-app
 </TerminalBlock>
 
-If you're new to Expo, check out the [Expo tutorial](https://docs.expo.dev/tutorial/introduction/).
+اگر Expo برای شما جدید است، [آموزش Expo](https://docs.expo.dev/tutorial/introduction/) را بررسی کنید.
 
-Expo is maintained by [Expo (the company)](https://expo.dev/about). Building apps with Expo is free, and you can submit them to the Google and Apple app stores without restrictions. Expo additionally provides opt-in paid cloud services.
+Expo توسط [Expo(شرکت)](https://expo.dev/about) نگهداری می شود. ساخت اپلیکیشن با Expo رایگان است و می توانید بدون محدودیت آن را به فروشگاه های اپلیکیشن گوگل و اپل ارسال کنید. Expo علاوه بر این، خدمات ابری پولی هم ارائه می دهد.
 
 ## Bleeding-edge React frameworks {/*bleeding-edge-react-frameworks*/}
 
-As we've explored how to continue improving React, we realized that integrating React more closely with frameworks (specifically, with routing, bundling, and server technologies) is our biggest opportunity to help React users build better apps. The Next.js team has agreed to collaborate with us in researching, developing, integrating, and testing framework-agnostic bleeding-edge React features like [React Server Components.](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components)
+همانطور که نحوه ادامه بهبود ری اکت را بررسی کردیم، متوجه شدیم که ادغام کردن ری اکت با فریمورک ها (مخصوصاً با فناوری‌های مسیریابی، باندل کردن و سرور) بزرگترین فرصت ما برای کمک به کاربران ری اکت برای ساخت برنامه‌های بهتر است. تیم Next.js موافقت کرده است که با ما در تحقیق، توسعه، ادغام و آزمایش ویژگی‌های bleeding-edge-react-frameworks مانند [React Server Components](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components) با ما همکاری کند.
 
-These features are getting closer to being production-ready every day, and we've been in talks with other bundler and framework developers about integrating them. Our hope is that in a year or two, all frameworks listed on this page will have full support for these features. (If you're a framework author interested in partnering with us to experiment with these features, please let us know!)
+این ویژگی‌ها هر روز به آماده شدن برای تولید نزدیک‌تر می‌شوند و ما با سایر توسعه‌دهندگان باندلر و فریم‌ورک درباره ادغام آنها در حال مذاکره بوده‌ایم. امید ما این است که در یک یا دو سال دیگر، همه فریمورک های لیست شده در این صفحه از این ویژگی ها پشتیبانی کامل داشته باشند. (اگر نویسنده فریمورک هستید که علاقه مند به همکاری با ما برای آزمایش این ویژگی ها هستید، لطفاً به ما اطلاع دهید!)
+
 
 ### Next.js (App Router) {/*nextjs-app-router*/}
 
-**[Next.js's App Router](https://nextjs.org/docs) is a redesign of the Next.js APIs aiming to fulfill the React team’s full-stack architecture vision.** It lets you fetch data in asynchronous components that run on the server or even during the build.
+**[Next.js's App Router](https://nextjs.org/docs) باز طراحی شده برای رسیدن به دیدگاه معماری فول استک، است.**  این اجازه را می‌دهد که داده را در اجزای همزمان که بر روی سرور اجرا می‌شوند یا حتی در طول فرآیند ساخت، بیاورید.
 
-Next.js is maintained by [Vercel](https://vercel.com/). You can [deploy a Next.js app](https://nextjs.org/docs/app/building-your-application/deploying) to any Node.js or serverless hosting, or to your own server. Next.js also supports [static export](https://nextjs.org/docs/app/building-your-application/deploying/static-exports) which doesn't require a server.
+Next.js توسط Vercel نگهداری می‌شود. شما می‌توانید یک برنامه Next.js را بر روی هر سروری Node.js یا serverless، یا بر روی سرور خود [دیپلوی](https://nextjs.org/docs/app/building-your-application/deploying) کنسد. همچنین Next.js از  [static export](https://nextjs.org/docs/app/building-your-application/deploying/static-exports) پشتیبانی می‌کند که نیازی به سرور ندارد. 
 
 <DeepDive>
 
-#### Which features make up the React team’s full-stack architecture vision? {/*which-features-make-up-the-react-teams-full-stack-architecture-vision*/}
+#### کدام ویژگی‌ها دیدگاه معماری full-stack تیم ری اکت را تشکیل می‌دهند؟ {/*which-features-make-up-the-react-teams-full-stack-architecture-vision*/}
 
-Next.js's App Router bundler fully implements the official [React Server Components specification](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md). This lets you mix build-time, server-only, and interactive components in a single React tree.
+باندلر App Router Next.js به طور کامل مشخصات رسمی [React Server Components](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md) را پیاده سازی می کند. این به شما امکان می دهد کامپوننت زمان ساخت، فقط سرور و تعاملی را در یک درخت ری اکت ترکیب کنید.
 
-For example, you can write a server-only React component as an `async` function that reads from a database or from a file. Then you can pass data down from it to your interactive components:
+به عنوان مثال، می توانید یک جزء ری اکت فقط سرور را به عنوان یک تابع `async` بنویسید که از یک پایگاه داده یا از یک فایل می خواند. سپس می توانید داده ها را از آن به کامپوننت تعاملی خود منتقل کنید:
+
 
 ```js
-// This component runs *only* on the server (or during the build).
+// این کامپوننت *فقط* روی سرور (یا در حین ساخت) اجرا می شود
 async function Talks({ confId }) {
-  // 1. You're on the server, so you can talk to your data layer. API endpoint not required.
+// 1. شما در سرور هستید، بنابراین می توانید با لایه داده خود صحبت کنید. API endpoint مورد نیاز نیست
   const talks = await db.Talks.findAll({ confId });
 
-  // 2. Add any amount of rendering logic. It won't make your JavaScript bundle larger.
+  // 2. هر مقدار منطق رندر را اضافه کنید. این باندل جاوا اسکریپت شما را بزرگتر نمی کند
   const videos = talks.map(talk => talk.video);
 
-  // 3. Pass the data down to the components that will run in the browser.
+  // 3. داده ها را به اجزایی که در مرورگر اجرا می شوند منتقل کنید
   return <SearchableVideoList videos={videos} />;
 }
 ```
+روتر برنامه Next.js همچنین [واکشی داده ها را با Suspense](/blog/2022/03/29/react-v18#suspense-in-data-frameworks) ادغام می کند. این به شما امکان می دهد یک وضعیت بارگذاری (مانند یک مکان نگهدارنده skeleton) را برای بخش های مختلف رابط کاربری خود مستقیماً در درخت ری اکت خود مشخص کنید:
 
-Next.js's App Router also integrates [data fetching with Suspense](/blog/2022/03/29/react-v18#suspense-in-data-frameworks). This lets you specify a loading state (like a skeleton placeholder) for different parts of your user interface directly in your React tree:
 
 ```js
 <Suspense fallback={<TalksLoading />}>
@@ -126,6 +135,6 @@ Next.js's App Router also integrates [data fetching with Suspense](/blog/2022/03
 </Suspense>
 ```
 
-Server Components and Suspense are React features rather than Next.js features. However, adopting them at the framework level requires buy-in and non-trivial implementation work. At the moment, the Next.js App Router is the most complete implementation. The React team is working with bundler developers to make these features easier to implement in the next generation of frameworks.
+سرور کامپوننت و Suspense به جای ویژگی های Next.js ویژگی های React هستند. با این حال، پذیرش آنها در سطح فریمورک نیاز به کار اجرایی و غیر پیش پا افتاده دارد. در حال حاضر، روتر برنامه Next.js کامل ترین پیاده سازی است. تیم React با توسعه دهندگان باندلر کار می کند تا اجرای این ویژگی ها در نسل بعدی فریم ورک ها را آسان تر کند.
 
 </DeepDive>
