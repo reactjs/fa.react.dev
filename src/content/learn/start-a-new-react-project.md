@@ -1,31 +1,34 @@
 ---
-title: Start a New React Project
+title: پروژه ری اکتی را شروع کنید
 ---
 
 <Intro>
 
-If you want to build a new app or a new website fully with React, we recommend picking one of the React-powered frameworks popular in the community.
-
+اگر می خواهید یک برنامه جدید یا یک وبسایت با استفاده از ری اکت بسازید، توصیه می کنیم یکی از فریمورک های مبتی بر ری اکت را انتخاب کنید که در جامعه برنامه نویسان ری اکت محبوب هستند.
 </Intro>
 
 
-You can use React without a framework, however we’ve found that most apps and sites eventually build solutions to common problems such as code-splitting, routing, data fetching, and generating HTML. These problems are common to all UI libraries, not just React.
+می توانید بدون استفاده از فریمورک از ری‌اکت استفاده کنید، با این حال ما متوجه شدیم که اکثر برنامه ها و سایت ها در نهایت راه‌حل‌هایی برای مشکلات رایج مانند تقسیم کد، مسیریابی، واکشی داده ها و تولید HTML ایجاد می کنند. این مشکلات برای همه کتابخانه های رابط کاربری مشترک است ، نه فقط ری اکت.
 
-By starting with a framework, you can get started with React quickly, and avoid essentially building your own framework later.
+با شروع با استفاده از فریمورک ، شما می توایند با سرعت ری اکت را شروع کنید، و از ساختن فریمورک خود در آینده اجتناب کنید.
 
 <DeepDive>
 
-#### Can I use React without a framework? {/*can-i-use-react-without-a-framework*/}
+#### آیا میتوانم ری اکت را بدون فریمورک استفاده کنم؟ {/*can-i-use-react-without-a-framework*/}
 
-You can definitely use React without a framework--that's how you'd [use React for a part of your page.](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page) **However, if you're building a new app or a site fully with React, we recommend using a framework.**
+مطمئنا می توانید از ری اکت بدون فریمورک استفاده کنید--به ایت تریتیب میتوانید [از ری اکت برای بخشی از صفحه خود استفاده کنید.](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page) **با این حال، اگر یک برنامه جدید یا یک سایت به طور کامل با ری اکت میسازید، توصیه می کنیم از یک فریمورک استفاده کنید.**
 
-Here's why.
+چرا ؟
 
-Even if you don't need routing or data fetching at first, you'll likely want to add some libraries for them. As your JavaScript bundle grows with every new feature, you might have to figure out how to split code for every route individually. As your data fetching needs get more complex, you are likely to encounter server-client network waterfalls that make your app feel very slow. As your audience includes more users with poor network conditions and low-end devices, you might need to generate HTML from your components to display content early--either on the server, or during the build time. Changing your setup to run some of your code on the server or during the build can be very tricky.
+حتی اگر در ابتدا به مسیریابی یا دریافت داده نیاز نداشته باشید، احتمالاً می‌خواهید برخی کتابخانه‌ها برای آنها اضافه کنید. هرچه باندل جاوا اسکریپت شما با افزودن هر ویژگی جدید بزرگ‌تر می‌شود، شما ممکن است بخواهید روش تقسیم کد را برای هر مسیر به صورت جداگانه بررسی کنید. هرچه نیازهای دریافت داده شما پیچیده‌تر شود، احتمالاً با شکل‌گیری شکل‌آبشاری ( waterfalls ) شبکه سرور-کلاینت روبرو می‌شوید که باعث احساس بسیار کندی برنامه شما می‌شود. همچنین هرچه مخاطب شما شامل بیشتر کاربران با شرایط شبکه ضعیف و دستگاه‌های کم‌توان‌تر باشد، ممکن است نیاز داشته باشید تا HTML را از اجزای خود تولید کنید تا محتوا را به طور زودهنگام نمایش دهید — یا در سمت سرور، یا در زمان ساخت. تغییر تنظیمات خود برای اجرای برخی از کدهای خود در سرور یا در زمان ساخت ممکن است بسیار پیچیده باشد.
 
-**These problems are not React-specific. This is why Svelte has SvelteKit, Vue has Nuxt, and so on.** To solve these problems on your own, you'll need to integrate your bundler with your router and with your data fetching library. It's not hard to get an initial setup working, but there are a lot of subtleties involved in making an app that loads quickly even as it grows over time. You'll want to send down the minimal amount of app code but do so in a single client–server roundtrip, in parallel with any data required for the page. You'll likely want the page to be interactive before your JavaScript code even runs, to support progressive enhancement. You may want to generate a folder of fully static HTML files for your marketing pages that can be hosted anywhere and still work with JavaScript disabled. Building these capabilities yourself takes real work.
+**این مشکلات مختص ری اکت نیست. به همین دیلیل است که  Svelte با Vue ، SvelteKit با Nuxt و غیره  ...  را حل هایی دارند.** برای حل این مشکلات به تنهایی، شما نیاز خواهید داشت که باندلر خود را  با مسیردهنده و کتابخانه دریافت داده خود یکپارچه کنید. ایجاد اولیه آن دشوار نیست، اما در تولید یک برنامه که همچنان با افزایش اندازه به سرعت بارگذاری شود، بسیار  جزئیات وجود دارد. شما می خواهید کد حداقلی برنامه خود را به سمت کلاینت ارسال کنید، اما این کار در یک roundtrip مشترک بین کلاینت و  سرور انجام خواهد شد، همزمان با هر داده ای که برای صفحه لازم است. احتمالاً میخواهید صفحه را قبل از اجرای کد جاوا اسکریپت خود لود کنید، تا پشتیبانی از ارتقاء تدریجی را داشته باشید. ممکن است بخواهیدیک پوشه از فایل های HTML کاملا استاتیک برای صفحات بازاریابی خود تولید کنید که میتوانید در هر جایی میزبانی شود و همچنان با غیر فعال شدن جاوا اسکریپت کار کند. ایجاد این قابلیت ها نیازمند کار واقعی است.
 
-**React frameworks on this page solve problems like these by default, with no extra work from your side.** They let you start very lean and then scale your app with your needs. Each React framework has a community, so finding answers to questions and upgrading tooling is easier. Frameworks also give structure to your code, helping you and others retain context and skills between different projects. Conversely, with a custom setup it's easier to get stuck on unsupported dependency versions, and you'll essentially end up creating your own framework—albeit one with no community or upgrade path (and if it's anything like the ones we've made in the past, more haphazardly designed).
+
+**فریمورک های موجود ری اکت در این صفحه به طور پیش فرض این مشکلات را حل می کنند، بدون نیاز به کار اضافی از سمت شما.** این فریمورک ها به شما امکان می دهد که پروژه خود را بسیار سبک شروع کنید و سپس برنامه‌ی خود را با توجه به نیازهایتان مقایس پذیر کنید. هر فریمورک ری اکت دارای یک جامعه است، بنابراین پیدا کردن پاسخ به سوالات و ارتقاء ابزار ها آسان تر است، فریمورک ها همچنان ساختار به کد شما می دهند، به شما و دیگران کمک می کنند تا محتوا و مهارت های خود را در پروژه های مختلف حفظ کیند. به عبارت دیگر، با یک تنظیم دلخواه،آسان تر است که در نسخه‌های وابسته پشتیبانی نشده گیر کنید، و به طور اساسی در حال ایجاد یک فریمورک برای خودتان هستید --گرچه مسیری بدون جامعه و ارتقاء (و اگر چیزی شبیه به آنچه در گذشته ساخته ایم، به طور تصادفی طراحی شده باشد) باشد.
+
+
+ They let you start very lean and then scale your app with your needs. Each React framework has a community, so finding answers to questions and upgrading tooling is easier. Frameworks also give structure to your code, helping you and others retain context and skills between different projects. Conversely, with a custom setup it's easier to get stuck on unsupported dependency versions, and you'll essentially end up creating your own framework—albeit one with no community or upgrade path (and if it's anything like the ones we've made in the past, more haphazardly designed).
 
 If your app has unusual constraints not served well by these frameworks, or you prefer to solve these problems yourself, you can roll your own custom setup with React. Grab `react` and `react-dom` from npm, set up your custom build process with a bundler like [Vite](https://vitejs.dev/) or [Parcel](https://parceljs.org/), and add other tools as you need them for routing, static generation or server-side rendering, and more.
 
