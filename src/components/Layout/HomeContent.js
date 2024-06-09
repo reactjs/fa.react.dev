@@ -121,10 +121,10 @@ export function HomeContent() {
             )}
           />
           <h1 className="text-5xl font-display lg:text-6xl self-center flex font-semibold leading-snug text-primary dark:text-primary-dark">
-            React
+            ری اکت
           </h1>
           <p className="text-4xl font-display max-w-lg md:max-w-full py-1 text-center text-secondary dark:text-primary-dark leading-snug self-center">
-            The library for web and native user interfaces
+            یک کتابخانه فرانت اند جاوااسکریپتی
           </p>
           <div className="mt-5 self-center flex gap-2 w-full sm:w-auto flex-col sm:flex-row">
             <ButtonLink
@@ -133,7 +133,7 @@ export function HomeContent() {
               size="lg"
               className="w-full sm:w-auto justify-center"
               label="Learn React">
-              Learn React
+              ری اکت را یاد بگیرید
             </ButtonLink>
             <ButtonLink
               href={'/reference/react'}
@@ -148,13 +148,9 @@ export function HomeContent() {
 
         <Section background="left-card">
           <Center>
-            <Header>Create user interfaces from components</Header>
+            <Header>رابط کاربری را با کامپوننت ها طراحی کنید</Header>
             <Para>
-              React lets you build user interfaces out of individual pieces
-              called components. Create your own React components like{' '}
-              <Code>Thumbnail</Code>, <Code>LikeButton</Code>, and{' '}
-              <Code>Video</Code>. Then combine them into entire screens, pages,
-              and apps.
+            ری اکت به شما این امکان را می‌دهد تا از قطعات مجزا به نام کامپوننت، رابط کاربری بسازید. اجزای React خود را مانند Thumbnail، LikeButton و Video ایجاد کنید. سپس آنها را در کل صفحه‌ها، صفحات و برنامه‌ها ترکیب کنید
             </Para>
           </Center>
           <FullBleed>
@@ -162,22 +158,16 @@ export function HomeContent() {
           </FullBleed>
           <Center>
             <Para>
-              Whether you work on your own or with thousands of other
-              developers, using React feels the same. It is designed to let you
-              seamlessly combine components written by independent people,
-              teams, and organizations.
+            آیا شما به تنهایی کار می کنید یا با هزاران توسعه دهنده دیگر، استفاده از ریاکت یکسان است. این برای اجازه ترکیب بی درزگی اجزای نوشته شده توسط افراد مستقل، تیم ها و سازمان ها طراحی شده است.
             </Para>
           </Center>
         </Section>
 
         <Section background="right-card">
           <Center>
-            <Header>Write components with code and markup</Header>
+            <Header>کامپوننت ها را با کد و نشانه گذاری بنویسید</Header>
             <Para>
-              React components are JavaScript functions. Want to show some
-              content conditionally? Use an <Code>if</Code> statement.
-              Displaying a list? Try array <Code>map()</Code>. Learning React is
-              learning programming.
+              اجزا یا همان کامپوننت های ری اکت همان فانکشن های جاوااسکریپت هستند. آیا میخواهید محتوا را با شرط اجرا کنید؟ از <Code>if</Code> استفاده کنید. نمایش لیست؟ از <Code>map()</Code> استفاده کنید
             </Para>
           </Center>
           <FullBleed>
@@ -185,10 +175,7 @@ export function HomeContent() {
           </FullBleed>
           <Center>
             <Para>
-              This markup syntax is called JSX. It is a JavaScript syntax
-              extension popularized by React. Putting JSX markup close to
-              related rendering logic makes React components easy to create,
-              maintain, and delete.
+              این نحو جاوااسکریپت نشانه گذاری ی JSX نامیده میشود. یک پسوند جاوااسکریپتی معرفی شده توسط ری اکت.
             </Para>
           </Center>
         </Section>
@@ -1066,7 +1053,7 @@ function SearchableVideoList({ videos }) {
   return (
     <>
       <SearchInput
-        value={searchText}
+        value={searchText
         onChange={newText => setSearchText(newText)} />
       <VideoList
         videos={foundVideos}
@@ -1461,7 +1448,7 @@ function SearchInput({value, onChange}) {
       data-hover="SearchInput"
       onSubmit={(e) => e.preventDefault()}>
       <label htmlFor={id} className="sr-only">
-        Search
+        جستجو کنید
       </label>
       <div className="relative w-full">
         <div className="absolute inset-y-0 start-0 flex items-center ps-4 pointer-events-none">
@@ -1471,7 +1458,7 @@ function SearchInput({value, onChange}) {
           type="text"
           id={id}
           className="flex ps-11 py-4 h-10 w-full text-start bg-secondary-button outline-none betterhover:hover:bg-opacity-80 pointer items-center text-primary rounded-full align-middle text-base"
-          placeholder="Search"
+          placeholder="جستجو کنید ..."
           value={value}
           onChange={(e) => onChange(e.target.value)}
         />
@@ -2771,3 +2758,4 @@ function fetchTalks(confId) {
   talksCache.set(confId, promise);
   return promise;
 }
+
