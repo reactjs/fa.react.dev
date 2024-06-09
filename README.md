@@ -269,7 +269,7 @@ yarn dev
 
 <p dir="rtl">
   محتوایی که در <a href="https://react.dev/">react.dev</a> قرار می‌گیرد، تخت
-  مجوز CC-BY-4.0 منتشر می‌شود که جزئیات آن د
+  مجوز CC-BY-4.0 منتشر می‌شود که جزئیات آن در
   <a href="https://github.com/open-source-explorer/reactjs.org/blob/master/LICENSE-DOCS.md">
     LICENSE-DOCS.md
   </a>
