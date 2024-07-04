@@ -1,23 +1,23 @@
 ---
-title: "Built-in React Hooks"
+title: "هوک‌های داخلی ری‌اکت"
 ---
 
 <Intro>
 
-*Hooks* let you use different React features from your components. You can either use the built-in Hooks or combine them to build your own. This page lists all built-in Hooks in React.
+*هوک‌ها* به شما اجازه می‌دهند از ویژگی‌های مختلف ری‌اکت در کامپوننت‌های خود استفاده کنید. شما می‌توانید از هوک‌های داخلی استفاده کنید یا آن‌ها را ترکیب کنید تا هوک‌های مخصوص خود را بسازید. این صفحه لیست تمام هوک‌های داخلی در ری‌اکت را نمایش می‌دهد.
 
 </Intro>
 
 ---
 
-## State Hooks {/*state-hooks*/}
+## هوک‌های State {/*state-hooks*/}
 
-*State* lets a component ["remember" information like user input.](/learn/state-a-components-memory) For example, a form component can use state to store the input value, while an image gallery component can use state to store the selected image index.
+*State* به یک کامپوننت اجازه می‌دهد [اطلاعاتی مانند ورودی کاربر را "به خاطر بسپارد."](/learn/state-a-components-memory) برای مثال، یک کامپوننت فرم می‌تواند از state برای ذخیره مقدار ورودی استفاده کند، در حالی که یک گالری تصاویر می‌تواند از state برای ذخیره شاخص عکس انتخابی استفاده کند.
 
-To add state to a component, use one of these Hooks:
+برای افزودن state به یک کامپوننت، از یکی از این هوک‌ها استفاده کنید:
 
-* [`useState`](/reference/react/useState) declares a state variable that you can update directly.
-* [`useReducer`](/reference/react/useReducer) declares a state variable with the update logic inside a [reducer function.](/learn/extracting-state-logic-into-a-reducer)
+* [`useState`](/reference/react/useState) یک متغیر state اعلام می‌کند که می‌توانید مستقیماً آن را به‌روزرسانی کنید.
+* [`useReducer`](/reference/react/useReducer) یک متغیر state اعلام می‌کند که منطق به‌روزرسانی آن درون [تابع reducer](/learn/extracting-state-logic-into-a-reducer) قرار دارد.
 
 ```js
 function ImageGallery() {
@@ -27,11 +27,11 @@ function ImageGallery() {
 
 ---
 
-## Context Hooks {/*context-hooks*/}
+## هوک‌های Context {/*context-hooks*/}
 
-*Context* lets a component [receive information from distant parents without passing it as props.](/learn/passing-props-to-a-component) For example, your app's top-level component can pass the current UI theme to all components below, no matter how deep.
+*Context* به یک کامپوننت اجازه می‌دهد [اطلاعاتی از والدین دور دریافت کند بدون اینکه آن ها را به عنوان props ارسال کند.](/learn/passing-props-to-a-component) برای مثال، کامپوننت سطح بالای برنامه شما می‌تواند تم فعلی رابط کاربری را به تمام کامپوننت‌های زیرین ارسال کند، مهم نیست چقدر عمیق باشند.
 
-* [`useContext`](/reference/react/useContext) reads and subscribes to a context.
+* [`useContext`](/reference/react/useContext) یک context را می‌خواند و به آن اشتراک می‌دهد.
 
 ```js
 function Button() {
@@ -41,12 +41,12 @@ function Button() {
 
 ---
 
-## Ref Hooks {/*ref-hooks*/}
+## هوک‌های Ref {/*ref-hooks*/}
 
-*Refs* let a component [hold some information that isn't used for rendering,](/learn/referencing-values-with-refs) like a DOM node or a timeout ID. Unlike with state, updating a ref does not re-render your component. Refs are an "escape hatch" from the React paradigm. They are useful when you need to work with non-React systems, such as the built-in browser APIs.
+*Ref ها* به یک کامپوننت اجازه می‌دهند [اطلاعاتی را نگهداری کنند که برای رندرینگ استفاده نمی‌شوند،](/learn/referencing-values-with-refs) مانند یک نود DOM یا یک شناسه تایم‌اوت. بر خلاف state، به‌روزرسانی یک ref کامپوننت شما را مجدداً رندر نمی‌کند. Ref ها یک "راه خروج" از پارادایم ری‌اکت هستند. آن‌ها زمانی مفید هستند که نیاز به کار با سیستم‌های غیر ری‌اکتی داشته باشید، مانند APIهای مرورگر داخلی.
 
-* [`useRef`](/reference/react/useRef) declares a ref. You can hold any value in it, but most often it's used to hold a DOM node.
-* [`useImperativeHandle`](/reference/react/useImperativeHandle) lets you customize the ref exposed by your component. This is rarely used.
+* [`useRef`](/reference/react/useRef) یک ref اعلام می‌کند. شما می‌توانید هر مقداری را در آن نگه دارید، اما اغلب برای نگهداری یک نود DOM استفاده می‌شود.
+* [`useImperativeHandle`](/reference/react/useImperativeHandle) به شما اجازه می‌دهد refی را که توسط کامپوننت شما نمایش داده می‌شود سفارشی کنید. این به ندرت استفاده می‌شود.
 
 ```js
 function Form() {
@@ -56,11 +56,11 @@ function Form() {
 
 ---
 
-## Effect Hooks {/*effect-hooks*/}
+## هوک‌های Effect {/*effect-hooks*/}
 
-*Effects* let a component [connect to and synchronize with external systems.](/learn/synchronizing-with-effects) This includes dealing with network, browser DOM, animations, widgets written using a different UI library, and other non-React code.
+*Effect ها* به یک کامپوننت اجازه می‌دهند [با سیستم‌های خارجی ارتباط برقرار کرده و همگام شوند.](/learn/synchronizing-with-effects) این شامل مدیریت شبکه، DOM مرورگر، انیمیشن‌ها، ویجت‌های نوشته شده با کتابخانه‌های رابط کاربری مختلف و دیگر کدهای غیر ری‌اکتی می‌شود.
 
-* [`useEffect`](/reference/react/useEffect) connects a component to an external system.
+* [`useEffect`](/reference/react/useEffect) یک کامپوننت را به یک سیستم خارجی متصل می‌کند.
 
 ```js
 function ChatRoom({ roomId }) {
@@ -72,23 +72,23 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-Effects are an "escape hatch" from the React paradigm. Don't use Effects to orchestrate the data flow of your application. If you're not interacting with an external system, [you might not need an Effect.](/learn/you-might-not-need-an-effect)
+Effect ها یک "راه خروج" از پارادایم ری‌اکت هستند. از Effect ها برای مدیریت جریان داده‌های برنامه خود استفاده نکنید. اگر با سیستم خارجی ارتباط ندارید، [ممکن است نیازی به Effect نداشته باشید.](/learn/you-might-not-need-an-effect)
 
-There are two rarely used variations of `useEffect` with differences in timing:
+دو نوع استفاده نادر از `useEffect` وجود دارد که تفاوت‌هایی در زمان‌بندی دارند:
 
-* [`useLayoutEffect`](/reference/react/useLayoutEffect) fires before the browser repaints the screen. You can measure layout here.
-* [`useInsertionEffect`](/reference/react/useInsertionEffect) fires before React makes changes to the DOM. Libraries can insert dynamic CSS here.
+* [`useLayoutEffect`](/reference/react/useLayoutEffect) قبل از اینکه مرورگر صفحه را بازپخش کند، اجرا می‌شود. شما می‌توانید در اینجا layout را اندازه‌گیری کنید.
+* [`useInsertionEffect`](/reference/react/useInsertionEffect) قبل از اینکه ری‌اکت تغییراتی در DOM ایجاد کند، اجرا می‌شود. کتابخانه‌ها می‌توانند در این مرحله CSS دینامیک را درج کنند.
 
 ---
 
-## Performance Hooks {/*performance-hooks*/}
+## هوک‌های Performance {/*performance-hooks*/}
 
-A common way to optimize re-rendering performance is to skip unnecessary work. For example, you can tell React to reuse a cached calculation or to skip a re-render if the data has not changed since the previous render.
+یک روش معمول برای بهینه‌سازی عملکرد رندرینگ، پرهیز از کارهای غیر ضروری است. برای مثال، شما می‌توانید به ری‌اکت بگویید که از یک محاسبه کش شده استفاده کند یا اگر داده‌ها از آخرین رندر تغییر نکرده‌اند، رندر را پرش کند.
 
-To skip calculations and unnecessary re-rendering, use one of these Hooks:
+برای پرهیز از محاسبات و رندرینگ‌های غیر ضروری، از یکی از این هوک‌ها استفاده کنید:
 
-- [`useMemo`](/reference/react/useMemo) lets you cache the result of an expensive calculation.
-- [`useCallback`](/reference/react/useCallback) lets you cache a function definition before passing it down to an optimized component.
+- [`useMemo`](/reference/react/useMemo) به شما اجازه می‌دهد نتیجه یک محاسبه پرهزینه را کش کنید.
+- [`useCallback`](/reference/react/useCallback) به شما اجازه می‌دهد تعریف یک تابع را قبل از ارسال آن به یک کامپوننت بهینه‌سازی شده کش کنید.
 
 ```js
 function TodoList({ todos, tab, theme }) {
@@ -97,22 +97,22 @@ function TodoList({ todos, tab, theme }) {
 }
 ```
 
-Sometimes, you can't skip re-rendering because the screen actually needs to update. In that case, you can improve performance by separating blocking updates that must be synchronous (like typing into an input) from non-blocking updates which don't need to block the user interface (like updating a chart).
+گاهی اوقات، شما نمی‌توانید رندرینگ را پرش کنید زیرا صفحه واقعاً نیاز به به‌روزرسانی دارد. در این صورت، شما می‌توانید عملکرد را با جدا کردن به‌روزرسانی‌های مسدودکننده که باید همگام باشند (مانند تایپ کردن درون یک ورودی) از به‌روزرسانی‌های غیر مسدودکننده که نیاز به مسدود کردن رابط کاربری ندارند (مانند به‌روزرسانی یک نمودار)، بهبود بخشید.
 
-To prioritize rendering, use one of these Hooks:
+برای اولویت‌بندی رندرینگ، از یکی از این هوک‌ها استفاده کنید:
 
-- [`useTransition`](/reference/react/useTransition) lets you mark a state transition as non-blocking and allow other updates to interrupt it.
-- [`useDeferredValue`](/reference/react/useDeferredValue) lets you defer updating a non-critical part of the UI and let other parts update first.
+- [`useTransition`](/reference/react/useTransition) به شما اجازه می‌دهد یک تغییر حالت را غیر مسدودکننده علامت‌گذاری کرده و اجازه دهید به‌روزرسانی‌های دیگر آن را قطع کنند.
+- [`useDeferredValue`](/reference/react/useDeferredValue) به شما اجازه می‌دهد به‌روزرسانی قسمت غیر حیاتی رابط کاربری را به تأخیر بیاندازید و اجازه دهید بخش‌های دیگر ابتدا به‌روزرسانی شوند.
 
 ---
 
-## Resource Hooks {/*resource-hooks*/}
+## هوک‌های Resource {/*resource-hooks*/}
 
-*Resources* can be accessed by a component without having them as part of their state. For example, a component can read a message from a Promise or read styling information from a context.
+*Resource ها* می‌توانند توسط یک کامپوننت بدون اینکه بخشی از state آن‌ها باشند مورد استفاده قرار گیرند. برای مثال، یک کامپوننت می‌تواند یک پیام را از یک Promise بخواند یا اطلاعات استایل را از یک context بخواند.
 
-To read a value from a resource, use this Hook:
+برای خواندن یک مقدار از یک منبع، از این هوک استفاده کنید:
 
-- [`use`](/reference/react/use) lets you read the value of a resource like a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or [context](/learn/passing-data-deeply-with-context).
+- [`use`](/reference/react/use) به شما اجازه می‌دهد مقدار یک منبع را بخوانید مانند [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) یا [context](/learn/passing-data-deeply-with-context).
 
 ```js
 function MessageComponent({ messagePromise }) {
@@ -124,16 +124,16 @@ function MessageComponent({ messagePromise }) {
 
 ---
 
-## Other Hooks {/*other-hooks*/}
+## سایر هوک‌ها {/*other-hooks*/}
 
-These Hooks are mostly useful to library authors and aren't commonly used in the application code.
+این هوک‌ها بیشتر برای نویسندگان کتابخانه مفید هستند و به‌طور معمول در کد برنامه استفاده نمی‌شوند.
 
-- [`useDebugValue`](/reference/react/useDebugValue) lets you customize the label React DevTools displays for your custom Hook.
-- [`useId`](/reference/react/useId) lets a component associate a unique ID with itself. Typically used with accessibility APIs.
-- [`useSyncExternalStore`](/reference/react/useSyncExternalStore) lets a component subscribe to an external store.
+- [`useDebugValue`](/reference/react/useDebugValue) به شما اجازه می‌دهد برچسب خود را برای هوک مخصوص خود در DevTools ری‌اکت سفارشی کنید.
+- [`useId`](/reference/react/useId) به یک کامپوننت اجازه می‌دهد یک ID یکتایی با خود داشته باشد. معمولاً با APIهای دسترسی پذیری استفاده می‌شود.
+- [`useSyncExternalStore`](/reference/react/useSyncExternalStore) به یک کامپوننت اجازه می‌دهد به یک فروشگاه خارجی مشترک شود.
 
 ---
 
-## Your own Hooks {/*your-own-hooks*/}
+## هوک‌های مخصوص خودتان {/*your-own-hooks*/}
 
-You can also [define your own custom Hooks](/learn/reusing-logic-with-custom-hooks#extracting-your-own-custom-hook-from-a-component) as JavaScript functions.
+شما همچنین می‌توانید [هوک‌های سفارشی خود را به عنوان توابع JavaScript تعریف کنید.](/learn/reusing-logic-with-custom-hooks#extracting-your-own-custom-hook-from-a-component)
