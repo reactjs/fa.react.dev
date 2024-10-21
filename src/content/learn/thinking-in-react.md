@@ -298,7 +298,15 @@ state
 در مرحله‌ی قبلی، دو قطعه از استیت را در این برنامه پیدا کردید: متن ورودی جستجو و مقدار چک‌باکس. در این مثال، همیشه همراه یکدیگر ظاهر می‌شوند، بنابراین منطقی است که آن‌ها را در یک جایگاه قرار دهید
 
 
+<<<<<<< HEAD
 حالا بیایید از راهبرد ما  مسئله را بررسی کنیم
+=======
+1. **Identify components that use state:**
+    * `ProductTable` needs to filter the product list based on that state (search text and checkbox value). 
+    * `SearchBar` needs to display that state (search text and checkbox value).
+2. **Find their common parent:** The first parent component both components share is `FilterableProductTable`.
+3. **Decide where the state lives**: We'll keep the filter text and checked state values in `FilterableProductTable`.
+>>>>>>> 9467bc58868e66c53ca9385c8531dcf7b02178c2
 
 شناسایی کامپوننت‌هایی که از استیت استفاده می‌کنند: ***
 
