@@ -4,7 +4,9 @@ title: <Fragment> (<>...</>)
 
 <Intro>
 
-`<Fragment>`, often used via `<>...</>` syntax, lets you group elements without a wrapper node.
+
+ تگ `<Fragment>`که اغلب به اینصورت `<>...</>` نمایش داده میشه،به شما اجازه میده  تا گروهی از المنت هارو بدون اینکه توی نود (تگ) بپیچی نماش بدی.  
+
 
 ```js
 <>
@@ -19,15 +21,14 @@ title: <Fragment> (<>...</>)
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `<Fragment>` {/*fragment*/}
 
-Wrap elements in `<Fragment>` to group them together in situations where you need a single element. Grouping elements in `Fragment` has no effect on the resulting DOM; it is the same as if the elements were not grouped. The empty JSX tag `<></>` is shorthand for `<Fragment></Fragment>` in most cases.
+  المنت هارو توی تگ `<Fragment>` بپیچونید تا آن ها روتوی یک موقعیت  گروه بندی کنید، جایی که شما نیاز دارید که یک المنت داشته باشید.گروه بندی المنت ها در `<Fragment>` هیچ تاثیری روی نتیجه دام(DOM)شما ندارد؛دقیقا مثل اینکه المنت ها گروه بندی نشده است. تگ خالی جی اس اکس(jsx) `<></>` دقیقا کوتاه شدهی تگ `<Fragment></Fragment>` در اکثر مواقع است.
 
-#### Props {/*props*/}
-
-- **optional** `key`: Fragments declared with the explicit `<Fragment>` syntax may have [keys.](/learn/rendering-lists#keeping-list-items-in-order-with-key)
+#### پراپس ها (Props) {/*props*/}
+- **اختیاری** `key`: Fragments declared with the explicit `<Fragment>` syntax may have [keys.](/learn/rendering-lists#keeping-list-items-in-order-with-key)
 
 #### Caveats {/*caveats*/}
 
