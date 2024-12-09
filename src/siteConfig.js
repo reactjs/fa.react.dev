@@ -1,8 +1,8 @@
 /*
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
-
 exports.siteConfig = {
+  version: '19',
   // --------------------------------------
   // Translations should replace these lines:
   languageCode: 'en',
@@ -14,7 +14,7 @@ exports.siteConfig = {
   twitterUrl: 'https://twitter.com/reactjs',
   algolia: {
     appId: '1FCF9AYYAT',
-    apiKey: 'e8451218980a351815563de007648b00',
+    apiKey: '1b7ad4e1c89e645e351e59d40544eda1',
     indexName: 'beta-react',
   },
 };
