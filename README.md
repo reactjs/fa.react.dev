@@ -21,7 +21,15 @@
   ببینید.
 </p>
 
+<<<<<<< HEAD
 <h2 dir="rtl">چگونه مشارکت کنم؟</h2>
+=======
+1. Git
+1. Node: any version starting with v16.8.0 or greater
+1. Yarn: See [Yarn website for installation instructions](https://yarnpkg.com/lang/en/docs/install/)
+1. A fork of the repo (for any contributions)
+1. A clone of the [react.dev repo](https://github.com/reactjs/react.dev) on your local machine
+>>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
 
 <p dir="rtl">پیشنهاد می‌شود به‌ترتیب از لینک‌های زیر شروع کنید:</p>
 <ul dir="rtl">
