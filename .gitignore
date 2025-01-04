@@ -36,7 +36,3 @@ yarn-error.log*
 
 # external fonts
 public/fonts/**/Optimistic_*.woff2
-.gitignore
-/src/components
-/src/utils
-/src/css
