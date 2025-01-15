@@ -1,3 +1,7 @@
+---
+title: "شیوه نگارش"
+date: "2025-01-15"
+---
 <h1 dir="rtl">شیوه‌ نگارش</h1>
 
 <p dir="rtl" style="font-family:'vazirmatn'">
