@@ -4,7 +4,11 @@ title: شروع سریع
 
 <Intro>
 
+<<<<<<< HEAD
  به داکیومنت ری‌اکت خوش‌امدید. این صفحه  به شما مقدمه‌ای  به ۸۰ درصد از مفاهیم ری‌اکت که روزانه استفاده می‌کنید ٬می‌دهد.
+=======
+Welcome to the React documentation! This page will give you an introduction to 80% of the React concepts that you will use on a daily basis.
+>>>>>>> a5aad0d5e92872ef715b462b1dd6dcbeb45cf781
 
 </Intro>
 
