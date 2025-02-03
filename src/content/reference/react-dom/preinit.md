@@ -1,13 +1,6 @@
 ---
 title: preinit
-canary: true
 ---
-
-<Canary>
-
-The `preinit` function is currently only available in React's Canary and experimental channels. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
-
-</Canary>
 
 <Note>
 
@@ -20,7 +13,7 @@ The `preinit` function is currently only available in React's Canary and experim
 `preinit` lets you eagerly fetch and evaluate a stylesheet or external script.
 
 ```js
-preinit("https://example.com/script.js", {as: "style"});
+preinit("https://example.com/script.js", {as: "script"});
 ```
 
 </Intro>
@@ -67,7 +60,7 @@ The `preinit` function provides the browser with a hint that it should start dow
 #### Caveats {/*caveats*/}
 
 * Multiple calls to `preinit` with the same `href` have the same effect as a single call.
-* In the browser, you can call `preinit` in any situation: while rendering a component, in an effect, in an event handler, and so on.
+* In the browser, you can call `preinit` in any situation: while rendering a component, in an Effect, in an event handler, and so on.
 * In server-side rendering or when rendering Server Components, `preinit` only has an effect if you call it while rendering a component or in an async context originating from rendering a component. Any other calls will be ignored.
 
 ---
