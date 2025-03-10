@@ -68,7 +68,7 @@ module.exports = {
       },
       fontFamily: {
         display: [
-          'Optimistic Display',
+          'vazirmatn',
           '-apple-system',
           ...defaultTheme.fontFamily.sans,
         ],
