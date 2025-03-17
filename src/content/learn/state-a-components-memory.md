@@ -1474,7 +1474,11 @@ If your linter is [configured for React](/learn/editor-setup#linting), you shoul
 
 #### Remove unnecessary state {/*remove-unnecessary-state*/}
 
+<<<<<<< HEAD
 سعی کنید فراخوانی دوم `useState` را پس از شرط `if` قرار دهید و مشاهده کنید که چگونه این باعث شکست آن می‌شود.
+=======
+When the button is clicked, this example should ask for the user's name and then display an alert greeting them. You tried to use state to keep the name, but for some reason the first time it shows "Hello, !", and then "Hello, [name]!" with the previous input every time after.
+>>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
 
 اگر لینتر شما [برای React پیکربندی شده است](/learn/editor-setup#linting)، باید هنگامی که مانند این اشتباه را انجام می‌دهید، یک خطای لینت ببینید. اگر هنگام تست کد خراب را در محلی اجرا می‌کنید و خطایی نمی‌بینید، باید برای پروژه خود لینتینگ را پیکربندی کنید.
 
