@@ -58,6 +58,10 @@ export default function PackingList() {
 
 </Sandpack>
 
+<<<<<<< HEAD
+=======
+Notice that some of the `Item` components have their `isPacked` prop set to `true` instead of `false`. You want to add a checkmark (✅) to packed items if `isPacked={true}`.
+>>>>>>> 5138e605225b24d25701a1a1f68daa90499122a4
 
 توجه داشته باشید که برای برخی از کامپوننت‌های   props ،`isPacked` آن ها به جای true ،false  داده شده است. شما می‌خواهید اگر `isPacked={true}` باشد،  یک علامت (✔) به موارد بسته‌بندی شده اضافه کنید.
 
@@ -66,7 +70,7 @@ export default function PackingList() {
 
 ```js
 if (isPacked) {
-  return <li className="item">{name} ✔</li>;
+  return <li className="item">{name} ✅</li>;
 }
 return <li className="item">{name}</li>;
 ```
@@ -79,7 +83,7 @@ return <li className="item">{name}</li>;
 ```js
 function Item({ name, isPacked }) {
   if (isPacked) {
-    return <li className="item">{name} ✔</li>;
+    return <li className="item">{name} ✅</li>;
   }
   return <li className="item">{name}</li>;
 }
@@ -179,7 +183,7 @@ export default function PackingList() {
 در مثال قبلی، شما کنترل کردید که کدام درخت JSX (در صورت وجود!) توسط کامپوننت بازگردانده شود. ممکن است قبلاً متوجه مقداری تکرار در خروجی رندر شده باشید:
 
 ```js
-<li className="item">{name} ✔</li>
+<li className="item">{name} ✅</li>
 ```
 
 
@@ -197,7 +201,7 @@ export default function PackingList() {
 
 ```js
 if (isPacked) {
-  return <li className="item">{name} ✔</li>;
+  return <li className="item">{name} ✅</li>;
 }
 return <li className="item">{name}</li>;
 ```
@@ -219,7 +223,7 @@ return <li className="item">{name}</li>;
 
 ```js
 if (isPacked) {
-  return <li className="item">{name} ✔</li>;
+  return <li className="item">{name} ✅</li>;
 }
 return <li className="item">{name}</li>;
 ```
@@ -231,15 +235,19 @@ return <li className="item">{name}</li>;
 ```js
 return (
   <li className="item">
-    {isPacked ? name + ' ✔' : name}
+    {isPacked ? name + ' ✅' : name}
   </li>
 );
 ```
 
+<<<<<<< HEAD
 
 
 شما می توانید آن را به صورت *"اگر `isPacked` درست است، سپس  (`?`) `name + ' ✔'` را رندر کنید، در غیر این صورت (`:`) `name` را اجرا کنید "*  بخوانید.
 
+=======
+You can read it as *"if `isPacked` is true, then (`?`) render `name + ' ✅'`, otherwise (`:`) render `name`"*.
+>>>>>>> 5138e605225b24d25701a1a1f68daa90499122a4
 
 <DeepDive>
 
@@ -265,7 +273,7 @@ function Item({ name, isPacked }) {
     <li className="item">
       {isPacked ? (
         <del>
-          {name + ' ✔'}
+          {name + ' ✅'}
         </del>
       ) : (
         name
@@ -314,7 +322,7 @@ export default function PackingList() {
 ```js
 return (
   <li className="item">
-    {name} {isPacked && '✔'}
+    {name} {isPacked && '✅'}
   </li>
 );
 ```
@@ -331,7 +339,7 @@ return (
 function Item({ name, isPacked }) {
   return (
     <li className="item">
-      {name} {isPacked && '✔'}
+      {name} {isPacked && '✅'}
     </li>
   );
 }
@@ -394,7 +402,7 @@ let itemContent = name;
 
 ```js
 if (isPacked) {
-  itemContent = name + " ✔";
+  itemContent = name + " ✅";
 }
 ```
 
@@ -418,7 +426,7 @@ if (isPacked) {
 function Item({ name, isPacked }) {
   let itemContent = name;
   if (isPacked) {
-    itemContent = name + " ✔";
+    itemContent = name + " ✅";
   }
   return (
     <li className="item">
@@ -464,7 +472,7 @@ function Item({ name, isPacked }) {
   if (isPacked) {
     itemContent = (
       <del>
-        {name + " ✔"}
+        {name + " ✅"}
       </del>
     );
   }
@@ -532,7 +540,7 @@ export default function PackingList() {
 function Item({ name, isPacked }) {
   return (
     <li className="item">
-      {name} {isPacked && '✔'}
+      {name} {isPacked && '✅'}
     </li>
   );
 }
@@ -570,7 +578,7 @@ export default function PackingList() {
 function Item({ name, isPacked }) {
   return (
     <li className="item">
-      {name} {isPacked ? '✔' : '❌'}
+      {name} {isPacked ? '✅' : '❌'}
     </li>
   );
 }
