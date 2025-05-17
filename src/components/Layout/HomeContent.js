@@ -133,10 +133,10 @@ export function HomeContent() {
             )}
           />
           <h1 className="uwu-hidden text-5xl font-display lg:text-6xl self-center flex font-semibold leading-snug text-primary dark:text-primary-dark">
-            React
+            ری‌اکت
           </h1>
           <p className="text-4xl font-display max-w-lg md:max-w-full py-1 text-center text-secondary dark:text-primary-dark leading-snug self-center">
-            The library for web and native user interfaces
+            کتابخانه‌ای برای رابط‌های کاربری وب و بومی
           </p>
           <div className="mt-5 self-center flex gap-2 w-full sm:w-auto flex-col sm:flex-row">
             <ButtonLink
@@ -144,29 +144,29 @@ export function HomeContent() {
               type="primary"
               size="lg"
               className="w-full sm:w-auto justify-center"
-              label="Learn React">
-              Learn React
+              label="یادگیری ری‌اکت">
+              یادگیری ری‌اکت
             </ButtonLink>
             <ButtonLink
               href={'/reference/react'}
               type="secondary"
               size="lg"
               className="w-full sm:w-auto justify-center"
-              label="API Reference">
-              API Reference
+              label="مرجع API">
+              مراجعه به API
             </ButtonLink>
           </div>
         </div>
 
         <Section background="left-card">
           <Center>
-            <Header>Create user interfaces from components</Header>
+            <Header>رابط‌های کاربری را از کامپوننت‌ها بسازید</Header>
             <Para>
-              React lets you build user interfaces out of individual pieces
-              called components. Create your own React components like{' '}
-              <Code>Thumbnail</Code>, <Code>LikeButton</Code>, and{' '}
-              <Code>Video</Code>. Then combine them into entire screens, pages,
-              and apps.
+              ری‌اکت به شما این امکان را می‌دهد تا رابط‌های کاربری را از قطعات
+              جداگانه‌ای به نام کامپوننت بسازید. کامپوننت‌های خود را مانند{' '}
+              <Code>Thumbnail</Code>، <Code>LikeButton</Code> و{' '}
+              <Code>Video</Code> بسازید. سپس آن‌ها را با هم ترکیب کرده و به
+              صفحه‌ها، نماها و اپلیکیشن‌های کامل تبدیل کنید.
             </Para>
           </Center>
           <FullBleed>
@@ -174,22 +174,22 @@ export function HomeContent() {
           </FullBleed>
           <Center>
             <Para>
-              Whether you work on your own or with thousands of other
-              developers, using React feels the same. It is designed to let you
-              seamlessly combine components written by independent people,
-              teams, and organizations.
+              چه به‌تنهایی کار کنید و چه با هزاران توسعه‌دهنده دیگر، کار با
+              ری‌اکت یکسان است. ری‌اکت طوری طراحی شده‌است که به شما امکان می‌دهد
+              کامپوننت‌هایی را که توسط افراد، تیم‌ها و سازمان‌های مستقل نوشته
+              شده‌اند، به‌سادگی با هم ترکیب کنید.
             </Para>
           </Center>
         </Section>
 
         <Section background="right-card">
           <Center>
-            <Header>Write components with code and markup</Header>
+            <Header>نوشتن کامپوننت‌ها با کد و نشانه‌گذاری</Header>
             <Para>
-              React components are JavaScript functions. Want to show some
-              content conditionally? Use an <Code>if</Code> statement.
-              Displaying a list? Try array <Code>map()</Code>. Learning React is
-              learning programming.
+              کامپوننت‌های ری‌اکت توابع جاوااسکریپت هستند. می‌خواهید محتوایی را
+              به‌صورت شرطی نمایش دهید؟ از دستور <Code>if</Code> استفاده کنید.
+              می‌خواهید یک لیست را نمایش دهید؟ از متد آرایه <Code>map()</Code>{' '}
+              کمک بگیرید. یادگیری ری‌اکت یعنی یادگیری برنامه‌نویسی.
             </Para>
           </Center>
           <FullBleed>
@@ -197,22 +197,23 @@ export function HomeContent() {
           </FullBleed>
           <Center>
             <Para>
-              This markup syntax is called JSX. It is a JavaScript syntax
-              extension popularized by React. Putting JSX markup close to
-              related rendering logic makes React components easy to create,
-              maintain, and delete.
+              این نحوه نشانه‌گذاری JSX نام دارد. JSX یک افزونه نحوی برای
+              جاوااسکریپت است که توسط ری‌اکت محبوب شده است. قرار دادن
+              نشانه‌گذاری JSX نزدیک منطق رندرینگ مرتبط، ساخت، نگهداری و حذف
+              کامپوننت‌های ری‌اکت را آسان می‌کند.
             </Para>
           </Center>
         </Section>
 
         <Section background="left-card">
           <Center>
-            <Header>Add interactivity wherever you need it</Header>
+            <Header>افزودن تعامل در هر جایی که نیاز دارید</Header>
             <Para>
-              React components receive data and return what should appear on the
-              screen. You can pass them new data in response to an interaction,
-              like when the user types into an input. React will then update the
-              screen to match the new data.
+              کامپوننت‌های ری‌اکت داده دریافت می‌کنند و مشخص می‌کنند چه چیزی
+              باید روی صفحه نمایش داده شود. شما می‌توانید در واکنش به تعامل
+              کاربر، مانند زمانی که کاربر در یک ورودی تایپ می‌کند، داده‌های
+              جدیدی به آن‌ها بدهید. سپس ری‌اکت صفحه را با داده‌های جدید
+              به‌روزرسانی می‌کند.
             </Para>
           </Center>
           <FullBleed>
@@ -220,16 +221,16 @@ export function HomeContent() {
           </FullBleed>
           <Center>
             <Para>
-              You don’t have to build your whole page in React. Add React to
-              your existing HTML page, and render interactive React components
-              anywhere on it.
+              لازم نیست تمام صفحه خود را با ری‌اکت بسازید. می‌توانید ری‌اکت را
+              به صفحه HTML موجود خود اضافه کنید و کامپوننت‌های تعاملی ری‌اکت را
+              در هر بخشی از آن رندر کنید.
             </Para>
             <div className="flex justify-start w-full lg:justify-center">
               <CTA
                 color="gray"
                 icon="code"
                 href="/learn/add-react-to-an-existing-project">
-                Add React to your page
+                افزودن ری‌اکت به صفحه شما
               </CTA>
             </div>
           </Center>
@@ -238,15 +239,17 @@ export function HomeContent() {
         <Section background="right-card">
           <Center>
             <Header>
-              Go full-stack <br className="hidden lg:inline" />
-              with a framework
+              استفاده کامل از توانمندی‌های فول‌استک{' '}
+              <br className="hidden lg:inline" />
+              با یک فریمورک
             </Header>
             <Para>
-              React is a library. It lets you put components together, but it
-              doesn’t prescribe how to do routing and data fetching. To build an
-              entire app with React, we recommend a full-stack React framework
-              like <Link href="https://nextjs.org">Next.js</Link> or{' '}
-              <Link href="https://remix.run">Remix</Link>.
+              ری‌اکت یک کتابخانه است. به شما اجازه می‌دهد کامپوننت‌ها را کنار هم
+              قرار دهید، اما نحوه مسیریابی و واکشی داده‌ها را مشخص نمی‌کند. برای
+              ساخت یک اپلیکیشن کامل با ری‌اکت، ما استفاده از یک فریمورک فول‌استک
+              مبتنی بر ری‌اکت مانند{' '}
+              <Link href="https://nextjs.org">Next.js</Link> یا{' '}
+              <Link href="https://remix.run">Remix</Link> را پیشنهاد می‌کنیم.
             </Para>
           </Center>
           <FullBleed>
@@ -254,17 +257,18 @@ export function HomeContent() {
           </FullBleed>
           <Center>
             <Para>
-              React is also an architecture. Frameworks that implement it let
-              you fetch data in asynchronous components that run on the server
-              or even during the build. Read data from a file or a database, and
-              pass it down to your interactive components.
+              ری‌اکت همچنین یک معماری است. فریمورک‌هایی که بر اساس آن ساخته
+              شده‌اند، به شما اجازه می‌دهند داده‌ها را در کامپوننت‌های ناهمگام
+              (asynchronous) که روی سرور یا حتی در زمان ساخت اجرا می‌شوند، واکشی
+              کنید. می‌توانید داده‌ها را از یک فایل یا پایگاه‌داده بخوانید و به
+              کامپوننت‌های تعاملی خود ارسال کنید.
             </Para>
             <div className="flex justify-start w-full lg:justify-center">
               <CTA
                 color="gray"
                 icon="framework"
                 href="/learn/start-a-new-react-project">
-                Get started with a framework
+                شروع با یک فریمورک
               </CTA>
             </div>
           </Center>
@@ -272,12 +276,13 @@ export function HomeContent() {
         <Section background="left-card">
           <div className="mx-auto flex flex-col w-full">
             <div className="mx-auto max-w-4xl lg:text-center items-center px-5 flex flex-col">
-              <Header>Use the best from every platform</Header>
+              <Header>بهترین‌ها را از هر پلتفرم استفاده کنید</Header>
               <Para>
-                People love web and native apps for different reasons. React
-                lets you build both web apps and native apps using the same
-                skills. It leans upon each platform’s unique strengths to let
-                your interfaces feel just right on every platform.
+                مردم به دلایل مختلف عاشق اپلیکیشن‌های وب و بومی هستند. ری‌اکت به
+                شما این امکان را می‌دهد که با همان مهارت‌ها، هم اپلیکیشن وب و هم
+                اپلیکیشن بومی بسازید. ری‌اکت از نقاط قوت منحصر‌به‌فرد هر پلتفرم
+                بهره می‌برد تا رابط کاربری شما روی هر پلتفرمی درست همان‌طور که
+                باید، حس شود.
               </Para>
             </div>
             <div className="max-w-7xl mx-auto flex flex-col lg:flex-row mt-16 mb-20 lg:mb-28 px-5 gap-20 lg:gap-5">
@@ -291,15 +296,17 @@ export function HomeContent() {
                     <div className="bg-wash relative h-14 w-full" />
                     <div className="relative flex items-start justify-center flex-col flex-1 pb-16 pt-5 gap-3 px-5 lg:px-10 lg:pt-8">
                       <h4 className="leading-tight text-primary font-semibold text-3xl lg:text-4xl">
-                        Stay true to the web
+                        به وب وفادار بمانید
                       </h4>
                       <p className="lg:text-xl leading-normal text-secondary">
-                        People expect web app pages to load fast. On the server,
-                        React lets you start streaming HTML while you’re still
-                        fetching data, progressively filling in the remaining
-                        content before any JavaScript code loads. On the client,
-                        React can use standard web APIs to keep your UI
-                        responsive even in the middle of rendering.
+                        مردم انتظار دارند صفحات اپلیکیشن‌های وب سریع بارگذاری
+                        شوند. در سمت سرور، ری‌اکت به شما اجازه می‌دهد در حالی که
+                        هنوز در حال واکشی داده هستید، HTML را استریم کنید و
+                        محتوای باقی‌مانده را به‌صورت تدریجی پر کنید، حتی قبل از
+                        اینکه کدی از جاوااسکریپت بارگذاری شود. در سمت کلاینت،
+                        ری‌اکت می‌تواند از APIهای استاندارد وب استفاده کند تا
+                        رابط کاربری شما حتی وسط فرآیند رندرینگ هم پاسخ‌گو باقی
+                        بماند.
                       </p>
                     </div>
                   </div>
@@ -377,21 +384,22 @@ export function HomeContent() {
                       </div>
                       <div className="flex flex-col items-start justify-center pt-0 gap-3 px-2.5 lg:pt-8 lg:px-8">
                         <h4 className="leading-tight text-primary dark:text-primary-dark font-semibold text-3xl lg:text-4xl">
-                          Go truly native
+                          کاملاً بومی شوید
                         </h4>
                         <p className="h-full lg:text-xl text-secondary dark:text-secondary-dark leading-normal">
-                          People expect native apps to look and feel like their
-                          platform.{' '}
+                          مردم انتظار دارند اپلیکیشن‌های بومی، ظاهر و حس
+                          پلتفرمشان را داشته باشند.{' '}
                           <Link href="https://reactnative.dev">
                             React Native
                           </Link>{' '}
-                          and{' '}
+                          و{' '}
                           <Link href="https://github.com/expo/expo">Expo</Link>{' '}
-                          let you build apps in React for Android, iOS, and
-                          more. They look and feel native because their UIs{' '}
-                          <i>are</i> truly native. It’s not a web view—your
-                          React components render real Android and iOS views
-                          provided by the platform.
+                          به شما این امکان را می‌دهند که با استفاده از ری‌اکت،
+                          اپلیکیشن‌هایی برای اندروید، iOS و بیشتر بسازید. این
+                          اپلیکیشن‌ها ظاهری بومی دارند چون رابط کاربری آن‌ها
+                          واقعاً بومی است. این یک WebView نیست—کامپوننت‌های
+                          ری‌اکت شما نمای واقعی اندروید و iOS را که توسط پلتفرم
+                          ارائه می‌شود، رندر می‌کنند.
                         </p>
                       </div>
                     </div>
@@ -401,14 +409,15 @@ export function HomeContent() {
             </div>
             <div className="px-5 lg:px-0 max-w-4xl mx-auto lg:text-center text-secondary dark:text-secondary-dark">
               <Para>
-                With React, you can be a web <i>and</i> a native developer. Your
-                team can ship to many platforms without sacrificing the user
-                experience. Your organization can bridge the platform silos, and
-                form teams that own entire features end-to-end.
+                با ری‌اکت، می‌توانید هم توسعه‌دهنده وب و هم توسعه‌دهنده بومی
+                باشید. تیم شما می‌تواند بدون قربانی کردن تجربه کاربری، برای
+                چندین پلتفرم منتشر کند. سازمان شما می‌تواند شکاف بین پلتفرم‌ها
+                را پر کند و تیم‌هایی بسازد که کل قابلیت‌ها را از ابتدا تا انتها
+                مدیریت کنند.
               </Para>
               <div className="flex justify-start w-full lg:justify-center">
                 <CTA color="gray" icon="native" href="https://reactnative.dev/">
-                  Build for native platforms
+                  ساخت برای پلتفرم‌های بومی
                 </CTA>
               </div>
             </div>
@@ -419,23 +428,23 @@ export function HomeContent() {
           <div className="max-w-7xl mx-auto flex flex-col lg:flex-row px-5">
             <div className="max-w-3xl lg:max-w-7xl gap-5 flex flex-col lg:flex-row lg:px-5">
               <div className="w-full lg:w-6/12 max-w-3xl flex flex-col items-start justify-start lg:ps-5 lg:pe-10">
-                <Header>Upgrade when the future is ready</Header>
+                <Header>ارتقا زمانی که آینده آماده باشد</Header>
                 <Para>
-                  React approaches changes with care. Every React commit is
-                  tested on business-critical surfaces with over a billion
-                  users. Over 100,000 React components at Meta help validate
-                  every migration strategy.
+                  ری‌اکت با دقت به تغییرات نزدیک می‌شود. هر کامیت ری‌اکت روی
+                  بخش‌های حیاتی تجاری با بیش از یک میلیارد کاربر آزمایش می‌شود.
+                  بیش از ۱۰۰ هزار کامپوننت ری‌اکت در متا به اعتبارسنجی هر
+                  استراتژی مهاجرت کمک می‌کنند.
                 </Para>
                 <div className="order-last pt-5">
                   <Para>
-                    The React team is always researching how to improve React.
-                    Some research takes years to pay off. React has a high bar
-                    for taking a research idea into production. Only proven
-                    approaches become a part of React.
+                    تیم ری‌اکت همیشه در حال تحقیق برای بهبود ری‌اکت است. برخی
+                    تحقیقات سال‌ها طول می‌کشد تا نتیجه دهند. ری‌اکت استاندارد
+                    بالایی برای تبدیل یک ایده تحقیقاتی به تولید دارد. تنها
+                    رویکردهای اثبات‌شده بخشی از ری‌اکت می‌شوند.
                   </Para>
                   <div className="hidden lg:flex justify-start w-full">
                     <CTA color="gray" icon="news" href="/blog">
-                      Read more React news
+                      مطالعه اخبار بیشتر درباره ری‌اکت
                     </CTA>
                   </div>
                 </div>
@@ -443,7 +452,7 @@ export function HomeContent() {
               <div className="w-full lg:w-6/12">
                 <p className="uppercase tracking-wide font-bold text-sm text-tertiary dark:text-tertiary-dark flex flex-row gap-2 items-center mt-5 lg:-mt-2 w-full">
                   <IconChevron />
-                  Latest React News
+                  جدیدترین اخبار ری‌اکت
                 </p>
                 <div className="flex-col sm:flex-row flex-wrap flex gap-5 text-start my-5">
                   <div className="flex-1 min-w-[40%] text-start">
@@ -461,7 +470,7 @@ export function HomeContent() {
                 </div>
                 <div className="flex lg:hidden justify-start w-full">
                   <CTA color="gray" icon="news" href="/blog">
-                    Read more React news
+                    مطالعه اخبار بیشتر درباره ری‌اکت
                   </CTA>
                 </div>
               </div>
@@ -474,13 +483,14 @@ export function HomeContent() {
             <div className="mx-auto flex flex-col max-w-4xl">
               <Center>
                 <Header>
-                  Join a community <br className="hidden lg:inline" />
-                  of millions
+                  به جامعه‌ای از میلیون‌ها نفر{' '}
+                  <br className="hidden lg:inline" />
+                  بپیوندید
                 </Header>
                 <Para>
-                  You’re not alone. Two million developers from all over the
-                  world visit the React docs every month. React is something
-                  that people and teams can agree on.
+                  شما تنها نیستید. هر ماه دو میلیون توسعه‌دهنده از سراسر جهان از
+                  مستندات ری‌اکت بازدید می‌کنند. ری‌اکت چیزی است که مردم و
+                  تیم‌ها می‌توانند روی آن توافق داشته باشند.
                 </Para>
               </Center>
             </div>
@@ -488,13 +498,13 @@ export function HomeContent() {
             <div className="mx-auto flex flex-col max-w-4xl">
               <Center>
                 <Para>
-                  This is why React is more than a library, an architecture, or
-                  even an ecosystem. React is a community. It’s a place where
-                  you can ask for help, find opportunities, and meet new
-                  friends. You will meet both developers and designers,
-                  beginners and experts, researchers and artists, teachers and
-                  students. Our backgrounds may be very different, but React
-                  lets us all create user interfaces together.
+                  به همین دلیل است که ری‌اکت فراتر از یک کتابخانه، یک معماری یا
+                  حتی یک اکوسیستم است. ری‌اکت یک جامعه است. جایی است که
+                  می‌توانید درخواست کمک کنید، فرصت‌های جدید پیدا کنید و دوستان
+                  تازه‌ای بیابید. شما با توسعه‌دهندگان و طراحان، مبتدیان و
+                  متخصصان، پژوهشگران و هنرمندان، معلمان و دانشجویان ملاقات
+                  خواهید کرد. پس‌زمینه‌های ما ممکن است بسیار متفاوت باشد، اما
+                  ری‌اکت به همه ما اجازه می‌دهد تا با هم رابط کاربری بسازیم.
                 </Para>
               </Center>
             </div>
@@ -511,15 +521,15 @@ export function HomeContent() {
             </div>
             <Logo className="uwu-hidden text-brand dark:text-brand-dark w-24 lg:w-28 mb-10 lg:mb-8 mt-12 h-auto mx-auto self-start" />
             <Header>
-              Welcome to the <br className="hidden lg:inline" />
-              React community
+              به جامعه <br className="hidden lg:inline" />
+              ری‌اکت خوش آمدید
             </Header>
             <ButtonLink
               href={'/learn'}
               type="primary"
               size="lg"
-              label="Take the Tutorial">
-              Get Started
+              label="شروع آموزش">
+              شروع کنید
             </ButtonLink>
           </div>
         </Section>
