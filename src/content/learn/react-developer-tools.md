@@ -1,33 +1,31 @@
 ---
-title: React Developer Tools
+title: ابزار توسعه ری‌اکت
 ---
 
 <Intro>
-
-Use React Developer Tools to inspect React [components](/learn/your-first-component), edit [props](/learn/passing-props-to-a-component) and [state](/learn/state-a-components-memory), and identify performance problems.
-
+از ابزار توسعه ری‌اکت برای بررسی کردن [کاپوننت ها](/learn/your-first-component)، تغییرات [پراپ](/learn/passing-props-to-a-component) و [وضعیت ها](/learn/state-a-components-memory) و همچنین شناسایی مشکلات عملکردی و کارایی استفاده می شود. 
 </Intro>
 
 <YouWillLearn>
 
-* How to install React Developer Tools
+* چگونه ابزار توسعه ری‌اکت را نصب کنید.
 
 </YouWillLearn>
 
-## Browser extension {/*browser-extension*/}
+## اکستنشن های مرورگر {/*browser-extension*/}
 
-The easiest way to debug websites built with React is to install the React Developer Tools browser extension. It is available for several popular browsers:
+نصب کردن افزونه ابزار توسعه ری‌اکت، ساده ترین راهی است که برای اشکال زدایی کردن وبسایت های که با ری‌اکت ساخته شده اند وجود دارد. این افزونه برای مرورگر های معروف در دسترس می باشد.
 
-* [Install for **Chrome**](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
-* [Install for **Firefox**](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)
-* [Install for **Edge**](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil)
+* [نصب برای **Chrome**](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
+* [نصب برای **Firefox**](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)
+* [نصب برای **Edge**](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil)
 
-Now, if you visit a website **built with React,** you will see the _Components_ and _Profiler_ panels.
+حالا اگر یک وب سایت که با **ری‌اکت** ساخته شده است را باز کنید، پنل های _Components_ و _Profiler_ را مشاهده خواهید کرد.
 
 ![React Developer Tools extension](/images/docs/react-devtools-extension.png)
 
-### Safari and other browsers {/*safari-and-other-browsers*/}
-For other browsers (for example, Safari), install the [`react-devtools`](https://www.npmjs.com/package/react-devtools) npm package:
+### سافاری و سایر مرورگر ها {/*safari-and-other-browsers*/}
+برای سایر مرورگر ها (مانند سافاری) پکیج [`react-devtools`](https://www.npmjs.com/package/react-devtools) را نصب کنید.
 ```bash
 # Yarn
 yarn global add react-devtools
@@ -36,26 +34,26 @@ yarn global add react-devtools
 npm install -g react-devtools
 ```
 
-Next open the developer tools from the terminal:
+بعد ابزار های توسعه را از ترمینال باز کنید:
 ```bash
 react-devtools
 ```
 
-Then connect your website by adding the following `<script>` tag to the beginning of your website's `<head>`:
+سپس وب سایت خود را با اضافه کردن تگ `<script>` به ابتدای تگ `<head>`  به این پکیج متصل کنید.
 ```html {3}
 <html>
   <head>
     <script src="http://localhost:8097"></script>
 ```
 
-Reload your website in the browser now to view it in developer tools.
+وب سایت خود را بارگیری مجدد کرده تا بتوانید آن را در ابزار توسعه مشاهده کنید.
 
 ![React Developer Tools standalone](/images/docs/react-devtools-standalone.png)
 
-## Mobile (React Native) {/*mobile-react-native*/}
+## موبایل (ری‌اکت نیتیو) {/*mobile-react-native*/}
 
-To inspect apps built with [React Native](https://reactnative.dev/), you can use [React Native DevTools](https://reactnative.dev/docs/react-native-devtools), the built-in debugger that deeply integrates React Developer Tools. All features work identically to the browser extension, including native element highlighting and selection.
+برای بررسی کردن برنامه هایی که با [ری‌اکت نیتیو](https://reactnative.dev/) ساخته شده اند، میتوانید از [React Native DevTools](https://reactnative.dev/docs/react-native-devtools) استفاده کنید. این یک اشکال زدای درونی دارد که به صورت عمیق با ابزار توسعه ری‌اکت ادغام می شود. همه ویژگی ها به صورت کاملا یکسان با انچه در افزونه مروگر وجود دارد از جمله برجسته سازی عنصر و انتخاب شده ها کار می کند.
 
-[Learn more about debugging in React Native.](https://reactnative.dev/docs/debugging)
+[در مورد اشکال زدایی در ری‌اکت نیتیو بیشتر بخوانید.](https://reactnative.dev/docs/debugging)
 
-> For versions of React Native earlier than 0.76, please use the standalone build of React DevTools by following the [Safari and other browsers](#safari-and-other-browsers) guide above.
+> برای نسخه های ری‌اکت نیتیو قبل از 0.76، لطفا از ابزار توسعه مستقل React DevTools برای [سافاری و سایر مرورگر ها](#safari-and-other-browsers) در راهنمای فوق استفاده کنید.
