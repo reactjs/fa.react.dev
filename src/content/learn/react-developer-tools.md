@@ -4,7 +4,7 @@ title: ابزار توسعه ری‌اکت
 
 <Intro>
 
-از ابزار توسعه ری‌اکت برای بررسی [کاپوننت‌ها](/learn/your-first-component)، ویرایش [prop](/learn/passing-props-to-a-component) و [state](/learn/state-a-components-memory) و همچنین شناسایی مشکلات عملکردی استفاده می‌شود. 
+از ابزار توسعه ری‌اکت برای بررسی [کامپوننت‌ها](/learn/your-first-component)، ویرایش [prop](/learn/passing-props-to-a-component) و [state](/learn/state-a-components-memory) و همچنین شناسایی مشکلات عملکردی استفاده می‌شود.  
 
 </Intro>
 
