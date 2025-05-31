@@ -36,7 +36,7 @@ yarn global add react-devtools
 npm install -g react-devtools
 ```
 
-سپس ابزار های توسعه را از ترمینال باز کنید:
+سپس ابزارهای توسعه را از ترمینال باز کنید:
 ```bash
 react-devtools
 ```
