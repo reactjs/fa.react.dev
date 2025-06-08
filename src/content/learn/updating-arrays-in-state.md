@@ -35,7 +35,7 @@ title: به روز رسانی آرایه‌ها در State
 
 <Pitfall>
 
-متاسفانه، [`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) و [`splice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) با وجود نام‌گذاری مشابه تفاوت زیادی با یکدیگر دارند:
+متأسفانه، [`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) و [`splice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice)، با وجود نام‌گذاری مشابه، تفاوت زیادی با یکدیگر دارند:
 
 * `slice` به شما امکان می‌دهد یک آرایه یا بخشی از آن را کپی کنید.
 * `splice` آرایه را **تغییر می‌دهد** (برای افزودن یا حذف آیتم‌ها).
