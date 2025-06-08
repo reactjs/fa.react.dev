@@ -198,7 +198,7 @@ export default function List() {
 
 </Sandpack>
 
-دکمه "Delete" را چند بار فشار داده و به click handler آن نگاه کنید.
+چند بار بر دکمه "Delete" کلیک کنید و به click handler آن نگاه کنید.
 
 ```js
 setArtists(
