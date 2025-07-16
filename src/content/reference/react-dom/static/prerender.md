@@ -72,6 +72,7 @@ On the client, call [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) to 
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 `nonce` is not an available option when prerendering. Nonces must be unique per request and if you use nonces to secure your application with [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) it would be inappropriate and insecure to include the a nonce value in the prerender itself.
 =======
 `nonce` is not an available option when prerendering. Nonces must be unique per request and if you use nonces to secure your application with [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) it would be inappropriate and insecure to include the nonce value in the prerender itself.
@@ -85,6 +86,9 @@ On the client, call [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) to 
 =======
 `nonce` is not an available option when prerendering. Nonces must be unique per request and if you use nonces to secure your application with [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) it would be inappropriate and insecure to include the nonce value in the prerender itself.
 >>>>>>> c0c955ed1d1c4fe3bf3e18c06a8d121902a01619
+=======
+`nonce` is not an available option when prerendering. Nonces must be unique per request and if you use nonces to secure your application with [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) it would be inappropriate and insecure to include the nonce value in the prerender itself.
+>>>>>>> 84a56968d92b9a9e9bbac1ca13011e159e815dc1
 
 
 <Note>
