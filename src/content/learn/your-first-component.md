@@ -215,7 +215,11 @@ function Profile() {
 
 اکثر برنامه های ریکتی از کامپوننت برای سازماندهی بخش های وبسایت استفاده میکنند. چه برای بخش های کوچکی مانند دکمه یا متن ها, چه برای بخش های بزرگتر صفحه مانند منو یا لیست کشویی.
 
+<<<<<<< HEAD
 اگر از [React-based frameworks](/learn/start-a-new-react-project) استفاده کنیم, نسبت به تعریف HTML, فرایند توسعه صفحات سریعتر پیش میرود.
+=======
+[React-based frameworks](/learn/creating-a-react-app) take this a step further. Instead of using an empty HTML file and letting React "take over" managing the page with JavaScript, they *also* generate the HTML automatically from your React components. This allows your app to show some content before the JavaScript code loads.
+>>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
 
 همچنان بسیاری از وبسایت ها از React برای [داینامیک کردن صفحات](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page) استفاده میشود. انها بجای یک کامپوننت root از کامپوننت بیشتر و ریزتری استفاده کردند. شما میتوانید هرچقدر که نیاز دارید از کتابخانه ریکت استفاده کنید.
 
