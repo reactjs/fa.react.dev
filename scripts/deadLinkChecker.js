@@ -10,6 +10,10 @@ const PUBLIC_DIR = path.join(__dirname, '../public');
 const fileCache = new Map();
 const anchorMap = new Map(); // Map<filepath, Set<anchorId>>
 const contributorMap = new Map(); // Map<anchorId, URL>
+<<<<<<< HEAD
+=======
+const redirectMap = new Map(); // Map<source, destination>
+>>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
 let errorCodes = new Set();
 
 async function readFileWithCache(filePath) {
@@ -162,6 +166,25 @@ async function validateLink(link) {
     return {valid: true};
   }
 
+<<<<<<< HEAD
+=======
+  // Check for redirects
+  if (redirectMap.has(urlWithoutAnchor)) {
+    const redirectDestination = redirectMap.get(urlWithoutAnchor);
+    if (
+      redirectDestination.startsWith('http://') ||
+      redirectDestination.startsWith('https://')
+    ) {
+      return {valid: true};
+    }
+    const redirectedLink = {
+      ...link,
+      url: redirectDestination + (anchorMatch ? anchorMatch[0] : ''),
+    };
+    return validateLink(redirectedLink);
+  }
+
+>>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
   // Check if it's an error code link
   const errorCodeMatch = urlWithoutAnchor.match(/^\/errors\/(\d+)$/);
   if (errorCodeMatch) {
@@ -295,17 +318,52 @@ async function fetchErrorCodes() {
     }
     const codes = await response.json();
     errorCodes = new Set(Object.keys(codes));
+<<<<<<< HEAD
     console.log(chalk.gray(`Fetched ${errorCodes.size} React error codes\n`));
+=======
+    console.log(chalk.gray(`Fetched ${errorCodes.size} React error codes`));
+>>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
   } catch (error) {
     throw new Error(`Failed to fetch error codes: ${error.message}`);
   }
 }
 
+<<<<<<< HEAD
+=======
+async function buildRedirectsMap() {
+  try {
+    const vercelConfigPath = path.join(__dirname, '../vercel.json');
+    const vercelConfig = JSON.parse(
+      await fs.promises.readFile(vercelConfigPath, 'utf8')
+    );
+
+    if (vercelConfig.redirects) {
+      for (const redirect of vercelConfig.redirects) {
+        redirectMap.set(redirect.source, redirect.destination);
+      }
+      console.log(
+        chalk.gray(`Loaded ${redirectMap.size} redirects from vercel.json`)
+      );
+    }
+  } catch (error) {
+    console.log(
+      chalk.yellow(
+        `Warning: Could not load redirects from vercel.json: ${error.message}\n`
+      )
+    );
+  }
+}
+
+>>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
 async function main() {
   const files = getMarkdownFiles();
   console.log(chalk.gray(`Checking ${files.length} markdown files...`));
 
   await fetchErrorCodes();
+<<<<<<< HEAD
+=======
+  await buildRedirectsMap();
+>>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
   await buildContributorMap();
   await buildAnchorMap(files);
 
@@ -315,6 +373,10 @@ async function main() {
   const totalLinks = results.reduce((sum, r) => sum + r.totalLinks, 0);
 
   if (deadLinks.length > 0) {
+<<<<<<< HEAD
+=======
+    console.log('\n');
+>>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
     for (const link of deadLinks) {
       console.log(chalk.yellow(`${link.file}:${link.line}:${link.column}`));
       console.log(chalk.reset(`  Link text: ${link.text}`));

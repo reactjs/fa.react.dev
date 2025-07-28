@@ -34,6 +34,7 @@ To support Server Functions as a bundler or framework, we recommend pinning to a
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 When a Server Function is defined with the [`"use server"`](/reference/rsc/use-server) directive, your framework will automatically create a reference to the server function, and pass that reference to the Client Component. When that function is called on the client, React will send a request to the server to execute the function, and return the result.
 =======
 When a Server Function is defined with the [`"use server"`](/reference/rsc/use-server) directive, your framework will automatically create a reference to the Server Function, and pass that reference to the Client Component. When that function is called on the client, React will send a request to the server to execute the function, and return the result.
@@ -53,6 +54,9 @@ When a Server Function is defined with the [`"use server"`](/reference/rsc/use-s
 =======
 When a Server Function is defined with the [`"use server"`](/reference/rsc/use-server) directive, your framework will automatically create a reference to the Server Function, and pass that reference to the Client Component. When that function is called on the client, React will send a request to the server to execute the function, and return the result.
 >>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
+=======
+When a Server Function is defined with the [`"use server"`](/reference/rsc/use-server) directive, your framework will automatically create a reference to the Server Function, and pass that reference to the Client Component. When that function is called on the client, React will send a request to the server to execute the function, and return the result.
+>>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
 
 Server Functions can be created in Server Components and passed as props to Client Components, or they can be imported and used in Client Components.
 
