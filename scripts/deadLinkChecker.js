@@ -11,6 +11,10 @@ const fileCache = new Map();
 const anchorMap = new Map(); // Map<filepath, Set<anchorId>>
 const contributorMap = new Map(); // Map<anchorId, URL>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+const redirectMap = new Map(); // Map<source, destination>
+>>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
 =======
 const redirectMap = new Map(); // Map<source, destination>
 >>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
@@ -167,7 +171,10 @@ async function validateLink(link) {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
   // Check for redirects
   if (redirectMap.has(urlWithoutAnchor)) {
     const redirectDestination = redirectMap.get(urlWithoutAnchor);
@@ -184,6 +191,9 @@ async function validateLink(link) {
     return validateLink(redirectedLink);
   }
 
+<<<<<<< HEAD
+>>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
+=======
 >>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
   // Check if it's an error code link
   const errorCodeMatch = urlWithoutAnchor.match(/^\/errors\/(\d+)$/);
@@ -319,7 +329,11 @@ async function fetchErrorCodes() {
     const codes = await response.json();
     errorCodes = new Set(Object.keys(codes));
 <<<<<<< HEAD
+<<<<<<< HEAD
     console.log(chalk.gray(`Fetched ${errorCodes.size} React error codes\n`));
+=======
+    console.log(chalk.gray(`Fetched ${errorCodes.size} React error codes`));
+>>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
 =======
     console.log(chalk.gray(`Fetched ${errorCodes.size} React error codes`));
 >>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
@@ -329,7 +343,10 @@ async function fetchErrorCodes() {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
 async function buildRedirectsMap() {
   try {
     const vercelConfigPath = path.join(__dirname, '../vercel.json');
@@ -354,6 +371,9 @@ async function buildRedirectsMap() {
   }
 }
 
+<<<<<<< HEAD
+>>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
+=======
 >>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
 async function main() {
   const files = getMarkdownFiles();
@@ -361,6 +381,10 @@ async function main() {
 
   await fetchErrorCodes();
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  await buildRedirectsMap();
+>>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
 =======
   await buildRedirectsMap();
 >>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
@@ -374,6 +398,10 @@ async function main() {
 
   if (deadLinks.length > 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    console.log('\n');
+>>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
 =======
     console.log('\n');
 >>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9

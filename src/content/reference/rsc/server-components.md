@@ -6,10 +6,14 @@ title: Server Components
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 Server Components are for use in [React Server Components](/learn/start-a-new-react-project#full-stack-frameworks).
 =======
 Server Components are for use in [React Server Components](/learn/creating-a-react-app#full-stack-frameworks).
 >>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
+=======
+Server Components are for use in [React Server Components](/learn/start-a-new-react-project#full-stack-frameworks).
+>>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
 =======
 Server Components are for use in [React Server Components](/learn/start-a-new-react-project#full-stack-frameworks).
 >>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
