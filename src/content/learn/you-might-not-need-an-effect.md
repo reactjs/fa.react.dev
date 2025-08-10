@@ -27,7 +27,11 @@ There are two common cases in which you don't need Effects:
 * **You don't need Effects to handle user events.** For example, let's say you want to send an `/api/buy` POST request and show a notification when the user buys a product. In the Buy button click event handler, you know exactly what happened. By the time an Effect runs, you don't know *what* the user did (for example, which button was clicked). This is why you'll usually handle user events in the corresponding event handlers.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 You *do* need Effects to [synchronize](/learn/synchronizing-with-effects#what-are-effects-and-how-are-they-different-from-events) with external systems. For example, you can write an Effect that keeps a jQuery widget synchronized with the React state. You can also fetch data with Effects: for example, you can synchronize the search results with the current search query. Keep in mind that modern [frameworks](/learn/creating-a-react-app#full-stack-frameworks) provide more efficient built-in data fetching mechanisms than writing Effects directly in your components.
+=======
+You *do* need Effects to [synchronize](/learn/synchronizing-with-effects#what-are-effects-and-how-are-they-different-from-events) with external systems. For example, you can write an Effect that keeps a jQuery widget synchronized with the React state. You can also fetch data with Effects: for example, you can synchronize the search results with the current search query. Keep in mind that modern [frameworks](/learn/start-a-new-react-project#full-stack-frameworks) provide more efficient built-in data fetching mechanisms than writing Effects directly in your components.
+>>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
 =======
 You *do* need Effects to [synchronize](/learn/synchronizing-with-effects#what-are-effects-and-how-are-they-different-from-events) with external systems. For example, you can write an Effect that keeps a jQuery widget synchronized with the React state. You can also fetch data with Effects: for example, you can synchronize the search results with the current search query. Keep in mind that modern [frameworks](/learn/start-a-new-react-project#full-stack-frameworks) provide more efficient built-in data fetching mechanisms than writing Effects directly in your components.
 >>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
@@ -762,7 +766,11 @@ This ensures that when your Effect fetches data, all responses except the last r
 Handling race conditions is not the only difficulty with implementing data fetching. You might also want to think about caching responses (so that the user can click Back and see the previous screen instantly), how to fetch data on the server (so that the initial server-rendered HTML contains the fetched content instead of a spinner), and how to avoid network waterfalls (so that a child can fetch data without waiting for every parent).
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 **These issues apply to any UI library, not just React. Solving them is not trivial, which is why modern [frameworks](/learn/creating-a-react-app#full-stack-frameworks) provide more efficient built-in data fetching mechanisms than fetching data in Effects.**
+=======
+**These issues apply to any UI library, not just React. Solving them is not trivial, which is why modern [frameworks](/learn/start-a-new-react-project#full-stack-frameworks) provide more efficient built-in data fetching mechanisms than fetching data in Effects.**
+>>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
 =======
 **These issues apply to any UI library, not just React. Solving them is not trivial, which is why modern [frameworks](/learn/start-a-new-react-project#full-stack-frameworks) provide more efficient built-in data fetching mechanisms than fetching data in Effects.**
 >>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9

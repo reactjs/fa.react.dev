@@ -733,7 +733,11 @@ Writing `fetch` calls inside Effects is a [popular way to fetch data](https://ww
 This list of downsides is not specific to React. It applies to fetching data on mount with any library. Like with routing, data fetching is not trivial to do well, so we recommend the following approaches:
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 - **If you use a [framework](/learn/creating-a-react-app#full-stack-frameworks), use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don't suffer from the above pitfalls.
+=======
+- **If you use a [framework](/learn/start-a-new-react-project#full-stack-frameworks), use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don't suffer from the above pitfalls.
+>>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
 =======
 - **If you use a [framework](/learn/start-a-new-react-project#full-stack-frameworks), use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don't suffer from the above pitfalls.
 >>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9

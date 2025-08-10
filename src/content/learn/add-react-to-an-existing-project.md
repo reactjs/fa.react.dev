@@ -25,7 +25,11 @@ Here's how we recommend to set it up:
 3. **Configure your server or a proxy** so that all requests under `/some-app/` are handled by your React app.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 This ensures the React part of your app can [benefit from the best practices](/learn/creating-a-react-app#full-stack-frameworks) baked into those frameworks.
+=======
+This ensures the React part of your app can [benefit from the best practices](/learn/build-a-react-app-from-scratch#consider-using-a-framework) baked into those frameworks.
+>>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
 =======
 This ensures the React part of your app can [benefit from the best practices](/learn/build-a-react-app-from-scratch#consider-using-a-framework) baked into those frameworks.
 >>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
