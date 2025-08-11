@@ -26,6 +26,7 @@ Here's how we recommend to set it up:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 This ensures the React part of your app can [benefit from the best practices](/learn/creating-a-react-app#full-stack-frameworks) baked into those frameworks.
 =======
 This ensures the React part of your app can [benefit from the best practices](/learn/build-a-react-app-from-scratch#consider-using-a-framework) baked into those frameworks.
@@ -33,6 +34,9 @@ This ensures the React part of your app can [benefit from the best practices](/l
 =======
 This ensures the React part of your app can [benefit from the best practices](/learn/build-a-react-app-from-scratch#consider-using-a-framework) baked into those frameworks.
 >>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
+=======
+This ensures the React part of your app can [benefit from the best practices](/learn/build-a-react-app-from-scratch#consider-using-a-framework) baked into those frameworks.
+>>>>>>> e9a7cb1b6ca1659b42d81555ecef0cd554b7a983
 
 Many React-based frameworks are full-stack and let your React app take advantage of the server. However, you can use the same approach even if you can't or don't want to run JavaScript on the server. In that case, serve the HTML/CSS/JS export ([`next export` output](https://nextjs.org/docs/advanced-features/static-html-export) for Next.js, default for Gatsby) at `/some-app/` instead.
 

@@ -898,6 +898,7 @@ In this example, a cleanup function is not needed because the `MapWidget` class 
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 You can use an Effect to fetch data for your component. Note that [if you use a framework,](/learn/creating-a-react-app#full-stack-frameworks) using your framework's data fetching mechanism will be a lot more efficient than writing Effects manually.
 =======
 You can use an Effect to fetch data for your component. Note that [if you use a framework,](/learn/start-a-new-react-project#full-stack-frameworks) using your framework's data fetching mechanism will be a lot more efficient than writing Effects manually.
@@ -905,6 +906,9 @@ You can use an Effect to fetch data for your component. Note that [if you use a 
 =======
 You can use an Effect to fetch data for your component. Note that [if you use a framework,](/learn/start-a-new-react-project#full-stack-frameworks) using your framework's data fetching mechanism will be a lot more efficient than writing Effects manually.
 >>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
+=======
+You can use an Effect to fetch data for your component. Note that [if you use a framework,](/learn/start-a-new-react-project#full-stack-frameworks) using your framework's data fetching mechanism will be a lot more efficient than writing Effects manually.
+>>>>>>> e9a7cb1b6ca1659b42d81555ecef0cd554b7a983
 
 If you want to fetch data from an Effect manually, your code might look like this:
 
@@ -1058,6 +1062,7 @@ This list of downsides is not specific to React. It applies to fetching data on 
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 - **If you use a [framework](/learn/creating-a-react-app#full-stack-frameworks), use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don't suffer from the above pitfalls.
 =======
 - **If you use a [framework](/learn/start-a-new-react-project#full-stack-frameworks), use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don't suffer from the above pitfalls.
@@ -1065,6 +1070,9 @@ This list of downsides is not specific to React. It applies to fetching data on 
 =======
 - **If you use a [framework](/learn/start-a-new-react-project#full-stack-frameworks), use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don't suffer from the above pitfalls.
 >>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
+=======
+- **If you use a [framework](/learn/start-a-new-react-project#full-stack-frameworks), use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don't suffer from the above pitfalls.
+>>>>>>> e9a7cb1b6ca1659b42d81555ecef0cd554b7a983
 - **Otherwise, consider using or building a client-side cache.** Popular open source solutions include [React Query](https://tanstack.com/query/latest/), [useSWR](https://swr.vercel.app/), and [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview) You can build your own solution too, in which case you would use Effects under the hood but also add logic for deduplicating requests, caching responses, and avoiding network waterfalls (by preloading data or hoisting data requirements to routes).
 
 You can continue fetching data directly in Effects if neither of these approaches suit you.
@@ -1751,6 +1759,7 @@ function Page({ url, shoppingCart }) {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 If your app uses server rendering (either [directly](/reference/react-dom/server) or via a [framework](/learn/creating-a-react-app#full-stack-frameworks)), your component will render in two different environments. On the server, it will render to produce the initial HTML. On the client, React will run the rendering code again so that it can attach your event handlers to that HTML. This is why, for [hydration](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html) to work, your initial render output must be identical on the client and the server.
 =======
 If your app uses server rendering (either [directly](/reference/react-dom/server) or via a [framework](/learn/start-a-new-react-project#full-stack-frameworks)), your component will render in two different environments. On the server, it will render to produce the initial HTML. On the client, React will run the rendering code again so that it can attach your event handlers to that HTML. This is why, for [hydration](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html) to work, your initial render output must be identical on the client and the server.
@@ -1758,6 +1767,9 @@ If your app uses server rendering (either [directly](/reference/react-dom/server
 =======
 If your app uses server rendering (either [directly](/reference/react-dom/server) or via a [framework](/learn/start-a-new-react-project#full-stack-frameworks)), your component will render in two different environments. On the server, it will render to produce the initial HTML. On the client, React will run the rendering code again so that it can attach your event handlers to that HTML. This is why, for [hydration](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html) to work, your initial render output must be identical on the client and the server.
 >>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
+=======
+If your app uses server rendering (either [directly](/reference/react-dom/server) or via a [framework](/learn/start-a-new-react-project#full-stack-frameworks)), your component will render in two different environments. On the server, it will render to produce the initial HTML. On the client, React will run the rendering code again so that it can attach your event handlers to that HTML. This is why, for [hydration](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html) to work, your initial render output must be identical on the client and the server.
+>>>>>>> e9a7cb1b6ca1659b42d81555ecef0cd554b7a983
 
 In rare cases, you might need to display different content on the client. For example, if your app reads some data from [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), it can't possibly do that on the server. Here is how you could implement this:
 

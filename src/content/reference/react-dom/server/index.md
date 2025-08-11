@@ -6,6 +6,7 @@ title: Server React DOM APIs
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 The `react-dom/server` APIs let you server-side render React components to HTML. These APIs are only used on the server at the top level of your app to generate the initial HTML. A [framework](/learn/creating-a-react-app#full-stack-frameworks) may call them for you. Most of your components don't need to import or use them.
 =======
 The `react-dom/server` APIs let you server-side render React components to HTML. These APIs are only used on the server at the top level of your app to generate the initial HTML. A [framework](/learn/start-a-new-react-project#full-stack-frameworks) may call them for you. Most of your components don't need to import or use them.
@@ -13,6 +14,9 @@ The `react-dom/server` APIs let you server-side render React components to HTML.
 =======
 The `react-dom/server` APIs let you server-side render React components to HTML. These APIs are only used on the server at the top level of your app to generate the initial HTML. A [framework](/learn/start-a-new-react-project#full-stack-frameworks) may call them for you. Most of your components don't need to import or use them.
 >>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
+=======
+The `react-dom/server` APIs let you server-side render React components to HTML. These APIs are only used on the server at the top level of your app to generate the initial HTML. A [framework](/learn/start-a-new-react-project#full-stack-frameworks) may call them for you. Most of your components don't need to import or use them.
+>>>>>>> e9a7cb1b6ca1659b42d81555ecef0cd554b7a983
 
 </Intro>
 
