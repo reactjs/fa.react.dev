@@ -6,23 +6,7 @@ title: forwardRef
 
 In React 19, `forwardRef` is no longer necessary. Pass `ref` as a prop instead.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 `forwardRef` will be deprecated in a future release. Learn more [here](/blog/2024/04/25/react-19#ref-as-a-prop).
-=======
-`forwardRef` will be deprecated in a future release. Learn more [here](/blog/2024/12/05/react-19#ref-as-a-prop).
->>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
-=======
-`forwardRef` will be deprecated in a future release. Learn more [here](/blog/2024/04/25/react-19#ref-as-a-prop).
->>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
-=======
-`forwardRef` will be deprecated in a future release. Learn more [here](/blog/2024/04/25/react-19#ref-as-a-prop).
->>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
-=======
-`forwardRef` will be deprecated in a future release. Learn more [here](/blog/2024/04/25/react-19#ref-as-a-prop).
->>>>>>> e9a7cb1b6ca1659b42d81555ecef0cd554b7a983
 
 </Deprecated>
 

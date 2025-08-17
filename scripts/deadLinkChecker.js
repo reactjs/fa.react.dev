@@ -10,18 +10,7 @@ const PUBLIC_DIR = path.join(__dirname, '../public');
 const fileCache = new Map();
 const anchorMap = new Map(); // Map<filepath, Set<anchorId>>
 const contributorMap = new Map(); // Map<anchorId, URL>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 const redirectMap = new Map(); // Map<source, destination>
->>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
-=======
-const redirectMap = new Map(); // Map<source, destination>
->>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
-=======
-const redirectMap = new Map(); // Map<source, destination>
->>>>>>> e9a7cb1b6ca1659b42d81555ecef0cd554b7a983
 let errorCodes = new Set();
 
 async function readFileWithCache(filePath) {
@@ -174,14 +163,6 @@ async function validateLink(link) {
     return {valid: true};
   }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
-=======
->>>>>>> e9a7cb1b6ca1659b42d81555ecef0cd554b7a983
   // Check for redirects
   if (redirectMap.has(urlWithoutAnchor)) {
     const redirectDestination = redirectMap.get(urlWithoutAnchor);
@@ -198,13 +179,6 @@ async function validateLink(link) {
     return validateLink(redirectedLink);
   }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
-=======
->>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
-=======
->>>>>>> e9a7cb1b6ca1659b42d81555ecef0cd554b7a983
   // Check if it's an error code link
   const errorCodeMatch = urlWithoutAnchor.match(/^\/errors\/(\d+)$/);
   if (errorCodeMatch) {
@@ -338,32 +312,12 @@ async function fetchErrorCodes() {
     }
     const codes = await response.json();
     errorCodes = new Set(Object.keys(codes));
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    console.log(chalk.gray(`Fetched ${errorCodes.size} React error codes\n`));
-=======
     console.log(chalk.gray(`Fetched ${errorCodes.size} React error codes`));
->>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
-=======
-    console.log(chalk.gray(`Fetched ${errorCodes.size} React error codes`));
->>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
-=======
-    console.log(chalk.gray(`Fetched ${errorCodes.size} React error codes`));
->>>>>>> e9a7cb1b6ca1659b42d81555ecef0cd554b7a983
   } catch (error) {
     throw new Error(`Failed to fetch error codes: ${error.message}`);
   }
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
-=======
->>>>>>> e9a7cb1b6ca1659b42d81555ecef0cd554b7a983
 async function buildRedirectsMap() {
   try {
     const vercelConfigPath = path.join(__dirname, '../vercel.json');
@@ -388,30 +342,12 @@ async function buildRedirectsMap() {
   }
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
-=======
->>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
-=======
->>>>>>> e9a7cb1b6ca1659b42d81555ecef0cd554b7a983
 async function main() {
   const files = getMarkdownFiles();
   console.log(chalk.gray(`Checking ${files.length} markdown files...`));
 
   await fetchErrorCodes();
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
   await buildRedirectsMap();
->>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
-=======
-  await buildRedirectsMap();
->>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
-=======
-  await buildRedirectsMap();
->>>>>>> e9a7cb1b6ca1659b42d81555ecef0cd554b7a983
   await buildContributorMap();
   await buildAnchorMap(files);
 
@@ -421,18 +357,7 @@ async function main() {
   const totalLinks = results.reduce((sum, r) => sum + r.totalLinks, 0);
 
   if (deadLinks.length > 0) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     console.log('\n');
->>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
-=======
-    console.log('\n');
->>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
-=======
-    console.log('\n');
->>>>>>> e9a7cb1b6ca1659b42d81555ecef0cd554b7a983
     for (const link of deadLinks) {
       console.log(chalk.yellow(`${link.file}:${link.line}:${link.column}`));
       console.log(chalk.reset(`  Link text: ${link.text}`));
