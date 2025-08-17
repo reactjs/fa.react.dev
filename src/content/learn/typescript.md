@@ -22,6 +22,7 @@ TypeScript is a popular way to add type definitions to JavaScript codebases. Out
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 All [production-grade React frameworks](/learn/creating-a-react-app#full-stack-frameworks) offer support for using TypeScript. Follow the framework specific guide for installation:
 =======
 All [production-grade React frameworks](/learn/start-a-new-react-project#full-stack-frameworks) offer support for using TypeScript. Follow the framework specific guide for installation:
@@ -29,6 +30,9 @@ All [production-grade React frameworks](/learn/start-a-new-react-project#full-st
 =======
 All [production-grade React frameworks](/learn/start-a-new-react-project#full-stack-frameworks) offer support for using TypeScript. Follow the framework specific guide for installation:
 >>>>>>> e07ac94bc2c1ffd817b13930977be93325e5bea9
+=======
+All [production-grade React frameworks](/learn/start-a-new-react-project#full-stack-frameworks) offer support for using TypeScript. Follow the framework specific guide for installation:
+>>>>>>> e9a7cb1b6ca1659b42d81555ecef0cd554b7a983
 
 - [Next.js](https://nextjs.org/docs/app/building-your-application/configuring/typescript)
 - [Remix](https://remix.run/docs/en/1.19.2/guides/typescript)
