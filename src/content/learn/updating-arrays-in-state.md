@@ -27,9 +27,9 @@ title: به روز رسانی آرایه‌ها در State
 |           | خودداری شود (آرایه را تغییر می‌دهد)           | ترجیح داده شود (آرایه جدید ایجاد می‌کند)                                        |
 | --------- | ----------------------------------- | ------------------------------------------------------------------- |
 | اضافه کردن    | `push`, `unshift`                   | `concat`, `[...arr]` spread syntax ([مثال](#adding-to-an-array)) |
-| حذف کردن  | `pop`, `shift`, `splice`            | `filter`, `slice` ([example](#removing-from-an-array))              |
-| جایگزین کردن | `splice`, `arr[i] = ...` assignment | `map` ([example](#replacing-items-in-an-array))                     |
-| مرتب سازی   | `reverse`, `sort`                   | ابتدا از آرایه کپی بگیرید ([example](#making-other-changes-to-an-array)) |
+| حذف کردن  | `pop`, `shift`, `splice`            | `filter`, `slice` ([مثال](#removing-from-an-array))              |
+| جایگزین کردن | `splice`, `arr[i] = ...` assignment | `map` ([مثال](#replacing-items-in-an-array))                     |
+| مرتب سازی   | `reverse`, `sort`                   | ابتدا از آرایه کپی بگیرید ([مثال](#making-other-changes-to-an-array)) |
 
 به‌عنوان جایگزین می‌توانید [از Immer استفاده کنید](#write-concise-update-logic-with-immer) که امکان استفاده از متدهای هر دو ستون را فراهم می‌کند.
 
@@ -40,13 +40,13 @@ title: به روز رسانی آرایه‌ها در State
 * `slice` به شما امکان می‌دهد یک آرایه یا بخشی از آن را کپی کنید.
 * `splice` آرایه را **تغییر می‌دهد** (برای افزودن یا حذف آیتم‌ها).
 
-در ری‌اکت، از `slice` (بدون حرف `p`!) بسیار بیشتر استفاده می‌کنید زیرا نمی‌خواهید object‌ها یا آرایه‌های موجود در state را تغییر دهید. [به‌روزرسانی object‌ها](/learn/updating-objects-in-state) توضیح می‌دهد که تغییر (mutation) چیست و چرا برای state توصیه نمی‌شود.
+در ری‌اکت، از `slice` (بدون حرف `p`!) بسیار بیشتر استفاده می‌کنید زیرا نمی‌خواهید object‌ها یا آرایه‌های موجود در state را تغییر دهید. [به‌روزرسانی object‌ها](/learn/updating-objects-in-state) توضیح می‌دهد که تغییر مستقیم (mutation) چیست و چرا برای state توصیه نمی‌شود.
 
 </Pitfall>
 
 ### افزودن به آرایه {/*adding-to-an-array*/}
 
-متد `push()` آرایه را تغییر می‌دهد، که مطلوب نیست:
+`push()` آرایه را تغییر می‌دهد، که مطلوب نیست:
 
 <Sandpack>
 
@@ -150,7 +150,7 @@ setArtists([
 ]);
 ```
 
-بدین‌گونه، عملگر spread می‌تواند کار متد `push()` را با افزودن به انتهای آرایه و کار `unshift()` را با افزودن به ابتدای آرایه انجام دهد. آن را در sandbox فوق امتحان کنید!
+بدین‌گونه، عملگر spread می‌تواند کار `push()` را با افزودن به انتهای آرایه و کار `unshift()` را با افزودن به ابتدای آرایه انجام دهد. آن را در sandbox فوق امتحان کنید!
 
 ### حذف کردن از آرایه {/*removing-from-an-array*/}
 
