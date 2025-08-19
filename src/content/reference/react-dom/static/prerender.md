@@ -69,10 +69,7 @@ On the client, call [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) to 
 #### Caveats {/*caveats*/}
 
 `nonce` is not an available option when prerendering. Nonces must be unique per request and if you use nonces to secure your application with [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) it would be inappropriate and insecure to include the nonce value in the prerender itself.
-<<<<<<< HEAD
-=======
 
->>>>>>> e9a7cb1b6ca1659b42d81555ecef0cd554b7a983
 
 <Note>
 
