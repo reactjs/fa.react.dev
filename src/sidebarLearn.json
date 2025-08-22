@@ -1,236 +1,236 @@
 {
-  "title": "Learn React",
+  "title": "یادگیری ری‌اکت",
   "path": "/learn",
   "routes": [
     {
       "hasSectionHeader": true,
-      "sectionHeader": "GET STARTED"
+      "sectionHeader": "شروع کنید"
     },
     {
-      "title": "Quick Start",
+      "title": "شروع سریع",
       "path": "/learn",
       "routes": [
         {
-          "title": "Tutorial: Tic-Tac-Toe",
+          "title": "آموزش: دوز (Tic-Tac-Toe)",
           "path": "/learn/tutorial-tic-tac-toe"
         },
         {
-          "title": "Thinking in React",
+          "title": "تفکر در ری‌اکت",
           "path": "/learn/thinking-in-react"
         }
       ]
     },
     {
-      "title": "Installation",
+      "title": "نصب",
       "path": "/learn/installation",
       "routes": [
         {
-          "title": "Creating a React App",
+          "title": "ایجاد یک اپلیکیشن ری‌اکت",
           "path": "/learn/creating-a-react-app"
         },
         {
-          "title": "Build a React App from Scratch",
+          "title": "ساخت یک اپلیکیشن ری‌اکت از صفر",
           "path": "/learn/build-a-react-app-from-scratch"
         },
         {
-          "title": "Add React to an Existing Project",
+          "title": "افزودن ری‌اکت به یک پروژه موجود",
           "path": "/learn/add-react-to-an-existing-project"
         }
       ]
     },
     {
-      "title": "Setup",
+      "title": "راه‌اندازی",
       "path": "/learn/setup",
       "routes": [
         {
-          "title": "Editor Setup",
+          "title": "راه‌اندازی ویرایشگر",
           "path": "/learn/editor-setup"
         },
         {
-          "title": "Using TypeScript",
+          "title": "استفاده از تایپ‌اسکریپت",
           "path": "/learn/typescript"
         },
         {
-          "title": "React Developer Tools",
+          "title": "ابزارهای توسعه‌دهنده ری‌اکت",
           "path": "/learn/react-developer-tools"
         }
       ]
     },
     {
-      "title": "React Compiler",
+      "title": "کامپایلر ری‌اکت",
       "path": "/learn/react-compiler",
       "canary": true,
       "routes": [
         {
-          "title": "Introduction",
+          "title": "مقدمه",
           "path": "/learn/react-compiler/introduction"
         },
         {
-          "title": "Installation",
+          "title": "نصب",
           "path": "/learn/react-compiler/installation"
         },
         {
-          "title": "Incremental Adoption",
+          "title": "پذیرش تدریجی",
           "path": "/learn/react-compiler/incremental-adoption"
         },
         {
-          "title": "Debugging and Troubleshooting",
+          "title": "دیباگ و رفع اشکال",
           "path": "/learn/react-compiler/debugging"
         }
       ]
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "LEARN REACT"
+      "sectionHeader": "یادگیری ری‌اکت"
     },
     {
-      "title": "Describing the UI",
+      "title": "توصیف رابط کاربری",
       "tags": [],
       "path": "/learn/describing-the-ui",
       "routes": [
         {
-          "title": "Your First Component",
+          "title": "اولین کامپوننت شما",
           "path": "/learn/your-first-component"
         },
         {
-          "title": "Importing and Exporting Components",
+          "title": "ایمپورت و اکسپورت کامپوننت‌ها",
           "path": "/learn/importing-and-exporting-components"
         },
         {
-          "title": "Writing Markup with JSX",
+          "title": "نوشتن مارک‌آپ با JSX",
           "path": "/learn/writing-markup-with-jsx"
         },
         {
-          "title": "JavaScript in JSX with Curly Braces",
+          "title": "جاوااسکریپت در JSX با استفاده از آکولاد‌‌‌‌ها",
           "path": "/learn/javascript-in-jsx-with-curly-braces"
         },
         {
-          "title": "Passing Props to a Component",
+          "title": "ارسال پراپ‌ها به یک کامپوننت",
           "path": "/learn/passing-props-to-a-component"
         },
         {
-          "title": "Conditional Rendering",
+          "title": "رندر شرطی",
           "path": "/learn/conditional-rendering"
         },
         {
-          "title": "Rendering Lists",
+          "title": "رندر کردن لیست‌ها",
           "path": "/learn/rendering-lists"
         },
         {
-          "title": "Keeping Components Pure",
+          "title": "خالص نگه‌داشتن کامپوننت‌ها",
           "path": "/learn/keeping-components-pure"
         },
         {
-          "title": "Your UI as a Tree",
+          "title": "رابط کاربری شما به عنوان یک درخت",
           "path": "/learn/understanding-your-ui-as-a-tree"
         }
       ]
     },
     {
-      "title": "Adding Interactivity",
+      "title": "افزودن تعامل",
       "path": "/learn/adding-interactivity",
       "tags": [],
       "routes": [
         {
-          "title": "Responding to Events",
+          "title": "پاسخ به رویدادها",
           "path": "/learn/responding-to-events"
         },
         {
-          "title": "State: A Component's Memory",
+          "title": "State: حافظهٔ یک کامپوننت",
           "path": "/learn/state-a-components-memory"
         },
         {
-          "title": "Render and Commit",
+          "title": "رندر و کامیت",
           "path": "/learn/render-and-commit"
         },
         {
-          "title": "State as a Snapshot",
+          "title": "State به عنوان یک اسنپ‌شات",
           "path": "/learn/state-as-a-snapshot"
         },
         {
-          "title": "Queueing a Series of State Updates",
+          "title": "صف‌بندی چند به‌روزرسانی State",
           "path": "/learn/queueing-a-series-of-state-updates"
         },
         {
-          "title": "Updating Objects in State",
+          "title": "به‌روزرسانی اشیاء در State",
           "path": "/learn/updating-objects-in-state"
         },
         {
-          "title": "Updating Arrays in State",
+          "title": "به‌روزرسانی آرایه‌ها در State",
           "path": "/learn/updating-arrays-in-state"
         }
       ]
     },
     {
-      "title": "Managing State",
+      "title": "مدیریت State",
       "path": "/learn/managing-state",
       "tags": ["intermediate"],
       "routes": [
         {
-          "title": "Reacting to Input with State",
+          "title": "واکنش به ورودی با State",
           "path": "/learn/reacting-to-input-with-state"
         },
         {
-          "title": "Choosing the State Structure",
+          "title": "انتخاب ساختار State",
           "path": "/learn/choosing-the-state-structure"
         },
         {
-          "title": "Sharing State Between Components",
+          "title": "اشتراک‌گذاری State بین کامپوننت‌ها",
           "path": "/learn/sharing-state-between-components"
         },
         {
-          "title": "Preserving and Resetting State",
+          "title": "حفظ و ریست کردن State",
           "path": "/learn/preserving-and-resetting-state"
         },
         {
-          "title": "Extracting State Logic into a Reducer",
+          "title": "استخراج منطق State به یک Reducer",
           "path": "/learn/extracting-state-logic-into-a-reducer"
         },
         {
-          "title": "Passing Data Deeply with Context",
+          "title": "ارسال داده در عمق با Context",
           "path": "/learn/passing-data-deeply-with-context"
         },
         {
-          "title": "Scaling Up with Reducer and Context",
+          "title": "گسترش با Reducer و Context",
           "path": "/learn/scaling-up-with-reducer-and-context"
         }
       ]
     },
     {
-      "title": "Escape Hatches",
+      "title": "راه‌های فرار",
       "path": "/learn/escape-hatches",
       "tags": ["advanced"],
       "routes": [
         {
-          "title": "Referencing Values with Refs",
+          "title": "ارجاع به مقادیر با Refs",
           "path": "/learn/referencing-values-with-refs"
         },
         {
-          "title": "Manipulating the DOM with Refs",
+          "title": "دست‌کاری DOM با Refs",
           "path": "/learn/manipulating-the-dom-with-refs"
         },
         {
-          "title": "Synchronizing with Effects",
+          "title": "همگام‌سازی با Effects",
           "path": "/learn/synchronizing-with-effects"
         },
         {
-          "title": "You Might Not Need an Effect",
+          "title": "شاید به Effect نیاز نداشته باشید",
           "path": "/learn/you-might-not-need-an-effect"
         },
         {
-          "title": "Lifecycle of Reactive Effects",
+          "title": "چرخهٔ حیات Effects واکنشی",
           "path": "/learn/lifecycle-of-reactive-effects"
         },
         {
-          "title": "Separating Events from Effects",
+          "title": "جدا کردن رویدادها از Effects",
           "path": "/learn/separating-events-from-effects"
         },
         {
-          "title": "Removing Effect Dependencies",
+          "title": "حذف وابستگی‌های Effect",
           "path": "/learn/removing-effect-dependencies"
         },
         {
-          "title": "Reusing Logic with Custom Hooks",
+          "title": "بازاستفاده از منطق با هوک‌های سفارشی",
           "path": "/learn/reusing-logic-with-custom-hooks"
         }
       ]

@@ -1,113 +1,113 @@
 {
-  "title": "React Docs",
+  "title": "مستندات ری‌اکت",
   "path": "/",
   "routes": [
     {
       "hasSectionHeader": true,
-      "sectionHeader": "GET STARTED"
+      "sectionHeader": "شروع کنید"
     },
     {
-      "title": "Quick Start",
+      "title": "شروع سریع",
       "path": "/learn"
     },
     {
-      "title": "Installation",
+      "title": "نصب",
       "path": "/learn/installation"
     },
     {
-      "title": "React Compiler",
+      "title": "کامپایلر ری‌اکت",
       "path": "/learn/react-compiler"
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "LEARN REACT"
+      "sectionHeader": "یادگیری ری‌اکت"
     },
     {
-      "title": "Describing the UI",
+      "title": "توصیف رابط کاربری",
       "path": "/learn/describing-the-ui"
     },
     {
-      "title": "Adding Interactivity",
+      "title": "افزودن تعامل",
       "path": "/learn/adding-interactivity"
     },
     {
-      "title": "Managing State",
+      "title": "مدیریت حالت",
       "path": "/learn/managing-state"
     },
     {
-      "title": "Escape Hatches",
+      "title": "راه‌های فرار",
       "path": "/learn/escape-hatches"
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "REACT API"
+      "sectionHeader": "API ری‌اکت"
     },
     {
-      "title": "Hooks",
+      "title": "هوک‌ها",
       "path": "/reference/react"
     },
     {
-      "title": "Components",
+      "title": "کامپوننت‌ها",
       "path": "/reference/react/components"
     },
     {
-      "title": "APIs",
+      "title": "APIها",
       "path": "/reference/react/apis"
     },
     {
-      "title": "Legacy APIs",
+      "title": "APIهای قدیمی",
       "path": "/reference/react/legacy"
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "REACT DOM API"
+      "sectionHeader": "API ری‌اکت DOM"
     },
     {
-      "title": "Components",
+      "title": "کامپوننت‌ها",
       "path": "/reference/react-dom/components"
     },
     {
-      "title": "APIs",
+      "title": "APIها",
       "path": "/reference/react-dom"
     },
     {
-      "title": "Client APIs",
+      "title": "APIهای کلاینت",
       "path": "/reference/react-dom/client"
     },
     {
-      "title": "Server APIs",
+      "title": "APIهای سرور",
       "path": "/reference/react-dom/server"
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "REACT COMPILER API"
+      "sectionHeader": "API کامپایلر ری‌اکت"
     },
     {
-      "title": "Configuration",
+      "title": "پیکربندی",
       "path": "/reference/react-compiler/configuration"
     },
     {
-      "title": "Directives",
+      "title": "دستورالعمل‌ها",
       "path": "/reference/react-compiler/directives"
     },
     {
-      "title": "Compiling Libraries",
+      "title": "کامپایل کتابخانه‌ها",
       "path": "/reference/react-compiler/compiling-libraries"
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "GET INVOLVED"
+      "sectionHeader": "مشارکت کنید"
     },
     {
-      "title": "React Community",
+      "title": "جامعه ری‌اکت",
       "path": "/community"
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "STAY INFORMED"
+      "sectionHeader": "باخبر بمانید"
     },
     {
-      "title": "React Blog",
+      "title": "بلاگ ری‌اکت",
       "path": "/blog"
     }
   ]
