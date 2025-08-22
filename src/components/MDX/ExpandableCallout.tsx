@@ -27,7 +27,7 @@ interface ExpandableCalloutProps {
 
 const variantMap = {
   deprecated: {
-    title: 'Deprecated',
+    title: 'منسوخ‌شده',
     Icon: IconWarning,
     containerClasses: 'bg-red-5 dark:bg-red-60 dark:bg-opacity-20',
     textColor: 'text-red-50 dark:text-red-40',
@@ -35,7 +35,7 @@ const variantMap = {
       'linear-gradient(rgba(249, 247, 243, 0), rgba(249, 247, 243, 1)',
   },
   note: {
-    title: 'Note',
+    title: 'نکته',
     Icon: IconNote,
     containerClasses:
       'bg-green-5 dark:bg-green-60 dark:bg-opacity-20 text-primary dark:text-primary-dark text-lg',
@@ -44,7 +44,7 @@ const variantMap = {
       'linear-gradient(rgba(245, 249, 248, 0), rgba(245, 249, 248, 1)',
   },
   canary: {
-    title: 'Canary',
+    title: 'نسخه آزمایشی',
     Icon: IconCanary,
     containerClasses:
       'bg-gray-5 dark:bg-gray-60 dark:bg-opacity-20 text-primary dark:text-primary-dark text-lg',
@@ -53,7 +53,7 @@ const variantMap = {
       'linear-gradient(rgba(245, 249, 248, 0), rgba(245, 249, 248, 1)',
   },
   experimental: {
-    title: 'Experimental Feature',
+    title: 'قابلیت آزمایشی',
     Icon: IconCanary,
     containerClasses:
       'bg-green-5 dark:bg-green-60 dark:bg-opacity-20 text-primary dark:text-primary-dark text-lg',
@@ -62,7 +62,7 @@ const variantMap = {
       'linear-gradient(rgba(245, 249, 248, 0), rgba(245, 249, 248, 1)',
   },
   pitfall: {
-    title: 'Pitfall',
+    title: 'دام',
     Icon: IconPitfall,
     containerClasses: 'bg-yellow-5 dark:bg-yellow-60 dark:bg-opacity-20',
     textColor: 'text-yellow-50 dark:text-yellow-40',
@@ -70,7 +70,7 @@ const variantMap = {
       'linear-gradient(rgba(249, 247, 243, 0), rgba(249, 247, 243, 1)',
   },
   wip: {
-    title: 'Under Construction',
+    title: 'در حال ساخت',
     Icon: IconNote,
     containerClasses: 'bg-yellow-5 dark:bg-yellow-60 dark:bg-opacity-20',
     textColor: 'text-yellow-50 dark:text-yellow-40',
@@ -78,7 +78,7 @@ const variantMap = {
       'linear-gradient(rgba(249, 247, 243, 0), rgba(249, 247, 243, 1)',
   },
   major: {
-    title: 'React 19',
+    title: 'ری‌اکت ۱۹',
     Icon: IconRocket,
     containerClasses: 'bg-blue-10 dark:bg-blue-60 dark:bg-opacity-20',
     textColor: 'text-blue-50 dark:text-blue-40',
@@ -86,7 +86,7 @@ const variantMap = {
       'linear-gradient(rgba(249, 247, 243, 0), rgba(249, 247, 243, 1)',
   },
   rsc: {
-    title: 'React Server Components',
+    title: 'کامپوننت‌های سرور ری‌اکت',
     Icon: null,
     containerClasses: 'bg-blue-10 dark:bg-blue-60 dark:bg-opacity-20',
     textColor: 'text-blue-50 dark:text-blue-40',

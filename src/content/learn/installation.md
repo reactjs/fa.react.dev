@@ -1,16 +1,17 @@
 ---
-title: Installation
+title: نصب
 ---
 
 <Intro>
 
-React has been designed from the start for gradual adoption. You can use as little or as much React as you need. Whether you want to get a taste of React, add some interactivity to an HTML page, or start a complex React-powered app, this section will help you get started.
+ری‌اکت از ابتدا به‌گونه‌ای طراحی شده که بتوان آن را به‌صورت تدریجی به کار گرفت. می‌توانید به همان اندازه که نیاز دارید از ری‌اکت استفاده کنید؛ چه بخواهید فقط با ری‌اکت آشنا شوید، چه مقداری تعامل به یک صفحه HTML اضافه کنید، یا یک اپلیکیشن پیچیده با ری‌اکت بسازید—این بخش به شما کمک می‌کند تا شروع کنید.
+
 
 </Intro>
 
-## Try React {/*try-react*/}
+## ری‌اکت را امتحان کنید {/*try-react*/}
 
-You don't need to install anything to play with React. Try editing this sandbox!
+برای بازی با ری‌اکت نیازی به نصب هیچ چیزی ندارید. این سندباکس را امتحان کنید و آن را ویرایش کنید!
 
 <Sandpack>
 
@@ -26,34 +27,34 @@ export default function App() {
 
 </Sandpack>
 
-You can edit it directly or open it in a new tab by pressing the "Fork" button in the upper right corner.
+می‌توانید مستقیماً آن را ویرایش کنید یا با فشردن دکمه "Fork" در گوشه بالا سمت راست، آن را در یک تب جدید باز کنید.
 
-Most pages in the React documentation contain sandboxes like this. Outside of the React documentation, there are many online sandboxes that support React: for example, [CodeSandbox](https://codesandbox.io/s/new), [StackBlitz](https://stackblitz.com/fork/react), or [CodePen.](https://codepen.io/pen?template=QWYVwWN)
+بیشتر صفحات موجود در مستندات ری‌اکت شامل سندباکس‌هایی مانند این هستند. خارج از مستندات ری‌اکت، سندباکس‌های آنلاین زیادی وجود دارند که از ری‌اکت پشتیبانی می‌کنند؛ برای مثال، [CodeSandbox](https://codesandbox.io/s/new)، [StackBlitz](https://stackblitz.com/fork/react)، یا [CodePen.](https://codepen.io/pen?template=QWYVwWN)
 
-To try React locally on your computer, [download this HTML page.](https://gist.githubusercontent.com/gaearon/0275b1e1518599bbeafcde4722e79ed1/raw/db72dcbf3384ee1708c4a07d3be79860db04bff0/example.html) Open it in your editor and in your browser!
+برای امتحان کردن ری‌اکت به‌صورت محلی روی رایانه‌تان، [این صفحه HTML را دانلود کنید.](https://gist.githubusercontent.com/gaearon/0275b1e1518599bbeafcde4722e79ed1/raw/db72dcbf3384ee1708c4a07d3be79860db04bff0/example.html)  
+آن را در ویرایشگر و مرورگر خود باز کنید!
 
-## Creating a React App {/*creating-a-react-app*/}
+## ساخت یک اپلیکیشن ری‌اکت {/*creating-a-react-app*/}
 
-If you want to start a new React app, you can [create a React app](/learn/creating-a-react-app) using a recommended framework.
+اگر می‌خواهید یک اپلیکیشن ری‌اکت جدید راه‌اندازی کنید، می‌توانید از [ساخت یک اپلیکیشن ری‌اکت](/learn/creating-a-react-app) با استفاده از یک فریم‌ورک پیشنهادی شروع کنید.
 
-## Build a React App from Scratch {/*build-a-react-app-from-scratch*/}
+## ساخت اپلیکیشن ری‌اکت از صفر {/*build-a-react-app-from-scratch*/}
 
-If a framework is not a good fit for your project, you prefer to build your own framework, or you just want to learn the basics of a React app you can [build a React app from scratch](/learn/build-a-react-app-from-scratch).
+اگر یک فریم‌ورک برای پروژه‌تان مناسب نیست، ترجیح می‌دهید فریم‌ورک خودتان را بسازید، یا فقط می‌خواهید اصول اولیه‌ی یک اپلیکیشن ری‌اکت را یاد بگیرید، می‌توانید [اپلیکیشن ری‌اکت را از صفر بسازید](/learn/build-a-react-app-from-scratch).
 
-## Add React to an existing project {/*add-react-to-an-existing-project*/}
+## افزودن ری‌اکت به یک پروژه‌ی موجود {/*add-react-to-an-existing-project*/}
 
-If want to try using React in your existing app or a website, you can [add React to an existing project.](/learn/add-react-to-an-existing-project)
+اگر می‌خواهید استفاده از ری‌اکت را در اپلیکیشن یا وب‌سایت موجود خود امتحان کنید، می‌توانید [ری‌اکت را به یک پروژه‌ی موجود اضافه کنید](/learn/add-react-to-an-existing-project).
 
 
 <Note>
 
-#### Should I use Create React App? {/*should-i-use-create-react-app*/}
+#### آیا باید از Create React App استفاده کنم؟ {/*should-i-use-create-react-app*/}
 
-No. Create React App has been deprecated. For more information, see [Sunsetting Create React App](/blog/2025/02/14/sunsetting-create-react-app).
-
+خیر. Create React App منسوخ شده است. برای اطلاعات بیشتر، [پایان پشتیبانی از Create React App](/blog/2025/02/14/sunsetting-create-react-app) را ببینید.
 </Note>
 
-## Next steps {/*next-steps*/}
+## گام‌های بعدی {/*next-steps*/}
 
-Head to the [Quick Start](/learn) guide for a tour of the most important React concepts you will encounter every day.
+به راهنمای [شروع سریع](/learn) بروید تا با مهم‌ترین مفاهیم ری‌اکت که هر روز با آن‌ها سروکار خواهید داشت، آشنا شوید.
 
