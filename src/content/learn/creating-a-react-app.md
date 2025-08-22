@@ -1,78 +1,79 @@
 ---
-title: Creating a React App
+title: ایجاد یک اپلیکیشن ری‌اکت
 ---
 
 <Intro>
 
-If you want to build a new app or website with React, we recommend starting with a framework.
+اگر می‌خواهید یک اپلیکیشن یا وب‌سایت جدید با ری‌اکت بسازید، توصیه می‌کنیم کار خود را با یک فریم‌ورک شروع کنید.
 
 </Intro>
 
-If your app has constraints not well-served by existing frameworks, you prefer to build your own framework, or you just want to learn the basics of a React app, you can [build a React app from scratch](/learn/build-a-react-app-from-scratch).
+اگر اپلیکیشن شما محدودیت‌هایی دارد که توسط فریم‌ورک‌های موجود به خوبی پوشش داده نمی‌شوند، یا ترجیح می‌دهید فریم‌ورک خودتان را بسازید، یا فقط می‌خواهید اصول اولیه یک اپلیکیشن ری‌اکت را یاد بگیرید، می‌توانید [یک اپلیکیشن ری‌اکت را از پایه بسازید](/learn/build-a-react-app-from-scratch).
 
-## Full-stack frameworks {/*full-stack-frameworks*/}
+## فریم‌ورک‌های فول‌استک {/*full-stack-frameworks*/}
 
-These recommended frameworks support all the features you need to deploy and scale your app in production. They have integrated the latest React features and take advantage of React’s architecture.
+این فریم‌ورک‌های پیشنهادی از تمام قابلیت‌هایی که برای دیپلوی و مقیاس‌دهی اپلیکیشن خود در محیط پروداکشن نیاز دارید پشتیبانی می‌کنند. آن‌ها جدیدترین قابلیت‌های ری‌اکت را ادغام کرده‌اند و از معماری ری‌اکت بهره می‌برند.
 
 <Note>
 
-#### Full-stack frameworks do not require a server. {/*react-frameworks-do-not-require-a-server*/}
+#### فریم‌ورک‌های فول‌استک به سرور نیاز ندارند. {/*react-frameworks-do-not-require-a-server*/}
 
-All the frameworks on this page support client-side rendering ([CSR](https://developer.mozilla.org/en-US/docs/Glossary/CSR)), single-page apps ([SPA](https://developer.mozilla.org/en-US/docs/Glossary/SPA)), and static-site generation ([SSG](https://developer.mozilla.org/en-US/docs/Glossary/SSG)). These apps can be deployed to a [CDN](https://developer.mozilla.org/en-US/docs/Glossary/CDN) or static hosting service without a server. Additionally, these frameworks allow you to add server-side rendering on a per-route basis, when it makes sense for your use case.
+تمام فریم‌ورک‌های معرفی‌شده در این صفحه از رندر سمت کلاینت ([CSR](https://developer.mozilla.org/en-US/docs/Glossary/CSR))، اپلیکیشن‌های تک‌صفحه‌ای ([SPA](https://developer.mozilla.org/en-US/docs/Glossary/SPA)) و تولید سایت استاتیک ([SSG](https://developer.mozilla.org/en-US/docs/Glossary/SSG)) پشتیبانی می‌کنند. این اپلیکیشن‌ها می‌توانند بدون نیاز به سرور روی یک [CDN](https://developer.mozilla.org/en-US/docs/Glossary/CDN) یا سرویس میزبانی استاتیک مستقر شوند. علاوه بر این، این فریم‌ورک‌ها به شما اجازه می‌دهند که در صورت نیاز، رندر سمت سرور را به صورت انتخابی و در سطح هر مسیر اضافه کنید.
 
-This allows you to start with a client-only app, and if your needs change later, you can opt-in to using server features on individual routes without rewriting your app. See your framework's documentation for configuring the rendering strategy.
+این موضوع به شما امکان می‌دهد که کار را با یک اپلیکیشن صرفاً کلاینتی شروع کنید، و اگر نیازهای شما بعداً تغییر کرد، بتوانید برای مسیرهای مشخصی ویژگی‌های سمت سرور را فعال کنید، بدون آنکه نیاز به بازنویسی کل اپلیکیشن داشته باشید. برای پیکربندی استراتژی رندر، به مستندات فریم‌ورک خود مراجعه کنید.
 
 </Note>
 
 ### Next.js (App Router) {/*nextjs-app-router*/}
 
-**[Next.js's App Router](https://nextjs.org/docs) is a React framework that takes full advantage of React's architecture to enable full-stack React apps.**
+**[App Router در Next.js](https://nextjs.org/docs) یک فریم‌ورک ری‌اکت است که از معماری ری‌اکت به طور کامل بهره می‌برد تا اپلیکیشن‌های فول‌استک ری‌اکت را امکان‌پذیر کند.**
+
 
 <TerminalBlock>
 npx create-next-app@latest
 </TerminalBlock>
 
-Next.js is maintained by [Vercel](https://vercel.com/). You can [deploy a Next.js app](https://nextjs.org/docs/app/building-your-application/deploying) to any hosting provider that supports Node.js or Docker containers, or to your own server. Next.js also supports [static export](https://nextjs.org/docs/app/building-your-application/deploying/static-exports) which doesn't require a server.
+Next.js توسط [Vercel](https://vercel.com/) نگهداری می‌شود. شما می‌توانید یک [اپلیکیشن Next.js را مستقر کنید](https://nextjs.org/docs/app/building-your-application/deploying) روی هر ارائه‌دهنده‌ی میزبانی که از Node.js یا کانتینرهای Docker پشتیبانی کند، یا روی سرور خودتان. Next.js همچنین از [خروجی استاتیک](https://nextjs.org/docs/app/building-your-application/deploying/static-exports) پشتیبانی می‌کند که به سرور نیازی ندارد.
 
 ### React Router (v7) {/*react-router-v7*/}
 
-**[React Router](https://reactrouter.com/start/framework/installation) is the most popular routing library for React and can be paired with Vite to create a full-stack React framework**. It emphasizes standard Web APIs and has several [ready to deploy templates](https://github.com/remix-run/react-router-templates) for various JavaScript runtimes and platforms.
+**[React Router](https://reactrouter.com/start/framework/installation) محبوب‌ترین کتابخانه مسیردهی برای ری‌اکت است و می‌تواند همراه با Vite برای ایجاد یک فریم‌ورک فول‌استک ری‌اکت استفاده شود.** این فریم‌ورک بر استفاده از APIهای استاندارد وب تأکید دارد و چندین [قالب آماده برای استقرار](https://github.com/remix-run/react-router-templates) روی محیط‌ها و پلتفرم‌های مختلف جاوااسکریپت ارائه می‌دهد.
 
-To create a new React Router framework project, run:
+برای ایجاد یک پروژه‌ی جدید فریم‌ورک React Router، دستور زیر را اجرا کنید:
 
 <TerminalBlock>
 npx create-react-router@latest
 </TerminalBlock>
 
-React Router is maintained by [Shopify](https://www.shopify.com).
+React Router توسط [Shopify](https://www.shopify.com) نگهداری می‌شود.
 
-### Expo (for native apps) {/*expo*/}
+### Expo (برای اپلیکیشن‌های نیتیو) {/*expo*/}
 
-**[Expo](https://expo.dev/) is a React framework that lets you create universal Android, iOS, and web apps with truly native UIs.** It provides an SDK for [React Native](https://reactnative.dev/) that makes the native parts easier to use. To create a new Expo project, run:
+**[Expo](https://expo.dev/) یک فریم‌ورک ری‌اکت است که به شما اجازه می‌دهد اپلیکیشن‌های یونیورسال اندروید، iOS و وب را با رابط‌های کاربری واقعاً نیتیو بسازید.** این فریم‌ورک یک SDK برای [React Native](https://reactnative.dev/) فراهم می‌کند که استفاده از بخش‌های نیتیو را ساده‌تر می‌سازد. برای ایجاد یک پروژه‌ی جدید با Expo، دستور زیر را اجرا کنید:
 
 <TerminalBlock>
 npx create-expo-app@latest
 </TerminalBlock>
 
-If you're new to Expo, check out the [Expo tutorial](https://docs.expo.dev/tutorial/introduction/).
+اگر در Expo تازه‌کار هستید، [آموزش Expo](https://docs.expo.dev/tutorial/introduction/) را بررسی کنید.
 
-Expo is maintained by [Expo (the company)](https://expo.dev/about). Building apps with Expo is free, and you can submit them to the Google and Apple app stores without restrictions. Expo additionally provides opt-in paid cloud services.
+Expo توسط [شرکت Expo](https://expo.dev/about) نگهداری می‌شود. ساخت اپلیکیشن با Expo رایگان است، و شما می‌توانید اپ‌ها را بدون هیچ محدودیتی در فروشگاه‌های Google و Apple منتشر کنید. علاوه بر این، Expo سرویس‌های ابری پولی اختیاری نیز ارائه می‌دهد.
 
 
-## Other frameworks {/*other-frameworks*/}
+## سایر فریم‌ورک‌ها {/*other-frameworks*/}
 
-There are other up-and-coming frameworks that are working towards our full stack React vision:
+فریم‌ورک‌های دیگری نیز وجود دارند که در حال حرکت به سمت چشم‌انداز فول‌استک ری‌اکت هستند:
 
-- [TanStack Start (Beta)](https://tanstack.com/): TanStack Start is a full-stack React framework powered by TanStack Router. It provides a full-document SSR, streaming, server functions, bundling, and more using tools like Nitro and Vite.
-- [RedwoodJS](https://redwoodjs.com/): Redwood is a full stack React framework with lots of pre-installed packages and configuration that makes it easy to build full-stack web applications.
+- [TanStack Start (نسخه بتا)](https://tanstack.com/): فریم‌ورک TanStack Start یک فریم‌ورک فول‌استک ری‌اکت است که توسط TanStack Router پشتیبانی می‌شود. این فریم‌ورک رندر سمت سرور (SSR) کامل، استریمینگ، فانکشن‌های سمت سرور، باندلینگ و امکانات بیشتر را با استفاده از ابزارهایی مانند Nitro و Vite فراهم می‌کند.
+- [RedwoodJS](https://redwoodjs.com/): فریم‌ورک Redwood یک فریم‌ورک فول‌استک ری‌اکت است که با تعداد زیادی پکیج و پیکربندی از پیش نصب‌شده ارائه می‌شود و ساخت اپلیکیشن‌های وب فول‌استک را آسان می‌کند.
 
 <DeepDive>
 
-#### Which features make up the React team’s full-stack architecture vision? {/*which-features-make-up-the-react-teams-full-stack-architecture-vision*/}
+#### چه ویژگی‌هایی چشم‌انداز معماری فول‌استک تیم ری‌اکت را تشکیل می‌دهند؟ {/*which-features-make-up-the-react-teams-full-stack-architecture-vision*/}
 
-Next.js's App Router bundler fully implements the official [React Server Components specification](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md). This lets you mix build-time, server-only, and interactive components in a single React tree.
+باندلر App Router در Next.js مشخصات رسمی [کامپوننت‌های سمت سرور ری‌اکت](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md) را به طور کامل پیاده‌سازی کرده است. این ویژگی به شما اجازه می‌دهد که کامپوننت‌های زمان-بیلد، صرفاً-سمت-سرور، و تعاملی را در یک درخت ری‌اکت ترکیب کنید.
 
-For example, you can write a server-only React component as an `async` function that reads from a database or from a file. Then you can pass data down from it to your interactive components:
+برای مثال، می‌توانید یک کامپوننت صرفاً-سمت-سرور را به صورت یک تابع `async` بنویسید که از پایگاه داده یا یک فایل بخواند. سپس می‌توانید داده‌ها را به کامپوننت‌های تعاملی خود انتقال دهید:
 
 ```js
 // This component runs *only* on the server (or during the build).
@@ -88,7 +89,7 @@ async function Talks({ confId }) {
 }
 ```
 
-Next.js's App Router also integrates [data fetching with Suspense](/blog/2022/03/29/react-v18#suspense-in-data-frameworks). This lets you specify a loading state (like a skeleton placeholder) for different parts of your user interface directly in your React tree:
+App Router در Next.js همچنین [واکشی داده همراه با Suspense](/blog/2022/03/29/react-v18#suspense-in-data-frameworks) را یکپارچه می‌کند. این ویژگی به شما اجازه می‌دهد برای بخش‌های مختلف رابط کاربری خود، مستقیماً در درخت ری‌اکت حالت بارگذاری (مانند یک اسکلت‌نمایشگر) مشخص کنید:
 
 ```js
 <Suspense fallback={<TalksLoading />}>
@@ -96,18 +97,18 @@ Next.js's App Router also integrates [data fetching with Suspense](/blog/2022/03
 </Suspense>
 ```
 
-Server Components and Suspense are React features rather than Next.js features. However, adopting them at the framework level requires buy-in and non-trivial implementation work. At the moment, the Next.js App Router is the most complete implementation. The React team is working with bundler developers to make these features easier to implement in the next generation of frameworks.
+Server Components و Suspense ویژگی‌های خود ری‌اکت هستند، نه Next.js. با این حال، پیاده‌سازی آن‌ها در سطح فریم‌ورک نیازمند همکاری و کار غیرساده‌ای است. در حال حاضر، App Router در Next.js کامل‌ترین پیاده‌سازی این قابلیت‌ها را دارد. تیم ری‌اکت در حال همکاری با توسعه‌دهندگان باندلرها است تا این ویژگی‌ها را در نسل بعدی فریم‌ورک‌ها ساده‌تر کنند.
 
 </DeepDive>
 
-## Start From Scratch {/*start-from-scratch*/}
+## شروع از صفر {/*start-from-scratch*/}
 
-If your app has constraints not well-served by existing frameworks, you prefer to build your own framework, or you just want to learn the basics of a React app, there are other options available for starting a React project from scratch.
+اگر اپلیکیشن شما محدودیت‌هایی دارد که توسط فریم‌ورک‌های موجود به‌خوبی پشتیبانی نمی‌شوند، یا ترجیح می‌دهید فریم‌ورک مخصوص به خود را بسازید، یا فقط می‌خواهید اصول اولیه یک اپلیکیشن ری‌اکت را یاد بگیرید، گزینه‌های دیگری برای شروع یک پروژه ری‌اکت از صفر وجود دارد.
 
-Starting from scratch gives you more flexibility, but does require that you make choices on which tools to use for routing, data fetching, and other common usage patterns.  It's a lot like building your own framework, instead of using a framework that already exists. The [frameworks we recommend](#full-stack-frameworks) have built-in solutions for these problems.  
+شروع از صفر انعطاف‌پذیری بیشتری به شما می‌دهد، اما مستلزم آن است که خودتان انتخاب کنید از چه ابزارهایی برای روتینگ، واکشی داده و الگوهای رایج دیگر استفاده کنید. این کار بسیار شبیه ساختن فریم‌ورک خودتان است، به جای استفاده از یک فریم‌ورک آماده. [فریم‌ورک‌هایی که ما توصیه می‌کنیم](#full-stack-frameworks) راه‌حل‌های داخلی برای این مسائل دارند.   
 
-If you want to build your own solutions, see our guide to [build a React app from Scratch](/learn/build-a-react-app-from-scratch) for instructions on how to set up a new React project starting with a build tool like [Vite](https://vite.dev/), [Parcel](https://parceljs.org/), or [RSbuild](https://rsbuild.dev/).
+اگر می‌خواهید راه‌حل‌های خودتان را بسازید، به راهنمای ما برای [ساخت یک اپلیکیشن ری‌اکت از صفر](/learn/build-a-react-app-from-scratch) مراجعه کنید تا با نحوه راه‌اندازی یک پروژه ری‌اکت جدید با استفاده از ابزاری مانند [Vite](https://vite.dev/)، [Parcel](https://parceljs.org/) یا [RSbuild](https://rsbuild.dev/) آشنا شوید.
 
 -----
 
-_If you’re a framework author interested in being included on this page, [please let us know](https://github.com/reactjs/react.dev/issues/new?assignees=&labels=type%3A+framework&projects=&template=3-framework.yml&title=%5BFramework%5D%3A+)._
+_اگر شما نویسنده یک فریم‌ورک هستید و علاقه‌مندید که نامتان در این صفحه ذکر شود، [به ما اطلاع دهید](https://github.com/reactjs/react.dev/issues/new?assignees=&labels=type%3A+framework&projects=&template=3-framework.yml&title=%5BFramework%5D%3A+)._
