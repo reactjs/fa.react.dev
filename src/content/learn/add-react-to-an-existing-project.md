@@ -24,7 +24,11 @@ title: اضافه کردن ری‌اکت به یک پروژه موجود
 2. **`/some-app` را به‌عنوان *مسیر پایه*** در پیکربندی فریم‌ورک خود مشخص کنید (راهنما: [Next.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath)، [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/)).
 3. **سرور یا پروکسی خود را پیکربندی کنید** تا همه درخواست‌های زیر مسیر `/some-app/` توسط اپلیکیشن ری‌اکت شما مدیریت شوند.
 
+<<<<<<< HEAD
 این کار تضمین می‌کند که بخش ری‌اکت اپلیکیشن شما می‌تواند از [بهترین شیوه‌های موجود](/learn/build-a-react-app-from-scratch#consider-using-a-framework) که در این فریم‌ورک‌ها تعبیه شده‌اند بهره‌مند شود.  
+=======
+This ensures the React part of your app can [benefit from the best practices](/learn/build-a-react-app-from-scratch#consider-using-a-framework) baked into those frameworks.
+>>>>>>> 2774ddfa0c39b8c2f0563b987dcb90a01ee723cf
 
 بسیاری از فریم‌ورک‌های مبتنی بر ری‌اکت فول‌استک هستند و به اپلیکیشن ری‌اکت شما اجازه می‌دهند از قابلیت‌های سرور استفاده کند. با این حال، حتی اگر نتوانید یا نخواهید جاوااسکریپت را روی سرور اجرا کنید، می‌توانید از همان رویکرد استفاده کنید. در این حالت، خروجی HTML/CSS/JS را (خروجی [`next export`](https://nextjs.org/docs/advanced-features/static-html-export) در Next.js یا حالت پیش‌فرض در Gatsby) در مسیر `/some-app/` سرو کنید.  
 
