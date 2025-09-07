@@ -1,59 +1,59 @@
 ---
-title: Add React to an Existing Project
+title: اضافه کردن ری‌اکت به یک پروژه موجود
 ---
 
 <Intro>
 
-If you want to add some interactivity to your existing project, you don't have to rewrite it in React. Add React to your existing stack, and render interactive React components anywhere.
+اگر می‌خواهید کمی تعامل‌پذیری به پروژه موجود خود اضافه کنید، نیازی نیست آن را از ابتدا با ری‌اکت بازنویسی کنید. ری‌اکت را به پشته فعلی خود اضافه کنید و کامپوننت‌های تعاملی ری‌اکت را در هر جایی رندر کنید.
 
 </Intro>
 
 <Note>
 
-**You need to install [Node.js](https://nodejs.org/en/) for local development.** Although you can [try React](/learn/installation#try-react) online or with a simple HTML page, realistically most JavaScript tooling you'll want to use for development requires Node.js.
+**برای توسعه محلی لازم است [Node.js](https://nodejs.org/en/) را نصب کنید.** هرچند می‌توانید [ری‌اکت را امتحان کنید](/learn/installation#try-react) به صورت آنلاین یا با یک صفحه HTML ساده، اما در عمل بیشتر ابزارهای جاوااسکریپت که برای توسعه نیاز خواهید داشت، به Node.js وابسته هستند.
 
 </Note>
 
-## Using React for an entire subroute of your existing website {/*using-react-for-an-entire-subroute-of-your-existing-website*/}
+## استفاده از ری‌اکت برای یک زیرمسیر کامل در وب‌سایت موجود {/*using-react-for-an-entire-subroute-of-your-existing-website*/}
 
-Let's say you have an existing web app at `example.com` built with another server technology (like Rails), and you want to implement all routes starting with `example.com/some-app/` fully with React.
+فرض کنید یک اپلیکیشن وب موجود در `example.com` دارید که با یک فناوری سمت سرور دیگر (مثل Rails) ساخته شده است و می‌خواهید تمام مسیرهایی که با `example.com/some-app/` شروع می‌شوند، به طور کامل با ری‌اکت پیاده‌سازی شوند.
 
-Here's how we recommend to set it up:
+پیشنهاد ما برای راه‌اندازی به این صورت است:
 
-1. **Build the React part of your app** using one of the [React-based frameworks](/learn/start-a-new-react-project).
-2. **Specify `/some-app` as the *base path*** in your framework's configuration (here's how: [Next.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/)).
-3. **Configure your server or a proxy** so that all requests under `/some-app/` are handled by your React app.
+1. **بخش ری‌اکت اپلیکیشن خود را بسازید** با استفاده از یکی از [فریم‌ورک‌های مبتنی بر ری‌اکت](/learn/start-a-new-react-project).
+2. **`/some-app` را به‌عنوان *مسیر پایه*** در پیکربندی فریم‌ورک خود مشخص کنید (راهنما: [Next.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath)، [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/)).
+3. **سرور یا پروکسی خود را پیکربندی کنید** تا همه درخواست‌های زیر مسیر `/some-app/` توسط اپلیکیشن ری‌اکت شما مدیریت شوند.
 
-This ensures the React part of your app can [benefit from the best practices](/learn/build-a-react-app-from-scratch#consider-using-a-framework) baked into those frameworks.
+این کار تضمین می‌کند که بخش ری‌اکت اپلیکیشن شما می‌تواند از [بهترین شیوه‌های موجود](/learn/build-a-react-app-from-scratch#consider-using-a-framework) که در این فریم‌ورک‌ها تعبیه شده‌اند بهره‌مند شود.  
 
-Many React-based frameworks are full-stack and let your React app take advantage of the server. However, you can use the same approach even if you can't or don't want to run JavaScript on the server. In that case, serve the HTML/CSS/JS export ([`next export` output](https://nextjs.org/docs/advanced-features/static-html-export) for Next.js, default for Gatsby) at `/some-app/` instead.
+بسیاری از فریم‌ورک‌های مبتنی بر ری‌اکت فول‌استک هستند و به اپلیکیشن ری‌اکت شما اجازه می‌دهند از قابلیت‌های سرور استفاده کند. با این حال، حتی اگر نتوانید یا نخواهید جاوااسکریپت را روی سرور اجرا کنید، می‌توانید از همان رویکرد استفاده کنید. در این حالت، خروجی HTML/CSS/JS را (خروجی [`next export`](https://nextjs.org/docs/advanced-features/static-html-export) در Next.js یا حالت پیش‌فرض در Gatsby) در مسیر `/some-app/` سرو کنید.  
 
-## Using React for a part of your existing page {/*using-react-for-a-part-of-your-existing-page*/}
+## استفاده از ری‌اکت برای بخشی از یک صفحه موجود {/*using-react-for-a-part-of-your-existing-page*/}
 
-Let's say you have an existing page built with another technology (either a server one like Rails, or a client one like Backbone), and you want to render interactive React components somewhere on that page. That's a common way to integrate React--in fact, it's how most React usage looked at Meta for many years!
+فرض کنید یک صفحه موجود دارید که با یک فناوری دیگر ساخته شده است (چه سمت سرور مثل Rails، چه سمت کلاینت مثل Backbone) و می‌خواهید کامپوننت‌های تعاملی ری‌اکت را در جایی از آن صفحه رندر کنید. این یکی از روش‌های رایج برای یکپارچه‌سازی ری‌اکت است—در واقع، برای بسیاری از سال‌ها در Meta بیشتر استفاده‌های ری‌اکت به همین شکل بوده است!  
 
-You can do this in two steps:
+می‌توانید این کار را در دو گام انجام دهید:
 
-1. **Set up a JavaScript environment** that lets you use the [JSX syntax](/learn/writing-markup-with-jsx), split your code into modules with the [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) / [`export`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export) syntax, and use packages (for example, React) from the [npm](https://www.npmjs.com/) package registry.
-2. **Render your React components** where you want to see them on the page.
+1. **یک محیط جاوااسکریپت راه‌اندازی کنید** که به شما اجازه دهد از [سینتکس JSX](/learn/writing-markup-with-jsx) استفاده کنید، کد خود را با سینتکس [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) / [`export`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export) به ماژول‌ها تقسیم کنید، و از پکیج‌ها (برای مثال React) در رجیستری [npm](https://www.npmjs.com/) استفاده کنید.  
+2. **کامپوننت‌های ری‌اکت خود را رندر کنید** در جایی که می‌خواهید آن‌ها را در صفحه ببینید.  
 
-The exact approach depends on your existing page setup, so let's walk through some details.
+روش دقیق این کار به تنظیمات موجود صفحه شما بستگی دارد، پس بیایید جزئیات آن را مرور کنیم.  
 
-### Step 1: Set up a modular JavaScript environment {/*step-1-set-up-a-modular-javascript-environment*/}
+### گام ۱: راه‌اندازی یک محیط ماژولار جاوااسکریپت {/*step-1-set-up-a-modular-javascript-environment*/}
 
-A modular JavaScript environment lets you write your React components in individual files, as opposed to writing all of your code in a single file. It also lets you use all the wonderful packages published by other developers on the [npm](https://www.npmjs.com/) registry--including React itself! How you do this depends on your existing setup:
+یک محیط جاوااسکریپت ماژولار به شما اجازه می‌دهد کامپوننت‌های ری‌اکت خود را در فایل‌های جداگانه بنویسید، به جای اینکه همه‌ی کدهایتان را در یک فایل قرار دهید. همچنین این محیط به شما امکان استفاده از همه‌ی پکیج‌های مفیدی که توسعه‌دهندگان دیگر در رجیستری [npm](https://www.npmjs.com/) منتشر کرده‌اند—از جمله خود React—را می‌دهد! اینکه چطور این کار را انجام دهید، به تنظیمات فعلی پروژه شما بستگی دارد:  
 
-* **If your app is already split into files that use `import` statements,** try to use the setup you already have. Check whether writing `<div />` in your JS code causes a syntax error. If it causes a syntax error, you might need to [transform your JavaScript code with Babel](https://babeljs.io/setup), and enable the [Babel React preset](https://babeljs.io/docs/babel-preset-react) to use JSX.
+* **اگر اپلیکیشن شما از قبل به فایل‌هایی تقسیم شده است که از دستور `import` استفاده می‌کنند،** سعی کنید از همان تنظیمات موجود استفاده کنید. بررسی کنید که نوشتن `<div />` در کد JS شما خطای سینتکسی ایجاد می‌کند یا نه. اگر خطای سینتکسی ایجاد شد، ممکن است نیاز داشته باشید [کد جاوااسکریپت خود را با Babel تبدیل کنید](https://babeljs.io/setup)، و [پریست React در Babel](https://babeljs.io/docs/babel-preset-react) را فعال کنید تا بتوانید از JSX استفاده کنید.  
 
-* **If your app doesn't have an existing setup for compiling JavaScript modules,** set it up with [Vite](https://vite.dev/). The Vite community maintains [many integrations with backend frameworks](https://github.com/vitejs/awesome-vite#integrations-with-backends), including Rails, Django, and Laravel. If your backend framework is not listed, [follow this guide](https://vite.dev/guide/backend-integration.html) to manually integrate Vite builds with your backend.
+* **اگر اپلیکیشن شما هیچ تنظیماتی برای کامپایل ماژول‌های جاوااسکریپت ندارد،** آن را با [Vite](https://vite.dev/) راه‌اندازی کنید. جامعه Vite [یکپارچه‌سازی‌های زیادی با فریم‌ورک‌های بک‌اند](https://github.com/vitejs/awesome-vite#integrations-with-backends) از جمله Rails، Django و Laravel دارد. اگر فریم‌ورک بک‌اند شما در لیست نبود، [این راهنما](https://vite.dev/guide/backend-integration.html) را دنبال کنید تا Vite را به صورت دستی با بک‌اند خود یکپارچه کنید.  
 
-To check whether your setup works, run this command in your project folder:
+برای بررسی اینکه آیا تنظیمات شما درست کار می‌کند، این دستور را در پوشه پروژه خود اجرا کنید:  
 
 <TerminalBlock>
 npm install react react-dom
 </TerminalBlock>
 
-Then add these lines of code at the top of your main JavaScript file (it might be called `index.js` or `main.js`):
+سپس این خطوط کد را در بالای فایل اصلی جاوااسکریپت خود اضافه کنید (ممکن است نام آن `index.js` یا `main.js` باشد):  
 
 <Sandpack>
 
@@ -81,17 +81,17 @@ root.render(<h1>Hello, world</h1>);
 
 </Sandpack>
 
-If the entire content of your page was replaced by a "Hello, world!", everything worked! Keep reading.
+اگر کل محتوای صفحه شما با "Hello, world!" جایگزین شد، یعنی همه‌چیز درست کار کرده است! ادامه دهید.  
 
 <Note>
 
-Integrating a modular JavaScript environment into an existing project for the first time can feel intimidating, but it's worth it! If you get stuck, try our [community resources](/community) or the [Vite Chat](https://chat.vite.dev/).
+ادغام یک محیط ماژولار جاوااسکریپت در یک پروژه موجود برای اولین بار می‌تواند کمی دلهره‌آور باشد، اما ارزشش را دارد! اگر جایی گیر کردید، منابع [جامعه](/community) یا [Vite Chat](https://chat.vite.dev/) را امتحان کنید.  
 
 </Note>
 
-### Step 2: Render React components anywhere on the page {/*step-2-render-react-components-anywhere-on-the-page*/}
+### گام ۲: رندر کردن کامپوننت‌های ری‌اکت در هر جایی از صفحه {/*step-2-render-react-components-anywhere-on-the-page*/}
 
-In the previous step, you put this code at the top of your main file:
+در گام قبلی، این کد را در بالای فایل اصلی خود قرار دادید:
 
 ```js
 import { createRoot } from 'react-dom/client';
@@ -104,11 +104,11 @@ const root = createRoot(document.getElementById('app'));
 root.render(<h1>Hello, world</h1>);
 ```
 
-Of course, you don't actually want to clear the existing HTML content!
+البته که شما واقعاً نمی‌خواهید محتوای HTML موجود را پاک کنید!  
 
-Delete this code.
+این کد را حذف کنید.  
 
-Instead, you probably want to render your React components in specific places in your HTML. Open your HTML page (or the server templates that generate it) and add a unique [`id`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id) attribute to any tag, for example:
+در عوض، احتمالاً می‌خواهید کامپوننت‌های ری‌اکت را در بخش‌های مشخصی از HTML خود رندر کنید. صفحه‌ی HTML خود (یا قالب‌های سروری که آن را تولید می‌کنند) را باز کنید و به هر تگی که می‌خواهید یک ویژگی [`id`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id) منحصربه‌فرد اضافه کنید. برای مثال:
 
 ```html
 <!-- ... somewhere in your html ... -->
@@ -116,7 +116,7 @@ Instead, you probably want to render your React components in specific places in
 <!-- ... more html ... -->
 ```
 
-This lets you find that HTML element with [`document.getElementById`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById) and pass it to [`createRoot`](/reference/react-dom/client/createRoot) so that you can render your own React component inside:
+این کار به شما امکان می‌دهد آن عنصر HTML را با استفاده از [`document.getElementById`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById) پیدا کنید و آن را به [`createRoot`](/reference/react-dom/client/createRoot) بدهید تا بتوانید کامپوننت ری‌اکت خودتان را داخل آن رندر کنید:
 
 <Sandpack>
 
@@ -147,10 +147,10 @@ root.render(<NavigationBar />);
 
 </Sandpack>
 
-Notice how the original HTML content from `index.html` is preserved, but your own `NavigationBar` React component now appears inside the `<nav id="navigation">` from your HTML. Read the [`createRoot` usage documentation](/reference/react-dom/client/createRoot#rendering-a-page-partially-built-with-react) to learn more about rendering React components inside an existing HTML page.
+توجه کنید که محتوای اصلی HTML از `index.html` حفظ شده است، اما کامپوننت ری‌اکت شما با نام `NavigationBar` حالا داخل تگ `<nav id="navigation">` در HTML ظاهر می‌شود. برای اطلاعات بیشتر درباره رندر کردن کامپوننت‌های ری‌اکت داخل یک صفحه HTML موجود، مستندات مربوط به استفاده از [`createRoot`](/reference/react-dom/client/createRoot#rendering-a-page-partially-built-with-react) را مطالعه کنید.
 
-When you adopt React in an existing project, it's common to start with small interactive components (like buttons), and then gradually keep "moving upwards" until eventually your entire page is built with React. If you ever reach that point, we recommend migrating to [a React framework](/learn/start-a-new-react-project) right after to get the most out of React.
+وقتی ری‌اکت را در یک پروژه موجود به کار می‌گیرید، معمول است که کار را با کامپوننت‌های تعاملی کوچک (مانند دکمه‌ها) شروع کنید و سپس به‌تدریج «به سمت بالا حرکت کنید» تا جایی که در نهایت کل صفحه شما با ری‌اکت ساخته شود. اگر روزی به این نقطه رسیدید، توصیه می‌کنیم بلافاصله به [یک فریم‌ورک ری‌اکت](/learn/start-a-new-react-project) مهاجرت کنید تا بیشترین بهره را از ری‌اکت ببرید.
 
-## Using React Native in an existing native mobile app {/*using-react-native-in-an-existing-native-mobile-app*/}
+## استفاده از ری‌اکت نیتیو در یک اپ بومی موجود {/*using-react-native-in-an-existing-native-mobile-app*/}
 
-[React Native](https://reactnative.dev/) can also be integrated into existing native apps incrementally. If you have an existing native app for Android (Java or Kotlin) or iOS (Objective-C or Swift), [follow this guide](https://reactnative.dev/docs/integration-with-existing-apps) to add a React Native screen to it.
+[ری‌اکت نیتیو](https://reactnative.dev/) نیز می‌تواند به‌صورت تدریجی در اپلیکیشن‌های بومی موجود ادغام شود. اگر یک اپ بومی موجود برای اندروید (Java یا Kotlin) یا iOS (Objective-C یا Swift) دارید، [این راهنما](https://reactnative.dev/docs/integration-with-existing-apps) را دنبال کنید تا یک صفحه ری‌اکت نیتیو به آن اضافه کنید.

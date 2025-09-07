@@ -1,28 +1,28 @@
 ---
-title: Setup
+title: راه‌اندازی
 ---
 <Intro>
 
-React integrates with tools like editors, TypeScript, browser extensions, and compilers. This section will help you get your environment set up.
+ری‌اکت با ابزارهایی مانند ویرایشگرها، تایپ‌اسکریپت، افزونه‌های مرورگر و کامپایلرها ادغام می‌شود. این بخش به شما کمک می‌کند محیط توسعه خود را راه‌اندازی کنید.
 
 </Intro>
 
-## Editor Setup {/*editor-setup*/}
+## راه‌اندازی ویرایشگر {/*editor-setup*/}
 
-See our [recommended editors](/learn/editor-setup) and learn how to set them up to work with React.
+[ویرایشگرهای پیشنهادی ما](/learn/editor-setup) را ببینید و یاد بگیرید چطور آن‌ها را برای کار با ری‌اکت پیکربندی کنید.
 
-## Using TypeScript {/*using-typescript*/}
+## استفاده از تایپ‌اسکریپت {/*using-typescript*/}
 
-TypeScript is a popular way to add type definitions to JavaScript codebases. [Learn how to integrate TypeScript into your React projects](/learn/typescript).
+تایپ‌اسکریپت یک روش محبوب برای افزودن تعریف نوع به کدهای جاوااسکریپت است. [یاد بگیرید چگونه تایپ‌اسکریپت را در پروژه‌های ری‌اکت خود ادغام کنید](/learn/typescript).
 
-## React Developer Tools {/*react-developer-tools*/}
+## ابزارهای توسعه ری‌اکت {/*react-developer-tools*/}
 
-React Developer Tools is a browser extension that can inspect React components, edit props and state, and identify performance problems. Learn how to install it [here](learn/react-developer-tools).
+ابزارهای توسعه ری‌اکت یک افزونه مرورگر است که می‌تواند کامپوننت‌های ری‌اکت را بررسی کند، props و state را ویرایش کند و مشکلات عملکردی را شناسایی کند. برای نصب آن [اینجا](/learn/react-developer-tools) را ببینید.
 
-## React Compiler {/*react-compiler*/}
+## کامپایلر ری‌اکت {/*react-compiler*/}
 
-React Compiler is a tool that automatically optimizes your React app. [Learn more](/learn/react-compiler).
+کامپایلر ری‌اکت ابزاری است که به‌طور خودکار اپلیکیشن ری‌اکت شما را بهینه‌سازی می‌کند. [بیشتر بدانید](/learn/react-compiler).
 
-## Next steps {/*next-steps*/}
+## گام‌های بعدی {/*next-steps*/}
 
-Head to the [Quick Start](/learn) guide for a tour of the most important React concepts you will encounter every day.
+به [راهنمای شروع سریع](/learn) بروید تا با مهم‌ترین مفاهیم ری‌اکت که هر روز با آن‌ها روبه‌رو می‌شوید، آشنا شوید.
