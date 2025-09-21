@@ -229,11 +229,7 @@ export async function deliverMessage(message) {
 
 </Sandpack>
 
-<<<<<<< HEAD
-[//]: # 'Uncomment the next line, and delete this line after the `useOptimistic` reference documentatino page is published'
-=======
 [//]: # 'Uncomment the next line, and delete this line after the `useOptimistic` reference documentation page is published'
->>>>>>> d34c6a2c6fa49fc6f64b07aa4fa979d86d41c4e8
 [//]: # 'To learn more about the `useOptimistic` Hook see the [reference documentation](/reference/react/useOptimistic).'
 
 ### Handling form submission errors {/*handling-form-submission-errors*/}

@@ -15,21 +15,12 @@
       "path": "/learn/installation"
     },
     {
-<<<<<<< HEAD
       "title": "کامپایلر ری‌اکت",
       "path": "/learn/react-compiler"
-=======
-      "title": "Setup",
+    },
+    {
+      "title": "راه‌اندازی",
       "path": "/learn/setup"
-    },
-    {
-      "title": "React Compiler",
-      "path": "/learn/react-compiler"
-    },
-    {
-      "hasSectionHeader": true,
-      "sectionHeader": "LEARN REACT"
->>>>>>> d34c6a2c6fa49fc6f64b07aa4fa979d86d41c4e8
     },
     {
       "hasSectionHeader": true,
@@ -93,27 +84,7 @@
     },
     {
       "hasSectionHeader": true,
-<<<<<<< HEAD
       "sectionHeader": "API کامپایلر ری‌اکت"
-=======
-      "sectionHeader": "REACT COMPILER API"
-    },
-    {
-      "title": "Configuration",
-      "path": "/reference/react-compiler/configuration"
-    },
-    {
-      "title": "Directives",
-      "path": "/reference/react-compiler/directives"
-    },
-    {
-      "title": "Compiling Libraries",
-      "path": "/reference/react-compiler/compiling-libraries"
-    },
-    {
-      "hasSectionHeader": true,
-      "sectionHeader": "GET INVOLVED"
->>>>>>> d34c6a2c6fa49fc6f64b07aa4fa979d86d41c4e8
     },
     {
       "title": "پیکربندی",
