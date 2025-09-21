@@ -88,6 +88,7 @@ When you hide a component using an Activity boundary instead, React will "save" 
 </Activity>
 ```
 
+
 This makes it possible to hide and then later restore components in the state they were previously in.
 
 The following example has a sidebar with an expandable section. You can press "Overview" to reveal the three subitems below it. The main app area also has a button that hides and shows the sidebar.
