@@ -138,12 +138,9 @@ Do you have a local React.js meetup? Add it here! (Please keep the list alphabet
 ## Portugal {/*portugal*/}
 * [Lisbon](https://www.meetup.com/JavaScript-Lisbon/)
 
-<<<<<<< HEAD
-=======
 ## Scotland (UK) {/*scotland-uk*/}
 * [Edinburgh](https://www.meetup.com/react-edinburgh/)
 
->>>>>>> a5181c291f01896735b65772f156cfde34df20ee
 ## Spain {/*spain*/}
 * [Barcelona](https://www.meetup.com/ReactJS-Barcelona/)
 

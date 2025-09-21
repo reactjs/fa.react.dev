@@ -45,11 +45,7 @@ While hidden, children still re-render in response to new props, albeit at a low
 
 When the boundary becomes <CodeStep step={3}>visible</CodeStep> again, React will reveal the children with their previous state restored, and re-create their Effects.
 
-<<<<<<< HEAD
-In this way, Activity can thought of as a mechanism for rendering "background activity". Rather than completely discarding content that's likely to become visible again, you can use Activity to maintain and restore that content's UI and internal state, while ensuring hidden content has no unwanted side effects.
-=======
 In this way, Activity can be thought of as a mechanism for rendering "background activity". Rather than completely discarding content that's likely to become visible again, you can use Activity to maintain and restore that content's UI and internal state, while ensuring that your hidden content has no unwanted side effects.
->>>>>>> a5181c291f01896735b65772f156cfde34df20ee
 
 [See more examples below.](#usage)
 
@@ -60,11 +56,7 @@ In this way, Activity can be thought of as a mechanism for rendering "background
 
 #### Caveats {/*caveats*/}
 
-<<<<<<< HEAD
-- When used with `<ViewTransition>`, hidden activities that reveal in a transition will activate an "enter" animation. Visible Activities hidden in a transition will activate an "exit" animation.
-=======
 - If an Activity is rendered inside of a [ViewTransition](/reference/react/ViewTransition), and it becomes visible as a result of an update caused by [startTransition](/reference/react/startTransition), it will activate the ViewTransition's `enter` animation. If it becomes hidden, it will activate its `exit` animation.
->>>>>>> a5181c291f01896735b65772f156cfde34df20ee
 
 ---
 
@@ -72,11 +64,7 @@ In this way, Activity can be thought of as a mechanism for rendering "background
 
 ### Restoring the state of hidden components {/*restoring-the-state-of-hidden-components*/}
 
-<<<<<<< HEAD
-Typically in React, when you want to conditionally show or hide a component, you mount and unmount it:
-=======
 In React, when you want to conditionally show or hide a component, you typically mount or unmount it based on that condition:
->>>>>>> a5181c291f01896735b65772f156cfde34df20ee
 
 ```jsx
 {isShowingSidebar && (
@@ -94,19 +82,11 @@ When you hide a component using an Activity boundary instead, React will "save" 
 </Activity>
 ```
 
-<<<<<<< HEAD
-This makes it possible to restore components to their previous state.
-
-The following example has a sidebar with an expandable section – you can press "Overview" to reveal the three subitems below it. The main app area also has a button that hides and shows the sidebar.
-
-Try expanding the Overview section, then toggling the sidebar closed and open:
-=======
 This makes it possible to hide and then later restore components in the state they were previously in.
 
 The following example has a sidebar with an expandable section. You can press "Overview" to reveal the three subitems below it. The main app area also has a button that hides and shows the sidebar.
 
 Try expanding the Overview section, and then toggling the sidebar closed then open:
->>>>>>> a5181c291f01896735b65772f156cfde34df20ee
 
 <Sandpack>
 
