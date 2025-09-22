@@ -1,21 +1,15 @@
 ---
 title: <Activity>
-version: experimental
+version: canary
 ---
 
-<Experimental>
+<Canary>
 
-**This API is experimental and is not available in a stable version of React yet.**
+**The `<Activity />` API is currently only available in React’s Canary and Experimental channels.** 
 
-You can try it by upgrading React packages to the most recent experimental version:
+[Learn more about React’s release channels here.](/community/versioning-policy#all-release-channels)
 
-- `react@experimental`
-- `react-dom@experimental`
-- `eslint-plugin-react-hooks@experimental`
-
-Experimental versions of React may contain bugs. Don't use them in production.
-
-</Experimental>
+</Canary>
 
 <Intro>
 
@@ -88,11 +82,18 @@ When you hide a component using an Activity boundary instead, React will "save" 
 </Activity>
 ```
 
+<<<<<<< HEAD
 
 This makes it possible to hide and then later restore components in the state they were previously in.
 
 The following example has a sidebar with an expandable section. You can press "Overview" to reveal the three subitems below it. The main app area also has a button that hides and shows the sidebar.
 
+=======
+This makes it possible to hide and then later restore components in the state they were previously in.
+
+The following example has a sidebar with an expandable section. You can press "Overview" to reveal the three subitems below it. The main app area also has a button that hides and shows the sidebar.
+
+>>>>>>> 366b5fbdadefecbbf9f6ef36c0342c083248c691
 Try expanding the Overview section, and then toggling the sidebar closed then open:
 
 <Sandpack>
