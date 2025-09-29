@@ -990,11 +990,7 @@ To fix this code, it's enough to follow the rules.
 ```
 
 
-<<<<<<< HEAD
-```js
-=======
 ```js {expectedErrors: {'react-compiler': [14]}}
->>>>>>> 366b5fbdadefecbbf9f6ef36c0342c083248c691
 import { useState, useEffect } from 'react';
 
 export default function Timer() {

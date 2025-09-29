@@ -2006,11 +2006,7 @@ export default function Item({action}) {
     startTransition(() => {
       action(e.target.value);
     });
-<<<<<<< HEAD
-  }  
-=======
   }
->>>>>>> 366b5fbdadefecbbf9f6ef36c0342c083248c691
   return (
     <div className="item">
       <span>Eras Tour Tickets</span>

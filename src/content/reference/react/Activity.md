@@ -82,18 +82,10 @@ When you hide a component using an Activity boundary instead, React will "save" 
 </Activity>
 ```
 
-<<<<<<< HEAD
-
 This makes it possible to hide and then later restore components in the state they were previously in.
 
 The following example has a sidebar with an expandable section. You can press "Overview" to reveal the three subitems below it. The main app area also has a button that hides and shows the sidebar.
 
-=======
-This makes it possible to hide and then later restore components in the state they were previously in.
-
-The following example has a sidebar with an expandable section. You can press "Overview" to reveal the three subitems below it. The main app area also has a button that hides and shows the sidebar.
-
->>>>>>> 366b5fbdadefecbbf9f6ef36c0342c083248c691
 Try expanding the Overview section, and then toggling the sidebar closed then open:
 
 <Sandpack>

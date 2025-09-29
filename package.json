@@ -21,13 +21,9 @@
     "postinstall": "yarn --cwd eslint-local-rules install && is-ci || husky install .husky",
     "check-all": "npm-run-all prettier lint:fix tsc rss",
     "rss": "node scripts/generateRss.js",
-<<<<<<< HEAD
-    "deadlinks": "node scripts/deadLinkChecker.js"
-=======
     "deadlinks": "node scripts/deadLinkChecker.js",
     "copyright": "node scripts/copyright.js",
     "test:eslint-local-rules": "yarn --cwd eslint-local-rules test"
->>>>>>> 366b5fbdadefecbbf9f6ef36c0342c083248c691
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "2.13.5",
@@ -67,11 +63,7 @@
     "asyncro": "^3.0.0",
     "autoprefixer": "^10.4.2",
     "babel-eslint": "10.x",
-<<<<<<< HEAD
-    "babel-plugin-react-compiler": "19.0.0-beta-e552027-20250112",
-=======
     "babel-plugin-react-compiler": "^19.1.0-rc.3",
->>>>>>> 366b5fbdadefecbbf9f6ef36c0342c083248c691
     "chalk": "4.1.2",
     "eslint": "7.x",
     "eslint-config-next": "12.0.3",
