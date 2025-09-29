@@ -1,21 +1,15 @@
 ---
 title: <Activity>
-version: experimental
+version: canary
 ---
 
-<Experimental>
+<Canary>
 
-**This API is experimental and is not available in a stable version of React yet.**
+**The `<Activity />` API is currently only available in React’s Canary and Experimental channels.** 
 
-You can try it by upgrading React packages to the most recent experimental version:
+[Learn more about React’s release channels here.](/community/versioning-policy#all-release-channels)
 
-- `react@experimental`
-- `react-dom@experimental`
-- `eslint-plugin-react-hooks@experimental`
-
-Experimental versions of React may contain bugs. Don't use them in production.
-
-</Experimental>
+</Canary>
 
 <Intro>
 
@@ -87,7 +81,6 @@ When you hide a component using an Activity boundary instead, React will "save" 
   <Sidebar />
 </Activity>
 ```
-
 
 This makes it possible to hide and then later restore components in the state they were previously in.
 
