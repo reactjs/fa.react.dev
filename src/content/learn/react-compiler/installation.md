@@ -1,60 +1,60 @@
 ---
-title: Installation
+title: نصب
 ---
 
 <Intro>
-This guide will help you install and configure React Compiler in your React application.
+این راهنما به شما کمک می‌کند تا کامپایلر React را در برنامه React خود نصب و پیکربندی کنید.
 </Intro>
 
 <YouWillLearn>
 
-* How to install React Compiler
-* Basic configuration for different build tools
-* How to verify your setup is working
+* نحوهٔ نصب کامپایلر ری‌اکت
+* پیکربندی پایه برای ابزارهای بیلد مختلف
+* چگونه اطمینان حاصل کنید که تنظیمات شما کار می‌کند
 
 </YouWillLearn>
 
-## Prerequisites {/*prerequisites*/}
+## پیش‌نیازها {/*prerequisites*/}
 
-React Compiler is designed to work best with React 19, but it also supports React 17 and 18. Learn more about [React version compatibility](/reference/react-compiler/target).
+کامپایلر ری‌اکت برای کار با ری‌اکت 19 طراحی شده است، اما از ری‌اکت 17 و 18 نیز پشتیبانی می‌کند. درباره [سازگاری نسخه‌های ری‌اکت](/reference/react-compiler/target) بیشتر بدانید.
 
 <Note>
-React Compiler is currently in RC. Install it using the `@rc` tag to get the latest release candidate version.
+کامپایلر ری‌اکت در حال حاضر در RC است. برای دریافت آخرین نسخه کاندید انتشار، از تگ `@rc` استفاده کنید.
 </Note>
 
-## Installation {/*installation*/}
+## نصب {/*installation*/}
 
-Install React Compiler as a `devDependency`:
+کامپایلر ری‌اکت را به عنوان یک `devDependency` نصب کنید:
 
 <TerminalBlock>
 npm install -D babel-plugin-react-compiler@rc
 </TerminalBlock>
 
-Or with Yarn:
+یا با Yarn:
 
 <TerminalBlock>
 yarn add -D babel-plugin-react-compiler@rc
 </TerminalBlock>
 
-Or with pnpm:
+یا با pnpm:
 
 <TerminalBlock>
 pnpm install -D babel-plugin-react-compiler@rc
 </TerminalBlock>
 
-## Basic Setup {/*basic-setup*/}
+## راه‌اندازی پایه {/*basic-setup*/}
 
-React Compiler is designed to work by default without any configuration. However, if you need to configure it in special circumstances (for example, to target React versions below 19), refer to the [compiler options reference](/reference/react-compiler/configuration).
+کامپایلر ری‌اکت به‌طور پیش‌فرض بدون نیاز به هیچ تنظیماتی کار می‌کند. با این حال، اگر نیاز به پیکربندی آن در شرایط خاص دارید (برای مثال، برای هدف‌گذاری نسخه‌های ری‌اکت پایین‌تر از 19)، به [مرجع گزینه‌های کامپایلر](/reference/react-compiler/configuration) مراجعه کنید.
 
-The setup process depends on your build tool. React Compiler includes a Babel plugin that integrates with your build pipeline.
+فرآیند راه‌اندازی به ابزار ساخت شما بستگی دارد. کامپایلر ری‌اکت شامل یک پلاگین Babel است که با خط لوله ساخت شما یکپارچه می‌شود.
 
 <Pitfall>
-React Compiler must run **first** in your Babel plugin pipeline. The compiler needs the original source information for proper analysis, so it must process your code before other transformations.
+کامپایلر ری‌اکت باید **ابتدا** در خط لوله پلاگین Babel شما اجرا شود. کامپایلر به اطلاعات منبع اصلی برای تحلیل صحیح نیاز دارد، بنابراین باید قبل از سایر تغییرات کد شما را پردازش کند.
 </Pitfall>
 
-### Babel {/*babel*/}
+### بابل {/*babel*/}
 
-Create or update your `babel.config.js`:
+`babel.config.js` خود را ایجاد یا به‌روزرسانی کنید:
 
 ```js {3}
 module.exports = {
@@ -68,7 +68,7 @@ module.exports = {
 
 ### Vite {/*vite*/}
 
-If you use Vite, you can add the plugin to vite-plugin-react:
+اگر از Vite استفاده می‌کنید، می‌توانید پلاگین را به vite-plugin-react اضافه کنید.
 
 ```js {3,9}
 // vite.config.js
@@ -86,7 +86,7 @@ export default defineConfig({
 });
 ```
 
-Alternatively, if you prefer a separate Babel plugin for Vite:
+به‌طور جایگزین، اگر یک پلاگین Babel جداگانه برای Vite ترجیح می‌دهید:
 
 <TerminalBlock>
 npm install -D vite-plugin-babel
@@ -112,10 +112,10 @@ export default defineConfig({
 
 ### Next.js {/*usage-with-nextjs*/}
 
-Please refer to the [Next.js docs](https://nextjs.org/docs/app/api-reference/next-config-js/reactCompiler) for more information.
+لطفاً برای اطلاعات بیشتر به [مستندات Next.js](https://nextjs.org/docs/app/api-reference/next-config-js/reactCompiler) مراجعه کنید.
 
 ### React Router {/*usage-with-react-router*/}
-Install `vite-plugin-babel`, and add the compiler's Babel plugin to it:
+`vite-plugin-babel` را نصب کنید و پلاگین کامپایلر Babel را به آن اضافه کنید:
 
 <TerminalBlock>
 {`npm install vite-plugin-babel`}
@@ -147,63 +147,63 @@ export default defineConfig({
 
 ### Webpack {/*usage-with-webpack*/}
 
-A community webpack loader is [now available here](https://github.com/SukkaW/react-compiler-webpack).
+یک لودر webpack جامعه‌محور [اکنون اینجا در دسترس است](https://github.com/SukkaW/react-compiler-webpack).
 
 ### Expo {/*usage-with-expo*/}
 
-Please refer to [Expo's docs](https://docs.expo.dev/guides/react-compiler/) to enable and use the React Compiler in Expo apps.
+لطفاً به [مستندات Expo](https://docs.expo.dev/guides/react-compiler/) مراجعه کنید تا کامپایلر ری‌اکت را در اپلیکیشن‌های Expo فعال کرده و استفاده کنید.
 
-### Metro (React Native) {/*usage-with-react-native-metro*/}
+### Metro (ری‌اکت نیتیو) {/*usage-with-react-native-metro*/}
 
-React Native uses Babel via Metro, so refer to the [Usage with Babel](#babel) section for installation instructions.
+ری‌اکت نیتیو از Babel از طریق Metro استفاده می‌کند، بنابراین برای دستورالعمل‌های نصب به بخش [Usage with Babel](#babel) مراجعه کنید.
 
 ### Rspack {/*usage-with-rspack*/}
 
-Please refer to [Rspack's docs](https://rspack.dev/guide/tech/react#react-compiler) to enable and use the React Compiler in Rspack apps.
+لطفاً به [مستندات Rspack](https://rspack.dev/guide/tech/react#react-compiler) مراجعه کنید تا کامپایلر ری‌اکت را در برنامه‌های Rspack فعال کرده و استفاده کنید.
 
 ### Rsbuild {/*usage-with-rsbuild*/}
 
-Please refer to [Rsbuild's docs](https://rsbuild.dev/guide/framework/react#react-compiler) to enable and use the React Compiler in Rsbuild apps.
+لطفاً به [مستندات Rsbuild](https://rsbuild.dev/guide/framework/react#react-compiler) مراجعه کنید تا کامپایلر ری‌اکت را در برنامه‌های Rsbuild فعال کرده و استفاده کنید.
 
 
-## ESLint Integration {/*eslint-integration*/}
+## یکپارچه‌سازی ESLint {/*eslint-integration*/}
 
-React Compiler includes an ESLint rule that helps identify code that can't be optimized. When the ESLint rule reports an error, it means the compiler will skip optimizing that specific component or hook. This is safe: the compiler will continue optimizing other parts of your codebase. You don't need to fix all violations immediately. Address them at your own pace to gradually increase the number of optimized components.
+کامپایلر ری‌اکت شامل یک قانون ESLint است که به شناسایی کدی که نمی‌تواند بهینه‌سازی شود کمک می‌کند. وقتی قانون ESLint خطایی گزارش می‌دهد، به این معنی است که کامپایلر از بهینه‌سازی آن کامپوننت یا هوک خاص صرف‌نظر خواهد کرد. این کار ایمن است: کامپایلر به بهینه‌سازی سایر بخش‌های کد شما ادامه خواهد داد. نیازی نیست که بلافاصله همه تخلفات را برطرف کنید. با سرعت خودتان به آن‌ها رسیدگی کنید تا به‌تدریج تعداد کامپوننت‌های بهینه‌شده را افزایش دهید.
 
-Install the ESLint plugin:
+پلاگین ESLint را نصب کنید:
 
 <TerminalBlock>
 npm install -D eslint-plugin-react-hooks@rc
 </TerminalBlock>
 
-If you haven't already configured eslint-plugin-react-hooks, follow the [installation instructions in the readme](https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/README.md#installation). The compiler rule is enabled by default in the latest RC, so no additional configuration is needed.
+اگر هنوز eslint-plugin-react-hooks را پیکربندی نکرده‌اید، [دستورالعمل‌های نصب در readme](https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/README.md#installation) را دنبال کنید. قانون کامپایلر به‌طور پیش‌فرض در آخرین نسخه RC فعال است، بنابراین نیازی به پیکربندی اضافی نیست.
 
-The ESLint rule will:
-- Identify violations of the [Rules of React](/reference/rules)
-- Show which components can't be optimized
-- Provide helpful error messages for fixing issues
+قانون ESLint به این صورت عمل خواهد کرد:
+- تخلفات از [قوانین ری‌اکت](/reference/rules) را شناسایی کنید
+- نشان دهید کدام کامپوننت‌ها نمی‌توانند بهینه شوند
+- پیام‌های خطای مفیدی برای رفع مشکلات فراهم کنید
 
-## Verify Your Setup {/*verify-your-setup*/}
+## تنظیمات خود را تأیید کنید {/*verify-your-setup*/}
 
-After installation, verify that React Compiler is working correctly.
+پس از نصب، اطمینان حاصل کنید که کامپایلر React به درستی کار می‌کند.
 
-### Check React DevTools {/*check-react-devtools*/}
+### بررسی React DevTools {/*check-react-devtools*/}
 
-Components optimized by React Compiler will show a "Memo ✨" badge in React DevTools:
+کامپوننت‌هایی که توسط کامپایلر ری‌اکت بهینه‌سازی شده‌اند، نشان "Memo ✨" را در React DevTools نمایش خواهند داد:
 
-1. Install the [React Developer Tools](/learn/react-developer-tools) browser extension
-2. Open your app in development mode
-3. Open React DevTools
-4. Look for the ✨ emoji next to component names
+۱. افزونه مرورگر [React Developer Tools](/learn/react-developer-tools) را نصب کنید
+برنامه خود را در حالت توسعه باز کنید
+3. ابزارهای توسعه ری‌اکت را باز کنید
+4. به دنبال ایموجی ✨ در کنار نام کامپوننت‌ها بگردید.
 
-If the compiler is working:
-- Components will show a "Memo ✨" badge in React DevTools
-- Expensive calculations will be automatically memoized
-- No manual `useMemo` is required
+اگر کامپایلر در حال کار است:
+- کامپوننت‌ها در React DevTools نشان "Memo ✨" را نمایش خواهند داد.
+- محاسبات پرهزینه به‌طور خودکار به‌خاطر سپرده می‌شوند.
+- نیازی به `useMemo` به‌صورت دستی نیست
 
-### Check Build Output {/*check-build-output*/}
+### بررسی خروجی بیلد {/*check-build-output*/}
 
-You can also verify the compiler is running by checking your build output. The compiled code will include automatic memoization logic that the compiler adds automatically.
+شما همچنین می‌توانید با بررسی خروجی بیلد، اطمینان حاصل کنید که کامپایلر در حال اجرا است. کد کامپایل‌شده شامل منطق memoization خودکار خواهد بود که کامپایلر به‌طور خودکار اضافه می‌کند.
 
 ```js
 import { c as _c } from "react/compiler-runtime";
@@ -221,11 +221,11 @@ export default function MyApp() {
 
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## عیب‌یابی {/*troubleshooting*/}
 
-### Opting out specific components {/*opting-out-specific-components*/}
+### انصراف از کامپوننت‌های خاص {/*opting-out-specific-components*/}
 
-If a component is causing issues after compilation, you can temporarily opt it out using the `"use no memo"` directive:
+اگر یک کامپوننت پس از کامپایل باعث ایجاد مشکلاتی می‌شود، می‌توانید به‌طور موقت آن را با استفاده از دستور `"use no memo"` غیرفعال کنید:
 
 ```js
 function ProblematicComponent() {
@@ -234,16 +234,16 @@ function ProblematicComponent() {
 }
 ```
 
-This tells the compiler to skip optimization for this specific component. You should fix the underlying issue and remove the directive once resolved.
+این به کامپایلر می‌گوید که بهینه‌سازی را برای این کامپوننت خاص نادیده بگیرد. شما باید مشکل اصلی را برطرف کنید و پس از حل آن، این دستور را حذف کنید.
 
-For more troubleshooting help, see the [debugging guide](/learn/react-compiler/debugging).
+برای کمک بیشتر در رفع اشکال، به [راهنمای اشکال‌زدایی](/learn/react-compiler/debugging) مراجعه کنید.
 
-## Next Steps {/*next-steps*/}
+## مراحل بعدی {/*next-steps*/}
 
-Now that you have React Compiler installed, learn more about:
+حالا که کامپایلر ری‌اکت را نصب کرده‌اید، بیشتر بیاموزید دربارهٔ:
 
-- [React version compatibility](/reference/react-compiler/target) for React 17 and 18
-- [Configuration options](/reference/react-compiler/configuration) to customize the compiler
-- [Incremental adoption strategies](/learn/react-compiler/incremental-adoption) for existing codebases
-- [Debugging techniques](/learn/react-compiler/debugging) for troubleshooting issues
-- [Compiling Libraries guide](/reference/react-compiler/compiling-libraries) for compiling your React library
+- [سازگاری نسخه ری‌اکت](/reference/react-compiler/target) برای React 17 و 18
+- [گزینه‌های پیکربندی](/reference/react-compiler/configuration) برای سفارشی کردن کامپایلر
+- [استراتژی‌های پذیرش تدریجی](/learn/react-compiler/incremental-adoption) برای کدبیس‌های موجود
+- [تکنیک‌های اشکال‌زدایی](/learn/react-compiler/debugging) برای عیب‌یابی مشکلات
+- [راهنمای کامپایل کتابخانه‌ها](/reference/react-compiler/compiling-libraries) برای کامپایل کتابخانه ری‌اکت شما
