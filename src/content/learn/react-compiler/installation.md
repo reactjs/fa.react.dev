@@ -18,28 +18,43 @@ This guide will help you install and configure React Compiler in your React appl
 
 React Compiler is designed to work best with React 19, but it also supports React 17 and 18. Learn more about [React version compatibility](/reference/react-compiler/target).
 
+<<<<<<< HEAD
 <Note>
 React Compiler is currently in RC. Install it using the `@rc` tag to get the latest release candidate version.
 </Note>
 
+=======
+>>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 ## Installation {/*installation*/}
 
 Install React Compiler as a `devDependency`:
 
 <TerminalBlock>
+<<<<<<< HEAD
 npm install -D babel-plugin-react-compiler@rc
+=======
+npm install -D babel-plugin-react-compiler@latest
+>>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 </TerminalBlock>
 
 Or with Yarn:
 
 <TerminalBlock>
+<<<<<<< HEAD
 yarn add -D babel-plugin-react-compiler@rc
+=======
+yarn add -D babel-plugin-react-compiler@latest
+>>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 </TerminalBlock>
 
 Or with pnpm:
 
 <TerminalBlock>
+<<<<<<< HEAD
 pnpm install -D babel-plugin-react-compiler@rc
+=======
+pnpm install -D babel-plugin-react-compiler@latest
+>>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 </TerminalBlock>
 
 ## Basic Setup {/*basic-setup*/}
@@ -173,10 +188,17 @@ React Compiler includes an ESLint rule that helps identify code that can't be op
 Install the ESLint plugin:
 
 <TerminalBlock>
+<<<<<<< HEAD
 npm install -D eslint-plugin-react-hooks@rc
 </TerminalBlock>
 
 If you haven't already configured eslint-plugin-react-hooks, follow the [installation instructions in the readme](https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/README.md#installation). The compiler rule is enabled by default in the latest RC, so no additional configuration is needed.
+=======
+npm install -D eslint-plugin-react-hooks@latest
+</TerminalBlock>
+
+If you haven't already configured eslint-plugin-react-hooks, follow the [installation instructions in the readme](https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/README.md#installation). The compiler rules are available in the `recommended-latest` preset.
+>>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 
 The ESLint rule will:
 - Identify violations of the [Rules of React](/reference/rules)
@@ -246,4 +268,8 @@ Now that you have React Compiler installed, learn more about:
 - [Configuration options](/reference/react-compiler/configuration) to customize the compiler
 - [Incremental adoption strategies](/learn/react-compiler/incremental-adoption) for existing codebases
 - [Debugging techniques](/learn/react-compiler/debugging) for troubleshooting issues
+<<<<<<< HEAD
 - [Compiling Libraries guide](/reference/react-compiler/compiling-libraries) for compiling your React library
+=======
+- [Compiling Libraries guide](/reference/react-compiler/compiling-libraries) for compiling your React library
+>>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
