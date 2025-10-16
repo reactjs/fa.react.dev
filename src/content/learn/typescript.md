@@ -5,14 +5,14 @@ re: https://github.com/reactjs/react.dev/issues/5960
 
 <Intro>
 
-تایپ‌اسکریپت یک روش پرطرفدار برای اضافه کردن تعریف type به کدهای جاوااسکریپت است. به‌صورت پیش‌فرض تایپ‌اسکریپت [از JSX پشتیبانی می‌کند](/learn/writing-markup-with-jsx) و با اضافه کردن بسته‌های [`@types/react`](https://www.npmjs.com/package/@types/react) و [`@types/react-dom`](https://www.npmjs.com/package/@types/react-dom) به پروژه، پشتیبانی کامل از ری‌اکت وب را خواهید داشت.
+تایپ‌اسکریپت یک روش پرطرفدار برای اضافه کردن تعریف type به کدهای جاوااسکریپت است. به‌صورت پیش‌فرض تایپ‌اسکریپت [از JSX پشتیبانی می‌کند](/learn/writing-markup-with-jsx) و با اضافه کردن [`@types/react`](https://www.npmjs.com/package/@types/react) و [`@types/react-dom`](https://www.npmjs.com/package/@types/react-dom) به پروژه، پشتیبانی کامل از ری‌اکت وب را خواهید داشت.
 
 </Intro>
 
 <YouWillLearn>
 
 * [استفاده از تایپ‌اسکریپت با کامپوننت‌های ری‌اکت](/learn/typescript#typescript-with-react-components)  
-* [نمونه‌هایی از تعریف نوع در هوک‌ها](/learn/typescript#example-hooks)  
+* [نمونه‌هایی از تعریف type در هوک‌ها](/learn/typescript#example-hooks)  
 * [انواع پرکاربرد از `@types/react`](/learn/typescript#useful-types)  
 * [منابع بیشتر برای یادگیری](/learn/typescript#further-learning)  
 
@@ -29,7 +29,7 @@ re: https://github.com/reactjs/react.dev/issues/5960
 
 ### افزودن تایپ‌اسکریپت به یک پروژه ری‌اکت موجود {/*adding-typescript-to-an-existing-react-project*/}
 
-برای نصب آخرین نسخه از تعریف نوع‌های (types) ری‌اکت:
+برای نصب آخرین نسخه از تعاریف type مربوط به React:
 
 <TerminalBlock>
 npm install --save-dev @types/react @types/react-dom
@@ -80,11 +80,11 @@ export default App = AppTSX;
 
  <Note>
 
-این sandbox‌ها می‌توانند کد تایپ‌اسکریپت را اجرا کنند، اما بررسی‌کننده نوع را اجرا نمی‌کنند. این بدان معناست که می‌توانید sandbox‌های تایپ‌اسکریپت را برای یادگیری تغییر دهید، اما هیچ خطا یا هشدار نوعی دریافت نخواهید کرد. برای بررسی نوع، می‌توانید از [TypeScript Playground](https://www.typescriptlang.org/play) یا یک sandbox آنلاین کامل‌تر استفاده کنید.
+این sandbox‌ها می‌توانند کد تایپ‌اسکریپت را اجرا کنند، اما type-checker را اجرا نمی‌کنند. این بدان معناست که می‌توانید sandbox‌های تایپ‌اسکریپت را برای یادگیری تغییر دهید، اما هیچ خطا یا هشدار نوعی دریافت نخواهید کرد. برای بررسی type، می‌توانید از [TypeScript Playground](https://www.typescriptlang.org/play) یا یک sandbox آنلاین کامل‌تر استفاده کنید.
 
 </Note>
 
-این نحو درخط ساده‌ترین روش برای ارائه نوع‌ها برای یک کامپوننت است، اگرچه وقتی شروع به داشتن چند فیلد برای توصیف می‌کنید، می‌تواند دشوار شود. به جای آن، می‌توانید از `interface` یا `type` برای توصیف props کامپوننت استفاده کنید:
+این نحوه‌ی نوشتن درون‌خطی (inline syntax) ساده‌ترین روش برای ارائه type‌ها برای یک کامپوننت است، اگرچه وقتی شروع به داشتن چند فیلد برای توصیف می‌کنید، می‌تواند دشوار شود. به جای آن، می‌توانید از `interface` یا `type` برای توصیف props کامپوننت استفاده کنید:
 
 <Sandpack>
 
@@ -119,14 +119,14 @@ export default App = AppTSX;
 
 </Sandpack>
 
-type توصیف‌کننده props کامپوننت شما می‌تواند به سادگی یا پیچیدگی مورد نیاز شما باشد، اگرچه باید یک type شیء باشد که با `type` یا `interface` توصیف شده باشد. می‌توانید درباره نحوه توصیف اشیاء در تایپ‌اسکریپت در [Object Types](https://www.typescriptlang.org/docs/handbook/2/objects.html) بیاموزید، اما ممکن است به استفاده از [Union Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types) برای توصیف یک prop که می‌تواند یکی از چند نوع مختلف باشد و راهنمای [Creating Types from Types](https://www.typescriptlang.org/docs/handbook/2/types-from-types.html) برای موارد کاربرد پیشرفته‌تر علاقه‌مند باشید.
+type ای که برای props کامپوننت تعریف می‌کنید می‌تواند بسته به نیازتان ساده یا پیچیده باشد، اما باید حتماً یک نوع شیء باشد که با `type` یا `interface` مشخص شده است. می‌توانید درباره نحوه توصیف اشیاء در تایپ‌اسکریپت در [Object Types](https://www.typescriptlang.org/docs/handbook/2/objects.html) بیاموزید، اما ممکن است بخواهید از [Union Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types) برای توصیف propهایی استفاده کنید که می‌توانند یکی از چند نوع مختلف باشند، و همچنین راهنمای [Creating Types from Types](https://www.typescriptlang.org/docs/handbook/2/types-from-types.html) را برای کاربردهای پیشرفته‌تر مطالعه کنید.
 
 
 ## نمونه‌های هوک {/*example-hooks*/}
 
-تعریف نوع‌ها (types) از `@types/react` شامل نوع‌هایی (types) برای هوک‌های داخلی است، بنابراین می‌توانید بدون نیاز به تنظیمات اضافی از آن‌ها در کامپوننت‌های خود استفاده کنید. آن‌ها به گونه‌ای ساخته شده‌اند که کد نوشته شده در کامپوننت شما را در نظر می‌گیرند، بنابراین در بسیاری از مواقع [inferred types](https://www.typescriptlang.org/docs/handbook/type-inference.html) را دریافت خواهید کرد و در حالت ایده‌آل نیازی به مدیریت جزئیات ارائه نوع‌ها(typea) ندارید.
+تعریف  typeها از `@types/react` شامل typeهایی برای هوک‌های داخلی (built-in Hooks) است، بنابراین می‌توانید بدون نیاز به تنظیمات اضافی از آن‌ها در کامپوننت‌های خود استفاده کنید. آن‌ها به گونه‌ای ساخته شده‌اند که کد نوشته شده در کامپوننت شما را در نظر می‌گیرند، بنابراین در بسیاری از مواقع [inferred types](https://www.typescriptlang.org/docs/handbook/type-inference.html) را دریافت خواهید کرد و در حالت ایده‌آل نیازی به مدیریت جزئیات ارائه typeها ندارید.
 
-با این حال، می‌توانیم به چند نمونه از نحوه ارائه نوع‌ها برای هوک‌ها نگاهی بیندازیم.
+با این حال، می‌توانیم به چند نمونه از نحوه ارائه typeها برای هوک‌ها نگاهی بیندازیم.
 
 ### `useState` {/*typing-usestate*/}
 
