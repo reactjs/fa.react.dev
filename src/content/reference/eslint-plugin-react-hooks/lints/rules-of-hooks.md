@@ -159,3 +159,24 @@ const [permissions, setPermissions] = useState(
   userType === 'admin' ? adminPerms : userPerms
 );
 ```
+<<<<<<< HEAD
+=======
+
+## Options {/*options*/}
+
+You can configure custom effect hooks using shared ESLint settings (available in `eslint-plugin-react-hooks` 6.1.1 and later):
+
+```js
+{
+  "settings": {
+    "react-hooks": {
+      "additionalEffectHooks": "(useMyEffect|useCustomEffect)"
+    }
+  }
+}
+```
+
+- `additionalEffectHooks`: Regex pattern matching custom hooks that should be treated as effects. This allows `useEffectEvent` and similar event functions to be called from your custom effect hooks.
+
+This shared configuration is used by both `rules-of-hooks` and `exhaustive-deps` rules, ensuring consistent behavior across all hook-related linting.
+>>>>>>> f8c81a0f4f8e454c850f0c854ad054b32313345c
