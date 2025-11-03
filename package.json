@@ -63,7 +63,11 @@
     "asyncro": "^3.0.0",
     "autoprefixer": "^10.4.2",
     "babel-eslint": "10.x",
+<<<<<<< HEAD
     "babel-plugin-react-compiler": "^19.1.0-rc.3",
+=======
+    "babel-plugin-react-compiler": "^1.0.0",
+>>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
     "chalk": "4.1.2",
     "eslint": "7.x",
     "eslint-config-next": "12.0.3",
