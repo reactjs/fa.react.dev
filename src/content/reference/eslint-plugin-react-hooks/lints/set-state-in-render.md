@@ -1,9 +1,14 @@
 ---
 title: set-state-in-render
+<<<<<<< HEAD
+=======
+version: rc
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 ---
 
 <Intro>
 
+<<<<<<< HEAD
 Validates against setting state during render, which can trigger additional renders and potential infinite render loops.
 
 </Intro>
@@ -11,13 +16,32 @@ Validates against setting state during render, which can trigger additional rend
 ## Rule Details {/*rule-details*/}
 
 Calling `setState` during render triggers another render before the current one finishes. This creates an infinite loop that crashes your app.
+=======
+Validates against unconditionally setting state during render, which can trigger additional renders and potential infinite render loops.
+
+</Intro>
+
+<Note>
+
+This rule is available in `eslint-plugin-react-hooks` v6.
+
+</Note>
+
+## Rule Details {/*rule-details*/}
+
+Calling `setState` during render unconditionally triggers another render before the current one finishes. This creates an infinite loop that crashes your app.
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 
 ## Common Violations {/*common-violations*/}
 
 ### Invalid {/*invalid*/}
 
 ```js {expectedErrors: {'react-compiler': [4]}}
+<<<<<<< HEAD
 // ❌ setState directly in render
+=======
+// ❌ Unconditional setState directly in render
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 function Component({value}) {
   const [count, setCount] = useState(0);
   setCount(value); // Infinite loop!
@@ -50,6 +74,22 @@ function Component({user}) {
   const email = user?.email || '';
   return <div>{name}</div>;
 }
+<<<<<<< HEAD
+=======
+
+// ✅ Conditionally derive state from props and state from previous renders
+function Component({ items }) {
+  const [isReverse, setIsReverse] = useState(false);
+  const [selection, setSelection] = useState(null);
+
+  const [prevItems, setPrevItems] = useState(items);
+  if (items !== prevItems) { // This condition makes it valid
+    setPrevItems(items);
+    setSelection(null);
+  }
+  // ...
+}
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 ```
 
 ## Troubleshooting {/*troubleshooting*/}
@@ -93,3 +133,8 @@ function Counter({max}) {
 ```
 
 Now the setter only runs in response to the click, React finishes the render normally, and `count` never crosses `max`.
+<<<<<<< HEAD
+=======
+
+In rare cases, you may need to adjust state based on information from previous renders. For those, follow [this pattern](https://react.dev/reference/react/useState#storing-information-from-previous-renders) of setting state conditionally.
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
