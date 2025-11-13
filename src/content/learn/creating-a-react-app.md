@@ -64,8 +64,13 @@ Expo توسط [شرکت Expo](https://expo.dev/about) نگهداری می‌شو
 
 فریم‌ورک‌های دیگری نیز وجود دارند که در حال حرکت به سمت چشم‌انداز فول‌استک ری‌اکت هستند:
 
+<<<<<<< HEAD
 - [TanStack Start (نسخه بتا)](https://tanstack.com/): فریم‌ورک TanStack Start یک فریم‌ورک فول‌استک ری‌اکت است که توسط TanStack Router پشتیبانی می‌شود. این فریم‌ورک رندر سمت سرور (SSR) کامل، استریمینگ، فانکشن‌های سمت سرور، باندلینگ و امکانات بیشتر را با استفاده از ابزارهایی مانند Nitro و Vite فراهم می‌کند.
 - [RedwoodJS](https://redwoodjs.com/): فریم‌ورک Redwood یک فریم‌ورک فول‌استک ری‌اکت است که با تعداد زیادی پکیج و پیکربندی از پیش نصب‌شده ارائه می‌شود و ساخت اپلیکیشن‌های وب فول‌استک را آسان می‌کند.
+=======
+- [TanStack Start (Beta)](https://tanstack.com/start/): TanStack Start is a full-stack React framework powered by TanStack Router. It provides a full-document SSR, streaming, server functions, bundling, and more using tools like Nitro and Vite.
+- [RedwoodSDK](https://rwsdk.com/): Redwood is a full stack React framework with lots of pre-installed packages and configuration that makes it easy to build full-stack web applications.
+>>>>>>> d271a7ac11d2bf0d6e95ebdfacaf1038421f9be0
 
 <DeepDive>
 
