@@ -1,5 +1,9 @@
 ---
 title: unsupported-syntax
+<<<<<<< HEAD
+=======
+version: rc
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 ---
 
 <Intro>
@@ -8,6 +12,15 @@ Validates against syntax that React Compiler does not support. If you need to, y
 
 </Intro>
 
+<<<<<<< HEAD
+=======
+<Note>
+
+This rule is available in `eslint-plugin-react-hooks` v6.
+
+</Note>
+
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 ## Rule Details {/*rule-details*/}
 
 React Compiler needs to statically analyze your code to apply optimizations. Features like `eval` and `with` make it impossible to statically understand what the code does at compile time, so the compiler can't optimize components that use them.

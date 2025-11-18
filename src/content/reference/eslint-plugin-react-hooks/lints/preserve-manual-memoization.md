@@ -1,5 +1,9 @@
 ---
 title: preserve-manual-memoization
+<<<<<<< HEAD
+=======
+version: rc
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 ---
 
 <Intro>
@@ -8,6 +12,15 @@ Validates that existing manual memoization is preserved by the compiler. React C
 
 </Intro>
 
+<<<<<<< HEAD
+=======
+<Note>
+
+This rule is available in `eslint-plugin-react-hooks` v6.
+
+</Note>
+
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 ## Rule Details {/*rule-details*/}
 
 React Compiler preserves your existing `useMemo`, `useCallback`, and `React.memo` calls. If you've manually memoized something, the compiler assumes you had a good reason and won't remove it. However, incomplete dependencies prevent the compiler from understanding your code's data flow and applying further optimizations.

@@ -140,7 +140,25 @@ useEffect(() => {
 
 ## Options {/*options*/}
 
+<<<<<<< HEAD
 This rule accepts an options object:
+=======
+You can configure custom effect hooks using shared ESLint settings (available in `eslint-plugin-react-hooks` 6.1.1 and later):
+
+```js
+{
+  "settings": {
+    "react-hooks": {
+      "additionalEffectHooks": "(useMyEffect|useCustomEffect)"
+    }
+  }
+}
+```
+
+- `additionalEffectHooks`: Regex pattern matching custom hooks that should be checked for exhaustive dependencies. This configuration is shared across all `react-hooks` rules.
+
+For backward compatibility, this rule also accepts a rule-level option:
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 
 ```js
 {
@@ -152,4 +170,8 @@ This rule accepts an options object:
 }
 ```
 
+<<<<<<< HEAD
 - `additionalHooks`: Regex for hooks that should be checked for exhaustive dependencies
+=======
+- `additionalHooks`: Regex for hooks that should be checked for exhaustive dependencies. **Note:** If this rule-level option is specified, it takes precedence over the shared `settings` configuration.
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027

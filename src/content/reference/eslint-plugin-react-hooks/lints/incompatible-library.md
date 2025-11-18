@@ -1,5 +1,9 @@
 ---
 title: incompatible-library
+<<<<<<< HEAD
+=======
+version: rc
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 ---
 
 <Intro>
@@ -10,6 +14,15 @@ Validates against usage of libraries which are incompatible with memoization (ma
 
 <Note>
 
+<<<<<<< HEAD
+=======
+This rule is available in `eslint-plugin-react-hooks` v6.
+
+</Note>
+
+<Note>
+
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 These libraries were designed before React's memoization rules were fully documented. They made the correct choices at the time to optimize for ergonomic ways to keep components just the right amount of reactive as app state changes. While these legacy patterns worked, we have since discovered that it's incompatible with React's programming model. We will continue working with library authors to migrate these libraries to use patterns that follow the Rules of React.
 
 </Note>
