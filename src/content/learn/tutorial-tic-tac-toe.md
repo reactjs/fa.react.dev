@@ -283,9 +283,15 @@ body {
 
 ![CodeSandbox با کد آغازین](../images/tutorial/react-starter-code-codesandbox.png)
 
+<<<<<<< HEAD
 1. بخش _Files_ با لیستی از فایل‌ها مانند `App.js`، `index.js`، `styles.css` در پوشه `src` و یک پوشه به نام `public`
 1. ویرایشگر _کد_ که در آن کد منبع فایل انتخاب‌شده خود را مشاهده خواهید کرد
 1. بخش _مرورگر_ که در آن خواهید دید کدی که نوشته‌اید چگونه نمایش داده می‌شود.
+=======
+1. The _Files_ section with a list of files like `App.js`, `index.js`, `styles.css` in `src` folder and a folder called `public`
+1. The _code editor_ where you'll see the source code of your selected file
+1. The _browser_ section where you'll see how the code you've written will be displayed
+>>>>>>> 2534424ec6c433cc2c811d5a0bd5a65b75efa5f0
 
 فایل `App.js` باید در بخش _Files_ انتخاب شود. محتوای آن فایل در _ویرایشگر کد_ باید به صورت زیر باشد:
 
