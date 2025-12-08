@@ -4,20 +4,32 @@ title: set-state-in-render
 
 <Intro>
 
+<<<<<<< HEAD
 Validates against setting state during render, which can trigger additional renders and potential infinite render loops.
+=======
+Validates against unconditionally setting state during render, which can trigger additional renders and potential infinite render loops.
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4
 
 </Intro>
 
 ## Rule Details {/*rule-details*/}
 
+<<<<<<< HEAD
 Calling `setState` during render triggers another render before the current one finishes. This creates an infinite loop that crashes your app.
+=======
+Calling `setState` during render unconditionally triggers another render before the current one finishes. This creates an infinite loop that crashes your app.
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4
 
 ## Common Violations {/*common-violations*/}
 
 ### Invalid {/*invalid*/}
 
 ```js {expectedErrors: {'react-compiler': [4]}}
+<<<<<<< HEAD
 // ❌ setState directly in render
+=======
+// ❌ Unconditional setState directly in render
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4
 function Component({value}) {
   const [count, setCount] = useState(0);
   setCount(value); // Infinite loop!
@@ -50,6 +62,22 @@ function Component({user}) {
   const email = user?.email || '';
   return <div>{name}</div>;
 }
+<<<<<<< HEAD
+=======
+
+// ✅ Conditionally derive state from props and state from previous renders
+function Component({ items }) {
+  const [isReverse, setIsReverse] = useState(false);
+  const [selection, setSelection] = useState(null);
+
+  const [prevItems, setPrevItems] = useState(items);
+  if (items !== prevItems) { // This condition makes it valid
+    setPrevItems(items);
+    setSelection(null);
+  }
+  // ...
+}
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4
 ```
 
 ## Troubleshooting {/*troubleshooting*/}
@@ -93,3 +121,8 @@ function Counter({max}) {
 ```
 
 Now the setter only runs in response to the click, React finishes the render normally, and `count` never crosses `max`.
+<<<<<<< HEAD
+=======
+
+In rare cases, you may need to adjust state based on information from previous renders. For those, follow [this pattern](https://react.dev/reference/react/useState#storing-information-from-previous-renders) of setting state conditionally.
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4

@@ -251,12 +251,20 @@ export function HomeContent() {
               با یک فریمورک
             </Header>
             <Para>
+<<<<<<< HEAD
               ری‌اکت یک کتابخانه است. به شما اجازه می‌دهد کامپوننت‌ها را کنار هم
               قرار دهید، اما نحوه مسیریابی و واکشی داده‌ها را مشخص نمی‌کند. برای
               ساخت یک اپلیکیشن کامل با ری‌اکت، ما استفاده از یک فریمورک فول‌استک
               مبتنی بر ری‌اکت مانند{' '}
               <Link href="https://nextjs.org">Next.js</Link> یا{' '}
               <Link href="https://remix.run">Remix</Link> را پیشنهاد می‌کنیم.
+=======
+              React is a library. It lets you put components together, but it
+              doesn’t prescribe how to do routing and data fetching. To build an
+              entire app with React, we recommend a full-stack React framework
+              like <Link href="https://nextjs.org">Next.js</Link> or{' '}
+              <Link href="https://reactrouter.com">React Router</Link>.
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4
             </Para>
           </Center>
           <FullBleed>
@@ -274,8 +282,13 @@ export function HomeContent() {
               <CTA
                 color="gray"
                 icon="framework"
+<<<<<<< HEAD
                 href="/learn/start-a-new-react-project">
                 شروع با یک فریمورک
+=======
+                href="/learn/creating-a-react-app">
+                Get started with a framework
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4
               </CTA>
             </div>
           </Center>
