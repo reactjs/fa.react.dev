@@ -50,7 +50,13 @@ title: تفکر به سبک ری‌اکت
   یکی از این تکنیک‌ها اصل single responsibility است، به این معنی که یک کامپوننت بهتر است تنها یک کار را انجام دهد. اگر کامپوننت به طور مداوم بزرگتر شود، باید به زیرکامپوننت‌های کوچکتر تجزیه شود.
   [single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle)
 
+<<<<<<< HEAD
 - **CSS**--بررسی کنید که برای چه عناصری از کلاس‌ها استفاده خواهید کرد. (با این حال، کامپوننت‌ها کمتر جزئیات ریز دارند.)
+=======
+* **Programming**--use the same techniques for deciding if you should create a new function or object. One such technique is the [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns), that is, a component should ideally only be concerned with one thing. If it ends up growing, it should be decomposed into smaller subcomponents. 
+* **CSS**--consider what you would make class selectors for. (However, components are a bit less granular.)
+* **Design**--consider how you would organize the design's layers.
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4
 
 - **design**--در نظر بگیرید که چگونه لایه‌های طراحی را سازماندهی خواهید کرد
   اگر فایل جیسون شما ساختار مناسبی داشته باشد، اغلب متوجه می شوید که به طور طبیعی با ساختار کامپوننت‌های رابط کاربری شما همخوانی دارد. این به این دلیل است که مدل‌های رابط کاربری و داده اغلب همان معماری اطلاعاتی را دارند - به اصطلاح، همان شکل. رابط کاربری خود را به

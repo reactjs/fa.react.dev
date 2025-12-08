@@ -20,11 +20,19 @@ title: اضافه کردن ری‌اکت به یک پروژه موجود
 
 پیشنهاد ما برای راه‌اندازی به این صورت است:
 
+<<<<<<< HEAD
 1. **بخش ری‌اکت اپلیکیشن خود را بسازید** با استفاده از یکی از [فریم‌ورک‌های مبتنی بر ری‌اکت](/learn/start-a-new-react-project).
 2. **`/some-app` را به‌عنوان *مسیر پایه*** در پیکربندی فریم‌ورک خود مشخص کنید (راهنما: [Next.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath)، [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/)).
 3. **سرور یا پروکسی خود را پیکربندی کنید** تا همه درخواست‌های زیر مسیر `/some-app/` توسط اپلیکیشن ری‌اکت شما مدیریت شوند.
 
 این کار باعث می‌شود بخش React اپلیکیشن شما بتواند از [بهترین شیوه‌ها](/learn/build-a-react-app-from-scratch#consider-using-a-framework) که در این فریم‌ورک‌ها تعبیه شده‌اند، بهره‌مند شود.
+=======
+1. **Build the React part of your app** using one of the [React-based frameworks](/learn/creating-a-react-app).
+2. **Specify `/some-app` as the *base path*** in your framework's configuration (here's how: [Next.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/)).
+3. **Configure your server or a proxy** so that all requests under `/some-app/` are handled by your React app.
+
+This ensures the React part of your app can [benefit from the best practices](/learn/build-a-react-app-from-scratch#consider-using-a-framework) baked into those frameworks.
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4
 
 بسیاری از فریم‌ورک‌های مبتنی بر ری‌اکت فول‌استک هستند و به اپلیکیشن ری‌اکت شما اجازه می‌دهند از قابلیت‌های سرور استفاده کند. با این حال، حتی اگر نتوانید یا نخواهید جاوااسکریپت را روی سرور اجرا کنید، می‌توانید از همان رویکرد استفاده کنید. در این حالت، خروجی HTML/CSS/JS را (خروجی [`next export`](https://nextjs.org/docs/advanced-features/static-html-export) در Next.js یا حالت پیش‌فرض در Gatsby) در مسیر `/some-app/` سرو کنید.  
 
@@ -149,7 +157,11 @@ root.render(<NavigationBar />);
 
 توجه کنید که محتوای اصلی HTML از `index.html` حفظ شده است، اما کامپوننت ری‌اکت شما با نام `NavigationBar` حالا داخل تگ `<nav id="navigation">` در HTML ظاهر می‌شود. برای اطلاعات بیشتر درباره رندر کردن کامپوننت‌های ری‌اکت داخل یک صفحه HTML موجود، مستندات مربوط به استفاده از [`createRoot`](/reference/react-dom/client/createRoot#rendering-a-page-partially-built-with-react) را مطالعه کنید.
 
+<<<<<<< HEAD
 وقتی ری‌اکت را در یک پروژه موجود به کار می‌گیرید، معمول است که کار را با کامپوننت‌های تعاملی کوچک (مانند دکمه‌ها) شروع کنید و سپس به‌تدریج «به سمت بالا حرکت کنید» تا جایی که در نهایت کل صفحه شما با ری‌اکت ساخته شود. اگر روزی به این نقطه رسیدید، توصیه می‌کنیم بلافاصله به [یک فریم‌ورک ری‌اکت](/learn/start-a-new-react-project) مهاجرت کنید تا بیشترین بهره را از ری‌اکت ببرید.
+=======
+When you adopt React in an existing project, it's common to start with small interactive components (like buttons), and then gradually keep "moving upwards" until eventually your entire page is built with React. If you ever reach that point, we recommend migrating to [a React framework](/learn/creating-a-react-app) right after to get the most out of React.
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4
 
 ## استفاده از ری‌اکت نیتیو در یک اپ بومی موجود {/*using-react-native-in-an-existing-native-mobile-app*/}
 

@@ -51,11 +51,34 @@ November 28 & December 1, 2025. In-person in London, UK + online (hybrid event)
 
 [Website](https://reactadvanced.com/) - [Twitter](https://x.com/reactadvanced)
 
+<<<<<<< HEAD
+=======
+### CityJS Singapore 2026 {/*cityjs-singapore-2026*/}
+February 4-6,  2026. In-person in Singapore
+
+[Website](https://india.cityjsconf.org/) - [Twitter](https://x.com/cityjsconf) - [Bluesky](https://bsky.app/profile/cityjsconf.bsky.social)
+
+### CityJS New Delhi 2026 {/*cityjs-newdelhi-2026*/}
+February 12-13,  2026. In-person in New Delhi, India
+
+[Website](https://india.cityjsconf.org/) - [Twitter](https://x.com/cityjsconf) - [Bluesky](https://bsky.app/profile/cityjsconf.bsky.social)
+
+
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4
 ### React Paris 2026 {/*react-paris-2026*/}
 March 26 - 27, 2026. In-person in Paris, France (hybrid event)
 
 [Website](https://react.paris/) - [Twitter](https://x.com/BeJS_)
 
+<<<<<<< HEAD
+=======
+
+### CityJS London 2026 {/*cityjs-london-2026*/}
+April 14-17,  2026. In-person in London
+
+[Website](https://india.cityjsconf.org/) - [Twitter](https://x.com/cityjsconf) - [Bluesky](https://bsky.app/profile/cityjsconf.bsky.social)
+
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4
 
 ## Past Conferences {/*past-conferences*/}
 
