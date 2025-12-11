@@ -1,30 +1,30 @@
 ---
-title: Describing the UI
+title: توصیف رابط کاربری
 ---
 
 <Intro>
 
-React is a JavaScript library for rendering user interfaces (UI). UI is built from small units like buttons, text, and images. React lets you combine them into reusable, nestable *components.* From web sites to phone apps, everything on the screen can be broken down into components. In this chapter, you'll learn to create, customize, and conditionally display React components.
+ری اکت یک کتابخانه JavaScript برای رندر کردن رابط‌های کاربری (UI) است. رابط کاربری از واحدهای کوچکی مانند دکمه‌ها، متن و تصاویر ساخته می‌شود. React به شما اجازه می‌دهد آن‌ها را در *کامپوننت‌های* قابل استفاده مجدد و تو در تو ترکیب کنید. از وب‌سایت‌ها گرفته تا اپلیکیشن‌های موبایل، هر چیزی روی صفحه نمایش را می‌توان به کامپوننت‌ها تقسیم کرد. در این فصل، یاد خواهید گرفت که چگونه کامپوننت‌های React را ایجاد، سفارشی‌سازی و به صورت شرطی نمایش دهید.
 
 </Intro>
 
 <YouWillLearn isChapter={true}>
 
-* [How to write your first React component](/learn/your-first-component)
-* [When and how to create multi-component files](/learn/importing-and-exporting-components)
-* [How to add markup to JavaScript with JSX](/learn/writing-markup-with-jsx)
-* [How to use curly braces with JSX to access JavaScript functionality from your components](/learn/javascript-in-jsx-with-curly-braces)
-* [How to configure components with props](/learn/passing-props-to-a-component)
-* [How to conditionally render components](/learn/conditional-rendering)
-* [How to render multiple components at a time](/learn/rendering-lists)
-* [How to avoid confusing bugs by keeping components pure](/learn/keeping-components-pure)
-* [Why understanding your UI as trees is useful](/learn/understanding-your-ui-as-a-tree)
+* [چگونه اولین کامپوننت React خود را بنویسید](/learn/your-first-component)
+* [چه زمانی و چگونه فایل‌های چند کامپوننتی ایجاد کنید](/learn/importing-and-exporting-components)
+* [چگونه نشانه‌گذاری را با JSX به JavaScript اضافه کنید](/learn/writing-markup-with-jsx)
+* [چگونه از آکولاد با JSX برای دسترسی به قابلیت‌های JavaScript از کامپوننت‌های خود استفاده کنید](/learn/javascript-in-jsx-with-curly-braces)
+* [چگونه کامپوننت‌ها را با props پیکربندی کنید](/learn/passing-props-to-a-component)
+* [چگونه کامپوننت‌ها را به صورت شرطی رندر کنید](/learn/conditional-rendering)
+* [چگونه چندین کامپوننت را به طور همزمان رندر کنید](/learn/rendering-lists)
+* [چگونه با خالص نگه داشتن کامپوننت‌ها از باگ‌های گیج‌کننده جلوگیری کنید](/learn/keeping-components-pure)
+* [چرا درک رابط کاربری شما به عنوان درخت مفید است](/learn/understanding-your-ui-as-a-tree)
 
 </YouWillLearn>
 
-## Your first component {/*your-first-component*/}
+## اولین کامپوننت شما {/*your-first-component*/}
 
-React applications are built from isolated pieces of UI called *components*. A React component is a JavaScript function that you can sprinkle with markup. Components can be as small as a button, or as large as an entire page. Here is a `Gallery` component rendering three `Profile` components:
+اپلیکیشن‌های React از قطعات جدا شده رابط کاربری به نام *کامپوننت* ساخته می‌شوند. یک کامپوننت React یک تابع JavaScript است که می‌توانید آن را با نشانه‌گذاری تزئین کنید. کامپوننت‌ها می‌توانند به کوچکی یک دکمه یا به بزرگی یک صفحه کامل باشند. در اینجا یک کامپوننت `Gallery` است که سه کامپوننت `Profile` را رندر می‌کند:
 
 <Sandpack>
 
@@ -58,13 +58,13 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 <LearnMore path="/learn/your-first-component">
 
-Read **[Your First Component](/learn/your-first-component)** to learn how to declare and use React components.
+**[اولین کامپوننت شما](/learn/your-first-component)** را بخوانید تا یاد بگیرید چگونه کامپوننت‌های React را تعریف و استفاده کنید.
 
 </LearnMore>
 
-## Importing and exporting components {/*importing-and-exporting-components*/}
+## Import و export کردن کامپوننت‌ها {/*importing-and-exporting-components*/}
 
-You can declare many components in one file, but large files can get difficult to navigate. To solve this, you can *export* a component into its own file, and then *import* that component from another file:
+می‌توانید کامپوننت‌های زیادی را در یک فایل تعریف کنید، اما فایل‌های بزرگ می‌توانند پیمایش را دشوار کنند. برای حل این مشکل، می‌توانید یک کامپوننت را در فایل مخصوص به خودش *export* کنید و سپس آن کامپوننت را از فایل دیگری *import* کنید:
 
 
 <Sandpack>
@@ -113,15 +113,15 @@ img { margin: 0 10px 10px 0; }
 
 <LearnMore path="/learn/importing-and-exporting-components">
 
-Read **[Importing and Exporting Components](/learn/importing-and-exporting-components)** to learn how to split components into their own files.
+**[Import و Export کردن کامپوننت‌ها](/learn/importing-and-exporting-components)** را بخوانید تا یاد بگیرید چگونه کامپوننت‌ها را به فایل‌های مجزا تقسیم کنید.
 
 </LearnMore>
 
-## Writing markup with JSX {/*writing-markup-with-jsx*/}
+## نوشتن نشانه‌گذاری با JSX {/*writing-markup-with-jsx*/}
 
-Each React component is a JavaScript function that may contain some markup that React renders into the browser. React components use a syntax extension called JSX to represent that markup. JSX looks a lot like HTML, but it is a bit stricter and can display dynamic information.
+هر کامپوننت React یک تابع JavaScript است که ممکن است شامل مقداری نشانه‌گذاری باشد که React آن را در مرورگر رندر می‌کند. کامپوننت‌های React از یک افزونه سینتکس به نام JSX برای نمایش آن نشانه‌گذاری استفاده می‌کنند. JSX بسیار شبیه HTML است، اما کمی سخت‌گیرانه‌تر است و می‌تواند اطلاعات پویا را نمایش دهد.
 
-If we paste existing HTML markup into a React component, it won't always work:
+اگر نشانه‌گذاری HTML موجود را در یک کامپوننت React کپی کنیم، همیشه کار نخواهد کرد:
 
 <Sandpack>
 
@@ -150,7 +150,7 @@ img { height: 90px; }
 
 </Sandpack>
 
-If you have existing HTML like this, you can fix it using a [converter](https://transform.tools/html-to-jsx):
+اگر HTML موجودی مانند این دارید، می‌توانید آن را با استفاده از یک [مبدل](https://transform.tools/html-to-jsx) اصلاح کنید:
 
 <Sandpack>
 
@@ -182,13 +182,13 @@ img { height: 90px; }
 
 <LearnMore path="/learn/writing-markup-with-jsx">
 
-Read **[Writing Markup with JSX](/learn/writing-markup-with-jsx)** to learn how to write valid JSX.
+**[نوشتن نشانه‌گذاری با JSX](/learn/writing-markup-with-jsx)** را بخوانید تا یاد بگیرید چگونه JSX معتبر بنویسید.
 
 </LearnMore>
 
-## JavaScript in JSX with curly braces {/*javascript-in-jsx-with-curly-braces*/}
+## JavaScript در JSX با آکولاد {/*javascript-in-jsx-with-curly-braces*/}
 
-JSX lets you write HTML-like markup inside a JavaScript file, keeping rendering logic and content in the same place. Sometimes you will want to add a little JavaScript logic or reference a dynamic property inside that markup. In this situation, you can use curly braces in your JSX to "open a window" to JavaScript:
+JSX به شما اجازه می‌دهد نشانه‌گذاری شبیه HTML را داخل یک فایل JavaScript بنویسید و منطق رندر و محتوا را در یک مکان نگه دارید. گاهی اوقات می‌خواهید کمی منطق JavaScript اضافه کنید یا به یک ویژگی پویا داخل آن نشانه‌گذاری ارجاع دهید. در این شرایط، می‌توانید از آکولاد در JSX خود استفاده کنید تا "پنجره‌ای به JavaScript باز کنید":
 
 <Sandpack>
 
@@ -230,13 +230,13 @@ body > div > div { padding: 20px; }
 
 <LearnMore path="/learn/javascript-in-jsx-with-curly-braces">
 
-Read **[JavaScript in JSX with Curly Braces](/learn/javascript-in-jsx-with-curly-braces)** to learn how to access JavaScript data from JSX.
+**[JavaScript در JSX با آکولاد](/learn/javascript-in-jsx-with-curly-braces)** را بخوانید تا یاد بگیرید چگونه از JSX به داده‌های JavaScript دسترسی پیدا کنید.
 
 </LearnMore>
 
-## Passing props to a component {/*passing-props-to-a-component*/}
+## انتقال props به یک کامپوننت {/*passing-props-to-a-component*/}
 
-React components use *props* to communicate with each other. Every parent component can pass some information to its child components by giving them props. Props might remind you of HTML attributes, but you can pass any JavaScript value through them, including objects, arrays, functions, and even JSX!
+کامپوننت‌های React از *props* برای برقراری ارتباط با یکدیگر استفاده می‌کنند. هر کامپوننت والد می‌تواند با دادن props به کامپوننت‌های فرزند خود، اطلاعاتی را منتقل کند. Props ممکن است شما را به یاد ویژگی‌های HTML بیندازد، اما می‌توانید هر مقدار JavaScript را از طریق آن‌ها منتقل کنید، از جمله اشیاء، آرایه‌ها، توابع و حتی JSX!
 
 <Sandpack>
 
@@ -311,15 +311,15 @@ export function getImageUrl(person, size = 's') {
 
 <LearnMore path="/learn/passing-props-to-a-component">
 
-Read **[Passing Props to a Component](/learn/passing-props-to-a-component)** to learn how to pass and read props.
+**[انتقال Props به یک کامپوننت](/learn/passing-props-to-a-component)** را بخوانید تا یاد بگیرید چگونه props را منتقل و خوانش کنید.
 
 </LearnMore>
 
-## Conditional rendering {/*conditional-rendering*/}
+## رندر شرطی {/*conditional-rendering*/}
 
-Your components will often need to display different things depending on different conditions. In React, you can conditionally render JSX using JavaScript syntax like `if` statements, `&&`, and `? :` operators.
+کامپوننت‌های شما اغلب نیاز دارند که بسته به شرایط مختلف، چیزهای متفاوتی را نمایش دهند. در React، می‌توانید JSX را به صورت شرطی با استفاده از سینتکس JavaScript مانند دستورات `if`، عملگرهای `&&` و `? :` رندر کنید.
 
-In this example, the JavaScript `&&` operator is used to conditionally render a checkmark:
+در این مثال، از عملگر `&&` در JavaScript برای رندر شرطی یک علامت تیک استفاده شده است:
 
 <Sandpack>
 
@@ -359,15 +359,15 @@ export default function PackingList() {
 
 <LearnMore path="/learn/conditional-rendering">
 
-Read **[Conditional Rendering](/learn/conditional-rendering)** to learn the different ways to render content conditionally.
+**[رندر شرطی](/learn/conditional-rendering)** را بخوانید تا روش‌های مختلف رندر شرطی محتوا را یاد بگیرید.
 
 </LearnMore>
 
-## Rendering lists {/*rendering-lists*/}
+## رندر کردن لیست‌ها {/*rendering-lists*/}
 
-You will often want to display multiple similar components from a collection of data. You can use JavaScript's `filter()` and `map()` with React to filter and transform your array of data into an array of components.
+اغلب می‌خواهید چندین کامپوننت مشابه را از یک مجموعه داده نمایش دهید. می‌توانید از متدهای `filter()` و `map()` در JavaScript به همراه React استفاده کنید تا آرایه داده‌های خود را فیلتر و تبدیل به آرایه‌ای از کامپوننت‌ها کنید.
 
-For each array item, you will need to specify a `key`. Usually, you will want to use an ID from the database as a `key`. Keys let React keep track of each item's place in the list even if the list changes.
+برای هر آیتم آرایه، باید یک `key` مشخص کنید. معمولاً می‌خواهید از یک ID از پایگاه داده به عنوان `key` استفاده کنید. کلیدها به React اجازه می‌دهند موقعیت هر آیتم را در لیست پیگیری کند، حتی اگر لیست تغییر کند.
 
 <Sandpack>
 
@@ -459,18 +459,18 @@ h2 { font-size: 20px; }
 
 <LearnMore path="/learn/rendering-lists">
 
-Read **[Rendering Lists](/learn/rendering-lists)** to learn how to render a list of components, and how to choose a key.
+**[رندر کردن لیست‌ها](/learn/rendering-lists)** را بخوانید تا یاد بگیرید چگونه لیستی از کامپوننت‌ها را رندر کنید و چگونه یک کلید انتخاب کنید.
 
 </LearnMore>
 
-## Keeping components pure {/*keeping-components-pure*/}
+## خالص نگه داشتن کامپوننت‌ها {/*keeping-components-pure*/}
 
-Some JavaScript functions are *pure.* A pure function:
+برخی از توابع JavaScript *خالص* هستند. یک تابع خالص:
 
-* **Minds its own business.** It does not change any objects or variables that existed before it was called.
-* **Same inputs, same output.** Given the same inputs, a pure function should always return the same result.
+* **به کار خود می‌رسد.** هیچ شیء یا متغیری را که قبل از فراخوانی آن وجود داشته است، تغییر نمی‌دهد.
+* **ورودی‌های یکسان، خروجی یکسان.** با دریافت ورودی‌های یکسان، یک تابع خالص همیشه باید نتیجه یکسانی را برگرداند.
 
-By strictly only writing your components as pure functions, you can avoid an entire class of baffling bugs and unpredictable behavior as your codebase grows. Here is an example of an impure component:
+با نوشتن کامپوننت‌های خود به صورت صرفاً توابع خالص، می‌توانید از یک دسته کامل از باگ‌های گیج‌کننده و رفتارهای غیرقابل پیش‌بینی با رشد کدبیس خود جلوگیری کنید. در اینجا نمونه‌ای از یک کامپوننت ناخالص است:
 
 <Sandpack>
 
@@ -496,7 +496,7 @@ export default function TeaSet() {
 
 </Sandpack>
 
-You can make this component pure by passing a prop instead of modifying a preexisting variable:
+می‌توانید این کامپوننت را با انتقال یک prop به جای تغییر متغیر از پیش موجود، خالص کنید:
 
 <Sandpack>
 
@@ -520,43 +520,43 @@ export default function TeaSet() {
 
 <LearnMore path="/learn/keeping-components-pure">
 
-Read **[Keeping Components Pure](/learn/keeping-components-pure)** to learn how to write components as pure, predictable functions.
+**[خالص نگه داشتن کامپوننت‌ها](/learn/keeping-components-pure)** را بخوانید تا یاد بگیرید چگونه کامپوننت‌ها را به عنوان توابع خالص و قابل پیش‌بینی بنویسید.
 
 </LearnMore>
 
-## Your UI as a tree {/*your-ui-as-a-tree*/}
+## رابط کاربری شما به عنوان یک درخت {/*your-ui-as-a-tree*/}
 
-React uses trees to model the relationships between components and modules. 
+React از درخت‌ها برای مدل‌سازی روابط بین کامپوننت‌ها و ماژول‌ها استفاده می‌کند.
 
-A React render tree is a representation of the parent and child relationship between components. 
+درخت رندر React نمایشی از رابطه والد و فرزند بین کامپوننت‌ها است.
 
 <Diagram name="generic_render_tree" height={250} width={500} alt="A tree graph with five nodes, with each node representing a component. The root node is located at the top the tree graph and is labelled 'Root Component'. It has two arrows extending down to two nodes labelled 'Component A' and 'Component C'. Each of the arrows is labelled with 'renders'. 'Component A' has a single 'renders' arrow to a node labelled 'Component B'. 'Component C' has a single 'renders' arrow to a node labelled 'Component D'.">
 
-An example React render tree.
+یک نمونه درخت رندر React.
 
 </Diagram>
 
-Components near the top of the tree, near the root component, are considered top-level components. Components with no child components are leaf components. This categorization of components is useful for understanding data flow and rendering performance.
+کامپوننت‌هایی که نزدیک به بالای درخت، نزدیک به کامپوننت ریشه هستند، کامپوننت‌های سطح بالا در نظر گرفته می‌شوند. کامپوننت‌هایی که هیچ کامپوننت فرزندی ندارند، کامپوننت‌های برگ هستند. این دسته‌بندی کامپوننت‌ها برای درک جریان داده و عملکرد رندر مفید است.
 
-Modelling the relationship between JavaScript modules is another useful way to understand your app. We refer to it as a module dependency tree. 
+مدل‌سازی رابطه بین ماژول‌های JavaScript، راه مفید دیگری برای درک اپلیکیشن شما است. ما به آن درخت وابستگی ماژول می‌گوییم.
 
 <Diagram name="generic_dependency_tree" height={250} width={500} alt="A tree graph with five nodes. Each node represents a JavaScript module. The top-most node is labelled 'RootModule.js'. It has three arrows extending to the nodes: 'ModuleA.js', 'ModuleB.js', and 'ModuleC.js'. Each arrow is labelled as 'imports'. 'ModuleC.js' node has a single 'imports' arrow that points to a node labelled 'ModuleD.js'.">
 
-An example module dependency tree.
+یک نمونه درخت وابستگی ماژول.
 
 </Diagram>
 
-A dependency tree is often used by build tools to bundle all the relevant JavaScript code for the client to download and render. A large bundle size regresses user experience for React apps. Understanding the module dependency tree is helpful to debug such issues. 
+یک درخت وابستگی اغلب توسط ابزارهای ساخت برای بسته‌بندی تمام کدهای JavaScript مرتبط جهت دانلود و رندر توسط کلاینت استفاده می‌شود. اندازه بسته بزرگ، تجربه کاربری را برای اپلیکیشن‌های React کاهش می‌دهد. درک درخت وابستگی ماژول برای رفع اشکال چنین مشکلاتی مفید است.
 
 <LearnMore path="/learn/understanding-your-ui-as-a-tree">
 
-Read **[Your UI as a Tree](/learn/understanding-your-ui-as-a-tree)** to learn how to create a render and module dependency trees for a React app and how they're useful mental models for improving user experience and performance.
+**[رابط کاربری شما به عنوان یک درخت](/learn/understanding-your-ui-as-a-tree)** را بخوانید تا یاد بگیرید چگونه درخت‌های رندر و وابستگی ماژول را برای یک اپلیکیشن React ایجاد کنید و چگونه آن‌ها مدل‌های ذهنی مفیدی برای بهبود تجربه کاربری و عملکرد هستند.
 
 </LearnMore>
 
 
-## What's next? {/*whats-next*/}
+## بعدش چی؟ {/*whats-next*/}
 
-Head over to [Your First Component](/learn/your-first-component) to start reading this chapter page by page!
+به [اولین کامپوننت شما](/learn/your-first-component) بروید تا شروع به خواندن این فصل صفحه به صفحه کنید!
 
-Or, if you're already familiar with these topics, why not read about [Adding Interactivity](/learn/adding-interactivity)?
+یا اگر از قبل با این موضوعات آشنا هستید، چرا درباره [افزودن تعاملی‌بودن](/learn/adding-interactivity) نخوانید؟
