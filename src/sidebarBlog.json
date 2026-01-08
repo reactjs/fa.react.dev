@@ -12,13 +12,33 @@
       "skipBreadcrumb": true,
       "routes": [
         {
+<<<<<<< HEAD
           "title": "آزمایشگاه ری‌اکت: انتقال نما، فعالیت و بیشتر",
           "titleForHomepage": "انتقال نما و فعالیت",
+=======
+          "title": "React Compiler v1.0",
+          "titleForHomepage": "React Compiler v1.0",
+          "icon": "blog",
+          "date": "October 8, 2025",
+          "path": "/blog/2025/10/07/react-compiler-1"
+        },
+        {
+          "title": "Introducing the React Foundation",
+          "titleForHomepage": "Introducing the React Foundation",
+          "icon": "blog",
+          "date": "October 7, 2025",
+          "path": "/blog/2025/10/07/introducing-the-react-foundation"
+        },
+        {
+          "title": "React Labs: View Transitions, Activity, and more",
+          "titleForHomepage": "View Transitions and Activity",
+>>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
           "icon": "blog",
           "date": "April 23, 2025",
           "path": "/blog/2025/04/23/react-labs-view-transitions-activity-and-more"
         },
         {
+<<<<<<< HEAD
           "title": "نسخه RC کامپایلر ری‌اکت",
           "titleForHomepage": "React Compiler RC",
           "icon": "blog",
@@ -28,6 +48,10 @@
         {
           "title": "پایان پشتیبانی Create React App",
           "titleForHomepage": "پایان Create React App",
+=======
+          "title": "Sunsetting Create React App",
+          "titleForHomepage": "Sunsetting Create React App",
+>>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
           "icon": "blog",
           "date": "February 14, 2025",
           "path": "/blog/2025/02/14/sunsetting-create-react-app"
