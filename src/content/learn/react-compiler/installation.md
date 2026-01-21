@@ -173,10 +173,17 @@ React Compiler includes an ESLint rule that helps identify code that can't be op
 Install the ESLint plugin:
 
 <TerminalBlock>
+<<<<<<< HEAD
 npm install -D eslint-plugin-react-hooks@rc
 </TerminalBlock>
 
 If you haven't already configured eslint-plugin-react-hooks, follow the [installation instructions in the readme](https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/README.md#installation). The compiler rule is enabled by default in the latest RC, so no additional configuration is needed.
+=======
+npm install -D eslint-plugin-react-hooks@^6.1.1
+</TerminalBlock>
+
+If you haven't already configured eslint-plugin-react-hooks, follow the [installation instructions in the readme](https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/README.md#installation). The compiler rules are available in the `recommended-latest` preset.
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 
 The ESLint rule will:
 - Identify violations of the [Rules of React](/reference/rules)
@@ -246,4 +253,8 @@ Now that you have React Compiler installed, learn more about:
 - [Configuration options](/reference/react-compiler/configuration) to customize the compiler
 - [Incremental adoption strategies](/learn/react-compiler/incremental-adoption) for existing codebases
 - [Debugging techniques](/learn/react-compiler/debugging) for troubleshooting issues
+<<<<<<< HEAD
 - [Compiling Libraries guide](/reference/react-compiler/compiling-libraries) for compiling your React library
+=======
+- [Compiling Libraries guide](/reference/react-compiler/compiling-libraries) for compiling your React library
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027

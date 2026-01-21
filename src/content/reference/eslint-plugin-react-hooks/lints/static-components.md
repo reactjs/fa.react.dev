@@ -1,5 +1,9 @@
 ---
 title: static-components
+<<<<<<< HEAD
+=======
+version: rc
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 ---
 
 <Intro>
@@ -8,6 +12,15 @@ Validates that components are static, not recreated every render. Components tha
 
 </Intro>
 
+<<<<<<< HEAD
+=======
+<Note>
+
+This rule is available in `eslint-plugin-react-hooks` v6.
+
+</Note>
+
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 ## Rule Details {/*rule-details*/}
 
 Components defined inside other components are recreated on every render. React sees each as a brand new component type, unmounting the old one and mounting the new one, destroying all state and DOM nodes in the process.

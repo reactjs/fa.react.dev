@@ -1,5 +1,6 @@
 ---
 title: <Activity>
+<<<<<<< HEAD
 version: canary
 ---
 
@@ -11,6 +12,10 @@ version: canary
 
 </Canary>
 
+=======
+---
+
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 <Intro>
 
 `<Activity>` lets you hide and restore the UI and internal state of its children.
@@ -170,6 +175,7 @@ h1 {
 }
 .indicator.down {
   rotate: 180deg;
+<<<<<<< HEAD
 }
 ```
 
@@ -187,6 +193,8 @@ h1 {
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
+=======
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 }
 ```
 
@@ -215,7 +223,12 @@ and check out the new behavior:
 <Sandpack>
 
 ```js src/App.js active
+<<<<<<< HEAD
 import { unstable_Activity as Activity, useState } from 'react';
+=======
+import { useState } from 'react'; import { unstable_Activity, Activity as ActivityStable} from 'react'; let Activity = ActivityStable ?? unstable_Activity;
+
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 import Sidebar from './Sidebar.js';
 
 export default function App() {
@@ -294,6 +307,7 @@ h1 {
 }
 .indicator.down {
   rotate: 180deg;
+<<<<<<< HEAD
 }
 ```
 
@@ -311,6 +325,8 @@ h1 {
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
+=======
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 }
 ```
 
@@ -408,6 +424,7 @@ b { display: inline-block; margin-right: 10px; }
 .pending { color: #777; }
 ```
 
+<<<<<<< HEAD
 ```json package.json hidden
 {
   "dependencies": {
@@ -425,6 +442,8 @@ b { display: inline-block; margin-right: 10px; }
 }
 ```
 
+=======
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 </Sandpack>
 
 This is because we're fully unmounting `Contact` in `App`. When the Contact tab unmounts, the `<textarea>` element's internal DOM state is lost.
@@ -434,7 +453,11 @@ If we switch to using an Activity boundary to show and hide the active tab, we c
 <Sandpack>
 
 ```js src/App.js active
+<<<<<<< HEAD
 import { useState, unstable_Activity as Activity } from 'react';
+=======
+import { useState } from 'react'; import { unstable_Activity, Activity as ActivityStable} from 'react'; let Activity = ActivityStable ?? unstable_Activity;
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 import TabButton from './TabButton.js';
 import Home from './Home.js';
 import Contact from './Contact.js';
@@ -517,6 +540,7 @@ b { display: inline-block; margin-right: 10px; }
 .pending { color: #777; }
 ```
 
+<<<<<<< HEAD
 ```json package.json hidden
 {
   "dependencies": {
@@ -534,6 +558,8 @@ b { display: inline-block; margin-right: 10px; }
 }
 ```
 
+=======
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 </Sandpack>
 
 Again, the Activity boundary let us preserve the Contact tab's internal state without changing its implementation.
@@ -682,6 +708,7 @@ button { margin-right: 10px }
 b { display: inline-block; margin-right: 10px; }
 .pending { color: #777; }
 video { width: 300px; margin-top: 10px; aspect-ratio: 16/9; }
+<<<<<<< HEAD
 ```
 
 ```json package.json hidden
@@ -699,6 +726,8 @@ video { width: 300px; margin-top: 10px; aspect-ratio: 16/9; }
     "eject": "react-scripts eject"
   }
 }
+=======
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 ```
 
 </Sandpack>
@@ -712,7 +741,11 @@ Try clicking the Posts tab now:
 <Sandpack>
 
 ```js src/App.js
+<<<<<<< HEAD
 import { useState, Suspense, unstable_Activity as Activity } from 'react';
+=======
+import { useState, Suspense } from 'react';  import { unstable_Activity, Activity as ActivityStable} from 'react'; let Activity = ActivityStable ?? unstable_Activity;
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 import TabButton from './TabButton.js';
 import Home from './Home.js';
 import Posts from './Posts.js';
@@ -835,6 +868,7 @@ button { margin-right: 10px }
 b { display: inline-block; margin-right: 10px; }
 .pending { color: #777; }
 video { width: 300px; margin-top: 10px; aspect-ratio: 16/9; }
+<<<<<<< HEAD
 ```
 
 ```json package.json hidden
@@ -852,6 +886,8 @@ video { width: 300px; margin-top: 10px; aspect-ratio: 16/9; }
     "eject": "react-scripts eject"
   }
 }
+=======
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 ```
 
 </Sandpack>
@@ -1067,6 +1103,13 @@ export default function TabButton({ onClick, children, isActive }) {
   if (isActive) {
     return <b>{children}</b>
   }
+<<<<<<< HEAD
+
+  return (
+    <button onClick={onClick}>
+      {children}
+    </button>
+=======
 
   return (
     <button onClick={onClick}>
@@ -1076,6 +1119,87 @@ export default function TabButton({ onClick, children, isActive }) {
 }
 ```
 
+```js src/Home.js
+export default function Home() {
+  return (
+    <p>Welcome to my profile!</p>
+  );
+}
+```
+
+```js src/Video.js 
+export default function Video() {
+  return (
+    <video
+      // 'Big Buck Bunny' licensed under CC 3.0 by the Blender foundation. Hosted by archive.org
+      src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4"
+      controls
+      playsInline
+    />
+
+  );
+}
+```
+
+```css
+body { height: 275px; }
+button { margin-right: 10px }
+b { display: inline-block; margin-right: 10px; }
+.pending { color: #777; }
+video { width: 300px; margin-top: 10px; aspect-ratio: 16/9; }
+```
+
+</Sandpack>
+
+The video stops playing as expected.
+
+Now, let's say we wanted to preserve the timecode where the user last watched, so that when they tab back to the video, it doesn't start over from the beginning again.
+
+This is a great use case for Activity!
+
+Let's update `App` to hide the inactive tab with a hidden Activity boundary instead of unmounting it, and see how the demo behaves this time:
+
+<Sandpack>
+
+```js src/App.js active
+import { useState } from 'react'; import { unstable_Activity, Activity as ActivityStable} from 'react'; let Activity = ActivityStable ?? unstable_Activity;
+import TabButton from './TabButton.js';
+import Home from './Home.js';
+import Video from './Video.js';
+
+export default function App() {
+  const [activeTab, setActiveTab] = useState('video');
+
+  return (
+    <>
+      <TabButton
+        isActive={activeTab === 'home'}
+        onClick={() => setActiveTab('home')}
+      >
+        Home
+      </TabButton>
+      <TabButton
+        isActive={activeTab === 'video'}
+        onClick={() => setActiveTab('video')}
+      >
+        Video
+      </TabButton>
+
+      <hr />
+
+      <Activity mode={activeTab === 'home' ? 'visible' : 'hidden'}>
+        <Home />
+      </Activity>
+      <Activity mode={activeTab === 'video' ? 'visible' : 'hidden'}>
+        <Video />
+      </Activity>
+    </>
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
+  );
+}
+```
+
+<<<<<<< HEAD
 ```js src/Home.js
 export default function Home() {
   return (
@@ -1119,12 +1243,55 @@ video { width: 300px; margin-top: 10px; aspect-ratio: 16/9; }
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+=======
+```js src/TabButton.js hidden
+export default function TabButton({ onClick, children, isActive }) {
+  if (isActive) {
+    return <b>{children}</b>
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
   }
+
+  return (
+    <button onClick={onClick}>
+      {children}
+    </button>
+  );
 }
+```
+
+```js src/Home.js
+export default function Home() {
+  return (
+    <p>Welcome to my profile!</p>
+  );
+}
+```
+
+```js src/Video.js 
+export default function Video() {
+  return (
+    <video
+      controls
+      playsInline
+      // 'Big Buck Bunny' licensed under CC 3.0 by the Blender foundation. Hosted by archive.org
+      src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4"
+    />
+
+  );
+}
+```
+
+```css
+body { height: 275px; }
+button { margin-right: 10px }
+b { display: inline-block; margin-right: 10px; }
+.pending { color: #777; }
+video { width: 300px; margin-top: 10px; aspect-ratio: 16/9; }
 ```
 
 </Sandpack>
 
+<<<<<<< HEAD
 The video stops playing as expected.
 
 Now, let's say we wanted to preserve the timecode where the user last watched, so that when they tab back to the video, it doesn't start over from the beginning again.
@@ -1239,6 +1406,12 @@ Whoops! The video and audio continue to play even after it's been hidden, becaus
 
 To fix this, we can add an Effect with a cleanup function that pauses the video:
 
+=======
+Whoops! The video and audio continue to play even after it's been hidden, because the tab's `<video>` element is still in the DOM.
+
+To fix this, we can add an Effect with a cleanup function that pauses the video:
+
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 ```jsx {2,4-10,14}
 export default function VideoTab() {
   const ref = useRef();
@@ -1270,7 +1443,11 @@ Let's see the new behavior. Try playing the video, switching to the Home tab, th
 <Sandpack>
 
 ```js src/App.js active
+<<<<<<< HEAD
 import { useState, unstable_Activity as Activity } from 'react';
+=======
+import { useState } from 'react';  import { unstable_Activity, Activity as ActivityStable} from 'react'; let Activity = ActivityStable ?? unstable_Activity;
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 import TabButton from './TabButton.js';
 import Home from './Home.js';
 import Video from './Video.js';
@@ -1363,6 +1540,7 @@ b { display: inline-block; margin-right: 10px; }
 video { width: 300px; margin-top: 10px; aspect-ratio: 16/9; }
 ```
 
+<<<<<<< HEAD
 ```json package.json hidden
 {
   "dependencies": {
@@ -1380,6 +1558,8 @@ video { width: 300px; margin-top: 10px; aspect-ratio: 16/9; }
 }
 ```
 
+=======
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 </Sandpack>
 
 It works great! Our cleanup function ensures that the video stops playing if it's ever hidden by an Activity boundary, and even better, because the `<video>` tag is never destroyed, the timecode is preserved, and the video itself doesn't need to be initialized or downloaded again when the user switches back to keep watching it.

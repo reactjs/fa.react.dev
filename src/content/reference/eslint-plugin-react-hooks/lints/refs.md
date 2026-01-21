@@ -1,5 +1,9 @@
 ---
 title: refs
+<<<<<<< HEAD
+=======
+version: rc
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 ---
 
 <Intro>
@@ -8,6 +12,15 @@ Validates correct usage of refs, not reading/writing during render. See the "pit
 
 </Intro>
 
+<<<<<<< HEAD
+=======
+<Note>
+
+This rule is available in `eslint-plugin-react-hooks` v6.
+
+</Note>
+
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 ## Rule Details {/*rule-details*/}
 
 Refs hold values that aren't used for rendering. Unlike state, changing a ref doesn't trigger a re-render. Reading or writing `ref.current` during render breaks React's expectations. Refs might not be initialized when you try to read them, and their values can be stale or inconsistent.

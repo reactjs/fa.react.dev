@@ -1,5 +1,9 @@
 ---
 title: error-boundaries
+<<<<<<< HEAD
+=======
+version: rc
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 ---
 
 <Intro>
@@ -8,6 +12,15 @@ Validates usage of Error Boundaries instead of try/catch for errors in child com
 
 </Intro>
 
+<<<<<<< HEAD
+=======
+<Note>
+
+This rule is available in `eslint-plugin-react-hooks` v6.
+
+</Note>
+
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 ## Rule Details {/*rule-details*/}
 
 Try/catch blocks can't catch errors that happen during React's rendering process. Errors thrown in rendering methods or hooks bubble up through the component tree. Only [Error Boundaries](/reference/react/Component#catching-rendering-errors-with-an-error-boundary) can catch these errors.
