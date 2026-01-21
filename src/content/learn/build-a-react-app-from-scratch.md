@@ -1,143 +1,143 @@
 ---
-title: Build a React app from Scratch
+title: ساخت یک برنامه ری‌اکت از ابتدا
 ---
 
 <Intro>
 
-If your app has constraints not well-served by existing frameworks, you prefer to build your own framework, or you just want to learn the basics of a React app, you can build a React app from scratch.
+اگر برنامه شما محدودیت‌هایی دارد که توسط فریم‌ورک‌های موجود به خوبی پشتیبانی نمی‌شود، ترجیح می‌دهید فریم‌ورک خود را بسازید، یا فقط می‌خواهید اصول اولیه یک برنامه ری‌اکت را یاد بگیرید، می‌توانید یک برنامه ری‌اکت را از ابتدا بسازید.
 
 </Intro>
 
 <DeepDive>
 
-#### Consider using a framework {/*consider-using-a-framework*/}
+#### استفاده از یک فریم‌ورک را در نظر بگیرید {/*consider-using-a-framework*/}
 
-Starting from scratch is an easy way to get started using React, but a major tradeoff to be aware of is that going this route is often the same as building your own adhoc framework. As your requirements evolve, you may need to solve more framework-like problems that our recommended frameworks already have well developed and supported solutions for. 
+شروع از ابتدا راهی آسان برای شروع استفاده از ری‌اکت است، اما یک مصالحه مهم که باید از آن آگاه باشید این است که این مسیر اغلب مانند ساخت فریم‌ورک موقت خودتان است. با تکامل نیازهای شما، ممکن است لازم باشد مشکلات شبیه به فریم‌ورک را حل کنید که فریم‌ورک‌های توصیه شده ما قبلاً راه‌حل‌های توسعه‌یافته و پشتیبانی‌شده برای آنها دارند.
 
-For example, if in the future your app needs support for server-side rendering (SSR), static site generation (SSG), and/or React Server Components (RSC), you will have to implement those on your own. Similarly, future React features that require integrating at the framework level will have to be implemented on your own if you want to use them.
+به عنوان مثال، اگر در آینده برنامه شما نیاز به پشتیبانی از رندر سمت سرور (SSR)، تولید سایت استاتیک (SSG)، و/یا کامپوننت‌های سرور ری‌اکت (RSC) داشته باشد، باید آنها را خودتان پیاده‌سازی کنید. به طور مشابه، قابلیت‌های آینده ری‌اکت که نیاز به یکپارچه‌سازی در سطح فریم‌ورک دارند، باید توسط خودتان پیاده‌سازی شوند اگر می‌خواهید از آنها استفاده کنید.
 
-Our recommended frameworks also help you build better performing apps. For example, reducing or eliminating waterfalls from network requests makes for a better user experience. This might not be a high priority when you are building a toy project, but if your app gains users you may want to improve its performance.
+فریم‌ورک‌های توصیه شده ما همچنین به شما کمک می‌کنند برنامه‌های با عملکرد بهتری بسازید. به عنوان مثال، کاهش یا حذف آبشارهای درخواست‌های شبکه باعث تجربه کاربری بهتری می‌شود. این ممکن است هنگام ساخت یک پروژه آزمایشی اولویت بالایی نباشد، اما اگر برنامه شما کاربران بیشتری پیدا کند، ممکن است بخواهید عملکرد آن را بهبود دهید.
 
-Going this route also makes it more difficult to get support, since the way you develop routing, data-fetching, and other features will be unique to your situation. You should only choose this option if you are comfortable tackling these problems on your own, or if you’re confident that you will never need these features.
+رفتن به این مسیر همچنین دریافت پشتیبانی را دشوارتر می‌کند، زیرا نحوه توسعه مسیریابی، واکشی داده و سایر قابلیت‌ها منحصر به وضعیت شما خواهد بود. شما فقط باید این گزینه را انتخاب کنید اگر در مورد حل این مشکلات به تنهایی راحت هستید، یا اگر اطمینان دارید که هرگز به این قابلیت‌ها نیاز نخواهید داشت.
 
-For a list of recommended frameworks, check out [Creating a React App](/learn/creating-a-react-app).
+برای لیستی از فریم‌ورک‌های توصیه شده، [ساخت یک برنامه ری‌اکت](/learn/creating-a-react-app) را بررسی کنید.
 
 </DeepDive>
 
 
-## Step 1: Install a build tool {/*step-1-install-a-build-tool*/}
+## گام 1: نصب یک ابزار ساخت {/*step-1-install-a-build-tool*/}
 
-The first step is to install a build tool like `vite`, `parcel`, or `rsbuild`. These build tools provide features to package and run source code, provide a development server for local development and a build command to deploy your app to a production server.
+اولین گام نصب یک ابزار ساخت مانند `vite`، `parcel` یا `rsbuild` است. این ابزارهای ساخت قابلیت‌هایی را برای بسته‌بندی و اجرای کد منبع، ارائه یک سرور توسعه برای توسعه محلی و یک دستور ساخت برای استقرار برنامه شما در یک سرور تولید فراهم می‌کنند.
 
 ### Vite {/*vite*/}
 
-[Vite](https://vite.dev/) is a build tool that aims to provide a faster and leaner development experience for modern web projects.
+[Vite](https://vite.dev/) یک ابزار ساخت است که هدف آن ارائه یک تجربه توسعه سریع‌تر و سبک‌تر برای پروژه‌های وب مدرن است.
 
 <TerminalBlock>
 {`npm create vite@latest my-app -- --template react`}
 </TerminalBlock>
 
-Vite is opinionated and comes with sensible defaults out of the box. Vite has a rich ecosystem of plugins to support fast refresh, JSX,  Babel/SWC, and other common features. See Vite's [React plugin](https://vite.dev/plugins/#vitejs-plugin-react) or [React SWC plugin](https://vite.dev/plugins/#vitejs-plugin-react-swc) and [React SSR example project](https://vite.dev/guide/ssr.html#example-projects) to get started.
+Vite دارای نظر قطعی است و با تنظیمات پیش‌فرض منطقی از ابتدا ارائه می‌شود. Vite دارای یک اکوسیستم غنی از پلاگین‌ها برای پشتیبانی از بازسازی سریع، JSX، Babel/SWC و سایر قابلیت‌های رایج است. برای شروع، [پلاگین React](https://vite.dev/plugins/#vitejs-plugin-react) یا [پلاگین React SWC](https://vite.dev/plugins/#vitejs-plugin-react-swc) و [پروژه نمونه React SSR](https://vite.dev/guide/ssr.html#example-projects) را ببینید.
 
-Vite is already being used as a build tool in one of our [recommended frameworks](/learn/creating-a-react-app): [React Router](https://reactrouter.com/start/framework/installation).
+Vite در حال حاضر به عنوان یک ابزار ساخت در یکی از [فریم‌ورک‌های توصیه شده](/learn/creating-a-react-app) ما استفاده می‌شود: [React Router](https://reactrouter.com/start/framework/installation).
 
 ### Parcel {/*parcel*/}
 
-[Parcel](https://parceljs.org/) combines a great out-of-the-box development experience with a scalable architecture that can take your project from just getting started to massive production applications.
+[Parcel](https://parceljs.org/) تجربه توسعه عالی از ابتدا را با معماری مقیاس‌پذیری ترکیب می‌کند که می‌تواند پروژه شما را از شروع تا برنامه‌های تولیدی بزرگ هدایت کند.
 
 <TerminalBlock>
 {`npm install --save-dev parcel`}
 </TerminalBlock>
 
-Parcel supports fast refresh, JSX, TypeScript, Flow, and styling out of the box. See [Parcel's React recipe](https://parceljs.org/recipes/react/#getting-started) to get started.
+Parcel از بازسازی سریع، JSX، TypeScript، Flow و استایل‌دهی از ابتدا پشتیبانی می‌کند. برای شروع، [دستور العمل React Parcel](https://parceljs.org/recipes/react/#getting-started) را ببینید.
 
 ### Rsbuild {/*rsbuild*/}
 
-[Rsbuild](https://rsbuild.dev/) is an Rspack-powered build tool that provides a seamless development experience for React applications. It comes with carefully tuned defaults and performance optimizations ready to use.
+[Rsbuild](https://rsbuild.dev/) یک ابزار ساخت مبتنی بر Rspack است که تجربه توسعه یکپارچه‌ای برای برنامه‌های ری‌اکت فراهم می‌کند. این ابزار با تنظیمات پیش‌فرض دقیق و بهینه‌سازی‌های عملکرد آماده استفاده ارائه می‌شود.
 
 <TerminalBlock>
 {`npx create-rsbuild --template react`}
 </TerminalBlock>
 
-Rsbuild includes built-in support for React features like fast refresh, JSX, TypeScript, and styling. See [Rsbuild's React guide](https://rsbuild.dev/guide/framework/react) to get started.
+Rsbuild شامل پشتیبانی داخلی برای قابلیت‌های ری‌اکت مانند بازسازی سریع، JSX، TypeScript و استایل‌دهی است. برای شروع، [راهنمای React Rsbuild](https://rsbuild.dev/guide/framework/react) را ببینید.
 
 <Note>
 
-#### Metro for React Native {/*react-native*/}
+#### Metro برای React Native {/*react-native*/}
 
-If you're starting from scratch with React Native you'll need to use [Metro](https://metrobundler.dev/), the JavaScript bundler for React Native. Metro supports bundling for platforms like iOS and Android, but lacks many features when compared to the tools here. We recommend starting with Vite, Parcel, or Rsbuild unless your project requires React Native support.
+اگر با React Native از ابتدا شروع می‌کنید، باید از [Metro](https://metrobundler.dev/)، بسته‌بند JavaScript برای React Native استفاده کنید. Metro از بسته‌بندی برای پلتفرم‌هایی مانند iOS و Android پشتیبانی می‌کند، اما در مقایسه با ابزارهای اینجا بسیاری از قابلیت‌ها را ندارد. ما توصیه می‌کنیم با Vite، Parcel یا Rsbuild شروع کنید مگر اینکه پروژه شما نیاز به پشتیبانی React Native داشته باشد.
 
 </Note>
 
-## Step 2: Build Common Application Patterns {/*step-2-build-common-application-patterns*/}
+## گام 2: ساخت الگوهای رایج برنامه {/*step-2-build-common-application-patterns*/}
 
-The build tools listed above start off with a client-only, single-page app (SPA), but don't include any further solutions for common functionality like routing, data fetching, or styling.
+ابزارهای ساخت ذکر شده در بالا با یک برنامه تک‌صفحه‌ای (SPA) فقط سمت کلاینت شروع می‌شوند، اما راه‌حل‌های بیشتری برای عملکردهای رایج مانند مسیریابی، واکشی داده یا استایل‌دهی ارائه نمی‌دهند.
 
-The React ecosystem includes many tools for these problems. We've listed a few that are widely used as a starting point, but feel free to choose other tools if those work better for you.
+اکوسیستم ری‌اکت شامل بسیاری از ابزارها برای این مشکلات است. ما چند مورد که به طور گسترده به عنوان نقطه شروع استفاده می‌شوند را فهرست کرده‌ایم، اما اگر ابزارهای دیگری برای شما بهتر کار می‌کنند، آزادانه از آنها استفاده کنید.
 
-### Routing {/*routing*/}
+### مسیریابی {/*routing*/}
 
-Routing determines what content or pages to display when a user visits a particular URL. You need to set up a router to map URLs to different parts of your app. You'll also need to handle nested routes, route parameters, and query parameters.  Routers can be configured within your code, or defined based on your component folder and file structures.
+مسیریابی تعیین می‌کند که چه محتوا یا صفحاتی هنگامی که کاربر از یک URL خاص بازدید می‌کند، نمایش داده شود. شما باید یک مسیریاب راه‌اندازی کنید تا URLها را به بخش‌های مختلف برنامه خود نگاشت کنید. همچنین باید مسیرهای تو در تو، پارامترهای مسیر و پارامترهای پرس‌وجو را مدیریت کنید. مسیریاب‌ها می‌توانند در کد شما پیکربندی شوند یا بر اساس ساختار پوشه و فایل کامپوننت شما تعریف شوند.
 
-Routers are a core part of modern applications, and are usually integrated with data fetching (including prefetching data for a whole page for faster loading), code splitting (to minimize client bundle sizes), and page rendering approaches (to decide how each page gets generated).
+مسیریاب‌ها بخش اصلی برنامه‌های مدرن هستند و معمولاً با واکشی داده (از جمله پیش‌واکشی داده برای یک صفحه کامل برای بارگذاری سریع‌تر)، تقسیم کد (برای به حداقل رساندن اندازه بسته کلاینت) و رویکردهای رندر صفحه (برای تصمیم‌گیری در مورد نحوه تولید هر صفحه) یکپارچه می‌شوند.
 
-We suggest using:
+ما پیشنهاد می‌کنیم از موارد زیر استفاده کنید:
 
 - [React Router](https://reactrouter.com/start/data/custom)
 - [Tanstack Router](https://tanstack.com/router/latest)
 
 
-### Data Fetching {/*data-fetching*/}
+### واکشی داده {/*data-fetching*/}
 
-Fetching data from a server or other data source is a key part of most applications. Doing this properly requires handling loading states, error states, and caching the fetched data, which can be complex.
+واکشی داده از یک سرور یا منبع داده دیگر بخش کلیدی اکثر برنامه‌ها است. انجام صحیح این کار نیاز به مدیریت وضعیت‌های بارگذاری، وضعیت‌های خطا و ذخیره‌سازی داده‌های واکشی شده دارد، که می‌تواند پیچیده باشد.
 
-Purpose-built data fetching libraries do the hard work of fetching and caching the data for you, letting you focus on what data your app needs and how to display it.  These libraries are typically used directly in your components, but can also be integrated into routing loaders for faster pre-fetching and better performance, and in server rendering as well.
+کتابخانه‌های واکشی داده هدفمند، کار سخت واکشی و ذخیره‌سازی داده را برای شما انجام می‌دهند و به شما اجازه می‌دهند تا روی داده‌هایی که برنامه شما نیاز دارد و نحوه نمایش آنها تمرکز کنید. این کتابخانه‌ها معمولاً مستقیماً در کامپوننت‌های شما استفاده می‌شوند، اما می‌توانند در لودرهای مسیریابی برای پیش‌واکشی سریع‌تر و عملکرد بهتر، و همچنین در رندر سرور یکپارچه شوند.
 
-Note that fetching data directly in components can lead to slower loading times due to network request waterfalls, so we recommend prefetching data in router loaders or on the server as much as possible!  This allows a page's data to be fetched all at once as the page is being displayed.
+توجه داشته باشید که واکشی داده مستقیماً در کامپوننت‌ها می‌تواند به دلیل آبشارهای درخواست شبکه منجر به زمان‌های بارگذاری کندتری شود، بنابراین ما توصیه می‌کنیم تا حد امکان داده را در لودرهای مسیریاب یا در سرور پیش‌واکشی کنید! این اجازه می‌دهد داده‌های یک صفحه همه با هم واکشی شوند زمانی که صفحه در حال نمایش است.
 
-If you're fetching data from most backends or REST-style APIs, we suggest using:
+اگر داده را از اکثر بک‌اندها یا APIهای سبک REST واکشی می‌کنید، ما پیشنهاد می‌کنیم از موارد زیر استفاده کنید:
 
 - [React Query](https://react-query.tanstack.com/)
 - [SWR](https://swr.vercel.app/)
 - [RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
 
-If you're fetching data from a GraphQL API, we suggest using:
+اگر داده را از یک API GraphQL واکشی می‌کنید، ما پیشنهاد می‌کنیم از موارد زیر استفاده کنید:
 
 - [Apollo](https://www.apollographql.com/docs/react)
 - [Relay](https://relay.dev/)
 
 
-### Code-splitting {/*code-splitting*/}
+### تقسیم کد {/*code-splitting*/}
 
-Code-splitting is the process of breaking your app into smaller bundles that can be loaded on demand. An app's code size increases with every new feature and additional dependency. Apps can become slow to load because all of the code for the entire app needs to be sent before it can be used. Caching, reducing features/dependencies, and moving some code to run on the server can help mitigate slow loading but are incomplete solutions that can sacrifice functionality if overused.
+تقسیم کد فرآیند شکستن برنامه شما به بسته‌های کوچکتری است که می‌توانند در صورت نیاز بارگذاری شوند. اندازه کد یک برنامه با هر قابلیت جدید و وابستگی اضافی افزایش می‌یابد. برنامه‌ها می‌توانند کند شوند زیرا تمام کد برای کل برنامه باید قبل از استفاده ارسال شود. ذخیره‌سازی، کاهش قابلیت‌ها/وابستگی‌ها و انتقال برخی کدها برای اجرا در سرور می‌تواند به کاهش بارگذاری کند کمک کند اما راه‌حل‌های ناقصی هستند که در صورت استفاده بیش از حد می‌توانند عملکرد را فدا کنند.
 
-Similarly, if you rely on the apps using your framework to split the code, you might encounter situations where loading becomes slower than if no code splitting were happening at all. For example, [lazily loading](/reference/react/lazy) a chart delays sending the code needed to render the chart, splitting the chart code from the rest of the app. [Parcel supports code splitting with React.lazy](https://parceljs.org/recipes/react/#code-splitting). However, if the chart loads its data *after* it has been initially rendered you are now waiting twice. This is a waterfall: rather than fetching the data for the chart and sending the code to render it simultaneously, you must wait for each step to complete one after the other.
+به طور مشابه، اگر به برنامه‌هایی که از فریم‌ورک شما استفاده می‌کنند برای تقسیم کد متکی باشید، ممکن است با مواردی مواجه شوید که بارگذاری کندتر از زمانی است که هیچ تقسیم کدی انجام نمی‌شد. به عنوان مثال، [بارگذاری تنبل](/reference/react/lazy) یک نمودار، ارسال کد مورد نیاز برای رندر نمودار را به تأخیر می‌اندازد و کد نمودار را از بقیه برنامه جدا می‌کند. [Parcel از تقسیم کد با React.lazy پشتیبانی می‌کند](https://parceljs.org/recipes/react/#code-splitting). با این حال، اگر نمودار داده‌های خود را *پس از* رندر اولیه بارگذاری کند، اکنون دو بار منتظر می‌مانید. این یک آبشار است: به جای واکشی همزمان داده‌های نمودار و ارسال کد برای رندر آن، باید منتظر تکمیل هر مرحله یکی پس از دیگری باشید.
 
-Splitting code by route, when integrated with bundling and data fetching, can reduce the initial load time of your app and the time it takes for the largest visible content of the app to render ([Largest Contentful Paint](https://web.dev/articles/lcp)).
+تقسیم کد بر اساس مسیر، هنگامی که با بسته‌بندی و واکشی داده یکپارچه می‌شود، می‌تواند زمان بارگذاری اولیه برنامه شما و زمان رندر بزرگترین محتوای قابل مشاهده برنامه را کاهش دهد ([Largest Contentful Paint](https://web.dev/articles/lcp)).
 
-For code-splitting instructions, see your build tool docs:
-- [Vite build optimizations](https://vite.dev/guide/features.html#build-optimizations)
-- [Parcel code splitting](https://parceljs.org/features/code-splitting/)
-- [Rsbuild code splitting](https://rsbuild.dev/guide/optimization/code-splitting)
+برای دستورالعمل‌های تقسیم کد، به اسناد ابزار ساخت خود مراجعه کنید:
+- [بهینه‌سازی‌های ساخت Vite](https://vite.dev/guide/features.html#build-optimizations)
+- [تقسیم کد Parcel](https://parceljs.org/features/code-splitting/)
+- [تقسیم کد Rsbuild](https://rsbuild.dev/guide/optimization/code-splitting)
 
-### Improving Application Performance {/*improving-application-performance*/}
+### بهبود عملکرد برنامه {/*improving-application-performance*/}
 
-Since the build tool you select only supports single page apps (SPAs), you'll need to implement other [rendering patterns](https://www.patterns.dev/vanilla/rendering-patterns) like server-side rendering (SSR), static site generation (SSG), and/or React Server Components (RSC). Even if you don't need these features at first, in the future there may be some routes that would benefit SSR, SSG or RSC.
+از آنجا که ابزار ساخت انتخابی شما فقط از برنامه‌های تک‌صفحه‌ای (SPA) پشتیبانی می‌کند، باید [الگوهای رندر](https://www.patterns.dev/vanilla/rendering-patterns) دیگری مانند رندر سمت سرور (SSR)، تولید سایت استاتیک (SSG) و/یا کامپوننت‌های سرور ری‌اکت (RSC) را پیاده‌سازی کنید. حتی اگر در ابتدا به این قابلیت‌ها نیاز ندارید، در آینده ممکن است برخی مسیرها از SSR، SSG یا RSC بهره‌مند شوند.
 
-* **Single-page apps (SPA)** load a single HTML page and dynamically updates the page as the user interacts with the app. SPAs are easier to get started with, but they can have slower initial load times. SPAs are the default architecture for most build tools.
+* **برنامه‌های تک‌صفحه‌ای (SPA)** یک صفحه HTML واحد را بارگذاری می‌کنند و به صورت پویا صفحه را هنگام تعامل کاربر با برنامه به‌روز می‌کنند. SPAها شروع آسان‌تری دارند، اما می‌توانند زمان بارگذاری اولیه کندتری داشته باشند. SPAها معماری پیش‌فرض برای اکثر ابزارهای ساخت هستند.
 
-* **Streaming Server-side rendering (SSR)** renders a page on the server and sends the fully rendered page to the client. SSR can improve performance, but it can be more complex to set up and maintain than a single-page app. With the addition of streaming, SSR can be very complex to set up and maintain. See [Vite's SSR guide]( https://vite.dev/guide/ssr).
+* **رندر سمت سرور با استریمینگ (SSR)** یک صفحه را در سرور رندر می‌کند و صفحه کاملاً رندر شده را به کلاینت ارسال می‌کند. SSR می‌تواند عملکرد را بهبود بخشد، اما راه‌اندازی و نگهداری آن می‌تواند پیچیده‌تر از یک برنامه تک‌صفحه‌ای باشد. با افزودن استریمینگ، SSR می‌تواند بسیار پیچیده برای راه‌اندازی و نگهداری باشد. [راهنمای SSR Vite](https://vite.dev/guide/ssr) را ببینید.
 
-* **Static site generation (SSG)** generates static HTML files for your app at build time. SSG can improve performance, but it can be more complex to set up and maintain than server-side rendering. See [Vite's SSG guide](https://vite.dev/guide/ssr.html#pre-rendering-ssg).
+* **تولید سایت استاتیک (SSG)** فایل‌های HTML استاتیک را برای برنامه شما در زمان ساخت تولید می‌کند. SSG می‌تواند عملکرد را بهبود بخشد، اما راه‌اندازی و نگهداری آن می‌تواند پیچیده‌تر از رندر سمت سرور باشد. [راهنمای SSG Vite](https://vite.dev/guide/ssr.html#pre-rendering-ssg) را ببینید.
 
-* **React Server Components (RSC)** lets you mix build-time, server-only, and interactive components in a single React tree. RSC can improve performance, but it currently requires deep expertise to set up and maintain. See [Parcel's RSC examples](https://github.com/parcel-bundler/rsc-examples).
+* **کامپوننت‌های سرور ری‌اکت (RSC)** به شما امکان می‌دهد کامپوننت‌های زمان ساخت، فقط سرور و تعاملی را در یک درخت ری‌اکت واحد ترکیب کنید. RSC می‌تواند عملکرد را بهبود بخشد، اما در حال حاضر نیاز به تخصص عمیق برای راه‌اندازی و نگهداری دارد. [نمونه‌های RSC Parcel](https://github.com/parcel-bundler/rsc-examples) را ببینید.
 
-Your rendering strategies need to integrate with your router so apps built with your framework can choose the rendering strategy on a per-route level. This will enable different rendering strategies without having to rewrite your whole app. For example, the landing page for your app might benefit from being statically generated (SSG), while a page with a content feed might perform best with server-side rendering. 
+استراتژی‌های رندر شما باید با مسیریاب شما یکپارچه شوند تا برنامه‌های ساخته شده با فریم‌ورک شما بتوانند استراتژی رندر را در سطح مسیر انتخاب کنند. این امکان استراتژی‌های رندر مختلف را بدون نیاز به بازنویسی کل برنامه فراهم می‌کند. به عنوان مثال، صفحه اصلی برنامه شما ممکن است از تولید استاتیک (SSG) بهره‌مند شود، در حالی که یک صفحه با فید محتوا ممکن است با رندر سمت سرور بهترین عملکرد را داشته باشد.
 
-Using the right rendering strategy for the right routes can decrease the time it takes for the first byte of content to be loaded ([Time to First Byte](https://web.dev/articles/ttfb)), the first piece of content to render ([First Contentful Paint](https://web.dev/articles/fcp)), and the largest visible content of the app to render ([Largest Contentful Paint](https://web.dev/articles/lcp)).
+استفاده از استراتژی رندر مناسب برای مسیرهای مناسب می‌تواند زمان لازم برای بارگذاری اولین بایت محتوا ([Time to First Byte](https://web.dev/articles/ttfb))، اولین قطعه محتوا برای رندر ([First Contentful Paint](https://web.dev/articles/fcp)) و بزرگترین محتوای قابل مشاهده برنامه برای رندر ([Largest Contentful Paint](https://web.dev/articles/lcp)) را کاهش دهد.
 
-### And more... {/*and-more*/}
+### و بیشتر... {/*and-more*/}
 
-These are just a few examples of the features a new app will need to consider when building from scratch. Many limitations you'll hit can be difficult to solve as each problem is interconnected with the others and can require deep expertise in problem areas you may not be familiar with. 
+اینها فقط چند نمونه از قابلیت‌هایی هستند که یک برنامه جدید هنگام ساخت از ابتدا باید در نظر بگیرد. بسیاری از محدودیت‌هایی که با آنها مواجه خواهید شد می‌توانند حل آنها دشوار باشد زیرا هر مشکل با دیگری مرتبط است و ممکن است نیاز به تخصص عمیق در زمینه‌های مشکلی داشته باشد که ممکن است با آنها آشنا نباشید.
 
-If you don't want to solve these problems on your own, you can [get started with a framework](/learn/creating-a-react-app) that provides these features out of the box. 
+اگر نمی‌خواهید این مشکلات را به تنهایی حل کنید، می‌توانید [با یک فریم‌ورک شروع کنید](/learn/creating-a-react-app) که این قابلیت‌ها را از ابتدا ارائه می‌دهد.
