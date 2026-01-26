@@ -10,7 +10,11 @@ Directives are for use in [React Server Components](/reference/rsc/server-compon
 
 <Intro>
 
+<<<<<<< HEAD
 Directives provide instructions to [bundlers compatible with React Server Components](/learn/start-a-new-react-project#full-stack-frameworks).
+=======
+Directives provide instructions to [bundlers compatible with React Server Components](/learn/creating-a-react-app#full-stack-frameworks).
+>>>>>>> a1ddcf51a08cc161182b90a24b409ba11289f73e
 
 </Intro>
 
