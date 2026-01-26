@@ -2,12 +2,15 @@
 title: Server Components
 ---
 
+<<<<<<< HEAD
 <RSC>
 
 Server Components are for use in [React Server Components](/learn/start-a-new-react-project#full-stack-frameworks).
 
 </RSC>
 
+=======
+>>>>>>> a1ddcf51a08cc161182b90a24b409ba11289f73e
 <Intro>
 
 Server Components are a new type of Component that renders ahead of time, before bundling, in an environment separate from your client app or SSR server.
@@ -293,7 +296,7 @@ function Comments({commentsPromise}) {
   // NOTE: this will resume the promise from the server.
   // It will suspend until the data is available.
   const comments = use(commentsPromise);
-  return comments.map(commment => <p>{comment}</p>);
+  return comments.map(comment => <p>{comment}</p>);
 }
 ```
 
