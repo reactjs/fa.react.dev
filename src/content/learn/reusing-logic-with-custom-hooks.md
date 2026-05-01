@@ -820,7 +820,7 @@ export default function ChatRoom({ roomId }) {
   // ...
 ```
 
-and pass it as an input to another Hook:
+and passing it as an input to another Hook:
 
 ```js {6}
 export default function ChatRoom({ roomId }) {
@@ -1333,7 +1333,7 @@ export function useOnlineStatus() {
 
 In the above example, `useOnlineStatus` is implemented with a pair of [`useState`](/reference/react/useState) and [`useEffect`.](/reference/react/useEffect) However, this isn't the best possible solution. There is a number of edge cases it doesn't consider. For example, it assumes that when the component mounts, `isOnline` is already `true`, but this may be wrong if the network already went offline. You can use the browser [`navigator.onLine`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine) API to check for that, but using it directly would not work on the server for generating the initial HTML. In short, this code could be improved.
 
-Luckily, React 18 includes a dedicated API called [`useSyncExternalStore`](/reference/react/useSyncExternalStore) which takes care of all of these problems for you. Here is how your `useOnlineStatus` Hook, rewritten to take advantage of this new API:
+React includes a dedicated API called [`useSyncExternalStore`](/reference/react/useSyncExternalStore) which takes care of all of these problems for you. Here is your `useOnlineStatus` Hook, rewritten to take advantage of this new API:
 
 <Sandpack>
 
@@ -1419,10 +1419,29 @@ Similar to a [design system,](https://uxdesign.cc/everything-you-need-to-know-ab
 
 #### Will React provide any built-in solution for data fetching? {/*will-react-provide-any-built-in-solution-for-data-fetching*/}
 
+Today, with the [`use`](/reference/react/use#streaming-data-from-server-to-client) API, data can be read in render by passing a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) to `use`:
+
+```js {1,4,11}
+import { use, Suspense } from "react";
+
+function Message({ messagePromise }) {
+  const messageContent = use(messagePromise);
+  return <p>Here is the message: {messageContent}</p>;
+}
+
+export function MessageContainer({ messagePromise }) {
+  return (
+    <Suspense fallback={<p>⌛Downloading message...</p>}>
+      <Message messagePromise={messagePromise} />
+    </Suspense>
+  );
+}
+```
+
 We're still working out the details, but we expect that in the future, you'll write data fetching like this:
 
 ```js {1,4,6}
-import { use } from 'react'; // Not available yet!
+import { use } from 'react';
 
 function ShippingForm({ country }) {
   const cities = use(fetch(`/api/cities?country=${country}`));
@@ -1899,7 +1918,7 @@ export default function Counter() {
 }
 ```
 
-You'll need to write your custom Hook in `useCounter.js` and import it into the `Counter.js` file.
+You'll need to write your custom Hook in `useCounter.js` and import it into the `App.js` file.
 
 <Sandpack>
 
@@ -2081,7 +2100,6 @@ Write `useInterval` in the `useInterval.js` file and import it into the `useCoun
 <Sandpack>
 
 ```js
-import { useState } from 'react';
 import { useCounter } from './useCounter.js';
 
 export default function Counter() {

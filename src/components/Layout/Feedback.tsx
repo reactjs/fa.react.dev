@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 /*
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
@@ -67,7 +74,9 @@ function SendFeedback({onSubmit}: {onSubmit: () => void}) {
         {exit: isSubmitted}
       )}>
       <p className="w-full text-lg font-bold text-primary dark:text-primary-dark me-4">
-        {isSubmitted ? 'Thank you for your feedback!' : 'Is this page useful?'}
+        {isSubmitted
+          ? 'از بازخورد شما سپاسگزاریم!'
+          : 'آیا این صفحه برایتان مفید بود؟'}
       </p>
       {!isSubmitted && (
         <button

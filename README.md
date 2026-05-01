@@ -256,6 +256,19 @@ yarn dev
         </sub>
       </a>
     </td>
+    <td align="center">
+      <a href="https://github.com/mrbadri">
+        <img
+          src="https://avatars.githubusercontent.com/u/85818966?v=4"
+          width="64px;"
+          alt=""
+        />
+        <br />
+        <sub>
+          <b>Mohammad Reza Badri</b>
+        </sub>
+      </a>
+    </td>
   </tr>
 </table>
 <p dir="rtl">

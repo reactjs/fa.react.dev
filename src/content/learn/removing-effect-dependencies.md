@@ -303,7 +303,7 @@ Suppressing the linter leads to very unintuitive bugs that are hard to find and 
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [14]}}
 import { useState, useEffect } from 'react';
 
 export default function Timer() {
@@ -794,7 +794,7 @@ It is important to declare it as a dependency! This ensures, for example, that i
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [10]}}
 import { useState, useEffect } from 'react';
 import { createConnection } from './chat.js';
 
@@ -1241,7 +1241,7 @@ export default function Timer() {
 
 </Sandpack>
 
-Instead of reading `count` inside the Effect, you pass a `c => c + 1` instruction ("increment this number!") to React. React will apply it on the next render. And since you don't need to read the value of `count` inside your Effect anymore, so you can keep your Effect's dependencies empty (`[]`). This prevents your Effect from re-creating the interval on every tick.
+Instead of reading `count` inside the Effect, you pass a `c => c + 1` instruction ("increment this number!") to React. React will apply it on the next render. And since you don't need to read the value of `count` inside your Effect anymore, you can keep your Effect's dependencies empty (`[]`). This prevents your Effect from re-creating the interval on every tick.
 
 </Solution>
 

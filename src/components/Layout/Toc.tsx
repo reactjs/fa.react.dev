@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 /*
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
@@ -16,7 +23,7 @@ export function Toc({headings}: {headings: Toc}) {
     <nav role="navigation" className="pt-20 sticky top-0 end-0">
       {headings.length > 0 && (
         <h2 className="mb-3 lg:mb-3 uppercase tracking-wide font-bold text-sm text-secondary dark:text-secondary-dark px-4 w-full">
-          On this page
+          در این صفحه
         </h2>
       )}
       <div

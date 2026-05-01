@@ -1,17 +1,10 @@
 ---
 title: preloadModule
-canary: true
 ---
-
-<Canary>
-
-The `preloadModule` function is currently only available in React's Canary and experimental channels. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
-
-</Canary>
 
 <Note>
 
-[React-based frameworks](/learn/start-a-new-react-project) frequently handle resource loading for you, so you might not have to call this API yourself. Consult your framework's documentation for details.
+[React-based frameworks](/learn/creating-a-react-app) frequently handle resource loading for you, so you might not have to call this API yourself. Consult your framework's documentation for details.
 
 </Note>
 
@@ -66,7 +59,7 @@ The `preloadModule` function provides the browser with a hint that it should sta
 #### Caveats {/*caveats*/}
 
 * Multiple calls to `preloadModule` with the same `href` have the same effect as a single call.
-* In the browser, you can call `preloadModule` in any situation: while rendering a component, in an effect, in an event handler, and so on.
+* In the browser, you can call `preloadModule` in any situation: while rendering a component, in an Effect, in an event handler, and so on.
 * In server-side rendering or when rendering Server Components, `preloadModule` only has an effect if you call it while rendering a component or in an async context originating from rendering a component. Any other calls will be ignored.
 
 ---

@@ -4,21 +4,21 @@ title: Your First Component
 
 <Intro>
 
-*کامپوننت ها* یکی از مهمترین مباحث اصلی در ریکت است. آنها پایه و اساس رابط های کاربری هستند که مکان خوبی را برای سفر ریکتی شما فراهم میکند!
+*Components* are one of the core concepts of React. They are the foundation upon which you build user interfaces (UI), which makes them the perfect place to start your React journey!
 
 </Intro>
 
 <YouWillLearn>
 
-* کامپوننت چیست
-* قوانین اجرا و پیاده سازی کامپوننت در ریکت به چه صورت است
-* چطور اولین کامپوننت خود را بنویسید
+* What a component is
+* What role components play in a React application
+* How to write your first React component
 
 </YouWillLearn>
 
-## کامپوننت ها: بلوک های تشکیل دهنده یک UI {/*components-ui-building-blocks*/}
+## Components: UI building blocks {/*components-ui-building-blocks*/}
 
-در وب, HTML به ما اجازه میدهد تا یک سند پیشرفته ای را توسط تگ هایی مانند `<h1>` و`<li>` بسازیم:
+On the Web, HTML lets us create rich structured documents with its built-in set of tags like `<h1>` and `<li>`:
 
 ```html
 <article>
@@ -31,11 +31,11 @@ title: Your First Component
 </article>
 ```
 
-در این بخش ما یک بخشی را با تگ `article` مشخص کردیم و یک تگ `h1` داریم که داخل آن متن داریم. یک لیست بعد از آن داریم که با تگ `ol` مشخص کردیم و این لیست دارای سه آیتم است. کد مانند بالا مسلما دارای یکسری کد CSS برای استایل دهی و کد Javascript برای داینامیک بودن هست. مثل منو ها, لیست های کشویی و آکاردئونی, مودال ها یا هرآن چیزی که در صفحات وب مشاهده میکنید.
+This markup represents this article `<article>`, its heading `<h1>`, and an (abbreviated) table of contents as an ordered list `<ol>`. Markup like this, combined with CSS for style, and JavaScript for interactivity, lies behind every sidebar, avatar, modal, dropdown—every piece of UI you see on the Web.
 
-ریکت به شما اجازه میدهد بخش های سایتتان را داختل یک "کامپوننت" همراه با استایل و اسکریپت های مربوطه ذخیره کنید. در فهرست  **reusable UI elements for your app.** شما خواهید دید که یک کامپوننتی مانند `<TableOfContents />` را میتوانید در هر صفحه ای از آن استفاده کنید و سپس در پشت صفحه همین کامپوننت تبدیل به تگ هایی مانند `<h1>` و `<article>` شده است.
+React lets you combine your markup, CSS, and JavaScript into custom "components", **reusable UI elements for your app.** The table of contents code you saw above could be turned into a `<TableOfContents />` component you could render on every page. Under the hood, it still uses the same HTML tags like `<article>`, `<h1>`, etc.
 
-درست مانند تگ های HTML, شما میتوانید کامپوننت هارا برای همه صفحات بسازید, سفارشی سازی و ذخیره کنید. مانند همین داکیومنتی که الان درحال خواندن آن هستید متشکل از کامپوننت های React است.
+Just like with HTML tags, you can compose, order and nest components to design whole pages. For example, the documentation page you're reading is made out of React components:
 
 ```js
 <PageLayout>
@@ -51,11 +51,11 @@ title: Your First Component
 </PageLayout>
 ```
 
-همانطور که پروژه شما بزرگ و بزرگتر میشود, توجه خواهید کرد که بسیاری از دیزاین هایی که تبدیل به کامپوننت شدند را میتوانید در هرجایی از صفحات پروژه استفاده کنید و سرعت توسعه را بالا ببرید. همچنین میتوانید در پروژه های خود از کامپوننت یا کتابخانه های آماده ای که تیم React منتشر کرده اند مثل [Material UI.](https://material-ui.com/) و  [Chakra UI](https://chakra-ui.com/)  استفاده کنید.
+As your project grows, you will notice that many of your designs can be composed by reusing components you already wrote, speeding up your development. Our table of contents above could be added to any screen with `<TableOfContents />`! You can even jumpstart your project with the thousands of components shared by the React open source community like [Chakra UI](https://chakra-ui.com/) and [Material UI.](https://material-ui.com/)
 
-##  تعریف یک کامپوننت {/*defining-a-component*/}
+## Defining a component {/*defining-a-component*/}
 
-قبلا برای ساخت صفحات وب از تگ های HTML استفاده و برای داینامیک کردن آنها کد های جاوااسکریپتی نوشته میشد, که در زمان خود راه خوبی بود. ولی امروزه چون توی صفحات وب بخواهید اینتراکشن و پویایی بیشتری داشته باشند باید اسکریپت های بیشتری اضافه کنید. که React تعامل را اولویت قرار میدهد ولی هنوز از همان تکنولوژی استفاده میکند: **یک کامپوننت React تابع جاوااسکریپتی است که شما میتوانید تگ های HTML را در آن بنویسید**که به این صورت نوشته میشود (میتوانید مثال زیر را تغییر دهید)
+Traditionally when creating web pages, web developers marked up their content and then added interaction by sprinkling on some JavaScript. This worked great when interaction was a nice-to-have on the web. Now it is expected for many sites and all apps. React puts interactivity first while still using the same technology: **a React component is a JavaScript function that you can _sprinkle with markup_.** Here's what that looks like (you can edit the example below):
 
 <Sandpack>
 
@@ -76,33 +76,33 @@ img { height: 200px; }
 
 </Sandpack>
 
-در اینجا به شما میگوییم که چگونه یک کامپوننت بسازید:
+And here's how to build a component:
 
-### قدم اول: خروجی گرفتن (Export) یک کامپوننت {/*step-1-export-the-component*/}
+### Step 1: Export the component {/*step-1-export-the-component*/}
 
-دستور `export default` یک پیشوند در زبان جاوااسکریپت است [standard JavaScript syntax](https://developer.mozilla.org/docs/web/javascript/reference/statements/export) (نه فقط در React), به شما اجازه میدهد که تابع اصلی خود را در فایل خروجی بگیرید و در فایل دیگر import کنید. (درباره Import بدانید [Importing and Exporting Components](/learn/importing-and-exporting-components)!)
+The `export default` prefix is a [standard JavaScript syntax](https://developer.mozilla.org/docs/web/javascript/reference/statements/export) (not specific to React). It lets you mark the main function in a file so that you can later import it from other files. (More on importing in [Importing and Exporting Components](/learn/importing-and-exporting-components)!)
 
-### قدم دوم: ساخت و تعریف توابع {/*step-2-define-the-function*/}
+### Step 2: Define the function {/*step-2-define-the-function*/}
 
-با دستور `function Profile() { }` شما میتوانید یک تابع جاوااسکریپتی با نام `Profile` تعریف کنید.
+With `function Profile() { }` you define a JavaScript function with the name `Profile`.
 
 <Pitfall>
 
-کامپوننت های React همان توابع معمولی در جاوااسکریپت هستند, با این تفاوت که باید  **حرف اول اسم آن از حروف بزرگ باشد** وگرنه ارور میدهد!
+React components are regular JavaScript functions, but **their names must start with a capital letter** or they won't work!
 
 </Pitfall>
 
-###  قدم سوم: اضافه کردن تگ HTML {/*step-3-add-markup*/}
+### Step 3: Add markup {/*step-3-add-markup*/}
 
-کامپوننت زیر یک تگ `<img />` را به همراه اتریبیوت های `src` و `alt` برمیگرداند. `<img />` مانند HTML نوشته میشود ولی این یک دستور جاوااسکریپتی است! اسم این سینتکس [JSX](/learn/writing-markup-with-jsx) است, و به شما اجازه میدهد تا تگ های HTML را مستقیما در یک فایل جاوااسکریپت بنویسید.
+The component returns an `<img />` tag with `src` and `alt` attributes. `<img />` is written like HTML, but it is actually JavaScript under the hood! This syntax is called [JSX](/learn/writing-markup-with-jsx), and it lets you embed markup inside JavaScript.
 
-دستور `return` را هم میتوان به این صورت در یک خط نوشت:
+Return statements can be written all on one line, as in this component:
 
 ```js
 return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />;
 ```
 
-اما اگر نمیتوانید کل تگ های HTML را در یک خط بنویسید فقط کافیست بعد از دستور return یک جفت پرانتز قرار بدهید و تگ هارا داخل آن بنویسید:
+But if your markup isn't all on the same line as the `return` keyword, you must wrap it in a pair of parentheses:
 
 ```js
 return (
@@ -114,13 +114,13 @@ return (
 
 <Pitfall>
 
-بدون پرانتز, خط های بعد از دستور `return` [نادیده گرفته میشوند](https://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi)!
+Without parentheses, any code on the lines after `return` [will be ignored](https://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi)!
 
 </Pitfall>
 
-##  استفاده از یک کامپوننت {/*using-a-component*/}
+## Using a component {/*using-a-component*/}
 
-بعد از اینکه کامپونت `Profile` خود را ساخته اید, الان وقت آن رسیده که همان کامپوننت را در میان کامپوننت های دیگر قرار بدهید. به عنوان مثال شما میتوانید کامپوننت `Gallery` را به همراه چند کامپوننت `Profile` که داخل آن استفاده شده است را export کنید:
+Now that you've defined your `Profile` component, you can nest it inside other components. For example, you can export a `Gallery` component that uses multiple `Profile` components:
 
 <Sandpack>
 
@@ -152,14 +152,14 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-### از دید مرورگر ها چه میگذرد {/*what-the-browser-sees*/}
+### What the browser sees {/*what-the-browser-sees*/}
 
-به تفاوت های زیر توجه کنید:
+Notice the difference in casing:
 
-* `<section>` با حرف کوچک شروع شده پس React میداند که این یک تگ HTML است.
-* `<Profile />` با حرف بزرگ `P` شروع شده پس ریکت متوجه میشود که ما کامپوننتی به نام `Profile` داریم. پس باید رندر شود.
+* `<section>` is lowercase, so React knows we refer to an HTML tag.
+* `<Profile />` starts with a capital `P`, so React knows that we want to use our component called `Profile`.
 
-و کامپوننت Profile شامل یکسری تگ HTML است: `<img />`. و درآخر, کد زیر چیزی هست که مرورگر میبیند:
+And `Profile` contains even more HTML: `<img />`. In the end, this is what the browser sees:
 
 ```html
 <section>
@@ -170,19 +170,19 @@ img { margin: 0 10px 10px 0; height: 90px; }
 </section>
 ```
 
-###  قرار دادن کامپوننت داخل یک کامپوننت دیگر {/*nesting-and-organizing-components*/}
+### Nesting and organizing components {/*nesting-and-organizing-components*/}
 
-کامپوننت ها درواقع فانکشن های معمولی جاوااسکریپت هستند, پس شما میتوانید در یک فایل چند کامپوننت تعریف کنید که معمولا زمانی استفاده میشود که کامپوننت ها نسبتا کوچک یا باهم ربطی داشته باشند و اگر فایل شلوغ شد آنها را در فایل های جداگانه ای قرار بدهید. درباره انجام دادن آن و [دستور Import](/learn/importing-and-exporting-components) میتوانید مطالعه کنید.
+Components are regular JavaScript functions, so you can keep multiple components in the same file. This is convenient when components are relatively small or tightly related to each other. If this file gets crowded, you can always move `Profile` to a separate file. You will learn how to do this shortly on the [page about imports.](/learn/importing-and-exporting-components)
 
-چون کامپوننت `Profile` داخل کامپوننت `Gallery` هست و چندین بار هم تکرار شده, و همچنین کامپوننت `Gallery` یک کامپوننت والد یا **parent component** که کامپوننت `Gallery` که فرزندان خودش هست را اجرا یا رندر گیری میکند. این بخشی از جادو ریکت است: که میتوانید کامپوننت را یکبار تعریف کنید و هرچند باری که لازم داشتید صدا بزنید.
+Because the `Profile` components are rendered inside `Gallery`—even several times!—we can say that `Gallery` is a **parent component,** rendering each `Profile` as a "child". This is part of the magic of React: you can define a component once, and then use it in as many places and as many times as you like.
 
 <Pitfall>
 
-کامپوننت ها میتوانند کامپوننت های داخلی خود را رندر بگیرند, ولی به این مورد توجه کنید  **به هیچ وجه کامپوننت هارا تودرتو تعریف نکنید:**. مثلا:
+Components can render other components, but **you must never nest their definitions:**
 
 ```js {2-5}
 export default function Gallery() {
-   // 🔴 به هیچ وجه کامپوننتی داخل یک کامپوننت تعریف نشود
+  // 🔴 Never define a component inside another component!
   function Profile() {
     // ...
   }
@@ -190,47 +190,47 @@ export default function Gallery() {
 }
 ```
 
-کد بالا [کند است و ممکن است مشکلاتی به بار بیاورد](/learn/preserving-and-resetting-state#different-components-at-the-same-position-reset-state) به جای آن, کامپوننت هارا زیر هم دیگر تعریف کنید. به این صورت:
+The snippet above is [very slow and causes bugs.](/learn/preserving-and-resetting-state#different-components-at-the-same-position-reset-state) Instead, define every component at the top level:
 
 ```js {5-8}
 export default function Gallery() {
   // ...
 }
 
-// ✅ تعریف کامپوننت زیر همدیگر
+// ✅ Declare components at the top level
 function Profile() {
   // ...
 }
 ```
 
-زمانی که لازم است داده هاای کامپوننت پدر به کامپوننت فرزند انتقال شود و بجای اینکه کامپوننت هارا داخل همدیگر تعریف کنیم, بهتر است از [props](/learn/passing-props-to-a-component) استفاده میکنیم.
+When a child component needs some data from a parent, [pass it by props](/learn/passing-props-to-a-component) instead of nesting definitions.
 
 </Pitfall>
 
 <DeepDive>
 
-####  استفاده از کامپوننت ها {/*components-all-the-way-down*/}
+#### Components all the way down {/*components-all-the-way-down*/}
 
-اپلیکیشن ریکتی شما از کامپوننت `root` شروع میشود. معمولا زمانی که یک پروژه جدید میسازید این کامپوننت ساخته میشود, مثلا اگر شما از [CodeSandbox](https://codesandbox.io/) یا [Create React App](https://create-react-app.dev/) استفاده میکنید, به طور پیش فرض داخل `src/App.js` تعریف شده. اگر از فریمورک [Next.js](https://nextjs.org/) استفاده میکنید, کامپوننت `root` داخل `pages/index.js` تعریف شده است.
+Your React application begins at a "root" component. Usually, it is created automatically when you start a new project. For example, if you use [CodeSandbox](https://codesandbox.io/) or if you use the framework [Next.js](https://nextjs.org/), the root component is defined in `pages/index.js`. In these examples, you've been exporting root components.
 
-اکثر برنامه های ریکتی از کامپوننت برای سازماندهی بخش های وبسایت استفاده میکنند. چه برای بخش های کوچکی مانند دکمه یا متن ها, چه برای بخش های بزرگتر صفحه مانند منو یا لیست کشویی.
+Most React apps use components all the way down. This means that you won't only use components for reusable pieces like buttons, but also for larger pieces like sidebars, lists, and ultimately, complete pages! Components are a handy way to organize UI code and markup, even if some of them are only used once.
 
-اگر از [React-based frameworks](/learn/start-a-new-react-project) استفاده کنیم, نسبت به تعریف HTML, فرایند توسعه صفحات سریعتر پیش میرود.
+[React-based frameworks](/learn/start-a-new-react-project) take this a step further. Instead of using an empty HTML file and letting React "take over" managing the page with JavaScript, they *also* generate the HTML automatically from your React components. This allows your app to show some content before the JavaScript code loads.
 
-همچنان بسیاری از وبسایت ها از React برای [داینامیک کردن صفحات](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page) استفاده میشود. انها بجای یک کامپوننت root از کامپوننت بیشتر و ریزتری استفاده کردند. شما میتوانید هرچقدر که نیاز دارید از کتابخانه ریکت استفاده کنید.
+Still, many websites only use React to [add interactivity to existing HTML pages.](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page) They have many root components instead of a single one for the entire page. You can use as much—or as little—React as you need.
 
 </DeepDive>
 
 <Recap>
 
-شما اکنون برای اولین بار طعم React را چشیده اید! اجازه بدهید یکسری موارد را مرور کنیم:
+You've just gotten your first taste of React! Let's recap some key points.
 
-* ریکت به شما اجازه میدهد کامپوننت های خود را, **که اجزایی هستند که میتوان چندین بار داخل اپلیکیشن استفاده کرد .** را توسعه دهید.
-* در یک اپلیکیشن ریکتی, هر جایی از صفحه (دراینجا رابط کاربری) یک کامپوننت است.
-* کامپوننت های ریکتی درواقع توابع معمولی جاوااسکریپتی هستند. البته باید :
+* React lets you create components, **reusable UI elements for your app.**
+* In a React app, every piece of UI is a component.
+* React components are regular JavaScript functions except:
 
-  1. اسم آنها با حروف بزرگ شروع شود.
-  2. کد JSX برگردانند.
+  1. Their names always begin with a capital letter.
+  2. They return JSX markup.
 
 </Recap>
 
@@ -238,9 +238,9 @@ function Profile() {
 
 <Challenges>
 
-#### خروجی گرفتن (export) از کامپوننت {/*export-the-component*/}
+#### Export the component {/*export-the-component*/}
 
-کد زیر قاعدتا کار نخواهد کرد. چون کامپوننت اصلی (root) را اکسپورت نکرده ایم:
+This sandbox doesn't work because the root component is not exported:
 
 <Sandpack>
 
@@ -261,11 +261,11 @@ img { height: 181px; }
 
 </Sandpack>
 
-برای رفع این مشکل, به راه حل زیر دقت کنید!
+Try to fix it yourself before looking at the solution!
 
 <Solution>
 
-دستور `export default` را قبل از تابع اضافه کنید, مانند مثال زیر:
+Add `export default` before the function definition like so:
 
 <Sandpack>
 
@@ -286,17 +286,17 @@ img { height: 181px; }
 
 </Sandpack>
 
-شاید برایتان سوال باشد که تنها دستور `export` برای حل مشکل بالا کافی بود. اگر درباره تفاوت های بین `export` و `export default` را نمیدانید, مقاله [import و export کردن یک کامپوننت](/learn/importing-and-exporting-components) بخوانید
+You might be wondering why writing `export` alone is not enough to fix this example. You can learn the difference between `export` and `export default` in [Importing and Exporting Components.](/learn/importing-and-exporting-components)
 
 </Solution>
 
-#### رفع مشکل دستور return {/*fix-the-return-statement*/}
+#### Fix the return statement {/*fix-the-return-statement*/}
 
-عبارت `return` در این کد اشتباه است. میتونی درستش کنی؟!
+Something isn't right about this `return` statement. Can you fix it?
 
 <Hint>
 
-شاید شما در حین رفع مشکل این دستور به ارور "Unexpected token" برخورد کرده باشید. توجه کنید که حتما سمی کالن بعد از پرانتز بسته `() return` باشد. درغیراینصورت به ارور برخورد میکنید.
+You may get an "Unexpected token" error while trying to fix this. In that case, check that the semicolon appears *after* the closing parenthesis. Leaving a semicolon inside `return ( )` will cause an error.
 
 </Hint>
 
@@ -318,7 +318,7 @@ img { height: 180px; }
 
 <Solution>
 
-برای رفع مشکل این کامپوننت, میتوانید دستور JSX را در یک خط تایپ کنید:
+You can fix this component by moving the return statement to one line like so:
 
 <Sandpack>
 
@@ -334,7 +334,7 @@ img { height: 180px; }
 
 </Sandpack>
 
-یا دستور JSX را مابین پرانتز باز و بسته بعد از `return` قرار بدهید:
+Or by wrapping the returned JSX markup in parentheses that open right after `return`:
 
 <Sandpack>
 
@@ -357,9 +357,9 @@ img { height: 180px; }
 
 </Solution>
 
-#### ارور را تشخیص دهید {/*spot-the-mistake*/}
+#### Spot the mistake {/*spot-the-mistake*/}
 
-کامپوننت `Profile` را در اینجا تعریف کردیم و زمانی که داریم استفاده میکنیم به ما خطا میدهد! به این معنا است که ریکت, کامپوننت را با یک تگ HTML اشتباه گرفته!
+Something's wrong with how the `Profile` component is declared and used. Can you spot the mistake? (Try to remember how React distinguishes components from the regular HTML tags!)
 
 <Sandpack>
 
@@ -393,9 +393,9 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 <Solution>
 
-نامگذاری کامپونت های ریکتی حتما باید با حرف بزرگ شروع شود!
+React component names must start with a capital letter.
 
-دستور `()function profile` را به `()function Profile` تغییر دهید, سپس `</ profile>` را `</ Profile>` تغییر دهید:
+Change `function profile()` to `function Profile()`, and then change every `<profile />` to `<Profile />`:
 
 <Sandpack>
 
@@ -429,14 +429,14 @@ img { margin: 0 10px 10px 0; }
 
 </Solution>
 
-#### یک کامپوننت بسازید! {/*your-own-component*/}
+#### Your own component {/*your-own-component*/}
 
-یک کامپوننتی را از پایه بنویسید. شما میتوانید هر اسمی را بدهید و هر JSX یی را return کنید. ایده ای ندارید؟ ابتدا یک کامپوننت با نام `Congratulations` بسازید و کاری کنید که کد JSX یی `<h1>Good job!</h1>` را برگرداند. فقط یادتان باشد حتما آن را export کنید!
+Write a component from scratch. You can give it any valid name and return any markup. If you're out of ideas, you can write a `Congratulations` component that shows `<h1>Good job!</h1>`. Don't forget to export it!
 
 <Sandpack>
 
 ```js
-// اینجا کامپوننت خود را بنویسید
+// Write your component below!
 
 ```
 

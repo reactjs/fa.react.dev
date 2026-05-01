@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 /*
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
@@ -8,6 +15,7 @@ import cn from 'classnames';
 import {ExternalLink} from 'components/ExternalLink';
 import {IconFacebookCircle} from 'components/Icon/IconFacebookCircle';
 import {IconTwitter} from 'components/Icon/IconTwitter';
+import {IconBsky} from 'components/Icon/IconBsky';
 import {IconGitHub} from 'components/Icon/IconGitHub';
 
 export function Footer() {
@@ -283,55 +291,79 @@ export function Footer() {
           <div
             className="text-xs text-left rtl:text-right mt-2 pe-0.5"
             dir="ltr">
-            &copy;{new Date().getFullYear()}
+            Copyright &copy; Meta Platforms, Inc
+          </div>
+          <div
+            className="uwu-visible text-xs cursor-pointer hover:text-link hover:dark:text-link-dark hover:underline"
+            onClick={() => {
+              // @ts-ignore
+              window.__setUwu(false);
+            }}>
+            no uwu plz
+          </div>
+          <div
+            className="uwu-hidden text-xs cursor-pointer hover:text-link hover:dark:text-link-dark hover:underline"
+            onClick={() => {
+              // @ts-ignore
+              window.__setUwu(true);
+            }}>
+            uwu?
+          </div>
+          <div className="uwu-visible text-xs">
+            Logo by
+            <ExternalLink
+              className="ms-1"
+              href="https://twitter.com/sawaratsuki1004">
+              @sawaratsuki1004
+            </ExternalLink>
           </div>
         </div>
         <div className="flex flex-col">
           <FooterLink href="/learn" isHeader={true}>
-            Learn React
+            یادگیری ری‌اکت
           </FooterLink>
-          <FooterLink href="/learn/">Quick Start</FooterLink>
-          <FooterLink href="/learn/installation">Installation</FooterLink>
+          <FooterLink href="/learn/">شروع سریع</FooterLink>
+          <FooterLink href="/learn/installation">نصب</FooterLink>
           <FooterLink href="/learn/describing-the-ui">
-            Describing the UI
+            توصیف رابط کاربری
           </FooterLink>
           <FooterLink href="/learn/adding-interactivity">
-            Adding Interactivity
+            افزودن تعامل
           </FooterLink>
-          <FooterLink href="/learn/managing-state">Managing State</FooterLink>
-          <FooterLink href="/learn/escape-hatches">Escape Hatches</FooterLink>
+          <FooterLink href="/learn/managing-state">مدیریت State</FooterLink>
+          <FooterLink href="/learn/escape-hatches">راه‌های فرار</FooterLink>
         </div>
         <div className="flex flex-col">
           <FooterLink href="/reference/react" isHeader={true}>
-            API Reference
+            مرجع API
           </FooterLink>
-          <FooterLink href="/reference/react">React APIs</FooterLink>
-          <FooterLink href="/reference/react-dom">React DOM APIs</FooterLink>
+          <FooterLink href="/reference/react">APIهای ری‌اکت</FooterLink>
+          <FooterLink href="/reference/react-dom">APIهای React DOM</FooterLink>
         </div>
         <div className="md:col-start-2 xl:col-start-4 flex flex-col">
           <FooterLink href="/community" isHeader={true}>
-            Community
+            جامعه
           </FooterLink>
           <FooterLink href="https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md">
-            Code of Conduct
+            قوانین رفتاری
           </FooterLink>
-          <FooterLink href="/community/team">Meet the Team</FooterLink>
+          <FooterLink href="/community/team">معرفی تیم</FooterLink>
           <FooterLink href="/community/docs-contributors">
-            Docs Contributors
+            مشارکت‌کنندگان مستندات
           </FooterLink>
           <FooterLink href="/community/acknowledgements">
-            Acknowledgements
+            تقدیر و تشکر
           </FooterLink>
         </div>
         <div className="flex flex-col">
-          <FooterLink isHeader={true}>More</FooterLink>
-          <FooterLink href="/blog">Blog</FooterLink>
-          <FooterLink href="https://reactnative.dev/">React Native</FooterLink>
+          <FooterLink isHeader={true}>بیشتر</FooterLink>
+          <FooterLink href="/blog">بلاگ</FooterLink>
+          <FooterLink href="https://reactnative.dev/">ری‌اکت نیتیو</FooterLink>
           <FooterLink href="https://opensource.facebook.com/legal/privacy">
-            Privacy
+            حریم خصوصی
           </FooterLink>
           <FooterLink href="https://opensource.fb.com/legal/terms/">
-            Terms
+            شرایط استفاده
           </FooterLink>
           <div className="flex flex-row items-center mt-8 gap-x-2">
             <ExternalLink
@@ -345,6 +377,12 @@ export function Footer() {
               href="https://twitter.com/reactjs"
               className={socialLinkClasses}>
               <IconTwitter />
+            </ExternalLink>
+            <ExternalLink
+              aria-label="React on Bluesky"
+              href="https://bsky.app/profile/react.dev"
+              className={socialLinkClasses}>
+              <IconBsky />
             </ExternalLink>
             <ExternalLink
               aria-label="React on Github"
