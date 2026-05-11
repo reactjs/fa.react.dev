@@ -71,7 +71,11 @@ function Component({selectedId, items}) {
 
 Examples of correct code for this rule:
 
+<<<<<<< HEAD
 ```js {expectedErrors: {'react-compiler': [8]}}
+=======
+```js
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 // ✅ setState in an effect is fine if the value comes from a ref
 function Tooltip() {
   const ref = useRef(null);

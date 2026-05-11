@@ -11,16 +11,27 @@ re: https://github.com/reactjs/react.dev/issues/5960
 
 <YouWillLearn>
 
+<<<<<<< HEAD
 * [TypeScript با کامپوننت‌های ری‌اکت](/learn/typescript#typescript-with-react-components)
 * [نمونه‌هایی از تایپینگ با هوک‌ها](/learn/typescript#example-hooks)
 * [typeهای پرکاربرد از `@types/react`](/learn/typescript#useful-types)
 * [منابع بیشتر برای یادگیری](/learn/typescript#further-learning)  
+=======
+* [TypeScript with React Components](/learn/typescript#typescript-with-react-components)
+* [Examples of typing with Hooks](/learn/typescript#example-hooks)
+* [Common types from `@types/react`](/learn/typescript#useful-types)
+* [Further learning locations](/learn/typescript#further-learning)
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 </YouWillLearn>
 
 ## نصب {/*installation*/}
 
+<<<<<<< HEAD
 تمامی [فریم‌ورک‌های سطح تولید ری‌اکت](/learn/start-a-new-react-project#full-stack-frameworks) از TypeScript پشتیبانی می‌کنند. برای نصب، راهنمای اختصاصی هر فریم‌ورک را دنبال کنید:
+=======
+All [production-grade React frameworks](/learn/creating-a-react-app#full-stack-frameworks) offer support for using TypeScript. Follow the framework specific guide for installation:
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 - [Next.js](https://nextjs.org/docs/app/building-your-application/configuring/typescript)
 - [Remix](https://remix.run/docs/en/1.19.2/guides/typescript)
@@ -37,9 +48,15 @@ npm install --save-dev @types/react @types/react-dom
 
 گزینه‌های کامپایلر زیر باید در `tsconfig.json` شما تنظیم شوند:
 
+<<<<<<< HEAD
 1. `dom` باید در [`lib`](https://www.typescriptlang.org/tsconfig/#lib) گنجانده شود (نکته: اگر گزینه‌ای برای `lib` مشخص نشده باشد، `dom` به‌صورت پیش‌فرض گنجانده می‌شود).
 2. [`jsx`](https://www.typescriptlang.org/tsconfig/#jsx) باید به یکی از گزینه‌های معتبر تنظیم شود. `preserve` برای اکثر برنامه‌ها کافی است.
 اگر در حال انتشار یک کتابخانه هستید، برای انتخاب مقدار مناسب به [مستندات `jsx`](https://www.typescriptlang.org/tsconfig/#jsx) مراجعه کنید.
+=======
+1. `dom` must be included in [`lib`](https://www.typescriptlang.org/tsconfig/#lib) (Note: If no `lib` option is specified, `dom` is included by default).
+2. [`jsx`](https://www.typescriptlang.org/tsconfig/#jsx) must be set to one of the valid options. `preserve` should suffice for most applications.
+  If you're publishing a library, consult the [`jsx` documentation](https://www.typescriptlang.org/tsconfig/#jsx) on what value to choose.
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 ## TypeScript با کامپوننت‌های ری‌اکت {/*typescript-with-react-components*/}
 
@@ -124,7 +141,11 @@ type ای که برای props کامپوننت تعریف می‌کنید می�
 
 ## مثال‌های هوک {/*example-hooks*/}
 
+<<<<<<< HEAD
 تعریف typeها از `@types/react` شامل typeهایی برای هوک‌های داخلی است، بنابراین می‌توانید بدون نیاز به تنظیمات اضافی از آن‌ها در کامپوننت‌های خود استفاده کنید. آن‌ها به گونه‌ای ساخته شده‌اند که کد نوشته شده در کامپوننت شما را در نظر می‌گیرند، بنابراین در بسیاری از مواقع [inferred types](https://www.typescriptlang.org/docs/handbook/type-inference.html) را دریافت خواهید کرد و در حالت ایده‌آل نیازی به مدیریت جزئیات ارائه typeها ندارید.
+=======
+The type definitions from `@types/react` include types for the built-in Hooks, so you can use them in your components without any additional setup. They are built to take into account the code you write in your component, so you will get [inferred types](https://www.typescriptlang.org/docs/handbook/type-inference.html) a lot of the time and ideally do not need to handle the minutiae of providing the types.
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 با این حال، می‌توانیم به چند نمونه از نحوه ارائه typeها برای هوک‌ها نگاهی بیندازیم.
 
@@ -140,7 +161,11 @@ const [enabled, setEnabled] = useState(false);
 این کار type `boolean` را به `enabled` اختصاص می‌دهد، و `setEnabled` تابعی خواهد بود که یا یک آرگومان `boolean` یا تابعی که یک `boolean` برمی‌گرداند را می‌پذیرد. اگر می‌خواهید به صورت صریح typeی را برای state ارائه دهید، می‌توانید با ارائه یک آرگومان type به فراخوانی `useState` این کار را انجام دهید:
 
 ```ts
+<<<<<<< HEAD
 // تنظیم صریح نوع به "boolean"
+=======
+// Explicitly set the type to "boolean"
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 const [enabled, setEnabled] = useState<boolean>(false);
 ```
 
@@ -284,7 +309,11 @@ export default App = AppTSX;
 
 </Sandpack>
 
+<<<<<<< HEAD
 این تکنیک زمانی کار می‌کند که یک مقدار پیش‌فرض منطقی داشته باشید - اما گاهی اوقات مواردی وجود دارد که ندارید، و در این موارد `null` می‌تواند به عنوان یک مقدار پیش‌فرض منطقی به نظر برسد. با این حال، برای اینکه type-system بتواند کد شما را درک کند، باید به صورت صریح `ContextShape | null` را روی `createContext` تنظیم کنید.
+=======
+This technique works when you have a default value which makes sense - but there are occasionally cases when you do not, and in those cases `null` can feel reasonable as a default value. However, to allow the type-system to understand your code, you need to explicitly set `ContextShape | null` on the `createContext`.
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 این باعث می‌شود که نیاز داشته باشید `| null` را در type برای مصرف‌کنندگان context حذف کنید. توصیه ما این است که هوک یک بررسی زمان اجرا برای وجود آن انجام دهد و در صورت عدم وجود، خطا پرتاب کند:
 
@@ -331,11 +360,19 @@ function MyComponent() {
 
 <Note>
 
+<<<<<<< HEAD
 [کامپایلر ری‌اکت](/learn/react-compiler) به صورت خودکار مقادیر و توابع را ممویزه می‌کند، که نیاز به فراخوانی‌های دستی `useMemo` را کاهش می‌دهد. می‌توانید از کامپایلر برای مدیریت خودکار ممویزه‌سازی استفاده کنید.
 
 </Note>
 
 هوک‌های [`useMemo`](/reference/react/useMemo) یک مقدار ذخیره‌شده را از فراخوانی تابع ایجاد/بازیابی می‌کنند و تابع را فقط زمانی که وابستگی‌های ارسال‌شده به‌عنوان پارامتر دوم تغییر کنند، مجدداً اجرا می‌کنند. نتیجه فراخوانی هوک از مقدار برگشتی تابع در پارامتر اول استنباط می‌شود. می‌توانید با ارائه یک آرگومان type به هوک، صریح‌تر باشید.
+=======
+[React Compiler](/learn/react-compiler) automatically memoizes values and functions, reducing the need for manual `useMemo` calls. You can use the compiler to handle memoization automatically.
+
+</Note>
+
+The [`useMemo`](/reference/react/useMemo) Hooks will create/re-access a memorized value from a function call, re-running the function only when dependencies passed as the 2nd parameter are changed. The result of calling the Hook is inferred from the return value from the function in the first parameter. You can be more explicit by providing a type argument to the Hook.
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 ```ts
 // نوع visibleTodos از مقدار برگشتی filterTodos استنباط می‌شود
@@ -347,11 +384,19 @@ const visibleTodos = useMemo(() => filterTodos(todos, tab), [todos, tab]);
 
 <Note>
 
+<<<<<<< HEAD
 [کامپایلر ری‌اکت](/learn/react-compiler) به صورت خودکار مقادیر و توابع را ممویزه می‌کند، که نیاز به فراخوانی‌های دستی `useCallback` را کاهش می‌دهد. می‌توانید از کامپایلر برای مدیریت خودکار ممویزه‌سازی استفاده کنید.
 
 </Note>
 
 [`useCallback`](/reference/react/useCallback) یک مرجع پایدار به یک تابع را تا زمانی که وابستگی‌های ارسال‌شده به پارامتر دوم یکسان باشند، فراهم می‌کند. مانند `useMemo`، type تابع از مقدار برگشتی تابع در پارامتر اول استنباط می‌شود، و می‌توانید با ارائه یک آرگومان type به هوک، صریح‌تر باشید.
+=======
+[React Compiler](/learn/react-compiler) automatically memoizes values and functions, reducing the need for manual `useCallback` calls. You can use the compiler to handle memoization automatically.
+
+</Note>
+
+The [`useCallback`](/reference/react/useCallback) provide a stable reference to a function as long as the dependencies passed into the second parameter are the same. Like `useMemo`, the function's type is inferred from the return value of the function in the first parameter, and you can be more explicit by providing a type argument to the Hook.
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 
 ```ts
@@ -362,7 +407,11 @@ const handleClick = useCallback(() => {
 
 هنگام کار در حالت سختگیرانه TypeScript، `useCallback` نیاز به افزودن typeها برای پارامترهای callback شما دارد. این به این دلیل است که type callback از مقدار برگشتی تابع استنباط می‌شود، و بدون پارامترها type نمی‌تواند به طور کامل درک شود.
 
+<<<<<<< HEAD
 بسته به ترجیحات سبک کد شما، می‌توانید از توابع `*EventHandler` از typeهای ری‌اکت برای ارائه type برای event handler همزمان با تعریف callback استفاده کنید:
+=======
+Depending on your code-style preferences, you could use the `*EventHandler` functions from the React types to provide the type for the event handler at the same time as defining the callback:
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 ```ts
 import { useState, useCallback } from 'react';
@@ -445,7 +494,11 @@ interface ModalRendererProps {
 }
 ```
 
+<<<<<<< HEAD
 توجه داشته باشید که نمی‌توانید از تایپ‌اسکریپت برای توصیف اینکه فرزندان type خاصی از المنت‌های JSX هستند استفاده کنید، بنابراین نمی‌توانید از سیستم type برای توصیف کامپوننتی که فقط فرزندان `<li>` را می‌پذیرد استفاده کنید.
+=======
+Note, that you cannot use TypeScript to describe that the children are a certain type of JSX elements, so you cannot use the type-system to describe a component which only accepts `<li>` children.
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 می‌توانید نمونه‌ای از هر دو `React.ReactNode` و `React.ReactElement` را با type-checker در [این TypeScript playground](https://www.typescriptlang.org/play?#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgIilQ3wChSB6CxYmAOmXRgDkIATJOdNJMGAZzgwAFpxAR+8YADswAVwGkZMJFEzpOjDKw4AFHGEEBvUnDhphwADZsi0gFw0mDWjqQBuUgF9yaCNMlENzgAXjgACjADfkctFnYkfQhDAEpQgD44AB42YAA3dKMo5P46C2tbJGkvLIpcgt9-QLi3AEEwMFCItJDMrPTTbIQ3dKywdIB5aU4kKyQQKpha8drhhIGzLLWODbNs3b3s8YAxKBQAcwXpAThMaGWDvbH0gFloGbmrgQfBzYpd1YjQZbEYARkB6zMwO2SHSAAlZlYIBCdtCRkZpHIrFYahQYQD8UYYFA5EhcfjyGYqHAXnJAsIUHlOOUbHYhMIIHJzsI0Qk4P9SLUBuRqXEXEwAKKfRZcNA8PiCfxWACecAAUgBlAAacFm80W-CU11U6h4TgwUv11yShjgJjMLMqDnN9Dilq+nh8pD8AXgCHdMrCkWisVoAet0R6fXqhWKhjKllZVVxMcavpd4Zg7U6Qaj+2hmdG4zeRF10uu-Aeq0LBfLMEe-V+T2L7zLVu+FBWLdLeq+lc7DYFf39deFVOotMCACNOCh1dq219a+30uC8YWoZsRyuEdjkevR8uvoVMdjyTWt4WiSSydXD4NqZP4AymeZE072ZzuUeZQKheQgA) ببینید.
 
