@@ -9,7 +9,12 @@
     "react-hooks/exhaustive-deps": "error",
     "react/no-unknown-property": ["error", {"ignore": ["meta"]}],
     "react-compiler/react-compiler": "error",
+<<<<<<< HEAD
     "local-rules/lint-markdown-code-blocks": "error"
+=======
+    "local-rules/lint-markdown-code-blocks": "error",
+    "no-trailing-spaces": "error"
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
   },
   "env": {
     "node": true,
