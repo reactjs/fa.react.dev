@@ -177,7 +177,11 @@ button { margin-right: 10px; }
 
 ### پاس دادن event handlerها به عنوان props {/*passing-event-handlers-as-props*/}
 
+<<<<<<< HEAD
 اغلب شما می خواهید که کامپوننت پدر، event handler فرزند را مشخص کند. دکمه‌ها را در نظر بگیرید: بسته به جایی که از کامپوننت `Button` استفاده می‌کنید، ممکن است بخواهید عملکرد متفاوتی را اجرا کنید—شاید یکی فیلمی را پخش کند و دیگری تصویری را آپلود کند.
+=======
+Often you'll want the parent component to specify a child's event handler. Consider buttons: depending on where you're using a `Button` component, you might want to execute a different function—perhaps one plays a movie and another uploads an image.
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 برای انجام این کار، propی را که کامپوننت از پدر خود به عنوان event handler  دریافت می‌کند، پاس دهید:
 
@@ -319,13 +323,17 @@ button { margin-right: 10px; }
 
 </Sandpack>
 
+<<<<<<< HEAD
 
 توجه کنید که چگونه کامپوننت `App` نیازی به دانستن اینکه `Toolbar` *چه کاری* با `onPlayMovie` یا `onUploadImage` می‌خوهد انجام دهد، ندارد. این جزییات پیاده سازی `Toolbar` است. در اینجا، `Toolbar` آن‌ها را به‌عنوان کنترل‌کننده `onClick` به `Button`های خود پاس می‌دهد، اما بعداً می‌تواند آنها را با کلیک نیز فعال کند. نام‌گذاری ابزارها بر اساس مفاهیم خاص برنامه مانند `onPlayMovie` به شما این امکان را می‌دهد که نحوه استفاده از آنها را بتوانید بعداً تغییر دهید.
+=======
+Notice how the `App` component does not need to know *what* `Toolbar` will do with `onPlayMovie` or `onUploadImage`. That's an implementation detail of the `Toolbar`. Here, `Toolbar` passes them down as `onClick` handlers to its `Button`s, but it could later also trigger them on a keyboard shortcut. Naming props after app-specific interactions like `onPlayMovie` gives you the flexibility to change how they're used later.
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 <Note>
 
 Make sure that you use the appropriate HTML tags for your event handlers. For example, to handle clicks, use [`<button onClick={handleClick}>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) instead of `<div onClick={handleClick}>`. Using a real browser `<button>` enables built-in browser behaviors like keyboard navigation. If you don't like the default browser styling of a button and want to make it look more like a link or a different UI element, you can achieve it with CSS. [Learn more about writing accessible markup.](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
-  
+
 </Note>
 
 
@@ -419,12 +427,21 @@ button { margin: 5px; }
 
 وقتی روی دکمه‌ای کلیک می کنید:
 
+<<<<<<< HEAD
 1. ری‌اکت کنترل‌کننده `onClick`ی که به `<button>` پاس داده شده است را که فراخوانی می‌کند.
 2. آن کنترل کننده که در `Button` تعریف شده است، کارهای زیر را انجام می دهد:
    * `()e.stopPropagation` را فراخوانی می کند و از بالا رفتن رویداد جلوگیری می‌کند.
    * تابع `onClick` را فراخوانی می کند، که propی است که از کامپوننت `Toolbar` پاس داده شده‌است.
 3. این تابع، که در کامپوننت `Toolbar` تعریف شده است، هشدار خود دکمه را نمایش می دهد.
 4. از آنجایی که انتشار متوقف شده، کنترل کننده `onClick` المنت `<div>` پدر اجرا *نمی شود*.
+=======
+1. React calls the `onClick` handler passed to `<button>`.
+2. That handler, defined in `Button`, does the following:
+   * Calls `e.stopPropagation()`, preventing the event from bubbling further.
+   * Calls the `onClick` function, which is a prop passed from the `Toolbar` component.
+3. That function, defined in the `Toolbar` component, displays the button's own alert.
+4. Since the propagation was stopped, the parent `<div>`'s `onClick` handler does *not* run.
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 در نتیجه‌ی `()e.stopPropagation`، کلیک کردن روی دکمه‌ها فقط یک هشدار (از `<button>`) به جای دو مورد (از`<button>` و  `<div>` نوارابزار پدر ) را نشان می‌دهد. کلیک کردن روی یک دکمه با کلیک کردن روی نوار ابزار اطراف یکسان نیست، بنابراین توقف انتشار برای این رابط کاربری منطقی است.
 
@@ -442,11 +459,19 @@ button { margin: 5px; }
 </div>
 ```
 
+<<<<<<< HEAD
 هر رویداد در سه فاز منتشر می شود:
 
 1. به سمت پایین حرکت می‌کند و همه کنترل‌کننده‌های `onClickCapture` را فراخوانی می‌کند.
 2. کنترل کننده `onClick` المنت کلیک شده را اجرا می کند.
 3. به سمت بالا حرکت می کند و همه کنترل کننده های `onClick` را فرا می خواند.
+=======
+Each event propagates in three phases:
+
+1. It travels down, calling all `onClickCapture` handlers.
+2. It runs the clicked element's `onClick` handler.
+3. It travels upwards, calling all `onClick` handlers.
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 capture eventها برای کدهایی مانند روترها یا تجزیه و تحلیل مفید هستند، اما احتمالاً از آنها در کد برنامه استفاده نخواهید کرد.
 
