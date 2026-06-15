@@ -283,9 +283,15 @@ body {
 
 ![CodeSandbox با کد آغازین](../images/tutorial/react-starter-code-codesandbox.png)
 
+<<<<<<< HEAD
 1. بخش _Files_ با لیستی از فایل‌ها مانند `App.js`، `index.js`، `styles.css` در پوشه `src` و یک پوشه به نام `public`
 1. ویرایشگر _کد_ که در آن کد منبع فایل انتخاب‌شده خود را مشاهده خواهید کرد
 1. بخش _مرورگر_ که در آن خواهید دید کدی که نوشته‌اید چگونه نمایش داده می‌شود.
+=======
+1. The _Files_ section with a list of files like `App.js`, `index.js`, `styles.css` in `src` folder and a folder called `public`
+1. The _code editor_ where you'll see the source code of your selected file
+1. The _browser_ section where you'll see how the code you've written will be displayed
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 فایل `App.js` باید در بخش _Files_ انتخاب شود. محتوای آن فایل در _ویرایشگر کد_ باید به صورت زیر باشد:
 
@@ -337,7 +343,11 @@ import './styles.css';
 import App from './App';
 ```
 
+<<<<<<< HEAD
 خطوط ۱-۵ تمام قطعات لازم را کنار هم می‌آورند:
+=======
+Lines 1-5 bring all the necessary pieces together:
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 * ری‌اکت
 * کتابخانه ری‌اکت برای ارتباط با مرورگرهای وب (React DOM)
@@ -551,7 +561,11 @@ export default function Board() {
 }
 ```
 
+<<<<<<< HEAD
 توجه کنید که برخلاف `div`های مرورگر، کامپوننت‌های خودتان `Board` و `Square` باید با حرف بزرگ شروع شوند.
+=======
+Note how unlike the browser `div`s, your own components `Board` and `Square` must start with a capital letter.
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 بیایید نگاهی بیندازیم:
 
@@ -1094,7 +1108,11 @@ function Square({ value, onSquareClick }) {
 }
 ```
 
+<<<<<<< HEAD
 اکنون شما ویژگی `onSquareClick` را به تابعی در کامپوننت `Board` که آن را `handleClick` نام‌گذاری خواهید کرد، متصل می‌کنید. برای اتصال `onSquareClick` به `handleClick`، یک تابع به ویژگی `onSquareClick` از اولین کامپوننت `Square` ارسال خواهید کرد:
+=======
+Now you'll connect the `onSquareClick` prop to a function in the `Board` component that you'll name `handleClick`. To connect `onSquareClick` to `handleClick` you'll pass a function to the `onSquareClick` prop of the first `Square` component:
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 ```js {7}
 export default function Board() {
@@ -2073,13 +2091,22 @@ export default function Game() {
 }
 ```
 
+<<<<<<< HEAD
 می‌توانید ببینید که کد شما باید به چه شکلی باشد. توجه داشته باشید که باید یک خطا در کنسول ابزارهای توسعه‌دهنده مشاهده کنید که می‌گوید:
+=======
+You can see what your code should look like below. Note that you should see an error in the developer tools console that says:
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 <ConsoleBlock level="warning">
 هشدار: هر فرزند در یک آرایه یا iterator باید یک ویژگی "key" یکتا داشته باشد. متد رندر `Game` را بررسی کنید.
 </ConsoleBlock>
+<<<<<<< HEAD
   
 این خطا را در بخش بعدی رفع خواهید کرد.
+=======
+
+You'll fix this error in the next section.
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 <Sandpack>
 

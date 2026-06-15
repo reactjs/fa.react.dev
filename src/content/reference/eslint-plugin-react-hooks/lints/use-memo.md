@@ -4,7 +4,11 @@ title: use-memo
 
 <Intro>
 
+<<<<<<< HEAD
 Validates usage of the `useMemo` hook without a return value. See [`useMemo` docs](/reference/react/useMemo) for more information.
+=======
+Validates that the `useMemo` hook is used with a return value. See [`useMemo` docs](/reference/react/useMemo) for more information.
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 </Intro>
 
