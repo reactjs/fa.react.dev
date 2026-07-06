@@ -50,7 +50,13 @@ title: تفکر به سبک ری‌اکت
   یکی از این تکنیک‌ها اصل single responsibility است، به این معنی که یک کامپوننت بهتر است تنها یک کار را انجام دهد. اگر کامپوننت به طور مداوم بزرگتر شود، باید به زیرکامپوننت‌های کوچکتر تجزیه شود.
   [single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle)
 
+<<<<<<< HEAD
 - **CSS**--بررسی کنید که برای چه عناصری از کلاس‌ها استفاده خواهید کرد. (با این حال، کامپوننت‌ها کمتر جزئیات ریز دارند.)
+=======
+* **Programming**--use the same techniques for deciding if you should create a new function or object. One such technique is the [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns), that is, a component should ideally only be concerned with one thing. If it ends up growing, it should be decomposed into smaller subcomponents.
+* **CSS**--consider what you would make class selectors for. (However, components are a bit less granular.)
+* **Design**--consider how you would organize the design's layers.
+>>>>>>> 2639f369946f763fff9a2572b0d7c4b9e2f83ebd
 
 - **design**--در نظر بگیرید که چگونه لایه‌های طراحی را سازماندهی خواهید کرد
   اگر فایل جیسون شما ساختار مناسبی داشته باشد، اغلب متوجه می شوید که به طور طبیعی با ساختار کامپوننت‌های رابط کاربری شما همخوانی دارد. این به این دلیل است که مدل‌های رابط کاربری و داده اغلب همان معماری اطلاعاتی را دارند - به اصطلاح، همان شکل. رابط کاربری خود را به
@@ -251,8 +257,15 @@ state
 
  یکبار دیگر باهم مرور کنیم:
 
+<<<<<<< HEAD
 آیا **از یک کامپوننت والد** با پراپس پاس داده شده؟ اگر بله پس استیت نیست-
 ایا میتوانید آن را خودتان به دست بیاورید؟ **براساس استیت فعلی یا پراپس کامپوننت** اگر بله پس قطعا استیت نیست!-
+=======
+1. The original list of products is **passed in as props, so it's not state.**
+2. The search text seems to be state since it changes over time and can't be computed from anything.
+3. The value of the checkbox seems to be state since it changes over time and can't be computed from anything.
+4. The filtered list of products **isn't state because it can be computed** by taking the original list of products and filtering it according to the search text and value of the checkbox.
+>>>>>>> 2639f369946f763fff9a2572b0d7c4b9e2f83ebd
 
 <ol>
   <li>اگر اصل لیست محصولات به عنوان پراپس پاس داده شده٬ پس استیت یا وضعیت نیست</li>
@@ -298,6 +311,7 @@ state
 در مرحله‌ی قبلی، دو قطعه از استیت را در این برنامه پیدا کردید: متن ورودی جستجو و مقدار چک‌باکس. در این مثال، همیشه همراه یکدیگر ظاهر می‌شوند، بنابراین منطقی است که آن‌ها را در یک جایگاه قرار دهید
 
 
+<<<<<<< HEAD
 حالا بیایید از راهبرد ما  مسئله را بررسی کنیم
 
 شناسایی کامپوننت‌هایی که از استیت استفاده می‌کنند: ***
@@ -309,6 +323,15 @@ SearchBar نیاز دارد که این استیت (متن جستجو و مقد�
 بنابراین مقادیر استیت در FilterableProductTable قرار خواهند گرفت.
 
 استیت را درون کامپوننتی که [`useState()` Hook.](/reference/react/useState) دارد اضافه کنید. Hookها توابه خاصی هستند که به شما اجازه می‌دهند تا قدرت ری‌اکت را درونشان قلاب کنید. دو متغییر استیت در بالای `FilterableProductTable`تعریف و مقدار پیش‌فرض آنها را مشخص کنید:
+=======
+1. **Identify components that use state:**
+    * `ProductTable` needs to filter the product list based on that state (search text and checkbox value).
+    * `SearchBar` needs to display that state (search text and checkbox value).
+2. **Find their common parent:** The first parent component both components share is `FilterableProductTable`.
+3. **Decide where the state lives**: We'll keep the filter text and checked state values in `FilterableProductTable`.
+
+So the state values will live in `FilterableProductTable`.
+>>>>>>> 2639f369946f763fff9a2572b0d7c4b9e2f83ebd
 
 
 ```js
@@ -322,7 +345,13 @@ function FilterableProductTable({ products }) {
 
 ```js
 <div>
+<<<<<<< HEAD
   <SearchBar filterText={filterText} inStockOnly={inStockOnly} />
+=======
+  <SearchBar
+    filterText={filterText}
+    inStockOnly={inStockOnly} />
+>>>>>>> 2639f369946f763fff9a2572b0d7c4b9e2f83ebd
   <ProductTable
     products={products}
     filterText={filterText}
@@ -346,7 +375,13 @@ function FilterableProductTable({products}) {
 
   return (
     <div>
+<<<<<<< HEAD
       <SearchBar filterText={filterText} inStockOnly={inStockOnly} />
+=======
+      <SearchBar
+        filterText={filterText}
+        inStockOnly={inStockOnly} />
+>>>>>>> 2639f369946f763fff9a2572b0d7c4b9e2f83ebd
       <ProductTable
         products={products}
         filterText={filterText}
@@ -418,10 +453,23 @@ function ProductTable({products, filterText, inStockOnly}) {
 function SearchBar({filterText, inStockOnly}) {
   return (
     <form>
+<<<<<<< HEAD
       <input type="text" value={filterText} placeholder="Search..." />
       <label>
         <input type="checkbox" checked={inStockOnly} /> Only show products in
         stock
+=======
+      <input
+        type="text"
+        value={filterText}
+        placeholder="Search..."/>
+      <label>
+        <input
+          type="checkbox"
+          checked={inStockOnly} />
+        {' '}
+        Only show products in stock
+>>>>>>> 2639f369946f763fff9a2572b0d7c4b9e2f83ebd
       </label>
     </form>
   );
@@ -489,7 +537,11 @@ function SearchBar({ filterText, inStockOnly }) {
 <p dir="rtl">
 در حال حاضر برنامه‌ی شما با پراپ‌ها و استیت‌ها که از بالا به پایین سلسله‌مراتب به‌خوبی رندر می‌شود. اما برای تغییر استیت بر اساس ورودی کاربر، شما نیاز به پشتیبانی از جریان داده به سمت دیگر دارید: کامپوننت‌های فرم (form components) که در عمق سلسله‌مراتب هستند باید استیت را در FilterableProductTable به‌روزرسانی دهنده.
 
+<<<<<<< HEAD
 ری‌اکت این جریان داده را صریحاً اعلام می‌کند، اما نیاز به تایپ کردن بیشتری نسبت به ورودی داده دوطرفه دارد. اگر در مثال بالا سعی کنید در ورودی تایپ کنید یا چک‌باکس را انتخاب کنید، مشاهده خواهید کرد که ری‌اکت ورودی‌های شما را نادیده می‌گیرد. این عمدی است. با نوشتن `<input value={filterText} />`، شما value پراپ ورودی را به طور دائمی برابر با استیت filterText قرار داده‌اید که از FilterableProductTable به آن منتقل می‌شود. از آنجایی که استیت filterText هرگز تنظیم نمی‌شود، ورودی هرگز تغییر نمی‌کند.
+=======
+Currently your app renders correctly with props and state flowing down the hierarchy. But to change the state according to user input, you will need to support data flowing the other way: the form components deep in the hierarchy need to update the state in `FilterableProductTable`.
+>>>>>>> 2639f369946f763fff9a2572b0d7c4b9e2f83ebd
 
 شما می‌خواهید طوری عمل کنید که هر زمان کاربر ورودی‌های فرم را تغییر دهد، استیت به‌روزرسانی شود تا تغییرات نمایان شود. استیت توسط FilterableProductTable مدیریت می‌شود، بنابراین تنها این کامپوننت می‌تواند توابع setFilterText و setInStockOnly را فراخوانی کند. برای اجازه دادن به SearchBar برای به‌روزرسانی استیت FilterableProductTable، شما باید این توابع را به SearchBar ارسال کنید.
 
@@ -550,6 +602,15 @@ function FilterableProductTable({products}) {
   return (
     <div>
       <SearchBar
+<<<<<<< HEAD
+=======
+        filterText={filterText}
+        inStockOnly={inStockOnly}
+        onFilterTextChange={setFilterText}
+        onInStockOnlyChange={setInStockOnly} />
+      <ProductTable
+        products={products}
+>>>>>>> 2639f369946f763fff9a2572b0d7c4b9e2f83ebd
         filterText={filterText}
         inStockOnly={inStockOnly}
         onFilterTextChange={setFilterText}
@@ -633,16 +694,26 @@ function SearchBar({
     <form>
       <input
         type="text"
+<<<<<<< HEAD
         value={filterText}
         placeholder="Search..."
         onChange={(e) => onFilterTextChange(e.target.value)}
       />
+=======
+        value={filterText} placeholder="Search..."
+        onChange={(e) => onFilterTextChange(e.target.value)} />
+>>>>>>> 2639f369946f763fff9a2572b0d7c4b9e2f83ebd
       <label>
         <input
           type="checkbox"
           checked={inStockOnly}
+<<<<<<< HEAD
           onChange={(e) => onInStockOnlyChange(e.target.checked)}
         />{' '}
+=======
+          onChange={(e) => onInStockOnlyChange(e.target.checked)} />
+        {' '}
+>>>>>>> 2639f369946f763fff9a2572b0d7c4b9e2f83ebd
         Only show products in stock
       </label>
     </form>
