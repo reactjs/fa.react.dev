@@ -64,8 +64,13 @@ Expo توسط [شرکت Expo](https://expo.dev/about) نگهداری می‌شو
 
 فریم‌ورک‌های دیگری نیز وجود دارند که در حال حرکت به سمت چشم‌انداز فول‌استک ری‌اکت هستند:
 
+<<<<<<< HEAD
 - [TanStack Start (نسخه بتا)](https://tanstack.com/): فریم‌ورک TanStack Start یک فریم‌ورک فول‌استک ری‌اکت است که توسط TanStack Router پشتیبانی می‌شود. این فریم‌ورک رندر سمت سرور (SSR) کامل، استریمینگ، فانکشن‌های سمت سرور، باندلینگ و امکانات بیشتر را با استفاده از ابزارهایی مانند Nitro و Vite فراهم می‌کند.
 - [RedwoodJS](https://redwoodjs.com/): فریم‌ورک Redwood یک فریم‌ورک فول‌استک ری‌اکت است که با تعداد زیادی پکیج و پیکربندی از پیش نصب‌شده ارائه می‌شود و ساخت اپلیکیشن‌های وب فول‌استک را آسان می‌کند.
+=======
+- [TanStack Start (Beta)](https://tanstack.com/start/): TanStack Start is a full-stack React framework powered by TanStack Router. It provides a full-document SSR, streaming, server functions, bundling, and more using tools like Nitro and Vite.
+- [RedwoodSDK](https://rwsdk.com/): Redwood is a full stack React framework with lots of pre-installed packages and configuration that makes it easy to build full-stack web applications.
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
 
 <DeepDive>
 
@@ -105,7 +110,11 @@ Server Components و Suspense ویژگی‌های خود ری‌اکت هستن�
 
 اگر اپلیکیشن شما محدودیت‌هایی دارد که توسط فریم‌ورک‌های موجود به‌خوبی پشتیبانی نمی‌شوند، یا ترجیح می‌دهید فریم‌ورک مخصوص به خود را بسازید، یا فقط می‌خواهید اصول اولیه یک اپلیکیشن ری‌اکت را یاد بگیرید، گزینه‌های دیگری برای شروع یک پروژه ری‌اکت از صفر وجود دارد.
 
+<<<<<<< HEAD
 شروع از صفر انعطاف‌پذیری بیشتری به شما می‌دهد، اما مستلزم آن است که خودتان انتخاب کنید از چه ابزارهایی برای روتینگ، واکشی داده و الگوهای رایج دیگر استفاده کنید. این کار بسیار شبیه ساختن فریم‌ورک خودتان است، به جای استفاده از یک فریم‌ورک آماده. [فریم‌ورک‌هایی که ما توصیه می‌کنیم](#full-stack-frameworks) راه‌حل‌های داخلی برای این مسائل دارند.   
+=======
+Starting from scratch gives you more flexibility, but does require that you make choices on which tools to use for routing, data fetching, and other common usage patterns.  It's a lot like building your own framework, instead of using a framework that already exists. The [frameworks we recommend](#full-stack-frameworks) have built-in solutions for these problems.
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
 
 اگر می‌خواهید راه‌حل‌های خودتان را بسازید، به راهنمای ما برای [ساخت یک اپلیکیشن ری‌اکت از صفر](/learn/build-a-react-app-from-scratch) مراجعه کنید تا با نحوه راه‌اندازی یک پروژه ری‌اکت جدید با استفاده از ابزاری مانند [Vite](https://vite.dev/)، [Parcel](https://parceljs.org/) یا [RSbuild](https://rsbuild.dev/) آشنا شوید.
 
