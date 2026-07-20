@@ -205,7 +205,11 @@ root.render(<App />);
 export class MyElement extends HTMLElement {
   constructor() {
     super();
+<<<<<<< HEAD
     // The value here will be overwritten by React 
+=======
+    // The value here will be overwritten by React
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
     // when initialized as an element
     this.value = undefined;
   }
