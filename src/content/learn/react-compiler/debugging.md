@@ -43,7 +43,11 @@ Follow these steps when you encounter issues:
 
 ### Compiler Build Errors {/*compiler-build-errors*/}
 
+<<<<<<< HEAD
 If you encounter a compiler error that unexpectedly breaks your build, this is likely a bug in the compiler. Report it to the [facebook/react](https://github.com/facebook/react/issues) repository with:
+=======
+If you encounter a compiler error that unexpectedly breaks your build, this is likely a bug in the compiler. Report it to the [react/react](https://github.com/react/react/issues) repository with:
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
 - The error message
 - The code that caused the error
 - Your React and compiler versions
@@ -81,7 +85,11 @@ If you believe you've found a compiler bug:
 1. **Verify it's not a Rules of React violation** - Check with ESLint
 2. **Create a minimal reproduction** - Isolate the issue in a small example
 3. **Test without the compiler** - Confirm the issue only occurs with compilation
+<<<<<<< HEAD
 4. **File an [issue](https://github.com/facebook/react/issues/new?template=compiler_bug_report.yml)**:
+=======
+4. **File an [issue](https://github.com/react/react/issues/new?template=compiler_bug_report.yml)**:
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
    - React and compiler versions
    - Minimal reproduction code
    - Expected vs actual behavior

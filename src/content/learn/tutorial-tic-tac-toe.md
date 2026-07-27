@@ -283,9 +283,15 @@ body {
 
 ![CodeSandbox با کد آغازین](../images/tutorial/react-starter-code-codesandbox.png)
 
+<<<<<<< HEAD
 1. بخش _Files_ با لیستی از فایل‌ها مانند `App.js`، `index.js`، `styles.css` در پوشه `src` و یک پوشه به نام `public`
 1. ویرایشگر _کد_ که در آن کد منبع فایل انتخاب‌شده خود را مشاهده خواهید کرد
 1. بخش _مرورگر_ که در آن خواهید دید کدی که نوشته‌اید چگونه نمایش داده می‌شود.
+=======
+1. The _Files_ section with a list of files like `App.js`, `index.js`, `styles.css` in `src` folder and a folder called `public`
+1. The _code editor_ where you'll see the source code of your selected file
+1. The _browser_ section where you'll see how the code you've written will be displayed
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
 
 فایل `App.js` باید در بخش _Files_ انتخاب شود. محتوای آن فایل در _ویرایشگر کد_ باید به صورت زیر باشد:
 
@@ -337,7 +343,11 @@ import './styles.css';
 import App from './App';
 ```
 
+<<<<<<< HEAD
 خطوط ۱-۵ تمام قطعات لازم را کنار هم می‌آورند:
+=======
+Lines 1-5 bring all the necessary pieces together:
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
 
 * ری‌اکت
 * کتابخانه ری‌اکت برای ارتباط با مرورگرهای وب (React DOM)
@@ -551,7 +561,11 @@ export default function Board() {
 }
 ```
 
+<<<<<<< HEAD
 توجه کنید که برخلاف `div`های مرورگر، کامپوننت‌های خودتان `Board` و `Square` باید با حرف بزرگ شروع شوند.
+=======
+Note how unlike the browser `div`s, your own components `Board` and `Square` must start with a capital letter.
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
 
 بیایید نگاهی بیندازیم:
 
@@ -899,6 +913,7 @@ body {
 
 ### ابزارهای توسعه‌دهنده ری‌اکت {/*react-developer-tools*/}
 
+<<<<<<< HEAD
 ابزارهای توسعه ری‌اکت به شما اجازه می‌دهند تا props و state کامپوننت‌های ری‌اکت خود را بررسی کنید. می‌توانید تب ابزارهای توسعه ری‌اکت را در پایین بخش _مرورگر_ در CodeSandbox پیدا کنید.
 
 ![React DevTools در CodeSandbox](../images/tutorial/codesandbox-devtools.png)
@@ -906,12 +921,26 @@ body {
 برای بررسی یک کامپوننت خاص روی صفحه، از دکمه‌ای که در گوشه بالا سمت چپ React DevTools قرار دارد، استفاده کنید:
 
 ![انتخاب کامپوننت‌ها در صفحه با React DevTools](../images/tutorial/devtools-select.gif)
+=======
+React Developer Tools let you check the props and the state of your React components. It is available as a [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en), [Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/), and [Edge](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil) browser extension.
 
-<Note>
+After you install it, a new *Components* tab will appear in your browser Developer Tools for sites using React. If you're following along in CodeSandbox, you'd need to first open your sandbox preview in a new tab:
 
+![opening in new tab](../images/tutorial/sandbox-new-tab.png)
+
+Then, on the preview page, open your browser's DevTools and find the *Components* tab:
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
+
+![components tab](../images/tutorial/components-tab.png)
+
+<<<<<<< HEAD
 برای توسعه محلی، React DevTools به‌عنوان یک افزونه مرورگر برای [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)، [Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/) و [Edge](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil) در دسترس است. آن را نصب کنید و زبانه *Components* در ابزارهای توسعه‌دهنده مرورگر شما برای سایت‌هایی که از React استفاده می‌کنند ظاهر خواهد شد.
+=======
+To inspect a particular component on the screen, use the button in the top left corner of the Components tab:
 
-</Note>
+![inspecting with devtools](../images/tutorial/devtools-inspect.gif)
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
+
 
 ## تکمیل بازی {/*completing-the-game*/}
 
@@ -1094,7 +1123,11 @@ function Square({ value, onSquareClick }) {
 }
 ```
 
+<<<<<<< HEAD
 اکنون شما ویژگی `onSquareClick` را به تابعی در کامپوننت `Board` که آن را `handleClick` نام‌گذاری خواهید کرد، متصل می‌کنید. برای اتصال `onSquareClick` به `handleClick`، یک تابع به ویژگی `onSquareClick` از اولین کامپوننت `Square` ارسال خواهید کرد:
+=======
+Now you'll connect the `onSquareClick` prop to a function in the `Board` component that you'll name `handleClick`. To connect `onSquareClick` to `handleClick` you'll pass a function to the `onSquareClick` prop of the first `Square` component:
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
 
 ```js {7}
 export default function Board() {
@@ -2073,13 +2106,22 @@ export default function Game() {
 }
 ```
 
+<<<<<<< HEAD
 می‌توانید ببینید که کد شما باید به چه شکلی باشد. توجه داشته باشید که باید یک خطا در کنسول ابزارهای توسعه‌دهنده مشاهده کنید که می‌گوید:
+=======
+You can see what your code should look like below. Note that you should see an error in the developer tools console that says:
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
 
 <ConsoleBlock level="warning">
 هشدار: هر فرزند در یک آرایه یا iterator باید یک ویژگی "key" یکتا داشته باشد. متد رندر `Game` را بررسی کنید.
 </ConsoleBlock>
+<<<<<<< HEAD
   
 این خطا را در بخش بعدی رفع خواهید کرد.
+=======
+
+You'll fix this error in the next section.
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
 
 <Sandpack>
 

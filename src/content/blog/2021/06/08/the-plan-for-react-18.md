@@ -51,7 +51,11 @@ June 8, 2021 by [Andrew Clark](https://twitter.com/acdlite), [Brian Vaughn](http
 
 از آن‌جا که انتظار می‌رود در اوایل فعالیت گروه کاری افراد زیادی به سمت این گروه بیایند، به همین خاطر تنها افراد دعوت‌شده میتوانند گفتگو جدیدی ایجاد و یا نظر بر روی گفتگوها قرار بدهند. اگرچه تمامی گفتگوها برای همگان کاملا قابل مشاهده هستند، بنابراین همه به اطلاعات یکسانی دسترسی دارند. ما بر این باوریم که این سازش خوبی بین ایجاد یک محیط با بازدهی برای اعضای گروه کاری ضمن حفظ شفافیت در جامعه بزرگ‌تر است.
 
+<<<<<<< HEAD
 مانند همیشه، میتوانید مشکلات، سوالات و بازخورد‌های عمومی خود را به [issue tracker](https://github.com/facebook/react/issues) ما ارسال نمایید.
+=======
+As always, you can submit bug reports, questions, and general feedback to our [issue tracker](https://github.com/react/react/issues).
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
 
 ## چگونه ری‌اکت ۱۸ آلفا را امروز امتحان کنیم {/*how-to-try-react-18-alpha-today*/}
 
