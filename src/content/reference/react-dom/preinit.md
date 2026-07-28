@@ -4,13 +4,13 @@ title: preinit
 
 <Note>
 
-[React-based frameworks](/learn/creating-a-react-app) frequently handle resource loading for you, so you might not have to call this API yourself. Consult your framework's documentation for details.
+[فریم‌ورک‌های مبتنی بر ری‌اکت](/learn/creating-a-react-app) اغلب بارگذاری منابع را برای شما مدیریت می‌کنند، بنابراین ممکن است لازم نباشد خودتان این API را فراخوانی کنید. برای جزئیات به مستندات فریم‌ورک خود مراجعه کنید.
 
 </Note>
 
 <Intro>
 
-`preinit` lets you eagerly fetch and evaluate a stylesheet or external script.
+`preinit` به شما اجازه می‌دهد یک stylesheet یا اسکریپت خارجی را به‌صورت eager fetch و ارزیابی کنید.
 
 ```js
 preinit("https://example.com/script.js", {as: "script"});
@@ -22,11 +22,11 @@ preinit("https://example.com/script.js", {as: "script"});
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `preinit(href, options)` {/*preinit*/}
 
-To preinit a script or stylesheet, call the `preinit` function from `react-dom`.
+برای preinit کردن یک اسکریپت یا stylesheet، تابع `preinit` را از `react-dom` فراخوانی کنید.
 
 ```js
 import { preinit } from 'react-dom';
@@ -38,42 +38,42 @@ function AppRoot() {
 
 ```
 
-[See more examples below.](#usage)
+[نمونه‌های بیشتر را در ادامه ببینید.](#usage)
 
-The `preinit` function provides the browser with a hint that it should start downloading and executing the given resource, which can save time. Scripts that you `preinit` are executed when they finish downloading. Stylesheets that you preinit are inserted into the document, which causes them to go into effect right away.
+تابع `preinit` به مرورگر راهنمایی می‌دهد که باید دانلود و اجرای منبع داده‌شده را آغاز کند، که می‌تواند زمان را ذخیره کند. اسکریپت‌هایی که `preinit` می‌کنید هنگامی که دانلودشان تمام شود اجرا می‌شوند. stylesheetهایی که preinit می‌کنید در سند درج می‌شوند، که باعث می‌شود بلافاصله اثر بگذارند.
 
-#### Parameters {/*parameters*/}
+#### پارامترها {/*parameters*/}
 
-* `href`: a string. The URL of the resource you want to download and execute.
-* `options`: an object. It contains the following properties:
-  *  `as`: a required string. The type of resource. Its possible values are `script` and `style`.
-  * `precedence`: a string. Required with stylesheets. Says where to insert the stylesheet relative to others. Stylesheets with higher precedence can override those with lower precedence. The possible values are `reset`, `low`, `medium`, `high`. 
-  *  `crossOrigin`: a string. The [CORS policy](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) to use. Its possible values are `anonymous` and `use-credentials`.
-  *  `integrity`: a string. A cryptographic hash of the resource, to [verify its authenticity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
-  *  `nonce`: a string. A cryptographic [nonce to allow the resource](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) when using a strict Content Security Policy. 
-  *  `fetchPriority`: a string. Suggests a relative priority for fetching the resource. The possible values are `auto` (the default), `high`, and `low`.
+* `href`: یک رشته. URL منبعی که می‌خواهید دانلود و اجرا کنید.
+* `options`: یک شیء. شامل پراپرتی‌های زیر است:
+  *  `as`: یک رشتهٔ الزامی. نوع منبع. مقادیر ممکن آن `script` و `style` هستند.
+  * `precedence`: یک رشته. برای stylesheetها الزامی است. مشخص می‌کند stylesheet نسبت به بقیه کجا درج شود. stylesheetهایی با اولویت بالاتر می‌توانند آن‌هایی با اولویت پایین‌تر را نادیده بگیرند. مقادیر ممکن `reset`، `low`، `medium`، `high` هستند.
+  *  `crossOrigin`: یک رشته. [سیاست CORS](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) که باید استفاده شود. مقادیر ممکن آن `anonymous` و `use-credentials` هستند.
+  *  `integrity`: یک رشته. یک هش رمزنگاری‌شده از منبع، برای [تأیید اصالت آن](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
+  *  `nonce`: یک رشته. یک [nonce رمزنگاری‌شده برای اجازه دادن به منبع](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) هنگام استفاده از یک Content Security Policy سخت‌گیرانه.
+  *  `fetchPriority`: یک رشته. اولویت نسبی برای fetch کردن منبع را پیشنهاد می‌دهد. مقادیر ممکن `auto` (پیش‌فرض)، `high`، و `low` هستند.
 
-#### Returns {/*returns*/}
+#### مقدار برگشتی {/*returns*/}
 
-`preinit` returns nothing.
+`preinit` چیزی برنمی‌گرداند.
 
-#### Caveats {/*caveats*/}
+#### نکات {/*caveats*/}
 
-* Multiple calls to `preinit` with the same `href` have the same effect as a single call.
-* In the browser, you can call `preinit` in any situation: while rendering a component, in an Effect, in an event handler, and so on.
-* In server-side rendering or when rendering Server Components, `preinit` only has an effect if you call it while rendering a component or in an async context originating from rendering a component. Any other calls will be ignored.
+* چندین فراخوانی `preinit` با همان `href` همان اثر یک فراخوانی را دارد.
+* در مرورگر، می‌توانید `preinit` را در هر شرایطی فراخوانی کنید: هنگام رندر یک کامپوننت، در یک افکت، در یک رویداد، و غیره.
+* در رندر سمت سرور یا هنگام رندر کامپوننت‌های سرور، `preinit` فقط در صورتی اثر دارد که هنگام رندر یک کامپوننت یا در یک کانتکست ناهمگام (async) که از رندر یک کامپوننت نشئت گرفته فراخوانی شود. هر فراخوانی دیگر نادیده گرفته می‌شود.
 
 ---
 
-## Usage {/*usage*/}
+## نحوهٔ استفاده {/*usage*/}
 
-### Preiniting when rendering {/*preiniting-when-rendering*/}
+### preinit کردن هنگام رندر {/*preiniting-when-rendering*/}
 
-Call `preinit` when rendering a component if you know that it or its children will use a specific resource, and you're OK with the resource being evaluated and thereby taking effect immediately upon being downloaded.
+اگر می‌دانید که یک کامپوننت یا فرزندان آن از یک منبع خاص استفاده خواهند کرد و با ارزیابی شدن منبع و در نتیجه اثرگذار فوری آن پس از دانلود موافقید، هنگام رندر کامپوننت `preinit` را فراخوانی کنید.
 
-<Recipes titleText="Examples of preiniting">
+<Recipes titleText="نمونه‌های preinit">
 
-#### Preiniting an external script {/*preiniting-an-external-script*/}
+#### preinit کردن یک اسکریپت خارجی {/*preiniting-an-external-script*/}
 
 ```js
 import { preinit } from 'react-dom';
@@ -84,11 +84,11 @@ function AppRoot() {
 }
 ```
 
-If you want the browser to download the script but not to execute it right away, use [`preload`](/reference/react-dom/preload) instead. If you want to load an ESM module, use [`preinitModule`](/reference/react-dom/preinitModule).
+اگر می‌خواهید مرورگر اسکریپت را دانلود کند اما بلافاصله اجرا نکند، از [`preload`](/reference/react-dom/preload) استفاده کنید. اگر می‌خواهید یک ماژول ESM را بارگذاری کنید، از [`preinitModule`](/reference/react-dom/preinitModule) استفاده کنید.
 
 <Solution />
 
-#### Preiniting a stylesheet {/*preiniting-a-stylesheet*/}
+#### preinit کردن یک stylesheet {/*preiniting-a-stylesheet*/}
 
 ```js
 import { preinit } from 'react-dom';
@@ -99,17 +99,17 @@ function AppRoot() {
 }
 ```
 
-The `precedence` option, which is required, lets you control the order of stylesheets within the document. Stylesheets with higher precedence can overrule those with lower precedence.
+گزینهٔ `precedence` که الزامی است، به شما اجازه می‌دهد ترتیب stylesheetها درون سند را کنترل کنید. stylesheetهایی با اولویت بالاتر می‌توانند آن‌هایی با اولویت پایین‌تر را نادیده بگیرند.
 
-If you want to download the stylesheet but not to insert it into the document right away, use [`preload`](/reference/react-dom/preload) instead.
+اگر می‌خواهید stylesheet را دانلود کنید اما بلافاصله در سند درج نکنید، از [`preload`](/reference/react-dom/preload) استفاده کنید.
 
 <Solution />
 
 </Recipes>
 
-### Preiniting in an event handler {/*preiniting-in-an-event-handler*/}
+### preinit کردن در یک رویداد {/*preiniting-in-an-event-handler*/}
 
-Call `preinit` in an event handler before transitioning to a page or state where external resources will be needed. This gets the process started earlier than if you call it during the rendering of the new page or state.
+`preinit` را در یک رویداد پیش از انتقال به صفحه یا استیتی که منابع خارجی در آن لازم خواهد بود، فراخوانی کنید. این کار فرآیند را زودتر از زمانی که در حین رندر صفحه یا استیت جدید فراخوانی کنید، آغاز می‌کند.
 
 ```js
 import { preinit } from 'react-dom';

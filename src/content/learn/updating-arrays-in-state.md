@@ -1,5 +1,5 @@
 ---
-title: به روز رسانی آرایه‌ها در State
+title: به‌روزرسانی آرایه‌ها در استیت
 ---
 
 <Intro>
@@ -16,7 +16,7 @@ title: به روز رسانی آرایه‌ها در State
 
 </YouWillLearn>
 
-## 	به‌روزرسانی آرایه‌ها بدون تغییر مستقیم (mutation) {/*updating-arrays-without-mutation*/}
+## به‌روزرسانی آرایه‌ها بدون تغییر مستقیم (mutation) {/*updating-arrays-without-mutation*/}
 
 در جاوااسکریپت، آرایه‌ها نوعی object هستند. [مانند object‌ها](/learn/updating-objects-in-state)، **باید با آرایه‌ها در state به‌صورت فقط‌خواندنی رفتار کنید.** این یعنی نباید آیتم‌های یک آرایه را با `arr[0] = 'bird'` دوباره مقداردهی کنید، و همچنین نباید از متدهایی که آرایه را تغییر می‌دهند، مانند `push()` و `pop()`، استفاده کنید.
 
@@ -1965,7 +1965,7 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-With Immer, you can pick the style that feels the most natural for each separate case.
+با Immer، می‌توانید برای هر مورد جداگانه، سبکی را انتخاب کنید که طبیعی‌ترین به‌نظر می‌رسد.
 
 </Solution>
 

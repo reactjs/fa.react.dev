@@ -4,7 +4,7 @@ title: useRef
 
 <Intro>
 
-`useRef` is a React Hook that lets you reference a value that's not needed for rendering.
+`useRef` یک هوک ری‌اکت است که به شما اجازه می‌دهد به مقداری ارجاع دهید که برای رندر کردن لازم نیست.
 
 ```js
 const ref = useRef(initialValue)
@@ -16,11 +16,11 @@ const ref = useRef(initialValue)
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `useRef(initialValue)` {/*useref*/}
 
-Call `useRef` at the top level of your component to declare a [ref.](/learn/referencing-values-with-refs)
+برای اعلان یک [رفرنس](/learn/referencing-values-with-refs)، `useRef` را در بالاترین سطح کامپوننت خود فراخوانی کنید.
 
 ```js
 import { useRef } from 'react';
@@ -31,34 +31,34 @@ function MyComponent() {
   // ...
 ```
 
-[See more examples below.](#usage)
+[مثال‌های بیشتر را در ادامه ببینید.](#usage)
 
-#### Parameters {/*parameters*/}
+#### پارامترها {/*parameters*/}
 
-* `initialValue`: The value you want the ref object's `current` property to be initially. It can be a value of any type. This argument is ignored after the initial render.
+* `initialValue`: مقداری که می‌خواهید پراپرتی `current` شیء رفرنس در ابتدا داشته باشد. می‌تواند مقداری از هر نوعی باشد. این آرگومان پس از رندر اولیه نادیده گرفته می‌شود.
 
-#### Returns {/*returns*/}
+#### مقادیر بازگشتی {/*returns*/}
 
-`useRef` returns an object with a single property:
+`useRef` شیئی با یک پراپرتی برمی‌گرداند:
 
-* `current`: Initially, it's set to the `initialValue` you have passed. You can later set it to something else. If you pass the ref object to React as a `ref` attribute to a JSX node, React will set its `current` property.
+* `current`: در ابتدا به `initialValue` که پاس داده‌اید تنظیم می‌شود. بعداً می‌توانید آن را به چیز دیگری تنظیم کنید. اگر شیء رفرنس را به‌عنوان ویژگی `ref` به یک نود JSX به ری‌اکت پاس بدهید، ری‌اکت پراپرتی `current` آن را تنظیم می‌کند.
 
-On the next renders, `useRef` will return the same object.
+در رندرهای بعدی، `useRef` همان شیء را برمی‌گرداند.
 
-#### Caveats {/*caveats*/}
+#### موارد احتیاط {/*caveats*/}
 
-* You can mutate the `ref.current` property. Unlike state, it is mutable. However, if it holds an object that is used for rendering (for example, a piece of your state), then you shouldn't mutate that object.
-* When you change the `ref.current` property, React does not re-render your component. React is not aware of when you change it because a ref is a plain JavaScript object.
-* Do not write _or read_ `ref.current` during rendering, except for [initialization.](#avoiding-recreating-the-ref-contents) This makes your component's behavior unpredictable.
-* In Strict Mode, React will **call your component function twice** in order to [help you find accidental impurities.](/reference/react/useState#my-initializer-or-updater-function-runs-twice) This is development-only behavior and does not affect production. Each ref object will be created twice, but one of the versions will be discarded. If your component function is pure (as it should be), this should not affect the behavior.
+* می‌توانید پراپرتی `ref.current` را تغییر دهید. برخلاف استیت، این پراپرتی قابل‌تغییر (mutable) است. با این حال، اگر شیئی را نگه می‌دارد که برای رندر استفاده می‌شود (برای مثال، بخشی از استیت شما)، نباید آن شیء را تغییر دهید.
+* هنگامی که پراپرتی `ref.current` را تغییر می‌دهید، ری‌اکت کامپوننت شما را دوباره رندر نمی‌کند. ری‌اکت از زمان تغییر آن آگاه نیست زیرا رفرنس یک شیء سادهٔ جاوااسکریپت است.
+* هنگام رندر، `ref.current` را _نخوانده و نه بنویسید_، مگر برای [مقداردهی اولیه.](#avoiding-recreating-the-ref-contents) این کار رفتار کامپوننت شما را غیرقابل‌پیش‌بینی می‌کند.
+* در حالت سخت‌گیرانه (Strict Mode)، ری‌اکت **تابع کامپوننت شما را دو بار فراخوانی می‌کند** تا [به شما کمک کند ناخالصی‌های تصادفی را پیدا کنید.](/reference/react/useState#my-initializer-or-updater-function-runs-twice) این رفتار فقط مخصوص محیط توسعه است و بر production تأثیری ندارد. هر شیء رفرنس دو بار ایجاد می‌شود، اما یکی از نسخه‌ها دور انداخته می‌شود. اگر تابع کامپوننت شما خالص باشد (که باید باشد)، این نباید بر رفتار تأثیر بگذارد.
 
 ---
 
-## Usage {/*usage*/}
+## استفاده {/*usage*/}
 
-### Referencing a value with a ref {/*referencing-a-value-with-a-ref*/}
+### ارجاع به یک مقدار با یک رفرنس {/*referencing-a-value-with-a-ref*/}
 
-Call `useRef` at the top level of your component to declare one or more [refs.](/learn/referencing-values-with-refs)
+برای اعلان یک یا چند [رفرنس](/learn/referencing-values-with-refs)، `useRef` را در بالاترین سطح کامپوننت خود فراخوانی کنید.
 
 ```js [[1, 4, "intervalRef"], [3, 4, "0"]]
 import { useRef } from 'react';
@@ -68,11 +68,11 @@ function Stopwatch() {
   // ...
 ```
 
-`useRef` returns a <CodeStep step={1}>ref object</CodeStep> with a single <CodeStep step={2}>`current` property</CodeStep> initially set to the <CodeStep step={3}>initial value</CodeStep> you provided.
+`useRef` یک <CodeStep step={1}>شیء رفرنس</CodeStep> با یک <CodeStep step={2}>پراپرتی `current`</CodeStep> برمی‌گرداند که در ابتدا به <CodeStep step={3}>مقدار اولیه</CodeStep> که ارائه کرده‌اید تنظیم شده است.
 
-On the next renders, `useRef` will return the same object. You can change its `current` property to store information and read it later. This might remind you of [state](/reference/react/useState), but there is an important difference.
+در رندرهای بعدی، `useRef` همان شیء را برمی‌گرداند. می‌توانید پراپرتی `current` آن را برای ذخیرهٔ اطلاعات و خواندن آن بعداً تغییر دهید. این ممکن است شما را به یاد [استیت](/reference/react/useState) بیندازد، اما تفاوتی مهم وجود دارد.
 
-**Changing a ref does not trigger a re-render.** This means refs are perfect for storing information that doesn't affect the visual output of your component. For example, if you need to store an [interval ID](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) and retrieve it later, you can put it in a ref. To update the value inside the ref, you need to manually change its <CodeStep step={2}>`current` property</CodeStep>:
+**تغییر یک رفرنس، رندر مجدد را موجب نمی‌شود.** این یعنی رفرنس‌ها برای ذخیرهٔ اطلاعاتی که بر خروجی بصری کامپوننت شما تأثیر ندارند، کاملاً مناسب هستند. برای مثال، اگر نیاز به ذخیرهٔ یک [شناسهٔ بازه (interval ID)](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) و بازیابی آن بعداً دارید، می‌توانید آن را در یک رفرنس قرار دهید. برای به‌روزرسانی مقدار درون رفرنس، باید به‌صورت دستی پراپرتی <CodeStep step={2}>`current`</CodeStep> آن را تغییر دهید:
 
 ```js [[2, 5, "intervalRef.current"]]
 function handleStartClick() {
@@ -83,7 +83,7 @@ function handleStartClick() {
 }
 ```
 
-Later, you can read that interval ID from the ref so that you can call [clear that interval](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval):
+بعداً می‌توانید آن شناسهٔ بازه را از رفرنس بخوانید تا بتوانید [آن بازه را پاک کنید](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval):
 
 ```js [[2, 2, "intervalRef.current"]]
 function handleStopClick() {
@@ -92,19 +92,19 @@ function handleStopClick() {
 }
 ```
 
-By using a ref, you ensure that:
+با استفاده از یک رفرنس، اطمینان حاصل می‌کنید که:
 
-- You can **store information** between re-renders (unlike regular variables, which reset on every render).
-- Changing it **does not trigger a re-render** (unlike state variables, which trigger a re-render).
-- The **information is local** to each copy of your component (unlike the variables outside, which are shared).
+- می‌توانید بین رندرهای مجدد **اطلاعاتی را ذخیره کنید** (برخلاف متغیرهای معمولی، که در هر رندر بازنشانی می‌شوند).
+- تغییر آن **رندر مجدد موجب نمی‌شود** (برخلاف متغیرهای استیت، که رندر مجدد را موجب می‌شوند).
+- **اطلاعات برای هر نسخه از کامپوننت شما محلی است** (برخلاف متغیرهای بیرون، که مشترک هستند).
 
-Changing a ref does not trigger a re-render, so refs are not appropriate for storing information you want to display on the screen. Use state for that instead. Read more about [choosing between `useRef` and `useState`.](/learn/referencing-values-with-refs#differences-between-refs-and-state)
+تغییر یک رفرنس رندر مجدد موجب نمی‌شود، بنابراین رفرنس‌ها برای ذخیرهٔ اطلاعاتی که می‌خواهید روی صفحه نمایش دهید، مناسب نیستند. برای این کار از استیت استفاده کنید. دربارهٔ [انتخاب میان `useRef` و `useState`](/learn/referencing-values-with-refs#differences-between-refs-and-state) بیشتر بخوانید.
 
-<Recipes titleText="Examples of referencing a value with useRef" titleId="examples-value">
+<Recipes titleText="نمونه‌هایی از ارجاع به یک مقدار با useRef" titleId="examples-value">
 
-#### Click counter {/*click-counter*/}
+#### شمارندهٔ کلیک {/*click-counter*/}
 
-This component uses a ref to keep track of how many times the button was clicked. Note that it's okay to use a ref instead of state here because the click count is only read and written in an event handler.
+این کامپوننت از یک رفرنس برای پیگیری تعداد دفعات کلیک روی دکمه استفاده می‌کند. توجه کنید که در اینجا استفاده از رفرنس به‌جای استیت اشکالی ندارد زیرا تعداد کلیک‌ها فقط در یک هندلر رویداد خوانده و نوشته می‌شود.
 
 <Sandpack>
 
@@ -129,13 +129,13 @@ export default function Counter() {
 
 </Sandpack>
 
-If you show `{ref.current}` in the JSX, the number won't update on click. This is because setting `ref.current` does not trigger a re-render. Information that's used for rendering should be state instead.
+اگر `{ref.current}` را در JSX نمایش دهید، عدد هنگام کلیک به‌روزرسانی نمی‌شود. این به این دلیل است که تنظیم `ref.current` رندر مجدد موجب نمی‌شود. اطلاعاتی که برای رندر استفاده می‌شوند، باید به‌جای آن استیت باشند.
 
 <Solution />
 
-#### A stopwatch {/*a-stopwatch*/}
+#### یک کرنومتر {/*a-stopwatch*/}
 
-This example uses a combination of state and refs. Both `startTime` and `now` are state variables because they are used for rendering. But we also need to hold an [interval ID](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) so that we can stop the interval on button press. Since the interval ID is not used for rendering, it's appropriate to keep it in a ref, and manually update it.
+این مثال از ترکیبی از استیت و رفرنس استفاده می‌کند. هم `startTime` و هم `now` متغیرهای استیت هستند زیرا برای رندر استفاده می‌شوند. اما همچنین باید یک [شناسهٔ بازه](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) را نگه داریم تا بتوانیم بازه را با فشردن دکمه متوقف کنیم. چون شناسهٔ بازه برای رندر استفاده نمی‌شود، مناسب است که در یک رفرنس نگه داشته شود و به‌صورت دستی به‌روزرسانی شود.
 
 <Sandpack>
 
@@ -188,14 +188,14 @@ export default function Stopwatch() {
 
 <Pitfall>
 
-**Do not write _or read_ `ref.current` during rendering.**
+**هنگام رندر، `ref.current` را _نه بخوانید و نه بنویسید_.**
 
-React expects that the body of your component [behaves like a pure function](/learn/keeping-components-pure):
+ری‌اکت انتظار دارد که بدنهٔ کامپوننت شما [مانند یک تابع خالص رفتار کند](/learn/keeping-components-pure):
 
-- If the inputs ([props](/learn/passing-props-to-a-component), [state](/learn/state-a-components-memory), and [context](/learn/passing-data-deeply-with-context)) are the same, it should return exactly the same JSX.
-- Calling it in a different order or with different arguments should not affect the results of other calls.
+- اگر ورودی‌ها ([پراپس](/learn/passing-props-to-a-component)، [استیت](/learn/state-a-components-memory) و [کانتکست](/learn/passing-data-deeply-with-context)) یکسان باشند، باید دقیقاً همان JSX را برگرداند.
+- فراخوانی آن به ترتیب متفاوت یا با آرگومان‌های متفاوت نباید بر نتایج فراخوانی‌های دیگر تأثیر بگذارد.
 
-Reading or writing a ref **during rendering** breaks these expectations.
+خواندن یا نوشتن یک رفرنس **در حین رندر** این انتظارات را نقض می‌کند.
 
 ```js {expectedErrors: {'react-compiler': [4]}} {3-4,6-7}
 function MyComponent() {
@@ -208,7 +208,7 @@ function MyComponent() {
 }
 ```
 
-You can read or write refs **from event handlers or effects instead**.
+می‌توانید رفرنس‌ها را **به‌جای آن از هندلرهای رویداد یا افکت‌ها** بخوانید یا بنویسید.
 
 ```js {4-5,9-10}
 function MyComponent() {
@@ -226,19 +226,19 @@ function MyComponent() {
 }
 ```
 
-If you *have to* read [or write](/reference/react/useState#storing-information-from-previous-renders) something during rendering, [use state](/reference/react/useState) instead.
+اگر *مجبورید* چیزی را حین رندر [بخوانید یا بنویسید](/reference/react/useState#storing-information-from-previous-renders)، به‌جای آن [از استیت استفاده کنید](/reference/react/useState).
 
-When you break these rules, your component might still work, but most of the newer features we're adding to React will rely on these expectations. Read more about [keeping your components pure.](/learn/keeping-components-pure#where-you-_can_-cause-side-effects)
+وقتی این قواعد را نقض می‌کنید، کامپوننت شما ممکن است همچنان کار کند، اما بیشتر ویژگی‌های جدیدی که به ری‌اکت اضافه می‌کنیم به این انتظارات تکیه می‌کنند. دربارهٔ [خالص نگه‌داشتن کامپوننت‌های خود بیشتر بخوانید.](/learn/keeping-components-pure#where-you-_can_-cause-side-effects)
 
 </Pitfall>
 
 ---
 
-### Manipulating the DOM with a ref {/*manipulating-the-dom-with-a-ref*/}
+### دستکاری DOM با یک رفرنس {/*manipulating-the-dom-with-a-ref*/}
 
-It's particularly common to use a ref to manipulate the [DOM.](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API) React has built-in support for this.
+استفاده از یک رفرنس برای دستکاری [DOM](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API) بسیار رایج است. ری‌اکت پشتیبانی داخلی برای این کار دارد.
 
-First, declare a <CodeStep step={1}>ref object</CodeStep> with an <CodeStep step={3}>initial value</CodeStep> of `null`:
+ابتدا یک <CodeStep step={1}>شیء رفرنس</CodeStep> با <CodeStep step={3}>مقدار اولیه</CodeStep> `null` اعلان کنید:
 
 ```js [[1, 4, "inputRef"], [3, 4, "null"]]
 import { useRef } from 'react';
@@ -248,14 +248,14 @@ function MyComponent() {
   // ...
 ```
 
-Then pass your ref object as the `ref` attribute to the JSX of the DOM node you want to manipulate:
+سپس شیء رفرنس خود را به‌عنوان ویژگی `ref` به JSXِ نود DOM که می‌خواهید دستکاری کنید، پاس بدهید:
 
 ```js [[1, 2, "inputRef"]]
   // ...
   return <input ref={inputRef} />;
 ```
 
-After React creates the DOM node and puts it on the screen, React will set the <CodeStep step={2}>`current` property</CodeStep> of your ref object to that DOM node. Now you can access the `<input>`'s DOM node and call methods like [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus):
+پس از آنکه ری‌اکت نود DOM را ایجاد کرده و آن را روی صفحه می‌گذارد، ری‌اکت پراپرتی <CodeStep step={2}>`current`</CodeStep> شیء رفرنس شما را به آن نود DOM تنظیم می‌کند. حالا می‌توانید به نود DOM `<input>` دسترسی داشته باشید و متدهایی مانند [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) را فراخوانی کنید:
 
 ```js [[2, 2, "inputRef.current"]]
   function handleClick() {
@@ -263,15 +263,15 @@ After React creates the DOM node and puts it on the screen, React will set the <
   }
 ```
 
-React will set the `current` property back to `null` when the node is removed from the screen.
+هنگامی که نود از صفحه حذف می‌شود، ری‌اکت پراپرتی `current` را دوباره به `null` تنظیم می‌کند.
 
-Read more about [manipulating the DOM with refs.](/learn/manipulating-the-dom-with-refs)
+دربارهٔ [دستکاری DOM با رفرنس‌ها بیشتر بخوانید.](/learn/manipulating-the-dom-with-refs)
 
-<Recipes titleText="Examples of manipulating the DOM with useRef" titleId="examples-dom">
+<Recipes titleText="نمونه‌هایی از دستکاری DOM با useRef" titleId="examples-dom">
 
-#### Focusing a text input {/*focusing-a-text-input*/}
+#### فوکوس کردن یک ورودی متنی {/*focusing-a-text-input*/}
 
-In this example, clicking the button will focus the input:
+در این مثال، کلیک روی دکمه، ورودی را فوکوس می‌کند:
 
 <Sandpack>
 
@@ -300,9 +300,9 @@ export default function Form() {
 
 <Solution />
 
-#### Scrolling an image into view {/*scrolling-an-image-into-view*/}
+#### اسکرول یک تصویر به نمایان شدن {/*scrolling-an-image-into-view*/}
 
-In this example, clicking the button will scroll an image into view. It uses a ref to the list DOM node, and then calls DOM [`querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) API to find the image we want to scroll to.
+در این مثال، کلیک روی دکمه یک تصویر را به نمایان شدن اسکرول می‌کند. این مثال از یک رفرنس به نود DOM لیست استفاده می‌کند و سپس APIِ DOMِ [`querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) را فراخوانی می‌کند تا تصویری را که می‌خواهیم به آن اسکرول کنیم، پیدا کند.
 
 <Sandpack>
 
@@ -393,9 +393,9 @@ li {
 
 <Solution />
 
-#### Playing and pausing a video {/*playing-and-pausing-a-video*/}
+#### پخش و توقف یک ویدئو {/*playing-and-pausing-a-video*/}
 
-This example uses a ref to call [`play()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) and [`pause()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause) on a `<video>` DOM node.
+این مثال از یک رفرنس برای فراخوانی [`play()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) و [`pause()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause) روی یک نود DOM `<video>` استفاده می‌کند.
 
 <Sandpack>
 
@@ -446,9 +446,9 @@ button { display: block; margin-bottom: 20px; }
 
 <Solution />
 
-#### Exposing a ref to your own component {/*exposing-a-ref-to-your-own-component*/}
+#### در دسترس قرار دادن یک رفرنس برای کامپوننت خودتان {/*exposing-a-ref-to-your-own-component*/}
 
-Sometimes, you may want to let the parent component manipulate the DOM inside of your component. For example, maybe you're writing a `MyInput` component, but you want the parent to be able to focus the input (which the parent has no access to). You can create a `ref` in the parent and pass the `ref` as prop to the child component. Read a [detailed walkthrough](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes) here.
+گاهی ممکن است بخواهید به کامپوننت والد اجازه دهید DOM درون کامپوننت شما را دستکاری کند. برای مثال، شاید در حال نوشتن یک کامپوننت `MyInput` هستید، اما می‌خواهید والد بتواند ورودی را فوکوس کند (که والد به آن دسترسی ندارد). می‌توانید یک `ref` در والد ایجاد کنید و `ref` را به‌عنوان پراپ به کامپوننت فرزند پاس بدهید. یک [راهنمای گام‌به‌گام](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes) را اینجا بخوانید.
 
 <Sandpack>
 
@@ -485,9 +485,9 @@ export default function Form() {
 
 ---
 
-### Avoiding recreating the ref contents {/*avoiding-recreating-the-ref-contents*/}
+### جلوگیری از بازایجاد محتویات رفرنس {/*avoiding-recreating-the-ref-contents*/}
 
-React saves the initial ref value once and ignores it on the next renders.
+ری‌اکت مقدار اولیهٔ رفرنس را یک‌بار ذخیره می‌کند و در رندرهای بعدی آن را نادیده می‌گیرد.
 
 ```js
 function Video() {
@@ -495,9 +495,9 @@ function Video() {
   // ...
 ```
 
-Although the result of `new VideoPlayer()` is only used for the initial render, you're still calling this function on every render. This can be wasteful if it's creating expensive objects.
+اگرچه نتیجهٔ `new VideoPlayer()` تنها برای رندر اولیه استفاده می‌شود، همچنان در هر رندر این تابع را فراخوانی می‌کنید. این می‌تواند اگر اشیاء پرهزینه‌ای ایجاد کند، اتلاف منابع باشد.
 
-To solve it, you may initialize the ref like this instead:
+برای حل این مشکل، می‌توانید رفرنس را به این شکل مقداردهی اولیه کنید:
 
 ```js
 function Video() {
@@ -508,13 +508,13 @@ function Video() {
   // ...
 ```
 
-Normally, writing or reading `ref.current` during render is not allowed. However, it's fine in this case because the result is always the same, and the condition only executes during initialization so it's fully predictable.
+معمولاً نوشتن یا خواندن `ref.current` حین رندر مجاز نیست. با این حال، در این مورد اشکالی ندارد زیرا نتیجه همیشه یکسان است و شرط فقط هنگام مقداردهی اولیه اجرا می‌شود، بنابراین کاملاً قابل‌پیش‌بینی است.
 
 <DeepDive>
 
-#### How to avoid null checks when initializing useRef later {/*how-to-avoid-null-checks-when-initializing-use-ref-later*/}
+#### چگونه از بررسی null هنگام مقداردهی useRef بعداً جلوگیری کنیم {/*how-to-avoid-null-checks-when-initializing-use-ref-later*/}
 
-If you use a type checker and don't want to always check for `null`, you can try a pattern like this instead:
+اگر از یک type checker استفاده می‌کنید و نمی‌خواهید همیشه `null` را بررسی کنید، می‌توانید الگویی مانند این را امتحان کنید:
 
 ```js
 function Video() {
@@ -532,17 +532,17 @@ function Video() {
   // ...
 ```
 
-Here, the `playerRef` itself is nullable. However, you should be able to convince your type checker that there is no case in which `getPlayer()` returns `null`. Then use `getPlayer()` in your event handlers.
+در اینجا خود `playerRef` قابل‌ null بودن است. با این حال، باید بتوانید type checker خود را متقاعد کنید که هیچ موردی وجود ندارد که در آن `getPlayer()` مقدار `null` برگرداند. سپس از `getPlayer()` در هندلرهای رویداد خود استفاده کنید.
 
 </DeepDive>
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-### I can't get a ref to a custom component {/*i-cant-get-a-ref-to-a-custom-component*/}
+### نمی‌توانم به یک کامپوننت سفارشی رفرنس بگیرم {/*i-cant-get-a-ref-to-a-custom-component*/}
 
-If you try to pass a `ref` to your own component like this:
+اگر سعی کنید یک `ref` را به کامپوننت خودتان مانند این پاس بدهید:
 
 ```js
 const inputRef = useRef(null);
@@ -550,7 +550,7 @@ const inputRef = useRef(null);
 return <MyInput ref={inputRef} />;
 ```
 
-You might get an error in the console:
+ممکن است در کنسول خطایی دریافت کنید:
 
 <ConsoleBlock level="error">
 
@@ -558,9 +558,9 @@ TypeError: Cannot read properties of null
 
 </ConsoleBlock>
 
-By default, your own components don't expose refs to the DOM nodes inside them.
+به‌طور پیش‌فرض، کامپوننت‌های خود شما رفرنس‌ها را برای نودهای DOM درونشان آشکار نمی‌کنند.
 
-To fix this, find the component that you want to get a ref to:
+برای رفع این مشکل، کامپوننتی که می‌خواهید به آن رفرنس بگیرید را پیدا کنید:
 
 ```js
 export default function MyInput({ value, onChange }) {
@@ -573,7 +573,7 @@ export default function MyInput({ value, onChange }) {
 }
 ```
 
-And then add `ref` to the list of props your component accepts and pass `ref` as a prop to the relevent child [built-in component](/reference/react-dom/components/common) like this:
+سپس `ref` را به لیست پراپس‌هایی که کامپوننت شما می‌پذیرد اضافه کنید و `ref` را به‌عنوان یک پراپ به [کامپوننت داخلی](/reference/react-dom/components/common) فرزند مربوطه پاس بدهید، مانند این:
 
 ```js {1,6}
 function MyInput({ value, onChange, ref }) {
@@ -589,6 +589,6 @@ function MyInput({ value, onChange, ref }) {
 export default MyInput;
 ```
 
-Then the parent component can get a ref to it.
+سپس کامپوننت والد می‌تواند به آن رفرنس بگیرد.
 
-Read more about [accessing another component's DOM nodes.](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes)
+دربارهٔ [دسترسی به نودهای DOM کامپوننت دیگر بیشتر بخوانید.](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes)

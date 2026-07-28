@@ -1,17 +1,17 @@
 ---
-title: "React Canaries: Enabling Incremental Feature Rollout Outside Meta"
+title: "ری‌اکت کاناری: فعال‌سازی انتشار تدریجی قابلیت‌های جدید در خارج از متا"
 author: Dan Abramov, Sophie Alpert, Rick Hanlon, Sebastian Markbage, and Andrew Clark
 date: 2023/05/03
 description: We'd like to offer the React community an option to adopt individual new features as soon as their design is close to final, before they're released in a stable version--similar to how Meta has long used bleeding-edge versions of React internally. We are introducing a new officially supported [Canary release channel](/community/versioning-policy#canary-channel). It lets curated setups like frameworks decouple adoption of individual React features from the React release schedule.
 ---
 
-May 3, 2023 by [Dan Abramov](https://bsky.app/profile/danabra.mov), [Sophie Alpert](https://twitter.com/sophiebits), [Rick Hanlon](https://twitter.com/rickhanlonii), [Sebastian Markbåge](https://twitter.com/sebmarkbage), and [Andrew Clark](https://twitter.com/acdlite)
+3 مه 2023 توسط [Dan Abramov](https://bsky.app/profile/danabra.mov)، [Sophie Alpert](https://twitter.com/sophiebits)، [Rick Hanlon](https://twitter.com/rickhanlonii)، [Sebastian Markbåge](https://twitter.com/sebmarkbage) و [Andrew Clark](https://twitter.com/acdlite)
 
 ---
 
 <Intro>
 
-We'd like to offer the React community an option to adopt individual new features as soon as their design is close to final, before they're released in a stable version--similar to how Meta has long used bleeding-edge versions of React internally. We are introducing a new officially supported [Canary release channel](/community/versioning-policy#canary-channel). It lets curated setups like frameworks decouple adoption of individual React features from the React release schedule.
+مایلیم به جامعهٔ ری‌اکت این امکان را بدهیم که قابلیت‌های جدیدِ منفرد را به‌محض نهایی‌شدن طراحی‌شان و پیش از انتشار در نسخهٔ پایدار به کار بگیرند — مشابهِ روشی که متا مدت‌هاست در داخل سازمان از نسخه‌های بسیار پیشرو (bleeding-edge) ری‌اکت استفاده می‌کند. ما در حال معرفی یک [کانال انتشار کاناری (Canary)](/community/versioning-policy#canary-channel) جدید و رسمی‌پشتیبانی‌شده هستیم. این کانال به راه‌اندازی‌های گزینش‌شده‌ای مانند فریم‌ورک‌ها اجازه می‌دهد پذیرش قابلیت‌های منفرد ری‌اکت را از برنامهٔ زمان‌بندی انتشار ری‌اکت جدا کنند.
 
 </Intro>
 
@@ -19,79 +19,79 @@ We'd like to offer the React community an option to adopt individual new feature
 
 ## tl;dr {/*tldr*/}
 
-* We're introducing an officially supported [Canary release channel](/community/versioning-policy#canary-channel) for React. Since it's officially supported, if any regressions land, we'll treat them with a similar urgency to bugs in stable releases.
-* Canaries let you start using individual new React features before they land in the semver-stable releases.
-* Unlike the [Experimental](/community/versioning-policy#experimental-channel) channel, React Canaries only include features that we reasonably believe to be ready for adoption. We encourage frameworks to consider bundling pinned Canary React releases.
-* We will announce breaking changes and new features on our blog as they land in Canary releases.
-* **As always, React continues to follow semver for every Stable release.**
+* ما در حال معرفی یک [کانال انتشار کاناری](/community/versioning-policy#canary-channel) رسمی‌پشتیبانی‌شده برای ری‌اکت هستیم. از آنجا که این کانال به‌طور رسمی پشتیبانی می‌شود، اگر هرگونه پس‌رفتی منتشر شود، با فوریت مشابهی با باگ‌های نسخه‌های پایدار با آن برخورد خواهیم کرد.
+* کاناری‌ها به شما اجازه می‌دهند پیش از آنکه قابلیت‌های جدید ری‌اکت در نسخه‌های پایدارِ مبتنی بر semver منتشر شوند، از آن‌ها استفاده کنید.
+* برخلاف کانال [Experimental](/community/versioning-policy#experimental-channel)، ری‌اکت کاناری فقط شامل قابلیت‌هایی می‌شود که با توجه معقول آمادهٔ پذیرش هستند. ما فریم‌ورک‌ها را تشویق می‌کنیم تا انتشارهای پین‌شدهٔ کاناری ری‌اکت را در خود بگنجانند.
+* ما تغییرات از بین‌برنده (breaking changes) و قابلیت‌های جدید را به‌محض انتشار در نسخه‌های کاناری، در وبلاگمان اعلام خواهیم کرد.
+* **همان‌طور که همیشه بوده است، ری‌اکت برای هر انتشار پایدار همچنان از semver پیروی می‌کند.**
 
-## How React features are usually developed {/*how-react-features-are-usually-developed*/}
+## قابلیت‌های ری‌اکت معمولاً چگونه توسعه داده می‌شوند {/*how-react-features-are-usually-developed*/}
 
-Typically, every React feature has gone through the same stages:
+به‌طور معمول، هر قابلیت ری‌اکت از مراحل زیر عبور کرده است:
 
-1. We develop an initial version and prefix it with `experimental_` or `unstable_`. The feature is only available in the `experimental` release channel. At this point, the feature is expected to change significantly.
-2. We find a team at Meta willing to help us test this feature and provide feedback on it. This leads to a round of changes. As the feature becomes more stable, we work with more teams at Meta to try it out.
-3. Eventually, we feel confident in the design. We remove the prefix from the API name, and make the feature available on the `main` branch by default, which most Meta products use. At this point, any team at Meta can use this feature.
-4. As we build confidence in the direction, we also post an RFC for the new feature. At this point we know the design works for a broad set of cases, but we might make some last minute adjustments.
-5. When we are close to cutting an open source release, we write documentation for the feature and finally release the feature in a stable React release.
+1. یک نسخهٔ اولیه را توسعه می‌دهیم و پیشوند `experimental_` یا `unstable_` را به آن می‌افزاییم. این قابلیت فقط در کانال انتشار `experimental` در دسترس است. در این مرحله انتظار می‌رود قابلیت تغییرات زیادی ببیند.
+2. تیمی در متا پیدا می‌کنیم که مایل به کمک در آزمایش این قابلیت و ارائهٔ بازخورد دربارهٔ آن باشد. این موضوع منجر به دور تغییراتی می‌شود. هرچه قابلیت پایدارتر می‌شود، با تیم‌های بیشتری در متا برای امتحان آن همکاری می‌کنیم.
+3. در نهایت، به طراحی اطمینان پیدا می‌کنیم. پیشوند را از نام API برمی‌داریم و قابلیت را به‌طور پیش‌فرض در شاخهٔ `main` — که بیشتر محصولات متا از آن استفاده می‌کنند — در دسترس قرار می‌دهیم. در این مرحله، هر تیمی در متا می‌تواند از این قابلیت استفاده کند.
+4. با افزایش اطمینان به مسیر، یک RFC نیز برای قابلیت جدید منتشر می‌کنیم. در این نقطه می‌دانیم که طراحی برای مجموعهٔ گسترده‌ای از موارد کار می‌کند، اما ممکن است چندتنظیم پایانی انجام دهیم.
+5. وقتی به نزدیک انتشار یک نسخهٔ متن‌باز می‌شویم، مستندات قابلیت را می‌نویسیم و در نهایت آن قابلیت را در یک انتشار پایدار ری‌اکت منتشر می‌کنیم.
 
-This playbook works well for most features we've released so far. However, there can be a significant gap between when the feature is generally ready to use (step 3) and when it is released in open source (step 5).
+این رویه برای بیشتر قابلیت‌هایی که تا کنون منتشر کرده‌ایم به‌خوبی کار می‌کند. با این حال، ممکن است فاصلهٔ زیادی میان زمان آماده‌بودن عمومی قابلیت (گام ۳) و زمان انتشار آن در نسخهٔ متن‌باز (گام ۵) وجود داشته باشد.
 
-**We'd like to offer the React community an option to follow the same approach as Meta, and adopt individual new features earlier (as they become available) without having to wait for the next release cycle of React.**
+**مایلیم به جامعهٔ ری‌اکت این امکان را بدهیم که از همان رویکرد متا پیروی کند و قابلیت‌های منفردِ جدید را زودتر (به‌محض در دسترس قرار گرفتن) به کار بگیرد، بدون آنکه برای چرخهٔ انتشار بعدی ری‌اکت منتظر بماند.**
 
-As always, all React features will eventually make it into a Stable release.
+همان‌طور که همیشه بوده، تمام قابلیت‌های ری‌اکت در نهایت وارد یک انتشار پایدار خواهند شد.
 
-## Can we just do more minor releases? {/*can-we-just-do-more-minor-releases*/}
+## آیا می‌توانیم فقط انتشارهای ماینور بیشتری داشته باشیم؟ {/*can-we-just-do-more-minor-releases*/}
 
-Generally, we *do* use minor releases for introducing new features.
+به‌طور کلی، ما *استفاده* از انتشارهای ماینور را برای معرفی قابلیت‌های جدید به کار می‌بریم.
 
-However, this isn't always possible. Sometimes, new features are interconnected with *other* new features which have not yet been fully completed and that we're still actively iterating on. We can't release them separately because their implementations are related. We can't version them separately because they affect the same packages (for example, `react` and `react-dom`). And we need to keep the ability to iterate on the pieces that aren't ready without a flurry of major version releases, which semver would require us to do.
+با این حال، این کار همیشه ممکن نیست. گاهی قابلیت‌های جدید با *سایر* قابلیت‌های جدید که هنوز کاملاً کامل نشده‌اند و همچنان در حال تکرار و توسعه روی آن‌ها هستیم، در هم تنیده هستند. نمی‌توانیم آن‌ها را جداگانه منتشر کنیم زیرا پیاده‌سازی‌شان مرتبط است. نمی‌توانیم نسخه‌بندی آن‌ها را جداگانه انجام دهیم زیرا روی بسته‌های مشابهی (مثلاً `react` و `react-dom`) تأثیر می‌گذارند. و باید توانایی تکرار و توسعهٔ روی بخش‌هایی که هنوز آماده نیستند را — بدون آغاز یک رشته از انتشارهای نسخهٔ اصلی که semver به ما الزام می‌کند — حفظ کنیم.
 
-At Meta, we've solved this problem by building React from the `main` branch, and manually updating it to a specific pinned commit every week. This is also the approach that React Native releases have been following for the last several years. Every *stable* release of React Native is pinned to a specific commit from the `main` branch of the React repository. This lets React Native include important bugfixes and incrementally adopt new React features at the framework level without getting coupled to the global React release schedule.
+در متا، این مسئله را با ساخت ری‌اکت از شاخهٔ `main` و به‌روزرسانی دستی آن به یک کامیت خاصِ پین‌شده در هر هفته حل کرده‌ایم. این رویکردی است که انتشارهای React Native نیز در چند سال گذشته از آن پیروی کرده‌اند. هر انتشار *پایدار* React Native به یک کامیت خاص از شاخهٔ `main` مخزن ری‌اکت پین شده است. این کار به React Native اجازه می‌دهد رفع‌باگ‌های مهم را بگنجاند و قابلیت‌های جدید ری‌اکت را به‌تدریج در سطح فریم‌ورک به کار بگیرد، بدون آنکه به برنامهٔ زمان‌بندی سراسری انتشار ری‌اکت وابسته شود.
 
-We would like to make this workflow available to other frameworks and curated setups. For example, it lets a framework *on top of* React include a React-related breaking change *before* this breaking change gets included into a stable React release. This is particularly useful because some breaking changes only affect framework integrations. This lets a framework release such a change in its own minor version without breaking semver.
+مایلیم این گردش‌کار را برای سایر فریم‌ورک‌ها و راه‌اندازی‌های گزینش‌شده نیز فراهم کنیم. برای مثال، این کار به یک فریم‌ورک *بالای* ری‌اکت اجازه می‌دهد یک تغییر از بین‌برندهٔ مرتبط با ری‌اکت را *پیش از* آنکه به انتشار پایدار ری‌اکت راه یابد، بگنجاند. این موضوع به‌ویژه مفید است زیرا برخی تغییرات از بین‌برنده فقط بر یکپارچه‌سازی فریم‌ورک‌ها تأثیر می‌گذارند. این کار به فریم‌ورک اجازه می‌دهد چنین تغییری را در نسخهٔ ماینور خودش و بدون نقض semver منتشر کند.
 
-Rolling releases with the Canaries channel will allow us to have a tighter feedback loop and ensure that new features get comprehensive testing in the community. This workflow is closer to how TC39, the JavaScript standards committee, [handles changes in numbered stages](https://tc39.es/process-document/). New React features may be available in frameworks built on React before they are in a React stable release, just as new JavaScript features ship in browsers before they are officially ratified as part of the specification.
+انتشارهای غلتان (rolling releases) با کانال کاناری به ما اجازه می‌دهد حلقهٔ بازخورد سفت‌تری داشته باشیم و مطمئن شویم قابلیت‌های جدید در جامعه به‌طور جامع آزمایش می‌شوند. این گردش‌کار به روشی که TC39، کمیتهٔ استاندارد جاوااسکریپت، [با تغییرات در مراحل شماره‌دار برخورد می‌کند](https://tc39.es/process-document/) نزدیک‌تر است. ممکن است قابلیت‌های جدید ری‌اکت پیش از آنکه در یک انتشار پایدار ری‌اکت قرار گیرند، در فریم‌ورک‌های ساخته‌شده بر پایهٔ ری‌اکت در دسترس باشند — همان‌گونه که قابلیت‌های جدید جاوااسکریپت پیش از تصویب رسمی به‌عنوان بخشی از مشخصات، در مرورگرها منتشر می‌شوند.
 
-## Why not use experimental releases instead? {/*why-not-use-experimental-releases-instead*/}
+## چرا به‌جای آن از انتشارهای آزمایشی استفاده نمی‌کنیم؟ {/*why-not-use-experimental-releases-instead*/}
 
-Although you *can* technically use [Experimental releases](/community/versioning-policy#canary-channel), we recommend against using them in production because experimental APIs can undergo significant breaking changes on their way to stabilization (or can even be removed entirely). While Canaries can also contain mistakes (as with any release), going forward we plan to announce any significant breaking changes in Canaries on our blog. Canaries are the closest to the code Meta runs internally, so you can generally expect them to be relatively stable. However, you *do* need to keep the version pinned and manually scan the GitHub commit log when updating between the pinned commits.
+هرچند از نظر فنی *می‌توانید* از [انتشارهای آزمایشی](/community/versioning-policy#canary-channel) استفاده کنید، توصیه می‌کنیم از آن‌ها در محیط عملیاتی (production) استفاده نکنید زیرا APIهای آزمایشی در مسیر پایدارشدن ممکن است تغییرات از بین‌برندهٔ قابل‌توجهی ببینند (یا حتی کاملاً حذف شوند). با این حال که کاناری‌ها نیز (مانند هر انتشار دیگری) ممکن است دارای اشتباه باشند، از این پس قصد داریم هرگونه تغییر از بین‌برندهٔ قابل‌توجه در کاناری‌ها را در وبلاگمان اعلام کنیم. کاناری‌ها به کدی که متا در داخل سازمان اجرا می‌کند نزدیک‌ترین هستند، بنابراین به‌طور کلی می‌توانید انتظار داشته باشید که نسبتاً پایدار باشند. با این حال، شما *باید* نسخه را پین کنید و هنگام به‌روزرسانی میان کامیت‌های پین‌شده، گزارش کامیت‌های گیت‌هاب را به‌صورت دستی بررسی کنید.
 
-**We expect that most people using React outside a curated setup (like a framework) will want to continue using the Stable releases.** However, if you're building a framework, you might want to consider bundling a Canary version of React pinned to a particular commit, and update it at your own pace. The benefit of that is that it lets you ship individual completed React features and bugfixes earlier for your users and at your own release schedule, similar to how React Native has been doing it for the last few years. The downside is that you would take on additional responsibility to review which React commits are being pulled in and communicate to your users which React changes are included with your releases.
+**انتظار داریم بیشتر افرادی که خارج از یک راه‌اندازی گزینش‌شده (مانند یک فریم‌ورک) از ری‌اکت استفاده می‌کنند، مایل به ادامهٔ استفاده از انتشارهای پایدار باشند.** با این حال، اگر در حال ساخت یک فریم‌ورک هستید، ممکن است بخواهید نسخهٔ کاناری ری‌اکت را که به یک کامیت خاص پین شده است در خود بگنجانید و آن را با سرعت خودتان به‌روز کنید. مزیت این کار آن است که به شما اجازه می‌دهد قابلیت‌های تکمیل‌شده و رفع‌باگ‌های منفرد ری‌اکت را زودتر و با برنامهٔ انتشار خودتان برای کاربرانتان منتشر کنید — مشابهِ کاری که React Native در چند سال گذشته انجام داده است. نقطهٔ ضعف آن این است که مسئولیت اضافی برای بررسی این که کدام کامیت‌های ری‌اکت وارد می‌شوند و اعلام به کاربرانتان مبنی بر اینکه کدام تغییرات ری‌اکت در انتشارهای شما گنجانده شده است را بر عهده می‌گیرید.
 
-If you're a framework author and want to try this approach, please get in touch with us.
+اگر نویسندهٔ یک فریم‌ورک هستید و مایل به امتحان این رویکرد هستید، لطفاً با ما در تماس باشید.
 
-## Announcing breaking changes and new features early {/*announcing-breaking-changes-and-new-features-early*/}
+## اعلام زودهنگام تغییرات از بین‌برنده و قابلیت‌های جدید {/*announcing-breaking-changes-and-new-features-early*/}
 
-Canary releases represent our best guess of what will go into the next stable React release at any given time.
+انتشارهای کاناری بهترین حدس ما را در هر لحظه دربارهٔ آنچه وارد انتشار پایدار بعدی ری‌اکت خواهد شد، نمایندگی می‌کنند.
 
-Traditionally, we've only announced breaking changes at the *end* of the release cycle (when doing a major release). Now that Canary releases are an officially supported way to consume React, we plan to shift towards announcing breaking changes and significant new features *as they land* in Canaries. For example, if we merge a breaking change that will go out in a Canary, we will write a post about it on the React blog, including codemods and migration instructions if necessary. Then, if you're a framework author cutting a major release that updates the pinned React canary to include that change, you can link to our blog post from your release notes. Finally, when a stable major version of React is ready, we will link to those already published blog posts, which we hope will help our team make progress faster.
+به‌طور سنتی، ما تغییرات از بین‌برنده را تنها در *پایان* چرخهٔ انتشار (هنگام انجام یک انتشار اصلی) اعلام کرده‌ایم. اکنون که انتشارهای کاناری روشی رسمی‌پشتیبانی‌شده برای استفاده از ری‌اکت هستند، قصد داریم به‌سمت اعلام تغییرات از بین‌برنده و قابلیت‌های جدید مهم *به‌محض انتشار* در کاناری‌ها حرکت کنیم. برای مثال، اگر تغییر از بین‌برنده‌ای را ادغام کنیم که در یک کاناری منتشر خواهد شد، دربارهٔ آن در وبلاگ ری‌اکت مطلبی می‌نویسیم که در صورت نیاز شامل کدمادها (codemods) و دستورالعمل‌های مهاجرت خواهد بود. سپس، اگر نویسندهٔ فریم‌ورکی هستید که در حال انتشار نسخهٔ اصلی هستید و کاناری پین‌شدهٔ ری‌اکت را برای گنجاندن آن تغییر به‌روز می‌کنید، می‌توانید از یادداشت‌های انتشار خود به پست وبلاگمان پیوند دهید. در نهایت، وقتی نسخهٔ اصلی پایدار ری‌اکت آماده شد، ما به آن پست‌های وبلاگِ از پیش منتشرشده پیوند خواهیم داد که امیدواریم به تیم ما کمک کند سریع‌تر پیشرفت کند.
 
-We plan to document APIs as they land in Canaries--even if these APIs are not yet available outside of them. APIs that are only available in Canaries will be marked with a special note on the corresponding pages. This will include APIs like [`use`](https://github.com/reactjs/rfcs/pull/229), and some others (like `cache` and `createServerContext`) which we'll send RFCs for.
+قصد داریم APIها را به‌محض انتشار در کاناری‌ها مستند کنیم — حتی اگر این APIها هنوز خارج از کاناری‌ها در دسترس نباشند. APIهایی که فقط در کاناری‌ها در دسترس هستند، با یادداشت ویژه‌ای در صفحات مربوطه علامت‌گذاری خواهند شد. این شامل APIهایی مانند [`use`](https://github.com/reactjs/rfcs/pull/229) و چند مورد دیگر (مانند `cache` و `createServerContext`) خواهد بود که برای آن‌ها RFC ارسال خواهیم کرد.
 
-## Canaries must be pinned {/*canaries-must-be-pinned*/}
+## کاناری‌ها باید پین شوند {/*canaries-must-be-pinned*/}
 
-If you decide to adopt the Canary workflow for your app or framework, make sure you always pin the *exact* version of the Canary you're using. Since Canaries are pre-releases, they may still include breaking changes.
+اگر تصمیم به پذیرش گردش‌کار کاناری برای اپلیکیشن یا فریم‌ورک خود دارید، مطمئن شوید همیشه نسخهٔ *دقیق* کاناری‌ای که استفاده می‌کنید را پین می‌کنید. از آنجا که کاناری‌ها پیش‌انتشار هستند، ممکن است همچنان شامل تغییرات از بین‌برنده باشند.
 
-## Example: React Server Components {/*example-react-server-components*/}
+## مثال: کامپوننت‌های سرور ری‌اکت {/*example-react-server-components*/}
 
-As we [announced in March](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components), the React Server Components conventions have been finalized, and we do not expect significant breaking changes related to their user-facing API contract. However, we can't release support for React Server Components in a stable version of React yet because we are still working on several intertwined framework-only features (such as [asset loading](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#asset-loading)) and expect more breaking changes there.
+همان‌طور که در [مارس اعلام کردیم](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components)، قراردادهای کامپوننت‌های سرور (Server Components) ری‌اکت نهایی شده‌اند و انتظار تغییرات از بین‌برندهٔ قابل‌توجهی مربوط به قرارداد API رو‌به‌کاربر آن‌ها نداریم. با این حال، هنوز نمی‌توانیم پشتیبانی از کامپوننت‌های سرور ری‌اکت را در نسخهٔ پایدار ری‌اکت منتشر کنیم زیرا همچنان در حال کار روی چند قابلیت درهم‌تنیدهٔ مخصوص فریم‌ورک هستیم (مانند [بارگذاری دارایی‌ها](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#asset-loading)) و انتظار تغییرات از بین‌برندهٔ بیشتری در آنجا داریم.
 
-This means that React Server Components are ready to be adopted by frameworks. However, until the next major React release, the only way for a framework to adopt them is to ship a pinned Canary version of React. (To avoid bundling two copies of React, frameworks that wish to do this would need to enforce resolution of `react` and `react-dom` to the pinned Canary they ship with their framework, and explain that to their users. As an example, this is what Next.js App Router does.)
+این بدان معناست که کامپوننت‌های سرور ری‌اکت آماده‌اند تا توسط فریم‌ورک‌ها پذیرفته شوند. با این حال، تا انتشار اصلی بعدی ری‌اکت، تنها راه برای فریم‌ورک‌ها جهت پذیرش آن‌ها، این است که نسخهٔ کاناری پین‌شدهٔ ری‌اکت را منتشر کنند. (برای جلوگیری از بسته‌بندی دو نسخه از ری‌اکت، فریم‌ورک‌هایی که مایل به این کار هستند باید resolution مربوط به `react` و `react-dom` را به کاناری پین‌شده‌ای که همراه فریم‌ورکشان منتشر می‌کنند اعمال کنند و آن را به کاربرانشان توضیح دهند. برای مثال، این همان کاری است که Next.js App Router انجام می‌دهد.)
 
-## Testing libraries against both Stable and Canary versions {/*testing-libraries-against-both-stable-and-canary-versions*/}
+## آزمایش کتابخانه‌ها در برابر هم نسخه‌های پایدار و هم کاناری {/*testing-libraries-against-both-stable-and-canary-versions*/}
 
-We do not expect library authors to test every single Canary release since it would be prohibitively difficult. However, just as when we [originally introduced the different React pre-release channels three years ago](https://legacy.reactjs.org/blog/2019/10/22/react-release-channels.html), we encourage libraries to run tests against *both* the latest Stable and latest Canary versions. If you see a change in behavior that wasn't announced, please file a bug in the React repository so that we can help diagnose it. We expect that as this practice becomes widely adopted, it will reduce the amount of effort necessary to upgrade libraries to new major versions of React, since accidental regressions would be found as they land.
+ما انتظار نداریم نویسندگان کتابخانه‌ها هر انتشار کاناری منفرد را آزمایش کنند زیرا این کار بسیار دشوار خواهد بود. با این حال، درست مانند زمانی که [سه سال پیش کانال‌های پیش‌انتشار مختلف ری‌اکت را معرفی کردیم](https://legacy.reactjs.org/blog/2019/10/22/react-release-channels.html)، کتابخانه‌ها را تشویق می‌کنیم تا آزمایش‌های خود را در برابر *هم* آخرین نسخهٔ پایدار و *هم* آخرین نسخهٔ کاناری اجرا کنند. اگر تغییر رفتاری مشاهده کردید که اعلام نشده است، لطفاً در مخزن ری‌اکت یک گزارش باگ ثبت کنید تا در تشخیص آن کمک کنیم. انتظار داریم با گسترش این رویه، تلاش لازم برای ارتقای کتابخانه‌ها به نسخه‌های اصلی جدید ری‌اکت کاهش یابد، زیرا پس‌رفت‌های تصادفی به‌محض انتشار کشف خواهند شد.
 
 <Note>
 
-Strictly speaking, Canary is not a *new* release channel--it used to be called Next. However, we've decided to rename it to avoid confusion with Next.js. We're announcing it as a *new* release channel to communicate the new expectations, such as Canaries being an officially supported way to use React.
+به‌طور دقیق، کاناری یک کانال انتشار *جدید* نیست — پیش‌تر Next نامیده می‌شد. با این حال، برای جلوگیری از اشتباه گرفتن با Next.js تصمیم گرفتیم آن را تغییر نام دهیم. ما آن را به‌عنوان یک کانال انتشار *جدید* اعلام می‌کنیم تا انتظارات جدید، مانند رسمی‌پشتیبانی‌بودن کاناری‌ها به‌عنوان روشی برای استفاده از ری‌اکت، را منتقل کنیم.
 
 </Note>
 
-## Stable releases work like before {/*stable-releases-work-like-before*/}
+## انتشارهای پایدار مانند گذشته کار می‌کنند {/*stable-releases-work-like-before*/}
 
-We are not introducing any changes to stable React releases.
+ما هیچ تغییری در انتشارهای پایدار ری‌اکت معرفی نمی‌کنیم.
 
 
 

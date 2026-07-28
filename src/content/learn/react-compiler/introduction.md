@@ -1,32 +1,32 @@
 ---
-title: Introduction
+title: مقدمه
 ---
 
 <Intro>
-React Compiler is a new build-time tool that automatically optimizes your React app. It works with plain JavaScript, and understands the [Rules of React](/reference/rules), so you don't need to rewrite any code to use it.
+کامپایلر ری‌اکت یک ابزار جدید زمان بیلد است که اپلیکیشن ری‌اکت شما را به‌طور خودکار بهینه می‌کند. این ابزار با جاوااسکریپت ساده کار می‌کند و [قوانین ری‌اکت](/reference/rules) را درک می‌کند، بنابراین نیازی نیست برای استفاده از آن هیچ کدی را بازنویسی کنید.
 </Intro>
 
 <YouWillLearn>
 
-* What React Compiler does
-* Getting started with the compiler
-* Incremental adoption strategies
-* Debugging and troubleshooting when things go wrong
-* Using the compiler on your React library
+* کامپایلر ری‌اکت چه کاری انجام می‌دهد
+* شروع به کار با کامپایلر
+* استراتژی‌های اتخاذ تدریجی
+* دیباگ و رفع اشکال وقتی چیزها اشتباه پیش می‌رود
+* استفاده از کامپایلر در کتابخانه ری‌اکت خود
 
 </YouWillLearn>
 
 <Note>
-React Compiler is currently in Release Candidate (RC). We now recommend everyone to try the compiler and provide feedback. The latest RC release can be found with the `@rc` tag.
+کامپایلر ری‌اکت در حال حاضر در مرحلهٔ Release Candidate (RC) قرار دارد. اکنون به همه توصیه می‌کنیم کامپایلر را امتحان کنند و بازخورد ارائه دهند. آخرین نسخهٔ RC را می‌توان با تگ `@rc` پیدا کرد.
 </Note>
 
-## What does React Compiler do? {/*what-does-react-compiler-do*/}
+## کامپایلر ری‌اکت چه کاری انجام می‌دهد؟ {/*what-does-react-compiler-do*/}
 
-React Compiler automatically optimizes your React application at build time. React is often fast enough without optimization, but sometimes you need to manually memoize components and values to keep your app responsive. This manual memoization is tedious, easy to get wrong, and adds extra code to maintain. React Compiler does this optimization automatically for you, freeing you from this mental burden so you can focus on building features.
+کامپایلر ری‌اکت اپلیکیشن ری‌اکت شما را در زمان بیلد به‌طور خودکار بهینه می‌کند. ری‌اکت معمولاً بدون بهینه‌سازی به اندازهٔ کافی سریع است، اما گاهی برای پاسخگو نگه‌داشتن اپلیکیشن خود باید کامپوننت‌ها و مقادیر را به‌صورت دستی مموری‌زیشن کنید. این مموری‌زیشن دستی خسته‌کننده است، به‌راحتی اشتباه پیش می‌رود و کد اضافه‌ای برای نگهداری ایجاد می‌کند. کامپایلر ری‌اکت این بهینه‌سازی را به‌طور خودکار برای شما انجام می‌دهد و شما را از این بار ذهنی رها می‌کند تا بتوانید روی ساخت قابلیت‌ها تمرکز کنید.
 
-### Before React Compiler {/*before-react-compiler*/}
+### پیش از کامپایلر ری‌اکت {/*before-react-compiler*/}
 
-Without the compiler, you need to manually memoize components and values to optimize re-renders:
+بدون کامپایلر، باید کامپوننت‌ها و مقادیر را به‌صورت دستی مموری‌زیشن می‌کردید تا رندرهای مجدد بهینه شوند:
 
 ```js {expectedErrors: {'react-compiler': [4]}}
 import { useMemo, useCallback, memo } from 'react';
@@ -53,21 +53,21 @@ const ExpensiveComponent = memo(function ExpensiveComponent({ data, onClick }) {
 
 <Note>
 
-This manual memoization has a subtle bug that breaks memoization:
+این مموری‌زیشن دستی یک باگ ظریف دارد که مموری‌زیشن را می‌شکند:
 
 ```js [[2, 1, "() => handleClick(item)"]]
 <Item key={item.id} onClick={() => handleClick(item)} />
 ```
 
-Even though `handleClick` is wrapped in `useCallback`, the arrow function `() => handleClick(item)` creates a new function every time the component renders. This means that `Item` will always receive a new `onClick` prop, breaking memoization.
+با وجود اینکه `handleClick` در `useCallback` پیچیده شده است، تابع فلش `() => handleClick(item)` هر بار که کامپوننت رندر می‌شود یک تابع جدید ایجاد می‌کند. این یعنی `Item` همیشه یک پراپ `onClick` جدید دریافت می‌کند و مموری‌زیشن می‌شکند.
 
-React Compiler is able to optimize this correctly with or without the arrow function, ensuring that `Item` only re-renders when `props.onClick` changes.
+کامپایلر ری‌اکت می‌تواند این مورد را چه با تابع فلش چه بدون آن به‌درستی بهینه کند و اطمینان حاصل کند که `Item` تنها زمانی مجدداً رندر می‌شود که `props.onClick` تغییر کند.
 
 </Note>
 
-### After React Compiler {/*after-react-compiler*/}
+### پس از کامپایلر ری‌اکت {/*after-react-compiler*/}
 
-With React Compiler, you write the same code without manual memoization:
+با کامپایلر ری‌اکت، همان کد را بدون مموری‌زیشن دستی می‌نویسید:
 
 ```js
 function ExpensiveComponent({ data, onClick }) {
@@ -87,23 +87,23 @@ function ExpensiveComponent({ data, onClick }) {
 }
 ```
 
-_[See this example in the React Compiler Playground](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAMygOzgFwJYSYAEAogB4AOCmYeAbggMIQC2Fh1OAFMEQCYBDHAIA0RQowA2eOAGsiAXwCURYAB1iROITA4iFGBERgwCPgBEhAogF4iCStVoMACoeO1MAcy6DhSgG4NDSItHT0ACwFMPkkmaTlbIi48HAQWFRsAPlUQ0PFMKRlZFLSWADo8PkC8hSDMPJgEHFhiLjzQgB4+eiyO-OADIwQTM0thcpYBClL02xz2zXz8zoBJMqJZBABPG2BU9Mq+BQKiuT2uTJyomLizkoOMk4B6PqX8pSUFfs7nnro3qEapgFCAFEA)_
+_[این مثال را در Playground کامپایلر ری‌اکت ببینید](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAMygOzgFwJYSYAEAogB4AOCmYeAbggMIQC2Fh1OAFMEQCYBDHAIA0RQowA2eOAGsiAXwCURYAB1iROITA4iFGBERgwCPgBEhAogF4iCStVoMACoeO1MAcy6DhSgG4NDSItHT0ACwFMPkkmaTlbIi48HAQWFRsAPlUQ0PFMKRlZFLSWADo8PkC8hSDMPJgEHFhiLjzQgB4+eiyO-OADIwQTM0thcpYBClL02xz2zXz8zoBJMqJZBABPG2BU9Mq+BQKiuT2uTJyomLizkoOMk4B6PqX8pSUFfs7nnro3qEapgFCAFEA)_
 
-React Compiler automatically applies the optimal memoization, ensuring your app only re-renders when necessary.
+کامپایلر ری‌اکت مموری‌زیشن بهینه را به‌طور خودکار اعمال می‌کند و اطمینان حاصل می‌کند که اپلیکیشن شما تنها در صورت نیاز مجدداً رندر می‌شود.
 
 <DeepDive>
-#### What kind of memoization does React Compiler add? {/*what-kind-of-memoization-does-react-compiler-add*/}
+#### چه نوع مموری‌زیشنی به‌وسیلهٔ کامپایلر ری‌اکت اضافه می‌شود؟ {/*what-kind-of-memoization-does-react-compiler-add*/}
 
-React Compiler's automatic memoization is primarily focused on **improving update performance** (re-rendering existing components), so it focuses on these two use cases:
+مموری‌زیشن خودکار کامپایلر ری‌اکت عمدتاً روی **بهبود عملکرد به‌روزرسانی** (رندر مجدد کامپوننت‌های موجود) متمرکز است، بنابراین روی این دو مورد استفاده تمرکز دارد:
 
-1. **Skipping cascading re-rendering of components**
-    * Re-rendering `<Parent />` causes many components in its component tree to re-render, even though only `<Parent />` has changed
-1. **Skipping expensive calculations from outside of React**
-    * For example, calling `expensivelyProcessAReallyLargeArrayOfObjects()` inside of your component or hook that needs that data
+1. **نادیده گرفتن رندر مجدد آبشاری کامپوننت‌ها**
+    * رندر مجدد `<Parent />` باعث می‌شود بسیاری از کامپوننت‌ها در درخت کامپوننت آن مجدداً رندر شوند، حتی اگر تنها `<Parent />` تغییر کرده باشد
+1. **نادیده گرفتن محاسبات سنگین از خارج از ری‌اکت**
+    * برای مثال، فراخوانی `expensivelyProcessAReallyLargeArrayOfObjects()` داخل کامپوننت یا هوکی که به آن داده نیاز دارد
 
-#### Optimizing Re-renders {/*optimizing-re-renders*/}
+#### بهینه‌سازی رندرهای مجدد {/*optimizing-re-renders*/}
 
-React lets you express your UI as a function of their current state (more concretely: their props, state, and context). In its current implementation, when a component's state changes, React will re-render that component _and all of its children_ — unless you have applied some form of manual memoization with `useMemo()`, `useCallback()`, or `React.memo()`. For example, in the following example, `<MessageButton>` will re-render whenever `<FriendList>`'s state changes:
+ری‌اکت به شما اجازه می‌دهد رابط کاربری خود را به‌صورت تابعی از استیت فعلی (دقیق‌تر: پراپس، استیت و کانتکست) بیان کنید. در پیاده‌سازی فعلی، وقتی استیت یک کامپوننت تغییر می‌کند، ری‌اکت آن کامپوننت _و تمام فرزندانش_ را مجدداً رندر می‌کند — مگر اینکه شکلی از مموری‌زیشن دستی را با `useMemo()`، `useCallback()` یا `React.memo()` اعمال کرده باشید. برای مثال، در مثال زیر، `<MessageButton>` هر بار که استیت `<FriendList>` تغییر می‌کند مجدداً رندر خواهد شد:
 
 ```javascript
 function FriendList({ friends }) {
@@ -122,13 +122,13 @@ function FriendList({ friends }) {
   );
 }
 ```
-[_See this example in the React Compiler Playground_](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAMygOzgFwJYSYAEAYjHgpgCYAyeYOAFMEWuZVWEQL4CURwADrEicQgyKEANnkwIAwtEw4iAXiJQwCMhWoB5TDLmKsTXgG5hRInjRFGbXZwB0UygHMcACzWr1ABn4hEWsYBBxYYgAeADkIHQ4uAHoAPksRbisiMIiYYkYs6yiqPAA3FMLrIiiwAAcAQ0wU4GlZBSUcbklDNqikusaKkKrgR0TnAFt62sYHdmp+VRT7SqrqhOo6Bnl6mCoiAGsEAE9VUfmqZzwqLrHqM7ubolTVol5eTOGigFkEMDB6u4EAAhKA4HCEZ5DNZ9ErlLIWYTcEDcIA)
+[_این مثال را در Playground کامپایلر ری‌اکت ببینید_](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAMygOzgFwJYSYAEAYjHgpgCYAyeYOAFMEWuZVWEQL4CURwADrEicQgyKEANnkwIAwtEw4iAXiJQwCMhWoB5TDLmKsTXgG5hRInjRFGbXZwB0UygHMcACzWr1ABn4hEWsYBBxYYgAeADkIHQ4uAHoAPksRbisiMIiYYkYs6yiqPAA3FMLrIiiwAAcAQ0wU4GlZBSUcbklDNqikusaKkKrgR0TnAFt62sYHdmp+VRT7SqrqhOo6Bnl6mCoiAGsEAE9VUfmqZzwqLrHqM7ubolTVol5eTOGigFkEMDB6u4EAAhKA4HCEZ5DNZ9ErlLIWYTcEDcIA)
 
-React Compiler automatically applies the equivalent of manual memoization, ensuring that only the relevant parts of an app re-render as state changes, which is sometimes referred to as "fine-grained reactivity". In the above example, React Compiler determines that the return value of `<FriendListCard />` can be reused even as `friends` changes, and can avoid recreating this JSX _and_ avoid re-rendering `<MessageButton>` as the count changes.
+کامپایلر ری‌اکت معادل مموری‌زیشن دستی را به‌طور خودکار اعمال می‌کند و اطمینان حاصل می‌کند که تنها بخش‌های مرتبط یک اپلیکیشن با تغییر استیت مجدداً رندر می‌شوند، که گاهی به آن «واکنش‌گری ریزدانه (fine-grained reactivity)» گفته می‌شود. در مثال بالا، کامپایلر ری‌اکت تشخیص می‌دهد که مقدار بازگشتی `<FriendListCard />` حتی با تغییر `friends` می‌تواند بازاستفاده شود، و می‌تواند از بازایجاد این JSX _و_ از رندر مجدد `<MessageButton>` با تغییر تعداد جلوگیری کند.
 
-#### Expensive calculations also get memoized {/*expensive-calculations-also-get-memoized*/}
+#### محاسبات سنگین نیز مموری‌زیشن می‌شوند {/*expensive-calculations-also-get-memoized*/}
 
-React Compiler can also automatically memoize expensive calculations used during rendering:
+کامپایلر ری‌اکت همچنین می‌تواند محاسبات سنگین استفاده‌شده در حین رندر را به‌طور خودکار مموری‌زیشن کند:
 
 ```js
 // **Not** memoized by React Compiler, since this is not a component or hook
@@ -141,51 +141,50 @@ function TableContainer({ items }) {
   // ...
 }
 ```
-[_See this example in the React Compiler Playground_](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAejQAgFTYHIQAuumAtgqRAJYBeCAJpgEYCemASggIZyGYDCEUgAcqAGwQwANJjBUAdokyEAFlTCZ1meUUxdMcIcIjyE8vhBiYVECAGsAOvIBmURYSonMCAB7CzcgBuCGIsAAowEIhgYACCnFxioQAyXDAA5gixMDBcLADyzvlMAFYIvGAAFACUmMCYaNiYAHStOFgAvk5OGJgAshTUdIysHNy8AkbikrIKSqpaWvqGIiZmhE6u7p7ymAAqXEwSguZcCpKV9VSEFBodtcBOmAYmYHz0XIT6ALzefgFUYKhCJRBAxeLcJIsVIZLI5PKFYplCqVa63aoAbm6u0wMAQhFguwAPPRAQA+YAfL4dIloUmBMlODogDpAA)
+[_این مثال را در Playground کامپایلر ری‌اکت ببینید_](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAejQAgFTYHIQAuumAtgqRAJYBeCAJpgEYCemASggIZyGYDCEUgAcqAGwQwANJjBUAdokyEAFlTCZ1meUUxdMcIcIjyE8vhBiYVECAGsAOvIBmURYSonMCAB7CzcgBuCGIsAAowEIhgYACCnFxioQAyXDAA5gixMDBcLADyzvlMAFYIvGAAFACUmMCYaNiYAHStOFgAvk5OGJgAshTUdIysHNy8AkbikrIKSqpaWvqGIiZmhE6u7p7ymAAqXEwSguZcCpKV9VSEFBodtcBOmAYmYHz0XIT6ALzefgFUYKhCJRBAxeLcJIsVIZLI5PKFYplCqVa63aoAbm6u0wMAQhFguwAPPRAQA+YAfL4dIloUmBMlODogDpAA)
 
-However, if `expensivelyProcessAReallyLargeArrayOfObjects` is truly an expensive function, you may want to consider implementing its own memoization outside of React, because:
+با این حال، اگر `expensivelyProcessAReallyLargeArrayOfObjects` واقعاً یک تابع سنگین باشد، ممکن است بخواهید پیاده‌سازی مموری‌زیشن اختصاصی آن را خارج از ری‌اکت در نظر بگیرید، زیرا:
 
-- React Compiler only memoizes React components and hooks, not every function
-- React Compiler's memoization is not shared across multiple components or hooks
+- کامپایلر ری‌اکت فقط کامپوننت‌ها و هوک‌های ری‌اکت را مموری‌زیشن می‌کند، نه هر تابعی را
+- مموری‌زیشن کامپایلر ری‌اکت بین چندین کامپوننت یا هوک به اشتراک گذاشته نمی‌شود
 
-So if `expensivelyProcessAReallyLargeArrayOfObjects` was used in many different components, even if the same exact items were passed down, that expensive calculation would be run repeatedly. We recommend [profiling](reference/react/useMemo#how-to-tell-if-a-calculation-is-expensive) first to see if it really is that expensive before making code more complicated.
+بنابراین اگر `expensivelyProcessAReallyLargeArrayOfObjects` در بسیاری از کامپوننت‌های مختلف استفاده شود، حتی اگر دقیقاً همان آیتم‌ها ارسال شوند، آن محاسبهٔ سنگین مکرراً اجرا خواهد شد. پیشنهاد می‌کنیم پیش از پیچیده‌تر کردن کد، ابتدا [پروفایلینگ](reference/react/useMemo#how-to-tell-if-a-calculation-is-expensive) انجام دهید تا ببینید آیا واقعاً به این اندازه سنگین است یا خیر.
 </DeepDive>
 
-## Should I try out the compiler? {/*should-i-try-out-the-compiler*/}
+## آیا باید کامپایلر را امتحان کنم؟ {/*should-i-try-out-the-compiler*/}
 
-We encourage everyone to start using React Compiler. While the compiler is still an optional addition to React today, in the future some features may require the compiler in order to fully work.
+ما به همه تشویق می‌کنیم که استفاده از کامپایلر ری‌اکت را شروع کنند. اگرچه کامپایلر امروزه هنوز یک افزودنی اختیاری به ری‌اکت است، در آینده ممکن است برخی قابلیت‌ها برای کارکرد کامل به کامپایلر نیاز داشته باشند.
 
-### Is it safe to use? {/*is-it-safe-to-use*/}
+### آیا استفاده از آن امن است؟ {/*is-it-safe-to-use*/}
 
-React Compiler is now in RC and has been tested extensively in production. While it has been used in production at companies like Meta, rolling out the compiler to production for your app will depend on the health of your codebase and how well you've followed the [Rules of React](/reference/rules).
+کامپایلر ری‌اکت اکنون در مرحلهٔ RC قرار دارد و به‌طور گسترده در محیط تولید آزمایش شده است. با وجود اینکه در شرکت‌هایی مانند متا در محیط تولید استفاده شده است، استقرار کامپایلر در محیط تولید برای اپلیکیشن شما به سلامت کدبیس شما و میزان رعایت [قوانین ری‌اکت](/reference/rules) توسط شما بستگی دارد.
 
-## What build tools are supported? {/*what-build-tools-are-supported*/}
+## چه ابزارهای بیلدی پشتیبانی می‌شوند؟ {/*what-build-tools-are-supported*/}
 
-React Compiler can be installed across [several build tools](/learn/react-compiler/installation) such as Babel, Vite, Metro, and Rsbuild.
+کامپایلر ری‌اکت می‌تواند در میان [چندین ابزار بیلد](/learn/react-compiler/installation) مانند Babel، Vite، Metro و Rsbuild نصب شود.
 
-React Compiler is primarily a light Babel plugin wrapper around the core compiler, which was designed to be decoupled from Babel itself. While the initial stable version of the compiler will remain primarily a Babel plugin, we are working with the swc and [oxc](https://github.com/oxc-project/oxc/issues/10048) teams to build first class support for React Compiler so you won't have to add Babel back to your build pipelines in the future.
+کامپایلر ری‌اکت عمدتاً یک پوشش پلاگین سبک Babel دور کامپایلر اصلی است که برای جدا بودن از خود Babel طراحی شده است. اگرچه نسخهٔ پایدار اولیهٔ کامپایلر عمدتاً یک پلاگین Babel خواهد ماند، ما با تیم‌های swc و [oxc](https://github.com/oxc-project/oxc/issues/10048) برای ساخت پشتیبانی درجه‌یک از کامپایلر ری‌اکت همکاری می‌کنیم تا در آینده مجبور نباشید Babel را دوباره به خطوط لوله بیلد خود اضافه کنید.
 
-Next.js users can enable the swc-invoked React Compiler by using [v15.3.1](https://github.com/vercel/next.js/releases/tag/v15.3.1) and up.
+کاربران Next.js می‌توانند کامپایلر ری‌اکت فراخوانی‌شده با swc را با استفاده از [v15.3.1](https://github.com/vercel/next.js/releases/tag/v15.3.1) و بالاتر فعال کنند.
 
-## What should I do about useMemo, useCallback, and React.memo? {/*what-should-i-do-about-usememo-usecallback-and-reactmemo*/}
+## دربارهٔ useMemo، useCallback و React.memo چه باید کرد؟ {/*what-should-i-do-about-usememo-usecallback-and-reactmemo*/}
 
-React Compiler adds automatic memoization more precisely and granularly than is possible with [`useMemo`](/reference/react/useMemo), [`useCallback`](/reference/react/useCallback), and [`React.memo`](/reference/react/memo). If you choose to keep manual memoization, React Compiler will analyze them and determine if your manual memoization matches its automatically inferred memoization. If there isn't a match, the compiler will choose to bail out of optimizing that component.
+کامپایلر ری‌اکت مموری‌زیشن خودکار را دقیق‌تر و ریزدانه‌تر از آنچه با [`useMemo`](/reference/react/useMemo)، [`useCallback`](/reference/react/useCallback) و [`React.memo`](/reference/react/memo) ممکن است اضافه می‌کند. اگر تصمیم به نگه‌داشتن مموری‌زیشن دستی بگیرید، کامپایلر ری‌اکت آن‌ها را تحلیل می‌کند و تعیین می‌کند که آیا مموری‌زیشن دستی شما با مموری‌زیشن استنباط‌شدهٔ خودکارش مطابقت دارد یا خیر. اگر مطابقتی وجود نداشته باشد، کامپایلر از بهینه‌سازی آن کامپوننت صرف‌نظر می‌کند.
 
-This is done out of caution as a common anti-pattern with manual memoization is using it for correctness.  This means your app depends on specific values being memoized to work properly. For example, in order to prevent an infinite loop, you may have memoized some values to stop a `useEffect` call from firing. This breaks the Rules of React, but since it can potentially be dangerous for the compiler to automatically remove manual memoization, the compiler will just bail out instead. You should manually remove your handwritten memoization and verify that your app still works as expected.
+این کار از روی احتیاط انجام می‌شود، زیرا یک ضدالگوی رایج با مموری‌زیشن دستی این است که از آن برای درست‌کارکردن استفاده می‌شود. این یعنی اپلیکیشن شما برای کارکرد درست به مموری‌زیشن مقادیر خاصی وابسته است. برای مثال، برای جلوگیری از یک حلقهٔ بی‌نهایت، ممکن است مقداری را مموری‌زیشن کرده باشید تا از اجرای `useEffect` جلوگیری شود. این کار قوانین ری‌اکت را می‌شکند، اما از آنجا که حذف خودکار مموری‌زیشن دستی توسط کامپایلر می‌تواند بالقوه خطرناک باشد، کامپایلر به‌جای آن صرفاً صرف‌نظر می‌کند. شما باید مموری‌زیشن دست‌نویس خود را به‌صورت دستی حذف کنید و بررسی کنید که اپلیکیشن همچنان همان‌طور که انتظار می‌رود کار می‌کند.
 
-## Try React Compiler {/*try-react-compiler*/}
+## کامپایلر ری‌اکت را امتحان کنید {/*try-react-compiler*/}
 
-This section will help you get started with React Compiler and understand how to use it effectively in your projects.
+این بخش به شما کمک می‌کند تا با کامپایلر ری‌اکت شروع کنید و درک کنید چگونه از آن به‌طور مؤثری در پروژه‌های خود استفاده کنید.
 
-* **[Installation](/learn/react-compiler/installation)** - Install React Compiler and configure it for your build tools
-* **[React Version Compatibility](/reference/react-compiler/target)** - Support for React 17, 18, and 19
-* **[Configuration](/reference/react-compiler/configuration)** - Customize the compiler for your specific needs
-* **[Incremental Adoption](/learn/react-compiler/incremental-adoption)** - Strategies for gradually rolling out the compiler in existing codebases
-* **[Debugging and Troubleshooting](/learn/react-compiler/debugging)** - Identify and fix issues when using the compiler
-* **[Compiling Libraries](/reference/react-compiler/compiling-libraries)** - Best practices for shipping compiled code
-* **[API Reference](/reference/react-compiler/configuration)** - Detailed documentation of all configuration options
+* **[نصب](/learn/react-compiler/installation)** - کامپایلر ری‌اکت را نصب و برای ابزارهای بیلد خود پیکربندی کنید
+* **[سازگاری نسخهٔ ری‌اکت](/reference/react-compiler/target)** - پشتیبانی از ری‌اکت ۱۷، ۱۸ و ۱۹
+* **[پیکربندی](/reference/react-compiler/configuration)** - کامپایلر را برای نیازهای خاص خود سفارشی کنید
+* **[اتخاذ تدریجی](/learn/react-compiler/incremental-adoption)** - استراتژی‌هایی برای استقرار تدریجی کامپایلر در کدبیس‌های موجود
+* **[دیباگ و رفع اشکال](/learn/react-compiler/debugging)** - شناسایی و رفع مشکلات هنگام استفاده از کامپایلر
+* **[کامپایل کتابخانه‌ها](/reference/react-compiler/compiling-libraries)** - بهترین شیوه‌ها برای انتشار کد کامپایل‌شده
+* **[مرجع API](/reference/react-compiler/configuration)** - مستندات دقیق تمام گزینه‌های پیکربندی
 
-## Additional resources {/*additional-resources*/}
+## منابع اضافی {/*additional-resources*/}
 
-In addition to these docs, we recommend checking the [React Compiler Working Group](https://github.com/reactwg/react-compiler) for additional information and discussion about the compiler.
-
+علاوه بر این مستندات، پیشنهاد می‌کنیم [گروه کاری کامپایلر ری‌اکت](https://github.com/reactwg/react-compiler) را برای اطلاعات بیشتر و بحث پیرامون کامپایلر بررسی کنید.

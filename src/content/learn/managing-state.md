@@ -1,30 +1,30 @@
 ---
-title: Managing State
+title: مدیریت استیت
 ---
 
 <Intro>
 
-As your application grows, it helps to be more intentional about how your state is organized and how the data flows between your components. Redundant or duplicate state is a common source of bugs. In this chapter, you'll learn how to structure your state well, how to keep your state update logic maintainable, and how to share state between distant components.
+با رشد برنامه‌تان، این کمک می‌کند که نسبت به اینکه استیت شما چگونه سازماندهی می‌شود و داده‌ها چگونه بین کامپوننت‌های شما جریان می‌یابند، آگاهانه‌تر برخورد کنید. استیت تکراری یا افزون منبع رایج باگ‌هاست. در این فصل، یاد می‌گیرید چگونه استیت خود را به‌خوبی ساختار دهید، چگونه منطق به‌روزرسانی استیت خود را قابل‌نگه‌داری نگه دارید، و چگونه استیت را بین کامپوننت‌های دوردست به اشتراک بگذارید.
 
 </Intro>
 
 <YouWillLearn isChapter={true}>
 
-* [How to think about UI changes as state changes](/learn/reacting-to-input-with-state)
-* [How to structure state well](/learn/choosing-the-state-structure)
-* [How to "lift state up" to share it between components](/learn/sharing-state-between-components)
-* [How to control whether the state gets preserved or reset](/learn/preserving-and-resetting-state)
-* [How to consolidate complex state logic in a function](/learn/extracting-state-logic-into-a-reducer)
-* [How to pass information without "prop drilling"](/learn/passing-data-deeply-with-context)
-* [How to scale state management as your app grows](/learn/scaling-up-with-reducer-and-context)
+* [چگونه تغییرات UI را به‌عنوان تغییرات استیت در نظر بگیرید](/learn/reacting-to-input-with-state)
+* [چگونه استیت را به‌خوبی ساختار دهید](/learn/choosing-the-state-structure)
+* [چگونه استیت را «بالا ببرید» تا بین کامپوننت‌ها به اشتراک گذاشته شود](/learn/sharing-state-between-components)
+* [چگونه کنترل کنید که استیت نگه داشته شود یا ریست شود](/learn/preserving-and-resetting-state)
+* [چگونه منطق پیچیدهٔ استیت را در یک تابع تجمیع کنید](/learn/extracting-state-logic-into-a-reducer)
+* [چگونه بدون «prop drilling» اطلاعات را منتقل کنید](/learn/passing-data-deeply-with-context)
+* [چگونه مدیریت استیت را با رشد برنامه مقیاس‌پذیر کنید](/learn/scaling-up-with-reducer-and-context)
 
 </YouWillLearn>
 
-## Reacting to input with state {/*reacting-to-input-with-state*/}
+## واکنش به ورودی با استیت {/*reacting-to-input-with-state*/}
 
-With React, you won't modify the UI from code directly. For example, you won't write commands like "disable the button", "enable the button", "show the success message", etc. Instead, you will describe the UI you want to see for the different visual states of your component ("initial state", "typing state", "success state"), and then trigger the state changes in response to user input. This is similar to how designers think about UI.
+با ری‌اکت، شما UI را از کد به‌طور مستقیم تغییر نمی‌دهید. برای مثال، دستوراتی مانند «دکمه را غیرفعال کن»، «دکمه را فعال کن»، «پیام موفقیت را نشان بده» و غیره نمی‌نویسید. در عوض، UIی که می‌خواهید برای وضعیت‌های بصری متفاوت کامپوننت خود ببینید («initial state»، «typing state»، «success state») را توصیف می‌کنید، و سپس تغییرات استیت را در پاسخ به ورودی کاربر تحریک می‌کنید. این شبیه به این است که طراحان چگونه دربارهٔ UI فکر می‌کنند.
 
-Here is a quiz form built using React. Note how it uses the `status` state variable to determine whether to enable or disable the submit button, and whether to show the success message instead.
+اینجا یک فرم آزمون با استفاده از ری‌اکت ساخته شده است. توجه کنید چگونه از متغیر استیت `status` برای تعیین اینکه آیا دکمهٔ submit را فعال یا غیرفعال کند، و آیا به‌جای آن پیام موفقیت را نشان دهد، استفاده می‌کند.
 
 <Sandpack>
 
@@ -108,15 +108,15 @@ function submitForm(answer) {
 
 <LearnMore path="/learn/reacting-to-input-with-state">
 
-Read **[Reacting to Input with State](/learn/reacting-to-input-with-state)** to learn how to approach interactions with a state-driven mindset.
+**[واکنش به ورودی با استیت](/learn/reacting-to-input-with-state)** را بخوانید تا یاد بگیرید چگونه با ذهنیت مبتنی بر استیت با تعاملات برخورد کنید.
 
 </LearnMore>
 
-## Choosing the state structure {/*choosing-the-state-structure*/}
+## انتخاب ساختار استیت {/*choosing-the-state-structure*/}
 
-Structuring state well can make a difference between a component that is pleasant to modify and debug, and one that is a constant source of bugs. The most important principle is that state shouldn't contain redundant or duplicated information. If there's unnecessary state, it's easy to forget to update it, and introduce bugs!
+ساختاردهی خوب استیت می‌تواند تفاوت بین کامپوننتی که تغییر دادن و دیباگ کردنش لذت‌بخش است، و کامپوننتی که منبع دائمی باگ‌هاست باشد. مهم‌ترین اصل این است که استیت نباید شامل اطلاعات افزون یا تکراری باشد. اگر استیت غیرضروری وجود داشته باشد، به‌راحتی فراموش می‌شود که آن را به‌روزرسانی کنید، و باگ‌ها را معرفی می‌کند!
 
-For example, this form has a **redundant** `fullName` state variable:
+برای مثال، این فرم یک متغیر استیت `fullName` **افزون** دارد:
 
 <Sandpack>
 
@@ -169,7 +169,7 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-You can remove it and simplify the code by calculating `fullName` while the component is rendering:
+می‌توانید آن را حذف کنید و کد را با محاسبهٔ `fullName` هنگام رندر شدن کامپوننت ساده کنید:
 
 <Sandpack>
 
@@ -221,19 +221,19 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-This might seem like a small change, but many bugs in React apps are fixed this way.
+این ممکن است یک تغییر کوچک به‌نظر برسد، اما بسیاری از باگ‌ها در برنامه‌های ری‌اکت به این روش رفع می‌شوند.
 
 <LearnMore path="/learn/choosing-the-state-structure">
 
-Read **[Choosing the State Structure](/learn/choosing-the-state-structure)** to learn how to design the state shape to avoid bugs.
+**[انتخاب ساختار استیت](/learn/choosing-the-state-structure)** را بخوانید تا یاد بگیرید چگونه شکل استیت را برای جلوگیری از باگ‌ها طراحی کنید.
 
 </LearnMore>
 
-## Sharing state between components {/*sharing-state-between-components*/}
+## اشتراک‌گذاری استیت بین کامپوننت‌ها {/*sharing-state-between-components*/}
 
-Sometimes, you want the state of two components to always change together. To do it, remove state from both of them, move it to their closest common parent, and then pass it down to them via props. This is known as "lifting state up", and it's one of the most common things you will do writing React code.
+گاهی، می‌خواهید استیت دو کامپوننت همیشه با هم تغییر کند. برای این کار، استیت را از هر دو حذف کنید، آن را به نزدیک‌ترین والد مشترکشان منتقل کنید، و سپس آن را از طریق پراپس‌ها به آن‌ها پاس دهید. این «lift state up» (بالا بردن استیت) نامیده می‌شود، و یکی از رایج‌ترین کارهایی است که هنگام نوشتن کد ری‌اکت انجام خواهید داد.
 
-In this example, only one panel should be active at a time. To achieve this, instead of keeping the active state inside each individual panel, the parent component holds the state and specifies the props for its children.
+در این مثال، فقط یک پنل باید در هر زمان فعال باشد. برای دستیابی به این، به‌جای نگه‌داشتن استیت فعال درون هر پنل منفرد، کامپوننت والد استیت را نگه می‌دارد و پراپس‌های فرزندانش را مشخص می‌کند.
 
 <Sandpack>
 
@@ -296,15 +296,15 @@ h3, p { margin: 5px 0px; }
 
 <LearnMore path="/learn/sharing-state-between-components">
 
-Read **[Sharing State Between Components](/learn/sharing-state-between-components)** to learn how to lift state up and keep components in sync.
+**[اشتراک‌گذاری استیت بین کامپوننت‌ها](/learn/sharing-state-between-components)** را بخوانید تا یاد بگیرید چگونه استیت را بالا ببرید و کامپوننت‌ها را هم‌گام نگه دارید.
 
 </LearnMore>
 
-## Preserving and resetting state {/*preserving-and-resetting-state*/}
+## نگه‌داشتن و ریست کردن استیت {/*preserving-and-resetting-state*/}
 
-When you re-render a component, React needs to decide which parts of the tree to keep (and update), and which parts to discard or re-create from scratch. In most cases, React's automatic behavior works well enough. By default, React preserves the parts of the tree that "match up" with the previously rendered component tree.
+وقتی یک کامپوننت را دوباره رندر می‌کنید، ری‌اکت باید تصمیم بگیرد کدام بخش‌های درخت را نگه دارد (و به‌روزرسانی کند)، و کدام را دور بریزد یا از ابتدا دوباره ایجاد کند. در بیشتر موارد، رفتار خودکار ری‌اکت به‌اندازهٔ کافی خوب کار می‌کند. به‌طور پیش‌فرض، ری‌اکت بخش‌هایی از درخت که با درخت کامپوننت قبلاً رندرشده «تطابق» دارند را نگه می‌دارد.
 
-However, sometimes this is not what you want. In this chat app, typing a message and then switching the recipient does not reset the input. This can make the user accidentally send a message to the wrong person:
+با این حال، گاهی این همان چیزی نیست که می‌خواهید. در این برنامه چت، تایپ یک پیام و سپس تعویض گیرنده، ورودی را ریست نمی‌کند. این می‌تواند باعث شود کاربر به‌اشتباه پیامی را به شخص اشتباهی بفرستد:
 
 <Sandpack>
 
@@ -399,7 +399,7 @@ textarea {
 
 </Sandpack>
 
-React lets you override the default behavior, and *force* a component to reset its state by passing it a different `key`, like `<Chat key={email} />`. This tells React that if the recipient is different, it should be considered a *different* `Chat` component that needs to be re-created from scratch with the new data (and UI like inputs). Now switching between the recipients resets the input field--even though you render the same component.
+ری‌اکت به شما اجازه می‌دهد رفتار پیش‌فرض را نادیده بگیرید، و یک کامپوننت را *مجبور* کنید استیت خود را با پاس‌دادن یک `key` متفاوت به آن، مانند `<Chat key={email} />` ریست کند. این به ری‌اکت می‌گوید که اگر گیرنده متفاوت است، باید به‌عنوان یک کامپوننت `Chat` *متفاوتی* در نظر گرفته شود که باید از ابتدا با داده‌های جدید (و UIی مانند ورودی‌ها) دوباره ایجاد شود. حالا جابه‌جایی بین گیرنده‌ها فیلد ورودی را ریست می‌کند — حتی اگر همان کامپوننت را رندر کنید.
 
 <Sandpack>
 
@@ -496,13 +496,13 @@ textarea {
 
 <LearnMore path="/learn/preserving-and-resetting-state">
 
-Read **[Preserving and Resetting State](/learn/preserving-and-resetting-state)** to learn the lifetime of state and how to control it.
+**[نگه‌داشتن و ریست کردن استیت](/learn/preserving-and-resetting-state)** را بخوانید تا با طول عمر استیت و نحوهٔ کنترل آن آشنا شوید.
 
 </LearnMore>
 
-## Extracting state logic into a reducer {/*extracting-state-logic-into-a-reducer*/}
+## استخراج منطق استیت در یک ردیوسر {/*extracting-state-logic-into-a-reducer*/}
 
-Components with many state updates spread across many event handlers can get overwhelming. For these cases, you can consolidate all the state update logic outside your component in a single function, called "reducer". Your event handlers become concise because they only specify the user "actions". At the bottom of the file, the reducer function specifies how the state should update in response to each action!
+کامپوننت‌هایی با بسیاری از به‌روزرسانی‌های استیت پخش‌شده در بسیاری از مدیرکننده‌های رویداد می‌توانند طاقت‌فرسا شوند. برای این موارد، می‌توانید تمام منطق به‌روزرسانی استیت را خارج از کامپوننت خود در یک تابع منفرد، به‌نام «reducer» (ردیوسر) تجمیع کنید. مدیرکننده‌های رویداد شما موج می‌شوند زیرا فقط «actions» کاربر را مشخص می‌کنند. در انتهای فایل، تابع ردیوسر مشخص می‌کند که استیت باید چگونه در پاسخ به هر اکشن به‌روزرسانی شود!
 
 <Sandpack>
 
@@ -693,15 +693,15 @@ ul, li { margin: 0; padding: 0; }
 
 <LearnMore path="/learn/extracting-state-logic-into-a-reducer">
 
-Read **[Extracting State Logic into a Reducer](/learn/extracting-state-logic-into-a-reducer)** to learn how to consolidate logic in the reducer function.
+**[استخراج منطق استیت در یک ردیوسر](/learn/extracting-state-logic-into-a-reducer)** را بخوانید تا یاد بگیرید چگونه منطق را در تابع ردیوسر تجمیع کنید.
 
 </LearnMore>
 
-## Passing data deeply with context {/*passing-data-deeply-with-context*/}
+## انتقال عمیق داده‌ها با کانتکست {/*passing-data-deeply-with-context*/}
 
-Usually, you will pass information from a parent component to a child component via props. But passing props can become inconvenient if you need to pass some prop through many components, or if many components need the same information. Context lets the parent component make some information available to any component in the tree below it—no matter how deep it is—without passing it explicitly through props.
+معمولاً، اطلاعات را از یک کامپوننت والد به یک کامپوننت فرزند از طریق پراپس‌ها منتقل می‌کنید. اما پاس‌دادن پراپس‌ها می‌تواند ناراحت‌کننده شود اگر نیاز داشته باشید پراپسی را از بسیاری از کامپوننت‌ها عبور دهید، یا اگر بسیاری از کامپوننت‌ها به همان اطلاعات نیاز داشته باشند. کانتکست به کامپوننت والد اجازه می‌دهد اطلاعاتی را برای هر کامپوننتی در درخت زیر خود — بدون توجه به اینکه چقدر عمیق است — بدون پاس‌دادن صریح از طریق پراپس‌ها در دسترس قرار دهد.
 
-Here, the `Heading` component determines its heading level by "asking" the closest `Section` for its level. Each `Section` tracks its own level by asking the parent `Section` and adding one to it. Every `Section` provides information to all components below it without passing props--it does that through context.
+اینجا، کامپوننت `Heading` سطح عنوان خود را با «پرسیدن» از نزدیک‌ترین `Section` برای سطحش تعیین می‌کند. هر `Section` سطح خود را با پرسیدن از `Section` والد و اضافه کردن یک به آن پیگیری می‌کند. هر `Section` اطلاعات را به همهٔ کامپوننت‌های زیر خود بدون پاس‌دادن پراپس‌ها فراهم می‌کند — این کار را از طریق کانتکست انجام می‌دهد.
 
 <Sandpack>
 
@@ -795,15 +795,15 @@ export const LevelContext = createContext(0);
 
 <LearnMore path="/learn/passing-data-deeply-with-context">
 
-Read **[Passing Data Deeply with Context](/learn/passing-data-deeply-with-context)** to learn about using context as an alternative to passing props.
+**[انتقال عمیق داده‌ها با کانتکست](/learn/passing-data-deeply-with-context)** را بخوانید تا دربارهٔ استفاده از کانتکست به‌عنوان جایگزینی برای پاس‌دادن پراپس‌ها یاد بگیرید.
 
 </LearnMore>
 
-## Scaling up with reducer and context {/*scaling-up-with-reducer-and-context*/}
+## مقیاس‌پذیری با ردیوسر و کانتکست {/*scaling-up-with-reducer-and-context*/}
 
-Reducers let you consolidate a component’s state update logic. Context lets you pass information deep down to other components. You can combine reducers and context together to manage state of a complex screen.
+ردیوسرها به شما اجازه می‌دهند منطق به‌روزرسانی استیت یک کامپوننت را تجمیع کنید. کانتکست به شما اجازه می‌دهد اطلاعات را عمیقاً به کامپوننت‌های دیگر منتقل کنید. می‌توانید ردیوسرها و کانتکست را با هم ترکیب کنید تا استیت یک صفحهٔ پیچیده را مدیریت کنید.
 
-With this approach, a parent component with complex state manages it with a reducer. Other components anywhere deep in the tree can read its state via context. They can also dispatch actions to update that state.
+با این رویکرد، یک کامپوننت والد با استیت پیچیده، آن را با یک ردیوسر مدیریت می‌کند. سایر کامپوننت‌ها در هر جایی از عمق درخت می‌توانند استیت آن را از طریق کانتکست بخوانند. آن‌ها همچنین می‌توانند اکشن‌هایی را dispatch کنند تا آن استیت را به‌روزرسانی کنند.
 
 <Sandpack>
 
@@ -1004,12 +1004,12 @@ ul, li { margin: 0; padding: 0; }
 
 <LearnMore path="/learn/scaling-up-with-reducer-and-context">
 
-Read **[Scaling Up with Reducer and Context](/learn/scaling-up-with-reducer-and-context)** to learn how state management scales in a growing app.
+**[مقیاس‌پذیری با ردیوسر و کانتکست](/learn/scaling-up-with-reducer-and-context)** را بخوانید تا یاد بگیرید چگونه مدیریت استیت در یک برنامهٔ در حال رشد، مقیاس‌پذیر می‌شود.
 
 </LearnMore>
 
-## What's next? {/*whats-next*/}
+## گام بعدی چه هست؟ {/*whats-next*/}
 
-Head over to [Reacting to Input with State](/learn/reacting-to-input-with-state) to start reading this chapter page by page!
+به [واکنش به ورودی با استیت](/learn/reacting-to-input-with-state) بروید تا خواندن این فصل را صفحه به صفحه شروع کنید!
 
-Or, if you're already familiar with these topics, why not read about [Escape Hatches](/learn/escape-hatches)?
+یا، اگر قبلاً با این موضوعات آشنا هستید، چرا دربارهٔ [راه‌های فرار](/learn/escape-hatches) نخوانید؟

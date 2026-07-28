@@ -1,23 +1,23 @@
 ---
-title: Rules of Hooks
+title: قوانین هوک‌ها
 ---
 
 <Intro>
-Hooks are defined using JavaScript functions, but they represent a special type of reusable UI logic with restrictions on where they can be called.
+هوک‌ها با استفاده از تابع‌های جاوااسکریپت تعریف می‌شوند، اما آن‌ها نوع خاصی از منطق رابط کاربری قابل استفادهٔ مجدد را با محدودیت‌هایی در مورد اینکه کجا می‌توانند فراخوانی شوند، نمایندگی می‌کنند.
 </Intro>
 
 <InlineToc />
 
 ---
 
-##  Only call Hooks at the top level {/*only-call-hooks-at-the-top-level*/}
+##  هوک‌ها را فقط در سطح بالا فراخوانی کنید {/*only-call-hooks-at-the-top-level*/}
 
-Functions whose names start with `use` are called [*Hooks*](/reference/react) in React.
+تابع‌هایی که نامشان با `use` شروع می‌شود در ری‌اکت [*هوک*](/reference/react) نامیده می‌شوند.
 
-**Don’t call Hooks inside loops, conditions, nested functions, or `try`/`catch`/`finally` blocks.** Instead, always use Hooks at the top level of your React function, before any early returns. You can only call Hooks while React is rendering a function component:
+**هوک‌ها را داخل حلقه‌ها، شرط‌ها، تابع‌های تودرتو، یا بلاک‌های `try`/`catch`/`finally` فراخوانی نکنید.** در عوض، همیشه از هوک‌ها در سطح بالا تابع ری‌اکت خود، قبل از هر return زودهنگام استفاده کنید. فقط می‌توانید هوک‌ها را در حالی فراخوانی کنید که ری‌اکت در حال رندر یک تابع کامپوننت است:
 
-* ✅ Call them at the top level in the body of a [function component](/learn/your-first-component).
-* ✅ Call them at the top level in the body of a [custom Hook](/learn/reusing-logic-with-custom-hooks).
+* ✅ آن‌ها را در سطح بالا در بدنهٔ یک [کامپوننت تابعی](/learn/your-first-component) فراخوانی کنید.
+* ✅ آن‌ها را در سطح بالا در بدنهٔ یک [هوک سفارشی](/learn/reusing-logic-with-custom-hooks) فراخوانی کنید.
 
 ```js{2-3,8-9}
 function Counter() {
@@ -33,16 +33,16 @@ function useWindowWidth() {
 }
 ```
 
-It’s **not** supported to call Hooks (functions starting with `use`) in any other cases, for example:
+فراخوانی هوک‌ها (تابع‌هایی که با `use` شروع می‌شوند) در هیچ مورد دیگری **پشتیبانی نمی‌شود**، مثلاً:
 
-* 🔴 Do not call Hooks inside conditions or loops.
-* 🔴 Do not call Hooks after a conditional `return` statement.
-* 🔴 Do not call Hooks in event handlers.
-* 🔴 Do not call Hooks in class components.
-* 🔴 Do not call Hooks inside functions passed to `useMemo`, `useReducer`, or `useEffect`.
-* 🔴 Do not call Hooks inside `try`/`catch`/`finally` blocks.
+* 🔴 هوک‌ها را داخل شرط‌ها یا حلقه‌ها فراخوانی نکنید.
+* 🔴 هوک‌ها را بعد از یک عبارت `return` شرطی فراخوانی نکنید.
+* 🔴 هوک‌ها را در event handlerها فراخوانی نکنید.
+* 🔴 هوک‌ها را در کامپوننت‌های کلاسی فراخوانی نکنید.
+* 🔴 هوک‌ها را داخل تابع‌هایی که به `useMemo`، `useReducer` یا `useEffect` پاس داده می‌شوند فراخوانی نکنید.
+* 🔴 هوک‌ها را داخل بلاک‌های `try`/`catch`/`finally` فراخوانی نکنید.
 
-If you break these rules, you might see this error.
+اگر این قوانین را بشکنید، ممکن است این خطا را ببینید.
 
 ```js{3-4,11-12,20-21}
 function Bad({ cond }) {
@@ -105,24 +105,24 @@ function Bad() {
 }
 ```
 
-You can use the [`eslint-plugin-react-hooks` plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) to catch these mistakes.
+می‌توانید از [پلاگین `eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) برای گرفتن این اشتباهات استفاده کنید.
 
 <Note>
 
-[Custom Hooks](/learn/reusing-logic-with-custom-hooks) *may* call other Hooks (that's their whole purpose). This works because custom Hooks are also supposed to only be called while a function component is rendering.
+[هوک‌های سفارشی](/learn/reusing-logic-with-custom-hooks) *ممکن است* سایر هوک‌ها را فراخوانی کنند (این کل منظورشان است). این کار می‌کند زیرا هوک‌های سفارشی نیز فرض می‌شوند فقط در حالی فراخوانی شوند که یک تابع کامپوننت در حال رندر است.
 
 </Note>
 
 ---
 
-## Only call Hooks from React functions {/*only-call-hooks-from-react-functions*/}
+## هوک‌ها را فقط از تابع‌های ری‌اکت فراخوانی کنید {/*only-call-hooks-from-react-functions*/}
 
-Don’t call Hooks from regular JavaScript functions. Instead, you can:
+هوک‌ها را از تابع‌های معمولی جاوااسکریپت فراخوانی نکنید. در عوض، می‌توانید:
 
-✅ Call Hooks from React function components.
-✅ Call Hooks from [custom Hooks](/learn/reusing-logic-with-custom-hooks#extracting-your-own-custom-hook-from-a-component).
+✅ هوک‌ها را از کامپوننت‌های تابعی ری‌اکت فراخوانی کنید.
+✅ هوک‌ها را از [هوک‌های سفارشی](/learn/reusing-logic-with-custom-hooks#extracting-your-own-custom-hook-from-a-component) فراخوانی کنید.
 
-By following this rule, you ensure that all stateful logic in a component is clearly visible from its source code.
+با پیروی از این قانون، تضمین می‌کنید که همهٔ منطق استیت‌دار در یک کامپوننت از کد منبع آن به‌وضوح قابل مشاهده است.
 
 ```js {2,5}
 function FriendList() {

@@ -5,14 +5,14 @@ titleForTitleTag: "'use client' directive"
 
 <RSC>
 
-`'use client'` is for use with [React Server Components](/reference/rsc/server-components).
+`'use client'` برای استفاده با [کامپوننت‌های سرور ری‌اکت](/reference/rsc/server-components) است.
 
 </RSC>
 
 
 <Intro>
 
-`'use client'` lets you mark what code runs on the client.
+`'use client'` به شما اجازه می‌دهد کدی را که روی کلاینت اجرا می‌شود، علامت‌گذاری کنید.
 
 </Intro>
 
@@ -20,11 +20,11 @@ titleForTitleTag: "'use client' directive"
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `'use client'` {/*use-client*/}
 
-Add `'use client'` at the top of a file to mark the module and its transitive dependencies as client code.
+`'use client'` را در بالای یک فایل اضافه کنید تا ماژول و وابستگی‌های انتقالی آن به‌عنوان کد کلاینت علامت‌گذاری شوند.
 
 ```js {1}
 'use client';
@@ -41,26 +41,26 @@ export default function RichTextEditor({ timestamp, text }) {
 }
 ```
 
-When a file marked with `'use client'` is imported from a Server Component, [compatible bundlers](/learn/start-a-new-react-project#full-stack-frameworks) will treat the module import as a boundary between server-run and client-run code.
+وقتی یک فایل با `'use client'` علامت‌گذاری شده از یک کامپوننت سرور وارد (import) می‌شود، [باندلرهای سازگار](/learn/start-a-new-react-project#full-stack-frameworks) با وارد کردن ماژول، آن را به‌عنوان مرزی بین کد اجرا شونده روی سرور و کد اجرا شونده روی کلاینت در نظر می‌گیرند.
 
-As dependencies of `RichTextEditor`, `formatDate` and `Button` will also be evaluated on the client regardless of whether their modules contain a `'use client'` directive. Note that a single module may be evaluated on the server when imported from server code and on the client when imported from client code.
+از آنجا که `formatDate` و `Button` وابستگی‌های `RichTextEditor` هستند، صرف‌نظر از اینکه ماژول‌هایشان حاوی دایرکتیو `'use client'` باشند یا نه، روی کلاینت ارزیابی می‌شوند. توجه کنید که یک ماژول واحد ممکن است وقتی از کد سرور وارد می‌شود روی سرور، و وقتی از کد کلاینت وارد می‌شود روی کلاینت ارزیابی شود.
 
-#### Caveats {/*caveats*/}
+#### ملاحظات {/*caveats*/}
 
-* `'use client'` must be at the very beginning of a file, above any imports or other code (comments are OK). They must be written with single or double quotes, but not backticks.
-* When a `'use client'` module is imported from another client-rendered module, the directive has no effect.
-* When a component module contains a `'use client'` directive, any usage of that component is guaranteed to be a Client Component. However, a component can still be evaluated on the client even if it does not have a `'use client'` directive.
-	* A component usage is considered a Client Component if it is defined in module with `'use client'` directive or when it is a transitive dependency of a module that contains a `'use client'` directive. Otherwise, it is a Server Component.
-* Code that is marked for client evaluation is not limited to components. All code that is a part of the Client module sub-tree is sent to and run by the client.
-* When a server evaluated module imports values from a `'use client'` module, the values must either be a React component or [supported serializable prop values](#passing-props-from-server-to-client-components) to be passed to a Client Component. Any other use case will throw an exception.
+* `'use client'` باید در همان ابتدای فایل، بالاتر از هرگونه import یا کد دیگر قرار گیرد (کامنت‌ها مجاز هستند). باید با کوتیشن تکی یا جفتی نوشته شوند، اما نه با backtick.
+* وقتی یک ماژول `'use client'` از یک ماژول کلاینت‌رندر دیگر وارد می‌شود، دایرکتیو تأثیری ندارد.
+* وقتی ماژول یک کامپوننت حاوی دایرکتیو `'use client'` است، هر استفاده از آن کامپوننت تضمین می‌شود که یک کامپوننت کلاینت باشد. با این حال، یک کامپوننت همچنان ممکن است روی کلاینت ارزیابی شود، حتی اگر دایرکتیو `'use client'` نداشته باشد.
+        * استفاده از یک کامپوننت در صورتی کامپوننت کلاینت در نظر گرفته می‌شود که در ماژولی با دایرکتیو `'use client'` تعریف شده باشد، یا وابستگی انتقالی ماژولی باشد که دایرکتیو `'use client'` دارد. در غیر این صورت، یک کامپوننت سرور است.
+* کدی که برای ارزیابی روی کلاینت علامت‌گذاری شده، محدود به کامپوننت‌ها نیست. همهٔ کدی که بخشی از زیردرخت ماژول کلاینت است، به کلاینت ارسال و توسط آن اجرا می‌شود.
+* وقتی یک ماژول ارزیابی‌شده روی سرور مقادیری را از یک ماژول `'use client'` وارد می‌کند، آن مقادیر باید یا یک کامپوننت ری‌اکت باشند یا [مقادیر پراپس سریالایز قابل پشتیبانی](#passing-props-from-server-to-client-components) تا بتوانند به یک کامپوننت کلاینت منتقل شوند. هر مورد استفادهٔ دیگری استثنا پرتاب می‌کند.
 
-### How `'use client'` marks client code {/*how-use-client-marks-client-code*/}
+### چگونه `'use client'` کد کلاینت را علامت‌گذاری می‌کند {/*how-use-client-marks-client-code*/}
 
-In a React app, components are often split into separate files, or [modules](/learn/importing-and-exporting-components#exporting-and-importing-a-component).
+در یک اپ ری‌اکت، کامپوننت‌ها اغلب به فایل‌های جداگانه، یا [ماژول‌ها](/learn/importing-and-exporting-components#exporting-and-importing-a-component) تقسیم می‌شوند.
 
-For apps that use React Server Components, the app is server-rendered by default. `'use client'` introduces a server-client boundary in the [module dependency tree](/learn/understanding-your-ui-as-a-tree#the-module-dependency-tree), effectively creating a subtree of Client modules.
+برای اپ‌هایی که از کامپوننت‌های سرور ری‌اکت استفاده می‌کنند، اپ به‌طور پیش‌فرض روی سرور رندر می‌شود. `'use client'` یک مرز سرور-کلاینت در [درخت وابستگی ماژول](/learn/understanding-your-ui-as-a-tree#the-module-dependency-tree) معرفی می‌کند، و عملاً یک زیردرخت از ماژول‌های کلاینت می‌سازد.
 
-To better illustrate this, consider the following React Server Components app.
+برای توضیح بهتر، اپ کامپوننت‌های سرور ری‌اکت زیر را در نظر بگیرید.
 
 <Sandpack>
 
@@ -145,35 +145,35 @@ export default [
 
 </Sandpack>
 
-In the module dependency tree of this example app, the `'use client'` directive in `InspirationGenerator.js` marks that module and all of its transitive dependencies as Client modules. The subtree starting at `InspirationGenerator.js` is now marked as Client modules.
+در درخت وابستگی ماژول این اپ نمونه، دایرکتیو `'use client'` در `InspirationGenerator.js` آن ماژول و تمام وابستگی‌های انتقالی آن را به‌عنوان ماژول‌های کلاینت علامت‌گذاری می‌کند. زیردرخت آغاز شده از `InspirationGenerator.js` اکنون به‌عنوان ماژول‌های کلاینت علامت‌گذاری شده است.
 
 <Diagram name="use_client_module_dependency" height={250} width={545} alt="A tree graph with the top node representing the module 'App.js'. 'App.js' has three children: 'Copyright.js', 'FancyText.js', and 'InspirationGenerator.js'. 'InspirationGenerator.js' has two children: 'FancyText.js' and 'inspirations.js'. The nodes under and including 'InspirationGenerator.js' have a yellow background color to signify that this sub-graph is client-rendered due to the 'use client' directive in 'InspirationGenerator.js'.">
-`'use client'` segments the module dependency tree of the React Server Components app, marking `InspirationGenerator.js` and all of its dependencies as client-rendered.
+`'use client'` درخت وابستگی ماژول اپ کامپوننت‌های سرور ری‌اکت را تقسیم می‌کند، و `InspirationGenerator.js` و تمام وابستگی‌های آن را به‌عنوان کلاینت‌رندر علامت‌گذاری می‌کند.
 </Diagram>
 
-During render, the framework will server-render the root component and continue through the [render tree](/learn/understanding-your-ui-as-a-tree#the-render-tree), opting-out of evaluating any code imported from client-marked code.
+در حین رندر، فریمورک کامپوننت ریشه را روی سرور رندر می‌کند و از [درخت رندر](/learn/understanding-your-ui-as-a-tree#the-render-tree) عبور می‌کند، و از ارزیابی هر کدی که از کد علامت‌گذاری شدهٔ کلاینت وارد شده، صرف‌نظر می‌کند.
 
-The server-rendered portion of the render tree is then sent to the client. The client, with its client code downloaded, then completes rendering the rest of the tree.
+سپس بخش سرور‌رندر شدهٔ درخت رندر به کلاینت ارسال می‌شود. کلاینت، با کد کلاینت خودش دانلود شده، سپس رندر باقی‌ماندهٔ درخت را تکمیل می‌کند.
 
 <Diagram name="use_client_render_tree" height={250} width={500} alt="A tree graph where each node represents a component and its children as child components. The top-level node is labelled 'App' and it has two child components 'InspirationGenerator' and 'FancyText'. 'InspirationGenerator' has two child components, 'FancyText' and 'Copyright'. Both 'InspirationGenerator' and its child component 'FancyText' are marked to be client-rendered.">
-The render tree for the React Server Components app. `InspirationGenerator` and its child component `FancyText` are components exported from client-marked code and considered Client Components.
+درخت رندر برای اپ کامپوننت‌های سرور ری‌اکت. `InspirationGenerator` و کامپوننت فرزندش `FancyText` کامپوننت‌هایی هستند که از کد علامت‌گذاری‌شدهٔ کلاینت export شده‌اند و به‌عنوان کامپوننت‌های کلاینت در نظر گرفته می‌شوند.
 </Diagram>
 
-We introduce the following definitions:
+تعاریف زیر را معرفی می‌کنیم:
 
-* **Client Components** are components in a render tree that are rendered on the client.
-* **Server Components** are components in a render tree that are rendered on the server.
+* **کامپوننت‌های کلاینت** کامپوننت‌هایی در یک درخت رندر هستند که روی کلاینت رندر می‌شوند.
+* **کامپوننت‌های سرور** کامپوننت‌هایی در یک درخت رندر هستند که روی سرور رندر می‌شوند.
 
-Working through the example app, `App`, `FancyText` and `Copyright` are all server-rendered and considered Server Components. As `InspirationGenerator.js` and its transitive dependencies are marked as client code, the component `InspirationGenerator` and its child component `FancyText` are Client Components.
+با کار روی اپ نمونه، `App`، `FancyText` و `Copyright` همگی روی سرور رندر می‌شوند و به‌عنوان کامپوننت سرور در نظر گرفته می‌شوند. از آنجا که `InspirationGenerator.js` و وابستگی‌های انتقالی آن به‌عنوان کد کلاینت علامت‌گذاری شده‌اند، کامپوننت `InspirationGenerator` و کامپوننت فرزندش `FancyText` کامپوننت کلاینت هستند.
 
 <DeepDive>
-#### How is `FancyText` both a Server and a Client Component? {/*how-is-fancytext-both-a-server-and-a-client-component*/}
+#### چگونه `FancyText` هم یک کامپوننت سرور و هم یک کامپوننت کلاینت است؟ {/*how-is-fancytext-both-a-server-and-a-client-component*/}
 
-By the above definitions, the component `FancyText` is both a Server and Client Component, how can that be?
+با تعاریف بالا، کامپوننت `FancyText` هم یک کامپوننت سرور و هم یک کامپوننت کلاینت است، چگونه ممکن است؟
 
-First, let's clarify that the term "component" is not very precise. Here are just two ways "component" can be understood:
+اول، بگذارید روشن کنیم که واژهٔ «کامپوننت» خیلی دقیق نیست. در اینجا فقط دو روش برای فهمیدن «کامپوننت» وجود دارد:
 
-1. A "component" can refer to a **component definition**. In most cases this will be a function.
+1. یک «کامپوننت» می‌تواند به **تعریف کامپوننت** اشاره کند. در بیشتر موارد این یک تابع خواهد بود.
 
 ```js
 // This is a definition of a component
@@ -182,7 +182,7 @@ function MyComponent() {
 }
 ```
 
-2. A "component" can also refer to a **component usage** of its definition.
+2. یک «کامپوننت» همچنین می‌تواند به **استفادهٔ کامپوننت** از تعریف آن اشاره کند.
 ```js
 import MyComponent from './MyComponent';
 
@@ -192,97 +192,97 @@ function App() {
 }
 ```
 
-Often, the imprecision is not important when explaining concepts, but in this case it is.
+اغلب، این عدم دقت هنگام توضیح مفاهیم مهم نیست، اما در این مورد مهم است.
 
-When we talk about Server or Client Components, we are referring to component usages.
+وقتی ما دربارهٔ کامپوننت‌های سرور یا کلاینت صحبت می‌کنیم، منظور ما استفاده‌های کامپوننت است.
 
-* If the component is defined in a module with a `'use client'` directive, or the component is imported and called in a Client Component, then the component usage is a Client Component.
-* Otherwise, the component usage is a Server Component.
+* اگر کامپوننت در ماژولی با دایرکتیو `'use client'` تعریف شده باشد، یا کامپوننت در یک کامپوننت کلاینت وارد و فراخوانی شده باشد، آن استفاده از کامپوننت یک کامپوننت کلاینت است.
+* در غیر این صورت، استفاده از کامپوننت یک کامپوننت سرور است.
 
 
-<Diagram name="use_client_render_tree" height={150} width={450} alt="A tree graph where each node represents a component and its children as child components. The top-level node is labelled 'App' and it has two child components 'InspirationGenerator' and 'FancyText'. 'InspirationGenerator' has two child components, 'FancyText' and 'Copyright'. Both 'InspirationGenerator' and its child component 'FancyText' are marked to be client-rendered.">A render tree illustrates component usages.</Diagram>
+<Diagram name="use_client_render_tree" height={150} width={450} alt="A tree graph where each node represents a component and its children as child components. The top-level node is labelled 'App' and it has two child components 'InspirationGenerator' and 'FancyText'. 'InspirationGenerator' has two child components, 'FancyText' and 'Copyright'. Both 'InspirationGenerator' and its child component 'FancyText' are marked to be client-rendered.">یک درخت رندر، استفاده‌های کامپوننت را نشان می‌دهد.</Diagram>
 
-Back to the question of `FancyText`, we see that the component definition does _not_ have a `'use client'` directive and it has two usages.
+برگشت به سؤال `FancyText`، می‌بینیم که تعریف کامپوننت دایرکتیو `'use client'` ندارد و دو استفاده دارد.
 
-The usage of `FancyText` as a child of `App`, marks that usage as a Server Component. When `FancyText` is imported and called under `InspirationGenerator`, that usage of `FancyText` is a Client Component as `InspirationGenerator` contains a `'use client'` directive.
+استفاده از `FancyText` به‌عنوان فرزند `App`، آن استفاده را به‌عنوان یک کامپوننت سرور علامت‌گذاری می‌کند. وقتی `FancyText` در `InspirationGenerator` وارد و فراخوانی می‌شود، آن استفاده از `FancyText` یک کامپوننت کلاینت است، زیرا `InspirationGenerator` حاوی دایرکتیو `'use client'` است.
 
-This means that the component definition for `FancyText` will both be evaluated on the server and also downloaded by the client to render its Client Component usage.
+این بدان معناست که تعریف کامپوننت `FancyText` هم روی سرور ارزیابی می‌شود و هم توسط کلاینت دانلود می‌شود تا استفادهٔ کامپوننت کلاینت آن را رندر کند.
 
 </DeepDive>
 
 <DeepDive>
 
-#### Why is `Copyright` a Server Component? {/*why-is-copyright-a-server-component*/}
+#### چرا `Copyright` یک کامپوننت سرور است؟ {/*why-is-copyright-a-server-component*/}
 
-Because `Copyright` is rendered as a child of the Client Component `InspirationGenerator`, you might be surprised that it is a Server Component.
+چون `Copyright` به‌عنوان فرزند کامپوننت کلاینت `InspirationGenerator` رندر می‌شود، ممکن است از اینکه یک کامپوننت سرور است متعجب شوید.
 
-Recall that `'use client'` defines the boundary between server and client code on the _module dependency tree_, not the render tree.
+به یاد بیاورید که `'use client'` مرز بین کد سرور و کلاینت را روی _درخت وابستگی ماژول_ تعریف می‌کند، نه درخت رندر.
 
 <Diagram name="use_client_module_dependency" height={200} width={500} alt="A tree graph with the top node representing the module 'App.js'. 'App.js' has three children: 'Copyright.js', 'FancyText.js', and 'InspirationGenerator.js'. 'InspirationGenerator.js' has two children: 'FancyText.js' and 'inspirations.js'. The nodes under and including 'InspirationGenerator.js' have a yellow background color to signify that this sub-graph is client-rendered due to the 'use client' directive in 'InspirationGenerator.js'.">
-`'use client'` defines the boundary between server and client code on the module dependency tree.
+`'use client'` مرز بین کد سرور و کلاینت را روی درخت وابستگی ماژول تعریف می‌کند.
 </Diagram>
 
-In the module dependency tree, we see that `App.js` imports and calls `Copyright` from the `Copyright.js` module. As `Copyright.js` does not contain a `'use client'` directive, the component usage is rendered on the server. `App` is rendered on the server as it is the root component.
+در درخت وابستگی ماژول، می‌بینیم که `App.js`، `Copyright` را از ماژول `Copyright.js` وارد و فراخوانی می‌کند. از آنجا که `Copyright.js` دایرکتیو `'use client'` ندارد، استفاده از کامپوننت روی سرور رندر می‌شود. `App` روی سرور رندر می‌شود زیرا کامپوننت ریشه است.
 
-Client Components can render Server Components because you can pass JSX as props. In this case, `InspirationGenerator` receives `Copyright` as [children](/learn/passing-props-to-a-component#passing-jsx-as-children). However, the `InspirationGenerator` module never directly imports the `Copyright` module nor calls the component, all of that is done by `App`. In fact, the `Copyright` component is fully executed before `InspirationGenerator` starts rendering.
+کامپوننت‌های کلاینت می‌توانند کامپوننت‌های سرور را رندر کنند، زیرا می‌توانید JSX را به‌عنوان پراپس منتقل کنید. در این مورد، `InspirationGenerator`، `Copyright` را به‌عنوان [فرزندان](/learn/passing-props-to-a-component#passing-jsx-as-children) دریافت می‌کند. با این حال، ماژول `InspirationGenerator` هرگز مستقیماً ماژول `Copyright` را وارد نمی‌کند و نه کامپوننت را فراخوانی می‌کند، همهٔ این کارها توسط `App` انجام می‌شود. در واقع، کامپوننت `Copyright` کاملاً قبل از شروع رندر `InspirationGenerator` اجرا می‌شود.
 
-The takeaway is that a parent-child render relationship between components does not guarantee the same render environment.
+نکتهٔ کلیدی این است که یک رابطهٔ رندر والد-فرزندی بین کامپوننت‌ها، تضمین نمی‌کند که محیط رندر یکسانی داشته باشند.
 
 </DeepDive>
 
-### When to use `'use client'` {/*when-to-use-use-client*/}
+### چه زمان از `'use client'` استفاده کنیم {/*when-to-use-use-client*/}
 
-With `'use client'`, you can determine when components are Client Components. As Server Components are default, here is a brief overview of the advantages and limitations to Server Components to determine when you need to mark something as client rendered.
+با `'use client'`، می‌توانید تعیین کنید چه زمانی کامپوننت‌ها کامپوننت کلاینت هستند. از آنجا که کامپوننت‌های سرور پیش‌فرض هستند، در اینجا مرور کوتاهی از مزایا و محدودیت‌های کامپوننت‌های سرور آورده شده تا تعیین کنید چه زمانی چیزی را به‌عنوان کلاینت‌رندر علامت‌گذاری کنید.
 
-For simplicity, we talk about Server Components, but the same principles apply to all code in your app that is server run.
+برای ساده‌سازی، ما دربارهٔ کامپوننت‌های سرور صحبت می‌کنیم، اما همان اصول برای همهٔ کد در اپ شما که روی سرور اجرا می‌شود نیز اعمال می‌شود.
 
-#### Advantages of Server Components {/*advantages*/}
-* Server Components can reduce the amount of code sent and run by the client. Only Client modules are bundled and evaluated by the client.
-* Server Components benefit from running on the server. They can access the local filesystem and may experience low latency for data fetches and network requests.
+#### مزایای کامپوننت‌های سرور {/*advantages*/}
+* کامپوننت‌های سرور می‌توانند میزان کد ارسالی و اجراشده توسط کلاینت را کاهش دهند. فقط ماژول‌های کلاینت توسط کلاینت باندل و ارزیابی می‌شوند.
+* کامپوننت‌های سرور از اجرا روی سرور سود می‌برند. آن‌ها می‌توانند به سیستم‌فایل محلی دسترسی داشته باشند و ممکن است برای fetch داده‌ها و درخواست‌های شبکه با تأخیر کمتری مواجه شوند.
 
-#### Limitations of Server Components {/*limitations*/}
-* Server Components cannot support interaction as event handlers must be registered and triggered by a client.
-	* For example, event handlers like `onClick` can only be defined in Client Components.
-* Server Components cannot use most Hooks.
-	* When Server Components are rendered, their output is essentially a list of components for the client to render. Server Components do not persist in memory after render and cannot have their own state.
+#### محدودیت‌های کامپوننت‌های سرور {/*limitations*/}
+* کامپوننت‌های سرور نمی‌توانند از تعامل پشتیبانی کنند، زیرا event handlerها باید توسط یک کلاینت ثبت و راه‌اندازی شوند.
+        * مثلاً event handlerهایی مانند `onClick` فقط می‌توانند در کامپوننت‌های کلاینت تعریف شوند.
+* کامپوننت‌های سرور نمی‌توانند از بیشتر هوک‌ها استفاده کنند.
+        * وقتی کامپوننت‌های سرور رندر می‌شوند، خروجی آن‌ها در واقع یک فهرست از کامپوننت‌ها برای کلاینت است که رندر کند. کامپوننت‌های سرور پس از رندر در حافظه باقی نمی‌مانند و نمی‌توانند استیت خودشان را داشته باشند.
 
-### Serializable types returned by Server Components {/*serializable-types*/}
+### انواع سریالایز بازگشتی از کامپوننت‌های سرور {/*serializable-types*/}
 
-As in any React app, parent components pass data to child components. As they are rendered in different environments, passing data from a Server Component to a Client Component requires extra consideration.
+مانند هر اپ ری‌اکت، کامپوننت‌های والد داده‌ها را به کامپوننت‌های فرزند منتقل می‌کنند. از آنجا که آن‌ها در محیط‌های متفاوتی رندر می‌شوند، انتقال داده از یک کامپوننت سرور به یک کامپوننت کلاینت نیاز به توجه اضافه دارد.
 
-Prop values passed from a Server Component to Client Component must be serializable.
+مقادیر پراپس منتقل‌شده از یک کامپوننت سرور به کامپوننت کلاینت باید سریالایز باشند.
 
-Serializable props include:
-* Primitives
-	* [string](https://developer.mozilla.org/en-US/docs/Glossary/String)
-	* [number](https://developer.mozilla.org/en-US/docs/Glossary/Number)
-	* [bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
-	* [boolean](https://developer.mozilla.org/en-US/docs/Glossary/Boolean)
-	* [undefined](https://developer.mozilla.org/en-US/docs/Glossary/Undefined)
-	* [null](https://developer.mozilla.org/en-US/docs/Glossary/Null)
-	* [symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol), only symbols registered in the global Symbol registry via [`Symbol.for`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/for)
-* Iterables containing serializable values
-	* [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
-	* [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
-	* [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
-	* [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)
-	* [TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) and [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
+پراپس سریالایز شامل موارد زیر است:
+* Primitiveها
+        * [string](https://developer.mozilla.org/en-US/docs/Glossary/String)
+        * [number](https://developer.mozilla.org/en-US/docs/Glossary/Number)
+        * [bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
+        * [boolean](https://developer.mozilla.org/en-US/docs/Glossary/Boolean)
+        * [undefined](https://developer.mozilla.org/en-US/docs/Glossary/Undefined)
+        * [null](https://developer.mozilla.org/en-US/docs/Glossary/Null)
+        * [symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)، فقط symbolهایی که از طریق [`Symbol.for`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/for) در رجیستری global Symbol ثبت شده‌اند
+* Iterableهای حاوی مقادیر سریالایز
+        * [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+        * [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+        * [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
+        * [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)
+        * [TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) و [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
 * [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
-* Plain [objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object): those created with [object initializers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer), with serializable properties
-* Functions that are [Server Functions](/reference/rsc/server-functions)
-* Client or Server Component elements (JSX)
-* [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+* [object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)های ساده: آن‌هایی که با [object initializer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer) ایجاد شده‌اند، با ویژگی‌های سریالایز
+* تابع‌هایی که [تابع سرور](/reference/rsc/server-functions) هستند
+* elementهای کامپوننت کلاینت یا سرور (JSX)
+* [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)ها
 
-Notably, these are not supported:
-* [Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function) that are not exported from client-marked modules or marked with [`'use server'`](/reference/rsc/use-server)
-* [Classes](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
-* Objects that are instances of any class (other than the built-ins mentioned) or objects with [a null prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects)
-* Symbols not registered globally, ex. `Symbol('my new symbol')`
+به‌طور خاص، موارد زیر پشتیبانی نمی‌شوند:
+* [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)هایی که از ماژول‌های علامت‌گذاری‌شدهٔ کلاینت export نشده‌اند یا با [`'use server'`](/reference/rsc/use-server) علامت‌گذاری نشده‌اند
+* [Class](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)ها
+* objectهایی که نمونه‌ای از هر کلاسی هستند (به جز موارد ذکرشده) یا objectهایی با [prototype null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects)
+* symbolهایی که به‌صورت سراسری ثبت نشده‌اند، مثلاً `Symbol('my new symbol')`
 
 
-## Usage {/*usage*/}
+## نحوهٔ استفاده {/*usage*/}
 
-### Building with interactivity and state {/*building-with-interactivity-and-state*/}
+### ساختن با تعامل و استیت {/*building-with-interactivity-and-state*/}
 
 <Sandpack>
 
@@ -307,9 +307,9 @@ export default function Counter({initialValue = 0}) {
 
 </Sandpack>
 
-As `Counter` requires both the `useState` Hook and event handlers to increment or decrement the value, this component must be a Client Component and will require a `'use client'` directive at the top.
+از آنجا که `Counter` هم به هوک `useState` و هم به event handler برای افزایش یا کاهش مقدار نیاز دارد، این کامپوننت باید یک کامپوننت کلاینت باشد و در بالای آن به دایرکتیو `'use client'` نیاز دارد.
 
-In contrast, a component that renders UI without interaction will not need to be a Client Component.
+در مقابل، کامپوننتی که UI را بدون تعامل رندر می‌کند، نیازی ندارد که یک کامپوننت کلاینت باشد.
 
 ```js
 import { readFile } from 'node:fs/promises';
@@ -321,9 +321,9 @@ export default async function CounterContainer() {
 }
 ```
 
-For example, `Counter`'s parent component, `CounterContainer`, does not require `'use client'` as it is not interactive and does not use state. In addition, `CounterContainer` must be a Server Component as it reads from the local file system on the server, which is possible only in a Server Component.
+مثلاً کامپوننت والد `Counter`، یعنی `CounterContainer`، نیازی به `'use client'` ندارد زیرا تعاملی نیست و از استیت استفاده نمی‌کند. علاوه بر این، `CounterContainer` باید یک کامپوننت سرور باشد زیرا از سیستم‌فایل محلی روی سرور می‌خواند، که فقط در یک کامپوننت سرور امکان‌پذیر است.
 
-There are also components that don't use any server or client-only features and can be agnostic to where they render. In our earlier example, `FancyText` is one such component.
+همچنین کامپوننت‌هایی وجود دارند که از هیچ قابلیت سرور یا کلاینت‌اختصاصی استفاده نمی‌کنند و می‌توانند نسبت به اینکه کجا رندر می‌شوند بی‌تفاوت باشند. در مثال قبلی ما، `FancyText` چنین کامپوننتی است.
 
 ```js
 export default function FancyText({title, text}) {
@@ -333,15 +333,15 @@ export default function FancyText({title, text}) {
 }
 ```
 
-In this case, we don't add the `'use client'` directive, resulting in `FancyText`'s _output_ (rather than its source code) to be sent to the browser when referenced from a Server Component. As demonstrated in the earlier Inspirations app example, `FancyText` is used as both a Server or Client Component, depending on where it is imported and used.
+در این مورد، ما دایرکتیو `'use client'` را اضافه نمی‌کنیم، که باعث می‌شود _خروجی_ `FancyText` (به‌جای کد منبع آن) وقتی از یک کامپوننت سرور ارجاع می‌شود، به مرورگر ارسال شود. همان‌طور که در مثال اپ Inspirations قبلی نشان داده شد، `FancyText` بسته به اینکه کجا وارد و استفاده می‌شود، هم به‌عنوان یک کامپوننت سرور و هم کلاینت استفاده می‌شود.
 
-But if `FancyText`'s HTML output was large relative to its source code (including dependencies), it might be more efficient to force it to always be a Client Component. Components that return a long SVG path string are one case where it may be more efficient to force a component to be a Client Component.
+اما اگر خروجی HTML `FancyText` نسبت به کد منبع آن (شامل وابستگی‌ها) بزرگ بود، ممکن است کارآمدتر باشد که آن را همیشه به یک کامپوننت کلاینت تبدیل کنید. کامپوننت‌هایی که یک رشتهٔ طولانی مسیر SVG برمی‌گردانند، یکی از مواردی است که ممکن است کارآمدتر باشد تا کامپوننت را به یک کامپوننت کلاینت تبدیل کنید.
 
-### Using client APIs {/*using-client-apis*/}
+### استفاده از APIهای کلاینت {/*using-client-apis*/}
 
-Your React app may use client-specific APIs, such as the browser's APIs for web storage, audio and video manipulation, and device hardware, among [others](https://developer.mozilla.org/en-US/docs/Web/API).
+اپ ری‌اکت شما ممکن است از APIهای اختصاصی کلاینت استفاده کند، مانند APIهای مرورگر برای ذخیره‌سازی وب، دستکاری صدا و تصویر، و سخت‌افزار دستگاه، در میان [موارد دیگر](https://developer.mozilla.org/en-US/docs/Web/API).
 
-In this example, the component uses [DOM APIs](https://developer.mozilla.org/en-US/docs/Glossary/DOM) to manipulate a [`canvas`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) element. Since those APIs are only available in the browser, it must be marked as a Client Component.
+در این مثال، کامپوننت از [APIهای DOM](https://developer.mozilla.org/en-US/docs/Glossary/DOM) برای دستکاری یک المنت [`canvas`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) استفاده می‌کند. از آنجا که این APIها فقط در مرورگر در دسترس هستند، باید به‌عنوان یک کامپوننت کلاینت علامت‌گذاری شود.
 
 ```js
 'use client';
@@ -362,18 +362,18 @@ export default function Circle() {
 }
 ```
 
-### Using third-party libraries {/*using-third-party-libraries*/}
+### استفاده از کتابخانه‌های شخص ثالث {/*using-third-party-libraries*/}
 
-Often in a React app, you'll leverage third-party libraries to handle common UI patterns or logic.
+اغلب در یک اپ ری‌اکت، از کتابخانه‌های شخص ثالث برای مدیریت الگوهای رایج UI یا منطق استفاده می‌کنید.
 
-These libraries may rely on component Hooks or client APIs. Third-party components that use any of the following React APIs must run on the client:
+این کتابخانه‌ها ممکن است به هوک‌های کامپوننت یا APIهای کلاینت وابسته باشند. کامپوننت‌های شخص ثالث که از هر یک از APIهای ری‌اکت زیر استفاده می‌کنند باید روی کلاینت اجرا شوند:
 * [createContext](/reference/react/createContext)
-* [`react`](/reference/react/hooks) and [`react-dom`](/reference/react-dom/hooks) Hooks, excluding [`use`](/reference/react/use) and [`useId`](/reference/react/useId)
+* هوک‌های [`react`](/reference/react/hooks) و [`react-dom`](/reference/react-dom/hooks)، به‌جز [`use`](/reference/react/use) و [`useId`](/reference/react/useId)
 * [forwardRef](/reference/react/forwardRef)
 * [memo](/reference/react/memo)
 * [startTransition](/reference/react/startTransition)
-* If they use client APIs, ex. DOM insertion or native platform views
+* اگر از APIهای کلاینت استفاده می‌کنند، مثلاً درج DOM یا نماهای بومی پلتفرم
 
-If these libraries have been updated to be compatible with React Server Components, then they will already include `'use client'` markers of their own, allowing you to use them directly from your Server Components. If a library hasn't been updated, or if a component needs props like event handlers that can only be specified on the client, you may need to add your own Client Component file in between the third-party Client Component and your Server Component where you'd like to use it.
+اگر این کتابخانه‌ها برای سازگاری با کامپوننت‌های سرور ری‌اکت به‌روزرسانی شده‌اند، آن‌ها از قبل شامل علامت‌گذاری‌های `'use client'` خود هستند، که به شما اجازه می‌دهد مستقیماً از کامپوننت‌های سرور خود استفاده کنید. اگر کتابخانه‌ای به‌روزرسانی نشده، یا اگر کامپوننتی به پراپس‌هایی مانند event handler نیاز دارد که فقط روی کلاینت قابل تعیین هستند، ممکن است لازم باشد فایل کامپوننت کلاینت خودتان را بین کامپوننت کلاینت شخص ثالث و کامپوننت سروری که می‌خواهید از آن استفاده کنید، اضافه کنید.
 
 [TODO]: <> (Troubleshooting - need use-cases)

@@ -1,30 +1,30 @@
 ---
-title: Adding Interactivity
+title: افزودن تعامل
 ---
 
 <Intro>
 
-Some things on the screen update in response to user input. For example, clicking an image gallery switches the active image. In React, data that changes over time is called *state.* You can add state to any component, and update it as needed. In this chapter, you'll learn how to write components that handle interactions, update their state, and display different output over time.
+برخی چیزها روی صفحه در پاسخ به ورودی کاربر به‌روزرسانی می‌شوند. برای مثال، کلیک روی یک گالری تصاویر، تصویر فعال را عوض می‌کند. در ری‌اکت، داده‌ای که در طول زمان تغییر می‌کند، *استیت* نامیده می‌شود. شما می‌توانید به هر کامپوننتی استیت اضافه کنید و در صورت نیاز آن را به‌روزرسانی کنید. در این فصل، خواهید آموخت که چگونه کامپوننت‌هایی بنویسید که با تعاملات کاربر می‌کنند، استیت خود را به‌روزرسانی می‌کنند و در طول زمان خروجی متفاوتی نمایش می‌دهند.
 
 </Intro>
 
 <YouWillLearn isChapter={true}>
 
-* [How to handle user-initiated events](/learn/responding-to-events)
-* [How to make components "remember" information with state](/learn/state-a-components-memory)
-* [How React updates the UI in two phases](/learn/render-and-commit)
-* [Why state doesn't update right after you change it](/learn/state-as-a-snapshot)
-* [How to queue multiple state updates](/learn/queueing-a-series-of-state-updates)
-* [How to update an object in state](/learn/updating-objects-in-state)
-* [How to update an array in state](/learn/updating-arrays-in-state)
+* [چگونه رویدادهای آغاز شده توسط کاربر را مدیریت کنیم](/learn/responding-to-events)
+* [چگونه با استیت به کامپوننت‌ها «یادآوری» اطلاعات کنیم](/learn/state-a-components-memory)
+* [چگونه ری‌اکت رابط کاربری را در دو مرحله به‌روزرسانی می‌کند](/learn/render-and-commit)
+* [چرا استیت بلافاصله پس از تغییرش به‌روز نمی‌شود](/learn/state-as-a-snapshot)
+* [چگونه چندین به‌روزرسانی استیت را در صف قرار دهیم](/learn/queueing-a-series-of-state-updates)
+* [چگونه یک شیء را در استیت به‌روزرسانی کنیم](/learn/updating-objects-in-state)
+* [چگونه یک آرایه را در استیت به‌روزرسانی کنیم](/learn/updating-arrays-in-state)
 
 </YouWillLearn>
 
-## Responding to events {/*responding-to-events*/}
+## پاسخ به رویدادها {/*responding-to-events*/}
 
-React lets you add *event handlers* to your JSX. Event handlers are your own functions that will be triggered in response to user interactions like clicking, hovering, focusing on form inputs, and so on.
+ری‌اکت به شما اجازه می‌دهد *مدیرکننده‌های رویداد* (event handler) را به JSX خود اضافه کنید. مدیرکننده‌های رویداد توابع خود شما هستند که در پاسخ به تعاملات کاربر مانند کلیک، حرکت موس، تمرکز روی ورودی‌های فرم و غیره اجرا می‌شوند.
 
-Built-in components like `<button>` only support built-in browser events like `onClick`. However, you can also create your own components, and give their event handler props any application-specific names that you like.
+کامپوننت‌های داخلی مانند `<button>` فقط از رویدادهای داخلی مرورگر مانند `onClick` پشتیبانی می‌کنند. اما شما می‌توانید کامپوننت‌های خودتان را نیز بسازید و به پراپس مدیرکننده رویداد آنها هر نامی که دوست دارید، مخصوص برنامهٔ خودتان بدهید.
 
 <Sandpack>
 
@@ -68,22 +68,22 @@ button { margin-right: 10px; }
 
 <LearnMore path="/learn/responding-to-events">
 
-Read **[Responding to Events](/learn/responding-to-events)** to learn how to add event handlers.
+برای یادگیری نحوه افزودن مدیرکننده‌های رویداد، **[پاسخ به رویدادها](/learn/responding-to-events)** را بخوانید.
 
 </LearnMore>
 
-## State: a component's memory {/*state-a-components-memory*/}
+## استیت: حافظهٔ کامپوننت {/*state-a-components-memory*/}
 
-Components often need to change what's on the screen as a result of an interaction. Typing into the form should update the input field, clicking "next" on an image carousel should change which image is displayed, clicking "buy" puts a product in the shopping cart. Components need to "remember" things: the current input value, the current image, the shopping cart. In React, this kind of component-specific memory is called *state.*
+کامپوننت‌ها اغلب نیاز دارند که در نتیجهٔ یک تعامل، آنچه روی صفحه است را تغییر دهند. تایپ کردن در فرم باید فیلد ورودی را به‌روزرسانی کند، کلیک روی «بعدی» در یک کاروسل تصاویر باید تصویر نمایش‌داده‌شده را عوض کند، کلیک روی «خرید» یک محصول را به سبد خرید اضافه می‌کند. کامپوننت‌ها باید چیزها را «یادآوری» کنند: مقدار ورودی فعلی، تصویر فعلی، سبد خرید. در ری‌اکت، این نوع حافظهٔ مخصوص کامپوننت، *استیت* نامیده می‌شود.
 
-You can add state to a component with a [`useState`](/reference/react/useState) Hook. *Hooks* are special functions that let your components use React features (state is one of those features). The `useState` Hook lets you declare a state variable. It takes the initial state and returns a pair of values: the current state, and a state setter function that lets you update it.
+شما می‌توانید با هوک [`useState`](/reference/react/useState) به یک کامپوننت استیت اضافه کنید. *هوک‌ها* توابع خاصی هستند که به کامپوننت‌های شما اجازه می‌دهند از قابلیت‌های ری‌اکت استفاده کنند (استیت یکی از این قابلیت‌هاست). هوک `useState` به شما اجازه می‌دهد یک متغیر استیت تعریف کنید. این هوک استیت اولیه را دریافت می‌کند و یک جفت مقدار برمی‌گرداند: استیت فعلی، و یک تابع تنظیم‌کنندهٔ استیت که به شما اجازه می‌دهد آن را به‌روزرسانی کنید.
 
 ```js
 const [index, setIndex] = useState(0);
 const [showMore, setShowMore] = useState(false);
 ```
 
-Here is how an image gallery uses and updates state on click:
+در اینجا نحوه استفاده و به‌روزرسانی استیت در یک گالری تصاویر هنگام کلیک آورده شده است:
 
 <Sandpack>
 
@@ -229,19 +229,19 @@ button {
 
 <LearnMore path="/learn/state-a-components-memory">
 
-Read **[State: A Component's Memory](/learn/state-a-components-memory)** to learn how to remember a value and update it on interaction.
+برای یادگیری نحوه یادآوری یک مقدار و به‌روزرسانی آن هنگام تعامل، **[استیت: حافظهٔ یک کامپوننت](/learn/state-a-components-memory)** را بخوانید.
 
 </LearnMore>
 
-## Render and commit {/*render-and-commit*/}
+## رندر و کامیت {/*render-and-commit*/}
 
-Before your components are displayed on the screen, they must be rendered by React. Understanding the steps in this process will help you think about how your code executes and explain its behavior.
+پیش از آنکه کامپوننت‌های شما روی صفحه نمایش داده شوند، باید توسط ری‌اکت رندر شوند. درک مراحل این فرایند به شما کمک می‌کند تا درباره نحوه اجرای کدتان بیندیشید و رفتار آن را توضیح دهید.
 
-Imagine that your components are cooks in the kitchen, assembling tasty dishes from ingredients. In this scenario, React is the waiter who puts in requests from customers and brings them their orders. This process of requesting and serving UI has three steps:
+تصور کنید کامپوننت‌های شما آشپزهایی در آشپزخانه هستند که از مواد اولیه، غذاهای خوشمزه‌ای تهیه می‌کنند. در این سناریو، ری‌اکت گارسونی است که سفارش‌ها را از مشتریان می‌گیرد و سفارش‌هایشان را برایشان می‌آورد. این فرایند درخواست و سرو کردن رابط کاربری سه مرحله دارد:
 
-1. **Triggering** a render (delivering the diner's order to the kitchen)
-2. **Rendering** the component (preparing the order in the kitchen)
-3. **Committing** to the DOM (placing the order on the table)
+1. **راه‌اندازی** یک رندر (رساندن سفارش مشتری به آشپزخانه)
+2. **رندر کردن** کامپوننت (آماده‌سازی سفارش در آشپزخانه)
+3. **کامیت کردن** به DOM (قرار دادن سفارش روی میز)
 
 <IllustrationBlock sequential>
   <Illustration caption="Trigger" alt="React as a server in a restaurant, fetching orders from the users and delivering them to the Component Kitchen." src="/images/docs/illustrations/i_render-and-commit1.png" />
@@ -251,13 +251,13 @@ Imagine that your components are cooks in the kitchen, assembling tasty dishes f
 
 <LearnMore path="/learn/render-and-commit">
 
-Read **[Render and Commit](/learn/render-and-commit)** to learn the lifecycle of a UI update.
+برای یادگیری چرخهٔ حیات یک به‌روزرسانی رابط کاربری، **[رندر و کامیت](/learn/render-and-commit)** را بخوانید.
 
 </LearnMore>
 
-## State as a snapshot {/*state-as-a-snapshot*/}
+## استیت به‌عنوان یک عکس فوری {/*state-as-a-snapshot*/}
 
-Unlike regular JavaScript variables, React state behaves more like a snapshot. Setting it does not change the state variable you already have, but instead triggers a re-render. This can be surprising at first!
+برخلاف متغیرهای معمولی جاوااسکریپت، استیت ری‌اکت بیشتر مانند یک عکس فوری رفتار می‌کند. تنظیم کردن آن، متغیر استیتی که هم‌اکنون دارید را تغییر نمی‌دهد، بلکه یک رندر مجدد را راه‌اندازی می‌کند. این ممکن است در ابتدا عجیب به نظر برسد!
 
 ```js
 console.log(count);  // 0
@@ -265,7 +265,9 @@ setCount(count + 1); // Request a re-render with 1
 console.log(count);  // Still 0!
 ```
 
-This behavior helps you avoid subtle bugs. Here is a little chat app. Try to guess what happens if you press "Send" first and *then* change the recipient to Bob. Whose name will appear in the `alert` five seconds later?
+این رفتار به شما کمک می‌کند از باگ‌های ظریف جلوگیری کنید.
+
+در اینجا یک برنامهٔ چت کوچک وجود دارد. سعی کنید حدس بزنید اگر ابتدا «ارسال» را بزنید و *سپس* گیرنده را به «باب» تغییر دهید، چه اتفاقی می‌افتد. نام چه کسی پنج ثانیه بعد در `alert` ظاهر خواهد شد؟
 
 <Sandpack>
 
@@ -314,13 +316,13 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 <LearnMore path="/learn/state-as-a-snapshot">
 
-Read **[State as a Snapshot](/learn/state-as-a-snapshot)** to learn why state appears "fixed" and unchanging inside the event handlers.
+برای یادگیری اینکه چرا استیت در داخل مدیرکننده‌های رویداد «ثابت» و بدون تغییر به نظر می‌رسد، **[استیت به‌عنوان یک عکس فوری](/learn/state-as-a-snapshot)** را بخوانید.
 
 </LearnMore>
 
-## Queueing a series of state updates {/*queueing-a-series-of-state-updates*/}
+## قرار دادن یک سری به‌روزرسانی استیت در صف {/*queueing-a-series-of-state-updates*/}
 
-This component is buggy: clicking "+3" increments the score only once.
+این کامپوننت باگ دارد: کلیک روی «+3» امتیاز را فقط یک بار افزایش می‌دهد.
 
 <Sandpack>
 
@@ -354,7 +356,7 @@ button { display: inline-block; margin: 10px; font-size: 20px; }
 
 </Sandpack>
 
-[State as a Snapshot](/learn/state-as-a-snapshot) explains why this is happening. Setting state requests a new re-render, but does not change it in the already running code. So `score` continues to be `0` right after you call `setScore(score + 1)`.
+[استیت به‌عنوان یک عکس فوری](/learn/state-as-a-snapshot) توضیح می‌دهد که چرا این اتفاق می‌افتد. تنظیم استیت یک رندر مجدد جدید درخواست می‌کند، اما آن را در کدی که در حال اجراست تغییر نمی‌دهد. بنابراین `score` بلافاصله پس از فراخوانی `setScore(score + 1)` همچنان `0` باقی می‌ماند.
 
 ```js
 console.log(score);  // 0
@@ -366,7 +368,7 @@ setScore(score + 1); // setScore(0 + 1);
 console.log(score);  // 0
 ```
 
-You can fix this by passing an *updater function* when setting state. Notice how replacing `setScore(score + 1)` with `setScore(s => s + 1)` fixes the "+3" button. This lets you queue multiple state updates.
+شما می‌توانید با ارسال یک *تابع به‌روزرسانی* هنگام تنظیم استیت، این مشکل را برطرف کنید. توجه کنید که چگونه جایگزینی `setScore(score + 1)` با `setScore(s => s + 1)` دکمهٔ «+3» را اصلاح می‌کند. این کار به شما اجازه می‌دهد چندین به‌روزرسانی استیت را در صف قرار دهید.
 
 <Sandpack>
 
@@ -402,15 +404,15 @@ button { display: inline-block; margin: 10px; font-size: 20px; }
 
 <LearnMore path="/learn/queueing-a-series-of-state-updates">
 
-Read **[Queueing a Series of State Updates](/learn/queueing-a-series-of-state-updates)** to learn how to queue a sequence of state updates.
+برای یادگیری نحوه قرار دادن یک دنباله از به‌روزرسانی‌های استیت در صف، **[قرار دادن یک سری به‌روزرسانی استیت در صف](/learn/queueing-a-series-of-state-updates)** را بخوانید.
 
 </LearnMore>
 
-## Updating objects in state {/*updating-objects-in-state*/}
+## به‌روزرسانی اشیاء در استیت {/*updating-objects-in-state*/}
 
-State can hold any kind of JavaScript value, including objects. But you shouldn't change objects and arrays that you hold in the React state directly. Instead, when you want to update an object and array, you need to create a new one (or make a copy of an existing one), and then update the state to use that copy.
+استیت می‌تواند هر نوع مقدار جاوااسکریپتی از جمله اشیاء را نگه دارد. اما نباید اشیاء و آرایه‌هایی که در استیت ری‌اکت نگه می‌دارید را مستقیماً تغییر دهید. در عوض، وقتی می‌خواهید یک شیء یا آرایه را به‌روزرسانی کنید، باید یکی جدید بسازید (یا یک کپی از یک نسخهٔ موجود تهیه کنید) و سپس استیت را به‌گونه‌ای به‌روزرسانی کنید که از آن کپی استفاده کند.
 
-Usually, you will use the `...` spread syntax to copy objects and arrays that you want to change. For example, updating a nested object could look like this:
+معمولاً از سینتکس spread یعنی `...` برای کپی کردن اشیاء و آرایه‌هایی که می‌خواهید تغییر دهید، استفاده خواهید کرد. برای مثال، به‌روزرسانی یک شیء تودرتو می‌تواند به این شکل باشد:
 
 <Sandpack>
 
@@ -518,7 +520,7 @@ img { width: 200px; height: 200px; }
 
 </Sandpack>
 
-If copying objects in code gets tedious, you can use a library like [Immer](https://github.com/immerjs/use-immer) to reduce repetitive code:
+اگر کپی کردن اشیاء در کد خسته‌کننده می‌شود، می‌توانید از کتابخانه‌ای مانند [Immer](https://github.com/immerjs/use-immer) برای کاهش کد تکراری استفاده کنید:
 
 <Sandpack>
 
@@ -633,13 +635,13 @@ img { width: 200px; height: 200px; }
 
 <LearnMore path="/learn/updating-objects-in-state">
 
-Read **[Updating Objects in State](/learn/updating-objects-in-state)** to learn how to update objects correctly.
+برای یادگیری نحوه به‌روزرسانی صحیح اشیاء، **[به‌روزرسانی اشیاء در استیت](/learn/updating-objects-in-state)** را بخوانید.
 
 </LearnMore>
 
-## Updating arrays in state {/*updating-arrays-in-state*/}
+## به‌روزرسانی آرایه‌ها در استیت {/*updating-arrays-in-state*/}
 
-Arrays are another type of mutable JavaScript objects you can store in state and should treat as read-only. Just like with objects, when you want to update an array stored in state, you need to create a new one (or make a copy of an existing one), and then set state to use the new array:
+آرایه‌ها نوع دیگری از اشیاء قابل‌تغییر جاوااسکریپت هستند که می‌توانید در استیت ذخیره کنید و باید با آنها مانند چیزی فقط‌خواندنی رفتار کنید. درست مانند اشیاء، وقتی می‌خواهید یک آرایهٔ ذخیره‌شده در استیت را به‌روزرسانی کنید، باید یکی جدید بسازید (یا یک کپی از نسخهٔ موجود تهیه کنید) و سپس استیت را برای استفاده از آرایهٔ جدید تنظیم کنید:
 
 <Sandpack>
 
@@ -705,7 +707,7 @@ function ItemList({ artworks, onToggle }) {
 
 </Sandpack>
 
-If copying arrays in code gets tedious, you can use a library like [Immer](https://github.com/immerjs/use-immer) to reduce repetitive code:
+اگر کپی کردن آرایه‌ها در کد خسته‌کننده می‌شود، می‌توانید از کتابخانه‌ای مانند [Immer](https://github.com/immerjs/use-immer) برای کاهش کد تکراری استفاده کنید:
 
 <Sandpack>
 
@@ -789,12 +791,12 @@ function ItemList({ artworks, onToggle }) {
 
 <LearnMore path="/learn/updating-arrays-in-state">
 
-Read **[Updating Arrays in State](/learn/updating-arrays-in-state)** to learn how to update arrays correctly.
+برای یادگیری نحوه به‌روزرسانی صحیح آرایه‌ها، **[به‌روزرسانی آرایه‌ها در استیت](/learn/updating-arrays-in-state)** را بخوانید.
 
 </LearnMore>
 
-## What's next? {/*whats-next*/}
+## قدم بعدی چیست؟ {/*whats-next*/}
 
-Head over to [Responding to Events](/learn/responding-to-events) to start reading this chapter page by page!
+برای شروع خواندن این فصل صفحه به صفحه، به [پاسخ به رویدادها](/learn/responding-to-events) بروید!
 
-Or, if you're already familiar with these topics, why not read about [Managing State](/learn/managing-state)?
+یا، اگر با این مباحث از قبل آشنا هستید، چرا درباره [مدیریت استیت](/learn/managing-state) نخوانید؟

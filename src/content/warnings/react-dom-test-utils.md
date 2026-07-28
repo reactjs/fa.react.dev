@@ -1,34 +1,34 @@
 ---
-title: react-dom/test-utils Deprecation Warnings
+title: هشدارهای منسوخ‌شدن react-dom/test-utils
 ---
 
-## ReactDOMTestUtils.act() warning {/*reactdomtestutilsact-warning*/}
+## هشدار ReactDOMTestUtils.act() {/*reactdomtestutilsact-warning*/}
 
-`act` from `react-dom/test-utils` has been deprecated in favor of `act` from `react`.
+`act` از `react-dom/test-utils` به نفع `act` از `react` منسوخ شده است.
 
-Before:
+پیش از:
 
 ```js
 import {act} from 'react-dom/test-utils';
 ```
 
-After:
+پس از:
 
 ```js
 import {act} from 'react';
 ```
 
-## Rest of ReactDOMTestUtils APIS {/*rest-of-reactdomtestutils-apis*/}
+## سایر APIهای ReactDOMTestUtils {/*rest-of-reactdomtestutils-apis*/}
 
-All APIs except `act` have been removed.
+تمام APIها به‌جز `act` حذف شده‌اند.
 
-The React Team recommends migrating your tests to [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/) for a modern and well supported testing experience.
+تیم ری‌اکت مهاجرت تست‌هایتان به [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/) را برای یک تجربهٔ تست مدرن و به‌خوبی پشتیبانی‌شده توصیه می‌کند.
 
 ### ReactDOMTestUtils.renderIntoDocument {/*reactdomtestutilsrenderintodocument*/}
 
-`renderIntoDocument` can be replaced with `render` from `@testing-library/react`.
+`renderIntoDocument` می‌تواند با `render` از `@testing-library/react` جایگزین شود.
 
-Before:
+پیش از:
 
 ```js
 import {renderIntoDocument} from 'react-dom/test-utils';
@@ -36,7 +36,7 @@ import {renderIntoDocument} from 'react-dom/test-utils';
 renderIntoDocument(<Component />);
 ```
 
-After:
+پس از:
 
 ```js
 import {render} from '@testing-library/react';
@@ -46,9 +46,9 @@ render(<Component />);
 
 ### ReactDOMTestUtils.Simulate {/*reactdomtestutilssimulate*/}
 
-`Simulate` can be replaced with `fireEvent` from `@testing-library/react`.
+`Simulate` می‌تواند با `fireEvent` از `@testing-library/react` جایگزین شود.
 
-Before:
+پیش از:
 
 ```js
 import {Simulate} from 'react-dom/test-utils';
@@ -57,7 +57,7 @@ const element = document.querySelector('button');
 Simulate.click(element);
 ```
 
-After:
+پس از:
 
 ```js
 import {fireEvent} from '@testing-library/react';
@@ -66,9 +66,9 @@ const element = document.querySelector('button');
 fireEvent.click(element);
 ```
 
-Be aware that `fireEvent` dispatches an actual event on the element and doesn't just synthetically call the event handler.
+آگاه باشید که `fireEvent` یک رویداد واقعی را روی عنصر dispatch می‌کند و فقط مدیریت‌کنندهٔ رویداد را به‌طور مصنوعی فراخوانی نمی‌کند.
 
-### List of all removed APIs {/*list-of-all-removed-apis-list-of-all-removed-apis*/}
+### فهرست تمام APIهای حذف‌شده {/*list-of-all-removed-apis-list-of-all-removed-apis*/}
 
 - `mockComponent()`
 - `isElement()`

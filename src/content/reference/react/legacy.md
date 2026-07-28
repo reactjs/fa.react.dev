@@ -1,35 +1,35 @@
 ---
-title: "Legacy React APIs"
+title: "APIهای قدیمی ری‌اکت"
 ---
 
 <Intro>
 
-These APIs are exported from the `react` package, but they are not recommended for use in newly written code. See the linked individual API pages for the suggested alternatives.
+این APIها از پکیج `react` صادر می‌شوند، اما استفاده از آن‌ها در کدهای تازه‌نوشته‌شده توصیه نمی‌شود. برای جایگزین‌های پیشنهادی، به صفحهٔ اختصاصی هر API که لینک شده مراجعه کنید.
 
 </Intro>
 
 ---
 
-## Legacy APIs {/*legacy-apis*/}
+## APIهای قدیمی {/*legacy-apis*/}
 
-* [`Children`](/reference/react/Children) lets you manipulate and transform the JSX received as the `children` prop. [See alternatives.](/reference/react/Children#alternatives)
-* [`cloneElement`](/reference/react/cloneElement) lets you create a React element using another element as a starting point. [See alternatives.](/reference/react/cloneElement#alternatives)
-* [`Component`](/reference/react/Component) lets you define a React component as a JavaScript class. [See alternatives.](/reference/react/Component#alternatives)
-* [`createElement`](/reference/react/createElement) lets you create a React element. Typically, you'll use JSX instead.
-* [`createRef`](/reference/react/createRef) creates a ref object which can contain arbitrary value. [See alternatives.](/reference/react/createRef#alternatives)
-* [`forwardRef`](/reference/react/forwardRef) lets your component expose a DOM node to parent component with a [ref.](/learn/manipulating-the-dom-with-refs)
-* [`isValidElement`](/reference/react/isValidElement) checks whether a value is a React element. Typically used with [`cloneElement`.](/reference/react/cloneElement)
-* [`PureComponent`](/reference/react/PureComponent) is similar to [`Component`,](/reference/react/Component) but it skip re-renders with same props. [See alternatives.](/reference/react/PureComponent#alternatives)
+* [`Children`](/reference/react/Children) به شما اجازه می‌دهد JSX دریافتی به‌عنوان پراپ `children` را دستکاری و تبدیل کنید. [جایگزین‌ها را ببینید.](/reference/react/Children#alternatives)
+* [`cloneElement`](/reference/react/cloneElement) به شما اجازه می‌دهد یک المنت ری‌اکت را با استفاده از المنت دیگری به‌عنوان نقطهٔ شروع بسازید. [جایگزین‌ها را ببینید.](/reference/react/cloneElement#alternatives)
+* [`Component`](/reference/react/Component) به شما اجازه می‌دهد یک کامپوننت ری‌اکت را به‌صورت کلاس جاوااسکریپت تعریف کنید. [جایگزین‌ها را ببینید.](/reference/react/Component#alternatives)
+* [`createElement`](/reference/react/createElement) به شما اجازه می‌دهد یک المنت ری‌اکت بسازید. معمولاً به‌جای آن از JSX استفاده می‌کنید.
+* [`createRef`](/reference/react/createRef) یک آبجکت رفرنس می‌سازد که می‌تواند هر مقدار دلخواهی را در خود نگه دارد. [جایگزین‌ها را ببینید.](/reference/react/createRef#alternatives)
+* [`forwardRef`](/reference/react/forwardRef) به کامپوننت شما اجازه می‌دهد یک نُد DOM را با یک [رفرنس](/learn/manipulating-the-dom-with-refs) به کامپوننت والد افشا کند.
+* [`isValidElement`](/reference/react/isValidElement) بررسی می‌کند که آیا یک مقدار یک المنت ری‌اکت هست یا نه. معمولاً به‌همراه [`cloneElement`](/reference/react/cloneElement) استفاده می‌شود.
+* [`PureComponent`](/reference/react/PureComponent) شبیه [`Component`](/reference/react/Component) است، اما با پراپس یکسان از رندر مجدد می‌پرد. [جایگزین‌ها را ببینید.](/reference/react/PureComponent#alternatives)
 
 ---
 
-## Removed APIs {/*removed-apis*/}
+## APIهای حذف‌شده {/*removed-apis*/}
 
-These APIs were removed in React 19:
+این APIها در ری‌اکت ۱۹ حذف شده‌اند:
 
-* [`createFactory`](https://18.react.dev/reference/react/createFactory): use JSX instead.
-* Class Components: [`static contextTypes`](https://18.react.dev//reference/react/Component#static-contexttypes): use [`static contextType`](#static-contexttype) instead.
-* Class Components: [`static childContextTypes`](https://18.react.dev//reference/react/Component#static-childcontexttypes): use [`static contextType`](#static-contexttype) instead.
-* Class Components: [`static getChildContext`](https://18.react.dev//reference/react/Component#getchildcontext): use [`Context`](/reference/react/createContext#provider) instead.
-* Class Components: [`static propTypes`](https://18.react.dev//reference/react/Component#static-proptypes): use a type system like [TypeScript](https://www.typescriptlang.org/) instead.
-* Class Components: [`this.refs`](https://18.react.dev//reference/react/Component#refs): use [`createRef`](/reference/react/createRef) instead.
+* [`createFactory`](https://18.react.dev/reference/react/createFactory): به‌جای آن از JSX استفاده کنید.
+* کامپوننت‌های کلاسی: [`static contextTypes`](https://18.react.dev//reference/react/Component#static-contexttypes): به‌جای آن از [`static contextType`](#static-contexttype) استفاده کنید.
+* کامپوننت‌های کلاسی: [`static childContextTypes`](https://18.react.dev//reference/react/Component#static-childcontexttypes): به‌جای آن از [`static contextType`](#static-contexttype) استفاده کنید.
+* کامپوننت‌های کلاسی: [`static getChildContext`](https://18.react.dev//reference/react/Component#getchildcontext): به‌جای آن از [`Context`](/reference/react/createContext#provider) استفاده کنید.
+* کامپوننت‌های کلاسی: [`static propTypes`](https://18.react.dev//reference/react/Component#static-proptypes): به‌جای آن از یک سیستم نوع مانند [TypeScript](https://www.typescriptlang.org/) استفاده کنید.
+* کامپوننت‌های کلاسی: [`this.refs`](https://18.react.dev//reference/react/Component#refs): به‌جای آن از [`createRef`](/reference/react/createRef) استفاده کنید.

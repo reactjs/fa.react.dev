@@ -1,16 +1,16 @@
 ---
-title: Configuration
+title: پیکربندی
 ---
 
 <Intro>
 
-This page lists all configuration options available in React Compiler.
+این صفحه همهٔ گزینه‌های پیکربندی موجود در React Compiler را فهرست می‌کند.
 
 </Intro>
 
 <Note>
 
-For most apps, the default options should work out of the box. If you have a special need, you can use these advanced options.
+برای بیشتر اپ‌ها، گزینه‌های پیش‌فرض باید به‌صورت پیش‌فرض کار کنند. اگر نیاز خاصی دارید، می‌توانید از این گزینه‌های پیشرفته استفاده کنید.
 
 </Note>
 
@@ -29,11 +29,11 @@ module.exports = {
 
 ---
 
-## Compilation Control {/*compilation-control*/}
+## کنترل کامپایل {/*compilation-control*/}
 
-These options control *what* the compiler optimizes and *how* it selects components and hooks to compile.
+این گزینه‌ها کنترل می‌کنند که کامپایلر *چه چیزی* را بهینه‌سازی می‌کند و *چگونه* کامپوننت‌ها و هوک‌هایی که باید کامپایل شوند را انتخاب می‌کند.
 
-* [`compilationMode`](/reference/react-compiler/compilationMode) controls the strategy for selecting functions to compile (e.g., all functions, only annotated ones, or intelligent detection).
+* [`compilationMode`](/reference/react-compiler/compilationMode) استراتژی انتخاب تابع‌ها برای کامپایل را کنترل می‌کند (مثلاً همهٔ تابع‌ها، فقط تابع‌های علامت‌گذاری‌شده، یا تشخیص هوشمندانه).
 
 ```js
 {
@@ -43,11 +43,11 @@ These options control *what* the compiler optimizes and *how* it selects compone
 
 ---
 
-## Version Compatibility {/*version-compatibility*/}
+## سازگاری نسخه {/*version-compatibility*/}
 
-React version configuration ensures the compiler generates code compatible with your React version.
+پیکربندی نسخهٔ ری‌اکت تضمین می‌کند که کامپایلر کدی سازگار با نسخهٔ ری‌اکت شما تولید می‌کند.
 
-[`target`](/reference/react-compiler/target) specifies which React version you're using (17, 18, or 19).
+[`target`](/reference/react-compiler/target) مشخص می‌کند که از کدام نسخهٔ ری‌اکت استفاده می‌کنید (۱۷، ۱۸ یا ۱۹).
 
 ```js
 // For React 18 projects
@@ -58,11 +58,11 @@ React version configuration ensures the compiler generates code compatible with 
 
 ---
 
-## Error Handling {/*error-handling*/}
+## مدیریت خطا {/*error-handling*/}
 
-These options control how the compiler responds to code that doesn't follow the [Rules of React](/reference/rules).
+این گزینه‌ها کنترل می‌کنند که کامپایلر چگونه به کدی که از [قوانین ری‌اکت](/reference/rules) پیروی نمی‌کند، پاسخ می‌دهد.
 
-[`panicThreshold`](/reference/react-compiler/panicThreshold) determines whether to fail the build or skip problematic components.
+[`panicThreshold`](/reference/react-compiler/panicThreshold) تعیین می‌کند که آیا build شکست بخورد یا کامپوننت‌های مشکل‌دار نادیده گرفته شوند.
 
 ```js
 // Recommended for production
@@ -73,11 +73,11 @@ These options control how the compiler responds to code that doesn't follow the 
 
 ---
 
-## Debugging {/*debugging*/}
+## دیباگ {/*debugging*/}
 
-Logging and analysis options help you understand what the compiler is doing.
+گزینه‌های لاگ‌گیری و تحلیل به شما کمک می‌کنند تا درک کنید کامپایلر چه کار می‌کند.
 
-[`logger`](/reference/react-compiler/logger) provides custom logging for compilation events.
+[`logger`](/reference/react-compiler/logger) لاگ‌گیری سفارشی برای رویدادهای کامپایل فراهم می‌کند.
 
 ```js
 {
@@ -93,11 +93,11 @@ Logging and analysis options help you understand what the compiler is doing.
 
 ---
 
-## Feature Flags {/*feature-flags*/}
+## فلگ‌های ویژگی {/*feature-flags*/}
 
-Conditional compilation lets you control when optimized code is used.
+کامپایل شرطی به شما اجازه می‌دهد کنترل کنید چه زمان از کد بهینه‌شده استفاده می‌شود.
 
-[`gating`](/reference/react-compiler/gating) enables runtime feature flags for A/B testing or gradual rollouts.
+[`gating`](/reference/react-compiler/gating) فلگ‌های ویژگی runtime را برای A/B testing یا rollout تدریجی فعال می‌کند.
 
 ```js
 {
@@ -110,11 +110,11 @@ Conditional compilation lets you control when optimized code is used.
 
 ---
 
-## Common Configuration Patterns {/*common-patterns*/}
+## الگوهای رایج پیکربندی {/*common-patterns*/}
 
-### Default configuration {/*default-configuration*/}
+### پیکربندی پیش‌فرض {/*default-configuration*/}
 
-For most React 19 applications, the compiler works without configuration:
+برای بیشتر اپلیکیشن‌های React 19، کامپایلر بدون پیکربندی کار می‌کند:
 
 ```js
 // babel.config.js
@@ -125,9 +125,9 @@ module.exports = {
 };
 ```
 
-### React 17/18 projects {/*react-17-18*/}
+### پروژه‌های React 17/18 {/*react-17-18*/}
 
-Older React versions need the runtime package and target configuration:
+نسخه‌های قدیمی‌تر ری‌اکت به پکیج runtime و پیکربندی target نیاز دارند:
 
 ```bash
 npm install react-compiler-runtime@rc
@@ -139,9 +139,9 @@ npm install react-compiler-runtime@rc
 }
 ```
 
-### Incremental adoption {/*incremental-adoption*/}
+### پذیرش تدریجی {/*incremental-adoption*/}
 
-Start with specific directories and expand gradually:
+با دایرکتوری‌های خاص شروع کنید و به‌تدریج گسترش دهید:
 
 ```js
 {

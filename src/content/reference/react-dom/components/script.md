@@ -4,7 +4,7 @@ script: "<script>"
 
 <Intro>
 
-The [built-in browser `<script>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) lets you add a script to your document.
+[کامپوننت `<script>` داخلی مرورگر](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) به شما اجازه می‌دهد یک اسکریپت به سند خود اضافه کنید.
 
 ```js
 <script> alert("hi!") </script>
@@ -16,71 +16,71 @@ The [built-in browser `<script>` component](https://developer.mozilla.org/en-US/
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `<script>` {/*script*/}
 
-To add inline or external scripts to your document, render the [built-in browser `<script>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script). You can render `<script>` from any component and React will [in certain cases](#special-rendering-behavior) place the corresponding DOM element in the document head and de-duplicate identical scripts.
+برای اضافه کردن اسکریپت‌های درون‌خطی (inline) یا خارجی به سند خود، [کامپوننت `<script>` داخلی مرورگر](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) را رندر کنید. می‌توانید `<script>` را از هر کامپوننتی رندر کنید و ری‌اکت [در موارد خاص](#special-rendering-behavior) عنصر DOM مربوطه را در head سند قرار می‌دهد و اسکریپت‌های یکسان را یکتا می‌کند.
 
 ```js
 <script> alert("hi!") </script>
 <script src="script.js" />
 ```
 
-[See more examples below.](#usage)
+[نمونه‌های بیشتر را در ادامه ببینید.](#usage)
 
-#### Props {/*props*/}
+#### پراپس {/*props*/}
 
-`<script>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+`<script>` از همهٔ [پراپس‌های رایج عنصر](/reference/react-dom/components/common#common-props) پشتیبانی می‌کند.
 
-It should have *either* `children` or a `src` prop.
+باید *یا* `children` داشته باشد یا پراپ `src`.
 
-* `children`: a string. The source code of an inline script.
-* `src`: a string. The URL of an external script.
+* `children`: یک رشته. کد منبع یک اسکریپت درون‌خطی.
+* `src`: یک رشته. URL یک اسکریپت خارجی.
 
-Other supported props:
+سایر پراپرتی‌های پشتیبانی‌شده:
 
-* `async`: a boolean. Allows the browser to defer execution of the script until the rest of the document has been processed — the preferred behavior for performance.
-*  `crossOrigin`: a string. The [CORS policy](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) to use. Its possible values are `anonymous` and `use-credentials`.
-* `fetchPriority`: a string. Lets the browser rank scripts in priority when fetching multiple scripts at the same time. Can be `"high"`, `"low"`, or `"auto"` (the default).
-* `integrity`: a string. A cryptographic hash of the script, to [verify its authenticity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
-* `noModule`: a boolean. Disables the script in browsers that support ES modules — allowing for a fallback script for browsers that do not.
-* `nonce`: a string. A cryptographic [nonce to allow the resource](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) when using a strict Content Security Policy.
-* `referrer`: a string. Says [what Referer header to send](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#referrerpolicy) when fetching the script and any resources that the script fetches in turn. 
-* `type`: a string. Says whether the script is a [classic script, ES module, or import map](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type).
+* `async`: یک مقدار بولی. به مرورگر اجازه می‌دهد اجرای اسکریپت را تا زمانی که بقیهٔ سند پردازش شود به تعویق بیندازد — رفتار ترجیحی برای عملکرد.
+*  `crossOrigin`: یک رشته. [سیاست CORS](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) که باید استفاده شود. مقادیر ممکن آن `anonymous` و `use-credentials` هستند.
+* `fetchPriority`: یک رشته. به مرورگر اجازه می‌دهد اسکریپت‌ها را بر اساس اولویت هنگام fetch همزمان چندین اسکریپت رتبه‌بندی کند. می‌تواند `"high"`، `"low"`، یا `"auto"` (پیش‌فرض) باشد.
+* `integrity`: یک رشته. یک هش رمزنگاری‌شده از اسکریپت، برای [تأیید اصالت آن](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
+* `noModule`: یک مقدار بولی. اسکریپت را در مرورگرهایی که از ES modules پشتیبانی می‌کنند غیرفعال می‌کند — و امکان استفاده از یک اسکریپت fallback برای مرورگرهایی که پشتیبانی نمی‌کنند فراهم می‌سازد.
+* `nonce`: یک رشته. یک [nonce رمزنگاری‌شده برای اجازه دادن به منبع](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) هنگام استفاده از یک Content Security Policy سخت‌گیرانه.
+* `referrer`: یک رشته. مشخص می‌کند [چه هدر Referer ارسال شود](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#referrerpolicy) هنگام fetch کردن اسکریپت و هر منبعی که اسکریپت به‌نوبهٔ خود fetch می‌کند.
+* `type`: یک رشته. مشخص می‌کند که آیا اسکریپت یک [اسکریپت کلاسیک، ES module، یا import map](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type) است.
 
-Props that disable React's [special treatment of scripts](#special-rendering-behavior):
+پراپس‌هایی که [رفتار ویژهٔ ری‌اکت برای اسکریپت‌ها](#special-rendering-behavior) را غیرفعال می‌کنند:
 
-* `onError`: a function. Called when the script fails to load.
-* `onLoad`: a function. Called when the script finishes being loaded.
+* `onError`: یک تابع. هنگامی که اسکریپت بارگذاری نمی‌شود فراخوانی می‌شود.
+* `onLoad`: یک تابع. هنگامی که بارگذاری اسکریپت تمام می‌شود فراخوانی می‌شود.
 
-Props that are **not recommended** for use with React:
+پراپس‌هایی که استفاده از آن‌ها با ری‌اکت **توصیه نمی‌شود**:
 
-* `blocking`: a string. If set to `"render"`, instructs the browser not to render the page until the scriptsheet is loaded. React provides more fine-grained control using Suspense.
-* `defer`: a string. Prevents the browser from executing the script until the document is done loading. Not compatible with streaming server-rendered components. Use the `async` prop instead.
+* `blocking`: یک رشته. اگر برابر `"render"` باشد، به مرورگر دستور می‌دهد تا زمانی که stylesheet بارگذاری نشده صفحه را رندر نکند. ری‌اکت با استفاده از ساسپنس کنترل دقیق‌تری فراهم می‌کند.
+* `defer`: یک رشته. جلوی اجرای اسکریپت توسط مرورگر را تا زمان بارگذاری کامل سند می‌گیرد. با کامپوننت‌های استریمی رندرشده در سرور ناسازگار است. به‌جای آن از پراپ `async` استفاده کنید.
 
-#### Special rendering behavior {/*special-rendering-behavior*/}
+#### رفتار رندر ویژه {/*special-rendering-behavior*/}
 
-React can move `<script>` components to the document's `<head>` and de-duplicate identical scripts.
+ری‌اکت می‌تواند کامپوننت‌های `<script>` را به `<head>` سند منتقل کند و اسکریپت‌های یکسان را یکتا کند.
 
-To opt into this behavior, provide the `src` and `async={true}` props. React will de-duplicate scripts if they have the same `src`. The `async` prop must be true to allow scripts to be safely moved.
+برای انتخاب این رفتار، پراپ‌های `src` و `async={true}` را ارائه کنید. ری‌اکت اسکریپت‌ها را اگر `src` یکسان داشته باشند یکتا می‌کند. پراپ `async` باید true باشد تا انتقال امن اسکریپت‌ها ممکن شود.
 
-This special treatment comes with two caveats:
+این رفتار ویژه با دو نکته همراه است:
 
-* React will ignore changes to props after the script has been rendered. (React will issue a warning in development if this happens.)
-* React may leave the script in the DOM even after the component that rendered it has been unmounted. (This has no effect as scripts just execute once when they are inserted into the DOM.)
+* ری‌اکت تغییرات پراپس‌ها را پس از رندر شدن اسکریپت نادیده می‌گیرد. (ری‌اکت در محیط توسعه اگر این اتفاق بیفتد هشدار می‌دهد.)
+* ری‌اکت ممکن است اسکریپت را حتی پس از unmount شدن کامپوننتی که آن را رندر کرده در DOM نگه دارد. (این هیچ اثری ندارد زیرا اسکریپت‌ها فقط یک‌بار هنگام درج در DOM اجرا می‌شوند.)
 
 ---
 
-## Usage {/*usage*/}
+## نحوهٔ استفاده {/*usage*/}
 
-### Rendering an external script {/*rendering-an-external-script*/}
+### رندر یک اسکریپت خارجی {/*rendering-an-external-script*/}
 
-If a component depends on certain scripts in order to be displayed correctly, you can render a `<script>` within the component.
-However, the component might be committed before the script has finished loading.
-You can start depending on the script content once the `load` event is fired e.g. by using the `onLoad` prop.
+اگر یک کامپوننت برای نمایش درست به اسکریپت‌های خاصی وابسته است، می‌توانید یک `<script>` در داخل کامپوننت رندر کنید.
+با این حال، ممکن است کامپوننت پیش از اتمام بارگذاری اسکریپت commit شود.
+می‌توانید پس از فعال شدن رویداد `load` به محتوای اسکریپت وابسته شوید، مثلاً با استفاده از پراپ `onLoad`.
 
-React will de-duplicate scripts that have the same `src`, inserting only one of them into the DOM even if multiple components render it.
+ری‌اکت اسکریپت‌هایی که `src` یکسان دارند را یکتا می‌کند و فقط یکی از آن‌ها را در DOM درج می‌کند، حتی اگر چندین کامپوننت آن را رندر کنند.
 
 <SandpackWithHTMLOutput>
 
@@ -108,12 +108,12 @@ export default function Page() {
 </SandpackWithHTMLOutput>
 
 <Note>
-When you want to use a script, it can be beneficial to call the [preinit](/reference/react-dom/preinit) function. Calling this function may allow the browser to start fetching the script earlier than if you just render a `<script>` component, for example by sending an [HTTP Early Hints response](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/103).
+وقتی می‌خواهید از یک اسکریپت استفاده کنید، می‌تواند مفید باشد تابع [preinit](/reference/react-dom/preinit) را فراخوانی کنید. فراخوانی این تابع ممکن است به مرورگر اجازه دهدfetch اسکریپت را زودتر از زمانی که فقط یک کامپوننت `<script>` رندر می‌کنید آغاز کند، مثلاً با ارسال یک [پاسخ HTTP Early Hints](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/103).
 </Note>
 
-### Rendering an inline script {/*rendering-an-inline-script*/}
+### رندر یک اسکریپت درون‌خطی {/*rendering-an-inline-script*/}
 
-To include an inline script, render the `<script>` component with the script source code as its children. Inline scripts are not de-duplicated or moved to the document `<head>`.
+برای گنجاندن یک اسکریپت درون‌خطی، کامپوننت `<script>` را با کد منبع اسکریپت به‌عنوان children رندر کنید. اسکریپت‌های درون‌خطی یکتا نمی‌شوند یا به `<head>` سند منتقل نمی‌شوند.
 
 <SandpackWithHTMLOutput>
 

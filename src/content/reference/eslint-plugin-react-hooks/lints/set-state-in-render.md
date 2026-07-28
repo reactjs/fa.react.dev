@@ -4,17 +4,17 @@ title: set-state-in-render
 
 <Intro>
 
-Validates against setting state during render, which can trigger additional renders and potential infinite render loops.
+تنظیم استیت در طول رندر را اعتبارسنجی می‌کند، که می‌تواند رندرهای اضافی و حلقه‌های رندر بی‌نهایت بالقوه را تحریک کند.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## جزئیات قانون {/*rule-details*/}
 
-Calling `setState` during render triggers another render before the current one finishes. This creates an infinite loop that crashes your app.
+فراخوانی `setState` در طول رندر قبل از اتمام رندر فعلی، رندر دیگری را تحریک می‌کند. این یک حلقهٔ بی‌نهایت ایجاد می‌کند که اپ شما را crash می‌کند.
 
-## Common Violations {/*common-violations*/}
+## نقض‌های رایج {/*common-violations*/}
 
-### Invalid {/*invalid*/}
+### نامعتبر {/*invalid*/}
 
 ```js {expectedErrors: {'react-compiler': [4]}}
 // ❌ setState directly in render
@@ -25,7 +25,7 @@ function Component({value}) {
 }
 ```
 
-### Valid {/*valid*/}
+### معتبر {/*valid*/}
 
 ```js
 // ✅ Derive during render
@@ -52,11 +52,11 @@ function Component({user}) {
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-### I want to sync state to a prop {/*clamp-state-to-prop*/}
+### می‌خواهم استیت را با یک پراپ هماهنگ کنم {/*clamp-state-to-prop*/}
 
-A common problem is trying to "fix" state after it renders. Suppose you want to keep a counter from exceeding a `max` prop:
+یک مشکل رایج، تلاش برای "اصلاح" استیت بعد از رندر است. فرض کنید می‌خواهید یک شمارنده را از تجاوز به یک پراپ `max` نگه دارید:
 
 ```js
 // ❌ Wrong: clamps during render
@@ -75,9 +75,9 @@ function Counter({max}) {
 }
 ```
 
-As soon as `count` exceeds `max`, an infinite loop is triggered.
+به‌محض اینکه `count` از `max` تجاوز کند، یک حلقهٔ بی‌نهایت تحریک می‌شود.
 
-Instead, it's often better to move this logic to the event (the place where the state is first set). For example, you can enforce the maximum at the moment you update state:
+در عوض، اغلب بهتر است این منطق را به event (جایی که استیت اول تنظیم می‌شود) منتقل کنید. مثلاً می‌توانید حداکثر را در لحظهٔ به‌روزرسانی استیت اعمال کنید:
 
 ```js
 // ✅ Clamp when updating
@@ -92,4 +92,4 @@ function Counter({max}) {
 }
 ```
 
-Now the setter only runs in response to the click, React finishes the render normally, and `count` never crosses `max`.
+حالا setter فقط در پاس به کلیک اجرا می‌شود، ری‌اکت رندر را به‌طور عادی تمام می‌کند، و `count` هرگز از `max` عبور نمی‌کند.

@@ -4,7 +4,7 @@ style: "<style>"
 
 <Intro>
 
-The [built-in browser `<style>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style) lets you add inline CSS stylesheets to your document.
+[کامپوننت `<style>` داخلی مرورگر](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style) به شما اجازه می‌دهد stylesheetهای CSS درون‌خطی به سند خود اضافه کنید.
 
 ```js
 <style>{` p { color: red; } `}</style>
@@ -16,58 +16,58 @@ The [built-in browser `<style>` component](https://developer.mozilla.org/en-US/d
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `<style>` {/*style*/}
 
-To add inline styles to your document, render the [built-in browser `<style>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style). You can render `<style>` from any component and React will [in certain cases](#special-rendering-behavior) place the corresponding DOM element in the document head and de-duplicate identical styles.
+برای اضافه کردن استایل‌های درون‌خطی به سند خود، [کامپوننت `<style>` داخلی مرورگر](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style) را رندر کنید. می‌توانید `<style>` را از هر کامپوننتی رندر کنید و ری‌اکت [در موارد خاص](#special-rendering-behavior) عنصر DOM مربوطه را در head سند قرار می‌دهد و استایل‌های یکسان را یکتا می‌کند.
 
 ```js
 <style>{` p { color: red; } `}</style>
 ```
 
-[See more examples below.](#usage)
+[نمونه‌های بیشتر را در ادامه ببینید.](#usage)
 
-#### Props {/*props*/}
+#### پراپس {/*props*/}
 
-`<style>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+`<style>` از همهٔ [پراپس‌های رایج عنصر](/reference/react-dom/components/common#common-props) پشتیبانی می‌کند.
 
-* `children`: a string, required. The contents of the stylesheet.
-* `precedence`: a string. Tells React where to rank the `<style>` DOM node relative to others in the document `<head>`, which determines which stylesheet can override the other. React will infer that precedence values it discovers first are "lower" and precedence values it discovers later are "higher". Many style systems can work fine using a single precedence value because style rules are atomic. Stylesheets with the same precedence go together whether they are `<link>` or inline `<style>` tags or loaded using [`preinit`](/reference/react-dom/preinit) functions.
-* `href`: a string. Allows React to [de-duplicate styles](#special-rendering-behavior) that have the same `href`.
-* `media`: a string. Restricts the stylesheet to a certain [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries).
-* `nonce`: a string. A cryptographic [nonce to allow the resource](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) when using a strict Content Security Policy.
-* `title`: a string. Specifies the name of an [alternative stylesheet](https://developer.mozilla.org/en-US/docs/Web/CSS/Alternative_style_sheets).
+* `children`: یک رشته، الزامی. محتوای stylesheet.
+* `precedence`: یک رشته. به ری‌اکت می‌گوید که نود DOM `<style>` را کجا نسبت به بقیه در `<head>` سند رتبه‌بندی کند، که تعیین می‌کند کدام stylesheet می‌تواند دیگری را نادیده بگیرد. ری‌اکت استنباط می‌کند که مقادیر اولویتی که اول کشف می‌کند «پایین‌تر» و مقادیری که دیرتر کشف می‌کند «بالاتر» هستند. بسیاری از سیستم‌های استایل می‌توانند با یک مقدار اولویت واحد به‌خوبی کار کنند زیرا قوانین استایل اتمی هستند. stylesheetهایی با اولویت یکسان با هم می‌روند، چه تگ‌های `<link>` یا `<style>` درون‌خطی باشند یا با استفاده از توابع [`preinit`](/reference/react-dom/preinit) بارگذاری شده باشند.
+* `href`: یک رشته. به ری‌اکت اجازه می‌دهد [استایل‌هایی که `href` یکسان دارند را یکتا کند](#special-rendering-behavior).
+* `media`: یک رشته. stylesheet را به یک [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries) خاص محدود می‌کند.
+* `nonce`: یک رشته. یک [nonce رمزنگاری‌شده برای اجازه دادن به منبع](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) هنگام استفاده از یک Content Security Policy سخت‌گیرانه.
+* `title`: یک رشته. نام یک [stylesheet جایگزین](https://developer.mozilla.org/en-US/docs/Web/CSS/Alternative_style_sheets) را مشخص می‌کند.
 
-Props that are **not recommended** for use with React:
+پراپس‌هایی که استفاده از آن‌ها با ری‌اکت **توصیه نمی‌شود**:
 
-* `blocking`: a string. If set to `"render"`, instructs the browser not to render the page until the stylesheet is loaded. React provides more fine-grained control using Suspense.
+* `blocking`: یک رشته. اگر برابر `"render"` باشد، به مرورگر دستور می‌دهد تا زمانی که stylesheet بارگذاری نشده صفحه را رندر نکند. ری‌اکت با استفاده از ساسپنس کنترل دقیق‌تری فراهم می‌کند.
 
-#### Special rendering behavior {/*special-rendering-behavior*/}
+#### رفتار رندر ویژه {/*special-rendering-behavior*/}
 
-React can move `<style>` components to the document's `<head>`, de-duplicate identical stylesheets, and [suspend](/reference/react/Suspense) while the stylesheet is loading.
+ری‌اکت می‌تواند کامپوننت‌های `<style>` را به `<head>` سند منتقل کند، stylesheetهای یکسان را یکتا کند، و هنگام بارگذاری stylesheet [معلق (suspend)](/reference/react/Suspense) شود.
 
-To opt into this behavior, provide the `href` and `precedence` props. React will de-duplicate styles if they have the same `href`. The precedence prop tells React where to rank the `<style>` DOM node relative to others in the document `<head>`, which determines which stylesheet can override the other.
+برای انتخاب این رفتار، پراپ‌های `href` و `precedence` را ارائه کنید. ری‌اکت استایل‌ها را اگر `href` یکسان داشته باشند یکتا می‌کند. پراپ precedence به ری‌اکت می‌گوید که نود DOM `<style>` را کجا نسبت به بقیه در `<head>` سند رتبه‌بندی کند، که تعیین می‌کند کدام stylesheet می‌تواند دیگری را نادیده بگیرد.
 
-This special treatment comes with three caveats:
+این رفتار ویژه با سه نکته همراه است:
 
-* React will ignore changes to props after the style has been rendered. (React will issue a warning in development if this happens.)
-* React will drop all extraneous props when using the `precedence` prop (beyond `href` and `precedence`).
-* React may leave the style in the DOM even after the component that rendered it has been unmounted.
+* ری‌اکت تغییرات پراپس‌ها را پس از رندر شدن استایل نادیده می‌گیرد. (ری‌اکت در محیط توسعه اگر این اتفاق بیفتد هشدار می‌دهد.)
+* ری‌اکت هنگام استفاده از پراپ `precedence` همهٔ پراپس‌های اضافی را (به‌جز `href` و `precedence`) حذف می‌کند.
+* ری‌اکت ممکن است استایل را حتی پس از unmount شدن کامپوننتی که آن را رندر کرده در DOM نگه دارد.
 
 ---
 
-## Usage {/*usage*/}
+## نحوهٔ استفاده {/*usage*/}
 
-### Rendering an inline CSS stylesheet {/*rendering-an-inline-css-stylesheet*/}
+### رندر یک stylesheet CSS درون‌خطی {/*rendering-an-inline-css-stylesheet*/}
 
-If a component depends on certain CSS styles in order to be displayed correctly, you can render an inline stylesheet within the component.
+اگر یک کامپوننت برای نمایش درست به استایل‌های CSS خاصی وابسته است، می‌توانید یک stylesheet درون‌خطی در داخل کامپوننت رندر کنید.
 
-The `href` prop should uniquely identify the stylesheet, because React will de-duplicate stylesheets that have the same `href`.
-If you supply a `precedence` prop, React will reorder inline stylesheets based on the order these values appear in the component tree.
+پراپ `href` باید stylesheet را به‌طور یکتا شناسایی کند، زیرا ری‌اکت stylesheetهایی که `href` یکسان دارند را یکتا می‌کند.
+اگر پراپ `precedence` ارائه دهید، ری‌اکت stylesheetهای درون‌خطی را بر اساس ترتیب ظاهر شدن این مقادیر در درخت کامپوننت مرتب می‌کند.
 
-Inline stylesheets will not trigger Suspense boundaries while they're loading.
-Even if they load async resources like fonts or images.
+stylesheetهای درون‌خطی هنگام بارگذاری مرزهای ساسپنس را فعال نمی‌کنند.
+حتی اگر منابع ناهمگام مانند فونت‌ها یا تصاویر را بارگذاری کنند.
 
 <SandpackWithHTMLOutput>
 

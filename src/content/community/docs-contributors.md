@@ -1,42 +1,42 @@
 ---
-title: Docs Contributors
+title: مشارکت‌کنندگان مستندات
 ---
 
 <Intro>
 
-React documentation is written and maintained by the [React team](/community/team) and [external contributors.](https://github.com/reactjs/react.dev/graphs/contributors) On this page, we'd like to thank a few people who've made significant contributions to this site.
+مستندات ری‌اکت توسط [تیم ری‌اکت](/community/team) و [مشارکت‌کنندگان خارجی](https://github.com/reactjs/react.dev/graphs/contributors) نوشته و نگهداری می‌شود. در این صفحه، دوست داریم از چند نفر قدردانی کنیم که مشارکت‌های مهمی در این سایت داشته‌اند.
 
 </Intro>
 
-## Content {/*content*/}
+## محتوا {/*content*/}
 
-* [Rachel Nabors](https://twitter.com/RachelNabors): editing, writing, illustrating
-* [Dan Abramov](https://bsky.app/profile/danabra.mov): writing, curriculum design
-* [Sylwia Vargas](https://twitter.com/SylwiaVargas): example code
-* [Rick Hanlon](https://twitter.com/rickhanlonii): writing
-* [David McCabe](https://twitter.com/mcc_abe): writing
-* [Sophie Alpert](https://twitter.com/sophiebits): writing
-* [Pete Hunt](https://twitter.com/floydophone): writing
-* [Andrew Clark](https://twitter.com/acdlite): writing
-* [Matt Carroll](https://twitter.com/mattcarrollcode): editing, writing
-* [Natalia Tepluhina](https://twitter.com/n_tepluhina): reviews, advice
-* [Sebastian Markbåge](https://twitter.com/sebmarkbage): feedback
+* [Rachel Nabors](https://twitter.com/RachelNabors): ویرایش، نوشتن، تصویرسازی
+* [Dan Abramov](https://bsky.app/profile/danabra.mov): نوشتن، طراحی برنامهٔ درسی
+* [Sylwia Vargas](https://twitter.com/SylwiaVargas): کد نمونه
+* [Rick Hanlon](https://twitter.com/rickhanlonii): نوشتن
+* [David McCabe](https://twitter.com/mcc_abe): نوشتن
+* [Sophie Alpert](https://twitter.com/sophiebits): نوشتن
+* [Pete Hunt](https://twitter.com/floydophone): نوشتن
+* [Andrew Clark](https://twitter.com/acdlite): نوشتن
+* [Matt Carroll](https://twitter.com/mattcarrollcode): ویرایش، نوشتن
+* [Natalia Tepluhina](https://twitter.com/n_tepluhina): بازبینی، مشاوره
+* [Sebastian Markbåge](https://twitter.com/sebmarkbage): بازخورد
 
-## Design {/*design*/}
+## طراحی {/*design*/}
 
-* [Dan Lebowitz](https://twitter.com/lebo): site design
-* [Razvan Gradinar](https://dribbble.com/GradinarRazvan): sandbox design
-* [Maggie Appleton](https://maggieappleton.com/): diagram system
-* [Sophie Alpert](https://twitter.com/sophiebits): color-coded explanations
+* [Dan Lebowitz](https://twitter.com/lebo): طراحی سایت
+* [Razvan Gradinar](https://dribbble.com/GradinarRazvan): طراحی سندباکس
+* [Maggie Appleton](https://maggieappleton.com/): سیستم نمودار
+* [Sophie Alpert](https://twitter.com/sophiebits): توضیحات رنگی
 
-## Development {/*development*/}
+## توسعه {/*development*/}
 
-* [Jared Palmer](https://twitter.com/jaredpalmer): site development
-* [ThisDotLabs](https://www.thisdot.co/) ([Dane Grant](https://twitter.com/danecando), [Dustin Goodman](https://twitter.com/dustinsgoodman)): site development
-* [CodeSandbox](https://codesandbox.io/) ([Ives van Hoorne](https://twitter.com/CompuIves), [Alex Moldovan](https://twitter.com/alexnmoldovan), [Jasper De Moor](https://twitter.com/JasperDeMoor), [Danilo Woznica](https://twitter.com/danilowoz)): sandbox integration
-* [Dan Abramov](https://bsky.app/profile/danabra.mov): site development
-* [Rick Hanlon](https://twitter.com/rickhanlonii): site development
-* [Harish Kumar](https://www.strek.in/): development and maintenance
-* [Luna Ruan](https://twitter.com/lunaruan): sandbox improvements
+* [Jared Palmer](https://twitter.com/jaredpalmer): توسعهٔ سایت
+* [ThisDotLabs](https://www.thisdot.co/) ([Dane Grant](https://twitter.com/danecando)، [Dustin Goodman](https://twitter.com/dustinsgoodman)): توسعهٔ سایت
+* [CodeSandbox](https://codesandbox.io/) ([Ives van Hoorne](https://twitter.com/CompuIves)، [Alex Moldovan](https://twitter.com/alexnmoldovan)، [Jasper De Moor](https://twitter.com/JasperDeMoor)، [Danilo Woznica](https://twitter.com/danilowoz)): یکپارچه‌سازی سندباکس
+* [Dan Abramov](https://bsky.app/profile/danabra.mov): توسعهٔ سایت
+* [Rick Hanlon](https://twitter.com/rickhanlonii): توسعهٔ سایت
+* [Harish Kumar](https://www.strek.in/): توسعه و نگهداری
+* [Luna Ruan](https://twitter.com/lunaruan): بهبودهای سندباکس
 
-We'd also like to thank countless alpha testers and community members who gave us feedback along the way.
+همچنین از تعداد بی‌شماری از آزمایش‌کنندگان آلفا و اعضای انجمن قدردانی می‌کنیم که در طول مسیر به ما بازخورد دادند.

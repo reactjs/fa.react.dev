@@ -4,34 +4,34 @@ title: eslint-plugin-react-hooks
 
 <Intro>
 
-`eslint-plugin-react-hooks` provides ESLint rules to enforce the [Rules of React](/reference/rules).
+`eslint-plugin-react-hooks` قوانین ESLint را برای اجرای [قوانین ری‌اکت](/reference/rules) فراهم می‌کند.
 
 </Intro>
 
-This plugin helps you catch violations of React's rules at build time, ensuring your components and hooks follow React's rules for correctness and performance. The lints cover both fundamental React patterns (exhaustive-deps and rules-of-hooks) and issues flagged by React Compiler. React Compiler diagnostics are automatically surfaced by this ESLint plugin, and can be used even if your app hasn't adopted the compiler yet.
+این پلاگین به شما کمک می‌کند نقض قوانین ری‌اکت را در زمان build بگیرید، و تضمین می‌کند که کامپوننت‌ها و هوک‌های شما از قوانین ری‌اکت برای صحت و عملکرد پیروی کنند. لینت‌ها هم الگوهای بنیادی ری‌اکت (exhaustive-deps و rules-of-hooks) و هم مواردی که توسط React Compiler علامت‌گذاری شده‌اند را پوشش می‌دهند. تشخیص‌های React Compiler به‌طور خودکار توسط این پلاگین ESLint ظاهر می‌شوند، و می‌توانند حتی اگر اپ شما هنوز کامپایلر را نپذیرفته باشد استفاده شوند.
 
 <Note>
-When the compiler reports a diagnostic, it means that the compiler was able to statically detect a pattern that is not supported or breaks the Rules of React. When it detects this, it **automatically** skips over those components and hooks, while keeping the rest of your app compiled. This ensures optimal coverage of safe optimizations that won't break your app.
+وقتی کامپایلر یک تشخیص گزارش می‌کند، بدان معناست که کامپایلر توانست به‌صورت ایستا الگویی را شناسایی کند که پشتیبانی نمی‌شود یا قوانین ری‌اکت را می‌شکند. وقتی این را تشخیص می‌دهد، **به‌طور خودکار** از آن کامپوننت‌ها و هوک‌ها عبور می‌کند، در حالی که بقیهٔ اپ شما کامپایل‌شده باقی می‌ماند. این پوشش بهینهٔ بهینه‌سازی‌های امن که اپ شما را نمی‌شکند تضمین می‌کند.
 
-What this means for linting, is that you don’t need to fix all violations immediately. Address them at your own pace to gradually increase the number of optimized components.
+آنچه این برای لینت‌کردن بدان معناست، این است که نیازی نیست همهٔ نقض‌ها را بلافاصله برطرف کنید. آن‌ها را با سرعت خودتان برطرف کنید تا به‌تدریج تعداد کامپوننت‌های بهینه‌شده افزایش یابد.
 </Note>
 
-## Available Lints {/*available-lints*/}
+## لینت‌های موجود {/*available-lints*/}
 
-* [`component-hook-factories`](/reference/eslint-plugin-react-hooks/lints/component-hook-factories) - Validates against higher order functions defining nested components or hooks
-* [`config`](/reference/eslint-plugin-react-hooks/lints/config) - Validates the compiler configuration options
-* [`error-boundaries`](/reference/eslint-plugin-react-hooks/lints/error-boundaries) - Validates usage of Error Boundaries instead of try/catch for child errors
-* [`exhaustive-deps`](/reference/eslint-plugin-react-hooks/lints/exhaustive-deps) - Validates that dependency arrays for React hooks contain all necessary dependencies
-* [`gating`](/reference/eslint-plugin-react-hooks/lints/gating) - Validates configuration of gating mode
-* [`globals`](/reference/eslint-plugin-react-hooks/lints/globals) - Validates against assignment/mutation of globals during render
-* [`immutability`](/reference/eslint-plugin-react-hooks/lints/immutability) - Validates against mutating props, state, and other immutable values
-* [`incompatible-library`](/reference/eslint-plugin-react-hooks/lints/incompatible-library) - Validates against usage of libraries which are incompatible with memoization
-* [`preserve-manual-memoization`](/reference/eslint-plugin-react-hooks/lints/preserve-manual-memoization) - Validates that existing manual memoization is preserved by the compiler
-* [`purity`](/reference/eslint-plugin-react-hooks/lints/purity) - Validates that components/hooks are pure by checking known-impure functions
-* [`refs`](/reference/eslint-plugin-react-hooks/lints/refs) - Validates correct usage of refs, not reading/writing during render
-* [`rules-of-hooks`](/reference/eslint-plugin-react-hooks/lints/rules-of-hooks) - Validates that components and hooks follow the Rules of Hooks
-* [`set-state-in-effect`](/reference/eslint-plugin-react-hooks/lints/set-state-in-effect) - Validates against calling setState synchronously in an effect
-* [`set-state-in-render`](/reference/eslint-plugin-react-hooks/lints/set-state-in-render) - Validates against setting state during render
-* [`static-components`](/reference/eslint-plugin-react-hooks/lints/static-components) - Validates that components are static, not recreated every render
-* [`unsupported-syntax`](/reference/eslint-plugin-react-hooks/lints/unsupported-syntax) - Validates against syntax that React Compiler does not support
-* [`use-memo`](/reference/eslint-plugin-react-hooks/lints/use-memo) - Validates usage of the `useMemo` hook without a return value
+* [`component-hook-factories`](/reference/eslint-plugin-react-hooks/lints/component-hook-factories) - تابع‌های مرتبه بالاتری که کامپوننت‌ها یا هوک‌های تودرتو تعریف می‌کنند را اعتبارسنجی می‌کند
+* [`config`](/reference/eslint-plugin-react-hooks/lints/config) - گزینه‌های پیکربندی کامپایلر را اعتبارسنجی می‌کند
+* [`error-boundaries`](/reference/eslint-plugin-react-hooks/lints/error-boundaries) - استفاده از Error Boundaryها به‌جای try/catch برای خطاهای فرزند را اعتبارسنجی می‌کند
+* [`exhaustive-deps`](/reference/eslint-plugin-react-hooks/lints/exhaustive-deps) - تأیید می‌کند که آرایه‌های وابستگی برای هوک‌های ری‌اکت شامل همهٔ وابستگی‌های لازم باشند
+* [`gating`](/reference/eslint-plugin-react-hooks/lints/gating) - پیکربندی حالت gating را اعتبارسنجی می‌کند
+* [`globals`](/reference/eslint-plugin-react-hooks/lints/globals) - انتساب/تغییر متغیرهای سراسری در طول رندر را اعتبارسنجی می‌کند
+* [`immutability`](/reference/eslint-plugin-react-hooks/lints/immutability) - تغییر پراپس، استیت و سایر مقادیر غیرقابل تغییر را اعتبارسنجی می‌کند
+* [`incompatible-library`](/reference/eslint-plugin-react-hooks/lints/incompatible-library) - استفاده از کتابخانه‌هایی که با memoization ناسازگارند را اعتبارسنجی می‌کند
+* [`preserve-manual-memoization`](/reference/eslint-plugin-react-hooks/lints/preserve-manual-memoization) - تأیید می‌کند که memoization دستی موجود توسط کامپایلر حفظ می‌شود
+* [`purity`](/reference/eslint-plugin-react-hooks/lints/purity) - با بررسی تابع‌های شناخته‌شدهٔ ناخالص، تأیید می‌کند که کامپوننت‌ها/هوک‌ها خالص هستند
+* [`refs`](/reference/eslint-plugin-react-hooks/lints/refs) - استفادهٔ صحیح از refها را اعتبارسنجی می‌کند، بدون خواندن/نوشتن در طول رندر
+* [`rules-of-hooks`](/reference/eslint-plugin-react-hooks/lints/rules-of-hooks) - تأیید می‌کند که کامپوننت‌ها و هوک‌ها از قوانین هوک‌ها پیروی می‌کنند
+* [`set-state-in-effect`](/reference/eslint-plugin-react-hooks/lints/set-state-in-effect) - فراخوانی هم‌زمان setState در یک افکت را اعتبارسنجی می‌کند
+* [`set-state-in-render`](/reference/eslint-plugin-react-hooks/lints/set-state-in-render) - تنظیم استیت در طول رندر را اعتبارسنجی می‌کند
+* [`static-components`](/reference/eslint-plugin-react-hooks/lints/static-components) - تأیید می‌کند که کامپوننت‌ها استاتیک هستند، و در هر رندر دوباره ایجاد نمی‌شوند
+* [`unsupported-syntax`](/reference/eslint-plugin-react-hooks/lints/unsupported-syntax) - سینتکسی که React Compiler پشتیبانی نمی‌کند را اعتبارسنجی می‌کند
+* [`use-memo`](/reference/eslint-plugin-react-hooks/lints/use-memo) - استفاده از هوک `useMemo` بدون مقدار برگشتی را اعتبارسنجی می‌کند

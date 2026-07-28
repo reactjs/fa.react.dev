@@ -1,49 +1,49 @@
 ---
-title: Incremental Adoption
+title: اتخاذ تدریجی
 ---
 
 <Intro>
-React Compiler can be adopted incrementally, allowing you to try it on specific parts of your codebase first. This guide shows you how to gradually roll out the compiler in existing projects.
+کامپایلر ری‌اکت را می‌توان به‌صورت تدریجی اتخاذ کرد، که به شما اجازه می‌دهد ابتدا آن را روی بخش‌های خاصی از کدبیس خود امتحان کنید. این راهنما به شما نشان می‌دهد چگونه کامپایلر را به‌تدریج در پروژه‌های موجود استقرار دهید.
 </Intro>
 
 <YouWillLearn>
 
-* Why incremental adoption is recommended
-* Using Babel overrides for directory-based adoption
-* Using the "use memo" directive for opt-in compilation
-* Using the "use no memo" directive to exclude components
-* Runtime feature flags with gating
-* Monitoring your adoption progress
+* چرا اتخاذ تدریجی توصیه می‌شود
+* استفاده از Babel overrides برای اتخاذ مبتنی بر دایرکتوری
+* استفاده از دایرکتیو "use memo" برای کامپایل opt-in
+* استفاده از دایرکتیو "use no memo" برای خارج کردن کامپوننت‌ها
+- پرچم‌های ویژگی زمان اجرا با gating
+* پایش پیشرفت اتخاذ خود
 
 </YouWillLearn>
 
-## Why Incremental Adoption? {/*why-incremental-adoption*/}
+## چرا اتخاذ تدریجی؟ {/*why-incremental-adoption*/}
 
-React Compiler is designed to optimize your entire codebase automatically, but you don't have to adopt it all at once. Incremental adoption gives you control over the rollout process, letting you test the compiler on small parts of your app before expanding to the rest.
+کامپایلر ری‌اکت طوری طراحی شده که کل کدبیس شما را به‌طور خودکار بهینه کند، اما مجبور نیستید همه را یک‌باره اتخاذ کنید. اتخاذ تدریجی به شما کنترل روی فرآیند استقرار می‌دهد و اجازه می‌دهد پیش از گسترش به بقیه، کامپایلر را روی بخش‌های کوچکی از اپلیکیشن خود آزمایش کنید.
 
-Starting small helps you build confidence in the compiler's optimizations. You can verify that your app behaves correctly with compiled code, measure performance improvements, and identify any edge cases specific to your codebase. This approach is especially valuable for production applications where stability is critical.
+شروع کوچک به شما کمک می‌کند تا به بهینه‌سازی‌های کامپایلر اعتماد پیدا کنید. می‌توانید بررسی کنید که اپلیکیشن شما با کد کامپایل‌شده به‌درستی رفتار می‌کند، بهبودهای عملکرد را بسنجید و موارد استثنایی خاص کدبیس خود را شناسایی کنید. این رویکرد به‌ویژه برای اپلیکیشن‌های تولیدی که پایداری در آن‌ها حیاتی است ارزشمند است.
 
-Incremental adoption also makes it easier to address any Rules of React violations the compiler might find. Instead of fixing violations across your entire codebase at once, you can tackle them systematically as you expand compiler coverage. This keeps the migration manageable and reduces the risk of introducing bugs.
+اتخاذ تدریجی همچنین آسان‌تر می‌کند نقض‌های قوانین ری‌اکت را که ممکن است کامپایلر پیدا کند برطرف کنید. به‌جای رفع نقض‌ها در سراسر کدبیس به‌یکباره، می‌توانید با گسترش پوشش کامپایلر به‌صورت سیستماتیک با آن‌ها مقابله کنید. این کار استقرار را قابل‌مدیریت نگه می‌دارد و خطر معرفی باگ را کاهش می‌دهد.
 
-By controlling which parts of your code get compiled, you can also run A/B tests to measure the real-world impact of the compiler's optimizations. This data helps you make informed decisions about full adoption and demonstrates the value to your team.
+با کنترل اینکه کدام بخش‌های کد شما کامپایل می‌شوند، می‌توانید آزمون‌های A/B نیز اجرا کنید تا تأثیر واقعی بهینه‌سازی‌های کامپایلر را بسنجید. این داده‌ها به شما کمک می‌کند تصمیمات آگاهانه‌ای دربارهٔ اتخاذ کامل بگیرید و ارزش را به تیم خود نشان دهید.
 
-## Approaches to Incremental Adoption {/*approaches-to-incremental-adoption*/}
+## رویکردهایی برای اتخاذ تدریجی {/*approaches-to-incremental-adoption*/}
 
-There are three main approaches to adopt React Compiler incrementally:
+سه رویکرد اصلی برای اتخاذ تدریجی کامپایلر ری‌اکت وجود دارد:
 
-1. **Babel overrides** - Apply the compiler to specific directories
-2. **Opt-in with "use memo"** - Only compile components that explicitly opt in
-3. **Runtime gating** - Control compilation with feature flags
+1. **Babel overrides** - اعمال کامپایلر روی دایرکتوری‌های خاص
+2. **Opt-in با "use memo"** - تنها کامپایل کامپوننت‌هایی که صریحاً opt-in می‌شوند
+3. **Gating زمان اجرا** - کنترل کامپایل با پرچم‌های ویژگی
 
-All approaches allow you to test the compiler on specific parts of your application before full rollout.
+همهٔ رویکردها به شما اجازه می‌دهند پیش از استقرار کامل، کامپایلر را روی بخش‌های خاصی از اپلیکیشن خود آزمایش کنید.
 
-## Directory-Based Adoption with Babel Overrides {/*directory-based-adoption*/}
+## اتخاذ مبتنی بر دایرکتوری با Babel Overrides {/*directory-based-adoption*/}
 
-Babel's `overrides` option lets you apply different plugins to different parts of your codebase. This is ideal for gradually adopting React Compiler directory by directory.
+گزینهٔ `overrides` در Babel به شما اجازه می‌دهد پلاگین‌های مختلفی را به بخش‌های مختلف کدبیس خود اعمال کنید. این برای اتخاذ تدریجی کامپایلر ری‌اکت دایرکتوری به دایرکتوری ایده‌آل است.
 
-### Basic Configuration {/*basic-configuration*/}
+### پیکربندی پایه {/*basic-configuration*/}
 
-Start by applying the compiler to a specific directory:
+با اعمال کامپایلر به یک دایرکتوری خاص شروع کنید:
 
 ```js
 // babel.config.js
@@ -62,9 +62,9 @@ module.exports = {
 };
 ```
 
-### Expanding Coverage {/*expanding-coverage*/}
+### گسترش پوشش {/*expanding-coverage*/}
 
-As you gain confidence, add more directories:
+همان‌طور که اعتماد پیدا می‌کنید، دایرکتوری‌های بیشتری اضافه کنید:
 
 ```js
 // babel.config.js
@@ -89,9 +89,9 @@ module.exports = {
 };
 ```
 
-### With Compiler Options {/*with-compiler-options*/}
+### با گزینه‌های کامپایلر {/*with-compiler-options*/}
 
-You can also configure compiler options per override:
+همچنین می‌توانید گزینه‌های کامپایلر را برای هر override پیکربندی کنید:
 
 ```js
 // babel.config.js
@@ -119,15 +119,15 @@ module.exports = {
 ```
 
 
-## Opt-in Mode with "use memo" {/*opt-in-mode-with-use-memo*/}
+## حالت Opt-in با "use memo" {/*opt-in-mode-with-use-memo*/}
 
-For maximum control, you can use `compilationMode: 'annotation'` to only compile components and hooks that explicitly opt in with the `"use memo"` directive.
+برای حداکثر کنترل، می‌توانید از `compilationMode: 'annotation'` استفاده کنید تا تنها کامپوننت‌ها و هوک‌هایی کامپایل شوند که صریحاً با دایرکتیو `"use memo"` opt-in می‌شوند.
 
 <Note>
-This approach gives you fine-grained control over individual components and hooks. It's useful when you want to test the compiler on specific components without affecting entire directories.
+این رویکرد به شما کنترل ریزدانه‌ای روی کامپوننت‌ها و هوک‌های منفرد می‌دهد. وقتی مفید است که بخواهید کامپایلر را روی کامپوننت‌های خاصی آزمایش کنید بدون اینکه کل دایرکتوری‌ها را تحت تأثیر قرار دهید.
 </Note>
 
-### Annotation Mode Configuration {/*annotation-mode-configuration*/}
+### پیکربندی حالت Annotation {/*annotation-mode-configuration*/}
 
 ```js
 // babel.config.js
@@ -140,9 +140,9 @@ module.exports = {
 };
 ```
 
-### Using the Directive {/*using-the-directive*/}
+### استفاده از دایرکتیو {/*using-the-directive*/}
 
-Add `"use memo"` at the beginning of functions you want to compile:
+`"use memo"` را به ابتدای توابعی که می‌خواهید کامپایل شوند اضافه کنید:
 
 ```js
 function TodoList({ todos }) {
@@ -166,22 +166,22 @@ function useSortedData(data) {
 }
 ```
 
-With `compilationMode: 'annotation'`, you must:
-- Add `"use memo"` to every component you want optimized
-- Add `"use memo"` to every custom hook
-- Remember to add it to new components
+با `compilationMode: 'annotation'`، باید:
+- `"use memo"` را به هر کامپوننتی که می‌خواهید بهینه شود اضافه کنید
+- `"use memo"` را به هر هوک سفارشی اضافه کنید
+- به یاد داشته باشید آن را به کامپوننت‌های جدید اضافه کنید
 
-This gives you precise control over which components are compiled while you evaluate the compiler's impact.
+این کار به شما کنترل دقیقی روی اینکه کدام کامپوننت‌ها کامپایل می‌شوند می‌دهد، در حالی که تأثیر کامپایلر را ارزیابی می‌کنید.
 
-## Runtime Feature Flags with Gating {/*runtime-feature-flags-with-gating*/}
+## پرچم‌های ویژگی زمان اجرا با Gating {/*runtime-feature-flags-with-gating*/}
 
-The `gating` option enables you to control compilation at runtime using feature flags. This is useful for running A/B tests or gradually rolling out the compiler based on user segments.
+گزینهٔ `gating` به شما اجازه می‌دهد کامپایل را در زمان اجرا با استفاده از پرچم‌های ویژگی کنترل کنید. این برای اجرای آزمون‌های A/B یا استقرار تدریجی کامپایلر بر اساس بخش‌های کاربری مفید است.
 
-### How Gating Works {/*how-gating-works*/}
+### Gating چگونه کار می‌کند {/*how-gating-works*/}
 
-The compiler wraps optimized code in a runtime check. If the gate returns `true`, the optimized version runs. Otherwise, the original code runs.
+کامپایلر کد بهینه‌شده را در یک بررسی زمان اجرا می‌پیچد. اگر گیت `true` برگرداند، نسخهٔ بهینه‌شده اجرا می‌شود. در غیر این صورت، کد اصلی اجرا می‌شود.
 
-### Gating Configuration {/*gating-configuration*/}
+### پیکربندی Gating {/*gating-configuration*/}
 
 ```js
 // babel.config.js
@@ -197,9 +197,9 @@ module.exports = {
 };
 ```
 
-### Implementing the Feature Flag {/*implementing-the-feature-flag*/}
+### پیاده‌سازی پرچم ویژگی {/*implementing-the-feature-flag*/}
 
-Create a module that exports your gating function:
+یک ماژول ایجاد کنید که تابع gating شما را صادر کند:
 
 ```js
 // ReactCompilerFeatureFlags.js
@@ -209,17 +209,17 @@ export function isCompilerEnabled() {
 }
 ```
 
-## Troubleshooting Adoption {/*troubleshooting-adoption*/}
+## رفع اشکال اتخاذ {/*troubleshooting-adoption*/}
 
-If you encounter issues during adoption:
+اگر در طول اتخاذ با مشکلی مواجه شدید:
 
-1. Use `"use no memo"` to temporarily exclude problematic components
-2. Check the [debugging guide](/learn/react-compiler/debugging) for common issues
-3. Fix Rules of React violations identified by the ESLint plugin
-4. Consider using `compilationMode: 'annotation'` for more gradual adoption
+1. از `"use no memo"` برای خارج کردن موقت کامپوننت‌های مشکل‌ساز استفاده کنید
+2. [راهنمای دیباگ](/learn/react-compiler/debugging) را برای مشکلات رایج بررسی کنید
+3. نقض‌های قوانین ری‌اکت شناسایی‌شده به‌وسیلهٔ پلاگین ESLint را برطرف کنید
+4. در نظر بگیرید از `compilationMode: 'annotation'` برای اتخاذ تدریجی‌تر استفاده کنید
 
-## Next Steps {/*next-steps*/}
+## مراحل بعدی {/*next-steps*/}
 
-- Read the [configuration guide](/reference/react-compiler/configuration) for more options
-- Learn about [debugging techniques](/learn/react-compiler/debugging)
-- Check the [API reference](/reference/react-compiler/configuration) for all compiler options
+- [راهنمای پیکربندی](/reference/react-compiler/configuration) را برای گزینه‌های بیشتر بخوانید
+- دربارهٔ [تکنیک‌های دیباگ](/learn/react-compiler/debugging) بیاموزید
+- [مرجع API](/reference/react-compiler/configuration) را برای تمام گزینه‌های کامپایلر بررسی کنید

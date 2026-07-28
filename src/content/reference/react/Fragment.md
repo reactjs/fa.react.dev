@@ -4,7 +4,7 @@ title: <Fragment> (<>...</>)
 
 <Intro>
 
-`<Fragment>`, often used via `<>...</>` syntax, lets you group elements without a wrapper node.
+`<Fragment>`، که اغلب از طریق سینتکس `<>...</>` استفاده می‌شود، به شما اجازه می‌دهد المن‌ها را بدون یک نُد پیچاننده (wrapper) گروه‌بندی کنید.
 
 ```js
 <>
@@ -19,29 +19,29 @@ title: <Fragment> (<>...</>)
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `<Fragment>` {/*fragment*/}
 
-Wrap elements in `<Fragment>` to group them together in situations where you need a single element. Grouping elements in `Fragment` has no effect on the resulting DOM; it is the same as if the elements were not grouped. The empty JSX tag `<></>` is shorthand for `<Fragment></Fragment>` in most cases.
+المن‌ها را در `<Fragment>` بپیچید تا در موقعیت‌هایی که به یک المنت واحد نیاز دارید، آن‌ها را در کنار هم گروه‌بندی کنید. گروه‌بندی المن‌ها در `Fragment` هیچ تأثیری روی DOM حاصل ندارد؛ این همانند آن است که المن‌ها گروه‌بندی نشده باشند. تگ JSX خالی `<></>` در بیشتر موارد شکل کوتاه‌شدهٔ `<Fragment></Fragment>` است.
 
-#### Props {/*props*/}
+#### پراپس {/*props*/}
 
-- **optional** `key`: Fragments declared with the explicit `<Fragment>` syntax may have [keys.](/learn/rendering-lists#keeping-list-items-in-order-with-key)
+- **اختیاری** `key`: فرگمنت‌هایی که با سینتکس صریح `<Fragment>` تعریف می‌شوند می‌توانند [کلید](/learn/rendering-lists#keeping-list-items-in-order-with-key) داشته باشند.
 
-#### Caveats {/*caveats*/}
+#### نکات {/*caveats*/}
 
-- If you want to pass `key` to a Fragment, you can't use the `<>...</>` syntax. You have to explicitly import `Fragment` from `'react'` and render `<Fragment key={yourKey}>...</Fragment>`.
+- اگر می‌خواهید `key` را به یک فرگمنت ارسال کنید، نمی‌توانید از سینتکس `<>...</>` استفاده کنید. باید `Fragment` را صریحاً از `'react'` import کنید و `<Fragment key={yourKey}>...</Fragment>` را رندر کنید.
 
-- React does not [reset state](/learn/preserving-and-resetting-state) when you go from rendering `<><Child /></>` to `[<Child />]` or back, or when you go from rendering `<><Child /></>` to `<Child />` and back. This only works a single level deep: for example, going from `<><><Child /></></>` to `<Child />` resets the state. See the precise semantics [here.](https://gist.github.com/clemmy/b3ef00f9507909429d8aa0d3ee4f986b)
+- ری‌اکت [استیت را بازنشانی نمی‌کند](/learn/preserving-and-resetting-state) وقتی از رندر `<><Child /></>` به `[<Child />]` یا برعکس می‌روید، یا وقتی از رندر `<><Child /></>` به `<Child />` و برعکس می‌روید. این تنها تا یک سطح عمق کار می‌کند: به‌عنوان مثال، رفتن از `<><><Child /></></>` به `<Child />` استیت را بازنشانی می‌کند. معنای دقیق آن را [اینجا ببینید.](https://gist.github.com/clemmy/b3ef00f9507909429d8aa0d3ee4f986b)
 
 ---
 
-## Usage {/*usage*/}
+## استفاده {/*usage*/}
 
-### Returning multiple elements {/*returning-multiple-elements*/}
+### بازگرداندن چندین المنت {/*returning-multiple-elements*/}
 
-Use `Fragment`, or the equivalent `<>...</>` syntax, to group multiple elements together. You can use it to put multiple elements in any place where a single element can go. For example, a component can only return one element, but by using a Fragment you can group multiple elements together and then return them as a group:
+از `Fragment` یا سینتکس معادل `<>...</>` برای گروه‌بندی چندین المنت در کنار هم استفاده کنید. می‌توانید از آن برای قرار دادن چندین المنت در هر مکانی که یک المنت واحد می‌تواند قرار بگیرد استفاده کنید. به‌عنوان مثال، یک کامپوننت تنها می‌تواند یک المنت بازگرداند، اما با استفاده از یک فرگمنت می‌توانید چندین المنت را در کنار هم گروه‌بندی کرده و سپس آن‌ها را به‌عنوان یک گروه بازگردانید:
 
 ```js {3,6}
 function Post() {
@@ -54,7 +54,7 @@ function Post() {
 }
 ```
 
-Fragments are useful because grouping elements with a Fragment has no effect on layout or styles, unlike if you wrapped the elements in another container like a DOM element. If you inspect this example with the browser tools, you'll see that all `<h1>` and `<article>` DOM nodes appear as siblings without wrappers around them:
+فرگمنت‌ها مفید هستند زیرا گروه‌بندی المن‌ها با یک فرگمنت، برخلاف زمانی که المن‌ها را در یک کانتینر دیگر مانند یک نُد DOM می‌پیچید، هیچ تأثیری روی چیدمان یا استایل‌ها ندارد. اگر این نمونه را با ابزارهای مرورگر بررسی کنید، می‌بینید که تمام نُدهای DOM مربوط به `<h1>` و `<article>` به‌عنوان خواهر/برادر (sibling) ظاهر می‌شوند و هیچ پیچاننده‌ای دور آن‌ها نیست:
 
 <Sandpack>
 
@@ -94,9 +94,9 @@ function PostBody({ body }) {
 
 <DeepDive>
 
-#### How to write a Fragment without the special syntax? {/*how-to-write-a-fragment-without-the-special-syntax*/}
+#### چگونه یک فرگمنت را بدون سینتکس ویژه بنویسیم؟ {/*how-to-write-a-fragment-without-the-special-syntax*/}
 
-The example above is equivalent to importing `Fragment` from React:
+نمونهٔ بالا معادل import کردن `Fragment` از ری‌اکت است:
 
 ```js {1,5,8}
 import { Fragment } from 'react';
@@ -111,15 +111,15 @@ function Post() {
 }
 ```
 
-Usually you won't need this unless you need to [pass a `key` to your `Fragment`.](#rendering-a-list-of-fragments)
+معمولاً به این کار نیاز نخواهید داشت، مگر آنکه بخواهید [یک `key` به `Fragment` خود ارسال کنید.](#rendering-a-list-of-fragments)
 
 </DeepDive>
 
 ---
 
-### Assigning multiple elements to a variable {/*assigning-multiple-elements-to-a-variable*/}
+### اختصاص چندین المنت به یک متغیر {/*assigning-multiple-elements-to-a-variable*/}
 
-Like any other element, you can assign Fragment elements to variables, pass them as props, and so on:
+مانند هر المنت دیگری، می‌توانید المن‌های فرگمنت را به متغیرها اختصاص دهید، آن‌ها را به‌عنوان پراپس ارسال کنید و غیره:
 
 ```js
 function CloseDialog() {
@@ -139,9 +139,9 @@ function CloseDialog() {
 
 ---
 
-### Grouping elements with text {/*grouping-elements-with-text*/}
+### گروه‌بندی المن‌ها با متن {/*grouping-elements-with-text*/}
 
-You can use `Fragment` to group text together with components:
+می‌توانید از `Fragment` برای گروه‌بندی متن در کنار کامپوننت‌ها استفاده کنید:
 
 ```js
 function DateRangePicker({ start, end }) {
@@ -158,9 +158,9 @@ function DateRangePicker({ start, end }) {
 
 ---
 
-### Rendering a list of Fragments {/*rendering-a-list-of-fragments*/}
+### رندر یک فهرست از فرگمنت‌ها {/*rendering-a-list-of-fragments*/}
 
-Here's a situation where you need to write `Fragment` explicitly instead of using the `<></>` syntax. When you [render multiple elements in a loop](/learn/rendering-lists), you need to assign a `key` to each element. If the elements within the loop are Fragments, you need to use the normal JSX element syntax in order to provide the `key` attribute:
+در اینجا موقعیتی است که باید `Fragment` را صریحاً بنویسید، نه از سینتکس `<></>` استفاده کنید. وقتی [چندین المنت را در یک حلقه رندر می‌کنید](/learn/rendering-lists)، باید یک `key` به هر المنت اختصاص دهید. اگر المن‌های درون حلقه فرگمنت هستند، برای ارائهٔ ویژگی `key` باید از سینتکس معمول المن JSX استفاده کنید:
 
 ```js {3,6}
 function Blog() {
@@ -173,7 +173,7 @@ function Blog() {
 }
 ```
 
-You can inspect the DOM to verify that there are no wrapper elements around the Fragment children:
+می‌توانید DOM را بررسی کنید تا تأیید کنید هیچ المن پیچاننده‌ای دور فرزندان فرگمنت وجود ندارد:
 
 <Sandpack>
 

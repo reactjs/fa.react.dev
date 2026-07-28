@@ -1,5 +1,5 @@
 ---
-title: "Introducing react.dev"
+title: "معرفی react.dev"
 author: Dan Abramov and Rachel Nabors
 date: 2023/03/16
 description: Today we are thrilled to launch react.dev, the new home for React and its documentation. In this post, we would like to give you a tour of the new site.
@@ -11,52 +11,52 @@ March 16, 2023 by [Dan Abramov](https://bsky.app/profile/danabra.mov) and [Rache
 
 <Intro>
 
-Today we are thrilled to launch [react.dev](https://react.dev), the new home for React and its documentation. In this post, we would like to give you a tour of the new site.
+امروز ما هیجان‌زده هستیم که [react.dev](https://react.dev) را، خانهٔ جدید برای ری‌اکت و مستندات آن، راه‌اندازی کنیم. در این پست، دوست داریم یک تور از سایت جدید به شما بدهیم.
 
 </Intro>
 
 ---
 
-## tl;dr {/*tldr*/}
+## خلاصه {/*tldr*/}
 
-* The new React site ([react.dev](https://react.dev)) teaches modern React with function components and Hooks.
-* We've included diagrams, illustrations, challenges, and over 600 new interactive examples.
-* The previous React documentation site has now moved to [legacy.reactjs.org](https://legacy.reactjs.org).
+* سایت جدید ری‌اکت ([react.dev](https://react.dev)) ری‌اکت مدرن را با کامپوننت‌های تابعی و هوک‌ها آموزش می‌دهد.
+* ما نمودارها، تصاویر، چالش‌ها و بیش از ۶۰۰ مثال تعاملی جدید را اضافه کرده‌ایم.
+* سایت مستندات قبلی ری‌اکت اکنون به [legacy.reactjs.org](https://legacy.reactjs.org) منتقل شده است.
 
-## New site, new domain, new homepage {/*new-site-new-domain-new-homepage*/}
+## سایت جدید، دامنهٔ جدید، صفحهٔ اصلی جدید {/*new-site-new-domain-new-homepage*/}
 
-First, a little bit of housekeeping.
+اول، کمی کارهای خانه‌داری.
 
-To celebrate the launch of the new docs and, more importantly, to clearly separate the old and the new content, we've moved to the shorter [react.dev](https://react.dev) domain. The old [reactjs.org](https://reactjs.org) domain will now redirect here.
+برای جشن گرفتن راه‌اندازی مستندات جدید و، مهم‌تر، برای جداسازی واضح محتوای قدیمی و جدید، ما به دامنهٔ کوتاهتر [react.dev](https://react.dev) منتقل شده‌ایم. دامنهٔ قدیمی [reactjs.org](https://reactjs.org) اکنون به اینجا redirect می‌شود.
 
-The old React docs are now archived at [legacy.reactjs.org](https://legacy.reactjs.org). All existing links to the old content will automatically redirect there to avoid "breaking the web", but the legacy site will not get many more updates.
+مستندات قدیمی ری‌اکت اکنون در [legacy.reactjs.org](https://legacy.reactjs.org) آرشیو شده‌اند. همهٔ لینک‌های موجود به محتوای قدیمی به‌طور خودکار به آنجا redirect می‌شوند تا از «شکستن وب» جلوگیری شود، اما سایت legacy به‌روزرسانی‌های بیشتری دریافت نخواهد کرد.
 
-Believe it or not, React will soon be ten years old. In JavaScript years, it's like a whole century! We've [refreshed the React homepage](https://react.dev) to reflect why we think React is a great way to create user interfaces today, and updated the getting started guides to more prominently mention modern React-based frameworks.
+باور کنید یا نه، ری‌اکت به‌زودی ده ساله می‌شود. در سال‌های جاوااسکریپتی، این مانند یک قرن کامل است! ما [صفحهٔ اصلی ری‌اکت را به‌روزرسانی کرده‌ایم](https://react.dev) تا منعکس کند چرا فکر می‌کنیم ری‌اکت امروز روشی عالی برای ساخت رابط‌های کاربری است، و راهنمایهای شروع به‌کار را به‌روزرسانی کرده‌ایم تا به‌طور برجسته‌تر به فریم‌ورک‌های مبتنی بر ری‌اکت مدرن اشاره کنند.
 
-If you haven't seen the new homepage yet, check it out!
+اگر هنوز صفحهٔ اصلی جدید را ندیده‌اید، آن را بررسی کنید!
 
-## Going all-in on modern React with Hooks {/*going-all-in-on-modern-react-with-hooks*/}
+## تمام‌کردن روی ری‌اکت مدرن با هوک‌ها {/*going-all-in-on-modern-react-with-hooks*/}
 
-When we released React Hooks in 2018, the Hooks docs assumed the reader is familiar with class components. This helped the community adopt Hooks very swiftly, but after a while the old docs failed to serve the new readers. New readers had to learn React twice: once with class components and then once again with Hooks.
+وقتی ما React Hooks را در ۲۰۱۸ منتشر کردیم، مستندات هوک‌ها فرض می‌کردند که خواننده با کامپوننت‌های کلاسی آشنا است. این به جامعه کمک کرد تا هوک‌ها را خیلی سریع اتخاذ کند، اما پس از مدتی مستندات قدیمی در خدمت‌رسانی به خوانندگان جدید ناموفق بود. خوانندگان جدید باید ری‌اکت را دو بار می‌آموختند: یک‌بار با کامپوننت‌های کلاسی و سپس یک‌بار دیگر با هوک‌ها.
 
-**The new docs teach React with Hooks from the beginning.** The docs are divided in two main sections:
+**مستندات جدید ری‌اکت را با هوک‌ها از ابتدا آموزش می‌دهد.** مستندات به دو بخش اصلی تقسیم شده است:
 
-* **[Learn React](/learn)** is a self-paced course that teaches React from scratch.
-* **[API Reference](/reference/react)** provides the details and usage examples for every React API.
+* **[یادگیری ری‌اکت](/learn)** یک دورهٔ با-سرعت-خودتان است که ری‌اکت را از صفر آموزش می‌دهد.
+* **[مرجع API](/reference/react)** جزئیات و مثال‌های استفاده برای هر API ری‌اکت را ارائه می‌دهد.
 
-Let's have a closer look at what you can find in each section.
+بیایید نگاهی دقیق‌تر به آنچه در هر بخش می‌توانید پیدا کنید بیندازیم.
 
 <Note>
 
-There are still a few rare class component use cases that do not yet have a Hook-based equivalent. Class components remain supported, and are documented in the [Legacy API](/reference/react/legacy) section of the new site.
+هنوز چند مورد استفادهٔ نادر از کامپوننت‌های کلاسی وجود دارد که هنوز معادل مبتنی بر هوک ندارند. کامپوننت‌های کلاسی همچنان پشتیبانی می‌شوند، و در بخش [Legacy API](/reference/react/legacy) سایت جدید مستندسازی شده‌اند.
 
 </Note>
 
-## Quick start {/*quick-start*/}
+## شروع سریع {/*quick-start*/}
 
-The Learn section begins with the [Quick Start](/learn) page. It is a short introductory tour of React. It introduces the syntax for concepts like components, props, and state, but doesn't go into much detail on how to use them.
+بخش یادگیری با صفحهٔ [شروع سریع](/learn) آغاز می‌شود. این یک تور مقدماتی کوتاه از ری‌اکت است. این سینتکس برای مفاهیمی مانند کامپوننت‌ها، پراپس و استیت را معرفی می‌کند، اما به جزئیات زیادی درباره نحوهٔ استفاده از آن‌ها وارد نمی‌شود.
 
-If you like to learn by doing, we recommend checking out the [Tic-Tac-Toe Tutorial](/learn/tutorial-tic-tac-toe) next. It walks you through building a little game with React, while teaching the skills you'll use every day. Here's what you'll build:
+اگر دوست دارید با انجام یاد بگیرید، ما توصیه می‌کنیم [آموزش دوز-بازی](/learn/tutorial-tic-tac-toe) را بعداً بررسی کنید. این شما را در ساخت یک بازی کوچک با ری‌اکت همراهی می‌کند، ضمن آنکه مهارت‌هایی را که هر روز استفاده خواهید کرد آموزش می‌دهد. در اینجا چیزی که خواهید ساخت آمده است:
 
 <Sandpack>
 
@@ -225,43 +225,43 @@ body {
 
 </Sandpack>
 
-We'd also like to highlight [Thinking in React](/learn/thinking-in-react)—that's the tutorial that made React "click" for many of us. **We've updated both of these classic tutorials to use function components and Hooks,** so they're as good as new.
+ما همچنین دوست داریم [تفکر در ری‌اکت (Thinking in React)](/learn/thinking-in-react) را برجسته کنیم — این آموزشی است که ری‌اکت را برای بسیاری از ما «کلیک» کرد. **ما هر دوی این آموزش‌های کلاسیک را به‌روزرسانی کرده‌ایم تا از کامپوننت‌های تابعی و هوک‌ها استفاده کنند،** بنابراین به‌خوبی جدید هستند.
 
 <Note>
 
-The example above is a *sandbox*. We've added a lot of sandboxes—over 600!—everywhere throughout the site. You can edit any sandbox, or press "Fork" in the upper right corner to open it in a separate tab. Sandboxes let you quickly play with the React APIs, explore your ideas, and check your understanding.
+مثال بالا یک *sandbox* است. ما sandboxهای زیادی — بیش از ۶۰۰! — در همه‌جا در سراسر سایت اضافه کرده‌ایم. می‌توانید هر sandboxی را ویرایش کنید، یا «Fork» را در گوشهٔ بالا-راست بزنید تا آن را در یک تب جداگانه باز کنید. sandboxها به شما اجازه می‌دهند به‌سرعت با APIهای ری‌اکت بازی کنید، ایده‌هایتان را کاوش کنید، و درک خود را بررسی کنید.
 
 </Note>
 
-## Learn React step by step {/*learn-react-step-by-step*/}
+## یادگیری ری‌اکت گام‌به‌گام {/*learn-react-step-by-step*/}
 
-We'd like everyone in the world to have an equal opportunity to learn React for free on their own.
+ما دوست داریم همهٔ افراد در سراسر جهان فرصت برابری برای یادگیری رایگان ری‌اکت با سرعت خود داشته باشند.
 
-This is why the Learn section is organized like a self-paced course split into chapters. The first two chapters describe the fundamentals of React. If you're new to React, or want to refresh it in your memory, start here:
+به همین دلیل بخش یادگیری مانند یک دورهٔ با-سرعت-خودتان تقسیم به فصل‌ها سازماندهی شده است. دو فصل اول مبانی ری‌اکت را توصیف می‌کنند. اگر با ری‌اکت تازه آشنا شده‌اید، یا می‌خواهید آن را در حافظهٔ خود تازه کنید، از اینجا شروع کنید:
 
-- **[Describing the UI](/learn/describing-the-ui)** teaches how to display information with components.
-- **[Adding Interactivity](/learn/adding-interactivity)** teaches how to update the screen in response to user input.
+- **[توصیف رابط کاربری](/learn/describing-the-ui)** آموزش می‌دهد چگونه اطلاعات را با کامپوننت‌ها نمایش دهید.
+- **[افزودن تعامل](/learn/adding-interactivity)** آموزش می‌دهد چگونه صفحه را در پاسخ به ورودی کاربر به‌روزرسانی کنید.
 
-The next two chapters are more advanced, and will give you a deeper insight into the trickier parts:
+دو فصل بعدی پیشرفته‌تر هستند، و بینش عمیق‌تری درباره بخش‌های پیچیده‌تر به شما می‌دهند:
 
-- **[Managing State](/learn/managing-state)** teaches how to organize your logic as your app grows in complexity.
-- **[Escape Hatches](/learn/escape-hatches)** teaches how you can "step outside" React, and when it makes most sense to do so.
+- **[مدیریت استیت](/learn/managing-state)** آموزش می‌دهد چگونه منطق خود را با رشد پیچیدگی برنامه سازماندهی کنید.
+- **[راه‌فرارها (Escape Hatches)](/learn/escape-hatches)** آموزش می‌دهد چگونه از ری‌اکت «بیرون بروید»، و چه زمانی معنادارترین کار این است.
 
-Every chapter consists of several related pages. Most of these pages teach a specific skill or a technique—for example, [Writing Markup with JSX](/learn/writing-markup-with-jsx), [Updating Objects in State](/learn/updating-objects-in-state), or [Sharing State Between Components](/learn/sharing-state-between-components). Some of the pages focus on explaining an idea—like [Render and Commit](/learn/render-and-commit), or [State as a Snapshot](/learn/state-as-a-snapshot). And there are a few, like [You Might Not Need an Effect](/learn/you-might-not-need-an-effect), that share our suggestions based on what we've learned over these years.
+هر فصل از چند صفحهٔ مرتبط تشکیل شده است. بیشتر این صفحات یک مهارت یا تکنیک خاص را آموزش می‌دهند — برای مثال، [نوشتن نشانه‌گذاری با JSX](/learn/writing-markup-with-jsx)، [به‌روزرسانی اشیاء در استیت](/learn/updating-objects-in-state)، یا [اشتراک استیت بین کامپوننت‌ها](/learn/sharing-state-between-components). برخی از صفحات روی توضیح یک ایده تمرکز دارند — مانند [رندر و commit](/learn/render-and-commit)، یا [استیت به‌عنوان یک snapshot](/learn/state-as-a-snapshot). و چند صفحه وجود دارند، مانند [شاید به افکت نیاز نداشته باشید](/learn/you-might-not-need-an-effect)، که پیشنهادات ما را بر اساس آنچه در طول این سال‌ها آموخته‌ایم به اشتراک می‌گذارند.
 
-You don't have to read these chapters as a sequence. Who has the time for this?! But you could. Pages in the Learn section only rely on concepts introduced by the earlier pages. If you want to read it like a book, go for it!
+شما مجبور نیستید این فصل‌ها را به‌عنوان یک دنباله بخوانید. چه کسی برای این کار وقت دارد؟! اما می‌توانستید. صفحات در بخش یادگیری فقط به مفاهیمی معرفی‌شده توسط صفحات قبلی تکیه می‌کنند. اگر می‌خواهید آن را مانند یک کتاب بخوانید، پیش بروید!
 
-### Check your understanding with challenges {/*check-your-understanding-with-challenges*/}
+### درک خود را با چالش‌ها بررسی کنید {/*check-your-understanding-with-challenges*/}
 
-Most pages in the Learn section end with a few challenges to check your understanding. For example, here are a few challenges from the page about [Conditional Rendering](/learn/conditional-rendering#challenges).
+بیشتر صفحات در بخش یادگیری با چند چالش برای بررسی درک شما پایان می‌یابند. برای مثال، در اینجا چند چالش از صفحهٔ [رندر شرطی (Conditional Rendering)](/learn/conditional-rendering#challenges) آمده است.
 
-You don't have to solve them right now! Unless you *really* want to.
+شما مجبور نیستید همین الان آن‌ها را حل کنید! مگر آنکه *واقعاً* بخواهید.
 
 <Challenges noTitle={true}>
 
-#### Show an icon for incomplete items with `? :` {/*show-an-icon-for-incomplete-items-with--*/}
+#### نمایش یک آیکون برای آیتم‌های ناتمام با `? :` {/*show-an-icon-for-incomplete-items-with--*/}
 
-Use the conditional operator (`cond ? a : b`) to render a ❌ if `isPacked` isn’t `true`.
+از عملگر شرطی (`cond ? a : b`) برای رندر یک ❌ اگر `isPacked` برابر `true` نیست استفاده کنید.
 
 <Sandpack>
 
@@ -339,15 +339,15 @@ export default function PackingList() {
 
 </Solution>
 
-#### Show the item importance with `&&` {/*show-the-item-importance-with-*/}
+#### نمایش اهمیت آیتم با `&&` {/*show-the-item-importance-with-*/}
 
-In this example, each `Item` receives a numerical `importance` prop. Use the `&&` operator to render "_(Importance: X)_" in italics, but only for items that have non-zero importance. Your item list should end up looking like this:
+در این مثال، هر `Item` یک پراپ `importance` عددی دریافت می‌کند. از عملگر `&&` برای رندر «_(Importance: X)_» به‌صورت ایتالیک استفاده کنید، اما فقط برای آیتم‌هایی که اهمیت غیر صفر دارند. فهرست آیتم‌های شما باید در نهایت شبیه این باشد:
 
 * Space suit _(Importance: 9)_
 * Helmet with a golden leaf
 * Photo of Tam _(Importance: 6)_
 
-Don't forget to add a space between the two labels!
+فراموش نکنید که یک فاصله بین دو برچسب اضافه کنید!
 
 <Sandpack>
 
@@ -387,7 +387,7 @@ export default function PackingList() {
 
 <Solution>
 
-This should do the trick:
+این باید کار را انجام دهد:
 
 <Sandpack>
 
@@ -429,53 +429,53 @@ export default function PackingList() {
 
 </Sandpack>
 
-Note that you must write `importance > 0 && ...` rather than `importance && ...` so that if the `importance` is `0`, `0` isn't rendered as the result!
+توجه کنید که باید `importance > 0 && ...` را بنویسید نه `importance && ...` تا اگر `importance` برابر `0` باشد، `0` به‌عنوان نتیجه رندر نشود!
 
-In this solution, two separate conditions are used to insert a space between then name and the importance label. Alternatively, you could use a Fragment with a leading space: `importance > 0 && <> <i>...</i></>` or add a space immediately inside the `<i>`:  `importance > 0 && <i> ...</i>`.
+در این راه‌حل، از دو شرط جداگانه برای درج یک فاصله بین نام و برچسب اهمیت استفاده شده است. به‌طور جایگزین، می‌توانستید از یک فرگمنت با یک فاصلهٔ پیشوند استفاده کنید: `importance > 0 && <> <i>...</i></>` یا یک فاصله بلافاصله درون `<i>` اضافه کنید: `importance > 0 && <i> ...</i>`.
 
 </Solution>
 
 </Challenges>
 
-Notice the "Show solution" button in the left bottom corner. It's handy if you want to check yourself!
+دکمهٔ «نمایش راه‌حل» در گوشهٔ پایین-چپ را توجه کنید. این اگر می‌خواهید خودتان را بررسی کنید به‌درد می‌خورد!
 
-### Build an intuition with diagrams and illustrations {/*build-an-intuition-with-diagrams-and-illustrations*/}
+### با نمودارها و تصاویر شهود بسازید {/*build-an-intuition-with-diagrams-and-illustrations*/}
 
-When we couldn't figure out how to explain something with code and words alone, we've added diagrams that help provide some intuition. For example, here is one of the diagrams from [Preserving and Resetting State](/learn/preserving-and-resetting-state):
+وقتی نتوانستیم بفهمیم چگونه چیزی را با کد و کلمات به‌تنهایی توضیح دهیم، نمودارهایی اضافه کردیم که کمک می‌کنند مقداری شهود ارائه دهیم. برای مثال، در اینجا یکی از نمودارها از [حفظ و بازنشانی استیت](/learn/preserving-and-resetting-state) آمده است:
 
 <Diagram name="preserving_state_diff_same_pt1" height={350} width={794} alt="Diagram with three sections, with an arrow transitioning each section in between. The first section contains a React component labeled 'div' with a single child labeled 'section', which has a single child labeled 'Counter' containing a state bubble labeled 'count' with value 3. The middle section has the same 'div' parent, but the child components have now been deleted, indicated by a yellow 'proof' image. The third section has the same 'div' parent again, now with a new child labeled 'div', highlighted in yellow, also with a new child labeled 'Counter' containing a state bubble labeled 'count' with value 0, all highlighted in yellow.">
 
-When `section` changes to `div`, the `section` is deleted and the new `div` is added
+وقتی `section` به `div` تغییر می‌کند، `section` حذف و `div` جدید اضافه می‌شود
 
 </Diagram>
 
-You'll also see some illustrations throughout the docs--here's one of the [browser painting the screen](/learn/render-and-commit#epilogue-browser-paint):
+شما همچنین برخی تصاویر را در سراسر مستندات خواهید دید — در اینجا یکی از [رنگ‌آمیزی صفحه توسط مرورگر](/learn/render-and-commit#epilogue-browser-paint) آمده است:
 
 <Illustration alt="A browser painting 'still life with card element'." src="/images/docs/illustrations/i_browser-paint.png" />
 
-We've confirmed with the browser vendors that this depiction is 100% scientifically accurate.
+ما با فروشندگان مرورگر تأیید کرده‌ایم که این تصویر ۱۰۰٪ از نظر علمی دقیق است.
 
-## A new, detailed API Reference {/*a-new-detailed-api-reference*/}
+## یک مرجع API دقیق و جدید {/*a-new-detailed-api-reference*/}
 
-In the [API Reference](/reference/react), every React API now has a dedicated page. This includes all kinds of APIs:
+در [مرجع API](/reference/react)، هر API ری‌اکت اکنون یک صفحهٔ اختصاصی دارد. این شامل همهٔ انواع APIها می‌شود:
 
-- Built-in Hooks like [`useState`](/reference/react/useState).
-- Built-in components like [`<Suspense>`](/reference/react/Suspense).
-- Built-in browser components like [`<input>`](/reference/react-dom/components/input).
-- Framework-oriented APIs like [`renderToPipeableStream`](/reference/react-dom/server/renderToReadableStream).
-- Other React APIs like [`memo`](/reference/react/memo).
+- هوک‌های داخلی مانند [`useState`](/reference/react/useState).
+- کامپوننت‌های داخلی مانند [`<Suspense>`](/reference/react/Suspense).
+- کامپوننت‌های داخلی مرورگر مانند [`<input>`](/reference/react-dom/components/input).
+- APIهای فریم‌ورک-محور مانند [`renderToPipeableStream`](/reference/react-dom/server/renderToReadableStream).
+- سایر APIهای ری‌اکت مانند [`memo`](/reference/react/memo).
 
-You'll notice that every API page is split into at least two segments: *Reference* and *Usage*.
+خواهید دید که هر صفحهٔ API به حداقل دو بخش تقسیم شده است: *مرجع* و *استفاده*.
 
-[Reference](/reference/react/useState#reference) describes the formal API signature by listing its arguments and return values. It's concise, but it can feel a bit abstract if you're not familiar with that API. It describes what an API does, but not how to use it.
+[مرجع](/reference/react/useState#reference) امضای رسمی API را با فهرست آرگومان‌ها و مقادیر بازگشتی‌اش توصیف می‌کند. این مختصر است، اما اگر با آن API آشنا نیستید ممکن است کمی انتزاعی احساس شود. این توصیف می‌کند که یک API چه می‌کند، اما نه چگونه از آن استفاده کنید.
 
-[Usage](/reference/react/useState#usage) shows why and how you would use this API in practice, like a colleague or a friend might explain. It shows the **canonical scenarios for how each API was meant to be used by the React team.** We've added color-coded snippets, examples of using different APIs together, and recipes that you can copy and paste from:
+[استفاده](/reference/react/useState#usage) نشان می‌دهد چرا و چگونه در عمل از این API استفاده می‌کنید، مانند آنکه یک همکار یا دوست توضیح دهد. این **سناریوهای کانونیکال برای نحوهٔ استفادهٔ مورد نظر هر API توسط تیم ری‌اکت** را نشان می‌دهد. ما snippetهای کدنویسی‌شده با رنگ، مثال‌هایی از استفادهٔ APIهای مختلف با هم، و دستورالعمل‌هایی که می‌توانید از آن‌ها کپی و پیست کنید اضافه کرده‌ایم:
 
 <Recipes titleText="Basic useState examples" titleId="examples-basic">
 
-#### Counter (number) {/*counter-number*/}
+#### شمارنده (عدد) {/*counter-number*/}
 
-In this example, the `count` state variable holds a number. Clicking the button increments it.
+در این مثال، متغیر استیت `count` یک عدد را نگه می‌دارد. کلیک روی دکمه آن را افزایش می‌دهد.
 
 <Sandpack>
 
@@ -501,9 +501,9 @@ export default function Counter() {
 
 <Solution />
 
-#### Text field (string) {/*text-field-string*/}
+#### فیلد متنی (رشته) {/*text-field-string*/}
 
-In this example, the `text` state variable holds a string. When you type, `handleChange` reads the latest input value from the browser input DOM element, and calls `setText` to update the state. This allows you to display the current `text` below.
+در این مثال، متغیر استیت `text` یک رشته را نگه می‌دارد. وقتی تایپ می‌کنید، `handleChange` آخرین مقدار ورودی را از المان DOM ورودی مرورگر می‌خواند، و `setText` را برای به‌روزرسانی استیت فراخوانی می‌کند. این به شما اجازه می‌دهد `text` فعلی را در زیر نمایش دهید.
 
 <Sandpack>
 
@@ -533,9 +533,9 @@ export default function MyInput() {
 
 <Solution />
 
-#### Checkbox (boolean) {/*checkbox-boolean*/}
+#### چک‌باکس (بولی) {/*checkbox-boolean*/}
 
-In this example, the `liked` state variable holds a boolean. When you click the input, `setLiked` updates the `liked` state variable with whether the browser checkbox input is checked. The `liked` variable is used to render the text below the checkbox.
+در این مثال، متغیر استیت `liked` یک بولی را نگه می‌دارد. وقتی روی ورودی کلیک می‌کنید، `setLiked` متغیر استیت `liked` را با این که آیا چک‌باکس ورودی مرورگر تیک خورده است به‌روزرسانی می‌کند. متغیر `liked` برای رندر متن زیر چک‌باکس استفاده می‌شود.
 
 <Sandpack>
 
@@ -569,9 +569,9 @@ export default function MyCheckbox() {
 
 <Solution />
 
-#### Form (two variables) {/*form-two-variables*/}
+#### فرم (دو متغیر) {/*form-two-variables*/}
 
-You can declare more than one state variable in the same component. Each state variable is completely independent.
+می‌توانید بیش از یک متغیر استیت در همان کامپوننت تعریف کنید. هر متغیر استیت کاملاً مستقل است.
 
 <Sandpack>
 
@@ -607,42 +607,42 @@ button { display: block; margin-top: 10px; }
 
 </Recipes>
 
-Some API pages also include [Troubleshooting](/reference/react/useEffect#troubleshooting) (for common problems) and [Alternatives](https://18.react.dev/reference/react-dom/findDOMNode#alternatives) (for deprecated APIs).
+برخی صفحات API همچنین شامل [عیب‌یابی (Troubleshooting)](/reference/react/useEffect#troubleshooting) (برای مشکلات رایج) و [جایگزین‌ها (Alternatives)](https://18.react.dev/reference/react-dom/findDOMNode#alternatives) (برای APIهای منسوخ‌شده) هستند.
 
-We hope that this approach will make the API reference useful not only as a way to look up an argument, but as a way to see all the different things you can do with any given API—and how it connects to the other ones.
+ما امیدواریم این رویکرد مرجع API را نه‌تنها به‌عنوان راهی برای جستجوی یک آرگومان مفید کند، بلکه به‌عنوان راهی برای دیدن همهٔ کارهای مختلفی که می‌توانید با هر API انجام دهید — و چگونه با دیگر APIها متصل می‌شود.
 
-## What's next? {/*whats-next*/}
+## چه چیزی در راه است؟ {/*whats-next*/}
 
-That's a wrap for our little tour! Have a look around the new website, see what you like or don't like, and keep the feedback coming in our [issue tracker](https://github.com/reactjs/react.dev/issues).
+این پایان تور کوچک ماست! نگاهی به وب‌سایت جدید بیندازید، ببینید چه چیزی را دوست دارید یا دوست ندارید، و بازخورد را در [issue tracker](https://github.com/reactjs/react.dev/issues) ما ادامه دهید.
 
-We acknowledge this project has taken a long time to ship. We wanted to maintain a high quality bar that the React community deserves. While writing these docs and creating all of the examples, we found mistakes in some of our own explanations, bugs in React, and even gaps in the React design that we are now working to address. We hope that the new documentation will help us hold React itself to a higher bar in the future.
+ما اذعان می‌کنیم این پروژه مدت زیادی طول کشیده تا منتشر شود. ما می‌خواستیم یک نوار کیفیت بالا را که جامعهٔ ری‌اکت سزاوان آن است حفظ کنیم. در حین نوشتن این مستندات و ایجاد همهٔ مثال‌ها، ما اشتباهاتی در برخی توضیحات خودمان، باگ‌هایی در ری‌اکت، و حتی شکاف‌هایی در طراحی ری‌اکت پیدا کردیم که اکنون در حال کار برای رفع آن‌ها هستیم. ما امیدواریم مستندات جدید به ما کمک کند تا ری‌اکت خود را در آینده در نوار بالاتری نگه داریم.
 
-We've heard many of your requests to expand the content and functionality of the website, for example:
+ما بسیاری از درخواست‌های شما برای گسترش محتوا و کارکرد وب‌سایت را شنیده‌ایم، برای مثال:
 
-- Providing a TypeScript version for all examples;
-- Creating the updated performance, testing, and accessibility guides;
-- Documenting React Server Components independently from the frameworks that support them;
-- Working with our international community to get the new docs translated;
-- Adding missing features to the new website (for example, RSS for this blog).
+- ارائهٔ نسخهٔ TypeScript برای همهٔ مثال‌ها؛
+- ایجاد راهنماهای به‌روزرسانی‌شدهٔ کارایی، تست و دسترسی‌پذیری؛
+- مستندسازی کامپوننت‌های سرور ری‌اکت (React Server Components) به‌صورت مستقل از فریم‌ورک‌هایی که از آن‌ها پشتیبانی می‌کنند؛
+- کار با جامعهٔ بین‌المللی ما برای ترجمهٔ مستندات جدید؛
+- افزودن قابلیت‌های مفقود به وب‌سایت جدید (برای مثال، RSS برای این بلاگ).
 
-Now that [react.dev](https://react.dev/) is out, we will be able to shift our focus from "catching up" with the third-party React educational resources to adding new information and further improving our new website.
+اکنون که [react.dev](https://react.dev/) منتشر شده، ما قادر خواهیم بود تمرکز خود را از «دنبال‌کردن» منابع آموزشی شخص ثالث ری‌اکت به افزودن اطلاعات جدید و بهبود بیشتر وب‌سایت جدیدمان تغییر دهیم.
 
-We think there's never been a better time to learn React.
+ما فکر می‌کنیم هیچ‌وقت زمان بهتری برای یادگیری ری‌اکت نبوده است.
 
-## Who worked on this? {/*who-worked-on-this*/}
+## چه کسانی روی این کار کردند؟ {/*who-worked-on-this*/}
 
-On the React team, [Rachel Nabors](https://twitter.com/rachelnabors/) led the project (and provided the illustrations), and [Dan Abramov](https://bsky.app/profile/danabra.mov) designed the curriculum. They co-authored most of the content together as well.
+در تیم ری‌اکت، [Rachel Nabors](https://twitter.com/rachelnabors/) پروژه را رهبری کرد (و تصاویر را ارائه داد)، و [Dan Abramov](https://bsky.app/profile/danabra.mov) برنامهٔ درسی را طراحی کرد. آن‌ها همچنین بیشتر محتوا را با هم به‌صورت مشترک نوشتند.
 
-Of course, no project this large happens in isolation. We have a lot of people to thank!
+البته، هیچ پروژه‌ای به این بزرگی به‌صورت ایزوله اتفاق نمی‌افتد. ما افراد زیادی برای تشکر داریم!
 
-[Sylwia Vargas](https://twitter.com/SylwiaVargas) overhauled our examples to go beyond "foo/bar/baz" and kittens, and feature scientists, artists and cities from around the world. [Maggie Appleton](https://twitter.com/Mappletons) turned our doodles into a clear diagram system.
+[Sylwia Vargas](https://twitter.com/SylwiaVargas) مثال‌های ما را بازطراحی کرد تا فراتر از «foo/bar/baz» و بچه‌گربه‌ها باشد، و دانشمندان، هنرمندان و شهرهایی از سراسر جهان را نمایش دهد. [Maggie Appleton](https://twitter.com/Mappletons) دودل‌های ما را به یک سیستم نمودار واضح تبدیل کرد.
 
-Thanks to [David McCabe](https://twitter.com/mcc_abe), [Sophie Alpert](https://twitter.com/sophiebits), [Rick Hanlon](https://twitter.com/rickhanlonii), [Andrew Clark](https://twitter.com/acdlite), and [Matt Carroll](https://twitter.com/mattcarrollcode) for additional writing contributions. We'd also like to thank [Natalia Tepluhina](https://twitter.com/n_tepluhina) and [Sebastian Markbåge](https://twitter.com/sebmarkbage) for their ideas and feedback.
+تشکر از [David McCabe](https://twitter.com/mcc_abe)، [Sophie Alpert](https://twitter.com/sophiebits)، [Rick Hanlon](https://twitter.com/rickhanlonii)، [Andrew Clark](https://twitter.com/acdlite) و [Matt Carroll](https://twitter.com/mattcarrollcode) برای مشارکت‌های نوشتاری اضافی. ما همچنین دوست داریم از [Natalia Tepluhina](https://twitter.com/n_tepluhina) و [Sebastian Markbåge](https://twitter.com/sebmarkbage) برای ایده‌ها و بازخوردشان تشکر کنیم.
 
-Thanks to [Dan Lebowitz](https://twitter.com/lebo) for the site design and [Razvan Gradinar](https://dribbble.com/GradinarRazvan) for the sandbox design.
+تشکر از [Dan Lebowitz](https://twitter.com/lebo) برای طراحی سایت و [Razvan Gradinar](https://dribbble.com/GradinarRazvan) برای طراحی sandbox.
 
-On the development front, thanks to [Jared Palmer](https://twitter.com/jaredpalmer) for prototype development. Thanks to [Dane Grant](https://twitter.com/danecando) and [Dustin Goodman](https://twitter.com/dustinsgoodman) from [ThisDotLabs](https://www.thisdot.co/) for their support on UI development. Thanks to [Ives van Hoorne](https://twitter.com/CompuIves), [Alex Moldovan](https://twitter.com/alexnmoldovan), [Jasper De Moor](https://twitter.com/JasperDeMoor), and [Danilo Woznica](https://twitter.com/danilowoz) from [CodeSandbox](https://codesandbox.io/) for their work with sandbox integration. Thanks to [Rick Hanlon](https://twitter.com/rickhanlonii) for spot development and design work, finessing our colors and finer details. Thanks to [Harish Kumar](https://www.strek.in/) and [Luna Ruan](https://twitter.com/lunaruan) for adding new features to the site and helping maintain it.
+در جبههٔ توسعه، تشکر از [Jared Palmer](https://twitter.com/jaredpalmer) برای توسعهٔ نمونهٔ اولیه. تشکر از [Dane Grant](https://twitter.com/danecando) و [Dustin Goodman](https://twitter.com/dustinsgoodman) از [ThisDotLabs](https://www.thisdot.co/) برای پشتیبانیشان در توسعهٔ رابط کاربری. تشکر از [Ives van Hoorne](https://twitter.com/CompuIves)، [Alex Moldovan](https://twitter.com/alexnmoldovan)، [Jasper De Moor](https://twitter.com/JasperDeMoor) و [Danilo Woznica](https://twitter.com/danilowoz) از [CodeSandbox](https://codesandbox.io/) برای کارشان در یکپارچه‌سازی sandbox. تشکر از [Rick Hanlon](https://twitter.com/rickhanlonii) برای کار توسعه و طراحی نقطه‌ای، و ظرافت در رنگ‌ها و جزئیات ظریف‌تر. تشکر از [Harish Kumar](https://www.strek.in/) و [Luna Ruan](https://twitter.com/lunaruan) برای افزودن قابلیت‌های جدید به سایت و کمک به نگهداری آن.
 
-Huge thanks to the folks who volunteered their time to participate in the alpha and beta testing program. Your enthusiasm and invaluable feedback helped us shape these docs. A special shout out to our beta tester, [Debbie O'Brien](https://twitter.com/debs_obrien), who gave a talk about her experience using the React docs at React Conf 2021.
+تشکر فراوان از افرادی که وقت خود را داوطلبانه برای شرکت در برنامهٔ تست آلفا و بتا اختصاص دادند. اشتیاق و بازخورد ارزشمند شما به ما کمک کرد تا این مستندات را شکل دهیم. یک تشکر ویژه از تستر بتای ما، [Debbie O'Brien](https://twitter.com/debs_obrien)، که در React Conf 2021 سخنرانی درباره تجربهٔ استفاده‌اش از مستندات ری‌اکت ارائه داد.
 
-Finally, thanks to the React community for being the inspiration behind this effort. You are the reason we do this, and we hope that the new docs will help you use React to build any user interface that you want.
+در نهایت، تشکر از جامعهٔ ری‌اکت که الهام‌بخش این تلاش بودند. شما دلیل ما برای انجام این کار هستید، و ما امیدواریم مستندات جدید به شما کمک کند تا با ری‌اکت هر رابط کاربری که می‌خواهید بسازید.

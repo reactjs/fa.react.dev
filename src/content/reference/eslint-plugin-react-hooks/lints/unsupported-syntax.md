@@ -4,17 +4,17 @@ title: unsupported-syntax
 
 <Intro>
 
-Validates against syntax that React Compiler does not support. If you need to, you can still use this syntax outside of React, such as in a standalone utility function.
+سینتکسی که React Compiler پشتیبانی نمی‌کند را اعتبارسنجی می‌کند. در صورت نیاز، همچنان می‌توانید از این سینتکس خارج از ری‌اکت استفاده کنید، مانند یک تابع کمکی مستقل.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## جزئیات قانون {/*rule-details*/}
 
-React Compiler needs to statically analyze your code to apply optimizations. Features like `eval` and `with` make it impossible to statically understand what the code does at compile time, so the compiler can't optimize components that use them.
+React Compiler نیاز دارد کد شما را به‌صورت ایستا تحلیل کند تا بهینه‌سازی‌ها را اعمال کند. قابلیت‌هایی مانند `eval` و `with` غیرممکن می‌سازند که در زمان کامپایل به‌صورت ایستا فهمید چه کاری کد انجام می‌دهد، بنابراین کامپایلر نمی‌تواند کامپوننت‌هایی که از آن‌ها استفاده می‌کنند را بهینه‌سازی کند.
 
-### Invalid {/*invalid*/}
+### نامعتبر {/*invalid*/}
 
-Examples of incorrect code for this rule:
+نمونه‌هایی از کد نادرست برای این قانون:
 
 ```js
 // ❌ Using eval in component
@@ -37,9 +37,9 @@ function Component({propName}) {
 }
 ```
 
-### Valid {/*valid*/}
+### معتبر {/*valid*/}
 
-Examples of correct code for this rule:
+نمونه‌هایی از کد درست برای این قانون:
 
 ```js
 // ✅ Use normal property access
@@ -54,11 +54,11 @@ function Component() {
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-### I need to evaluate dynamic code {/*evaluate-dynamic-code*/}
+### نیاز به ارزیابی کد پویا دارم {/*evaluate-dynamic-code*/}
 
-You might need to evaluate user-provided code:
+ممکن است نیاز به ارزیابی کد ارائه‌شده توسط کاربر داشته باشید:
 
 ```js {expectedErrors: {'react-compiler': [3]}}
 // ❌ Wrong: eval in component
@@ -68,7 +68,7 @@ function Calculator({expression}) {
 }
 ```
 
-Use a safe expression parser instead:
+به‌جای آن از یک پارسر عبارت امن استفاده کنید:
 
 ```js
 // ✅ Better: Use a safe parser
@@ -97,6 +97,6 @@ function Calculator({expression}) {
 
 <Note>
 
-Never use `eval` with user input - it's a security risk. Use dedicated parsing libraries for specific use cases like mathematical expressions, JSON parsing, or template evaluation.
+هرگز از `eval` با ورودی کاربر استفاده نکنید - این یک ریسک امنیتی است. برای موارد استفادهٔ خاص مانند عبارات ریاضی، تجزیهٔ JSON، یا ارزیابی قالب، از کتابخانه‌های تجزیهٔ اختصاصی استفاده کنید.
 
 </Note>

@@ -1,9 +1,9 @@
 ---
-title: Rules of React
+title: قوانین ری‌اکت
 ---
 
 <Intro>
-Just as different programming languages have their own ways of expressing concepts, React has its own idioms — or rules — for how to express patterns in a way that is easy to understand and yields high-quality applications.
+همان‌طور که زبان‌های برنامه‌نویسی مختلف راه‌های خاص خود را برای بیان مفاهیم دارند، ری‌اکت نیز اصطلاحات — یا قوانین — خاص خود را برای چگونگی بیان الگوها به روشی که درک آن آسان است و اپلیکیشن‌های باکیفیت تولید می‌کند، دارد.
 </Intro>
 
 <InlineToc />
@@ -11,42 +11,42 @@ Just as different programming languages have their own ways of expressing concep
 ---
 
 <Note>
-To learn more about expressing UIs with React, we recommend reading [Thinking in React](/learn/thinking-in-react).
+برای کسب اطلاعات بیشتر در مورد بیان رابط‌های کاربری با ری‌اکت، خواندن [تفکر در ری‌اکت](/learn/thinking-in-react) را توصیه می‌کنیم.
 </Note>
 
-This section describes the rules you need to follow to write idiomatic React code. Writing idiomatic React code can help you write well organized, safe, and composable applications. These properties make your app more resilient to changes and makes it easier to work with other developers, libraries, and tools.
+این بخش قوانینی را که باید برای نوشتن کد اصطلاحی ری‌اکت دنبال کنید، توصیف می‌کند. نوشتن کد اصطلاحی ری‌اکت می‌تواند به شما کمک کند اپلیکیشن‌هایی منظم، امن و قابل ترکیب بنویسید. این ویژگی‌ها اپ شما را در برابر تغییرات مقاوم‌تر می‌کند و کار با سایر توسعه‌دهندگان، کتابخانه‌ها و ابزارها را آسان‌تر می‌سازد.
 
-These rules are known as the **Rules of React**. They are rules – and not just guidelines – in the sense that if they are broken, your app likely has bugs. Your code also becomes unidiomatic and harder to understand and reason about.
+این قوانین به‌عنوان **قوانین ری‌اکت** شناخته می‌شوند. آن‌ها قانون هستند — و نه فقط دستورالعمل — به این معنا که اگر شکسته شوند، اپ شما احتمالاً باگ دارد. کد شما نیز نااصطلاحی می‌شود و درک و استدلال دربارهٔ آن سخت‌تر می‌شود.
 
-We strongly recommend using [Strict Mode](/reference/react/StrictMode) alongside React's [ESLint plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) to help your codebase follow the Rules of React. By following the Rules of React, you'll be able to find and address these bugs and keep your application maintainable.
-
----
-
-## Components and Hooks must be pure {/*components-and-hooks-must-be-pure*/}
-
-[Purity in Components and Hooks](/reference/rules/components-and-hooks-must-be-pure) is a key rule of React that makes your app predictable, easy to debug, and allows React to automatically optimize your code.
-
-* [Components must be idempotent](/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent) – React components are assumed to always return the same output with respect to their inputs – props, state, and context.
-* [Side effects must run outside of render](/reference/rules/components-and-hooks-must-be-pure#side-effects-must-run-outside-of-render) – Side effects should not run in render, as React can render components multiple times to create the best possible user experience.
-* [Props and state are immutable](/reference/rules/components-and-hooks-must-be-pure#props-and-state-are-immutable) – A component’s props and state are immutable snapshots with respect to a single render. Never mutate them directly.
-* [Return values and arguments to Hooks are immutable](/reference/rules/components-and-hooks-must-be-pure#return-values-and-arguments-to-hooks-are-immutable) – Once values are passed to a Hook, you should not modify them. Like props in JSX, values become immutable when passed to a Hook.
-* [Values are immutable after being passed to JSX](/reference/rules/components-and-hooks-must-be-pure#values-are-immutable-after-being-passed-to-jsx) – Don’t mutate values after they’ve been used in JSX. Move the mutation before the JSX is created.
+ما اکیداً استفاده از [حالت سخت‌گیرانه (Strict Mode)](/reference/react/StrictMode) در کنار [پلاگین ESLint](https://www.npmjs.com/package/eslint-plugin-react-hooks) ری‌اکت را برای کمک به کدبیس خود جهت پیروی از قوانین ری‌اکت توصیه می‌کنیم. با پیروی از قوانین ری‌اکت، می‌توانید این باگ‌ها را پیدا کرده و رفع کنید و اپلیکیشن خود را قابل نگهداری نگه دارید.
 
 ---
 
-## React calls Components and Hooks {/*react-calls-components-and-hooks*/}
+## کامپوننت‌ها و هوک‌ها باید خالص باشند {/*components-and-hooks-must-be-pure*/}
 
-[React is responsible for rendering components and hooks when necessary to optimize the user experience.](/reference/rules/react-calls-components-and-hooks) It is declarative: you tell React what to render in your component’s logic, and React will figure out how best to display it to your user.
+[خالص بودن در کامپوننت‌ها و هوک‌ها](/reference/rules/components-and-hooks-must-be-pure) یک قانون کلیدی ری‌اکت است که اپ شما را قابل پیش‌بینی، آسان برای دیباگ می‌کند، و به ری‌اکت اجازه می‌دهد کد شما را به‌طور خودکار بهینه‌سازی کند.
 
-* [Never call component functions directly](/reference/rules/react-calls-components-and-hooks#never-call-component-functions-directly) – Components should only be used in JSX. Don’t call them as regular functions.
-* [Never pass around hooks as regular values](/reference/rules/react-calls-components-and-hooks#never-pass-around-hooks-as-regular-values) – Hooks should only be called inside of components. Never pass it around as a regular value.
+* [کامپوننت‌ها باید idempotent باشند](/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent) – فرض بر این است که کامپوننت‌های ری‌اکت همیشه نسبت به ورودی‌هایشان — پراپس، استیت و کانتکست — خروجی یکسانی برمی‌گردانند.
+* [عوارض جانبی باید خارج از رندر اجرا شوند](/reference/rules/components-and-hooks-must-be-pure#side-effects-must-run-outside-of-render) – عوارض جانبی نباید در رندر اجرا شوند، زیرا ری‌اکت می‌تواند کامپوننت‌ها را برای ایجاد بهترین تجربهٔ کاربری ممکن چندین بار رندر کند.
+* [پراپس و استیت غیرقابل تغییرند](/reference/rules/components-and-hooks-must-be-pure#props-and-state-are-immutable) – پراپس و استیت یک کامپوننت، snapshotهای غیرقابل تغییر نسبت به یک رندر منفرد هستند. هرگز مستقیماً آن‌ها را تغییر ندهید.
+* [مقادیر برگشتی و آرگومان‌های هوک‌ها غیرقابل تغییرند](/reference/rules/components-and-hooks-must-be-pure#return-values-and-arguments-to-hooks-are-immutable) – وقتی مقادیر به یک هوک پاس داده شدند، نباید آن‌ها را تغییر دهید. مانند پراپس در JSX، مقادیر وقتی به یک هوک پاس داده می‌شوند، غیرقابل تغییر می‌شوند.
+* [مقادیر بعد از پاس داده شدن به JSX غیرقابل تغییرند](/reference/rules/components-and-hooks-must-be-pure#values-are-immutable-after-being-passed-to-jsx) – مقادیر را پس از استفاده در JSX تغییر ندهید. تغییر را قبل از ایجاد JSX منتقل کنید.
 
 ---
 
-## Rules of Hooks {/*rules-of-hooks*/}
+## ری‌اکت کامپوننت‌ها و هوک‌ها را فراخوانی می‌کند {/*react-calls-components-and-hooks*/}
 
-Hooks are defined using JavaScript functions, but they represent a special type of reusable UI logic with restrictions on where they can be called. You need to follow the [Rules of Hooks](/reference/rules/rules-of-hooks) when using them.
+[ری‌اکت مسئول رندر کردن کامپوننت‌ها و هوک‌ها در صورت لزوم برای بهینه‌سازی تجربهٔ کاربری است.](/reference/rules/react-calls-components-and-hooks) این به‌صورت اعلانی است: شما به ری‌اکت می‌گویید چه چیزی در منطق کامپوننت‌تان رندر شود، و ری‌اکت بهترین روش برای نمایش آن به کاربر را پیدا می‌کند.
 
-* [Only call Hooks at the top level](/reference/rules/rules-of-hooks#only-call-hooks-at-the-top-level) – Don’t call Hooks inside loops, conditions, or nested functions. Instead, always use Hooks at the top level of your React function, before any early returns.
-* [Only call Hooks from React functions](/reference/rules/rules-of-hooks#only-call-hooks-from-react-functions) – Don’t call Hooks from regular JavaScript functions.
+* [هرگز تابع‌های کامپوننت را مستقیماً فراخوانی نکنید](/reference/rules/react-calls-components-and-hooks#never-call-component-functions-directly) – کامپوننت‌ها فقط باید در JSX استفاده شوند. آن‌ها را به‌عنوان تابع‌های معمولی فراخوانی نکنید.
+* [هرگز هوک‌ها را به‌عنوان مقادیر معمولی منتقل نکنید](/reference/rules/react-calls-components-and-hooks#never-pass-around-hooks-as-regular-values) – هوک‌ها فقط باید داخل کامپوننت‌ها فراخوانی شوند. هرگز آن‌ها را به‌عنوان یک مقدار معمولی منتقل نکنید.
+
+---
+
+## قوانین هوک‌ها {/*rules-of-hooks*/}
+
+هوک‌ها با استفاده از تابع‌های جاوااسکریپت تعریف می‌شوند، اما آن‌ها نوع خاصی از منطق رابط کاربری قابل استفادهٔ مجدد را با محدودیت‌هایی در مورد اینکه کجا می‌توانند فراخوانی شوند، نمایندگی می‌کنند. هنگام استفاده از آن‌ها باید [قوانین هوک‌ها](/reference/rules/rules-of-hooks) را دنبال کنید.
+
+* [هوک‌ها را فقط در سطح بالا فراخوانی کنید](/reference/rules/rules-of-hooks#only-call-hooks-at-the-top-level) – هوک‌ها را داخل حلقه‌ها، شرط‌ها یا تابع‌های تودرتو فراخوانی نکنید. در عوض، همیشه از هوک‌ها در سطح بالا تابع ری‌اکت خود، قبل از هر return زودهنگام استفاده کنید.
+* [هوک‌ها را فقط از تابع‌های ری‌اکت فراخوانی کنید](/reference/rules/rules-of-hooks#only-call-hooks-from-react-functions) – هوک‌ها را از تابع‌های معمولی جاوااسکریپت فراخوانی نکنید.
 

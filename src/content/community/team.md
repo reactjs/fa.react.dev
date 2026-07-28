@@ -1,103 +1,103 @@
 ---
-title: "Meet the Team"
+title: "آشنایی با تیم"
 ---
 
 <Intro>
 
-React development is led by a dedicated team working full time at Meta. It also receives contributions from people all over the world.
+توسعهٔ ری‌اکت توسط تیمی اختصاصی که تمام‌وقت در Meta کار می‌کند هدایت می‌شود. همچنین از افراد سراسر جهان مشارکت دریافت می‌کند.
 
 </Intro>
 
-## React Core {/*react-core*/}
+## هستهٔ ری‌اکت {/*react-core*/}
 
-The React Core team members work full time on the core component APIs, the engine that powers React DOM and React Native, React DevTools, and the React documentation website.
+اعضای تیم هستهٔ ری‌اکت تمام‌وقت روی APIهای هستهٔ کامپوننت، موتوری که React DOM و React Native را قدرتمند می‌سازد، React DevTools و وب‌سایت مستندات ری‌اکت کار می‌کنند.
 
-Current members of the React team are listed in alphabetical order below.
+اعضای فعلی تیم ری‌اکت به ترتیب حروف الفبا در زیر فهرست شده‌اند.
 
 <TeamMember name="Andrew Clark" permalink="andrew-clark" photo="/images/team/acdlite.jpg" github="acdlite" twitter="acdlite" threads="acdlite" title="Engineer at Vercel">
-    Andrew got started with web development by making sites with WordPress, and eventually tricked himself into doing JavaScript. His favorite pastime is karaoke. Andrew is either a Disney villain or a Disney princess, depending on the day.
+    اندرو کار خود را با توسعهٔ وب با ساخت سایت‌ها با WordPress آغاز کرد و در نهایت به‌طور ناخواسته به سمت JavaScript رفت. سرگرمی مورد علاقهٔ او کرائوکی است. اندرو بسته به روز، یا یک شرور دیزنی است یا یک پرنسس دیزنی.
 </TeamMember>
 
 <TeamMember name="Dan Abramov" permalink="dan-abramov" photo="/images/team/gaearon.jpg" github="gaearon" bsky="danabra.mov" title="Independent Engineer">
-    Dan got into programming after he accidentally discovered Visual Basic inside Microsoft PowerPoint. He has found his true calling in turning [Sebastian](#sebastian-markbåge)'s tweets into long-form blog posts. Dan occasionally wins at Fortnite by hiding in a bush until the game ends.
+    دن پس از آنکه به‌طور تصادفی Visual Basic را درون Microsoft PowerPoint کشف کرد، به برنامه‌نویسی روی آورد. او رسالت حقیقی خود را در تبدیل توییت‌های [Sebastian](#sebastian-markbåge) به پست‌های وبلاگ بلند یافته است. دن گاهی با مخفی شدن در یک بوته تا پایان بازی در فورت‌نایت برنده می‌شود.
 </TeamMember>
 
 <TeamMember name="Eli White" permalink="eli-white" photo="/images/team/eli-white.jpg" github="elicwhite" twitter="Eli_White" threads="elicwhite" title="Engineering Manager at Meta">
-    Eli got into programming after he got suspended from middle school for hacking. He has been working on React and React Native since 2017. He enjoys eating treats, especially ice cream and apple pie. You can find Eli trying quirky activities like parkour, indoor skydiving, and aerial silks.
+    الی پس از آنکه به دلیل هک کردن از مدرسهٔ راهنایی تعلیق شد، به برنامه‌نویسی روی آورد. او از سال ۲۰۱۷ روی ری‌اکت و React Native کار می‌کند. او از خوردن خوراکی‌ها، به‌ویژه بستنی و پای سیب لذت می‌برد. می‌توانید الی را در حال انجام فعالیت‌های عجیبی مانند پارکور، چتربازی داخل سالن و حرکات هوایی آکروباتیک پیدا کنید.
 </TeamMember>
 
 <TeamMember name="Hendrik Liebau" permalink="hendrik-liebau" photo="/images/team/hendrik.jpg" github="unstubbable" bsky="unstubbable.bsky.social" twitter="unstubbable" title="Engineer at Vercel">
-    Hendrik’s journey in tech started in the late 90s when he built his first websites with Netscape Communicator. After earning a diploma in computer science and working at digital agencies, he built a React Server Components bundler and library, paving the way to his role on the Next.js team. Outside of work, he enjoys cycling and tinkering in his workshop.
+    سفر هندریک در فناوری در اواخر دههٔ ۹۰ آغاز شد، زمانی که اولین وب‌سایت‌هایش را با Netscape Communicator ساخت. پس از کسب دیپلم علوم کامپیوتر و کار در آژانس‌های دیجیتال، او یک باندلر و کتابخانهٔ React Server Components ساخت و راه را برای نقشش در تیم Next.js هموار کرد. بیرون از کار، از دوچرخه‌سواری و کار در کارگاهش لذت می‌برد.
 </TeamMember>
 
 <TeamMember name="Jack Pope" permalink="jack-pope" photo="/images/team/jack-pope.jpg" github="jackpope" personal="jackpope.me" title="Engineer at Meta">
-    Shortly after being introduced to AutoHotkey, Jack had written scripts to automate everything he could think of. When reaching limitations there, he dove headfirst into web app development and hasn't looked back. Most recently, Jack worked on the web platform at Instagram before moving to React. His favorite programming language is JSX.
+    اندکی پس از آشنایی با AutoHotkey، جک اسکریپت‌هایی نوشت تا هر چیزی که به ذهنش می‌رسید را خودکارسازی کند. هنگامی که به محدودیت‌های آن رسید، سراپا وارد توسعهٔ برنامه‌های وب شد و دیگر هرگز به عقب برگشت. اخیراً، جک پیش از پیوستن به ری‌اکت، روی پلتفرم وب در اینستاگرام کار می‌کرد. زبان برنامه‌نویسی مورد علاقهٔ او JSX است.
 </TeamMember>
 
 <TeamMember name="Jason Bonta" permalink="jason-bonta" photo="/images/team/jasonbonta.jpg" threads="someextent" title="Engineering Manager at Meta">
-    Jason abandoned embedded C for a career in front-end engineering and never looked back. Armed with esoteric CSS knowledge and a passion for beautiful UI, Jason joined Facebook in 2010, where he now feels privileged to have seen JavaScript development come of age. Though he may not understand how `for...of` loops work, he loves getting to work with brilliant people on projects that enable amazing UX.
+    جیسون C تعبیه‌شده را برای حرفه‌ای در مهندسی فرانت‌اند رها کرد و دیگر هرگز به عقب نگاه نکرد. مسلح به دانش عجیب CSS و اشتیاق به رابط کاربری زیبا، جیسون در سال ۲۰۱۰ به Facebook پیوست و اکنون خود را محظوظ می‌داند که شاهد بلوغ توسعهٔ JavaScript بوده است. اگرچه ممکن است نداند حلقه‌های `for...of` چگونه کار می‌کنند، اما از کار کردن با افراد درخشان روی پروژه‌هایی که امکان تجربهٔ کاربری شگفت‌انگیز را فراهم می‌کنند لذت می‌برد.
 </TeamMember>
 
 <TeamMember name="Joe Savona" permalink="joe-savona" photo="/images/team/joe.jpg" github="josephsavona" twitter="en_JS" threads="joesavona" title="Engineer at Meta">
-    Joe was planning to major in math and philosophy but got into computer science after writing physics simulations in Matlab. Prior to React, he worked on Relay, RSocket.js, and the Skip programming language. While he’s not building some sort of reactive system he enjoys running, studying Japanese, and spending time with his family.
+    جو قصد داشت در ریاضی و فلسفه تحصیل کند، اما پس از نوشتن شبیه‌سازی‌های فیزیک در Matlab به علوم کامپیوتر روی آورد. پیش از ری‌اکت، روی Relay، RSocket.js و زبان برنامه‌نویسی Skip کار می‌کرد. وقتی در حال ساخت نوعی سیستم واکنش‌گرا نیست، از دویدن، یادگیری ژاپنی و وقت‌گذرانی با خانواده‌اش لذت می‌برد.
 </TeamMember>
 
 <TeamMember name="Jordan Brown" permalink="jordan-brown" photo="/images/team/jordan.jpg" github="jbrown215" title="Engineer at Meta">
-    Jordan started coding by building iPhone apps, where he was pushing and popping view controllers before he knew that for-loops were a thing. He enjoys working on technology that developers love, which naturally drew him to React. Outside of work he enjoys reading, kiteboarding, and playing guitar.
+    جردن کدنویسی را با ساخت اپلیکیشن‌های آیفون آغاز کرد، جایی که view controllerها را push و pop می‌کرد پیش از آنکه بداند حلقه‌های for وجود دارند. او از کار روی فناوری‌هایی لذت می‌برد که توسعه‌دهندگان دوستشان دارند، و این امر به‌طبیعت او را به سمت ری‌اکت کشاند. بیرون از کار، از خواندن، کایت‌سواری و نواختن گیتار لذت می‌برد.
 </TeamMember>
 
 <TeamMember name="Josh Story" permalink="josh-story" photo="/images/team/josh.jpg" github="gnoff" bsky="storyhb.com" title="Engineer at Vercel">
-    Josh majored in Mathematics and discovered programming while in college. His first professional developer job was to program insurance rate calculations in Microsoft Excel, the paragon of Reactive Programming which must be why he now works on React. In between that time Josh has been an IC, Manager, and Executive at a few startups. outside of work he likes to push his limits with cooking.
+    جاش در ریاضی تحصیل کرد و در دوران کالج برنامه‌نویسی را کشف کرد. اولین شغل حرفه‌ای توسعه‌دهندگی او برنامه‌نویسی محاسبات نرخ بیمه در Microsoft Excel بود، تجسم برتر برنامه‌نویسی واکنش‌گرا (Reactive Programming) که احتمالاً دلیل اکنون کار کردن او روی ری‌اکت است. در این بین، جوش در چند استارتاپ به‌عنوان IC، مدیر و مدیر اجرایی فعالیت کرده است. بیرون از کار، او دوست دارد با آشپزی حد مرزهای خود را جابجا کند.
 </TeamMember>
 
 <TeamMember name="Lauren Tan" permalink="lauren-tan" photo="/images/team/lauren.jpg" github="poteto" twitter="potetotes" threads="potetotes" bsky="no.lol" title="Engineer at Meta">
-    Lauren's programming career peaked when she first discovered the `<marquee>` tag. She’s been chasing that high ever since. She studied Finance instead of CS in college, so she learned to code using Excel. Lauren enjoys dropping cheeky memes in chat, playing video games with her partner, learning Korean, and petting her dog Zelda.
+    حرفهٔ برنامه‌نویسی لورن زمانی به اوج رسید که برای اولین بار تگ `<marquee>` را کشف کرد. از آن زمان به دنبال همان حس بوده است. او در کالج به جای علوم کامپیوتر مالی خواند، بنابراین با Excel کدنویسی یاد گرفت. لورن از میم‌های شیطنت‌آمیز در چت، بازی‌های ویدئویی با شریکش، یادگیری کره‌ای و نوازش سگش زلدا لذت می‌برد.
 </TeamMember>
 
 <TeamMember name="Matt Carroll" permalink="matt-carroll" photo="/images/team/matt-carroll.png" github="mattcarrollcode" twitter="mattcarrollcode" threads="mattcarrollcode" title="Developer Advocate at Meta">
-    Matt stumbled into coding, and since then, has become enamored with creating things in communities that can’t be created alone. Prior to React, he worked on YouTube, the Google Assistant, Fuchsia, and Google Cloud AI and Evernote. When he's not trying to make better developer tools he enjoys the mountains, jazz, and spending time with his family.
+    مت به‌طور تصادفی به کدنویسی روی آورد و از آن زمان، شیفتهٔ ساخت چیزها در انجمن‌هایی شد که به‌تنهایی قابل ساخت نیستند. پیش از ری‌اکت، او روی YouTube، Google Assistant، Fuchsia، Google Cloud AI و Evernote کار کرده است. وقتی تلاش نمی‌کند ابزارهای توسعه‌دهندهٔ بهتری بسازد، از کوهستان، جاز و وقت‌گذرانی با خانواده‌اش لذت می‌برد.
 </TeamMember>
 
 <TeamMember name="Mike Vitousek" permalink="mike-vitousek" photo="/images/team/mike.jpg" github="mvitousek" title="Engineer at Meta">
-    Mike went to grad school dreaming of becoming a professor but realized that he liked building things a lot more than writing grant applications. Mike joined Meta to work on Javascript infrastructure, which ultimately led him to work on the React Compiler. When not hacking on either Javascript or OCaml, Mike can often be found hiking or skiing in the Pacific Northwest.
+    مایک با رویای استاد شدن به تحصیلات تکمیلی رفت، اما فهمید چیزها را ساختن را بسیار بیشتر از نوشتن درخواست کمک‌هزینه دوست دارد. مایک به Meta پیوست تا روی زیرساخت JavaScript کار کند، که در نهایت او را به کار روی React Compiler رساند. وقتی روی JavaScript یا OCaml کار نمی‌کند، می‌توان مایک را اغلب در حال پیاده‌روی یا اسکی در شمال‌غرب اقیانوس آرام یافت.
 </TeamMember>
 
 <TeamMember name="Mofei Zhang" permalink="mofei-zhang" photo="/images/team/mofei-zhang.png" github="mofeiZ" threads="z_mofei" title="Engineer at Meta">
-    Mofei started programming when she realized it can help her cheat in video games. She focused on operating systems in undergrad / grad school, but now finds herself happily tinkering on React. Outside of work, she enjoys debugging bouldering problems and planning her next backpacking trip(s).
+    موفی زمانی برنامه‌نویسی را آغاز کرد که فهمید می‌تواند به او در تقلب در بازی‌های ویدئویی کمک کند. او در مقطع کارشناسی و کارشناسی ارشد روی سیستم‌عامل تمرکز کرد، اما اکنون خود را در حال کار شادمانه روی ری‌اکت می‌یابد. بیرون از کار، از دیباگ کردن مسائل صخره‌نوردی و برنامه‌ریزی برای سفر(های) کوله‌پشتی بعدی‌اش لذت می‌برد.
 </TeamMember>
 
 <TeamMember name="Pieter Vanderwerff" permalink="pieter-vanderwerff" photo="/images/team/pieter.jpg" github="pieterv" threads="pietervanderwerff" title="Engineer at Meta">
-    Pieter studied building science but after failing to get a job he made himself a website and things escalated from there. At Meta, he enjoys working on performance, languages and now React. When he's not programming you can find him off-road in the mountains.
+    پیتر علوم ساختمان خواند، اما پس از نتوانستن در یافتن شغل، برای خودش یک وب‌سایت ساخت و کار از آنجا پیش رفت. در Meta، از کار روی عملکرد، زبان‌ها و اکنون ری‌اکت لذت می‌برد. وقتی برنامه‌نویسی نمی‌کند، می‌توانید او را در کوهستان بیرون از جاده پیدا کنید.
 </TeamMember>
 
 <TeamMember name="Rick Hanlon" permalink="rick-hanlon" photo="/images/team/rickhanlonii.jpg" github="rickhanlonii" twitter="rickhanlonii" threads="rickhanlonii" bsky="ricky.fm" title="Engineer at Meta">
-    Ricky majored in theoretical math and somehow found himself on the React Native team for a couple years before joining the React team. When he's not programming you can find him snowboarding, biking, climbing, golfing, or closing GitHub issues that do not match the issue template.
+    ریککی در ریاضی نظری تحصیل کرد و به‌نوعی پیش از پیوستن به تیم ری‌اکت، برای چند سال در تیم React Native کار کرد. وقتی برنامه‌نویسی نمی‌کند، می‌توانید او را در حال اسنوبورد، دوچرخه‌سواری، صخره‌نوردی، گلف یا بستن issueهای GitHub که با قالب issue مطابقت ندارند پیدا کنید.
 </TeamMember>
 
 <TeamMember name="Ruslan Lesiutin" permalink="ruslan-lesiutin" photo="/images/team/lesiutin.jpg" github="hoxyq" twitter="ruslanlesiutin" threads="lesiutin" title="Engineer at Meta">
-    Ruslan's introduction to UI programming started when he was a kid by manually editing HTML templates for his custom gaming forums. Somehow, he ended up majoring in Computer Science. He enjoys music, games, and memes. Mostly memes.
+    آشنایی روسلان با برنامه‌نویسی رابط کاربری از کودکی آغاز شد، زمانی که الگوهای HTML را برای انجمن‌های بازی سفارشی‌اش به‌صورت دستی ویرایش می‌کرد. به‌نوعی، او در علوم کامپیوتر تحصیل کرد. او از موسیقی، بازی‌ها و میم‌ها لذت می‌برد. بیشتر میم‌ها.
 </TeamMember>
 
 <TeamMember name="Sebastian Markbåge" permalink="sebastian-markbåge" photo="/images/team/sebmarkbage.jpg" github="sebmarkbage" twitter="sebmarkbage" threads="sebmarkbage" title="Engineer at Vercel">
-    Sebastian majored in psychology. He's usually quiet. Even when he says something, it often doesn't make sense to the rest of us until a few months later. The correct way to pronounce his surname is "mark-boa-geh" but he settled for "mark-beige" out of pragmatism -- and that's how he approaches React.
+    سباستین در روان‌شناسی تحصیل کرد. او معمولاً ساکت است. حتی وقتی چیزی می‌گوید، اغلب تا چند ماه بعد برای بقیهٔ ما معنی پیدا نمی‌کند. تلفظ صحیح نام خانوادگی او "mark-boa-geh" است، اما او از روی عمل‌گرایی به "mark-beige" بسنده کرد -- و این رویکرد او به ری‌اکت نیز هست.
 </TeamMember>
 
 <TeamMember name="Sebastian Silbermann" permalink="sebastian-silbermann" photo="/images/team/sebsilbermann.jpg" github="eps1lon" twitter="sebsilbermann" threads="sebsilbermann" title="Engineer at Vercel">
-    Sebastian learned programming to make the browser games he played during class more enjoyable. Eventually this lead to contributing to as much open source code as possible. Outside of coding he's busy making sure people don't confuse him with the other Sebastians and Zilberman of the React community.
+    سباستین برنامه‌نویسی را یاد گرفت تا بازی‌های مرورگری که در کلاس بازی می‌کرد را لذت‌بخش‌تر کند. این امر در نهایت به مشارکت در هرچه بیشتر کد متن‌باز منجر شد. بیرون از کدنویسی، او در تلاش است تا مطمئن شود مردم او را با سباستین‌ها و Zilbermanهای دیگر انجمن ری‌اکت اشتباه نمی‌گیرند.
 </TeamMember>
 
 <TeamMember name="Seth Webster" permalink="seth-webster" photo="/images/team/seth.jpg" github="sethwebster" twitter="sethwebster" threads="sethwebster" personal="sethwebster.com" title="Engineering Manager at Meta">
-    Seth started programming as a kid growing up in Tucson, AZ. After school, he was bitten by the music bug and was a touring musician for about 10 years before returning to *work*, starting with Intuit. In his spare time, he loves [taking pictures](https://www.sethwebster.com) and flying for animal rescues in the northeastern United States.
+    ست در دوران کودکی در حال رشد در Tucson, AZ برنامه‌نویسی را آغاز کرد. پس از مدرسه، گزش موسیقی او را گزید و حدود ۱۰ سال نوازندهٔ تور بود پیش از آنکه به *کار* بازگردد، ابتدا در Intuit. در اوقات فراغت، او [عکاسی کردن](https://www.sethwebster.com) و پرواز برای نجات حیوانات در شمال‌شرق ایالات متحده را دوست دارد.
 </TeamMember>
 
 <TeamMember name="Sophie Alpert" permalink="sophie-alpert" photo="/images/team/sophiebits.jpg" github="sophiebits" twitter="sophiebits" threads="sophiebits" personal="sophiebits.com" title="Independent Engineer">
-    Four days after React was released, Sophie rewrote the entirety of her then-current project to use it, which she now realizes was perhaps a bit reckless. After she became the project's #1 committer, she wondered why she wasn't getting paid by Facebook like everyone else was and joined the team officially to lead React through its adolescent years. Though she quit that job years ago, somehow she's still in the team's group chats and “providing value”.
+    چهار روز پس از انتشار ری‌اکت، سوفی کل پروژهٔ فعلی‌اش را بازنویسی کرد تا از آن استفاده کند، کاری که اکنون می‌فهمد شاید کمی بی‌احتیاطی بوده است. پس از آنکه به комیت‌کنندهٔ شمارهٔ یک پروژه تبدیل شد، تعجب کرد که چرا مانند بقیه از طرف Facebook حقوق نمی‌گیرد و به‌طور رسمی به تیم پیوست تا ری‌اکت را در سال‌های نوجوانی‌اش هدایت کند. با وجود اینکه سال‌ها پیش آن شغل را ترک کرد، به‌نوعی هنوز در گفتگوهای گروهی تیم است و «ارزش ارائه می‌دهد».
 </TeamMember>
 
 <TeamMember name="Yuzhi Zheng" permalink="yuzhi-zheng" photo="/images/team/yuzhi.jpg" github="yuzhi" twitter="yuzhiz" threads="yuzhiz" title="Engineering Manager at Meta">
-    Yuzhi studied Computer Science in school. She liked the instant gratification of seeing code come to life without having to physically be in a laboratory. Now she’s a manager in the React org. Before management, she used to work on the Relay data fetching framework. In her spare time, Yuzhi enjoys optimizing her life via gardening and home improvement projects.
+    یوزی در مدرسه علوم کامپیوتر خواند. او از رضایت فوری دیدن زنده شدن کد بدون نیاز به حضور فیزیکی در آزمایشگاه خوشش آمد. اکنون او مدیر در سازمان ری‌اکت است. پیش از مدیریت، روی چارچوب دریافت دادهٔ Relay کار می‌کرد. در اوقات فراغت، یوزی از بهینه‌سازی زندگی‌اش از طریق باغبانی و پروژه‌های بهبود خانه لذت می‌برد.
 </TeamMember>
 
-## Past contributors {/*past-contributors*/}
+## مشارکت‌کنندگان پیشین {/*past-contributors*/}
 
-You can find the past team members and other people who significantly contributed to React over the years on the [acknowledgements](/community/acknowledgements) page.
+می‌توانید اعضای پیشین تیم و دیگر افرادی که در طول سال‌ها مشارکت‌های مهمی در ری‌اکت داشته‌اند را در صفحهٔ [تقدیر و تشکر](/community/acknowledgements) پیدا کنید.

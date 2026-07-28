@@ -4,7 +4,7 @@ title: isValidElement
 
 <Intro>
 
-`isValidElement` checks whether a value is a React element.
+`isValidElement` بررسی می‌کند که آیا یک مقدار یک المنت ری‌اکت هست یا نه.
 
 ```js
 const isElement = isValidElement(value)
@@ -16,11 +16,11 @@ const isElement = isValidElement(value)
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `isValidElement(value)` {/*isvalidelement*/}
 
-Call `isValidElement(value)` to check whether `value` is a React element.
+`isValidElement(value)` را فراخوانی کنید تا بررسی کنید که آیا `value` یک المنت ری‌اکت هست یا نه.
 
 ```js
 import { isValidElement, createElement } from 'react';
@@ -35,34 +35,34 @@ console.log(isValidElement('Hello')); // false
 console.log(isValidElement({ age: 42 })); // false
 ```
 
-[See more examples below.](#usage)
+[نمونه‌های بیشتر را در ادامه ببینید.](#usage)
 
-#### Parameters {/*parameters*/}
+#### پارامترها {/*parameters*/}
 
-* `value`: The `value` you want to check. It can be any a value of any type.
+* `value`: `value`ای که می‌خواهید بررسی کنید. می‌تواند هر مقداری با هر نوعی باشد.
 
-#### Returns {/*returns*/}
+#### مقادیر بازگشتی {/*returns*/}
 
-`isValidElement` returns `true` if the `value` is a React element. Otherwise, it returns `false`.
+`isValidElement` در صورتی که `value` یک المنت ری‌اکت باشد، `true` برمی‌گرداند. در غیر این صورت، `false` برمی‌گرداند.
 
-#### Caveats {/*caveats*/}
+#### نکات {/*caveats*/}
 
-* **Only [JSX tags](/learn/writing-markup-with-jsx) and objects returned by [`createElement`](/reference/react/createElement) are considered to be React elements.** For example, even though a number like `42` is a valid React *node* (and can be returned from a component), it is not a valid React element. Arrays and portals created with [`createPortal`](/reference/react-dom/createPortal) are also *not* considered to be React elements.
+* **فقط [تگ‌های JSX](/learn/writing-markup-with-jsx) و آبجکت‌هایی که توسط [`createElement`](/reference/react/createElement) بازگشته‌اند، المنت ری‌اکت محسوب می‌شوند.** به‌عنوان مثال، حتی‌اگر عددی مانند `42` یک *نُد* معتبر ری‌اکت است (و می‌تواند از یک کامپوننت بازگردانده شود)، یک المنت معتبر ری‌اکت نیست. آرایه‌ها و پورتال‌هایی که با [`createPortal`](/reference/react-dom/createPortal) ساخته می‌شوند نیز *خودشان* المنت ری‌اکت محسوب نمی‌شوند.
 
 ---
 
-## Usage {/*usage*/}
+## استفاده {/*usage*/}
 
-### Checking if something is a React element {/*checking-if-something-is-a-react-element*/}
+### بررسی اینکه آیا چیزی یک المنت ری‌اکت هست یا نه {/*checking-if-something-is-a-react-element*/}
 
-Call `isValidElement` to check if some value is a *React element.*
+`isValidElement` را فراخوانی کنید تا بررسی کنید آیا یک مقدار یک *المنت ری‌اکت* هست یا نه.
 
-React elements are:
+المن‌های ری‌اکت عبارت‌اند از:
 
-- Values produced by writing a [JSX tag](/learn/writing-markup-with-jsx)
-- Values produced by calling [`createElement`](/reference/react/createElement)
+- مقادیری که با نوشتن یک [تگ JSX](/learn/writing-markup-with-jsx) تولید می‌شوند
+- مقادیری که با فراخوانی [`createElement`](/reference/react/createElement) تولید می‌شوند
 
-For React elements, `isValidElement` returns `true`:
+برای المن‌های ری‌اکت، `isValidElement` مقدار `true` برمی‌گرداند:
 
 ```js
 import { isValidElement, createElement } from 'react';
@@ -76,9 +76,9 @@ console.log(isValidElement(createElement('p'))); // true
 console.log(isValidElement(createElement(MyComponent))); // true
 ```
 
-Any other values, such as strings, numbers, or arbitrary objects and arrays, are not React elements.
+هر مقدار دیگری، مانند رشته‌ها، اعداد، یا آبجکت‌ها و آرایه‌های دلخواه، المن‌ ری‌اکت نیستند.
 
-For them, `isValidElement` returns `false`:
+برای آن‌ها، `isValidElement` مقدار `false` برمی‌گرداند:
 
 ```js
 // ❌ These are *not* React elements
@@ -90,15 +90,15 @@ console.log(isValidElement([<div />, <div />])); // false
 console.log(isValidElement(MyComponent)); // false
 ```
 
-It is very uncommon to need `isValidElement`. It's mostly useful if you're calling another API that *only* accepts elements (like [`cloneElement`](/reference/react/cloneElement) does) and you want to avoid an error when your argument is not a React element.
+بسیار نادر است که به `isValidElement` نیاز داشته باشید. این متد بیشتر زمانی کاربرد دارد که در حال فراخوانی یک API دیگر هستید که *فقط* المن‌ها را می‌پذیرد (مانند کاری که [`cloneElement`](/reference/react/cloneElement) می‌کند) و می‌خواهید هنگامی که آرگومان شما یک المنت ری‌اکت نیست، از بروز خطا جلوگیری کنید.
 
-Unless you have some very specific reason to add an `isValidElement` check, you probably don't need it.
+مگر اینکه دلیل بسیار خاصی برای افزودن بررسی `isValidElement` داشته باشید، احتمالاً به آن نیازی ندارید.
 
 <DeepDive>
 
-#### React elements vs React nodes {/*react-elements-vs-react-nodes*/}
+#### المن‌های ری‌اکت در برابر نُدهای ری‌اکت {/*react-elements-vs-react-nodes*/}
 
-When you write a component, you can return any kind of *React node* from it:
+هنگام نوشتن یک کامپوننت، می‌توانید هر نوع *نُد ری‌اکت* را از آن بازگردانید:
 
 ```js
 function MyComponent() {
@@ -106,16 +106,16 @@ function MyComponent() {
 }
 ```
 
-A React node can be:
+یک نُد ری‌اکت می‌تواند یکی از موارد زیر باشد:
 
-- A React element created like `<div />` or `createElement('div')`
-- A portal created with [`createPortal`](/reference/react-dom/createPortal)
-- A string
-- A number
-- `true`, `false`, `null`, or `undefined` (which are not displayed)
-- An array of other React nodes
+- یک المنت ری‌اکت ساخته‌شده مانند `<div />` یا `createElement('div')`
+- یک پورتال ساخته‌شده با [`createPortal`](/reference/react-dom/createPortal)
+- یک رشته
+- یک عدد
+- `true`, `false`, `null`, یا `undefined` (که نمایش داده نمی‌شوند)
+- یک آرایه از نُدهای ری‌اکت دیگر
 
-**Note `isValidElement` checks whether the argument is a *React element,* not whether it's a React node.** For example, `42` is not a valid React element. However, it is a perfectly valid React node:
+**توجه کنید که `isValidElement` بررسی می‌کند که آیا آرگومان یک *المنت ری‌اکت* هست یا نه، نه اینکه آیا یک نُد ری‌اکت هست.** به‌عنوان مثال، `42` یک المنت معتبر ری‌اکت نیست. با این حال، یک نُد کاملاً معتبر ری‌اکت است:
 
 ```js
 function MyComponent() {
@@ -123,6 +123,6 @@ function MyComponent() {
 }
 ```
 
-This is why you shouldn't use `isValidElement` as a way to check whether something can be rendered.
+به همین دلیل نباید از `isValidElement` به‌عنوان راهی برای بررسی اینکه آیا چیزی می‌تواند رندر شود یا نه، استفاده کنید.
 
 </DeepDive>

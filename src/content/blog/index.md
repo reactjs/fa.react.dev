@@ -1,12 +1,12 @@
 ---
-title: React Blog
+title: بلاگ ری‌اکت
 ---
 
 <Intro>
 
-This blog is the official source for the updates from the React team. Anything important, including release notes or deprecation notices, will be posted here first.
+این بلاگ منبع رسمی برای به‌روزرسانی‌های تیم ری‌اکت است. هر چیز مهمی، شامل یادداشت‌های انتشار یا اعلان‌های منسوخ‌شدن، ابتدا اینجا منتشر خواهد شد.
 
-You can also follow the [@react.dev](https://bsky.app/profile/react.dev) account on Bluesky, or [@reactjs](https://twitter.com/reactjs) account on Twitter, but you won’t miss anything essential if you only read this blog.
+شما همچنین می‌توانید حساب [@react.dev](https://bsky.app/profile/react.dev) را در Bluesky یا حساب [@reactjs](https://twitter.com/reactjs) را در توییتر دنبال کنید، اما اگر فقط این بلاگ را بخوانید، هیچ چیز اساسی را از دست نخواهید داد.
 
 </Intro>
 
@@ -14,112 +14,124 @@ You can also follow the [@react.dev](https://bsky.app/profile/react.dev) account
 
 <BlogCard title="React Labs: View Transitions, Activity, and more" date="April 23, 2025" url="/blog/2025/04/23/react-labs-view-transitions-activity-and-more">
 
-In React Labs posts, we write about projects in active research and development. In this post, we're sharing two new experimental features that are ready to try today, and sharing other areas we're working on now ...
+در پست‌های React Labs، درباره پروژه‌هایی که در حال تحقیق و توسعه فعال روی آن‌ها کار می‌کنیم می‌نویسیم. در این پست، دو قابلیت آزمایشی جدید را که امروز آمادهٔ امتحان هستند به اشتراک می‌گذاریم و از حوزه‌های دیگری که اکنون روی آن‌ها کار می‌کنیم پرده برمی‌داریم ...
 
 </BlogCard>
 
 <BlogCard title="React Compiler RC" date="April 21, 2025" url="/blog/2025/04/21/react-compiler-rc">
 
-We are releasing the compiler's first Release Candidate (RC) today.
+ما امروز اولین نسخهٔ کاندید انتشار (RC) کامپایلر را منتشر می‌کنیم.
 
 </BlogCard>
 
 <BlogCard title="Sunsetting Create React App" date="February 14, 2025" url="/blog/2025/02/14/sunsetting-create-react-app">
 
-Today, we’re deprecating Create React App for new apps, and encouraging existing apps to migrate to a framework, or to migrate to a build tool like Vite, Parcel, or RSBuild. We’re also providing docs for when a framework isn’t a good fit for your project, you want to build your own framework, or you just want to learn how React works by building a React app from scratch ...
+امروز، ما Create React App را برای برنامه‌های جدید منسوخ می‌کنیم و برنامه‌های موجود را به مهاجرت به یک فریم‌ورک، یا مهاجرت به ابزار ساخت‌ای مثل Vite، Parcel یا RSBuild تشویق می‌کنیم. ما همچنین مستنداتی برای زمانی که فریم‌ورک برای پروژهٔ شما مناسب نیست، می‌خواهید فریم‌ورک خودتان را بسازید، یا فقط می‌خواهید با ساختن یک برنامهٔ ری‌اکت از صفر، نحوهٔ کار ری‌اکت را یاد بگیرید، ارائه می‌دهیم ...
 
 </BlogCard>
 
 <BlogCard title="React v19 " date="December 5, 2024" url="/blog/2024/12/05/react-19">
 
-In the React 19 Upgrade Guide, we shared step-by-step instructions for upgrading your app to React 19. In this post, we'll give an overview of the new features in React 19, and how you can adopt them ...
+در راهنمای ارتقا به React 19، دستورالعمل‌های گام‌به‌گام برای ارتقای برنامه‌تان به React 19 را به اشتراک گذاشتیم. در این پست، مروری بر قابلیت‌های جدید React 19 و نحوهٔ پذیرش آن‌ها ارائه می‌دهیم ...
 
 </BlogCard>
 
 <BlogCard title="React Compiler Beta Release" date="October 21, 2024" url="/blog/2024/10/21/react-compiler-beta-release">
 
-We announced an experimental release of React Compiler at React Conf 2024. We've made a lot of progress since then, and in this post we want to share what's next for React Compiler ...
+ما یک انتشار آزمایشی از React Compiler را در React Conf 2024 اعلام کردیم. از آن زمان پیشرفت زیادی کرده‌ایم، و در این پست می‌خواهیم درباره آیندهٔ React Compiler صحبت کنیم ...
 
 </BlogCard>
 
 <BlogCard title="React Conf 2024 Recap" date="May 22, 2024" url="/blog/2024/05/22/react-conf-2024-recap">
 
-Last week we hosted React Conf 2024, a two-day conference in Henderson, Nevada where 700+ attendees gathered in-person to discuss the latest in UI engineering. This was our first in-person conference since 2019, and we were thrilled to be able to bring the community together again ...
+هفتهٔ گذشته میزبان React Conf 2024 بودیم، یک کنفرانس دو روزه در هندرسون، نوادا که بیش از ۷۰۰ شرکت‌کننده به‌صورت حضوری برای بحث درباره جدیدترین موارد در مهندسی رابط کاربری گرد هم آمدند. این اولین کنفرانس حضوری ما از سال ۲۰۱۹ بود و هیجان‌زده بودیم که بتوانیم جامعه را دوباره گرد هم بیاوریم ...
 
 </BlogCard>
 
 <BlogCard title="React 19 Upgrade Guide" date="April 25, 2024" url="/blog/2024/04/25/react-19-upgrade-guide">
 
-The improvements added to React 19 require some breaking changes, but we've worked to make the upgrade as smooth as possible, and we don't expect the changes to impact most apps. In this post, we will guide you through the steps for upgrading libraries to React 19 ...
+بهبودهای اضافه‌شده به React 19 نیازمند برخی تغییرات شکستن‌کننده است، اما ما تلاش کرده‌ایم ارتقا را تا حد ممکن روان کنیم و انتظار نداریم این تغییرات روی بیشتر برنامه‌ها تأثیر بگذارد. در این پست، شما را در مراحل ارتقای کتابخانه‌ها به React 19 راهنمایی می‌کنیم ...
 
 </BlogCard>
 
 <BlogCard title="React Labs: What We've Been Working On – February 2024" date="February 15, 2024" url="/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024">
 
-In React Labs posts, we write about projects in active research and development. Since our last update, we've made significant progress on React Compiler, new features, and React 19, and we'd like to share what we learned.
+در پست‌های React Labs، درباره پروژه‌هایی که در حال تحقیق و توسعه فعال روی آن‌ها کار می‌کنیم می‌نویسیم. از آخرین به‌روزرسانی ما، پیشرفت قابل‌توجهی در React Compiler، قابلیت‌های جدید و React 19 داشته‌ایم و دوست داریم آنچه را آموختیم به اشتراک بگذاریم.
 
 </BlogCard>
 
 <BlogCard title="React Canaries: Incremental Feature Rollout Outside Meta" date="May 3, 2023" url="/blog/2023/05/03/react-canaries">
 
-Traditionally, new React features used to only be available at Meta first, and land in the open source releases later. We'd like to offer the React community an option to adopt individual new features as soon as their design is close to final--similar to how Meta uses React internally. We are introducing a new officially supported Canary release channel. It lets curated setups like frameworks decouple adoption of individual React features from the React release schedule.
+به طور سنتی، قابلیت‌های جدید ری‌اکت ابتدا فقط در Meta در دسترس بودند و بعداً در انتشارهای متن‌باز منتشر می‌شدند. ما دوست داریم به جامعهٔ ری‌اکت گزینه‌ای برای پذیرش قابلیت‌های جدید به‌صورت تک‌تک به‌محض نزدیک شدن طراحی‌شان به وضعیت نهایی—مشابه نحوهٔ استفادهٔ Meta از ری‌اکت به‌صورت داخلی—ارائه دهیم. ما یک کانال انتشار Canary جدید با پشتیبانی رسمی معرفی می‌کنیم. این کانال به تنظیمات گزیده‌ای مانند فریم‌ورک‌ها اجازه می‌دهد پذیرش قابلیت‌های تک‌تک ری‌اکت را از زمان‌بندی انتشار ری‌اکت جدا کنند.
 
 </BlogCard>
 
 <BlogCard title="React Labs: What We've Been Working On – March 2023" date="March 22, 2023" url="/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023">
 
-In React Labs posts, we write about projects in active research and development. Since our last update, we've made significant progress on React Server Components, Asset Loading, Optimizing Compiler, Offscreen Rendering, and Transition Tracing, and we'd like to share what we learned.
+در پست‌های React Labs، درباره پروژه‌هایی که در حال تحقیق و توسعه فعال روی آن‌ها کار می‌کنیم می‌نویسیم. از آخرین به‌روزرسانی ما، پیشرفت قابل‌توجهی در کامپوننت‌های سرور ری‌اکت (React Server Components)، بارگذاری دارایی‌ها، کامپایلر بهینه‌ساز، رندر خارج از صفحه و ردیابی ترنزیشن داشته‌ایم و دوست داریم آنچه را آموختیم به اشتراک بگذاریم.
 
 </BlogCard>
 
 
 <BlogCard title="Introducing react.dev" date="March 16, 2023" url="/blog/2023/03/16/introducing-react-dev">
 
-Today we are thrilled to launch react.dev, the new home for React and its documentation. In this post, we would like to give you a tour of the new site.
+امروز ما هیجان‌زده هستیم که react.dev را، خانهٔ جدید برای ری‌اکت و مستندات آن، راه‌اندازی کنیم. در این پست، دوست داریم یک تور از سایت جدید به شما بدهیم.
 
 </BlogCard>
 
 
 <BlogCard title="React Labs: What We've Been Working On – June 2022" date="June 15, 2022" url="/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022">
-React 18 was years in the making, and with it brought valuable lessons for the React team. Its release was the result of many years of research and exploring many paths. Some of those paths were successful; many more were dead-ends that led to new insights. One lesson we’ve learned is that it’s frustrating for the community to wait for new features without having insight into these paths that we’re exploring...
+
+React 18 سال‌ها در دست ساخت بود، و با خود درس‌های ارزشمندی برای تیم ری‌اکت به همراه آورد. انتشار آن نتیجهٔ سال‌ها تحقیق و کاوش در مسیرهای زیادی بود. برخی از آن مسیرها موفق بودند؛ خیلی بیشتر آن‌ها بن‌بست بودند که به بینش‌های جدیدی منجر شدند. یکی از درس‌هایی که آموختیم این است که برای جامعه ناامیدکننده است که بدون داشتن بینشی نسبت به این مسیرهایی که در حال کاوش آن‌ها هستیم، منتظر قابلیت‌های جدید بماند...
+
 </BlogCard>
 
 <BlogCard title="React v18.0" date="March 29, 2022" url="/blog/2022/03/29/react-v18">
-React 18 is now available on npm! In our last post, we shared step-by-step instructions for upgrading your app to React 18. In this post, we’ll give an overview of what’s new in React 18, and what it means for the future...
+
+React 18 اکنون در npm در دسترس است! در آخرین پستمان، دستورالعمل‌های گام‌به‌گام برای ارتقای برنامه‌تان به React 18 را به اشتراک گذاشتیم. در این پست، مروری بر آنچه در React 18 جدید است و معنای آن برای آینده ارائه می‌دهیم...
+
 </BlogCard>
 
 <BlogCard title="How to Upgrade to React 18" date="March 8, 2022" url="/blog/2022/03/08/react-18-upgrade-guide">
-As we shared in the release post, React 18 introduces features powered by our new concurrent renderer, with a gradual adoption strategy for existing applications. In this post, we will guide you through the steps for upgrading to React 18...
+
+همان‌طور که در پست انتشار به اشتراک گذاشتیم، React 18 قابلیت‌هایی را معرفی می‌کند که توسط رندرر همزمان (Concurrent) جدید ما نیرو می‌گیرند، با استراتژی پذیرش تدریجی برای برنامه‌های موجود. در این پست، شما را در مراحل ارتقا به React 18 راهنمایی می‌کنیم...
+
 </BlogCard>
 
 <BlogCard title="React Conf 2021 Recap" date="December 17, 2021" url="/blog/2021/12/17/react-conf-2021-recap">
-Last week we hosted our 6th React Conf.  In previous years, we’ve used the React Conf stage to deliver industry changing announcements such as React Native and React Hooks. This year, we shared our multi-platform vision for React, starting with the release of React 18 and gradual adoption of concurrent features...
+
+هفتهٔ گذشته میزبان ششمین React Conf بودیم. در سال‌های گذشته، از صحنهٔ React Conf برای ارائهٔ اعلامیه‌های تغییردهندهٔ صنعت مانند React Native و React Hooks استفاده کرده‌ایم. امسال، چشم‌انداز چندسکویی خود برای ری‌اکت را به اشتراک گذاشتیم، که با انتشار React 18 و پذیرش تدریجی قابلیت‌های همزمان آغاز می‌شود...
+
 </BlogCard>
 
 <BlogCard title="The Plan for React 18" date="June 8, 2021" url="/blog/2021/06/08/the-plan-for-react-18">
-The React team is excited to share a few updates:
 
-- We’ve started work on the React 18 release, which will be our next major version.
-- We’ve created a Working Group to prepare the community for gradual adoption of new features in React 18.
-- We’ve published a React 18 Alpha so that library authors can try it and provide feedback...
+تیم ری‌اکت برای به اشتراک گذاشتن چند به‌روزرسانی هیجان‌زده است:
+
+- کار بر روی انتشار React 18 را آغاز کرده‌ایم، که نسخهٔ اصلی بعدی ما خواهد بود.
+- یک گروه کاری ایجاد کرده‌ایم تا جامعه را برای پذیرش تدریجی قابلیت‌های جدید در React 18 آماده کند.
+- یک آلفای React 18 منتشر کرده‌ایم تا نویسندگان کتابخانه‌ها بتوانند آن را امتحان کرده و بازخورد بدهند...
+
 </BlogCard>
 
 <BlogCard title="Introducing Zero-Bundle-Size React Server Components" date="December 21, 2020" url="/blog/2020/12/21/data-fetching-with-react-server-components">
-2020 has been a long year. As it comes to an end we wanted to share a special Holiday Update on our research into zero-bundle-size React Server Components. To introduce React Server Components, we have prepared a talk and a demo. If you want, you can check them out during the holidays, or later when work picks back up in the new year...
+
+سال ۲۰۲۰ سالی طولانی بود. وقتی به پایان می‌رسد، دوست داشتیم یک به‌روزرسانی ویژهٔ تعطیلات درباره تحقیقاتمان روی کامپوننت‌های سرور ری‌اکت (React Server Components) با اندازهٔ باندل صفر به اشتراک بگذاریم. برای معرفی کامپوننت‌های سرور ری‌اکت، یک سخنرانی و یک دمو آماده کرده‌ایم. اگر مایل هستید، می‌توانید آن‌ها را در طول تعطیلات بررسی کنید، یا بعداً وقتی کار در سال جدید از سر گرفته می‌شود...
+
 </BlogCard>
 
 </div>
 
 ---
 
-### All release notes {/*all-release-notes*/}
+### همهٔ یادداشت‌های انتشار {/*all-release-notes*/}
 
-Not every React release deserves its own blog post, but you can find a detailed changelog for every release in the [`CHANGELOG.md`](https://github.com/facebook/react/blob/main/CHANGELOG.md) file in the React repository, as well as on the [Releases](https://github.com/facebook/react/releases) page.
+هر انتشار ری‌اکت لزوماً ارزش یک پست بلاگ جداگانه را ندارد، اما شما می‌توانید یک changelog (گزارش تغییرات) دقیق برای هر انتشار را در فایل [`CHANGELOG.md`](https://github.com/facebook/react/blob/main/CHANGELOG.md) در مخزن ری‌اکت، و همچنین در صفحهٔ [Releases](https://github.com/facebook/react/releases) پیدا کنید.
 
 ---
 
-### Older posts {/*older-posts*/}
+### پست‌های قدیمی‌تر {/*older-posts*/}
 
-See the [older posts.](https://reactjs.org/blog/all.html)
+[پست‌های قدیمی‌تر را ببینید.](https://reactjs.org/blog/all.html)
 
 <div className="h-12"></div>

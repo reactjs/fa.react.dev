@@ -4,7 +4,7 @@ title: logger
 
 <Intro>
 
-The `logger` option provides custom logging for React Compiler events during compilation.
+گزینهٔ `logger` لاگ‌گیری سفارشی برای رویدادهای React Compiler در طول کامپایل فراهم می‌کند.
 
 </Intro>
 
@@ -22,13 +22,13 @@ The `logger` option provides custom logging for React Compiler events during com
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `logger` {/*logger*/}
 
-Configures custom logging to track compiler behavior and debug issues.
+لاگ‌گیری سفارشی برای پیگیری رفتار کامپایلر و دیباگ مشکلات پیکربندی می‌کند.
 
-#### Type {/*type*/}
+#### نوع {/*type*/}
 
 ```
 {
@@ -36,35 +36,35 @@ Configures custom logging to track compiler behavior and debug issues.
 } | null
 ```
 
-#### Default value {/*default-value*/}
+#### مقدار پیش‌فرض {/*default-value*/}
 
 `null`
 
-#### Methods {/*methods*/}
+#### متدها {/*methods*/}
 
-- **`logEvent`**: Called for each compiler event with the filename and event details
+- **`logEvent`**: برای هر رویداد کامپایلر با نام فایل و جزئیات رویداد فراخوانی می‌شود
 
-#### Event types {/*event-types*/}
+#### انواع رویداد {/*event-types*/}
 
-- **`CompileSuccess`**: Function successfully compiled
-- **`CompileError`**: Function skipped due to errors
-- **`CompileDiagnostic`**: Non-fatal diagnostic information
-- **`CompileSkip`**: Function skipped for other reasons
-- **`PipelineError`**: Unexpected compilation error
-- **`Timing`**: Performance timing information
+- **`CompileSuccess`**: تابع با موفقیت کامپایل شد
+- **`CompileError`**: تابع به دلیل خطا نادیده گرفته شد
+- **`CompileDiagnostic`**: اطلاعات تشخیصی غیربحرانی
+- **`CompileSkip`**: تابع به دلایل دیگر نادیده گرفته شد
+- **`PipelineError`**: خطای کامپایل غیرمنتظره
+- **`Timing`**: اطلاعات زمان‌بندی عملکرد
 
-#### Caveats {/*caveats*/}
+#### ملاحظات {/*caveats*/}
 
-- Event structure may change between versions
-- Large codebases generate many log entries
+- ساختار رویداد ممکن است بین نسخه‌ها تغییر کند
+- کدبیس‌های بزرگ ورودی‌های لاگ زیادی تولید می‌کنند
 
 ---
 
-## Usage {/*usage*/}
+## نحوهٔ استفاده {/*usage*/}
 
-### Basic logging {/*basic-logging*/}
+### لاگ‌گیری اولیه {/*basic-logging*/}
 
-Track compilation success and failures:
+موفقیت و شکست کامپایل را پیگیری کنید:
 
 ```js
 {
@@ -86,9 +86,9 @@ Track compilation success and failures:
 }
 ```
 
-### Detailed error logging {/*detailed-error-logging*/}
+### لاگ‌گیری خطای دقیق {/*detailed-error-logging*/}
 
-Get specific information about compilation failures:
+اطلاعات خاصی دربارهٔ شکست‌های کامپایل دریافت کنید:
 
 ```js
 {

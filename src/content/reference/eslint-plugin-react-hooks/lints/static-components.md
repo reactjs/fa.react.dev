@@ -4,17 +4,17 @@ title: static-components
 
 <Intro>
 
-Validates that components are static, not recreated every render. Components that are recreated dynamically can reset state and trigger excessive re-rendering.
+تأیید می‌کند که کامپوننت‌ها استاتیک هستند، و در هر رندر دوباره ایجاد نمی‌شوند. کامپوننت‌هایی که به‌صورت پویا دوباره ایجاد می‌شوند می‌توانند استیت را reset کنند و رندر مکرر بیش از حد تحریک کنند.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## جزئیات قانون {/*rule-details*/}
 
-Components defined inside other components are recreated on every render. React sees each as a brand new component type, unmounting the old one and mounting the new one, destroying all state and DOM nodes in the process.
+کامپوننت‌هایی که داخل کامپوننت‌های دیگر تعریف می‌شوند در هر رندر دوباره ایجاد می‌شوند. ری‌اکت هر کدام را به‌عنوان یک نوع کامپوننت کاملاً جدید می‌بیند، و کامپوننت قدیمی را unmount و کامپوننت جدید را mount می‌کند، و در این فرآیند همهٔ استیت‌ها و nodeهای DOM را تخریب می‌کند.
 
-### Invalid {/*invalid*/}
+### نامعتبر {/*invalid*/}
 
-Examples of incorrect code for this rule:
+نمونه‌هایی از کد نادرست برای این قانون:
 
 ```js
 // ❌ Component defined inside component
@@ -37,9 +37,9 @@ function Parent({type}) {
 }
 ```
 
-### Valid {/*valid*/}
+### معتبر {/*valid*/}
 
-Examples of correct code for this rule:
+نمونه‌هایی از کد درست برای این قانون:
 
 ```js
 // ✅ Components at module level
@@ -55,11 +55,11 @@ function Parent({type}) {
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-### I need to render different components conditionally {/*conditional-components*/}
+### نیاز به رندر کامپوننت‌های متفاوت به‌صورت شرطی دارم {/*conditional-components*/}
 
-You might define components inside to access local state:
+ممکن است برای دسترسی به استیت محلی، کامپوننت‌ها را داخل تعریف کنید:
 
 ```js {expectedErrors: {'react-compiler': [13]}}
 // ❌ Wrong: Inner component to access parent state
@@ -78,7 +78,7 @@ function Parent() {
 }
 ```
 
-Pass data as props instead:
+به‌جای آن داده‌ها را به‌عنوان پراپس پاس دهید:
 
 ```js
 // ✅ Better: Pass props to static component
@@ -98,6 +98,6 @@ function Parent() {
 
 <Note>
 
-If you find yourself wanting to define components inside other components to access local variables, that's a sign you should be passing props instead. This makes components more reusable and testable.
+اگر خودتان را در حال wanting به تعریف کامپوننت‌ها داخل کامپوننت‌های دیگر برای دسترسی به متغیرهای محلی یافتید، این نشانه‌ای است که باید به‌جای آن پراپس بفرستید. این کار کامپوننت‌ها را قابل استفادهٔ مجدد و قابل تست‌تر می‌کند.
 
 </Note>

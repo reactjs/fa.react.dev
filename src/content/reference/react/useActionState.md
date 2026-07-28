@@ -4,7 +4,7 @@ title: useActionState
 
 <Intro>
 
-`useActionState` is a Hook that allows you to update state based on the result of a form action.
+`useActionState` یک هوک است که به شما اجازه می‌دهد استیت را بر اساس نتیجهٔ یک اکشن فرم به‌روزرسانی کنید.
 
 ```js
 const [state, formAction, isPending] = useActionState(fn, initialState, permalink?);
@@ -14,7 +14,7 @@ const [state, formAction, isPending] = useActionState(fn, initialState, permalin
 
 <Note>
 
-In earlier React Canary versions, this API was part of React DOM and called `useFormState`.
+در نسخه‌های اولیهٔ React Canary، این API بخشی از React DOM بود و `useFormState` نامیده می‌شد.
 
 </Note>
 
@@ -23,13 +23,13 @@ In earlier React Canary versions, this API was part of React DOM and called `use
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `useActionState(action, initialState, permalink?)` {/*useactionstate*/}
 
 {/* TODO T164397693: link to actions documentation once it exists */}
 
-Call `useActionState` at the top level of your component to create component state that is updated [when a form action is invoked](/reference/react-dom/components/form). You pass `useActionState` an existing form action function as well as an initial state, and it returns a new action that you use in your form, along with the latest form state and whether the Action is still pending. The latest form state is also passed to the function that you provided.
+برای ایجاد استیت کامپوننتی که [هنگام فراخوانی یک اکشن فرم](/reference/react-dom/components/form) به‌روزرسانی می‌شود، `useActionState` را در بالاترین سطح کامپوننت خود فراخوانی کنید. شما یک تابع اکشن فرم موجود و همچنین یک استیت اولیه را به `useActionState` پاس می‌دهید، و این هوک یک اکشن جدید که در فرم خود استفاده می‌کنید، به همراه آخرین استیت فرم و اینکه آیا اکشن هنوز در حالت pending است یا خیر را برمی‌گرداند. آخرین استیت فرم همچنین به تابعی که ارائه کرده‌اید پاس داده می‌شود.
 
 ```js
 import { useActionState } from "react";
@@ -49,40 +49,40 @@ function StatefulForm({}) {
 }
 ```
 
-The form state is the value returned by the action when the form was last submitted. If the form has not yet been submitted, it is the initial state that you pass.
+استیت فرم مقداری است که توسط اکشن هنگام آخرین ارسال فرم بازگشده است. اگر فرم هنوز ارسال نشده است، این همان استیت اولیه‌ای است که پاس می‌دهید.
 
-If used with a Server Function, `useActionState` allows the server's response from submitting the form to be shown even before hydration has completed.
+اگر با یک Server Function استفاده شود، `useActionState` اجازه می‌دهد پاسخ سرور از ارسال فرم حتی قبل از تکمیل hydration نمایش داده شود.
 
-[See more examples below.](#usage)
+[مثال‌های بیشتر را در ادامه ببینید.](#usage)
 
-#### Parameters {/*parameters*/}
+#### پارامترها {/*parameters*/}
 
-* `fn`: The function to be called when the form is submitted or button pressed. When the function is called, it will receive the previous state of the form (initially the `initialState` that you pass, subsequently its previous return value) as its initial argument, followed by the arguments that a form action normally receives.
-* `initialState`: The value you want the state to be initially. It can be any serializable value. This argument is ignored after the action is first invoked.
-* **optional** `permalink`: A string containing the unique page URL that this form modifies. For use on pages with dynamic content (eg: feeds) in conjunction with progressive enhancement: if `fn` is a [server function](/reference/rsc/server-functions) and the form is submitted before the JavaScript bundle loads, the browser will navigate to the specified permalink URL, rather than the current page's URL. Ensure that the same form component is rendered on the destination page (including the same action `fn` and `permalink`) so that React knows how to pass the state through. Once the form has been hydrated, this parameter has no effect.
+* `fn`: تابعی که هنگام ارسال فرم یا فشردن دکمه فراخوانی می‌شود. هنگام فراخوانی تابع، استیت قبلی فرم (در ابتدا `initialState` که پاس می‌دهید، سپس مقدار بازگشتی قبلی آن) به‌عنوان آرگومان اول آن دریافت می‌شود، و به دنبال آن آرگومان‌هایی که یک اکشن فرم معمولاً دریافت می‌کند.
+* `initialState`: مقداری که می‌خواهید استیت در ابتدا داشته باشد. می‌تواند هر مقدار سریالایزپذیری باشد. این آرگومان پس از اولین فراخوانی اکشن نادیده گرفته می‌شود.
+* **اختیاری** `permalink`: رشته‌ای حاوی URL یکتای صفحه‌ای که این فرم آن را تغییر می‌دهد. برای استفاده در صفحاتی با محتوای پویا (مثلاً فیدها) به همراه progressive enhancement: اگر `fn` یک [server function](/reference/rsc/server-functions) باشد و فرم قبل از بارگذاری باندل جاوااسکریپت ارسال شود، مرورگر به URL permalink مشخص‌شده هدایت می‌شود، نه URL صفحهٔ فعلی. اطمینان حاصل کنید که همان کامپوننت فرم در صفحهٔ مقصد رندر می‌شود (شامل همان اکشن `fn` و `permalink`) تا ری‌اکت بداند چگونه استیت را از طریق آن پاس بدهد. پس از hydration فرم، این پارامتر هیچ تأثیری ندارد.
 
 {/* TODO T164397693: link to serializable values docs once it exists */}
 
-#### Returns {/*returns*/}
+#### مقادیر بازگشتی {/*returns*/}
 
-`useActionState` returns an array with the following values:
+`useActionState` یک آرایه با مقادیر زیر برمی‌گرداند:
 
-1. The current state. During the first render, it will match the `initialState` you have passed. After the action is invoked, it will match the value returned by the action.
-2. A new action that you can pass as the `action` prop to your `form` component or `formAction` prop to any `button` component within the form. The action can also be called manually within [`startTransition`](/reference/react/startTransition).
-3. The `isPending` flag that tells you whether there is a pending Transition.
+1. استیت فعلی. در طول رندر اول، با `initialState`ای که پاس داده‌اید مطابقت خواهد داشت. پس از فراخوانی اکشن، با مقدار بازگشتی توسط اکشن مطابقت خواهد داشت.
+2. یک اکشن جدید که می‌توانید آن را به‌عنوان پراپ `action` به کامپوننت `form` خود یا به‌عنوان پراپ `formAction` به هر کامپوننت `button` درون فرم پاس بدهید. این اکشن همچنین می‌تواند به‌صورت دستی درون [`startTransition`](/reference/react/startTransition) فراخوانی شود.
+3. پرچم `isPending` که به شما می‌گوید آیا یک ترنزیشن pending وجود دارد یا خیر.
 
-#### Caveats {/*caveats*/}
+#### موارد احتیاط {/*caveats*/}
 
-* When used with a framework that supports React Server Components, `useActionState` lets you make forms interactive before JavaScript has executed on the client. When used without Server Components, it is equivalent to component local state.
-* The function passed to `useActionState` receives an extra argument, the previous or initial state, as its first argument. This makes its signature different than if it were used directly as a form action without using `useActionState`.
+* هنگامی که با یک فریم‌ورک که React Server Components را پشتیبانی می‌کند استفاده می‌شود، `useActionState` به شما اجازه می‌دهد فرم‌ها را پیش از آنکه جاوااسکریپت روی کلاینت اجرا شود، تعاملی کنید. وقتی بدون Server Components استفاده می‌شود، معادل استیت محلی کامپوننت است.
+* تابع پاس‌داده‌شده به `useActionState` یک آرگومان اضافی، یعنی استیت قبلی یا اولیه، را به‌عنوان آرگومان اول خود دریافت می‌کند. این امر امضای آن را متفاوت می‌کند نسبت به زمانی که مستقیماً به‌عنوان اکشن فرم بدون استفاده از `useActionState` استفاده می‌شد.
 
 ---
 
-## Usage {/*usage*/}
+## استفاده {/*usage*/}
 
-### Using information returned by a form action {/*using-information-returned-by-a-form-action*/}
+### استفاده از اطلاعات بازگشتی توسط یک اکشن فرم {/*using-information-returned-by-a-form-action*/}
 
-Call `useActionState` at the top level of your component to access the return value of an action from the last time a form was submitted.
+برای دسترسی به مقدار بازگشتی یک اکشن از آخرین باری که فرم ارسال شده، `useActionState` را در بالاترین سطح کامپوننت خود فراخوانی کنید.
 
 ```js [[1, 5, "state"], [2, 5, "formAction"], [3, 5, "action"], [4, 5, "null"], [2, 8, "formAction"]]
 import { useActionState } from 'react';
@@ -99,15 +99,15 @@ function MyComponent() {
 }
 ```
 
-`useActionState` returns an array with the following items:
+`useActionState` یک آرایه با موارد زیر برمی‌گرداند:
 
-1. The <CodeStep step={1}>current state</CodeStep> of the form, which is initially set to the <CodeStep step={4}>initial state</CodeStep> you provided, and after the form is submitted is set to the return value of the <CodeStep step={3}>action</CodeStep> you provided.
-2. A <CodeStep step={2}>new action</CodeStep> that you pass to `<form>` as its `action` prop or call manually within `startTransition`.
-3. A <CodeStep step={1}>pending state</CodeStep> that you can utilise while your action is processing.
+1. <CodeStep step={1}>استیت فعلی</CodeStep> فرم، که در ابتدا به <CodeStep step={4}>استیت اولیه</CodeStep>ای که ارائه کرده‌اید تنظیم شده، و پس از ارسال فرم به مقدار بازگشتی <CodeStep step={3}>اکشن</CodeStep>ای که ارائه کرده‌اید تنظیم می‌شود.
+2. یک <CodeStep step={2}>اکشن جدید</CodeStep> که آن را به `<form>` به‌عنوان پراپ `action` آن پاس می‌دهید یا به‌صورت دستی درون `startTransition` فراخوانی می‌کنید.
+3. یک <CodeStep step={1}>استیت pending</CodeStep> که می‌توانید در طول پردازش اکشن از آن استفاده کنید.
 
-When the form is submitted, the <CodeStep step={3}>action</CodeStep> function that you provided will be called. Its return value will become the new <CodeStep step={1}>current state</CodeStep> of the form.
+هنگامی که فرم ارسال می‌شود، تابع <CodeStep step={3}>اکشن</CodeStep>ای که ارائه کرده‌اید فراخوانی خواهد شد. مقدار بازگشتی آن به <CodeStep step={1}>استیت فعلی</CodeStep> جدید فرم تبدیل خواهد شد.
 
-The <CodeStep step={3}>action</CodeStep> that you provide will also receive a new first argument, namely the <CodeStep step={1}>current state</CodeStep> of the form. The first time the form is submitted, this will be the <CodeStep step={4}>initial state</CodeStep> you provided, while with subsequent submissions, it will be the return value from the last time the action was called. The rest of the arguments are the same as if `useActionState` had not been used.
+<CodeStep step={3}>اکشن</CodeStep>ای که ارائه می‌کنید همچنین یک آرگومان اول جدید دریافت می‌کند، یعنی <CodeStep step={1}>استیت فعلی</CodeStep> فرم. اولین باری که فرم ارسال می‌شود، این همان <CodeStep step={4}>استیت اولیه</CodeStep>ای خواهد بود که ارائه کرده‌اید، در حالی که در ارسال‌های بعدی، مقدار بازگشتی از آخرین باری که اکشن فراخوانی شده خواهد بود. سایر آرگومان‌ها مانند زمانی است که `useActionState` استفاده نشده بود.
 
 ```js [[3, 1, "action"], [1, 1, "currentState"]]
 function action(currentState, formData) {
@@ -116,11 +116,11 @@ function action(currentState, formData) {
 }
 ```
 
-<Recipes titleText="Display information after submitting a form" titleId="display-information-after-submitting-a-form">
+<Recipes titleText="نمایش اطلاعات پس از ارسال یک فرم" titleId="display-information-after-submitting-a-form">
 
-#### Display form errors {/*display-form-errors*/}
+#### نمایش خطاهای فرم {/*display-form-errors*/}
 
-To display messages such as an error message or toast that's returned by a Server Function, wrap the action in a call to `useActionState`.
+برای نمایش پیام‌هایی مانند پیام خطا یا toast که توسط یک Server Function بازگشده است، اکشن را در یک فراخوانی به `useActionState` بپیچید.
 
 <Sandpack>
 
@@ -182,9 +182,9 @@ form button {
 
 <Solution />
 
-#### Display structured information after submitting a form {/*display-structured-information-after-submitting-a-form*/}
+#### نمایش اطلاعات ساختاریافته پس از ارسال یک فرم {/*display-structured-information-after-submitting-a-form*/}
 
-The return value from a Server Function can be any serializable value. For example, it could be an object that includes a boolean indicating whether the action was successful, an error message, or updated information.
+مقدار بازگشتی از یک Server Function می‌تواند هر مقدار سریالایزپذیری باشد. برای مثال، می‌تواند یک شیء باشد که شامل یک مقدار بولی نشان‌دهندهٔ موفقیت اکشن، یک پیام خطا، یا اطلاعات به‌روزرسانی‌شده است.
 
 <Sandpack>
 
@@ -259,11 +259,11 @@ form button {
 
 </Recipes>
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-### My action can no longer read the submitted form data {/*my-action-can-no-longer-read-the-submitted-form-data*/}
+### اکشن من دیگر نمی‌تواند داده‌های فرم ارسال‌شده را بخواند {/*my-action-can-no-longer-read-the-submitted-form-data*/}
 
-When you wrap an action with `useActionState`, it gets an extra argument *as its first argument*. The submitted form data is therefore its *second* argument instead of its first as it would usually be. The new first argument that gets added is the current state of the form.
+هنگامی که یک اکشن را با `useActionState` می‌پیچید، یک آرگومان اضافی *به‌عنوان آرگومان اول* آن دریافت می‌کند. دادهٔ فرم ارسال‌شده بنابراین *آرگومان دوم* آن است به‌جای اولین آرگومان که معمولاً چنین است. آرگومان اول جدیدی که اضافه می‌شود، استیت فعلی فرم است.
 
 ```js
 function action(currentState, formData) {

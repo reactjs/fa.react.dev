@@ -17,7 +17,7 @@ title: استیت به عنوان یک عکس
 
 </YouWillLearn>
 
-## Setting state triggers renders {/*setting-state-triggers-renders*/}
+## تنظیم استیت رندرها را راه‌اندازی می‌کند {/*setting-state-triggers-renders*/}
 
 ممکن است تصور کنید که رابط کاربری شما به صورت مستقیم به واکنش به رویداد کاربر مثل یک کلیک تغییر می‌کند. در ری‌اکت این یکمی متفاوت از این مدل ذهنی عمل می‌کند. در صفحه قبل، دیدید که [تنظیم وضعیت درخواستی برای رندر مجدد](/learn/render-and-commit#step-1-trigger-a-render) از سوی ری اکت دارد. این بدان معناست که برای واکنش رابط به رویداد، شما باید *وضعیت را به‌روز کنید*.
 
@@ -69,7 +69,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 بیایید نگاه نزدیک‌تری به رابطه بین وضعیت و رندر کردن بیندازیم.
 
-## Rendering takes a snapshot in time {/*rendering-takes-a-snapshot-in-time*/}
+## رندر یک عکس فوری در یک لحظه می‌گیرد {/*rendering-takes-a-snapshot-in-time*/}
 
 ["رندر کردن"](/learn/render-and-commit#step-2-react-renders-your-components) به معنای فراخوانی React از مؤلفه شما است، که یک تابع است. JSX که از آن تابع بازمی‌گردانید، مانند یک نمای کلی از رابط کاربری در زمان است. ویژگی‌ها، کنترل‌گرهای رویداد و متغیرهای محلی آن همگی **با استفاده از وضعیت آن در زمان رندر، محاسبه شده‌اند.**
 
@@ -87,7 +87,7 @@ label, textarea { margin-bottom: 10px; display: block; }
     <Illustration caption="Updating the DOM tree" src="/images/docs/illustrations/i_render3.png" />
 </IllustrationBlock>
 
-به عنوان حافظه‌ی یک تابع، استیت مانند یک متغیر معمولی نیست که بعد از بازگشت تابع شما ناپدید شود. در واقع، استیت به واقعیت در ری‌اکت وجود دارد - گویی روی یک قفسه قرار دارد! - خارج از تابع شما. زمانی که ری‌اکت مؤلفه شما را فراخوانی می‌کند، یک نمای کلی از وضعیت برای آن رندر خاص به شما ارائه می‌دهد. تابع شما نیز با مجموعه تازه‌ای از ویژگی‌ها و کنترل‌گرهای رویداد در جی اس اکس خود، همگی محاسبه شده، یک نمای کلی از رابط کاربری باز می‌گرداند.**using the state values from that render!**
+به‌عنوان حافظه‌ی یک تابع، استیت مانند یک متغیر معمولی نیست که بعد از بازگشت تابع شما ناپدید شود. در واقع، استیت به‌صورت واقعی در ری‌اکت وجود دارد — گویی روی یک قفسه قرار دارد! — خارج از تابع شما. زمانی که ری‌اکت مؤلفه شما را فراخوانی می‌کند، یک عکس فوری از وضعیت برای آن رندر خاص به شما می‌دهد. تابع شما نیز با مجموعه تازه‌ای از ویژگی‌ها و کنترل‌گرهای رویداد در JSX خود، همگی محاسبه‌شده، یک عکس فوری از رابط کاربری باز می‌گرداند. **با استفاده از مقادیر استیت از آن رندر!**
 
 <IllustrationBlock sequential>
   <Illustration caption="You tell React to update the state" src="/images/docs/illustrations/i_state-snapshot1.png" />
@@ -95,9 +95,9 @@ label, textarea { margin-bottom: 10px; display: block; }
   <Illustration caption="React passes a snapshot of the state value into the component" src="/images/docs/illustrations/i_state-snapshot3.png" />
 </IllustrationBlock>
 
-در اینجا یک آزمایش کوچک برای نمایش به شما نحوه کار می‌کند. در این مثال، شما ممکن است انتظار داشته باشید با کلیک بر روی دکمه "+3" شمارنده سه بار افزایش پیدا کند چرا که سه بار زیر  را فراخوانی می‌کند.`setNumber(number + 1)`
+در اینجا یک آزمایش کوچک برای نمایش نحوه کار به شما آورده شده است. در این مثال، شما ممکن است انتظار داشته باشید با کلیک بر روی دکمه «+3» شمارنده سه بار افزایش پیدا کند چرا که سه بار `setNumber(number + 1)` را فراخوانی می‌کند.
 
-See what happens when you click the "+3" button:
+ببینید وقتی روی دکمهٔ «+3» کلیک می‌کنید چه اتفاقی می‌افتد:
 
 <Sandpack>
 
@@ -172,7 +172,7 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 
 به همین دلیل است که با کلیک دوباره بر روی دکمه، شمارنده به `2` تنظیم می‌شود، سپس در کلیک بعدی به `3` و به همین ترتیب.
 
-## State over time {/*state-over-time*/}
+## استیت در طول زمان {/*state-over-time*/}
 
 خب این جالب بود. حالا سعی کنید حدس بزنید چه اتفاقی می‌افتد اگر این دکمه را فشار دهید:
 
@@ -325,7 +325,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 <Challenges>
 
-#### Implement a traffic light {/*implement-a-traffic-light*/}
+#### پیاده‌سازی یک چراغ راهنمایی {/*implement-a-traffic-light*/}
 
 اینجا یک مؤلفه چراغ عبور پیاده‌روی است که هنگام فشار دادن دکمه فعال می‌شود:
 
@@ -369,7 +369,7 @@ h1 { margin-top: 20px; }
 
 <Solution>
 
- شما باید اینجور باشد`alert` 
+این `alert` باید به این شکل باشد:
 
 <Sandpack>
 

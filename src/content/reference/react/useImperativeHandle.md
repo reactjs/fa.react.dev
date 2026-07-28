@@ -4,7 +4,7 @@ title: useImperativeHandle
 
 <Intro>
 
-`useImperativeHandle` is a React Hook that lets you customize the handle exposed as a [ref.](/learn/manipulating-the-dom-with-refs)
+`useImperativeHandle` یک هوک ری‌اکت است که به شما اجازه می‌دهد handleای که به‌عنوان [رفرنس](/learn/manipulating-the-dom-with-refs) آشکار می‌شود را سفارشی کنید.
 
 ```js
 useImperativeHandle(ref, createHandle, dependencies?)
@@ -16,11 +16,11 @@ useImperativeHandle(ref, createHandle, dependencies?)
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `useImperativeHandle(ref, createHandle, dependencies?)` {/*useimperativehandle*/}
 
-Call `useImperativeHandle` at the top level of your component to customize the ref handle it exposes:
+برای سفارشی‌سازی handle رفرنسی که کامپوننت آشکار می‌کند، `useImperativeHandle` را در بالاترین سطح کامپوننت خود فراخوانی کنید:
 
 ```js
 import { useImperativeHandle } from 'react';
@@ -34,33 +34,33 @@ function MyInput({ ref }) {
   // ...
 ```
 
-[See more examples below.](#usage)
+[مثال‌های بیشتر را در ادامه ببینید.](#usage)
 
-#### Parameters {/*parameters*/}
+#### پارامترها {/*parameters*/}
 
-* `ref`: The `ref` you received as a prop to the `MyInput` component.
+* `ref`: `ref`ای که به‌عنوان پراپ به کامپوننت `MyInput` دریافت کرده‌اید.
 
-* `createHandle`: A function that takes no arguments and returns the ref handle you want to expose. That ref handle can have any type. Usually, you will return an object with the methods you want to expose.
+* `createHandle`: تابعی که هیچ آرگومانی نمی‌پذیرد و handle رفرنسی که می‌خواهید آشکار کنید را برمی‌گرداند. آن handle رفرنس می‌تواند هر نوعی داشته باشد. معمولاً شما شیئی با متدهایی که می‌خواهید آشکار کنید برمی‌گردانید.
 
-* **optional** `dependencies`: The list of all reactive values referenced inside of the `createHandle` code. Reactive values include props, state, and all the variables and functions declared directly inside your component body. If your linter is [configured for React](/learn/editor-setup#linting), it will verify that every reactive value is correctly specified as a dependency. The list of dependencies must have a constant number of items and be written inline like `[dep1, dep2, dep3]`. React will compare each dependency with its previous value using the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. If a re-render resulted in a change to some dependency, or if you omitted this argument, your `createHandle` function will re-execute, and the newly created handle will be assigned to the ref.
+* **اختیاری** `dependencies`: لیست تمام مقادیر واکنش‌گرا (reactive) که درون کد `createHandle` به آن‌ها ارجاع شده است. مقادیر واکنش‌گرا شامل پراپس، استیت، و تمام متغیرها و توابعی است که به‌طور مستقیم درون بدنهٔ کامپوننت شما اعلان شده‌اند. اگر linter شما [برای ری‌اکت پیکربندی شده باشد](/learn/editor-setup#linting)، بررسی می‌کند که هر مقدار واکنش‌گرا به‌درستی به‌عنوان وابستگی تعیین شده باشد. لیست وابستگی‌ها باید تعداد آیتم ثابتی داشته باشد و به‌صورت inline مانند `[dep1, dep2, dep3]` نوشته شود. ری‌اکت هر وابستگی را با مقدار قبلی‌اش با مقایسهٔ [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) مقایسه می‌کند. اگر یک رندر مجدد منجر به تغییر برخی وابستگی‌ها شود، یا اگر این آرگومان را حذف کنید، تابع `createHandle` شما دوباره اجرا خواهد شد و handle تازه‌ایجادشده به رفرنس اختصاص خواهد یافت.
 
 <Note>
 
-Starting with React 19, [`ref` is available as a prop.](/blog/2024/12/05/react-19#ref-as-a-prop) In React 18 and earlier, it was necessary to get the `ref` from [`forwardRef`.](/reference/react/forwardRef) 
+از ری‌اکت ۱۹، [`ref` به‌عنوان یک پراپ در دسترس است.](/blog/2024/12/05/react-19#ref-as-a-prop) در ری‌اکت ۱۸ و نسخه‌های قبلی، لازم بود `ref` را از [`forwardRef`](/reference/react/forwardRef) دریافت کنید.
 
 </Note>
 
-#### Returns {/*returns*/}
+#### مقادیر بازگشتی {/*returns*/}
 
-`useImperativeHandle` returns `undefined`.
+`useImperativeHandle` مقدار `undefined` برمی‌گرداند.
 
 ---
 
-## Usage {/*usage*/}
+## استفاده {/*usage*/}
 
-### Exposing a custom ref handle to the parent component {/*exposing-a-custom-ref-handle-to-the-parent-component*/}
+### آشکار کردن یک handle رفرنس سفارشی به کامپوننت والد {/*exposing-a-custom-ref-handle-to-the-parent-component*/}
 
-To expose a DOM node to the parent element, pass in the `ref` prop to the node.
+برای آشکار کردن یک نود DOM به المان والد، پراپ `ref` را به نود پاس بدهید.
 
 ```js {2}
 function MyInput({ ref }) {
@@ -68,7 +68,7 @@ function MyInput({ ref }) {
 };
 ```
 
-With the code above, [a ref to `MyInput` will receive the `<input>` DOM node.](/learn/manipulating-the-dom-with-refs) However, you can expose a custom value instead. To customize the exposed handle, call `useImperativeHandle` at the top level of your component:
+با کد بالا، [یک رفرنس به `MyInput` نود DOM `<input>` را دریافت خواهد کرد.](/learn/manipulating-the-dom-with-refs) با این حال، می‌توانید به‌جای آن یک مقدار سفارشی آشکار کنید. برای سفارشی‌سازی handle آشکارشده، `useImperativeHandle` را در بالاترین سطح کامپوننت خود فراخوانی کنید:
 
 ```js {4-8}
 import { useImperativeHandle } from 'react';
@@ -84,9 +84,9 @@ function MyInput({ ref }) {
 };
 ```
 
-Note that in the code above, the `ref` is no longer passed to the `<input>`.
+توجه کنید که در کد بالا، `ref` دیگر به `<input>` پاس داده نمی‌شود.
 
-For example, suppose you don't want to expose the entire `<input>` DOM node, but you want to expose two of its methods: `focus` and `scrollIntoView`. To do this, keep the real browser DOM in a separate ref. Then use `useImperativeHandle` to expose a handle with only the methods that you want the parent component to call:
+برای مثال، فرض کنید نمی‌خواهید کل نود DOM `<input>` را آشکار کنید، اما می‌خواهید دو متد آن را آشکار کنید: `focus` و `scrollIntoView`. برای این کار، DOM مرورگر واقعی را در یک رفرنس جداگانه نگه دارید. سپس از `useImperativeHandle` استفاده کنید تا handleای فقط با متدهایی که می‌خواهید کامپوننت والد فراخوانی کند آشکار کنید:
 
 ```js {7-14}
 import { useRef, useImperativeHandle } from 'react';
@@ -109,7 +109,7 @@ function MyInput({ ref }) {
 };
 ```
 
-Now, if the parent component gets a ref to `MyInput`, it will be able to call the `focus` and `scrollIntoView` methods on it. However, it will not have full access to the underlying `<input>` DOM node.
+اکنون، اگر کامپوننت والد رفرنسی به `MyInput` بگیرد، قادر خواهد بود متدهای `focus` و `scrollIntoView` را روی آن فراخوانی کند. با این حال، دسترسی کاملی به نود DOM `<input>` زیرین نخواهد داشت.
 
 <Sandpack>
 
@@ -170,9 +170,9 @@ input {
 
 ---
 
-### Exposing your own imperative methods {/*exposing-your-own-imperative-methods*/}
+### آشکار کردن متدهای imperative خودتان {/*exposing-your-own-imperative-methods*/}
 
-The methods you expose via an imperative handle don't have to match the DOM methods exactly. For example, this `Post` component exposes a `scrollAndFocusAddComment` method via an imperative handle. This lets the parent `Page` scroll the list of comments *and* focus the input field when you click the button:
+متدهایی که از طریق یک imperative handle آشکار می‌کنید نیازی نیست دقیقاً با متدهای DOM مطابقت داشته باشند. برای مثال، این کامپوننت `Post` یک متد `scrollAndFocusAddComment` را از طریق یک imperative handle آشکار می‌کند. این به والد `Page` اجازه می‌دهد هنگامی که روی دکمه کلیک می‌کنید لیست نظرات را اسکرول کند *و* فیلد ورودی را فوکوس کند:
 
 <Sandpack>
 
@@ -285,8 +285,8 @@ export default AddComment;
 
 <Pitfall>
 
-**Do not overuse refs.** You should only use refs for *imperative* behaviors that you can't express as props: for example, scrolling to a node, focusing a node, triggering an animation, selecting text, and so on.
+**از رفرنس‌ها زیاده‌روی نکنید.** باید فقط از رفرنس‌ها برای رفتارهای *imperative* استفاده کنید که نمی‌توانید آن‌ها را به‌صورت پراپس بیان کنید: برای مثال، اسکرول به یک نود، فوکوس یک نود، راه‌اندازی یک انیمیشن، انتخاب متن، و غیره.
 
-**If you can express something as a prop, you should not use a ref.** For example, instead of exposing an imperative handle like `{ open, close }` from a `Modal` component, it is better to take `isOpen` as a prop like `<Modal isOpen={isOpen} />`. [Effects](/learn/synchronizing-with-effects) can help you expose imperative behaviors via props.
+**اگر می‌توانید چیزی را به‌صورت یک پراپ بیان کنید، نباید از رفرنس استفاده کنید.** برای مثال، به‌جای آشکار کردن یک imperative handle مانند `{ open, close }` از یک کامپوننت `Modal`، بهتر است `isOpen` را به‌عنوان یک پراپ مانند `<Modal isOpen={isOpen} />` بپذیرید. [افکت‌ها](/learn/synchronizing-with-effects) می‌توانند به شما کمک کنند رفتارهای imperative را از طریق پراپس آشکار کنید.
 
 </Pitfall>

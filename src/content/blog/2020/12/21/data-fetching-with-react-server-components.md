@@ -1,5 +1,5 @@
 ---
-title: "Introducing Zero-Bundle-Size React Server Components"
+title: "معرفی کامپوننت‌های سرور ری‌اکت (React Server Components) با اندازهٔ باندل صفر"
 author: Dan Abramov, Lauren Tan, Joseph Savona, and Sebastian Markbage
 date: 2020/12/21
 description: 2020 has been a long year. As it comes to an end we wanted to share a special Holiday Update on our research into zero-bundle-size React Server Components.
@@ -11,24 +11,24 @@ December 21, 2020 by [Dan Abramov](https://bsky.app/profile/danabra.mov), [Laure
 
 <Intro>
 
-2020 has been a long year. As it comes to an end we wanted to share a special Holiday Update on our research into zero-bundle-size **React Server Components**.
+سال ۲۰۲۰ سالی طولانی بود. وقتی به پایان می‌رسد، دوست داشتیم یک به‌روزرسانی ویژهٔ تعطیلات درباره تحقیقاتمان روی **کامپوننت‌های سرور ری‌اکت (React Server Components)** با اندازهٔ باندل صفر به اشتراک بگذاریم.
 
 </Intro>
 
 ---
 
-To introduce React Server Components, we have prepared a talk and a demo. If you want, you can check them out during the holidays, or later when work picks back up in the new year.
+برای معرفی کامپوننت‌های سرور ری‌اکت، یک سخنرانی و یک دمو آماده کرده‌ایم. اگر مایل هستید، می‌توانید آن‌ها را در طول تعطیلات بررسی کنید، یا بعداً وقتی کار در سال جدید از سر گرفته می‌شود.
 
 <YouTubeIframe src="https://www.youtube.com/embed/TQQPAU21ZUw" />
 
-**React Server Components are still in research and development.** We are sharing this work in the spirit of transparency and to get initial feedback from the React community. There will be plenty of time for that, so **don't feel like you have to catch up right now!**
+**کامپوننت‌های سرور ری‌اکت هنوز در مرحلهٔ تحقیق و توسعه هستند.** ما این کار را در راستای شفافیت و برای دریافت بازخورد اولیه از جامعهٔ ری‌اکت به اشتراک می‌گذاریم. زمان زیادی برای این کار وجود خواهد داشت، بنابراین **احساس نکنید که باید همین الان همه چیز را دنبال کنید!**
 
-If you want to check them out, we recommend going in the following order:
+اگر می‌خواهید آن‌ها را بررسی کنید، توصیه می‌کنیم به ترتیب زیر پیش بروید:
 
-1. **Watch the talk** to learn about React Server Components and see the demo.
+۱. **سخنرانی را تماشا کنید** تا دربارهٔ کامپوننت‌های سرور ری‌اکت بیاموزید و دمو را ببینید.
 
-2. **[Clone the demo](http://github.com/reactjs/server-components-demo)** to play with React Server Components on your computer.
+۲. **[دمو را کلون کنید](http://github.com/reactjs/server-components-demo)** تا با کامپوننت‌های سرور ری‌اکت روی کامپیوتر خودتان کار کنید.
 
-3. **[Read the RFC (with FAQ at the end)](https://github.com/reactjs/rfcs/pull/188)** for a deeper technical breakdown and to provide feedback.
+۳. **[RFC را بخوانید (که در انتها سوال‌های متداول دارد)](https://github.com/reactjs/rfcs/pull/188)** برای یک تحلیل فنی عمیق‌تر و ارائهٔ بازخورد.
 
-We are excited to hear from you on the RFC or in replies to the [@reactjs](https://twitter.com/reactjs) Twitter handle. Happy holidays, stay safe, and see you next year!
+ما مشتاقانه منتظر شنیدن نظرات شما در RFC یا در پاسخ‌ها به حساب توییتری [@reactjs](https://twitter.com/reactjs) هستیم. تعطیلات خوبی داشته باشید، در امان بمانید و سال دیگر می‌بینیمتان!

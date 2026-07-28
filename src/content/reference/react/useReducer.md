@@ -4,7 +4,7 @@ title: useReducer
 
 <Intro>
 
-`useReducer` is a React Hook that lets you add a [reducer](/learn/extracting-state-logic-into-a-reducer) to your component.
+`useReducer` یک هوک ری‌اکت است که به شما اجازه می‌دهد یک [ردیوسر](/learn/extracting-state-logic-into-a-reducer) به کامپوننت خود اضافه کنید.
 
 ```js
 const [state, dispatch] = useReducer(reducer, initialArg, init?)
@@ -16,11 +16,11 @@ const [state, dispatch] = useReducer(reducer, initialArg, init?)
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `useReducer(reducer, initialArg, init?)` {/*usereducer*/}
 
-Call `useReducer` at the top level of your component to manage its state with a [reducer.](/learn/extracting-state-logic-into-a-reducer)
+برای مدیریت استیت کامپوننت خود با یک [ردیوسر](/learn/extracting-state-logic-into-a-reducer)، `useReducer` را در سطح بالای کامپوننت خود فراخوانی کنید.
 
 ```js
 import { useReducer } from 'react';
@@ -34,32 +34,32 @@ function MyComponent() {
   // ...
 ```
 
-[See more examples below.](#usage)
+[مثال‌های بیشتری را در ادامه ببینید.](#usage)
 
-#### Parameters {/*parameters*/}
+#### پارامترها {/*parameters*/}
 
-* `reducer`: The reducer function that specifies how the state gets updated. It must be pure, should take the state and action as arguments, and should return the next state. State and action can be of any types. 
-* `initialArg`: The value from which the initial state is calculated. It can be a value of any type. How the initial state is calculated from it depends on the next `init` argument.
-* **optional** `init`: The initializer function that should return the initial state. If it's not specified, the initial state is set to `initialArg`. Otherwise, the initial state is set to the result of calling `init(initialArg)`.
+* `reducer`: تابع ردیوسر که نحوهٔ به‌روزرسانی استیت را مشخص می‌کند. باید خالص باشد، باید استیت و اکشن را به‌عنوان آرگومان بگیرد، و باید استیت بعدی را برگرداند. استیت و اکشن می‌توانند از هر نوعی باشند.
+* `initialArg`: مقداری که استیت اولیه از آن محاسبه می‌شود. می‌تواند مقداری از هر نوعی باشد. نحوهٔ محاسبهٔ استیت اولیه از آن به آرگومان `init` بعدی بستگی دارد.
+* **اختیاری** `init`: تابع مقداردهی اولیه که باید استیت اولیه را برگرداند. اگر مشخص نشده باشد، استیت اولیه روی `initialArg` تنظیم می‌شود. در غیر این صورت، استیت اولیه روی نتیجهٔ فراخوانی `init(initialArg)` تنظیم می‌شود.
 
-#### Returns {/*returns*/}
+#### مقدار بازگشتی {/*returns*/}
 
-`useReducer` returns an array with exactly two values:
+`useReducer` آرایه‌ای با دقیقاً دو مقدار برمی‌گرداند:
 
-1. The current state. During the first render, it's set to `init(initialArg)` or `initialArg` (if there's no `init`).
-2. The [`dispatch` function](#dispatch) that lets you update the state to a different value and trigger a re-render.
+1. استیت کنونی. در طول رندر اول، روی `init(initialArg)` یا `initialArg` (اگر `init` وجود ندارد) تنظیم می‌شود.
+2. [تابع `dispatch`](#dispatch) که به شما اجازه می‌دهد استیت را به مقدار متفاوتی به‌روز کنید و یک رندر مجدد را فعال کنید.
 
-#### Caveats {/*caveats*/}
+#### نکات {/*caveats*/}
 
-* `useReducer` is a Hook, so you can only call it **at the top level of your component** or your own Hooks. You can't call it inside loops or conditions. If you need that, extract a new component and move the state into it.
-* The `dispatch` function has a stable identity, so you will often see it omitted from Effect dependencies, but including it will not cause the Effect to fire. If the linter lets you omit a dependency without errors, it is safe to do. [Learn more about removing Effect dependencies.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
-* In Strict Mode, React will **call your reducer and initializer twice** in order to [help you find accidental impurities.](#my-reducer-or-initializer-function-runs-twice) This is development-only behavior and does not affect production. If your reducer and initializer are pure (as they should be), this should not affect your logic. The result from one of the calls is ignored.
+* `useReducer` یک هوک است، بنابراین فقط می‌توانید آن را **در سطح بالای کامپوننت** یا هوک‌های خودتان فراخوانی کنید. نمی‌توانید آن را درون حلقه‌ها یا شرط‌ها فراخوانی کنید. اگر به این نیاز دارید، یک کامپوننت جدید استخراج کنید و استیت را به آن منتقل کنید.
+* تابع `dispatch` هویت پایداری دارد، بنابراین اغلب می‌بینید که از وابستگی‌های افکت حذف می‌شود، اما گنجاندن آن باعث نمی‌شود افکت اجرا شود. اگر لینتر اجازه می‌دهد یک وابستگی را بدون خطا حذف کنید، انجام این کار امن است. [دربارهٔ حذف وابستگی‌های افکت بیشتر بدانید.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
+* در حالت سخت‌گیرانه (Strict Mode)، ری‌اکت **ردیوسر و تابع مقداردهی اولیهٔ شما را دو بار فراخوانی می‌کند** تا به شما کمک کند [ناخالصی‌های تصادفی را پیدا کنید.](#my-reducer-or-initializer-function-runs-twice) این رفتار فقط مخصوص محیط توسعه است و بر محیط تولید تأثیری ندارد. اگر ردیوسر و تابع مقداردهی اولیهٔ شما خالص باشند (همان‌طور که باید باشند)، این نباید روی منطق شما تأثیر بگذارد. نتیجهٔ یکی از فراخوانی‌ها نادیده گرفته می‌شود.
 
 ---
 
-### `dispatch` function {/*dispatch*/}
+### تابع `dispatch` {/*dispatch*/}
 
-The `dispatch` function returned by `useReducer` lets you update the state to a different value and trigger a re-render. You need to pass the action as the only argument to the `dispatch` function:
+تابع `dispatch` که توسط `useReducer` برگردانده می‌شود به شما اجازه می‌دهد استیت را به مقدار متفاوتی به‌روز کنید و یک رندر مجدد را فعال کنید. باید اکشن را به‌عنوان تنها آرگومان به تابع `dispatch` ارسال کنید:
 
 ```js
 const [state, dispatch] = useReducer(reducer, { age: 42 });
@@ -69,31 +69,31 @@ function handleClick() {
   // ...
 ```
 
-React will set the next state to the result of calling the `reducer` function you've provided with the current `state` and the action you've passed to `dispatch`.
+ری‌اکت استیت بعدی را به نتیجهٔ فراخوانی تابع `reducer`‌ای که با `state` کنونی و اکشنی که به `dispatch` ارسال کرده‌اید ارائه کرده‌اید، تنظیم می‌کند.
 
-#### Parameters {/*dispatch-parameters*/}
+#### پارامترها {/*dispatch-parameters*/}
 
-* `action`: The action performed by the user. It can be a value of any type. By convention, an action is usually an object with a `type` property identifying it and, optionally, other properties with additional information.
+* `action`: اکشنی که توسط کاربر انجام شده است. می‌تواند مقداری از هر نوعی باشد. طبق قرارداد، یک اکشن معمولاً یک شیء با ویژگی `type` است که آن را شناسایی می‌کند و به‌طور اختیاری، ویژگی‌های دیگری با اطلاعات اضافی.
 
-#### Returns {/*dispatch-returns*/}
+#### مقدار بازگشتی {/*dispatch-returns*/}
 
-`dispatch` functions do not have a return value.
+توابع `dispatch` مقدار بازگشتی ندارند.
 
-#### Caveats {/*setstate-caveats*/}
+#### نکات {/*setstate-caveats*/}
 
-* The `dispatch` function **only updates the state variable for the *next* render**. If you read the state variable after calling the `dispatch` function, [you will still get the old value](#ive-dispatched-an-action-but-logging-gives-me-the-old-state-value) that was on the screen before your call.
+* تابع `dispatch` **فقط متغیر استیت را برای رندر *بعدی* به‌روز می‌کند**. اگر متغیر استیت را بعد از فراخوانی تابع `dispatch` بخوانید، [هنوز مقدار قدیمی را دریافت می‌کنید](#ive-dispatched-an-action-but-logging-gives-me-the-old-state-value) که قبل از فراخوانی شما روی صفحه بود.
 
-* If the new value you provide is identical to the current `state`, as determined by an [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison, React will **skip re-rendering the component and its children.** This is an optimization. React may still need to call your component before ignoring the result, but it shouldn't affect your code.
+* اگر مقدار جدیدی که ارائه می‌دهید با `state` کنونی یکسان باشد (همان‌طور که با مقایسهٔ [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) تعیین می‌شود)، ری‌اکت **رندر مجدد کامپوننت و فرزندانش را رد می‌کند.** این یک بهینه‌سازی است. ری‌اکت ممکن است همچنان قبل از نادیده گرفتن نتیجه نیاز به فراخوانی کامپوننت شما داشته باشد، اما نباید روی کد شما تأثیر بگذارد.
 
-* React [batches state updates.](/learn/queueing-a-series-of-state-updates) It updates the screen **after all the event handlers have run** and have called their `set` functions. This prevents multiple re-renders during a single event. In the rare case that you need to force React to update the screen earlier, for example to access the DOM, you can use [`flushSync`.](/reference/react-dom/flushSync)
+* ری‌اکت [به‌روزرسانی‌های استیت را دسته‌بندی می‌کند.](/learn/queueing-a-series-of-state-updates) صفحه را **پس از اجرای همهٔ کنترل‌کننده‌های رویداد** و فراخوانی توابع `set` توسط آن‌ها به‌روز می‌کند. این کار از رندرهای مجدد متعدد در طول یک رویداد جلوگیری می‌کند. در موارد نادر که نیاز دارید ری‌اکت را مجبور کنید صفحه را زودتر به‌روز کند، مثلاً برای دسترسی به DOM، می‌توانید از [`flushSync`](/reference/react-dom/flushSync) استفاده کنید.
 
 ---
 
-## Usage {/*usage*/}
+## کاربرد {/*usage*/}
 
-### Adding a reducer to a component {/*adding-a-reducer-to-a-component*/}
+### افزودن یک ردیوسر به یک کامپوننت {/*adding-a-reducer-to-a-component*/}
 
-Call `useReducer` at the top level of your component to manage state with a [reducer.](/learn/extracting-state-logic-into-a-reducer)
+برای مدیریت استیت با یک [ردیوسر](/learn/extracting-state-logic-into-a-reducer)، `useReducer` را در سطح بالای کامپوننت خود فراخوانی کنید.
 
 ```js [[1, 8, "state"], [2, 8, "dispatch"], [4, 8, "reducer"], [3, 8, "{ age: 42 }"]]
 import { useReducer } from 'react';
@@ -107,12 +107,12 @@ function MyComponent() {
   // ...
 ```
 
-`useReducer` returns an array with exactly two items:
+`useReducer` آرایه‌ای با دقیقاً دو مورد برمی‌گرداند:
 
-1. The <CodeStep step={1}>current state</CodeStep> of this state variable, initially set to the <CodeStep step={3}>initial state</CodeStep> you provided.
-2. The <CodeStep step={2}>`dispatch` function</CodeStep> that lets you change it in response to interaction.
+1. <CodeStep step={1}>استیت کنونی</CodeStep> این متغیر استیت، که ابتدا روی <CodeStep step={3}>استیت اولیه</CodeStep> که شما ارائه کرده‌اید تنظیم می‌شود.
+2. <CodeStep step={2}>تابع `dispatch`</CodeStep> که به شما اجازه می‌دهد در پاسخ به تعامل آن را تغییر دهید.
 
-To update what's on the screen, call <CodeStep step={2}>`dispatch`</CodeStep> with an object representing what the user did, called an *action*:
+برای به‌روزرسانی چیزی که روی صفحه است، <CodeStep step={2}>`dispatch`</CodeStep> را با شیءای که نشان‌دهندهٔ کاری است که کاربر انجام داده و یک *اکشن* نامیده می‌شود، فراخوانی کنید:
 
 ```js [[2, 2, "dispatch"]]
 function handleClick() {
@@ -120,7 +120,7 @@ function handleClick() {
 }
 ```
 
-React will pass the current state and the action to your <CodeStep step={4}>reducer function</CodeStep>. Your reducer will calculate and return the next state. React will store that next state, render your component with it, and update the UI.
+ری‌اکت استیت کنونی و اکشن را به <CodeStep step={4}>تابع ردیوسر</CodeStep> شما ارسال می‌کند. ردیوسر شما استیت بعدی را محاسبه کرده و برمی‌گرداند. ری‌اکت آن استیت بعدی را ذخیره می‌کند، کامپوننت شما را با آن رندر می‌کند، و UI را به‌روز می‌کند.
 
 <Sandpack>
 
@@ -158,13 +158,13 @@ button { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-`useReducer` is very similar to [`useState`](/reference/react/useState), but it lets you move the state update logic from event handlers into a single function outside of your component. Read more about [choosing between `useState` and `useReducer`.](/learn/extracting-state-logic-into-a-reducer#comparing-usestate-and-usereducer)
+`useReducer` بسیار شبیه [`useState`](/reference/react/useState) است، اما به شما اجازه می‌دهد منطق به‌روزرسانی استیت را از کنترل‌کننده‌های رویداد به یک تابع واحد در بیرون کامپوننت خود منتقل کنید. دربارهٔ [انتخاب بین `useState` و `useReducer`](/learn/extracting-state-logic-into-a-reducer#comparing-usestate-and-usereducer) بیشتر بخوانید.
 
 ---
 
-### Writing the reducer function {/*writing-the-reducer-function*/}
+### نوشتن تابع ردیوسر {/*writing-the-reducer-function*/}
 
-A reducer function is declared like this:
+یک تابع ردیوسر به این صورت تعریف می‌شود:
 
 ```js
 function reducer(state, action) {
@@ -172,7 +172,7 @@ function reducer(state, action) {
 }
 ```
 
-Then you need to fill in the code that will calculate and return the next state. By convention, it is common to write it as a [`switch` statement.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch) For each `case` in the `switch`, calculate and return some next state.
+سپس باید کدی را پر کنید که استیت بعدی را محاسبه کرده و برمی‌گرداند. طبق قرارداد، رایج است که آن را به‌صورت یک [عبارت `switch`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch) بنویسید. برای هر `case` در `switch`، استیت بعدی را محاسبه کرده و برگردانید.
 
 ```js {4-7,10-13}
 function reducer(state, action) {
@@ -194,7 +194,7 @@ function reducer(state, action) {
 }
 ```
 
-Actions can have any shape. By convention, it's common to pass objects with a `type` property identifying the action. It should include the minimal necessary information that the reducer needs to compute the next state.
+اکشن‌ها می‌توانند هر شکلی داشته باشند. طبق قرارداد، رایج است که اشیاء با ویژگی `type` که اکشن را شناسایی می‌کند ارسال کنید. باید شامل حداقل اطلاعات لازم که ردیوسر برای محاسبهٔ استیت بعدی نیاز دارد باشد.
 
 ```js {5,9-12}
 function Form() {
@@ -213,13 +213,13 @@ function Form() {
   // ...
 ```
 
-The action type names are local to your component. [Each action describes a single interaction, even if that leads to multiple changes in data.](/learn/extracting-state-logic-into-a-reducer#writing-reducers-well) The shape of the state is arbitrary, but usually it'll be an object or an array.
+نام‌های نوع اکشن محلی به کامپوننت شما هستند. [هر اکشن یک تعامل واحد را توصیف می‌کند، حتی اگر منجر به تغییرات متعددی در داده‌ها شود.](/learn/extracting-state-logic-into-a-reducer#writing-reducers-well) شکل استیت دلخواه است، اما معمولاً یک شیء یا آرایه خواهد بود.
 
-Read [extracting state logic into a reducer](/learn/extracting-state-logic-into-a-reducer) to learn more.
+برای کسب اطلاعات بیشتر [استخراج منطق استیت به یک ردیوسر](/learn/extracting-state-logic-into-a-reducer) را بخوانید.
 
 <Pitfall>
 
-State is read-only. Don't modify any objects or arrays in state:
+استیت فقط‌خواندنی است. هیچ شیء یا آرایه‌ای در استیت را تغییر ندهید:
 
 ```js {4,5}
 function reducer(state, action) {
@@ -231,7 +231,7 @@ function reducer(state, action) {
     }
 ```
 
-Instead, always return new objects from your reducer:
+در عوض، همیشه اشیاء جدیدی از ردیوسر خود برگردانید:
 
 ```js {4-8}
 function reducer(state, action) {
@@ -245,7 +245,7 @@ function reducer(state, action) {
     }
 ```
 
-Read [updating objects in state](/learn/updating-objects-in-state) and [updating arrays in state](/learn/updating-arrays-in-state) to learn more.
+برای کسب اطلاعات بیشتر [به‌روزرسانی اشیاء در استیت](/learn/updating-objects-in-state) و [به‌روزرسانی آرایه‌ها در استیت](/learn/updating-arrays-in-state) را بخوانید.
 
 </Pitfall>
 
@@ -253,7 +253,7 @@ Read [updating objects in state](/learn/updating-objects-in-state) and [updating
 
 #### Form (object) {/*form-object*/}
 
-In this example, the reducer manages a state object with two fields: `name` and `age`.
+در این مثال، ردیوسر یک شیء استیت با دو فیلد مدیریت می‌کند: `name` و `age`.
 
 <Sandpack>
 
@@ -319,7 +319,7 @@ button { display: block; margin-top: 10px; }
 
 #### Todo list (array) {/*todo-list-array*/}
 
-In this example, the reducer manages an array of tasks. The array needs to be updated [without mutation.](/learn/updating-arrays-in-state)
+در این مثال، ردیوسر یک آرایه از کارها را مدیریت می‌کند. آرایه باید [بدون تغییر](/learn/updating-arrays-in-state) به‌روز شود.
 
 <Sandpack>
 
@@ -512,7 +512,7 @@ ul, li { margin: 0; padding: 0; }
 
 #### Writing concise update logic with Immer {/*writing-concise-update-logic-with-immer*/}
 
-If updating arrays and objects without mutation feels tedious, you can use a library like [Immer](https://github.com/immerjs/use-immer#useimmerreducer) to reduce repetitive code. Immer lets you write concise code as if you were mutating objects, but under the hood it performs immutable updates:
+اگر به‌روزرسانی آرایه‌ها و اشیاء بدون تغییر خسته‌کننده به نظر می‌رسد، می‌توانید از کتابخانه‌ای مانند [Immer](https://github.com/immerjs/use-immer#useimmerreducer) برای کاهش کد تکراری استفاده کنید. Immer به شما اجازه می‌دهد کد مختصری بنویسید، گویی در حال تغییر اشیاء هستید، اما در پس‌زمینه به‌روزرسانی‌های تغییرناپذیر انجام می‌دهد:
 
 <Sandpack>
 
@@ -724,9 +724,9 @@ ul, li { margin: 0; padding: 0; }
 
 ---
 
-### Avoiding recreating the initial state {/*avoiding-recreating-the-initial-state*/}
+### اجتناب از بازایجاد استیت اولیه {/*avoiding-recreating-the-initial-state*/}
 
-React saves the initial state once and ignores it on the next renders.
+ری‌اکت استیت اولیه را یک بار ذخیره می‌کند و در رندرهای بعدی آن را نادیده می‌گیرد.
 
 ```js
 function createInitialState(username) {
@@ -738,9 +738,9 @@ function TodoList({ username }) {
   // ...
 ```
 
-Although the result of `createInitialState(username)` is only used for the initial render, you're still calling this function on every render. This can be wasteful if it's creating large arrays or performing expensive calculations.
+اگرچه نتیجهٔ `createInitialState(username)` فقط برای رندر اولیه استفاده می‌شود، اما شما همچنان این تابع را در هر رندر فراخوانی می‌کنید. اگر آرایه‌های بزرگ ایجاد می‌کند یا محاسبات پرهزینه‌ای انجام می‌دهد، می‌تواند اتلاف منابع باشد.
 
-To solve this, you may **pass it as an _initializer_ function** to `useReducer` as the third argument instead:
+برای حل این مشکل، می‌توانید **آن را به‌عنوان _تابع مقداردهی اولیه_** به‌عنوان آرگومان سوم به `useReducer` ارسال کنید:
 
 ```js {6}
 function createInitialState(username) {
@@ -752,15 +752,15 @@ function TodoList({ username }) {
   // ...
 ```
 
-Notice that you’re passing `createInitialState`, which is the *function itself*, and not `createInitialState()`, which is the result of calling it. This way, the initial state does not get re-created after initialization.
+توجه کنید که `createInitialState` را ارسال می‌کنید، یعنی *خود تابع*، و نه `createInitialState()` که نتیجهٔ فراخوانی آن است. به این ترتیب، استیت اولیه بعد از راه‌اندازی دوباره ایجاد نمی‌شود.
 
-In the above example, `createInitialState` takes a `username` argument. If your initializer doesn't need any information to compute the initial state, you may pass `null` as the second argument to `useReducer`.
+در مثال بالا، `createInitialState` یک آرگومان `username` می‌گیرد. اگر تابع مقداردهی اولیهٔ شما برای محاسبهٔ استیت اولیه به هیچ اطلاعاتی نیاز ندارد، می‌توانید `null` را به‌عنوان آرگومان دوم به `useReducer` ارسال کنید.
 
 <Recipes titleText="The difference between passing an initializer and passing the initial state directly" titleId="examples-initializer">
 
 #### Passing the initializer function {/*passing-the-initializer-function*/}
 
-This example passes the initializer function, so the `createInitialState` function only runs during initialization. It does not run when component re-renders, such as when you type into the input.
+این مثال تابع مقداردهی اولیه را ارسال می‌کند، بنابراین تابع `createInitialState` فقط در حین راه‌اندازی اجرا می‌شود. وقتی کامپوننت دوباره رندر می‌شود، مثلاً وقتی در ورودی تایپ می‌کنید، اجرا نمی‌شود.
 
 <Sandpack>
 
@@ -848,7 +848,7 @@ export default function TodoList({ username }) {
 
 #### Passing the initial state directly {/*passing-the-initial-state-directly*/}
 
-This example **does not** pass the initializer function, so the `createInitialState` function runs on every render, such as when you type into the input. There is no observable difference in behavior, but this code is less efficient.
+این مثال تابع مقداردهی اولیه را ارسال **نمی‌کند**، بنابراین تابع `createInitialState` در هر رندر اجرا می‌شود، مثلاً وقتی در ورودی تایپ می‌کنید. تفاوت قابل مشاهده‌ای در رفتار وجود ندارد، اما این کد کارایی کمتری دارد.
 
 <Sandpack>
 
@@ -937,11 +937,11 @@ export default function TodoList({ username }) {
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-### I've dispatched an action, but logging gives me the old state value {/*ive-dispatched-an-action-but-logging-gives-me-the-old-state-value*/}
+### من یک اکشن dispatch کرده‌ام، اما لاگ‌کردن مقدار استیت قدیمی را به من می‌دهد {/*ive-dispatched-an-action-but-logging-gives-me-the-old-state-value*/}
 
-Calling the `dispatch` function **does not change state in the running code**:
+فراخوانی تابع `dispatch` **استیت را در کد در حال اجرا تغییر نمی‌دهد**:
 
 ```js {4,5,8}
 function handleClick() {
@@ -956,9 +956,9 @@ function handleClick() {
 }
 ```
 
-This is because [states behaves like a snapshot.](/learn/state-as-a-snapshot) Updating state requests another render with the new state value, but does not affect the `state` JavaScript variable in your already-running event handler.
+این به این دلیل است که [استیت‌ها مانند یک عکس‌الملی رفتار می‌کنند.](/learn/state-as-a-snapshot) به‌روزرسانی استیت یک رندر دیگر با مقدار استیت جدید درخواست می‌کند، اما بر متغیر جاوااسکریپتی `state` در کنترل‌کنندهٔ رویداد در حال اجرای شما تأثیری نمی‌گذارد.
 
-If you need to guess the next state value, you can calculate it manually by calling the reducer yourself:
+اگر نیاز به حدس زدن مقدار استیت بعدی دارید، می‌توانید با فراخوانی ردیوسر خودتان آن را به‌صورت دستی محاسبه کنید:
 
 ```js
 const action = { type: 'incremented_age' };
@@ -971,9 +971,9 @@ console.log(nextState); // { age: 43 }
 
 ---
 
-### I've dispatched an action, but the screen doesn't update {/*ive-dispatched-an-action-but-the-screen-doesnt-update*/}
+### من یک اکشن dispatch کرده‌ام، اما صفحه به‌روز نمی‌شود {/*ive-dispatched-an-action-but-the-screen-doesnt-update*/}
 
-React will **ignore your update if the next state is equal to the previous state,** as determined by an [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. This usually happens when you change an object or an array in state directly:
+ری‌اکت **به‌روزرسانی شما را نادیده می‌گیرد اگر استیت بعدی با استیت قبلی برابر باشد،** همان‌طور که با مقایسهٔ [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) تعیین می‌شود. این معمولاً وقتی رخ می‌دهد که یک شیء یا آرایه در استیت را مستقیماً تغییر می‌دهید:
 
 ```js {4-5,9-10}
 function reducer(state, action) {
@@ -993,7 +993,7 @@ function reducer(state, action) {
 }
 ```
 
-You mutated an existing `state` object and returned it, so React ignored the update. To fix this, you need to ensure that you're always [updating objects in state](/learn/updating-objects-in-state) and [updating arrays in state](/learn/updating-arrays-in-state) instead of mutating them:
+شما یک شیء `state` موجود را تغییر دادید و آن را برگرداندید، بنابراین ری‌اکت به‌روزرسانی را نادیده گرفت. برای رفع این مشکل، باید مطمئن شوید که همیشه در حال [به‌روزرسانی اشیاء در استیت](/learn/updating-objects-in-state) و [به‌روزرسانی آرایه‌ها در استیت](/learn/updating-arrays-in-state) به جای تغییر آن‌ها هستید:
 
 ```js {4-8,11-15}
 function reducer(state, action) {
@@ -1019,9 +1019,9 @@ function reducer(state, action) {
 
 ---
 
-### A part of my reducer state becomes undefined after dispatching {/*a-part-of-my-reducer-state-becomes-undefined-after-dispatching*/}
+### بخشی از استیت ردیوسر من بعد از dispatch شدن نامشخص می‌شود {/*a-part-of-my-reducer-state-becomes-undefined-after-dispatching*/}
 
-Make sure that every `case` branch **copies all of the existing fields** when returning the new state:
+مطمئن شوید که هر شاخهٔ `case` هنگام برگرداندن استیت جدید **تمام فیلدهای موجود را کپی می‌کند**:
 
 ```js {5}
 function reducer(state, action) {
@@ -1035,13 +1035,13 @@ function reducer(state, action) {
     // ...
 ```
 
-Without `...state` above, the returned next state would only contain the `age` field and nothing else.
+بدون `...state` در بالا، استیت بعدی برگردانده‌شده فقط شامل فیلد `age` و هیچ چیز دیگر خواهد بود.
 
 ---
 
-### My entire reducer state becomes undefined after dispatching {/*my-entire-reducer-state-becomes-undefined-after-dispatching*/}
+### کل استیت ردیوسر من بعد از dispatch شدن نامشخص می‌شود {/*my-entire-reducer-state-becomes-undefined-after-dispatching*/}
 
-If your state unexpectedly becomes `undefined`, you're likely forgetting to `return` state in one of the cases, or your action type doesn't match any of the `case` statements. To find why, throw an error outside the `switch`:
+اگر استیت شما به‌طور غیرمنتظره `undefined` می‌شود، احتمالاً فراموش می‌کنید در یکی از caseها `state` را `return` کنید، یا نوع اکشن شما با هیچ‌کدام از عبارات `case` مطابقت ندارد. برای پیدا کردن دلیل، یک خطا در بیرون `switch` پرتاب کنید:
 
 ```js {10}
 function reducer(state, action) {
@@ -1057,13 +1057,13 @@ function reducer(state, action) {
 }
 ```
 
-You can also use a static type checker like TypeScript to catch such mistakes.
+همچنین می‌توانید از یک بررسی‌کنندهٔ نوع استاتیک مانند TypeScript برای گرفتن چنین اشتباهاتی استفاده کنید.
 
 ---
 
-### I'm getting an error: "Too many re-renders" {/*im-getting-an-error-too-many-re-renders*/}
+### من خطایی دریافت می‌کنم: «Too many re-renders» {/*im-getting-an-error-too-many-re-renders*/}
 
-You might get an error that says: `Too many re-renders. React limits the number of renders to prevent an infinite loop.` Typically, this means that you're unconditionally dispatching an action *during render*, so your component enters a loop: render, dispatch (which causes a render), render, dispatch (which causes a render), and so on. Very often, this is caused by a mistake in specifying an event handler:
+ممکن است خطایی دریافت کنید که می‌گوید: `Too many re-renders. React limits the number of renders to prevent an infinite loop.`. معمولاً، این بدان معناست که شما به‌طور بدون قید و شرط *در حین رندر* در حال dispatch کردن یک اکشن هستید، بنابراین کامپوننت شما وارد یک حلقه می‌شود: رندر، dispatch (که باعث رندر می‌شود)، رندر، dispatch (که باعث رندر می‌شود)، و غیره. بسیار اغلب، این به دلیل اشتباه در مشخص کردن یک کنترل‌کنندهٔ رویداد رخ می‌دهد:
 
 ```js {1-2}
 // 🚩 Wrong: calls the handler during render
@@ -1076,17 +1076,17 @@ return <button onClick={handleClick}>Click me</button>
 return <button onClick={(e) => handleClick(e)}>Click me</button>
 ```
 
-If you can't find the cause of this error, click on the arrow next to the error in the console and look through the JavaScript stack to find the specific `dispatch` function call responsible for the error.
+اگر نمی‌توانید علت این خطا را پیدا کنید، روی فلش کنار خطا در کنسول کلیک کنید و از طریق پشتهٔ جاوااسکریپت عبور کنید تا فراخوانی تابع `dispatch` خاصی که مسئول خطا است را پیدا کنید.
 
 ---
 
-### My reducer or initializer function runs twice {/*my-reducer-or-initializer-function-runs-twice*/}
+### تابع ردیوسر یا مقداردهی اولیهٔ من دو بار اجرا می‌شود {/*my-reducer-or-initializer-function-runs-twice*/}
 
-In [Strict Mode](/reference/react/StrictMode), React will call your reducer and initializer functions twice. This shouldn't break your code.
+در [حالت سخت‌گیرانه (Strict Mode)](/reference/react/StrictMode)، ری‌اکت توابع ردیوسر و مقداردهی اولیهٔ شما را دو بار فراخوانی می‌کند. این نباید کد شما را خراب کند.
 
-This **development-only** behavior helps you [keep components pure.](/learn/keeping-components-pure) React uses the result of one of the calls, and ignores the result of the other call. As long as your component, initializer, and reducer functions are pure, this shouldn't affect your logic. However, if they are accidentally impure, this helps you notice the mistakes.
+این رفتار **فقط مخصوص محیط توسعه** به شما کمک می‌کند [کامپوننت‌ها را خالص نگه دارید.](/learn/keeping-components-pure) ری‌اکت نتیجهٔ یکی از فراخوانی‌ها را استفاده می‌کند و نتیجهٔ فراخوانی دیگر را نادیده می‌گیرد. تا زمانی که کامپوننت، تابع مقداردهی اولیه، و توابع ردیوسر شما خالص باشند، این نباید روی منطق شما تأثیر بگذارد. با این حال، اگر به‌طور تصادفی ناخالص باشند، این به شما کمک می‌کند اشتباهات را متوجه شوید.
 
-For example, this impure reducer function mutates an array in state:
+مثلاً، این تابع ردیوسر ناخالص یک آرایه در استیت را تغییر می‌دهد:
 
 ```js {4-6}
 function reducer(state, action) {
@@ -1101,7 +1101,7 @@ function reducer(state, action) {
 }
 ```
 
-Because React calls your reducer function twice, you'll see the todo was added twice, so you'll know that there is a mistake. In this example, you can fix the mistake by [replacing the array instead of mutating it](/learn/updating-arrays-in-state#adding-to-an-array):
+از آنجا که ری‌اکت تابع ردیوسر شما را دو بار فراخوانی می‌کند، می‌بینید که todo دو بار اضافه شده است، بنابراین متوجه می‌شوید که اشتباهی وجود دارد. در این مثال، می‌توانید اشتباه را با [جایگزینی آرایه به جای تغییر آن](/learn/updating-arrays-in-state#adding-to-an-array) اصلاح کنید:
 
 ```js {4-11}
 function reducer(state, action) {
@@ -1121,6 +1121,6 @@ function reducer(state, action) {
 }
 ```
 
-Now that this reducer function is pure, calling it an extra time doesn't make a difference in behavior. This is why React calling it twice helps you find mistakes. **Only component, initializer, and reducer functions need to be pure.** Event handlers don't need to be pure, so React will never call your event handlers twice.
+اکنون که این تابع ردیوسر خالص است، فراخوانی آن یک بار اضافی تفاوتی در رفتار ایجاد نمی‌کند. به همین دلیل است که فراخوانی دو بار آن توسط ری‌اکت به شما کمک می‌کند اشتباهات را پیدا کنید. **فقط کامپوننت، تابع مقداردهی اولیه، و توابع ردیوسر باید خالص باشند.** کنترل‌کننده‌های رویداد نیازی به خالص بودن ندارند، بنابراین ری‌اکت هرگز کنترل‌کننده‌های رویداد شما را دو بار فراخوانی نمی‌کند.
 
-Read [keeping components pure](/learn/keeping-components-pure) to learn more.
+برای کسب اطلاعات بیشتر [خالص نگه داشتن کامپوننت‌ها](/learn/keeping-components-pure) را بخوانید.

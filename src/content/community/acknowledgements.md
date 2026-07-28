@@ -1,16 +1,16 @@
 ---
-title: Acknowledgements
+title: تقدیر و تشکر
 ---
 
 <Intro>
 
-React was originally created by [Jordan Walke.](https://github.com/jordwalke) Today, React has a [dedicated full-time team working on it](/community/team), as well as over a thousand [open source contributors.](https://github.com/facebook/react/graphs/contributors)
+ری‌اکت در ابتدا توسط [Jordan Walke](https://github.com/jordwalke) ایجاد شد. امروزه ری‌اکت دارای [تیمی اختصاصی تمام‌وقت که روی آن کار می‌کند](/community/team) و همچنین بیش از هزار [مشارکت‌کنندهٔ متن‌باز](https://github.com/facebook/react/graphs/contributors) است.
 
 </Intro>
 
-## Past contributors {/*past-contributors*/}
+## مشارکت‌کنندگان پیشین {/*past-contributors*/}
 
-We'd like to recognize a few people who have made significant contributions to React and its documentation in the past and have helped maintain them over the years:
+دوست داریم از چند نفر قدردانی کنیم که در گذشته مشارکت‌های مهمی در ری‌اکت و مستندات آن داشته‌اند و در طول سال‌ها به نگهداری آن کمک کرده‌اند:
 
 * [Almero Steyn](https://github.com/AlmeroSteyn)
 * [Andreas Svensson](https://github.com/syranide)
@@ -60,15 +60,15 @@ We'd like to recognize a few people who have made significant contributions to R
 * [Tim Yung](https://github.com/yungsters)
 * [Xuan Huang](https://github.com/huxpro)
 
-This list is not exhaustive.
+این فهرست جامع نیست.
 
-We'd like to give special thanks to [Tom Occhino](https://github.com/tomocchino) and [Adam Wolff](https://github.com/wolffiex) for their guidance and support over the years. We are also thankful to all the volunteers who [translated React into other languages.](https://translations.react.dev/)
+دوست داریم از [Tom Occhino](https://github.com/tomocchino) و [Adam Wolff](https://github.com/wolffiex) برای راهنمایی و حمایتشان در طول سال‌ها تشکر ویژه‌ای کنیم. همچنین از تمام داوطلبانی که [ری‌اکت را به زبان‌های دیگر ترجمه کرده‌اند](https://translations.react.dev/) سپاسگزاریم.
 
-## Additional Thanks {/*additional-thanks*/}
+## تشکرهای اضافی {/*additional-thanks*/}
 
-Additionally, we're grateful to:
+همچنین از موارد زیر سپاسگزاریم:
 
-* [Jeff Barczewski](https://github.com/jeffbski) for allowing us to use the `react` package name on npm
-* [Christopher Aue](https://christopheraue.net/) for letting us use the reactjs.com domain name and the [@reactjs](https://twitter.com/reactjs) username on Twitter
-* [ProjectMoon](https://github.com/ProjectMoon) for letting us use the [flux](https://www.npmjs.com/package/flux) package name on npm
-* Shane Anderson for allowing us to use the [react](https://github.com/react) org on GitHub
+* [Jeff Barczewski](https://github.com/jeffbski) برای اجازه دادن به ما برای استفاده از نام پکیج `react` در npm
+* [Christopher Aue](https://christopheraue.net/) برای اجازه دادن به ما برای استفاده از نام دامنهٔ reactjs.com و نام کاربری [@reactjs](https://twitter.com/reactjs) در Twitter
+* [ProjectMoon](https://github.com/ProjectMoon) برای اجازه دادن به ما برای استفاده از نام پکیج [flux](https://www.npmjs.com/package/flux) در npm
+* Shane Anderson برای اجازه دادن به ما برای استفاده از سازمان [react](https://github.com/react) در GitHub

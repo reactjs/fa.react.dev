@@ -4,7 +4,7 @@ title: useTransition
 
 <Intro>
 
-`useTransition` is a React Hook that lets you render a part of the UI in the background.
+`useTransition` یک هوک ری‌اکت است که به شما اجازه می‌دهد بخشی از رابط کاربری را در پس‌زمینه رندر کنید.
 
 ```js
 const [isPending, startTransition] = useTransition()
@@ -16,11 +16,11 @@ const [isPending, startTransition] = useTransition()
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `useTransition()` {/*usetransition*/}
 
-Call `useTransition` at the top level of your component to mark some state updates as Transitions.
+`useTransition` را در بالاترین سطح کامپوننت خود فراخوانی کنید تا برخی به‌روزرسانی‌های استیت را به‌عنوان ترنزیشن علامت‌گذاری کنید.
 
 ```js
 import { useTransition } from 'react';
@@ -31,24 +31,24 @@ function TabContainer() {
 }
 ```
 
-[See more examples below.](#usage)
+[نمونه‌های بیشتر را در ادامه ببینید.](#usage)
 
-#### Parameters {/*parameters*/}
+#### پارامترها {/*parameters*/}
 
-`useTransition` does not take any parameters.
+`useTransition` هیچ پارامتری نمی‌گیرد.
 
-#### Returns {/*returns*/}
+#### مقدار بازگشتی {/*returns*/}
 
-`useTransition` returns an array with exactly two items:
+`useTransition` یک آرایه با دقیقاً دو آیتم برمی‌گرداند:
 
-1. The `isPending` flag that tells you whether there is a pending Transition.
-2. The [`startTransition` function](#starttransition) that lets you mark updates as a Transition.
+1. فلگ `isPending` که به شما می‌گوید آیا یک ترنزیشن در حال انتظار وجود دارد یا خیر.
+2. [`startTransition` function](#starttransition) که به شما اجازه می‌دهد به‌روزرسانی‌ها را به‌عنوان ترنزیشن علامت‌گذاری کنید.
 
 ---
 
 ### `startTransition(action)` {/*starttransition*/}
 
-The `startTransition` function returned by `useTransition` lets you mark an update as a Transition.
+تابع `startTransition` که توسط `useTransition` برگردانده می‌شود به شما اجازه می‌دهد یک به‌روزرسانی را به‌عنوان ترنزیشن علامت‌گذاری کنید.
 
 ```js {6,8}
 function TabContainer() {
@@ -65,9 +65,9 @@ function TabContainer() {
 ```
 
 <Note>
-#### Functions called in `startTransition` are called "Actions". {/*functions-called-in-starttransition-are-called-actions*/}
+#### توابعی که در `startTransition` فراخوانی می‌شوند «Action» نامیده می‌شوند. {/*functions-called-in-starttransition-are-called-actions*/}
 
-The function passed to `startTransition` is called an "Action". By convention, any callback called inside `startTransition` (such as a callback prop) should be named `action` or include the "Action" suffix:
+تابع ارسال‌شده به `startTransition` یک «Action» نامیده می‌شود. طبق قرارداد، هر کالبکی که داخل `startTransition` فراخوانی می‌شود (مانند یک پراپ کالبک) باید `action` نام‌گذاری شود یا شامل پسوند "Action" باشد:
 
 ```js {1,9}
 function SubmitButton({ submitAction }) {
@@ -93,37 +93,37 @@ function SubmitButton({ submitAction }) {
 
 
 
-#### Parameters {/*starttransition-parameters*/}
+#### پارامترها {/*starttransition-parameters*/}
 
-* `action`: A function that updates some state by calling one or more [`set` functions](/reference/react/useState#setstate). React calls `action` immediately with no parameters and marks all state updates scheduled synchronously during the `action` function call as Transitions. Any async calls that are awaited in the `action` will be included in the Transition, but currently require wrapping any `set` functions after the `await` in an additional `startTransition` (see [Troubleshooting](#react-doesnt-treat-my-state-update-after-await-as-a-transition)). State updates marked as Transitions will be [non-blocking](#marking-a-state-update-as-a-non-blocking-transition) and [will not display unwanted loading indicators](#preventing-unwanted-loading-indicators).
+* `action`: تابعی که برخی استیت‌ها را با فراخوانی یک یا چند [`set` functions](/reference/react/useState#setstate) به‌روز می‌کند. ری‌اکت `action` را بلافاصله بدون پارامتر فراخوانی می‌کند و تمام به‌روزرسانی‌های استیتی که به‌صورت همگام در طول فراخوانی تابع `action` برنامه‌ریزی شده‌اند را به‌عنوان ترنزیشن علامت‌گذاری می‌کند. هر فراخوانی async که در `action` await شده باشد در ترنزیشن گنجانده می‌شود، اما در حال حاضر نیاز دارد که هر `set` function پس از `await` در یک `startTransition` اضافی پیچیده شود (به [عیب‌یابی](#react-doesnt-treat-my-state-update-after-await-as-a-transition) مراجعه کنید). به‌روزرسانی‌های استیتی که به‌عنوان ترنزیشن علامت‌گذاری شده‌اند [غیرمسدودکننده](#marking-a-state-update-as-a-non-blocking-transition) خواهند بود و [loading indicatorهای ناخواسته نمایش داده نخواهند شد](#preventing-unwanted-loading-indicators).
 
-#### Returns {/*starttransition-returns*/}
+#### مقدار بازگشتی {/*starttransition-returns*/}
 
-`startTransition` does not return anything.
+`startTransition` چیزی را برنمی‌گرداند.
 
-#### Caveats {/*starttransition-caveats*/}
+#### نکات {/*starttransition-caveats*/}
 
-* `useTransition` is a Hook, so it can only be called inside components or custom Hooks. If you need to start a Transition somewhere else (for example, from a data library), call the standalone [`startTransition`](/reference/react/startTransition) instead.
+* `useTransition` یک هوک است، بنابراین فقط می‌توان آن را داخل کامپوننت‌ها یا هوک‌های سفارشی فراخوانی کرد. اگر نیاز به شروع یک ترنزیشن در جای دیگری دارید (مثلاً از یک کتابخانهٔ داده)، به‌جای آن [`startTransition`](/reference/react/startTransition) مستقل را فراخوانی کنید.
 
-* You can wrap an update into a Transition only if you have access to the `set` function of that state. If you want to start a Transition in response to some prop or a custom Hook value, try [`useDeferredValue`](/reference/react/useDeferredValue) instead.
+* فقط اگر به `set` function آن استیت دسترسی دارید، می‌توانید یک به‌روزرسانی را در یک ترنزیشن بپیچید. اگر می‌خواهید یک ترنزیشن را در پاسخ به برخی پراپس یا مقدار یک هوک سفارشی شروع کنید، به‌جای آن [`useDeferredValue`](/reference/react/useDeferredValue) را امتحان کنید.
 
-* The function you pass to `startTransition` is called immediately, marking all state updates that happen while it executes as Transitions. If you try to perform state updates in a `setTimeout`, for example, they won't be marked as Transitions.
+* تابعی که به `startTransition` ارسال می‌کنید بلافاصله فراخوانی می‌شود و تمام به‌روزرسانی‌های استیتی که هنگام اجرای آن اتفاق می‌افتند را به‌عنوان ترنزیشن علامت‌گذاری می‌کند. اگر مثلاً سعی کنید به‌روزرسانی‌های استیت را در یک `setTimeout` انجام دهید، به‌عنوان ترنزیشن علامت‌گذاری نخواهند شد.
 
-* You must wrap any state updates after any async requests in another `startTransition` to mark them as Transitions. This is a known limitation that we will fix in the future (see [Troubleshooting](#react-doesnt-treat-my-state-update-after-await-as-a-transition)).
+* باید هر به‌روزرسانی استیت را پس از هر درخواست async در یک `startTransition` دیگر بپیچید تا آن‌ها را به‌عنوان ترنزیشن علامت‌گذاری کنید. این یک محدودیت شناخته‌شده است که در آینده رفع خواهد شد (به [عیب‌یابی](#react-doesnt-treat-my-state-update-after-await-as-a-transition) مراجعه کنید).
 
-* The `startTransition` function has a stable identity, so you will often see it omitted from Effect dependencies, but including it will not cause the Effect to fire. If the linter lets you omit a dependency without errors, it is safe to do. [Learn more about removing Effect dependencies.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
+* تابع `startTransition` یک هویت پایدار دارد، بنابراین اغلب می‌بینید که از وابستگی‌های افکت حذف می‌شود، اما گنجاندن آن باعث اجرای افکت نمی‌شود. اگر linter به شما اجازه دهد یک وابستگی را بدون خطا حذف کنید، این کار امن است. [دربارهٔ حذف وابستگی‌های افکت بیشتر بدانید.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
 
-* A state update marked as a Transition will be interrupted by other state updates. For example, if you update a chart component inside a Transition, but then start typing into an input while the chart is in the middle of a re-render, React will restart the rendering work on the chart component after handling the input update.
+* یک به‌روزرسانی استیت که به‌عنوان ترنزیشن علامت‌گذاری شده باشد توسط سایر به‌روزرسانی‌های استیت قطع می‌شود. برای مثال، اگر یک کامپوننت نمودار را داخل یک ترنزیشن به‌روز کنید، اما سپس شروع به تایپ در یک input کنید در حالی که نمودار در وسط یک رندر مجدد است، ری‌اکت کار رندر را روی کامپوننت نمودار پس از مدیریت به‌روزرسانی input بازراه‌اندازی می‌کند.
 
-* Transition updates can't be used to control text inputs.
+* به‌روزرسانی‌های ترنزیشن را نمی‌توان برای کنترل inputهای متنی استفاده کرد.
 
-* If there are multiple ongoing Transitions, React currently batches them together. This is a limitation that may be removed in a future release.
+* اگر چندین ترنزیشن در حال انجام وجود داشته باشد، ری‌اکت در حال حاضر آن‌ها را با هم دسته‌بندی (Batching) می‌کند. این یک محدودیت است که ممکن است در یک نسخهٔ آینده حذف شود.
 
-## Usage {/*usage*/}
+## استفاده {/*usage*/}
 
-### Perform non-blocking updates with Actions {/*perform-non-blocking-updates-with-actions*/}
+### انجام به‌روزرسانی‌های غیرمسدودکننده با Actions {/*perform-non-blocking-updates-with-actions*/}
 
-Call `useTransition` at the top of your component to create Actions, and access the pending state:
+`useTransition` را در بالای کامپوننت خود فراخوانی کنید تا Actions را ایجاد کنید و به استیت pending دسترسی پیدا کنید:
 
 ```js [[1, 4, "isPending"], [2, 4, "startTransition"]]
 import {useState, useTransition} from 'react';
@@ -134,12 +134,12 @@ function CheckoutForm() {
 }
 ```
 
-`useTransition` returns an array with exactly two items:
+`useTransition` یک آرایه با دقیقاً دو آیتم برمی‌گرداند:
 
-1. The <CodeStep step={1}>`isPending` flag</CodeStep> that tells you whether there is a pending Transition.
-2. The <CodeStep step={2}>`startTransition` function</CodeStep> that lets you create an Action.
+1. <CodeStep step={1}>فلگ `isPending`</CodeStep> که به شما می‌گوید آیا یک ترنزیشن در حال انتظار وجود دارد یا خیر.
+2. <CodeStep step={2}>تابع `startTransition`</CodeStep> که به شما اجازه می‌دهد یک Action ایجاد کنید.
 
-To start a Transition, pass a function to `startTransition` like this:
+برای شروع یک ترنزیشن، یک تابع مانند این به `startTransition` ارسال کنید:
 
 ```js
 import {useState, useTransition} from 'react';
@@ -161,17 +161,17 @@ function CheckoutForm() {
 }
 ```
 
-The function passed to `startTransition` is called the "Action". You can update state and (optionally) perform side effects within an Action, and the work will be done in the background without blocking user interactions on the page. A Transition can include multiple Actions, and while a Transition is in progress, your UI stays responsive. For example, if the user clicks a tab but then changes their mind and clicks another tab, the second click will be immediately handled without waiting for the first update to finish.
+تابع ارسال‌شده به `startTransition` «Action» نامیده می‌شود. می‌توانید داخل یک Action استیت را به‌روز کنید و (به‌صورت اختیاری) side effect‌ها را انجام دهید، و کار در پس‌زمینه بدون مسدود کردن تعاملات کاربر روی صفحه انجام می‌شود. یک ترنزیشن می‌تواند شامل چندین Action باشد، و در حالی که یک ترنزیشن در حال انجام است، رابط کاربری شما پاسخگو باقی می‌ماند. برای مثال، اگر کاربر روی یک tab کلیک کند اما سپس تغییر عقیده دهد و روی tab دیگری کلیک کند، کلیک دوم بلافاصله مدیریت می‌شود بدون منتظر ماندن برای تکمیل به‌روزرسانی اول.
 
-To give the user feedback about in-progress Transitions, the `isPending` state switches to `true` at the first call to `startTransition`, and stays `true` until all Actions complete and the final state is shown to the user. Transitions ensure side effects in Actions to complete in order to [prevent unwanted loading indicators](#preventing-unwanted-loading-indicators), and you can provide immediate feedback while the Transition is in progress with `useOptimistic`.
+برای ارائهٔ بازخورد به کاربر دربارهٔ ترنزیشن‌های در حال انجام، استیت `isPending` در اولین فراخوانی `startTransition` به `true` سوییچ می‌کند، و تا زمانی که تمام Actions تکمیل شوند و استیت نهایی به کاربر نمایش داده شود، `true` باقی می‌ماند. ترنزیشن‌ها تضمین می‌کنند که side effect‌ها در Actions به ترتیب تکمیل شوند تا از [loading indicatorهای ناخواسته جلوگیری شود](#preventing-unwanted-loading-indicators)، و می‌توانید در حالی که ترنزیشن در حال انجام است با `useOptimistic` بازخورد فوری ارائه دهید.
 
 <Recipes titleText="The difference between Actions and regular event handling">
 
-#### Updating the quantity in an Action {/*updating-the-quantity-in-an-action*/}
+#### به‌روزرسانی کمیت در یک Action {/*updating-the-quantity-in-an-action*/}
 
-In this example, the `updateQuantity` function simulates a request to the server to update the item's quantity in the cart. This function is *artificially slowed down* so that it takes at least a second to complete the request.
+در این مثال، تابع `updateQuantity` یک درخواست به سرور برای به‌روزرسانی کمیت آیتم در سبد خرید را شبیه‌سازی می‌کند. این تابع *به‌طور مصنوعی کند شده است* تا حداقل یک ثانیه طول بکشد تا درخواست تکمیل شود.
 
-Update the quantity multiple times quickly. Notice that the pending "Total" state is shown while any requests are in progress, and the "Total" updates only after the final request is complete. Because the update is in an Action, the "quantity" can continue to be updated while the request is in progress.
+کمیت را چندین بار به‌سرعت به‌روز کنید. توجه کنید که استیت pending "Total" در حالی که هر درخواستی در حال انجام است نمایش داده می‌شود، و "Total" فقط پس از تکمیل درخواست نهایی به‌روز می‌شود. زیرا به‌روزرسانی در یک Action است، "quantity" می‌تواند در حالی که درخواست در حال انجام است همچنان به‌روز شود.
 
 <Sandpack>
 
@@ -305,22 +305,22 @@ export async function updateQuantity(newQuantity) {
 
 </Sandpack>
 
-This is a basic example to demonstrate how Actions work, but this example does not handle requests completing out of order. When updating the quantity multiple times, it's possible for the previous requests to finish after later requests causing the quantity to update out of order. This is a known limitation that we will fix in the future (see [Troubleshooting](#my-state-updates-in-transitions-are-out-of-order) below).
+این یک مثال پایه برای نشان دادن نحوهٔ کار Actions است، اما این مثال درخواست‌هایی که خارج از ترتیب تکمیل می‌شوند را مدیریت نمی‌کند. هنگام به‌روزرسانی کمیت چندین بار، ممکن است درخواست‌های قبلی بعد از درخواست‌های بعدی تمام شوند که باعث می‌شود کمیت خارج از ترتیب به‌روز شود. این یک محدودیت شناخته‌شده است که در آینده رفع خواهد شد (به [عیب‌یابی](#my-state-updates-in-transitions-are-out-of-order) در ادامه مراجعه کنید).
 
-For common use cases, React provides built-in abstractions such as:
+برای موارد استفادهٔ رایج، ری‌اکت انتزاع‌های داخلی مانند زیر را ارائه می‌دهد:
 - [`useActionState`](/reference/react/useActionState)
 - [`<form>` actions](/reference/react-dom/components/form)
 - [Server Functions](/reference/rsc/server-functions)
 
-These solutions handle request ordering for you. When using Transitions to build your own custom hooks or libraries that manage async state transitions, you have greater control over the request ordering, but you must handle it yourself.
+این راه‌حل‌ها ترتیب درخواست را برای شما مدیریت می‌کنند. هنگام استفاده از ترنزیشن‌ها برای ساخت هوک‌های سفارشی خود یا کتابخانه‌هایی که ترنزیشن‌های استیت async را مدیریت می‌کنند، کنترل بیشتری روی ترتیب درخواست دارید، اما باید آن را خودتان مدیریت کنید.
 
 <Solution />
 
-#### Updating the quantity without an Action {/*updating-the-users-name-without-an-action*/}
+#### به‌روزرسانی کمیت بدون یک Action {/*updating-the-users-name-without-an-action*/}
 
-In this example, the `updateQuantity` function also simulates a request to the server to update the item's quantity in the cart. This function is *artificially slowed down* so that it takes at least a second to complete the request.
+در این مثال، تابع `updateQuantity` همچنین یک درخواست به سرور برای به‌روزرسانی کمیت آیتم در سبد خرید را شبیه‌سازی می‌کند. این تابع *به‌طور مصنوعی کند شده است* تا حداقل یک ثانیه طول بکشد تا درخواست تکمیل شود.
 
-Update the quantity multiple times quickly. Notice that the pending "Total" state is shown while any requests is in progress, but the "Total" updates multiple times for each time the "quantity" was clicked:
+کمیت را چندین بار به‌سرعت به‌روز کنید. توجه کنید که استیت pending "Total" در حالی که هر درخواستی در حال انجام است نمایش داده می‌شود، اما "Total" چندین بار برای هر باری که "quantity" کلیک شده به‌روز می‌شود:
 
 <Sandpack>
 
@@ -447,7 +447,7 @@ export async function updateQuantity(newQuantity) {
 
 </Sandpack>
 
-A common solution to this problem is to prevent the user from making changes while the quantity is updating:
+یک راه‌حل رایج برای این مشکل جلوگیری از تغییرات کاربر در حالی که کمیت در حال به‌روزرسانی است:
 
 <Sandpack>
 
@@ -573,7 +573,7 @@ export async function updateQuantity(newQuantity) {
 
 </Sandpack>
 
-This solution makes the app feel slow, because the user must wait each time they update the quantity. It's possible to add more complex handling manually to allow the user to interact with the UI while the quantity is updating, but Actions handle this case with a straight-forward built-in API.
+این راه‌حل باعث می‌شود اپلیکیشن کند به‌نظر برسد، زیرا کاربر باید هر بار که کمیت را به‌روز می‌کند منتظر بماند. امکان دارد مدیریت پیچیده‌تر دستی اضافه شود تا به کاربر اجازه دهد در حالی که کمیت در حال به‌روزرسانی است با رابط کاربری تعامل داشته باشد، اما Actions این مورد را با یک API داخلی ساده مدیریت می‌کنند.
 
 <Solution />
 
@@ -581,11 +581,11 @@ This solution makes the app feel slow, because the user must wait each time they
 
 ---
 
-### Exposing `action` prop from components {/*exposing-action-props-from-components*/}
+### در معرض قرار دادن پراپ `action` از کامپوننت‌ها {/*exposing-action-props-from-components*/}
 
-You can expose an `action` prop from a component to allow a parent to call an Action.
+می‌توانید یک پراپ `action` را از یک کامپوننت در معرض قرار دهید تا به یک والد اجازه دهید یک Action را فراخوانی کند.
 
-For example, this `TabButton` component wraps its `onClick` logic in an `action` prop:
+برای مثال، این کامپوننت `TabButton` منطق `onClick` خود را در یک پراپ `action` می‌پیچد:
 
 ```js {8-12}
 export default function TabButton({ action, children, isActive }) {
@@ -607,7 +607,7 @@ export default function TabButton({ action, children, isActive }) {
 }
 ```
 
-Because the parent component updates its state inside the `action`, that state update gets marked as a Transition. This means you can click on "Posts" and then immediately click "Contact" and it does not block user interactions:
+از آنجا که کامپوننت والد استیت خود را داخل `action` به‌روز می‌کند، آن به‌روزرسانی استیت به‌عنوان ترنزیشن علامت‌گذاری می‌شود. این بدان معناست که می‌توانید روی "Posts" کلیک کنید و سپس بلافاصله روی "Contact" کلیک کنید و این کار تعاملات کاربر را مسدود نمی‌کند:
 
 <Sandpack>
 
@@ -742,17 +742,17 @@ b { display: inline-block; margin-right: 10px; }
 
 <Note>
 
-When exposing an `action` prop from a component, you should `await` it inside the transition.
+هنگام در معرض قرار دادن یک پراپ `action` از یک کامپوننت، باید آن را داخل ترنزیشن `await` کنید.
 
-This allows the `action` callback to be either synchronous or asynchronous without requiring an additional `startTransition` to wrap the `await` in the action.
+این کار به کالبک `action` اجازه می‌دهد همگام یا ناهمگام باشد بدون نیاز به یک `startTransition` اضافی برای پیچاندن `await` در action.
 
 </Note>
 
 ---
 
-### Displaying a pending visual state {/*displaying-a-pending-visual-state*/}
+### نمایش یک استیت بصری pending {/*displaying-a-pending-visual-state*/}
 
-You can use the `isPending` boolean value returned by `useTransition` to indicate to the user that a Transition is in progress. For example, the tab button can have a special "pending" visual state:
+می‌توانید از مقدار boolean `isPending` که توسط `useTransition` برگردانده می‌شود استفاده کنید تا به کاربر نشان دهید یک ترنزیشن در حال انجام است. برای مثال، دکمهٔ tab می‌تواند یک استیت بصری "pending" خاص داشته باشد:
 
 ```js {4-6}
 function TabButton({ action, children, isActive }) {
@@ -764,7 +764,7 @@ function TabButton({ action, children, isActive }) {
   // ...
 ```
 
-Notice how clicking "Posts" now feels more responsive because the tab button itself updates right away:
+توجه کنید چگونه کلیک روی "Posts" اکنون پاسخگوتر حس می‌شود زیرا دکمهٔ tab بلافاصله به‌روز می‌شود:
 
 <Sandpack>
 
@@ -897,9 +897,9 @@ b { display: inline-block; margin-right: 10px; }
 
 ---
 
-### Preventing unwanted loading indicators {/*preventing-unwanted-loading-indicators*/}
+### جلوگیری از loading indicatorهای ناخواسته {/*preventing-unwanted-loading-indicators*/}
 
-In this example, the `PostsTab` component fetches some data using [use](/reference/react/use). When you click the "Posts" tab, the `PostsTab` component *suspends*, causing the closest loading fallback to appear:
+در این مثال، کامپوننت `PostsTab` با استفاده از [use](/reference/react/use) برخی داده‌ها را fetch می‌کند. وقتی روی tab "Posts" کلیک می‌کنید، کامپوننت `PostsTab` *suspend* می‌شود، که باعث می‌شود نزدیک‌ترین loading fallback ظاهر شود:
 
 <Sandpack>
 
@@ -1053,9 +1053,9 @@ b { display: inline-block; margin-right: 10px; }
 
 </Sandpack>
 
-Hiding the entire tab container to show a loading indicator leads to a jarring user experience. If you add `useTransition` to `TabButton`, you can instead display the pending state in the tab button instead.
+پنهان کردن کل container tab برای نمایش یک loading indicator منجر به تجربهٔ کاربری ناخوشایندی می‌شود. اگر `useTransition` را به `TabButton` اضافه کنید، می‌توانید به‌جای آن استیت pending را در دکمهٔ tab نمایش دهید.
 
-Notice that clicking "Posts" no longer replaces the entire tab container with a spinner:
+توجه کنید که کلیک روی "Posts" دیگر کل container tab را با یک spinner جایگزین نمی‌کند:
 
 <Sandpack>
 
@@ -1217,19 +1217,19 @@ b { display: inline-block; margin-right: 10px; }
 
 </Sandpack>
 
-[Read more about using Transitions with Suspense.](/reference/react/Suspense#preventing-already-revealed-content-from-hiding)
+[دربارهٔ استفاده از ترنزیشن‌ها با ساسپنس بیشتر بخوانید.](/reference/react/Suspense#preventing-already-revealed-content-from-hiding)
 
 <Note>
 
-Transitions only "wait" long enough to avoid hiding *already revealed* content (like the tab container). If the Posts tab had a [nested `<Suspense>` boundary,](/reference/react/Suspense#revealing-nested-content-as-it-loads) the Transition would not "wait" for it.
+ترنزیشن‌ها فقط به‌اندازهٔ کافی "منتظر" می‌مانند تا از پنهان شدن محتوای *از قبل نمایش‌داده‌شده* (مانند container tab) جلوگیری کنند. اگر tab Posts یک [مرز `<Suspense>` تودرتو داشت،](/reference/react/Suspense#revealing-nested-content-as-it-loads) ترنزیشن برای آن "منتظر" نمی‌ماند.
 
 </Note>
 
 ---
 
-### Building a Suspense-enabled router {/*building-a-suspense-enabled-router*/}
+### ساخت یک router فعال‌شده با Suspense {/*building-a-suspense-enabled-router*/}
 
-If you're building a React framework or a router, we recommend marking page navigations as Transitions.
+اگر در حال ساخت یک فریم‌ورک ری‌اکت یا یک router هستید، توصیه می‌کنیم navigationهای صفحه را به‌عنوان ترنزیشن علامت‌گذاری کنید.
 
 ```js {3,6,8}
 function Router() {
@@ -1244,13 +1244,13 @@ function Router() {
   // ...
 ```
 
-This is recommended for three reasons:
+این کار به سه دلیل توصیه می‌شود:
 
-- [Transitions are interruptible,](#marking-a-state-update-as-a-non-blocking-transition) which lets the user click away without waiting for the re-render to complete.
-- [Transitions prevent unwanted loading indicators,](#preventing-unwanted-loading-indicators) which lets the user avoid jarring jumps on navigation.
-- [Transitions wait for all pending actions](#perform-non-blocking-updates-with-actions) which lets the user wait for side effects to complete before the new page is shown.
+- [ترنزیشن‌ها قابل قطع هستند،](#marking-a-state-update-as-a-non-blocking-transition) که به کاربر اجازه می‌دهد بدون منتظر ماندن برای تکمیل رندر مجدد کلیک کند و دور شود.
+- [ترنزیشن‌ها از loading indicatorهای ناخواسته جلوگیری می‌کنند،](#preventing-unwanted-loading-indicators) که کاربر را از پرش‌های ناگهانی هنگام navigation اجتناب می‌کند.
+- [ترنزیشن‌ها منتظر تمام actions در حال انتظار می‌مانند](#perform-non-blocking-updates-with-actions) که به کاربر اجازه می‌دهد منتظر بماند تا side effect‌ها قبل از نمایش صفحهٔ جدید تکمیل شوند.
 
-Here is a simplified router example using Transitions for navigations.
+در اینجا یک نمونهٔ router ساده‌شده با استفاده از ترنزیشن‌ها برای navigation آمده است.
 
 <Sandpack>
 
@@ -1551,15 +1551,15 @@ main {
 
 <Note>
 
-[Suspense-enabled](/reference/react/Suspense) routers are expected to wrap the navigation updates into Transitions by default.
+انتظار می‌رود routerهای [فعال‌شده با Suspense](/reference/react/Suspense) به‌روزرسانی‌های navigation را به‌طور پیش‌فرض در ترنزیشن‌ها بپیچند.
 
 </Note>
 
 ---
 
-### Displaying an error to users with an error boundary {/*displaying-an-error-to-users-with-error-boundary*/}
+### نمایش یک خطا به کاربران با یک error boundary {/*displaying-an-error-to-users-with-error-boundary*/}
 
-If a function passed to `startTransition` throws an error, you can display an error to your user with an [error boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). To use an error boundary, wrap the component where you are calling the `useTransition` in an error boundary. Once the function passed to `startTransition` errors, the fallback for the error boundary will be displayed.
+اگر تابع ارسال‌شده به `startTransition` خطا پرتاب کند، می‌توانید یک خطا را با یک [error boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary) به کاربر نمایش دهید. برای استفاده از یک error boundary، کامپوننتی که در آن `useTransition` را فراخوانی می‌کنید را در یک error boundary بپیچید. پس از آنکه تابع ارسال‌شده به `startTransition` خطا داد، fallback برای error boundary نمایش داده می‌شود.
 
 <Sandpack>
 
@@ -1639,11 +1639,11 @@ root.render(
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## عیب‌یابی {/*troubleshooting*/}
 
-### Updating an input in a Transition doesn't work {/*updating-an-input-in-a-transition-doesnt-work*/}
+### به‌روزرسانی یک input در یک ترنزیشن کار نمی‌کند {/*updating-an-input-in-a-transition-doesnt-work*/}
 
-You can't use a Transition for a state variable that controls an input:
+نمی‌توانید از یک ترنزیشن برای یک متغیر استیت که یک input را کنترل می‌کند استفاده کنید:
 
 ```js {4,10}
 const [text, setText] = useState('');
@@ -1658,16 +1658,16 @@ function handleChange(e) {
 return <input value={text} onChange={handleChange} />;
 ```
 
-This is because Transitions are non-blocking, but updating an input in response to the change event should happen synchronously. If you want to run a Transition in response to typing, you have two options:
+این به این دلیل است که ترنزیشن‌ها غیرمسدودکننده هستند، اما به‌روزرسانی یک input در پاسخ به رویداد change باید به‌صورت همگام انجام شود. اگر می‌خواهید یک ترنزیشن را در پاسخ به تایپ اجرا کنید، دو گزینه دارید:
 
-1. You can declare two separate state variables: one for the input state (which always updates synchronously), and one that you will update in a Transition. This lets you control the input using the synchronous state, and pass the Transition state variable (which will "lag behind" the input) to the rest of your rendering logic.
-2. Alternatively, you can have one state variable, and add [`useDeferredValue`](/reference/react/useDeferredValue) which will "lag behind" the real value. It will trigger non-blocking re-renders to "catch up" with the new value automatically.
+1. می‌توانید دو متغیر استیت جداگانه اعلان کنید: یکی برای استیت input (که همیشه به‌صورت همگام به‌روز می‌شود)، و یکی که در یک ترنزیشن به‌روز می‌شود. این کار به شما اجازه می‌دهد با استفاده از استیت همگام input را کنترل کنید، و متغیر استیت ترنزیشن (که از input "عقب‌تر" خواهد بود) را به بقیهٔ منطق رندر خود ارسال کنید.
+2. همچنین می‌توانید یک متغیر استیت داشته باشید، و [`useDeferredValue`](/reference/react/useDeferredValue) را اضافه کنید که از مقدار واقعی "عقب‌تر" خواهد بود. این کار رندرهای مجدد غیرمسدودکننده را trigger می‌کند تا به‌طور خودکار به مقدار جدید "برسد".
 
 ---
 
-### React doesn't treat my state update as a Transition {/*react-doesnt-treat-my-state-update-as-a-transition*/}
+### ری‌اکت به‌روزرسانی استیت من را به‌عنوان یک ترنزیشن در نظر نمی‌گیرد {/*react-doesnt-treat-my-state-update-as-a-transition*/}
 
-When you wrap a state update in a Transition, make sure that it happens *during* the `startTransition` call:
+هنگام پیچیدن یک به‌روزرسانی استیت در یک ترنزیشن، مطمئن شوید که *در طول* فراخوانی `startTransition` اتفاق می‌افتد:
 
 ```js
 startTransition(() => {
@@ -1676,7 +1676,7 @@ startTransition(() => {
 });
 ```
 
-The function you pass to `startTransition` must be synchronous. You can't mark an update as a Transition like this:
+تابعی که به `startTransition` ارسال می‌کنید باید همگام باشد. نمی‌توانید یک به‌روزرسانی را مانند این به‌عنوان ترنزیشن علامت‌گذاری کنید:
 
 ```js
 startTransition(() => {
@@ -1687,7 +1687,7 @@ startTransition(() => {
 });
 ```
 
-Instead, you could do this:
+در عوض، می‌توانید این کار را انجام دهید:
 
 ```js
 setTimeout(() => {
@@ -1700,9 +1700,9 @@ setTimeout(() => {
 
 ---
 
-### React doesn't treat my state update after `await` as a Transition {/*react-doesnt-treat-my-state-update-after-await-as-a-transition*/}
+### ری‌اکت به‌روزرسانی استیت من پس از `await` را به‌عنوان ترنزیشن در نظر نمی‌گیرد {/*react-doesnt-treat-my-state-update-after-await-as-a-transition*/}
 
-When you use `await` inside a `startTransition` function, the state updates that happen after the `await` are not marked as Transitions. You must wrap state updates after each `await` in a `startTransition` call:
+هنگام استفاده از `await` داخل یک تابع `startTransition`، به‌روزرسانی‌های استیتی که پس از `await` اتفاق می‌افتند به‌عنوان ترنزیشن علامت‌گذاری نمی‌شوند. باید به‌روزرسانی‌های استیت را پس از هر `await` در یک فراخوانی `startTransition` بپیچید:
 
 ```js
 startTransition(async () => {
@@ -1712,7 +1712,7 @@ startTransition(async () => {
 });
 ```
 
-However, this works instead:
+با این حال، این کار به‌جای آن کار می‌کند:
 
 ```js
 startTransition(async () => {
@@ -1724,19 +1724,19 @@ startTransition(async () => {
 });
 ```
 
-This is a JavaScript limitation due to React losing the scope of the async context. In the future, when [AsyncContext](https://github.com/tc39/proposal-async-context) is available, this limitation will be removed.
+این یک محدودیت جاوااسکریپت به دلیل از دست دادن scope کانتکست async توسط ری‌اکت است. در آینده، وقتی [AsyncContext](https://github.com/tc39/proposal-async-context) در دسترس باشد، این محدودیت حذف خواهد شد.
 
 ---
 
-### I want to call `useTransition` from outside a component {/*i-want-to-call-usetransition-from-outside-a-component*/}
+### می‌خواهم `useTransition` را از خارج یک کامپوننت فراخوانی کنم {/*i-want-to-call-usetransition-from-outside-a-component*/}
 
-You can't call `useTransition` outside a component because it's a Hook. In this case, use the standalone [`startTransition`](/reference/react/startTransition) method instead. It works the same way, but it doesn't provide the `isPending` indicator.
+نمی‌توانید `useTransition` را خارج یک کامپوننت فراخوانی کنید زیرا یک هوک است. در این حالت، به‌جای آن از متد مستقل [`startTransition`](/reference/react/startTransition) استفاده کنید. این به همان روش کار می‌کند، اما نشانگر `isPending` را ارائه نمی‌دهد.
 
 ---
 
-### The function I pass to `startTransition` executes immediately {/*the-function-i-pass-to-starttransition-executes-immediately*/}
+### تابعی که به `startTransition` ارسال می‌کنم بلافاصله اجرا می‌شود {/*the-function-i-pass-to-starttransition-executes-immediately*/}
 
-If you run this code, it will print 1, 2, 3:
+اگر این کد را اجرا کنید، 1، 2، 3 را چاپ می‌کند:
 
 ```js {1,3,6}
 console.log(1);
@@ -1747,7 +1747,7 @@ startTransition(() => {
 console.log(3);
 ```
 
-**It is expected to print 1, 2, 3.** The function you pass to `startTransition` does not get delayed. Unlike with the browser `setTimeout`, it does not run the callback later. React executes your function immediately, but any state updates scheduled *while it is running* are marked as Transitions. You can imagine that it works like this:
+**انتظار می‌رود که 1، 2، 3 چاپ شود.** تابعی که به `startTransition` ارسال می‌کنید به تأخیر نمی‌افتد. برخلاف `setTimeout` مرورگر، کالبک را بعداً اجرا نمی‌کند. ری‌اکت تابع شما را بلافاصله اجرا می‌کند، اما هر به‌روزرسانی استیتی که *در حال اجرای آن* برنامه‌ریزی می‌شود به‌عنوان ترنزیشن علامت‌گذاری می‌شود. می‌توانید تصور کنید که این کار مانند این کار می‌کند:
 
 ```js
 // A simplified version of how React works
@@ -1769,13 +1769,13 @@ function setState() {
 }
 ```
 
-### My state updates in Transitions are out of order {/*my-state-updates-in-transitions-are-out-of-order*/}
+### به‌روزرسانی‌های استیت من در ترنزیشن‌ها خارج از ترتیب هستند {/*my-state-updates-in-transitions-are-out-of-order*/}
 
-If you `await` inside `startTransition`, you might see the updates happen out of order.
+اگر داخل `startTransition` از `await` استفاده کنید، ممکن است ببینید که به‌روزرسانی‌ها خارج از ترتیب اتفاق می‌افتند.
 
-In this example, the `updateQuantity` function simulates a request to the server to update the item's quantity in the cart. This function *artificially returns every other request after the previous* to simulate race conditions for network requests.
+در این مثال، تابع `updateQuantity` یک درخواست به سرور برای به‌روزرسانی کمیت آیتم در سبد خرید را شبیه‌سازی می‌کند. این تابع *به‌طور مصنوعی هر درخواست دیگر را پس از قبلی برمی‌گرداند* تا race condition برای درخواست‌های شبکه را شبیه‌سازی کند.
 
-Try updating the quantity once, then update it quickly multiple times. You might see the incorrect total:
+سعی کنید کمیت را یک بار به‌روز کنید، سپس آن را چندین بار به‌سرعت به‌روز کنید. ممکن است total نادرست را ببینید:
 
 <Sandpack>
 
@@ -1943,12 +1943,12 @@ export async function updateQuantity(newName) {
 </Sandpack>
 
 
-When clicking multiple times, it's possible for previous requests to finish after later requests. When this happens, React currently has no way to know the intended order. This is because the updates are scheduled asynchronously, and React loses context of the order across the async boundary.
+هنگام کلیک چند بار، ممکن است درخواست‌های قبلی بعد از درخواست‌های بعدی تمام شوند. وقتی این اتفاق می‌افتد، ری‌اکت در حال حاضر راهی برای دانستن ترتیب مورد نظر ندارد. این به این دلیل است که به‌روزرسانی‌ها به‌صورت async برنامه‌ریزی می‌شوند، و ری‌اکت کانتکست ترتیب را در سراسر مرز async از دست می‌دهد.
 
-This is expected, because Actions within a Transition do not guarantee execution order. For common use cases, React provides higher-level abstractions like [`useActionState`](/reference/react/useActionState) and [`<form>` actions](/reference/react-dom/components/form) that handle ordering for you. For advanced use cases, you'll need to implement your own queuing and abort logic to handle this.
+این مورد انتظار می‌رود، زیرا Actions داخل یک ترنزیشن ترتیب اجرا را تضمین نمی‌کنند. برای موارد استفادهٔ رایج، ری‌اکت انتزاع‌های سطح بالاتری مانند [`useActionState`](/reference/react/useActionState) و [`<form>` actions](/reference/react-dom/components/form) را ارائه می‌دهد که ترتیب‌بندی را برای شما مدیریت می‌کنند. برای موارد استفادهٔ پیشرفته، باید منطق queuing و abort خود را پیاده‌سازی کنید تا این کار را مدیریت کنید.
 
 
-Example of `useActionState` handling execution order:
+نمونهٔ `useActionState` که ترتیب اجرا را مدیریت می‌کند:
 
 <Sandpack>
 

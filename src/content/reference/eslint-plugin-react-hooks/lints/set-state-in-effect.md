@@ -4,29 +4,29 @@ title: set-state-in-effect
 
 <Intro>
 
-Validates against calling setState synchronously in an effect, which can lead to re-renders that degrade performance.
+فراخوانی هم‌زمان setState در یک افکت را اعتبارسنجی می‌کند، که می‌تواند منجر به رندرهای مجدد شود که عملکرد را تخریب می‌کند.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## جزئیات قانون {/*rule-details*/}
 
-Setting state immediately inside an effect forces React to restart the entire render cycle. When you update state in an effect, React must re-render your component, apply changes to the DOM, and then run effects again. This creates an extra render pass that could have been avoided by transforming data directly during render or deriving state from props. Transform data at the top level of your component instead. This code will naturally re-run when props or state change without triggering additional render cycles.
+تنظیم استیت بلافاصله داخل یک افکت ری‌اکت را مجبور می‌کند کل چرخهٔ رندر را دوباره آغاز کند. وقتی استیت را در یک افکت به‌روزرسانی می‌کنید، ری‌اکت باید کامپوننت شما را دوباره رندر کند، تغییرات را به DOM اعمال کند، و سپس افکت‌ها را دوباره اجرا کند. این یک پاس رندر اضافی ایجاد می‌کند که می‌توانست با تبدیل مستقیم داده‌ها در طول رندر یا استخراج استیت از پراپس اجتناب شود. به‌جای آن داده‌ها را در سطح بالای کامپوننت خود تبدیل کنید. این کد به‌طور طبیعی هنگام تغییر پراپس یا استیت دوباره اجرا می‌شود بدون اینکه چرخه‌های رندر اضافی تحریک کند.
 
-Synchronous `setState` calls in effects trigger immediate re-renders before the browser can paint, causing performance issues and visual jank. React has to render twice: once to apply the state update, then again after effects run. This double rendering is wasteful when the same result could be achieved with a single render.
+فراخوانی‌های هم‌زمان `setState` در افکت‌ها قبل از اینکه مرورگر بتواند paint کند، رندرهای مجدد فوری تحریک می‌کنند، که باعث مشکلات عملکردی و لرزش بصری می‌شود. ری‌اکت باید دو بار رندر کند: یک‌بار برای اعمال به‌روزرسانی استیت، سپس دوباره بعد از اجرای افکت‌ها. این رندر دوگانه وقتی می‌توان همان نتیجه را با یک رندر واحد به دست آورد، اتلاف است.
 
-In many cases, you may also not need an effect at all. Please see [You Might Not Need an Effect](/learn/you-might-not-need-an-effect) for more information.
+در بسیاری از موارد، ممکن است اصلاً نیازی به افکت نداشته باشید. لطفاً برای اطلاعات بیشتر [شاید به افکت نیاز نداشته باشید](/learn/you-might-not-need-an-effect) را ببینید.
 
-## Common Violations {/*common-violations*/}
+## نقض‌های رایج {/*common-violations*/}
 
-This rule catches several patterns where synchronous setState is used unnecessarily:
+این قانون چندین الگو را که در آن setState هم‌زمان به‌طور غیرضروری استفاده می‌شود، می‌گیرد:
 
-- Setting loading state synchronously
-- Deriving state from props in effects
-- Transforming data in effects instead of render
+- تنظیم استیت loading به‌صورت هم‌زمان
+- استخراج استیت از پراپس در افکت‌ها
+- تبدیل داده‌ها در افکت‌ها به‌جای رندر
 
-### Invalid {/*invalid*/}
+### نامعتبر {/*invalid*/}
 
-Examples of incorrect code for this rule:
+نمونه‌هایی از کد نادرست برای این قانون:
 
 ```js
 // ❌ Synchronous setState in effect
@@ -67,9 +67,9 @@ function Component({selectedId, items}) {
 }
 ```
 
-### Valid {/*valid*/}
+### معتبر {/*valid*/}
 
-Examples of correct code for this rule:
+نمونه‌هایی از کد درست برای این قانون:
 
 ```js {expectedErrors: {'react-compiler': [8]}}
 // ✅ setState in an effect is fine if the value comes from a ref
@@ -90,4 +90,4 @@ function Component({selectedId, items}) {
 }
 ```
 
-**When something can be calculated from the existing props or state, don't put it in state.** Instead, calculate it during rendering. This makes your code faster, simpler, and less error-prone. Learn more in [You Might Not Need an Effect](/learn/you-might-not-need-an-effect).
+**وقتی چیزی می‌تواند از پراپس یا استیت موجود محاسبه شود، آن را در استیت قرار ندهید.** به‌جای آن در طول رندر محاسبه کنید. این کار کد شما را سریع‌تر، ساده‌تر، و کم‌تر مستعد خطا می‌کند. در [شاید به افکت نیاز نداشته باشید](/learn/you-might-not-need-an-effect) بیشتر بدانید.

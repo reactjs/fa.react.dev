@@ -1,57 +1,57 @@
 ---
-title: Updating Objects in State
+title: به‌روزرسانی اشیاء در استیت
 ---
 
 <Intro>
 
-State can hold any kind of JavaScript value, including objects. But you shouldn't change objects that you hold in the React state directly. Instead, when you want to update an object, you need to create a new one (or make a copy of an existing one), and then set the state to use that copy.
+استیت می‌تواند هر نوع مقدار جاوااسکریپتی را در خود نگه دارد، از جمله اشیاء. اما شما نباید اشیایی که در استیت ری‌اکت نگه می‌دارید را مستقیماً تغییر دهید. در عوض، وقتی می‌خواهید یک شیء را به‌روزرسانی کنید، باید یک شیء جدید ایجاد کنید (یا از یک شیء موجود کپی بگیرید) و سپس استیت را طوری تنظیم کنید که از آن کپی استفاده کند.
 
 </Intro>
 
 <YouWillLearn>
 
-- How to correctly update an object in React state
-- How to update a nested object without mutating it
-- What immutability is, and how not to break it
-- How to make object copying less repetitive with Immer
+- چگونه یک شیء را به‌درستی در استیت ری‌اکت به‌روزرسانی کنیم
+- چگونه یک شیء تودرتو را بدون تغییر دادن (mutate) آن به‌روزرسانی کنیم
+- تغییرناپذیری (immutability) چیست و چگونه آن را نقض نکنیم
+- چگونه کپی کردن اشیاء را با Immer کمتر تکراری کنیم
 
 </YouWillLearn>
 
-## What's a mutation? {/*whats-a-mutation*/}
+## جهش (mutation) چیست؟ {/*whats-a-mutation*/}
 
-You can store any kind of JavaScript value in state.
+شما می‌توانید هر نوع مقدار جاوااسکریپتی را در استیت ذخیره کنید.
 
 ```js
 const [x, setX] = useState(0);
 ```
 
-So far you've been working with numbers, strings, and booleans. These kinds of JavaScript values are "immutable", meaning unchangeable or "read-only". You can trigger a re-render to _replace_ a value:
+تا اینجا شما با اعداد، رشته‌ها و بولین‌ها کار کرده‌اید. این نوع مقادیر جاوااسکریپتی «تغییرناپذیر» (immutable) هستند، یعنی غیرقابل‌تغییر یا «فقط‌خواندنی». شما می‌توانید با ایجاد یک رندر مجدد، یک مقدار را _جایگزین_ کنید:
 
 ```js
 setX(5);
 ```
 
-The `x` state changed from `0` to `5`, but the _number `0` itself_ did not change. It's not possible to make any changes to the built-in primitive values like numbers, strings, and booleans in JavaScript.
+استیت `x` از `0` به `5` تغییر کرد، اما _خود عدد `0`_ تغییر نکرد. ایجاد هیچ تغییری در مقادیر اولیهٔ داخلی مانند اعداد، رشته‌ها و بولین‌ها در جاوااسکریپت امکان‌پذیر نیست.
 
-Now consider an object in state:
+حالا یک شیء را در استیت در نظر بگیرید:
 
 ```js
 const [position, setPosition] = useState({ x: 0, y: 0 });
 ```
 
-Technically, it is possible to change the contents of _the object itself_. **This is called a mutation:**
+از نظر فنی، تغییر محتوای _خود شیء_ امکان‌پذیر است. **به این کار جهش (mutation) می‌گویند:**
 
 ```js
 position.x = 5;
 ```
 
-However, although objects in React state are technically mutable, you should treat them **as if** they were immutable--like numbers, booleans, and strings. Instead of mutating them, you should always replace them.
+با این حال، اگرچه اشیاء در استیت ری‌اکت از نظر فنی قابل‌تغییر هستند، شما باید با آن‌ها **طوری رفتار کنید که** انگار تغییرناپذیر هستند—مانند اعداد، بولین‌ها و رشته‌ها. به‌جای تغییر دادن آن‌ها، باید همیشه آن‌ها را جایگزین کنید.
 
-## Treat state as read-only {/*treat-state-as-read-only*/}
+## با استیت مانند یک مقدار فقط‌خواندنی رفتار کنید {/*treat-state-as-read-only*/}
 
-In other words, you should **treat any JavaScript object that you put into state as read-only.**
+به عبارت دیگر، شما باید **با هر شیء جاوااسکریپتی که در استیت قرار می‌دهید مانند یک مقدار فقط‌خواندنی رفتار کنید.**
 
-This example holds an object in state to represent the current pointer position. The red dot is supposed to move when you touch or move the cursor over the preview area. But the dot stays in the initial position:
+این مثال یک شیء را در استیت نگه می‌دارد تا موقعیت فعلی نشانگر را نمایش دهد. نقطهٔ قرمز باید وقتی نشانگر یا انگشت خود را روی ناحیهٔ پیش‌نمایش حرکت می‌دهید، جابجا شود. اما نقطه در موقعیت اولیه باقی می‌ماند:
 
 <Sandpack>
 
@@ -95,7 +95,7 @@ body { margin: 0; padding: 0; height: 250px; }
 
 </Sandpack>
 
-The problem is with this bit of code.
+مشکل در این بخش از کد است.
 
 ```js
 onPointerMove={e => {
@@ -104,9 +104,9 @@ onPointerMove={e => {
 }}
 ```
 
-This code modifies the object assigned to `position` from [the previous render.](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) But without using the state setting function, React has no idea that object has changed. So React does not do anything in response. It's like trying to change the order after you've already eaten the meal. While mutating state can work in some cases, we don't recommend it. You should treat the state value you have access to in a render as read-only.
+این کد شیءای که به `position` اختصاص داده شده را از [رندر قبلی](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) تغییر می‌دهد. اما بدون استفاده از تابع تنظیم‌کنندهٔ استیت، ری‌اکت متوجه نمی‌شود که شیء تغییر کرده است. در نتیجه ری‌اکت هیچ کاری در پاسخ انجام نمی‌دهد. این مانند این است که بخواهید بعد از خوردن غذا سفارش را تغییر دهید. هرچند تغییر استیت در برخی موارد می‌تواند کار کند، ما آن را توصیه نمی‌کنیم. شما باید با مقدار استیتی که در یک رندر به آن دسترسی دارید مانند یک مقدار فقط‌خواندنی رفتار کنید.
 
-To actually [trigger a re-render](/learn/state-as-a-snapshot#setting-state-triggers-renders) in this case, **create a *new* object and pass it to the state setting function:**
+برای اینکه واقعاً در این مورد [یک رندر مجدد را تحریک کنید](/learn/state-as-a-snapshot#setting-state-triggers-renders)، **یک شیء *جدید* ایجاد کنید و آن را به تابع تنظیم‌کنندهٔ استیت ارسال کنید:**
 
 ```js
 onPointerMove={e => {
@@ -117,12 +117,12 @@ onPointerMove={e => {
 }}
 ```
 
-With `setPosition`, you're telling React:
+با `setPosition`، شما به ری‌اکت می‌گویید:
 
-* Replace `position` with this new object
-* And render this component again
+* `position` را با این شیء جدید جایگزین کن
+* و این کامپوننت را دوباره رندر کن
 
-Notice how the red dot now follows your pointer when you touch or hover over the preview area:
+توجه کنید که حالا نقطهٔ قرمز چگونه هنگام لمس یا حرکت دادن نشانگر روی ناحیهٔ پیش‌نمایش، آن را دنبال می‌کند:
 
 <Sandpack>
 
@@ -170,16 +170,16 @@ body { margin: 0; padding: 0; height: 250px; }
 
 <DeepDive>
 
-#### Local mutation is fine {/*local-mutation-is-fine*/}
+#### جهش محلی اشکالی ندارد {/*local-mutation-is-fine*/}
 
-Code like this is a problem because it modifies an *existing* object in state:
+کدی مثل این مشکل دارد زیرا یک شیء *موجود* در استیت را تغییر می‌دهد:
 
 ```js
 position.x = e.clientX;
 position.y = e.clientY;
 ```
 
-But code like this is **absolutely fine** because you're mutating a fresh object you have *just created*:
+اما کدی مثل این **کاملاً درست است** زیرا شما در حال تغییر یک شیء تازه‌ای هستید که *به‌تازگی* ایجاد کرده‌اید:
 
 ```js
 const nextPosition = {};
@@ -188,7 +188,7 @@ nextPosition.y = e.clientY;
 setPosition(nextPosition);
 ```
 
-In fact, it is completely equivalent to writing this:
+در واقع، این کد کاملاً معادل نوشتن این است:
 
 ```js
 setPosition({
@@ -197,15 +197,15 @@ setPosition({
 });
 ```
 
-Mutation is only a problem when you change *existing* objects that are already in state. Mutating an object you've just created is okay because *no other code references it yet.* Changing it isn't going to accidentally impact something that depends on it. This is called a "local mutation". You can even do local mutation [while rendering.](/learn/keeping-components-pure#local-mutation-your-components-little-secret) Very convenient and completely okay!
+جهش تنها زمانی مشکل است که اشیاء *موجودی* را که از قبل در استیت هستند تغییر می‌دهید. تغییر یک شیءای که به‌تازگی ایجاد کرده‌اید اشکالی ندارد زیرا *هنوز هیچ کد دیگری به آن ارجاع نداده است.* تغییر دادن آن به‌طور تصادفی روی چیزی که به آن وابسته است تأثیر نمی‌گذارد. به این کار «جهش محلی» (local mutation) می‌گویند. شما حتی می‌توانید جهش محلی را [هنگام رندر کردن](/learn/keeping-components-pure#local-mutation-your-components-little-secret) هم انجام دهید. بسیار راحت و کاملاً درست است!
 
 </DeepDive>  
 
-## Copying objects with the spread syntax {/*copying-objects-with-the-spread-syntax*/}
+## کپی کردن اشیاء با سینتکس spread {/*copying-objects-with-the-spread-syntax*/}
 
-In the previous example, the `position` object is always created fresh from the current cursor position. But often, you will want to include *existing* data as a part of the new object you're creating. For example, you may want to update *only one* field in a form, but keep the previous values for all other fields.
+در مثال قبل، شیء `position` همیشه از موقعیت فعلی نشانگر به‌طور تازه ایجاد می‌شد. اما اغلب اوقات، شما می‌خواهید *داده‌های موجود* را به‌عنوان بخشی از شیء جدیدی که ایجاد می‌کنید، لحاظ کنید. مثلاً ممکن است بخواهید *فقط یک* فیلد را در یک فرم به‌روزرسانی کنید، اما مقادیر قبلی را برای همهٔ فیلدهای دیگر نگه دارید.
 
-These input fields don't work because the `onChange` handlers mutate the state:
+این فیلدهای ورودی کار نمی‌کنند زیرا هندلرهای `onChange` استیت را تغییر می‌دهند:
 
 <Sandpack>
 
@@ -271,13 +271,13 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </Sandpack>
 
-For example, this line mutates the state from a past render:
+مثلاً این خط، استیت مربوط به یک رندر گذشته را تغییر می‌دهد:
 
 ```js
 person.firstName = e.target.value;
 ```
 
-The reliable way to get the behavior you're looking for is to create a new object and pass it to `setPerson`. But here, you want to also **copy the existing data into it** because only one of the fields has changed:
+راه مطمئن برای رسیدن به رفتاری که می‌خواهید این است که یک شیء جدید ایجاد کنید و آن را به `setPerson` ارسال کنید. اما در اینجا، شما می‌خواهید **داده‌های موجود را هم در آن کپی کنید** زیرا فقط یکی از فیلدها تغییر کرده است:
 
 ```js
 setPerson({
@@ -287,7 +287,7 @@ setPerson({
 });
 ```
 
-You can use the `...` [object spread](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#spread_in_object_literals) syntax so that you don't need to copy every property separately.
+می‌توانید از سینتکس [object spread](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#spread_in_object_literals) با `...` استفاده کنید تا نیازی به کپی کردن تک‌تک ویژگی‌ها نباشد.
 
 ```js
 setPerson({
@@ -296,9 +296,9 @@ setPerson({
 });
 ```
 
-Now the form works! 
+حالا فرم کار می‌کند! 
 
-Notice how you didn't declare a separate state variable for each input field. For large forms, keeping all data grouped in an object is very convenient--as long as you update it correctly!
+توجه کنید که برای هر فیلد ورودی یک متغیر استیت جداگانه تعریف نکردید. برای فرم‌های بزرگ، نگه‌داشتن همهٔ داده‌ها در یک شیء گروه‌بندی‌شده بسیار راحت است—به‌شرطی که به‌درستی آن را به‌روزرسانی کنید!
 
 <Sandpack>
 
@@ -373,13 +373,13 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </Sandpack>
 
-Note that the `...` spread syntax is "shallow"--it only copies things one level deep. This makes it fast, but it also means that if you want to update a nested property, you'll have to use it more than once. 
+توجه کنید که سینتکس spread با `...` «سطحی» است—یعنی فقط تا یک سطح عمق کپی می‌کند. این ویژگی آن را سریع می‌کند، اما به این معناست که اگر بخواهید یک ویژگی تودرتو را به‌روزرسانی کنید، باید بیش از یک بار از آن استفاده کنید. 
 
 <DeepDive>
 
-#### Using a single event handler for multiple fields {/*using-a-single-event-handler-for-multiple-fields*/}
+#### استفاده از یک هندلر رویداد برای چندین فیلد {/*using-a-single-event-handler-for-multiple-fields*/}
 
-You can also use the `[` and `]` braces inside your object definition to specify a property with a dynamic name. Here is the same example, but with a single event handler instead of three different ones:
+شما همچنین می‌توانید از آکولادهای `[` و `]` درون تعریف شیء خود برای تعیین یک ویژگی با نام پویا استفاده کنید. در اینجا همان مثال قبل آمده است، اما با یک هندلر رویداد واحد به‌جای سه هندلر متفاوت:
 
 <Sandpack>
 
@@ -443,13 +443,13 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </Sandpack>
 
-Here, `e.target.name` refers to the `name` property given to the `<input>` DOM element.
+اینجا، `e.target.name` به ویژگی `name` ارجاع می‌دهد که به عنصر DOM `<input>` داده شده است.
 
 </DeepDive>
 
-## Updating a nested object {/*updating-a-nested-object*/}
+## به‌روزرسانی یک شیء تودرتو {/*updating-a-nested-object*/}
 
-Consider a nested object structure like this:
+یک ساختار شیء تودرتو مانند این را در نظر بگیرید:
 
 ```js
 const [person, setPerson] = useState({
@@ -462,13 +462,13 @@ const [person, setPerson] = useState({
 });
 ```
 
-If you wanted to update `person.artwork.city`, it's clear how to do it with mutation:
+اگر می‌خواستید `person.artwork.city` را به‌روزرسانی کنید، روش انجام آن با جهش واضح است:
 
 ```js
 person.artwork.city = 'New Delhi';
 ```
 
-But in React, you treat state as immutable! In order to change `city`, you would first need to produce the new `artwork` object (pre-populated with data from the previous one), and then produce the new `person` object which points at the new `artwork`:
+اما در ری‌اکت، شما با استیت مانند یک مقدار تغییرناپذیر رفتار می‌کنید! برای تغییر `city`، ابتدا باید شیء `artwork` جدیدی تولید کنید (با داده‌های پرشده از شیء قبلی) و سپس شیء `person` جدیدی تولید کنید که به `artwork` جدید اشاره می‌کند:
 
 ```js
 const nextArtwork = { ...person.artwork, city: 'New Delhi' };
@@ -476,7 +476,7 @@ const nextPerson = { ...person, artwork: nextArtwork };
 setPerson(nextPerson);
 ```
 
-Or, written as a single function call:
+یا، به‌صورت یک فراخوانی تابع واحد نوشته شود:
 
 ```js
 setPerson({
@@ -488,7 +488,7 @@ setPerson({
 });
 ```
 
-This gets a bit wordy, but it works fine for many cases:
+این کمی طولانی می‌شود، اما برای بسیاری از موارد به‌خوبی کار می‌کند:
 
 <Sandpack>
 
@@ -598,9 +598,9 @@ img { width: 200px; height: 200px; }
 
 <DeepDive>
 
-#### Objects are not really nested {/*objects-are-not-really-nested*/}
+#### اشیاء در واقع تودرتو نیستند {/*objects-are-not-really-nested*/}
 
-An object like this appears "nested" in code:
+یک شیء مثل این در کد «تودرتو» به نظر می‌رسد:
 
 ```js
 let obj = {
@@ -613,7 +613,7 @@ let obj = {
 };
 ```
 
-However, "nesting" is an inaccurate way to think about how objects behave. When the code executes, there is no such thing as a "nested" object. You are really looking at two different objects:
+با این حال، «تودرتویی» روش دقیقی برای فکر کردن دربارهٔ رفتار اشیاء نیست. وقتی کد اجرا می‌شود، چیزی به‌نام شیء «تودرتو» وجود ندارد. شما در واقع به دو شیء متفاوت نگاه می‌کنید:
 
 ```js
 let obj1 = {
@@ -628,7 +628,7 @@ let obj2 = {
 };
 ```
 
-The `obj1` object is not "inside" `obj2`. For example, `obj3` could "point" at `obj1` too:
+شیء `obj1` «داخل» `obj2` نیست. مثلاً `obj3` هم می‌تواند به `obj1` «اشاره» کند:
 
 ```js
 let obj1 = {
@@ -648,13 +648,13 @@ let obj3 = {
 };
 ```
 
-If you were to mutate `obj3.artwork.city`, it would affect both `obj2.artwork.city` and `obj1.city`. This is because `obj3.artwork`, `obj2.artwork`, and `obj1` are the same object. This is difficult to see when you think of objects as "nested". Instead, they are separate objects "pointing" at each other with properties.
+اگر `obj3.artwork.city` را تغییر دهید، هم بر `obj2.artwork.city` و هم بر `obj1.city` تأثیر می‌گذارد. این به این دلیل است که `obj3.artwork`، `obj2.artwork` و `obj1` در واقع یک شیء واحد هستند. این موضوع زمانی که اشیاء را «تودرتو» تصور می‌کنید، دشوار دیده می‌شود. در واقع، اشیاء جداگانه‌ای هستند که با ویژگی‌هایشان به یکدیگر «اشاره» می‌کنند.
 
 </DeepDive>  
 
-### Write concise update logic with Immer {/*write-concise-update-logic-with-immer*/}
+### نوشتن منطق به‌روزرسانی موجز با Immer {/*write-concise-update-logic-with-immer*/}
 
-If your state is deeply nested, you might want to consider [flattening it.](/learn/choosing-the-state-structure#avoid-deeply-nested-state) But, if you don't want to change your state structure, you might prefer a shortcut to nested spreads. [Immer](https://github.com/immerjs/use-immer) is a popular library that lets you write using the convenient but mutating syntax and takes care of producing the copies for you. With Immer, the code you write looks like you are "breaking the rules" and mutating an object:
+اگر استیت شما عمیقاً تودرتو است، ممکن است بخواهید [آن را مسطح کنید.](/learn/choosing-the-state-structure#avoid-deeply-nested-state) اما اگر نمی‌خواهید ساختار استیت خود را تغییر دهید، ممکن است یک میان‌بر برای spreadهای تودرتو را ترجیح دهید. [Immer](https://github.com/immerjs/use-immer) یک کتابخانهٔ محبوب است که به شما اجازه می‌دهد با سینتکس راحت اما تغییردهنده بنویسید و کار تولید کپی‌ها را به‌عنوان مسئولیت می‌پذیرد. با Immer، کدی که می‌نویسید طوری به نظر می‌رسد که انگار در حال «نقض قوانین» و تغییر یک شیء هستید:
 
 ```js
 updatePerson(draft => {
@@ -662,22 +662,22 @@ updatePerson(draft => {
 });
 ```
 
-But unlike a regular mutation, it doesn't overwrite the past state!
+اما برخلاف یک جهش معمولی، استیت گذشته را بازنویسی نمی‌کند!
 
 <DeepDive>
 
-#### How does Immer work? {/*how-does-immer-work*/}
+#### Immer چگونه کار می‌کند؟ {/*how-does-immer-work*/}
 
-The `draft` provided by Immer is a special type of object, called a [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy), that "records" what you do with it. This is why you can mutate it freely as much as you like! Under the hood, Immer figures out which parts of the `draft` have been changed, and produces a completely new object that contains your edits.
+`draft`ای که Immer ارائه می‌دهد نوع ویژه‌ای از شیء است که [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) نامیده می‌شود و «ثبت می‌کند» که شما با آن چه می‌کنید. به همین دلیل می‌توانید آن را هر طور که دوست دارید آزادانه تغییر دهید! در پس‌زمینه، Immer تشخیص می‌دهد کدام بخش‌های `draft` تغییر کرده‌اند و یک شیء کاملاً جدید تولید می‌کند که ویرایش‌های شما را در بر دارد.
 
 </DeepDive>
 
-To try Immer:
+برای امتحان Immer:
 
-1. Run `npm install use-immer` to add Immer as a dependency
-2. Then replace `import { useState } from 'react'` with `import { useImmer } from 'use-immer'`
+1. `npm install use-immer` را اجرا کنید تا Immer به‌عنوان یک وابستگی اضافه شود
+2. سپس `import { useState } from 'react'` را با `import { useImmer } from 'use-immer'` جایگزین کنید
 
-Here is the above example converted to Immer:
+در اینجا مثال بالا با Immer تبدیل شده است:
 
 <Sandpack>
 
@@ -790,33 +790,33 @@ img { width: 200px; height: 200px; }
 
 </Sandpack>
 
-Notice how much more concise the event handlers have become. You can mix and match `useState` and `useImmer` in a single component as much as you like. Immer is a great way to keep the update handlers concise, especially if there's nesting in your state, and copying objects leads to repetitive code.
+توجه کنید که هندلرهای رویداد چقدر موجزتر شده‌اند. شما می‌توانید به هر مقدار که بخواهید از `useState` و `useImmer` در یک کامپوننت واحد استفاده کنید. Immer یک راه عالی برای موجز نگه‌داشتن هندلرهای به‌روزرسانی است، به‌ویژه اگر در استیت شما تودرتویی وجود داشته باشد و کپی کردن اشیاء به کد تکراری منجر شود.
 
 <DeepDive>
 
-#### Why is mutating state not recommended in React? {/*why-is-mutating-state-not-recommended-in-react*/}
+#### چرا تغییر دادن استیت در ری‌اکت توصیه نمی‌شود؟ {/*why-is-mutating-state-not-recommended-in-react*/}
 
-There are a few reasons:
+چند دلیل وجود دارد:
 
-* **Debugging:** If you use `console.log` and don't mutate state, your past logs won't get clobbered by the more recent state changes. So you can clearly see how state has changed between renders.
-* **Optimizations:** Common React [optimization strategies](/reference/react/memo) rely on skipping work if previous props or state are the same as the next ones. If you never mutate state, it is very fast to check whether there were any changes. If `prevObj === obj`, you can be sure that nothing could have changed inside of it.
-* **New Features:** The new React features we're building rely on state being [treated like a snapshot.](/learn/state-as-a-snapshot) If you're mutating past versions of state, that may prevent you from using the new features.
-* **Requirement Changes:** Some application features, like implementing Undo/Redo, showing a history of changes, or letting the user reset a form to earlier values, are easier to do when nothing is mutated. This is because you can keep past copies of state in memory, and reuse them when appropriate. If you start with a mutative approach, features like this can be difficult to add later on.
-* **Simpler Implementation:** Because React does not rely on mutation, it does not need to do anything special with your objects. It does not need to hijack their properties, always wrap them into Proxies, or do other work at initialization as many "reactive" solutions do. This is also why React lets you put any object into state--no matter how large--without additional performance or correctness pitfalls.
+* **دیباگ:** اگر از `console.log` استفاده می‌کنید و استیت را تغییر نمی‌دهید، لاگ‌های گذشته با تغییرات اخیر استیت بازنویسی نمی‌شوند. بنابراین می‌توانید به‌وضوح ببینید که استیت بین رندرها چگونه تغییر کرده است.
+* **بهینه‌سازی:** [استراتژی‌های](/reference/react/memo) بهینه‌سازی رایج در ری‌اکت بر اساس نادیده‌گرفتن کار در صورتی که پراپس یا استیت قبلی با مقادیر بعدی یکسان باشد، کار می‌کنند. اگر هرگز استیت را تغییر ندهید، بررسی اینکه آیا تغییری رخ داده است بسیار سریع است. اگر `prevObj === obj` باشد، می‌توانید مطمئن باشید که هیچ‌چیز درون آن نمی‌توانسته تغییر کند.
+* **قابلیت‌های جدید:** قابلیت‌های جدید ری‌اکت که در حال ساخت آن‌ها هستیم بر این اساس که استیت [مانند یک عکس فوری رفتار شود](/learn/state-as-a-snapshot) تکیه می‌کنند. اگر نسخه‌های گذشتهٔ استیت را تغییر می‌دهید، ممکن است استفاده از قابلیت‌های جدید برای شما ممکن نباشد.
+* **تغییرات نیازمندی‌ها:** برخی قابلیت‌های برنامه مانند پیاده‌سازی Undo/Redo، نمایش تاریخچهٔ تغییرات، یا اجازه دادن به کاربر برای بازنشانی یک فرم به مقادیر قبلی، زمانی که هیچ‌چیز تغییر نمی‌کند آسان‌تر انجام می‌شوند. این به این دلیل است که می‌توانید کپی‌های گذشتهٔ استیت را در حافظه نگه دارید و در صورت لزوم دوباره از آن‌ها استفاده کنید. اگر با رویکرد تغییردهنده شروع کنید، افزودن قابلیت‌هایی مانند این در آینده می‌تواند دشوار باشد.
+* **پیاده‌سازی ساده‌تر:** از آنجا که ری‌اکت به جهش تکیه نمی‌کند، نیازی به انجام کار خاصی با اشیاء شما ندارد. نیازی نیست ویژگی‌های آن‌ها را هک کند، همیشه آن‌ها را در Proxy بپیچد، یا در زمان مقداردهی اولیه کار دیگری انجام دهد، همان‌طور که بسیاری از راه‌حل‌های «واکنشی» (reactive) این کار را می‌کنند. به همین دلیل است که ری‌اکت به شما اجازه می‌دهد هر شیءای را—بدون توجه به اندازهٔ آن—در استیت قرار دهید، بدون افت عملکرد یا درستی.
 
-In practice, you can often "get away" with mutating state in React, but we strongly advise you not to do that so that you can use new React features developed with this approach in mind. Future contributors and perhaps even your future self will thank you!
+در عمل، شما اغلب می‌توانید با تغییر استیت در ری‌اکت «بدون عواقب دست‌وبپا کنید»، اما ما اکیداً توصیه می‌کنیم این کار را نکنید تا بتوانید از قابلیت‌های جدید ری‌اکت که با این رویکرد در نظر گرفته شده‌اند استفاده کنید. مشارکت‌کنندگان آینده و شاید حتی خودِ آیندهٔ شما از شما قدردانی خواهند کرد!
 
 </DeepDive>
 
 <Recap>
 
-* Treat all state in React as immutable.
-* When you store objects in state, mutating them will not trigger renders and will change the state in previous render "snapshots".
-* Instead of mutating an object, create a *new* version of it, and trigger a re-render by setting state to it.
-* You can use the `{...obj, something: 'newValue'}` object spread syntax to create copies of objects.
-* Spread syntax is shallow: it only copies one level deep.
-* To update a nested object, you need to create copies all the way up from the place you're updating.
-* To reduce repetitive copying code, use Immer.
+* با تمام استیت در ری‌اکت مانند یک مقدار تغییرناپذیر رفتار کنید.
+* وقتی اشیاء را در استیت ذخیره می‌کنید، تغییر دادن آن‌ها رندرها را تحریک نمی‌کند و استیت را در «عکس‌های فوری» رندرهای قبلی تغییر می‌دهد.
+* به‌جای تغییر یک شیء، یک نسخه *جدید* از آن ایجاد کنید و با تنظیم استیت به آن، یک رندر مجدد تحریک کنید.
+* می‌توانید از سینتکس object spread با `{...obj, something: 'newValue'}` برای ایجاد کپی از اشیاء استفاده کنید.
+* سینتکس spread سطحی است: فقط تا یک سطح عمق کپی می‌کند.
+* برای به‌روزرسانی یک شیء تودرتو، باید از محلی که در حال به‌روزرسانی آن هستید تا بالا، کپی ایجاد کنید.
+* برای کاهش کد تکراری کپی کردن، از Immer استفاده کنید.
 
 </Recap>
 
@@ -824,11 +824,11 @@ In practice, you can often "get away" with mutating state in React, but we stron
 
 <Challenges>
 
-#### Fix incorrect state updates {/*fix-incorrect-state-updates*/}
+#### رفع به‌روزرسانی‌های نادرست استیت {/*fix-incorrect-state-updates*/}
 
-This form has a few bugs. Click the button that increases the score a few times. Notice that it does not increase. Then edit the first name, and notice that the score has suddenly "caught up" with your changes. Finally, edit the last name, and notice that the score has disappeared completely.
+این فرم چند باگ دارد. چند بار روی دکمه‌ای که امتیاز را افزایش می‌دهد کلیک کنید. توجه کنید که افزایش نمی‌یابد. سپس نام کوچک را ویرایش کنید و توجه کنید که امتیاز ناگهان با تغییرات شما «جای گرفته است». در نهایت، نام خانوادگی را ویرایش کنید و توجه کنید که امتیاز کاملاً ناپدید شده است.
 
-Your task is to fix all of these bugs. As you fix them, explain why each of them happens.
+وظیفهٔ شما رفع همهٔ این باگ‌هاست. هنگام رفع آن‌ها، توضیح دهید که چرا هر کدام رخ می‌دهند.
 
 <Sandpack>
 
@@ -896,7 +896,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 <Solution>
 
-Here is a version with both bugs fixed:
+در اینجا نسخه‌ای با رفع هر دو باگ آورده شده است:
 
 <Sandpack>
 
@@ -966,23 +966,23 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </Sandpack>
 
-The problem with `handlePlusClick` was that it mutated the `player` object. As a result, React did not know that there's a reason to re-render, and did not update the score on the screen. This is why, when you edited the first name, the state got updated, triggering a re-render which _also_ updated the score on the screen.
+مشکل `handlePlusClick` این بود که شیء `player` را تغییر می‌داد. در نتیجه، ری‌اکت متوجه نشد که دلیلی برای رندر مجدد وجود دارد و امتیاز را روی صفحه به‌روزرسانی نکرد. به همین دلیل است که وقتی نام کوچک را ویرایش کردید، استیت به‌روزرسانی شد و یک رندر مجدد تحریک کرد که _همچنین_ امتیاز را روی صفحه به‌روزرسانی کرد.
 
-The problem with `handleLastNameChange` was that it did not copy the existing `...player` fields into the new object. This is why the score got lost after you edited the last name.
+مشکل `handleLastNameChange` این بود که فیلدهای `...player` موجود را در شیء جدید کپی نمی‌کرد. به همین دلیل امتیاز پس از ویرایش نام خانوادگی از دست رفت.
 
 </Solution>
 
-#### Find and fix the mutation {/*find-and-fix-the-mutation*/}
+#### یافتن و رفع جهش {/*find-and-fix-the-mutation*/}
 
-There is a draggable box on a static background. You can change the box's color using the select input.
+یک جعبهٔ قابل‌کشیدن روی یک پس‌زمینهٔ ثابت وجود دارد. می‌توانید با استفاده از ورودی انتخاب، رنگ جعبه را تغییر دهید.
 
-But there is a bug. If you move the box first, and then change its color, the background (which isn't supposed to move!) will "jump" to the box position. But this should not happen: the `Background`'s `position` prop is set to `initialPosition`, which is `{ x: 0, y: 0 }`. Why is the background moving after the color change?
+اما یک باگ وجود دارد. اگر ابتدا جعبه را جابجا کنید و سپس رنگ آن را تغییر دهید، پس‌زمینه (که نباید حرکت کند!) به موقعیت جعبه «می‌پرد». اما این نباید رخ دهد: پراپس `position` کامپوننت `Background` روی `initialPosition` تنظیم شده است، یعنی `{ x: 0, y: 0 }`. چرا پس‌زمینه پس از تغییر رنگ حرکت می‌کند؟
 
-Find the bug and fix it.
+باگ را پیدا کرده و رفع کنید.
 
 <Hint>
 
-If something unexpected changes, there is a mutation. Find the mutation in `App.js` and fix it.
+اگر چیزی به‌طور غیرمنتظره‌ای تغییر می‌کند، یک جهش رخ داده است. جهش را در `App.js` پیدا کرده و آن را رفع کنید.
 
 </Hint>
 
@@ -1132,9 +1132,9 @@ select { margin-bottom: 10px; }
 
 <Solution>
 
-The problem was in the mutation inside `handleMove`. It mutated `shape.position`, but that's the same object that `initialPosition` points at. This is why both the shape and the background move. (It's a mutation, so the change doesn't reflect on the screen until an unrelated update--the color change--triggers a re-render.)
+مشکل در جهش داخل `handleMove` بود. این تابع `shape.position` را تغییر می‌داد، اما این همان شیءای است که `initialPosition` به آن اشاره می‌کند. به همین دلیل هم شکل و هم پس‌زمینه حرکت می‌کنند. (این یک جهش است، بنابراین تغییر تا زمانی که یک به‌روزرسانی نامرتبط—یعنی تغییر رنگ—رندر مجدد را تحریک نکند، روی صفحه منعکس نمی‌شود.)
 
-The fix is to remove the mutation from `handleMove`, and use the spread syntax to copy the shape. Note that `+=` is a mutation, so you need to rewrite it to use a regular `+` operation.
+راه‌حل این است که جهش را از `handleMove` حذف کنید و از سینتکس spread برای کپی کردن شکل استفاده کنید. توجه کنید که `+=` یک جهش است، بنابراین باید آن را به‌گونه‌ای بازنویسی کنید که از عملیات `+` معمولی استفاده کند.
 
 <Sandpack>
 
@@ -1287,9 +1287,9 @@ select { margin-bottom: 10px; }
 
 </Solution>
 
-#### Update an object with Immer {/*update-an-object-with-immer*/}
+#### به‌روزرسانی یک شیء با Immer {/*update-an-object-with-immer*/}
 
-This is the same buggy example as in the previous challenge. This time, fix the mutation by using Immer. For your convenience, `useImmer` is already imported, so you need to change the `shape` state variable to use it.
+این همان مثال دارای باگ چالش قبلی است. این بار، با استفاده از Immer جهش را رفع کنید. برای راحتی شما، `useImmer` از قبل وارد شده است، بنابراین باید متغیر استیت `shape` را تغییر دهید تا از آن استفاده کند.
 
 <Sandpack>
 
@@ -1456,7 +1456,7 @@ select { margin-bottom: 10px; }
 
 <Solution>
 
-This is the solution rewritten with Immer. Notice how the event handlers are written in a mutating fashion, but the bug does not occur. This is because under the hood, Immer never mutates the existing objects.
+این راه‌حل با Immer بازنویسی شده است. توجه کنید که هندلرهای رویداد به سبک تغییردهنده نوشته شده‌اند، اما باگ رخ نمی‌دهد. این به این دلیل است که در پس‌زمینه، Immer هرگز اشیاء موجود را تغییر نمی‌دهد.
 
 <Sandpack>
 

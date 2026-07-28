@@ -1,28 +1,28 @@
 ---
-title: Preserving and Resetting State
+title: حفظ و بازنشانی استیت
 ---
 
 <Intro>
 
-State is isolated between components. React keeps track of which state belongs to which component based on their place in the UI tree. You can control when to preserve state and when to reset it between re-renders.
+استیت بین کامپوننت‌ها ایزوله است. React بر اساس مکان آن‌ها در درخت رابط کاربری پیگیری می‌کند که کدام استیت متعلق به کدام کامپوننت است. می‌توانید کنترل کنید که چه زمان استیت را حفظ کنید و چه زمان بین رندرهای مجدد آن را بازنشانی کنید.
 
 </Intro>
 
 <YouWillLearn>
 
-* When React chooses to preserve or reset the state
-* How to force React to reset component's state
-* How keys and types affect whether the state is preserved
+* چه زمان React انتخاب می‌کند استیت را حفظ یا بازنشانی کند
+* چگونه React را مجبور کنید استیت کامپوننت را بازنشانی کند
+* چگونه کلیدها (keys) و تایپ‌ها بر حفظ یا عدم حفظ استیت تأثیر می‌گذارند
 
 </YouWillLearn>
 
-## State is tied to a position in the render tree {/*state-is-tied-to-a-position-in-the-tree*/}
+## استیت به موقعیتی در درخت رندر متصل است {/*state-is-tied-to-a-position-in-the-tree*/}
 
-React builds [render trees](learn/understanding-your-ui-as-a-tree#the-render-tree) for the component structure in your UI.
+React برای ساختار کامپوننت در رابط کاربری شما [درخت‌های رندر](learn/understanding-your-ui-as-a-tree#the-render-tree) می‌سازد.
 
-When you give a component state, you might think the state "lives" inside the component. But the state is actually held inside React. React associates each piece of state it's holding with the correct component by where that component sits in the render tree.
+وقتی به یک کامپوننت استیت می‌دهید، ممکن است فکر کنید استیت «زندگی» می‌کند داخل کامپوننت. اما استیت در واقع داخل React نگه‌داری می‌شود. React هر قطعه از استیتی که نگه می‌دارد را با کامپوننت درست، بر اساس جایی که آن کامپوننت در درخت رندر قرار دارد مرتبط می‌کند.
 
-Here, there is only one `<Counter />` JSX tag, but it's rendered at two different positions:
+اینجا، فقط یک تگ JSX `<Counter />` وجود دارد، اما در دو موقعیت متفاوت رندر می‌شود:
 
 <Sandpack>
 
@@ -86,23 +86,23 @@ label {
 
 </Sandpack>
 
-Here's how these look as a tree:    
+این‌ها به‌صورت یک درخت این‌گونه به‌نظر می‌رسند:
 
 <DiagramGroup>
 
 <Diagram name="preserving_state_tree" height={248} width={395} alt="Diagram of a tree of React components. The root node is labeled 'div' and has two children. Each of the children are labeled 'Counter' and both contain a state bubble labeled 'count' with value 0.">
 
-React tree
+درخت React
 
 </Diagram>
 
 </DiagramGroup>
 
-**These are two separate counters because each is rendered at its own position in the tree.** You don't usually have to think about these positions to use React, but it can be useful to understand how it works.
+**این‌ها دو شمارندهٔ جداگانه هستند زیرا هرکدام در موقعیت خودشان در درخت رندر می‌شوند.** معمولاً برای استفاده از React نیازی نیست دربارهٔ این موقعیت‌ها فکر کنید، اما می‌تواند مفید باشد که نحوهٔ کار آن را درک کنید.
 
-In React, each component on the screen has fully isolated state. For example, if you render two `Counter` components side by side, each of them will get its own, independent, `score` and `hover` states.
+در React، هر کامپوننت روی صفحه استیت کاملاً ایزوله‌ای دارد. مثلاً، اگر دو کامپوننت `Counter` را کنار هم رندر کنید، هرکدام استیت `score` و `hover` مستقل خودش را خواهد داشت.
 
-Try clicking both counters and notice they don't affect each other:
+هر دو شمارنده را کلیک کنید و توجه کنید که روی هم تأثیری ندارند:
 
 <Sandpack>
 
@@ -160,21 +160,21 @@ function Counter() {
 
 </Sandpack>
 
-As you can see, when one counter is updated, only the state for that component is updated:
+همان‌طور که می‌بینید، وقتی یک شمارنده به‌روزرسانی می‌شود، فقط استیت همان کامپوننت به‌روزرسانی می‌شود:
 
 
 <DiagramGroup>
 
 <Diagram name="preserving_state_increment" height={248} width={441} alt="Diagram of a tree of React components. The root node is labeled 'div' and has two children. The left child is labeled 'Counter' and contains a state bubble labeled 'count' with value 0. The right child is labeled 'Counter' and contains a state bubble labeled 'count' with value 1. The state bubble of the right child is highlighted in yellow to indicate its value has updated.">
 
-Updating state
+به‌روزرسانی استیت
 
 </Diagram>
 
 </DiagramGroup>
 
 
-React will keep the state around for as long as you render the same component at the same position in the tree. To see this, increment both counters, then remove the second component by unchecking "Render the second counter" checkbox, and then add it back by ticking it again:
+React استیت را تا زمانی که همان کامپوننت را در همان موقعیت در درخت رندر می‌کنید حفظ می‌کند. برای دیدن این، هر دو شمارنده را افزایش دهید، سپس کامپوننت دوم را با برداشتن تیک چک‌باکس «Render the second counter» حذف کنید، و سپس با تیک زدن دوباره آن را اضافه کنید:
 
 <Sandpack>
 
@@ -248,35 +248,35 @@ label {
 
 </Sandpack>
 
-Notice how the moment you stop rendering the second counter, its state disappears completely. That's because when React removes a component, it destroys its state.
+توجه کنید که به‌محض اینکه رندر کردن شمارندهٔ دوم را متوقف می‌کنید، استیتش کاملاً ناپدید می‌شود. این به آن دلیل است که وقتی React یک کامپوننت را حذف می‌کند، استیت آن را نابود می‌کند.
 
 <DiagramGroup>
 
 <Diagram name="preserving_state_remove_component" height={253} width={422} alt="Diagram of a tree of React components. The root node is labeled 'div' and has two children. The left child is labeled 'Counter' and contains a state bubble labeled 'count' with value 0. The right child is missing, and in its place is a yellow 'poof' image, highlighting the component being deleted from the tree.">
 
-Deleting a component
+حذف یک کامپوننت
 
 </Diagram>
 
 </DiagramGroup>
 
-When you tick "Render the second counter", a second `Counter` and its state are initialized from scratch (`score = 0`) and added to the DOM.
+وقتی «Render the second counter» را تیک می‌زنید، یک `Counter` دوم و استیت آن از صفر (`score = 0`) مقداردهی اولیه شده و به DOM اضافه می‌شود.
 
 <DiagramGroup>
 
 <Diagram name="preserving_state_add_component" height={258} width={500} alt="Diagram of a tree of React components. The root node is labeled 'div' and has two children. The left child is labeled 'Counter' and contains a state bubble labeled 'count' with value 0. The right child is labeled 'Counter' and contains a state bubble labeled 'count' with value 0. The entire right child node is highlighted in yellow, indicating that it was just added to the tree.">
 
-Adding a component
+افزودن یک کامپوننت
 
 </Diagram>
 
 </DiagramGroup>
 
-**React preserves a component's state for as long as it's being rendered at its position in the UI tree.** If it gets removed, or a different component gets rendered at the same position, React discards its state.
+**React استیت یک کامپوننت را تا زمانی که در موقعیتش در درخت رابط کاربری رندر می‌شود حفظ می‌کند.** اگر حذف شود، یا کامپوننت متفاوتی در همان موقعیت رندر شود، React استیت آن را دور می‌ریزد.
 
-## Same component at the same position preserves state {/*same-component-at-the-same-position-preserves-state*/}
+## همان کامپوننت در همان موقعیت استیت را حفظ می‌کند {/*same-component-at-the-same-position-preserves-state*/}
 
-In this example, there are two different `<Counter />` tags:
+در این مثال، دو تگ `<Counter />` متفاوت وجود دارد:
 
 <Sandpack>
 
@@ -361,24 +361,24 @@ label {
 
 </Sandpack>
 
-When you tick or clear the checkbox, the counter state does not get reset. Whether `isFancy` is `true` or `false`, you always have a `<Counter />` as the first child of the `div` returned from the root `App` component:
+وقتی چک‌باکس را تیک می‌زنید یا پاک می‌کنید، استیت شمارنده بازنشانی نمی‌شود. چه `isFancy` مقدار `true` باشد چه `false`، همیشه یک `<Counter />` به‌عنوان اولین فرزند `div` بازگشتی از کامپوننت ریشهٔ `App` دارید:
 
 <DiagramGroup>
 
 <Diagram name="preserving_state_same_component" height={461} width={600} alt="Diagram with two sections separated by an arrow transitioning between them. Each section contains a layout of components with a parent labeled 'App' containing a state bubble labeled isFancy. This component has one child labeled 'div', which leads to a prop bubble containing isFancy (highlighted in purple) passed down to the only child. The last child is labeled 'Counter' and contains a state bubble with label 'count' and value 3 in both diagrams. In the left section of the diagram, nothing is highlighted and the isFancy parent state value is false. In the right section of the diagram, the isFancy parent state value has changed to true and it is highlighted in yellow, and so is the props bubble below, which has also changed its isFancy value to true.">
 
-Updating the `App` state does not reset the `Counter` because `Counter` stays in the same position
+به‌روزرسانی استیت `App` بازنشانی نمی‌کند `Counter` را زیرا `Counter` در همان موقعیت می‌ماند
 
 </Diagram>
 
 </DiagramGroup>
 
 
-It's the same component at the same position, so from React's perspective, it's the same counter.
+همان کامپوننت در همان موقعیت است، پس از دید React، این همان شمارنده است.
 
 <Pitfall>
 
-Remember that **it's the position in the UI tree--not in the JSX markup--that matters to React!** This component has two `return` clauses with different `<Counter />` JSX tags inside and outside the `if`:
+به یاد داشته باشید که **موقعیت در درخت رابط کاربری است — نه در markup JSX — که برای React اهمیت دارد!** این کامپوننت دو عبارت `return` با تگ‌های JSX `<Counter />` متفاوت داخل و خارج `if` دارد:
 
 <Sandpack>
 
@@ -476,15 +476,15 @@ label {
 
 </Sandpack>
 
-You might expect the state to reset when you tick checkbox, but it doesn't! This is because **both of these `<Counter />` tags are rendered at the same position.** React doesn't know where you place the conditions in your function. All it "sees" is the tree you return.
+ممکن است انتظار داشته باشید وقتی چک‌باکس را تیک می‌زنید استیت بازنشانی شود، اما نمی‌شود! این به آن دلیل است که **هر دوی این تگ‌های `<Counter />` در همان موقعیت رندر می‌شوند.** React نمی‌داند شما شرایط را کجا در تابع خود قرار می‌دهید. همهٔ چیزی که «می‌بیند» درختی است که برمی‌گردانید.
 
-In both cases, the `App` component returns a `<div>` with `<Counter />` as a first child. To React, these two counters have the same "address": the first child of the first child of the root. This is how React matches them up between the previous and next renders, regardless of how you structure your logic.
+در هر دو مورد، کامپوننت `App` یک `<div>` با `<Counter />` به‌عنوان اولین فرزند برمی‌گرداند. برای React، این دو شمارنده «آدرس» یکسانی دارند: اولین فرزندِ اولین فرزندِ ریشه. این است که React چگونه آن‌ها را بین رندرهای قبلی و بعدی مطابقت می‌دهد، بدون توجه به اینکه چگونه منطق خود را ساختاردهی می‌کنید.
 
 </Pitfall>
 
-## Different components at the same position reset state {/*different-components-at-the-same-position-reset-state*/}
+## کامپوننت‌های متفاوت در همان موقعیت استیت را بازنشانی می‌کنند {/*different-components-at-the-same-position-reset-state*/}
 
-In this example, ticking the checkbox will replace `<Counter>` with a `<p>`:
+در این مثال، تیک زدن چک‌باکس `<Counter>` را با یک `<p>` جایگزین خواهد کرد:
 
 <Sandpack>
 
@@ -561,13 +561,13 @@ label {
 
 </Sandpack>
 
-Here, you switch between _different_ component types at the same position. Initially, the first child of the `<div>` contained a `Counter`. But when you swapped in a `p`, React removed the `Counter` from the UI tree and destroyed its state.
+اینجا، شما بین _تایپ‌های_ کامپوننت متفاوت در همان موقعیت جابه‌جا می‌شوید. در ابتدا، اولین فرزند `<div>` حاوی یک `Counter` بود. اما وقتی یک `p` جایگزین کردید، React `Counter` را از درخت رابط کاربری حذف کرد و استیتش را نابود کرد.
 
 <DiagramGroup>
 
 <Diagram name="preserving_state_diff_pt1" height={290} width={753} alt="Diagram with three sections, with an arrow transitioning each section in between. The first section contains a React component labeled 'div' with a single child labeled 'Counter' containing a state bubble labeled 'count' with value 3. The middle section has the same 'div' parent, but the child component has now been deleted, indicated by a yellow 'proof' image. The third section has the same 'div' parent again, now with a new child labeled 'p', highlighted in yellow.">
 
-When `Counter` changes to `p`, the `Counter` is deleted and the `p` is added
+وقتی `Counter` به `p` تغییر می‌کند، `Counter` حذف و `p` اضافه می‌شود
 
 </Diagram>
 
@@ -577,13 +577,13 @@ When `Counter` changes to `p`, the `Counter` is deleted and the `p` is added
 
 <Diagram name="preserving_state_diff_pt2" height={290} width={753} alt="Diagram with three sections, with an arrow transitioning each section in between. The first section contains a React component labeled 'p'. The middle section has the same 'div' parent, but the child component has now been deleted, indicated by a yellow 'proof' image. The third section has the same 'div' parent again, now with a new child labeled 'Counter' containing a state bubble labeled 'count' with value 0, highlighted in yellow.">
 
-When switching back, the `p` is deleted and the `Counter` is added
+هنگام جابه‌جایی به عقب، `p` حذف و `Counter` اضافه می‌شود
 
 </Diagram>
 
 </DiagramGroup>
 
-Also, **when you render a different component in the same position, it resets the state of its entire subtree.** To see how this works, increment the counter and then tick the checkbox:
+همچنین، **وقتی یک کامپوننت متفاوت را در همان موقعیت رندر می‌کنید، استیت کل زیردرخت آن را بازنشانی می‌کند.** برای دیدن نحوهٔ کار این، شمارنده را افزایش دهید و سپس چک‌باکس را تیک بزنید:
 
 <Sandpack>
 
@@ -672,13 +672,13 @@ label {
 
 </Sandpack>
 
-The counter state gets reset when you click the checkbox. Although you render a `Counter`, the first child of the `div` changes from a `section` to a `div`. When the child `section` was removed from the DOM, the whole tree below it (including the `Counter` and its state) was destroyed as well.
+استیت شمارنده وقتی چک‌باکس را کلیک می‌کنید بازنشانی می‌شود. هرچند یک `Counter` رندر می‌کنید، اولین فرزند `div` از یک `section` به یک `div` تغییر می‌کند. وقتی `section` فرزند از DOM حذف شد، کل درخت زیر آن (شامل `Counter` و استیتش) هم نابود شد.
 
 <DiagramGroup>
 
 <Diagram name="preserving_state_diff_same_pt1" height={350} width={794} alt="Diagram with three sections, with an arrow transitioning each section in between. The first section contains a React component labeled 'div' with a single child labeled 'section', which has a single child labeled 'Counter' containing a state bubble labeled 'count' with value 3. The middle section has the same 'div' parent, but the child components have now been deleted, indicated by a yellow 'proof' image. The third section has the same 'div' parent again, now with a new child labeled 'div', highlighted in yellow, also with a new child labeled 'Counter' containing a state bubble labeled 'count' with value 0, all highlighted in yellow.">
 
-When `section` changes to `div`, the `section` is deleted and the new `div` is added
+وقتی `section` به `div` تغییر می‌کند، `section` حذف و `div` جدید اضافه می‌شود
 
 </Diagram>
 
@@ -688,19 +688,19 @@ When `section` changes to `div`, the `section` is deleted and the new `div` is a
 
 <Diagram name="preserving_state_diff_same_pt2" height={350} width={794} alt="Diagram with three sections, with an arrow transitioning each section in between. The first section contains a React component labeled 'div' with a single child labeled 'div', which has a single child labeled 'Counter' containing a state bubble labeled 'count' with value 0. The middle section has the same 'div' parent, but the child components have now been deleted, indicated by a yellow 'proof' image. The third section has the same 'div' parent again, now with a new child labeled 'section', highlighted in yellow, also with a new child labeled 'Counter' containing a state bubble labeled 'count' with value 0, all highlighted in yellow.">
 
-When switching back, the `div` is deleted and the new `section` is added
+هنگام جابه‌جایی به عقب، `div` حذف و `section` جدید اضافه می‌شود
 
 </Diagram>
 
 </DiagramGroup>
 
-As a rule of thumb, **if you want to preserve the state between re-renders, the structure of your tree needs to "match up"** from one render to another. If the structure is different, the state gets destroyed because React destroys state when it removes a component from the tree.
+به‌عنوان یک قاعدهٔ کلی، **اگر می‌خواهید استیت را بین رندرهای مجدد حفظ کنید، ساختار درخت شما نیاز است از یک رندر به رندر دیگر «مطابقت داشته باشد».** اگر ساختار متفاوت باشد، استیت نابود می‌شود زیرا React هنگام حذف یک کامپوننت از درخت استیت را نابود می‌کند.
 
 <Pitfall>
 
-This is why you should not nest component function definitions.
+به همین دلیل است که نباید تعاریف تابع کامپوننت را تودرتو کنید.
 
-Here, the `MyTextField` component function is defined *inside* `MyComponent`:
+اینجا، تابع کامپوننت `MyTextField` *داخل* `MyComponent` تعریف شده است:
 
 <Sandpack>
 
@@ -735,13 +735,13 @@ export default function MyComponent() {
 </Sandpack>
 
 
-Every time you click the button, the input state disappears! This is because a *different* `MyTextField` function is created for every render of `MyComponent`. You're rendering a *different* component in the same position, so React resets all state below. This leads to bugs and performance problems. To avoid this problem, **always declare component functions at the top level, and don't nest their definitions.**
+هر بار که دکمه را کلیک می‌کنید، استیت ورودی ناپدید می‌شود! این به آن دلیل است که یک تابع `MyTextField` *متفاوت* برای هر رندر `MyComponent` ساخته می‌شود. شما یک کامپوننت *متفاوت* را در همان موقعیت رندر می‌کنید، پس React تمام استیت زیرین را بازنشانی می‌کند. این به باگ و مشکلات عملکرد منجر می‌شود. برای پرهیز از این مشکل، **همیشه توابع کامپوننت را در سطح بالا تعریف کنید، و تعاریفشان را تودرتو نکنید.**
 
 </Pitfall>
 
-## Resetting state at the same position {/*resetting-state-at-the-same-position*/}
+## بازنشانی استیت در همان موقعیت {/*resetting-state-at-the-same-position*/}
 
-By default, React preserves state of a component while it stays at the same position. Usually, this is exactly what you want, so it makes sense as the default behavior. But sometimes, you may want to reset a component's state. Consider this app that lets two players keep track of their scores during each turn:
+به‌طور پیش‌فرض، React استیت یک کامپوننت را تا زمانی که در همان موقعیت بماند حفظ می‌کند. معمولاً این دقیقاً همان چیزی است که می‌خواهید، پس به‌عنوان رفتار پیش‌فرض منطقی است. اما گاهی ممکن است بخواهید استیت یک کامپوننت را بازنشانی کنید. این اپلیکیشن را در نظر بگیرید که به دو بازیکن اجازه می‌دهد امتیازاتشان را در طول هر نوبت پیگیری کنند:
 
 <Sandpack>
 
@@ -811,19 +811,19 @@ h1 {
 
 </Sandpack>
 
-Currently, when you change the player, the score is preserved. The two `Counter`s appear in the same position, so React sees them as *the same* `Counter` whose `person` prop has changed.
+در حال حاضر، وقتی بازیکن را تغییر می‌دهید، امتیاز حفظ می‌شود. دو `Counter` در همان موقعیت ظاهر می‌شوند، پس React آن‌ها را *همان* `Counter` می‌بیند که پراپ `person` آن تغییر کرده.
 
-But conceptually, in this app they should be two separate counters. They might appear in the same place in the UI, but one is a counter for Taylor, and another is a counter for Sarah.
+اما از نظر مفهومی، در این اپلیکیشن باید دو شمارندهٔ جداگانه باشند. ممکن است در همان مکان در رابط کاربری ظاهر شوند، اما یکی شمارنده‌ای برای Taylor است، و دیگری شمارنده‌ای برای Sarah.
 
-There are two ways to reset state when switching between them:
+دو راه برای بازنشانی استیت هنگام جابه‌جایی بین آن‌ها وجود دارد:
 
-1. Render components in different positions
-2. Give each component an explicit identity with `key`
+1. کامپوننت‌ها را در موقعیت‌های متفاوت رندر کنید
+2. به هر کامپوننت یک هویت صریح با `key` بدهید
 
 
-### Option 1: Rendering a component in different positions {/*option-1-rendering-a-component-in-different-positions*/}
+### گزینهٔ ۱: رندر کردن یک کامپوننت در موقعیت‌های متفاوت {/*option-1-rendering-a-component-in-different-positions*/}
 
-If you want these two `Counter`s to be independent, you can render them in two different positions:
+اگر می‌خواهید این دو `Counter` مستقل باشند، می‌توانید آن‌ها را در دو موقعیت متفاوت رندر کنید:
 
 <Sandpack>
 
@@ -894,42 +894,42 @@ h1 {
 
 </Sandpack>
 
-* Initially, `isPlayerA` is `true`. So the first position contains `Counter` state, and the second one is empty.
-* When you click the "Next player" button the first position clears but the second one now contains a `Counter`.
+* در ابتدا، `isPlayerA` مقدار `true` است. پس موقعیت اول حاوی استیت `Counter` است، و دومی خالی است.
+* وقتی دکمهٔ «Next player» را کلیک می‌کنید موقعیت اول پاک می‌شود اما دومی اکنون حاوی یک `Counter` است.
 
 <DiagramGroup>
 
 <Diagram name="preserving_state_diff_position_p1" height={375} width={504} alt="Diagram with a tree of React components. The parent is labeled 'Scoreboard' with a state bubble labeled isPlayerA with value 'true'. The only child, arranged to the left, is labeled Counter with a state bubble labeled 'count' and value 0. All of the left child is highlighted in yellow, indicating it was added.">
 
-Initial state
+استیت اولیه
 
 </Diagram>
 
 <Diagram name="preserving_state_diff_position_p2" height={375} width={504} alt="Diagram with a tree of React components. The parent is labeled 'Scoreboard' with a state bubble labeled isPlayerA with value 'false'. The state bubble is highlighted in yellow, indicating that it has changed. The left child is replaced with a yellow 'poof' image indicating that it has been deleted and there is a new child on the right, highlighted in yellow indicating that it was added. The new child is labeled 'Counter' and contains a state bubble labeled 'count' with value 0.">
 
-Clicking "next"
+کلیک روی «next»
 
 </Diagram>
 
 <Diagram name="preserving_state_diff_position_p3" height={375} width={504} alt="Diagram with a tree of React components. The parent is labeled 'Scoreboard' with a state bubble labeled isPlayerA with value 'true'. The state bubble is highlighted in yellow, indicating that it has changed. There is a new child on the left, highlighted in yellow indicating that it was added. The new child is labeled 'Counter' and contains a state bubble labeled 'count' with value 0. The right child is replaced with a yellow 'poof' image indicating that it has been deleted.">
 
-Clicking "next" again
+کلیک دوباره روی «next»
 
 </Diagram>
 
 </DiagramGroup>
 
-Each `Counter`'s state gets destroyed each time it's removed from the DOM. This is why they reset every time you click the button.
+استیت هر `Counter` هر بار که از DOM حذف می‌شود نابود می‌گردد. به همین دلیل هر بار که دکمه را کلیک می‌کنید بازنشانی می‌شوند.
 
-This solution is convenient when you only have a few independent components rendered in the same place. In this example, you only have two, so it's not a hassle to render both separately in the JSX.
+این راه‌حل وقتی راحت است که فقط چند کامپوننت مستقل در همان مکان رندر شده باشند. در این مثال، فقط دو کامپوننت دارید، پس دردسری نیست که هر دو را جداگانه در JSX رندر کنید.
 
-### Option 2: Resetting state with a key {/*option-2-resetting-state-with-a-key*/}
+### گزینهٔ ۲: بازنشانی استیت با یک کلید {/*option-2-resetting-state-with-a-key*/}
 
-There is also another, more generic, way to reset a component's state.
+همچنین راه دیگر، عمومی‌تری برای بازنشانی استیت یک کامپوننت وجود دارد.
 
-You might have seen `key`s when [rendering lists.](/learn/rendering-lists#keeping-list-items-in-order-with-key) Keys aren't just for lists! You can use keys to make React distinguish between any components. By default, React uses order within the parent ("first counter", "second counter") to discern between components. But keys let you tell React that this is not just a *first* counter, or a *second* counter, but a specific counter--for example, *Taylor's* counter. This way, React will know *Taylor's* counter wherever it appears in the tree!
+ممکن است `key`ها را هنگام [رندر لیست‌ها](/learn/rendering-lists#keeping-list-items-in-order-with-key) دیده باشید. کلیدها فقط برای لیست‌ها نیستند! می‌توانید از کلیدها استفاده کنید تا React بین هر کامپوننتی تمایز قائل شود. به‌طور پیش‌فرض، React از ترتیب داخل والد («first counter»، «second counter») برای تشخیص بین کامپوننت‌ها استفاده می‌کند. اما کلیدها به شما اجازه می‌دهند به React بگویید که این فقط شمارندهٔ *اول* یا *دوم* نیست، بلکه شمارندهٔ خاصی است — مثلاً شمارندهٔ *Taylor*. این‌گونه، React شمارندهٔ *Taylor* را هرجا در درخت ظاهر شود می‌شناسد!
 
-In this example, the two `<Counter />`s don't share state even though they appear in the same place in JSX:
+در این مثال، دو `<Counter />` استیت را به اشتراک نمی‌گذارند حتی اگر در همان مکان در JSX ظاهر شوند:
 
 <Sandpack>
 
@@ -999,7 +999,7 @@ h1 {
 
 </Sandpack>
 
-Switching between Taylor and Sarah does not preserve the state. This is because **you gave them different `key`s:**
+جابه‌جایی بین Taylor و Sarah استیت را حفظ نمی‌کند. این به آن دلیل است که **به آن‌ها `key`های متفاوتی دادید:**
 
 ```js
 {isPlayerA ? (
@@ -1009,19 +1009,19 @@ Switching between Taylor and Sarah does not preserve the state. This is because 
 )}
 ```
 
-Specifying a `key` tells React to use the `key` itself as part of the position, instead of their order within the parent. This is why, even though you render them in the same place in JSX, React sees them as two different counters, and so they will never share state. Every time a counter appears on the screen, its state is created. Every time it is removed, its state is destroyed. Toggling between them resets their state over and over.
+مشخص کردن یک `key` به React می‌گوید که از خود `key` به‌عنوان بخشی از موقعیت استفاده کند، به‌جای ترتیبشان داخل والد. به همین دلیل، حتی اگر آن‌ها را در همان مکان در JSX رندر کنید، React آن‌ها را به‌عنوان دو شمارندهٔ متفاوت می‌بیند، و پس هرگز استیت را به اشتراک نمی‌گذارند. هر بار که یک شمارنده روی صفحه ظاهر می‌شود، استیتش ساخته می‌شود. هر بار که حذف می‌شود، استیتش نابود می‌گردد. جابه‌جایی بین آن‌ها استیتشان را بارها و بارها بازنشانی می‌کند.
 
 <Note>
 
-Remember that keys are not globally unique. They only specify the position *within the parent*.
+به یاد داشته باشید که کلیدها به‌طور سراسری یکتا نیستند. آن‌ها فقط موقعیت *داخل والد* را مشخص می‌کنند.
 
 </Note>
 
-### Resetting a form with a key {/*resetting-a-form-with-a-key*/}
+### بازنشانی یک فرم با یک کلید {/*resetting-a-form-with-a-key*/}
 
-Resetting state with a key is particularly useful when dealing with forms.
+بازنشانی استیت با یک کلید هنگام کار با فرم‌ها به‌ویژه مفید است.
 
-In this chat app, the `<Chat>` component contains the text input state:
+در این اپلیکیشن چت، کامپوننت `<Chat>` حاوی استیت ورودی متنی است:
 
 <Sandpack>
 
@@ -1116,17 +1116,17 @@ textarea {
 
 </Sandpack>
 
-Try entering something into the input, and then press "Alice" or "Bob" to choose a different recipient. You will notice that the input state is preserved because the `<Chat>` is rendered at the same position in the tree.
+چیزی را در ورودی تایپ کنید، و سپس «Alice» یا «Bob» را برای انتخاب گیرندهٔ متفاوت فشار دهید. متوجه خواهید شد که استیت ورودی حفظ می‌شود زیرا `<Chat>` در همان موقعیت در درخت رندر می‌شود.
 
-**In many apps, this may be the desired behavior, but not in a chat app!** You don't want to let the user send a message they already typed to a wrong person due to an accidental click. To fix it, add a `key`:
+**در بسیاری از اپلیکیشن‌ها، این ممکن است رفتار مطلوب باشد، اما نه در یک اپلیکیشن چت!** نمی‌خواهید به کاربر اجازه دهید پیامی که قبلاً تایپ کرده به‌خاطر یک کلیک تصادفی به شخص اشتباهی بفرستد. برای رفع این، یک `key` اضافه کنید:
 
 ```js
 <Chat key={to.id} contact={to} />
 ```
 
-This ensures that when you select a different recipient, the `Chat` component will be recreated from scratch, including any state in the tree below it. React will also re-create the DOM elements instead of reusing them.
+این تضمین می‌کند وقتی گیرندهٔ متفاوتی انتخاب می‌کنید، کامپوننت `Chat` از صفر بازسازی می‌شود، شامل هر استیتی در درخت زیرین آن. React همچنین عناصر DOM را به‌جای استفادهٔ مجدد دوباره می‌سازد.
 
-Now switching the recipient always clears the text field:
+اکنون جابه‌جایی گیرنده همیشه فیلد متنی را پاک می‌کند:
 
 <Sandpack>
 
@@ -1223,24 +1223,24 @@ textarea {
 
 <DeepDive>
 
-#### Preserving state for removed components {/*preserving-state-for-removed-components*/}
+#### حفظ استیت برای کامپوننت‌های حذف‌شده {/*preserving-state-for-removed-components*/}
 
-In a real chat app, you'd probably want to recover the input state when the user selects the previous recipient again. There are a few ways to keep the state "alive" for a component that's no longer visible:
+در یک اپلیکیشن چت واقعی، احتمالاً می‌خواهید وقتی کاربر گیرندهٔ قبلی را دوباره انتخاب می‌کند استیت ورودی را بازیابی کنید. چند راه برای نگه‌داشتن استیت «زنده» برای کامپوننتی که دیگر قابل‌مشاهده نیست وجود دارد:
 
-- You could render _all_ chats instead of just the current one, but hide all the others with CSS. The chats would not get removed from the tree, so their local state would be preserved. This solution works great for simple UIs. But it can get very slow if the hidden trees are large and contain a lot of DOM nodes.
-- You could [lift the state up](/learn/sharing-state-between-components) and hold the pending message for each recipient in the parent component. This way, when the child components get removed, it doesn't matter, because it's the parent that keeps the important information. This is the most common solution.
-- You might also use a different source in addition to React state. For example, you probably want a message draft to persist even if the user accidentally closes the page. To implement this, you could have the `Chat` component initialize its state by reading from the [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), and save the drafts there too.
+- می‌توانید _همهٔ_ چت‌ها را به‌جای فقط چت فعلی رندر کنید، اما بقیه را با CSS پنهان کنید. چت‌ها از درخت حذف نمی‌شوند، پس استیت محلی آن‌ها حفظ می‌شود. این راه‌حل برای رابط‌های کاربری ساده عالی کار می‌کند. اما اگر درخت‌های پنهان بزرگ باشند و حاوی نودهای DOM زیادی باشند می‌تواند بسیار کند شود.
+- می‌توانید [استیت را بالا ببرید](/learn/sharing-state-between-components) و پیام معلق را برای هر گیرنده در کامپوننت والد نگه دارید. این‌گونه، وقتی کامپوننت‌های فرزند حذف می‌شوند، اهمیتی ندارد، زیرا والد است که اطلاعات مهم را نگه می‌دارد. این رایج‌ترین راه‌حل است.
+- همچنین ممکن است از منبع متفاوتی به‌ضافه استیت React استفاده کنید. مثلاً، احتمالاً می‌خواهید پیش‌نویس پیام حتی اگر کاربر به‌طور تصادفی صفحه را بست ماندگار باشد. برای پیاده‌سازی این، می‌توانید کامپوننت `Chat` را داشته باشید که استیتش را با خواندن از [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) مقداردهی اولیه کند، و پیش‌نویس‌ها را هم آنجا ذخیره کند.
 
-No matter which strategy you pick, a chat _with Alice_ is conceptually distinct from a chat _with Bob_, so it makes sense to give a `key` to the `<Chat>` tree based on the current recipient.
+بدون توجه به اینکه کدام استراتژی را انتخاب می‌کنید، یک چت _با Alice_ از نظر مفهومی متمایز از یک چت _با Bob_ است، پس منطقی است که یک `key` به درخت `<Chat>` بر اساس گیرندهٔ فعلی بدهید.
 
 </DeepDive>
 
 <Recap>
 
-- React keeps state for as long as the same component is rendered at the same position.
-- State is not kept in JSX tags. It's associated with the tree position in which you put that JSX.
-- You can force a subtree to reset its state by giving it a different key.
-- Don't nest component definitions, or you'll reset state by accident.
+- React استیت را تا زمانی که همان کامپوننت در همان موقعیت رندر می‌شود حفظ می‌کند.
+- استیت در تگ‌های JSX نگه‌داری نمی‌شود. با موقعیت درختی که آن JSX را در آن قرار می‌دهید مرتبط است.
+- می‌توانید یک زیردرخت را مجبور کنید استیتش را با دادن کلید متفاوت بازنشانی کند.
+- تعاریف کامپوننت را تودرتو نکنید، وگرنه به‌طور تصادفی استیت را بازنشانی می‌کنید.
 
 </Recap>
 
@@ -1248,9 +1248,9 @@ No matter which strategy you pick, a chat _with Alice_ is conceptually distinct 
 
 <Challenges>
 
-#### Fix disappearing input text {/*fix-disappearing-input-text*/}
+#### رفع متن ورودی ناپدیدشده {/*fix-disappearing-input-text*/}
 
-This example shows a message when you press the button. However, pressing the button also accidentally resets the input. Why does this happen? Fix it so that pressing the button does not reset the input text.
+این مثال وقتی دکمه را فشار می‌دهید پیامی نمایش می‌دهد. با این حال، فشار دادن دکمه همچنین به‌طور تصادفی ورودی را بازنشانی می‌کند. چرا این اتفاق می‌افتد؟ آن را برطرف کنید تا فشار دادن دکمه متن ورودی را بازنشانی نکند.
 
 <Sandpack>
 
@@ -1299,9 +1299,9 @@ textarea { display: block; margin: 10px 0; }
 
 <Solution>
 
-The problem is that `Form` is rendered in different positions. In the `if` branch, it is the second child of the `<div>`, but in the `else` branch, it is the first child. Therefore, the component type in each position changes. The first position changes between holding a `p` and a `Form`, while the second position changes between holding a `Form` and a `button`. React resets the state every time the component type changes.
+مشکل این است که `Form` در موقعیت‌های متفاوتی رندر می‌شود. در شاخهٔ `if`، دومین فرزند `<div>` است، اما در شاخهٔ `else`، اولین فرزند است. بنابراین، تایپ کامپوننت در هر موقعیت تغییر می‌کند. موقعیت اول بین نگه‌داشتن یک `p` و یک `Form` تغییر می‌کند، در حالی که موقعیت دوم بین نگه‌داشتن یک `Form` و یک `button` تغییر می‌نماید. React هر بار که تایپ کامپوننت تغییر می‌کند استیت را بازنشانی می‌کند.
 
-The easiest solution is to unify the branches so that `Form` always renders in the same position:
+ساده‌ترین راه‌حل متحد کردن شاخه‌هاست تا `Form` همیشه در همان موقعیت رندر شود:
 
 <Sandpack>
 
@@ -1347,7 +1347,7 @@ textarea { display: block; margin: 10px 0; }
 </Sandpack>
 
 
-Technically, you could also add `null` before `<Form />` in the `else` branch to match the `if` branch structure:
+از نظر فنی، می‌توانستید همچنین `null` را قبل از `<Form />` در شاخهٔ `else` اضافه کنید تا با ساختار شاخهٔ `if` مطابقت داشته باشد:
 
 <Sandpack>
 
@@ -1395,19 +1395,19 @@ textarea { display: block; margin: 10px 0; }
 
 </Sandpack>
 
-This way, `Form` is always the second child, so it stays in the same position and keeps its state. But this approach is much less obvious and introduces a risk that someone else will remove that `null`.
+این‌گونه، `Form` همیشه دومین فرزند است، پس در همان موقعیت می‌ماند و استیتش را حفظ می‌کند. اما این رویکرد بسیار کم‌تر بدیهی است و این ریسک را ایجاد می‌کند که شخص دیگری آن `null` را حذف کند.
 
 </Solution>
 
-#### Swap two form fields {/*swap-two-form-fields*/}
+#### جابه‌جایی دو فیلد فرم {/*swap-two-form-fields*/}
 
-This form lets you enter first and last name. It also has a checkbox controlling which field goes first. When you tick the checkbox, the "Last name" field will appear before the "First name" field.
+این فرم به شما اجازه می‌دهد نام و نام خانوادگی را وارد کنید. همچنین یک چک‌باکس دارد که کنترل می‌کند کدام فیلد اول می‌رود. وقتی چک‌باکس را تیک می‌زنید، فیلد «Last name» قبل از فیلد «First name» ظاهر می‌شود.
 
-It almost works, but there is a bug. If you fill in the "First name" input and tick the checkbox, the text will stay in the first input (which is now "Last name"). Fix it so that the input text *also* moves when you reverse the order.
+تقریباً کار می‌کند، اما یک باگ وجود دارد. اگر فیلد «First name» را پر کنید و چک‌باکس را تیک بزنید، متن در اولین ورودی (که اکنون «Last name» است) می‌ماند. آن را برطرف کنید تا متن ورودی *همچنین* وقتی ترتیب را معکوس می‌کنید جابه‌جا شود.
 
 <Hint>
 
-It seems like for these fields, their position within the parent is not enough. Is there some way to tell React how to match up the state between re-renders?
+به نظر می‌رسد برای این فیلدها، موقعیتشان داخل والد کافی نیست. آیا راهی وجود دارد که به React بگویید چگونه استیت را بین رندرهای مجدد مطابقت دهد؟
 
 </Hint>
 
@@ -1471,7 +1471,7 @@ label { display: block; margin: 10px 0; }
 
 <Solution>
 
-Give a `key` to both `<Field>` components in both `if` and `else` branches. This tells React how to "match up" the correct state for either `<Field>` even if their order within the parent changes:
+به هر دو کامپوننت `<Field>` در هر دو شاخهٔ `if` و `else` یک `key` بدهید. این به React می‌گوید چگونه استیت درست را برای هر `<Field>` «مطابقت دهد» حتی اگر ترتیبشان داخل والد تغییر کند:
 
 <Sandpack>
 
@@ -1533,11 +1533,11 @@ label { display: block; margin: 10px 0; }
 
 </Solution>
 
-#### Reset a detail form {/*reset-a-detail-form*/}
+#### بازنشانی یک فرم جزئیات {/*reset-a-detail-form*/}
 
-This is an editable contact list. You can edit the selected contact's details and then either press "Save" to update it, or "Reset" to undo your changes.
+این یک فهرست تماس قابل‌ویرایش است. می‌توانید جزئیات تماس انتخاب‌شده را ویرایش کنید و سپس یا «Save» را برای به‌روزرسانی فشار دهید، یا «Reset» را برای برگرداندن تغییرات.
 
-When you select a different contact (for example, Alice), the state updates but the form keeps showing the previous contact's details. Fix it so that the form gets reset when the selected contact changes.
+وقتی تماس متفاوتی را انتخاب می‌کنید (مثلاً، Alice)، استیت به‌روزرسانی می‌شود اما فرم جزئیات تماس قبلی را نمایش می‌دهد. آن را برطرف کنید تا وقتی تماس انتخاب‌شده تغییر می‌کند فرم بازنشانی شود.
 
 <Sandpack>
 
@@ -1689,7 +1689,7 @@ button {
 
 <Solution>
 
-Give `key={selectedId}` to the `EditContact` component. This way, switching between different contacts will reset the form:
+`key={selectedId}` را به کامپوننت `EditContact` بدهید. این‌گونه، جابه‌جایی بین تماس‌های متفاوت فرم را بازنشانی می‌کند:
 
 <Sandpack>
 
@@ -1842,13 +1842,13 @@ button {
 
 </Solution>
 
-#### Clear an image while it's loading {/*clear-an-image-while-its-loading*/}
+#### پاک کردن یک تصویر هنگام بارگذاری {/*clear-an-image-while-its-loading*/}
 
-When you press "Next", the browser starts loading the next image. However, because it's displayed in the same `<img>` tag, by default you would still see the previous image until the next one loads. This may be undesirable if it's important for the text to always match the image. Change it so that the moment you press "Next", the previous image immediately clears.
+وقتی «Next» را فشار می‌دهید، مرورگر شروع به بارگذاری تصویر بعدی می‌کند. با این حال، چون در همان تگ `<img>` نمایش داده می‌شود، به‌طور پیش‌فرض همچنان تصویر قبلی را می‌بینید تا تصویر بعدی بارگذاری شود. این ممکن است نامطلوب باشد اگر مهم باشد که متن همیشه با تصویر مطابقت داشته باشد. آن را تغییر دهید تا به‌محض اینکه «Next» را فشار می‌دهید، تصویر قبلی بلافاصله پاک شود.
 
 <Hint>
 
-Is there a way to tell React to re-create the DOM instead of reusing it?
+آیا راهی وجود دارد که به React بگویید DOM را به‌جای استفادهٔ مجدد دوباره بسازد؟
 
 </Hint>
 
@@ -1918,7 +1918,7 @@ img { width: 150px; height: 150px; }
 
 <Solution>
 
-You can provide a `key` to the `<img>` tag. When that `key` changes, React will re-create the `<img>` DOM node from scratch. This causes a brief flash when each image loads, so it's not something you'd want to do for every image in your app. But it makes sense if you want to ensure the image always matches the text.
+می‌توانید یک `key` به تگ `<img>` بدهید. وقتی آن `key` تغییر می‌کند، React نود DOM `<img>` را از صفر بازسازی خواهد کرد. این باعث یک فلش کوتاه هنگام بارگذاری هر تصویر می‌شود، پس چیزی نیست که برای هر تصویر در اپلیکیشن خود بخواهید انجام دهید. اما اگر می‌خواهید اطمینان حاصل کنید تصویر همیشه با متن مطابقت داشته باشد منطقی است.
 
 <Sandpack>
 
@@ -1986,11 +1986,11 @@ img { width: 150px; height: 150px; }
 
 </Solution>
 
-#### Fix misplaced state in the list {/*fix-misplaced-state-in-the-list*/}
+#### رفع استیت اشتباه‌جا در فهرست {/*fix-misplaced-state-in-the-list*/}
 
-In this list, each `Contact` has state that determines whether "Show email" has been pressed for it. Press "Show email" for Alice, and then tick the "Show in reverse order" checkbox. You will notice that it's _Taylor's_ email that is expanded now, but Alice's--which has moved to the bottom--appears collapsed.
+در این فهرست، هر `Contact` استیتی دارد که تعیین می‌کند آیا «Show email» برای آن فشار داده شده. «Show email» را برای Alice فشار دهید، و سپس چک‌باکس «Show in reverse order» را تیک بزنید. متوجه خواهید شد که اکنون ایمیل _Taylor_ باز شده است، اما Alice — که به پایین منتقل شده — جمع شده به‌نظر می‌رسد.
 
-Fix it so that the expanded state is associated with each contact, regardless of the chosen ordering.
+آن را برطرف کنید تا استیت باز شده با هر تماس مرتبط باشد، بدون توجه به ترتیب انتخاب‌شده.
 
 <Sandpack>
 
@@ -2080,16 +2080,16 @@ button {
 
 <Solution>
 
-The problem is that this example was using index as a `key`:
+مشکل این است که این مثال از index به‌عنوان `key` استفاده می‌کرد:
 
 ```js
 {displayedContacts.map((contact, i) =>
   <li key={i}>
 ```
 
-However, you want the state to be associated with _each particular contact_.
+با این حال، می‌خواهید استیت با _هر تماس خاص_ مرتبط باشد.
 
-Using the contact ID as a `key` instead fixes the issue:
+استفاده از شناسهٔ تماس به‌عنوان `key` به‌جای آن مشکل را برطرف می‌کند:
 
 <Sandpack>
 
@@ -2177,7 +2177,7 @@ button {
 
 </Sandpack>
 
-State is associated with the tree position. A `key` lets you specify a named position instead of relying on order.
+استیت با موقعیت درخت مرتبط است. یک `key` به شما اجازه می‌دهد یک موقعیت نام‌گذاری‌شده به‌جای تکیه بر ترتیب مشخص کنید.
 
 </Solution>
 

@@ -5,7 +5,7 @@ titleForTitleTag: "'use no memo' directive"
 
 <Intro>
 
-`"use no memo"` prevents a function from being optimized by React Compiler.
+`"use no memo"` مانع می‌شود که یک تابع توسط React Compiler بهینه شود.
 
 </Intro>
 
@@ -13,11 +13,11 @@ titleForTitleTag: "'use no memo' directive"
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `"use no memo"` {/*use-no-memo*/}
 
-Add `"use no memo"` at the beginning of a function to prevent React Compiler optimization.
+`"use no memo"` را در ابتدای یک تابع اضافه کنید تا از بهینه‌سازی توسط React Compiler جلوگیری شود.
 
 ```js {1}
 function MyComponent() {
@@ -26,32 +26,32 @@ function MyComponent() {
 }
 ```
 
-When a function contains `"use no memo"`, the React Compiler will skip it entirely during optimization. This is useful as a temporary escape hatch when debugging or when dealing with code that doesn't work correctly with the compiler.
+وقتی یک تابع حاوی `"use no memo"` است، React Compiler در طول بهینه‌سازی کلاً آن را نادیده می‌گیرد. این به‌عنوان راه فرار موقتی هنگام دیباگ یا هنگام کار با کدی که به‌درستی با کامپایلر کار نمی‌کند، مفید است.
 
-#### Caveats {/*caveats*/}
+#### ملاحظات {/*caveats*/}
 
-* `"use no memo"` must be at the very beginning of a function body, before any imports or other code (comments are OK).
-* The directive must be written with double or single quotes, not backticks.
-* The directive must exactly match `"use no memo"` or its alias `"use no forget"`.
-* This directive takes precedence over all compilation modes and other directives.
-* It's intended as a temporary debugging tool, not a permanent solution.
+* `"use no memo"` باید در همان ابتدای بدنهٔ تابع، قبل از هرگونه import یا کد دیگر باشد (کامنت‌ها مجاز هستند).
+* دایرکتیو باید با کوتیشن جفتی یا تکی نوشته شود، نه backtick.
+* دایرکتیو باید دقیقاً با `"use no memo"` یا نام مستعار آن `"use no forget"` مطابقت کند.
+* این دایرکتیو بر همهٔ حالت‌های کامپایل و دایرکتیوهای دیگر تقدم دارد.
+* این به‌عنوان یک ابزار دیباگ موقت در نظر گرفته شده، نه یک راه‌حل دائمی.
 
-### How `"use no memo"` opts-out of optimization {/*how-use-no-memo-opts-out*/}
+### چگونه `"use no memo"` از بهینه‌سازی خارج می‌شود {/*how-use-no-memo-opts-out*/}
 
-React Compiler analyzes your code at build time to apply optimizations. `"use no memo"` creates an explicit boundary that tells the compiler to skip a function entirely.
+React Compiler کد شما را در زمان build تحلیل می‌کند تا بهینه‌سازی‌ها را اعمال کند. `"use no memo"` یک مرز صریح ایجاد می‌کند که به کامپایلر می‌گوید یک تابع را کلاً نادیده بگیر.
 
-This directive takes precedence over all other settings:
-* In `all` mode: The function is skipped despite the global setting
-* In `infer` mode: The function is skipped even if heuristics would optimize it
+این دایرکتیو بر همهٔ تنظیمات دیگر تقدم دارد:
+* در حالت `all`: تابع به‌رغم تنظیم سراسری نادیده گرفته می‌شود
+* در حالت `infer`: تابع نادیده گرفته می‌شود، حتی اگر هیوریستیک آن را بهینه کند
 
-The compiler treats these functions as if the React Compiler wasn't enabled, leaving them exactly as written.
+کامپایلر با این تابع‌ها به‌گونه‌ای رفتار می‌کند که انگار React Compiler فعال نیست، و آن‌ها را دقیقاً همان‌طور که نوشته شده‌اند رها می‌کند.
 
-### When to use `"use no memo"` {/*when-to-use*/}
+### چه زمان از `"use no memo"` استفاده کنیم {/*when-to-use*/}
 
-`"use no memo"` should be used sparingly and temporarily. Common scenarios include:
+`"use no memo"` باید به‌ندرت و موقتاً استفاده شود. سناریوهای رایج شامل موارد زیر است:
 
-#### Debugging compiler issues {/*debugging-compiler*/}
-When you suspect the compiler is causing issues, temporarily disable optimization to isolate the problem:
+#### دیباگ مشکلات کامپایلر {/*debugging-compiler*/}
+وقتی مشکوک هستید که کامپایلر باعث مشکلات می‌شود، موقتاً بهینه‌سازی را غیرفعال کنید تا مشکل را ایزوله کنید:
 
 ```js
 function ProblematicComponent({ data }) {
@@ -62,8 +62,8 @@ function ProblematicComponent({ data }) {
 }
 ```
 
-#### Third-party library integration {/*third-party*/}
-When integrating with libraries that might not be compatible with the compiler:
+#### ادغام با کتابخانهٔ شخص ثالث {/*third-party*/}
+هنگام ادغام با کتابخانه‌هایی که ممکن است با کامپایلر سازگار نباشند:
 
 ```js
 function ThirdPartyWrapper() {
@@ -76,9 +76,9 @@ function ThirdPartyWrapper() {
 
 ---
 
-## Usage {/*usage*/}
+## نحوهٔ استفاده {/*usage*/}
 
-The `"use no memo"` directive is placed at the beginning of a function body to prevent React Compiler from optimizing that function:
+دایرکتیو `"use no memo"` در ابتدای بدنهٔ یک تابع قرار می‌گیرد تا مانع از بهینه‌سازی آن تابع توسط React Compiler شود:
 
 ```js
 function MyComponent() {
@@ -87,7 +87,7 @@ function MyComponent() {
 }
 ```
 
-The directive can also be placed at the top of a file to affect all functions in that module:
+دایرکتیو همچنین می‌تواند در بالای یک فایل قرار گیرد تا بر همهٔ تابع‌های آن ماژول تأثیر بگذارد:
 
 ```js
 "use no memo";
@@ -95,15 +95,15 @@ The directive can also be placed at the top of a file to affect all functions in
 // All functions in this file will be skipped by the compiler
 ```
 
-`"use no memo"` at the function level overrides the module level directive.
+`"use no memo"` در سطح تابع بر دایرکتیو سطح ماژول تقدم دارد.
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-### Directive not preventing compilation {/*not-preventing*/}
+### دایرکتیو از کامپایل جلوگیری نمی‌کند {/*not-preventing*/}
 
-If `"use no memo"` isn't working:
+اگر `"use no memo"` کار نمی‌کند:
 
 ```js
 // ❌ Wrong - directive after code
@@ -119,13 +119,13 @@ function Component() {
 }
 ```
 
-Also check:
-* Spelling - must be exactly `"use no memo"`
-* Quotes - must use single or double quotes, not backticks
+همچنین بررسی کنید:
+* املای - باید دقیقاً `"use no memo"` باشد
+* کوتیشن‌ها - باید از کوتیشن تکی یا جفتی استفاده شود، نه backtick
 
-### Best practices {/*best-practices*/}
+### بهترین روش‌ها {/*best-practices*/}
 
-**Always document why** you're disabling optimization:
+**همیشه توضیح دهید چرا** بهینه‌سازی را غیرفعال می‌کنید:
 
 ```js
 // ✅ Good - clear explanation and tracking
@@ -141,7 +141,7 @@ function Mystery() {
 }
 ```
 
-### See also {/*see-also*/}
+### همچنین ببینید {/*see-also*/}
 
-* [`"use memo"`](/reference/react-compiler/directives/use-memo) - Opt into compilation
-* [React Compiler](/learn/react-compiler) - Getting started guide
+* [`"use memo"`](/reference/react-compiler/directives/use-memo) - انتخاب برای کامپایل
+* [React Compiler](/learn/react-compiler) - راهنمای شروع به کار

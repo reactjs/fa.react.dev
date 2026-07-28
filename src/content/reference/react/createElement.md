@@ -4,7 +4,7 @@ title: createElement
 
 <Intro>
 
-`createElement` lets you create a React element. It serves as an alternative to writing [JSX.](/learn/writing-markup-with-jsx)
+`createElement` به شما اجازه می‌دهد یک المان ری‌اکت ایجاد کنید. این به‌عنوان جایگزینی برای نوشتن [JSX](/learn/writing-markup-with-jsx) عمل می‌کند.
 
 ```js
 const element = createElement(type, props, ...children)
@@ -16,11 +16,11 @@ const element = createElement(type, props, ...children)
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `createElement(type, props, ...children)` {/*createelement*/}
 
-Call `createElement` to create a React element with the given `type`, `props`, and `children`.
+برای ایجاد یک المان ری‌اکت با `type`، `props`، و `children` داده‌شده، `createElement` را فراخوانی کنید.
 
 ```js
 import { createElement } from 'react';
@@ -34,44 +34,44 @@ function Greeting({ name }) {
 }
 ```
 
-[See more examples below.](#usage)
+[مثال‌های بیشتر را در ادامه ببینید.](#usage)
 
-#### Parameters {/*parameters*/}
+#### پارامترها {/*parameters*/}
 
-* `type`: The `type` argument must be a valid React component type. For example, it could be a tag name string (such as `'div'` or `'span'`), or a React component (a function, a class, or a special component like [`Fragment`](/reference/react/Fragment)).
+* `type`: آرگومان `type` باید یک نوع کامپوننت معتبر ری‌اکت باشد. برای مثال، می‌تواند یک رشتهٔ نام تگ (مانند `'div'` یا `'span'`)، یا یک کامپوننت ری‌اکت (یک تابع، یک کلاس، یا یک کامپوننت خاص مانند [`Fragment`](/reference/react/Fragment)) باشد.
 
-* `props`: The `props` argument must either be an object or `null`. If you pass `null`, it will be treated the same as an empty object. React will create an element with props matching the `props` you have passed. Note that `ref` and `key` from your `props` object are special and will *not* be available as `element.props.ref` and `element.props.key` on the returned `element`. They will be available as `element.ref` and `element.key`.
+* `props`: آرگومان `props` باید یا یک شیء باشد یا `null`. اگر `null` پاس بدهید، مانند یک شیء خالی رفتار خواهد شد. ری‌اکت المانی با پراپس‌هایی مطابق با `props`ای که پاس داده‌اید ایجاد می‌کند. توجه کنید که `ref` و `key` از شیء `props` شما خاص هستند و به‌عنوان `element.props.ref` و `element.props.key` روی `element` بازگشتی *در دسترس نخواهند بود*. آن‌ها به‌عنوان `element.ref` و `element.key` در دسترس خواهند بود.
 
-* **optional** `...children`: Zero or more child nodes. They can be any React nodes, including React elements, strings, numbers, [portals](/reference/react-dom/createPortal), empty nodes (`null`, `undefined`, `true`, and `false`), and arrays of React nodes.
+* **اختیاری** `...children`: صفر یا چند نود فرزند. آن‌ها می‌توانند هر نود ری‌اکتی باشند، شامل المان‌های ری‌اکت، رشته‌ها، اعداد، [پورتال‌ها](/reference/react-dom/createPortal)، نودهای خالی (`null`، `undefined`، `true`، و `false`)، و آرایه‌هایی از نودهای ری‌اکت.
 
-#### Returns {/*returns*/}
+#### مقادیر بازگشتی {/*returns*/}
 
-`createElement` returns a React element object with a few properties:
+`createElement` یک شیء المان ری‌اکت با چند پراپرتی برمی‌گرداند:
 
-* `type`: The `type` you have passed.
-* `props`: The `props` you have passed except for `ref` and `key`.
-* `ref`: The `ref` you have passed. If missing, `null`.
-* `key`: The `key` you have passed, coerced to a string. If missing, `null`.
+* `type`: همان `type`ای که پاس داده‌اید.
+* `props`: همان `props`ای که پاس داده‌اید به‌جز `ref` و `key`.
+* `ref`: همان `ref`ای که پاس داده‌اید. اگر وجود نداشته باشد، `null`.
+* `key`: همان `key`ای که پاس داده‌اید، به رشته تبدیل شده. اگر وجود نداشته باشد، `null`.
 
-Usually, you'll return the element from your component or make it a child of another element. Although you may read the element's properties, it's best to treat every element as opaque after it's created, and only render it.
+معمولاً، شما المان را از کامپوننت خود برمی‌گردانید یا آن را به‌عنوان فرزند المان دیگری قرار می‌دهید. اگرچه ممکن است پراپرتی‌های المان را بخوانید، اما بهتر است پس از ایجاد هر المان را به‌صورت مبهم (opaque) در نظر بگیرید و فقط آن را رندر کنید.
 
-#### Caveats {/*caveats*/}
+#### موارد احتیاط {/*caveats*/}
 
-* You must **treat React elements and their props as [immutable](https://en.wikipedia.org/wiki/Immutable_object)** and never change their contents after creation. In development, React will [freeze](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze) the returned element and its `props` property shallowly to enforce this.
+* باید **با المان‌های ری‌اکت و پراپس‌های آن‌ها به‌عنوان [immutable](https://en.wikipedia.org/wiki/Immutable_object) رفتار کنید** و هرگز پس از ایجاد، محتویات آن‌ها را تغییر ندهید. در محیط توسعه، ری‌اکت المان بازگشتی و پراپرتی `props` آن را به‌صورت سطحی [freeze](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze) می‌کند تا این موضوع را اجبار کند.
 
-* When you use JSX, **you must start a tag with a capital letter to render your own custom component.** In other words, `<Something />` is equivalent to `createElement(Something)`, but `<something />` (lowercase) is equivalent to `createElement('something')` (note it's a string, so it will be treated as a built-in HTML tag).
+* هنگامی که از JSX استفاده می‌کنید، **باید یک تگ را با حرف بزرگ شروع کنید تا کامپوننت سفارشی خودتان رندر شود.** به عبارت دیگر، `<Something />` معادل `createElement(Something)` است، اما `<something />` (حرف کوچک) معادل `createElement('something')` است (توجه کنید این یک رشته است، بنابراین به‌عنوان یک تگ HTML داخلی در نظر گرفته خواهد شد).
 
-* You should only **pass children as multiple arguments to `createElement` if they are all statically known,** like `createElement('h1', {}, child1, child2, child3)`. If your children are dynamic, pass the entire array as the third argument: `createElement('ul', {}, listItems)`. This ensures that React will [warn you about missing `key`s](/learn/rendering-lists#keeping-list-items-in-order-with-key) for any dynamic lists. For static lists this is not necessary because they never reorder.
+* فقط باید **فرزندان را به‌عنوان آرگومان‌های متعدد به `createElement` پاس بدهید اگر همگی به‌صورت ایستا شناخته‌شده باشند**، مانند `createElement('h1', {}, child1, child2, child3)`. اگر فرزندان شما پویا هستند، کل آرایه را به‌عنوان آرگومان سوم پاس بدهید: `createElement('ul', {}, listItems)`. این تضمین می‌کند که ری‌اکت در مورد [`key`های گمشده](/learn/rendering-lists#keeping-list-items-in-order-with-key) برای هر لیست پویا به شما هشدار می‌دهد. برای لیست‌های ایستا این ضروری نیست زیرا هرگز ترتیبشان تغییر نمی‌کند.
 
 ---
 
-## Usage {/*usage*/}
+## استفاده {/*usage*/}
 
-### Creating an element without JSX {/*creating-an-element-without-jsx*/}
+### ایجاد یک المان بدون JSX {/*creating-an-element-without-jsx*/}
 
-If you don't like [JSX](/learn/writing-markup-with-jsx) or can't use it in your project, you can use `createElement` as an alternative.
+اگر [JSX](/learn/writing-markup-with-jsx) را دوست ندارید یا نمی‌توانید در پروژهٔ خود از آن استفاده کنید، می‌توانید از `createElement` به‌عنوان جایگزین استفاده کنید.
 
-To create an element without JSX, call `createElement` with some <CodeStep step={1}>type</CodeStep>, <CodeStep step={2}>props</CodeStep>, and <CodeStep step={3}>children</CodeStep>:
+برای ایجاد یک المان بدون JSX، `createElement` را با مقداری <CodeStep step={1}>type</CodeStep>، <CodeStep step={2}>props</CodeStep>، و <CodeStep step={3}>children</CodeStep> فراخوانی کنید:
 
 ```js [[1, 5, "'h1'"], [2, 6, "{ className: 'greeting' }"], [3, 7, "'Hello ',"], [3, 8, "createElement('i', null, name),"], [3, 9, "'. Welcome!'"]]
 import { createElement } from 'react';
@@ -87,7 +87,7 @@ function Greeting({ name }) {
 }
 ```
 
-The <CodeStep step={3}>children</CodeStep> are optional, and you can pass as many as you need (the example above has three children). This code will display a `<h1>` header with a greeting. For comparison, here is the same example rewritten with JSX:
+<CodeStep step={3}>فرزندان</CodeStep> اختیاری هستند، و می‌توانید به هر تعداد که نیاز دارید پاس بدهید (مثال بالا سه فرزند دارد). این کد یک سرتیتر `<h1>` با یک سلام نمایش خواهد داد. برای مقایسه، در اینجا همان مثال با JSX بازنویسی شده است:
 
 ```js [[1, 3, "h1"], [2, 3, "className=\\"greeting\\""], [3, 4, "Hello <i>{name}</i>. Welcome!"], [1, 5, "h1"]]
 function Greeting({ name }) {
@@ -99,7 +99,7 @@ function Greeting({ name }) {
 }
 ```
 
-To render your own React component, pass a function like `Greeting` as the <CodeStep step={1}>type</CodeStep> instead of a string like `'h1'`:
+برای رندر کامپوننت ری‌اکت خودتان، تابعی مانند `Greeting` را به‌عنوان <CodeStep step={1}>type</CodeStep> به‌جای رشته‌ای مانند `'h1'` پاس بدهید:
 
 ```js [[1, 2, "Greeting"], [2, 2, "{ name: 'Taylor' }"]]
 export default function App() {
@@ -107,7 +107,7 @@ export default function App() {
 }
 ```
 
-With JSX, it would look like this:
+با JSX، به این شکل خواهد بود:
 
 ```js [[1, 2, "Greeting"], [2, 2, "name=\\"Taylor\\""]]
 export default function App() {
@@ -115,7 +115,7 @@ export default function App() {
 }
 ```
 
-Here is a complete example written with `createElement`:
+در اینجا یک مثال کامل نوشته‌شده با `createElement` آورده شده است:
 
 <Sandpack>
 
@@ -149,7 +149,7 @@ export default function App() {
 
 </Sandpack>
 
-And here is the same example written using JSX:
+و در اینجا همان مثال نوشته‌شده با JSX آورده شده است:
 
 <Sandpack>
 
@@ -176,13 +176,13 @@ export default function App() {
 
 </Sandpack>
 
-Both coding styles are fine, so you can use whichever one you prefer for your project. The main benefit of using JSX compared to `createElement` is that it's easy to see which closing tag corresponds to which opening tag.
+هر دو سبک کدنویسی خوب هستند، بنابراین می‌توانید از هر کدام که برای پروژهٔ خود ترجیح می‌دهید استفاده کنید. مزیت اصلی استفاده از JSX در مقایسه با `createElement` این است که دیدن کدام تگ بسته‌شده با کدام تگ بازشده مطابقت دارد، آسان است.
 
 <DeepDive>
 
-#### What is a React element, exactly? {/*what-is-a-react-element-exactly*/}
+#### یک المان ری‌اکت دقیقاً چیست؟ {/*what-is-a-react-element-exactly*/}
 
-An element is a lightweight description of a piece of the user interface. For example, both `<Greeting name="Taylor" />` and `createElement(Greeting, { name: 'Taylor' })` produce an object like this:
+یک المان توصیفی سبک از بخشی از رابط کاربری است. برای مثال، هم `<Greeting name="Taylor" />` و هم `createElement(Greeting, { name: 'Taylor' })` شیئی مانند این تولید می‌کنند:
 
 ```js
 // Slightly simplified
@@ -196,10 +196,10 @@ An element is a lightweight description of a piece of the user interface. For ex
 }
 ```
 
-**Note that creating this object does not render the `Greeting` component or create any DOM elements.**
+**توجه کنید که ایجاد این شیء، کامپوننت `Greeting` را رندر نمی‌کند یا هیچ المان DOMای ایجاد نمی‌کند.**
 
-A React element is more like a description--an instruction for React to later render the `Greeting` component. By returning this object from your `App` component, you tell React what to do next.
+یک المان ری‌اکت بیشتر شبیه یک توصیف است — دستوری برای ری‌اکت تا بعداً کامپوننت `Greeting` را رندر کند. با برگرداندن این شیء از کامپوننت `App` خود، به ری‌اکت می‌گویید در ادامه چه کاری انجام دهد.
 
-Creating elements is extremely cheap so you don't need to try to optimize or avoid it.
+ایجاد المان‌ها بسیار ارزان است، بنابراین نیازی نیست سعی کنید آن را بهینه کنید یا از آن اجتناب کنید.
 
 </DeepDive>

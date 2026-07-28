@@ -4,7 +4,7 @@ title: startTransition
 
 <Intro>
 
-`startTransition` lets you render a part of the UI in the background.
+`startTransition` به شما اجازه می‌دهد بخشی از رابط کاربری را در پس‌زمینه رندر کنید.
 
 ```js
 startTransition(action)
@@ -16,11 +16,11 @@ startTransition(action)
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `startTransition(action)` {/*starttransition*/}
 
-The `startTransition` function lets you mark a state update as a Transition.
+تابع `startTransition` به شما اجازه می‌دهد یک به‌روزرسانی استیت را به‌عنوان یک ترنزیشن علامت‌گذاری کنید.
 
 ```js {7,9}
 import { startTransition } from 'react';
@@ -37,39 +37,39 @@ function TabContainer() {
 }
 ```
 
-[See more examples below.](#usage)
+[نمونه‌های بیشتر را در ادامه ببینید.](#usage)
 
-#### Parameters {/*parameters*/}
+#### پارامترها {/*parameters*/}
 
-* `action`: A function that updates some state by calling one or more [`set` functions](/reference/react/useState#setstate). React calls `action` immediately with no parameters and marks all state updates scheduled synchronously during the `action` function call as Transitions. Any async calls awaited in the `action` will be included in the transition, but currently require wrapping any `set` functions after the `await` in an additional `startTransition` (see [Troubleshooting](/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition)). State updates marked as Transitions will be [non-blocking](#marking-a-state-update-as-a-non-blocking-transition) and [will not display unwanted loading indicators.](/reference/react/useTransition#preventing-unwanted-loading-indicators).
+* `action`: تابعی که با صدا زدن یک یا چند [تابع `set`](/reference/react/useState#setstate) مقداری استیت را به‌روزرسانی می‌کند. ری‌اکت `action` را بلافاصله و بدون پارامتر صدا می‌زند و تمام به‌روزرسانی‌های استیتی که به‌طور همگام در طول فراخوانی تابع `action` زمان‌بندی شده‌اند را به‌عنوان ترنزیشن علامت‌گذاری می‌کند. هر فراخوانی async که در `action` منتظر آن (await) می‌شوید در ترنزیشن گنجانده می‌شود، اما در حال حاضر نیازمند آن است که هر تابع `set` پس از `await` در یک `startTransition` اضافی پیچیده شود (به [عیب‌یابی](/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition) مراجعه کنید). به‌روزرسانی‌های استیتی که به‌عنوان ترنزیشن علامت‌گذاری شده‌اند [غیر مسدودکننده](#marking-a-state-update-as-a-non-blocking-transition) خواهند بود و [نشانگرهای بارگذاری ناخواسته نمایش نمی‌دهند.](/reference/react/useTransition#preventing-unwanted-loading-indicators)
 
-#### Returns {/*returns*/}
+#### مقادیر بازگشتی {/*returns*/}
 
-`startTransition` does not return anything.
+`startTransition` چیزی باز نمی‌گرداند.
 
-#### Caveats {/*caveats*/}
+#### نکات {/*caveats*/}
 
-* `startTransition` does not provide a way to track whether a Transition is pending. To show a pending indicator while the Transition is ongoing, you need [`useTransition`](/reference/react/useTransition) instead.
+* `startTransition` راهی برای پیگیری اینکه آیا یک ترنزیشن در حال انجام است یا نه، ارائه نمی‌کند. برای نمایش یک نشانگر «در حال انجام» هنگام انجام ترنزیشن، باید به‌جای آن از [`useTransition`](/reference/react/useTransition) استفاده کنید.
 
-* You can wrap an update into a Transition only if you have access to the `set` function of that state. If you want to start a Transition in response to some prop or a custom Hook return value, try [`useDeferredValue`](/reference/react/useDeferredValue) instead.
+* تنها زمانی می‌توانید یک به‌روزرسانی را در یک ترنزیشن بپیچید که به تابع `set` آن استیت دسترسی داشته باشید. اگر می‌خواهید یک ترنزیشن را در پاسخ به یک پراپ یا مقدار بازگشتی یک هوک سفارشی آغاز کنید، به‌جای آن [`useDeferredValue`](/reference/react/useDeferredValue) را امتحان کنید.
 
-* The function you pass to `startTransition` is called immediately, marking all state updates that happen while it executes as Transitions. If you try to perform state updates in a `setTimeout`, for example, they won't be marked as Transitions.
+* تابعی که به `startTransition` ارسال می‌کنید بلافاصله صدا زده می‌شود و تمام به‌روزرسانی‌های استیتی که هنگام اجرای آن اتفاق می‌افتند را به‌عنوان ترنزیشن علامت‌گذاری می‌کند. اگر مثلاً بخواهید به‌روزرسانی‌های استیت را در یک `setTimeout` انجام دهید، به‌عنوان ترنزیشن علامت‌گذاری نمی‌شوند.
 
-* You must wrap any state updates after any async requests in another `startTransition` to mark them as Transitions. This is a known limitation that we will fix in the future (see [Troubleshooting](/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition)).
+* باید هر به‌روزرسانی استیت را پس از هر درخواست async در یک `startTransition` دیگر بپیچید تا به‌عنوان ترنزیشن علامت‌گذاری شوند. این یک محدودیت شناخته‌شده است که در آینده آن را برطرف خواهیم کرد (به [عیب‌یابی](/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition) مراجعه کنید).
 
-* A state update marked as a Transition will be interrupted by other state updates. For example, if you update a chart component inside a Transition, but then start typing into an input while the chart is in the middle of a re-render, React will restart the rendering work on the chart component after handling the input state update.
+* یک به‌روزرسانی استیت که به‌عنوان ترنزیشن علامت‌گذاری شده، توسط سایر به‌روزرسانی‌های استیت قطع می‌شود. به‌عنوان مثال، اگر یک کامپوننت نمودار را درون یک ترنزیشن به‌روزرسانی کنید، اما سپس هنگامی که نمودار در میانهٔ یک رندر مجدد است، در یک ورودی تایپ کنید، ری‌اکت پس از رسیدگی به به‌روزرسانی استیت ورودی، کار رندر کامپوننت نمودار را از نو آغاز می‌کند.
 
-* Transition updates can't be used to control text inputs.
+* به‌روزرسانی‌های ترنزیشن را نمی‌توان برای کنترل ورودی‌های متنی استفاده کرد.
 
-* If there are multiple ongoing Transitions, React currently batches them together. This is a limitation that may be removed in a future release.
+* اگر چندین ترنزیشن در حال انجام باشد، ری‌اکت در حال حاضر آن‌ها را با هم دسته‌بندی می‌کند. این محدودیتی است که ممکن است در نسخهٔ آینده حذف شود.
 
 ---
 
-## Usage {/*usage*/}
+## استفاده {/*usage*/}
 
-### Marking a state update as a non-blocking Transition {/*marking-a-state-update-as-a-non-blocking-transition*/}
+### علامت‌گذاری یک به‌روزرسانی استیت به‌عنوان یک ترنزیشن غیر مسدودکننده {/*marking-a-state-update-as-a-non-blocking-transition*/}
 
-You can mark a state update as a *Transition* by wrapping it in a `startTransition` call:
+می‌توانید یک به‌روزرسانی استیت را با پیچیدن آن در یک فراخوانی `startTransition` به‌عنوان یک *ترنزیشن* علامت‌گذاری کنید:
 
 ```js {7,9}
 import { startTransition } from 'react';
@@ -86,14 +86,14 @@ function TabContainer() {
 }
 ```
 
-Transitions let you keep the user interface updates responsive even on slow devices.
+ترنزیشن‌ها به شما اجازه می‌دهند به‌روزرسانی‌های رابط کاربری را حتی روی دستگاه‌های کند، واکنش‌گرا نگه دارید.
 
-With a Transition, your UI stays responsive in the middle of a re-render. For example, if the user clicks a tab but then change their mind and click another tab, they can do that without waiting for the first re-render to finish.
+با یک ترنزیشن، رابط کاربری شما در میانهٔ یک رندر مجدد واکنش‌گرا باقی می‌ماند. به‌عنوان مثال، اگر کاربر روی یک زبانه کلیک کند ولی سپس تغییر نظر دهد و روی زبانهٔ دیگری کلیک کند، می‌تواند این کار را بدون انتظار برای اتمام رندر مجدد اول انجام دهد.
 
 <Note>
 
-`startTransition` is very similar to [`useTransition`](/reference/react/useTransition), except that it does not provide the `isPending` flag to track whether a Transition is ongoing. You can call `startTransition` when `useTransition` is not available. For example, `startTransition` works outside components, such as from a data library.
+`startTransition` بسیار شبیه [`useTransition`](/reference/react/useTransition) است، با این تفاوت که پرچم `isPending` را برای پیگیری اینکه آیا ترنزیشنی در حال انجام است ارائه نمی‌کند. می‌توانید زمانی که `useTransition` در دسترس نیست، `startTransition` را صدا بزنید. به‌عنوان مثال، `startTransition` بیرون از کامپوننت‌ها نیز کار می‌کند، مانند یک کتابخانهٔ داده.
 
-[Learn about Transitions and see examples on the `useTransition` page.](/reference/react/useTransition)
+[دربارهٔ ترنزیشن‌ها بیشتر بدانید و نمونه‌ها را در صفحهٔ `useTransition` ببینید.](/reference/react/useTransition)
 
 </Note>

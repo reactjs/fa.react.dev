@@ -4,7 +4,7 @@ title: useState
 
 <Intro>
 
-`useState` is a React Hook that lets you add a [state variable](/learn/state-a-components-memory) to your component.
+`useState` یک هوک ری‌اکت است که به شما اجازه می‌دهد یک [متغیر استیت](/learn/state-a-components-memory) به کامپوننت خود اضافه کنید.
 
 ```js
 const [state, setState] = useState(initialState)
@@ -16,11 +16,11 @@ const [state, setState] = useState(initialState)
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `useState(initialState)` {/*usestate*/}
 
-Call `useState` at the top level of your component to declare a [state variable.](/learn/state-a-components-memory)
+برای تعریف یک [متغیر استیت](/learn/state-a-components-memory)، `useState` را در سطح بالای کامپوننت خود فراخوانی کنید.
 
 ```js
 import { useState } from 'react';
@@ -32,32 +32,32 @@ function MyComponent() {
   // ...
 ```
 
-The convention is to name state variables like `[something, setSomething]` using [array destructuring.](https://javascript.info/destructuring-assignment)
+قرارداد این است که متغیرهای استیت را با نامی مانند `[something, setSomething]` و با استفاده از [دستوری‌سازی آرایه](https://javascript.info/destructuring-assignment) نام‌گذاری کنید.
 
-[See more examples below.](#usage)
+[مثال‌های بیشتری را در ادامه ببینید.](#usage)
 
-#### Parameters {/*parameters*/}
+#### پارامترها {/*parameters*/}
 
-* `initialState`: The value you want the state to be initially. It can be a value of any type, but there is a special behavior for functions. This argument is ignored after the initial render.
-  * If you pass a function as `initialState`, it will be treated as an _initializer function_. It should be pure, should take no arguments, and should return a value of any type. React will call your initializer function when initializing the component, and store its return value as the initial state. [See an example below.](#avoiding-recreating-the-initial-state)
+* `initialState`: مقداری که می‌خواهید استیت ابتدا آن باشد. می‌تواند مقداری از هر نوعی باشد، اما برای توابع رفتار خاصی وجود دارد. این آرگومان بعد از رندر اولیه نادیده گرفته می‌شود.
+  * اگر تابعی را به‌عنوان `initialState` ارسال کنید، آن را به‌عنوان _تابع مقداردهی اولیه_ در نظر می‌گیرد. این تابع باید خالص باشد، نباید آرگومانی بگیرد، و باید مقداری از هر نوعی را برگرداند. ری‌اکت تابع مقداردهی اولیهٔ شما را هنگام راه‌اندازی کامپوننت فراخوانی می‌کند و مقدار بازگشتی آن را به‌عنوان استیت اولیه ذخیره می‌کند. [یک مثال را در ادامه ببینید.](#avoiding-recreating-the-initial-state)
 
-#### Returns {/*returns*/}
+#### مقدار بازگشتی {/*returns*/}
 
-`useState` returns an array with exactly two values:
+`useState` آرایه‌ای با دقیقاً دو مقدار برمی‌گرداند:
 
-1. The current state. During the first render, it will match the `initialState` you have passed.
-2. The [`set` function](#setstate) that lets you update the state to a different value and trigger a re-render.
+1. استیت کنونی. در طول رندر اول، با `initialState` که ارسال کرده‌اید مطابقت خواهد داشت.
+2. [تابع `set`](#setstate) که به شما اجازه می‌دهد استیت را به مقدار متفاوتی به‌روز کنید و یک رندر مجدد را فعال کنید.
 
-#### Caveats {/*caveats*/}
+#### نکات {/*caveats*/}
 
-* `useState` is a Hook, so you can only call it **at the top level of your component** or your own Hooks. You can't call it inside loops or conditions. If you need that, extract a new component and move the state into it.
-* In Strict Mode, React will **call your initializer function twice** in order to [help you find accidental impurities.](#my-initializer-or-updater-function-runs-twice) This is development-only behavior and does not affect production. If your initializer function is pure (as it should be), this should not affect the behavior. The result from one of the calls will be ignored.
+* `useState` یک هوک است، بنابراین فقط می‌توانید آن را **در سطح بالای کامپوننت** یا هوک‌های خودتان فراخوانی کنید. نمی‌توانید آن را درون حلقه‌ها یا شرط‌ها فراخوانی کنید. اگر به این نیاز دارید، یک کامپوننت جدید استخراج کنید و استیت را به آن منتقل کنید.
+* در حالت سخت‌گیرانه (Strict Mode)، ری‌اکت **تابع مقداردهی اولیهٔ شما را دو بار فراخوانی می‌کند** تا به شما کمک کند [ناخالصی‌های تصادفی را پیدا کنید.](#my-initializer-or-updater-function-runs-twice) این رفتار فقط مخصوص محیط توسعه است و بر محیط تولید تأثیری ندارد. اگر تابع مقداردهی اولیهٔ شما خالص باشد (همان‌طور که باید باشد)، این موضوع نباید روی رفتار تأثیر بگذارد. نتیجهٔ یکی از فراخوانی‌ها نادیده گرفته خواهد شد.
 
 ---
 
-### `set` functions, like `setSomething(nextState)` {/*setstate*/}
+### توابع `set`، مانند `setSomething(nextState)` {/*setstate*/}
 
-The `set` function returned by `useState` lets you update the state to a different value and trigger a re-render. You can pass the next state directly, or a function that calculates it from the previous state:
+تابع `set` که توسط `useState` برگردانده می‌شود به شما اجازه می‌دهد استیت را به مقدار متفاوتی به‌روز کنید و یک رندر مجدد را فعال کنید. می‌توانید استیت بعدی را مستقیماً ارسال کنید، یا تابعی که آن را از استیت قبلی محاسبه می‌کند:
 
 ```js
 const [name, setName] = useState('Edward');
@@ -68,36 +68,36 @@ function handleClick() {
   // ...
 ```
 
-#### Parameters {/*setstate-parameters*/}
+#### پارامترها {/*setstate-parameters*/}
 
-* `nextState`: The value that you want the state to be. It can be a value of any type, but there is a special behavior for functions.
-  * If you pass a function as `nextState`, it will be treated as an _updater function_. It must be pure, should take the pending state as its only argument, and should return the next state. React will put your updater function in a queue and re-render your component. During the next render, React will calculate the next state by applying all of the queued updaters to the previous state. [See an example below.](#updating-state-based-on-the-previous-state)
+* `nextState`: مقداری که می‌خواهید استیت آن باشد. می‌تواند مقداری از هر نوعی باشد، اما برای توابع رفتار خاصی وجود دارد.
+  * اگر تابعی را به‌عنوان `nextState` ارسال کنید، آن را به‌عنوان _تابع به‌روزرسانی_ در نظر می‌گیرد. این تابع باید خالص باشد، باید استیت در انتظار را به‌عنوان تنها آرگومان خود بگیرد، و باید استیت بعدی را برگرداند. ری‌اکت تابع به‌روزرسانی شما را در یک صف قرار می‌دهد و کامپوننت شما را دوباره رندر می‌کند. در رندر بعدی، ری‌اکت استیت بعدی را با اعمال همهٔ توابع به‌روزرسانی در صف به استیت قبلی محاسبه می‌کند. [یک مثال را در ادامه ببینید.](#updating-state-based-on-the-previous-state)
 
-#### Returns {/*setstate-returns*/}
+#### مقدار بازگشتی {/*setstate-returns*/}
 
-`set` functions do not have a return value.
+توابع `set` مقدار بازگشتی ندارند.
 
-#### Caveats {/*setstate-caveats*/}
+#### نکات {/*setstate-caveats*/}
 
-* The `set` function **only updates the state variable for the *next* render**. If you read the state variable after calling the `set` function, [you will still get the old value](#ive-updated-the-state-but-logging-gives-me-the-old-value) that was on the screen before your call.
+* تابع `set` **فقط متغیر استیت را برای رندر *بعدی* به‌روز می‌کند**. اگر متغیر استیت را بعد از فراخوانی تابع `set` بخوانید، [هنوز مقدار قدیمی را دریافت می‌کنید](#ive-updated-the-state-but-logging-gives-me-the-old-value) که قبل از فراخوانی شما روی صفحه بود.
 
-* If the new value you provide is identical to the current `state`, as determined by an [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison, React will **skip re-rendering the component and its children.** This is an optimization. Although in some cases React may still need to call your component before skipping the children, it shouldn't affect your code.
+* اگر مقدار جدیدی که ارائه می‌دهید با `state` کنونی یکسان باشد (همان‌طور که با مقایسهٔ [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) تعیین می‌شود)، ری‌اکت **رندر مجدد کامپوننت و فرزندانش را رد می‌کند.** این یک بهینه‌سازی است. اگرچه در برخی موارد ری‌اکت ممکن است همچنان قبل از رد کردن فرزندان نیاز به فراخوانی کامپوننت شما داشته باشد، اما نباید روی کد شما تأثیر بگذارد.
 
-* React [batches state updates.](/learn/queueing-a-series-of-state-updates) It updates the screen **after all the event handlers have run** and have called their `set` functions. This prevents multiple re-renders during a single event. In the rare case that you need to force React to update the screen earlier, for example to access the DOM, you can use [`flushSync`.](/reference/react-dom/flushSync)
+* ری‌اکت [به‌روزرسانی‌های استیت را دسته‌بندی می‌کند.](/learn/queueing-a-series-of-state-updates) صفحه را **پس از اجرای همهٔ کنترل‌کننده‌های رویداد** و فراخوانی توابع `set` توسط آن‌ها به‌روز می‌کند. این کار از رندرهای مجدد متعدد در طول یک رویداد جلوگیری می‌کند. در موارد نادر که نیاز دارید ری‌اکت را مجبور کنید صفحه را زودتر به‌روز کند، مثلاً برای دسترسی به DOM، می‌توانید از [`flushSync`](/reference/react-dom/flushSync) استفاده کنید.
 
-* The `set` function has a stable identity, so you will often see it omitted from Effect dependencies, but including it will not cause the Effect to fire. If the linter lets you omit a dependency without errors, it is safe to do. [Learn more about removing Effect dependencies.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
+* تابع `set` هویت پایداری دارد، بنابراین اغلب می‌بینید که از وابستگی‌های افکت حذف می‌شود، اما گنجاندن آن باعث نمی‌شود افکت اجرا شود. اگر لینتر اجازه می‌دهد یک وابستگی را بدون خطا حذف کنید، انجام این کار امن است. [دربارهٔ حذف وابستگی‌های افکت بیشتر بدانید.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
 
-* Calling the `set` function *during rendering* is only allowed from within the currently rendering component. React will discard its output and immediately attempt to render it again with the new state. This pattern is rarely needed, but you can use it to **store information from the previous renders**. [See an example below.](#storing-information-from-previous-renders)
+* فراخوانی تابع `set` *در حین رندر* فقط از درون کامپوننتی که در حال رندر است مجاز است. ری‌اکت خروجی آن را دور می‌ریزد و بلافاصله تلاش می‌کند آن را با استیت جدید دوباره رندر کند. این الگو به‌ندرت نیاز می‌شود، اما می‌توانید از آن برای **ذخیرهٔ اطلاعات از رندرهای قبلی** استفاده کنید. [یک مثال را در ادامه ببینید.](#storing-information-from-previous-renders)
 
-* In Strict Mode, React will **call your updater function twice** in order to [help you find accidental impurities.](#my-initializer-or-updater-function-runs-twice) This is development-only behavior and does not affect production. If your updater function is pure (as it should be), this should not affect the behavior. The result from one of the calls will be ignored.
+* در حالت سخت‌گیرانه (Strict Mode)، ری‌اکت **تابع به‌روزرسانی شما را دو بار فراخوانی می‌کند** تا به شما کمک کند [ناخالصی‌های تصادفی را پیدا کنید.](#my-initializer-or-updater-function-runs-twice) این رفتار فقط مخصوص محیط توسعه است و بر محیط تولید تأثیری ندارد. اگر تابع به‌روزرسانی شما خالص باشد (همان‌طور که باید باشد)، این موضوع نباید روی رفتار تأثیر بگذارد. نتیجهٔ یکی از فراخوانی‌ها نادیده گرفته خواهد شد.
 
 ---
 
-## Usage {/*usage*/}
+## کاربرد {/*usage*/}
 
-### Adding state to a component {/*adding-state-to-a-component*/}
+### افزودن استیت به یک کامپوننت {/*adding-state-to-a-component*/}
 
-Call `useState` at the top level of your component to declare one or more [state variables.](/learn/state-a-components-memory)
+برای تعریف یک یا چند [متغیر استیت](/learn/state-a-components-memory)، `useState` را در سطح بالای کامپوننت خود فراخوانی کنید.
 
 ```js [[1, 4, "age"], [2, 4, "setAge"], [3, 4, "42"], [1, 5, "name"], [2, 5, "setName"], [3, 5, "'Taylor'"]]
 import { useState } from 'react';
@@ -108,14 +108,14 @@ function MyComponent() {
   // ...
 ```
 
-The convention is to name state variables like `[something, setSomething]` using [array destructuring.](https://javascript.info/destructuring-assignment)
+قرارداد این است که متغیرهای استیت را با نامی مانند `[something, setSomething]` و با استفاده از [دستوری‌سازی آرایه](https://javascript.info/destructuring-assignment) نام‌گذاری کنید.
 
-`useState` returns an array with exactly two items:
+`useState` آرایه‌ای با دقیقاً دو مورد برمی‌گرداند:
 
-1. The <CodeStep step={1}>current state</CodeStep> of this state variable, initially set to the <CodeStep step={3}>initial state</CodeStep> you provided.
-2. The <CodeStep step={2}>`set` function</CodeStep> that lets you change it to any other value in response to interaction.
+1. <CodeStep step={1}>استیت کنونی</CodeStep> این متغیر استیت، که ابتدا روی <CodeStep step={3}>استیت اولیه</CodeStep> که شما ارائه کرده‌اید تنظیم می‌شود.
+2. <CodeStep step={2}>تابع `set`</CodeStep> که به شما اجازه می‌دهد در پاسخ به تعامل، آن را به هر مقدار دیگری تغییر دهید.
 
-To update what’s on the screen, call the `set` function with some next state:
+برای به‌روزرسانی چیزی که روی صفحه است، تابع `set` را با استیت بعدی فراخوانی کنید:
 
 ```js [[2, 2, "setName"]]
 function handleClick() {
@@ -123,11 +123,11 @@ function handleClick() {
 }
 ```
 
-React will store the next state, render your component again with the new values, and update the UI.
+ری‌اکت استیت بعدی را ذخیره می‌کند، کامپوننت شما را با مقادیر جدید دوباره رندر می‌کند، و UI را به‌روز می‌کند.
 
 <Pitfall>
 
-Calling the `set` function [**does not** change the current state in the already executing code](#ive-updated-the-state-but-logging-gives-me-the-old-value):
+فراخوانی تابع `set` [استیت کنونی را در کد در حال اجرا **تغییر نمی‌دهد**](#ive-updated-the-state-but-logging-gives-me-the-old-value):
 
 ```js {3}
 function handleClick() {
@@ -136,7 +136,7 @@ function handleClick() {
 }
 ```
 
-It only affects what `useState` will return starting from the *next* render.
+فقط بر آنچه `useState` از رندر *بعدی* به بعد برمی‌گرداند تأثیر می‌گذارد.
 
 </Pitfall>
 
@@ -144,7 +144,7 @@ It only affects what `useState` will return starting from the *next* render.
 
 #### Counter (number) {/*counter-number*/}
 
-In this example, the `count` state variable holds a number. Clicking the button increments it.
+در این مثال، متغیر استیت `count` یک عدد را نگه می‌دارد. کلیک روی دکمه آن را افزایش می‌دهد.
 
 <Sandpack>
 
@@ -172,7 +172,7 @@ export default function Counter() {
 
 #### Text field (string) {/*text-field-string*/}
 
-In this example, the `text` state variable holds a string. When you type, `handleChange` reads the latest input value from the browser input DOM element, and calls `setText` to update the state. This allows you to display the current `text` below.
+در این مثال، متغیر استیت `text` یک رشته را نگه می‌دارد. وقتی تایپ می‌کنید، `handleChange` آخرین مقدار ورودی را از المان DOM ورودی مرورگر می‌خواند، و برای به‌روزرسانی استیت `setText` را فراخوانی می‌کند. این به شما اجازه می‌دهد `text` کنونی را در زیر نمایش دهید.
 
 <Sandpack>
 
@@ -204,7 +204,7 @@ export default function MyInput() {
 
 #### Checkbox (boolean) {/*checkbox-boolean*/}
 
-In this example, the `liked` state variable holds a boolean. When you click the input, `setLiked` updates the `liked` state variable with whether the browser checkbox input is checked. The `liked` variable is used to render the text below the checkbox.
+در این مثال، متغیر استیت `liked` یک بولین را نگه می‌دارد. وقتی روی ورودی کلیک می‌کنید، `setLiked` متغیر استیت `liked` را با توجه به اینکه آیا ورودی چک‌باکس مرورگر تیک خورده است یا نه، به‌روز می‌کند. متغیر `liked` برای رندر متن زیر چک‌باکس استفاده می‌شود.
 
 <Sandpack>
 
@@ -240,7 +240,7 @@ export default function MyCheckbox() {
 
 #### Form (two variables) {/*form-two-variables*/}
 
-You can declare more than one state variable in the same component. Each state variable is completely independent.
+می‌توانید بیش از یک متغیر استیت در همان کامپوننت تعریف کنید. هر متغیر استیت کاملاً مستقل است.
 
 <Sandpack>
 
@@ -280,7 +280,7 @@ button { display: block; margin-top: 10px; }
 
 ### Updating state based on the previous state {/*updating-state-based-on-the-previous-state*/}
 
-Suppose the `age` is `42`. This handler calls `setAge(age + 1)` three times:
+فرض کنید `age` برابر `42` است. این کنترل‌کننده سه بار `setAge(age + 1)` را فراخوانی می‌کند:
 
 ```js
 function handleClick() {
@@ -290,9 +290,9 @@ function handleClick() {
 }
 ```
 
-However, after one click, `age` will only be `43` rather than `45`! This is because calling the `set` function [does not update](/learn/state-as-a-snapshot) the `age` state variable in the already running code. So each `setAge(age + 1)` call becomes `setAge(43)`.
+با این حال، پس از یک کلیک، `age` فقط `43` خواهد بود نه `45`! این به این دلیل است که فراخوانی تابع `set` [متغیر استیت](/learn/state-as-a-snapshot) `age` را در کد در حال اجرا به‌روز نمی‌کند. بنابراین هر فراخوانی `setAge(age + 1)` به `setAge(43)` تبدیل می‌شود.
 
-To solve this problem, **you may pass an *updater function*** to `setAge` instead of the next state:
+برای حل این مشکل، **می‌توانید به جای استیت بعدی، یک *تابع به‌روزرسانی*** به `setAge` ارسال کنید:
 
 ```js [[1, 2, "a", 0], [2, 2, "a + 1"], [1, 3, "a", 0], [2, 3, "a + 1"], [1, 4, "a", 0], [2, 4, "a + 1"]]
 function handleClick() {
@@ -302,31 +302,31 @@ function handleClick() {
 }
 ```
 
-Here, `a => a + 1` is your updater function. It takes the <CodeStep step={1}>pending state</CodeStep> and calculates the <CodeStep step={2}>next state</CodeStep> from it.
+در اینجا، `a => a + 1` تابع به‌روزرسانی شماست. <CodeStep step={1}>استیت در انتظار</CodeStep> را می‌گیرد و <CodeStep step={2}>استیت بعدی</CodeStep> را از آن محاسبه می‌کند.
 
-React puts your updater functions in a [queue.](/learn/queueing-a-series-of-state-updates) Then, during the next render, it will call them in the same order:
+ری‌اکت توابع به‌روزرسانی شما را در یک [صف](/learn/queueing-a-series-of-state-updates) قرار می‌دهد. سپس، در رندر بعدی، آن‌ها را به همان ترتیب فراخوانی می‌کند:
 
-1. `a => a + 1` will receive `42` as the pending state and return `43` as the next state.
-1. `a => a + 1` will receive `43` as the pending state and return `44` as the next state.
-1. `a => a + 1` will receive `44` as the pending state and return `45` as the next state.
+1. `a => a + 1` مقدار `42` را به‌عنوان استیت در انتظار دریافت می‌کند و `43` را به‌عنوان استیت بعدی برمی‌گرداند.
+1. `a => a + 1` مقدار `43` را به‌عنوان استیت در انتظار دریافت می‌کند و `44` را به‌عنوان استیت بعدی برمی‌گرداند.
+1. `a => a + 1` مقدار `44` را به‌عنوان استیت در انتظار دریافت می‌کند و `45` را به‌عنوان استیت بعدی برمی‌گرداند.
 
-There are no other queued updates, so React will store `45` as the current state in the end.
+هیچ به‌روزرسانی صف‌شدهٔ دیگری وجود ندارد، بنابراین ری‌اکت در نهایت `45` را به‌عنوان استیت کنونی ذخیره می‌کند.
 
-By convention, it's common to name the pending state argument for the first letter of the state variable name, like `a` for `age`. However, you may also call it like `prevAge` or something else that you find clearer.
+طبق قرارداد، معمول است که آرگومان استیت در انتظار را با حرف اول نام متغیر استیت نام‌گذاری کنید، مانند `a` برای `age`. با این حال، می‌توانید آن را `prevAge` یا چیز دیگری که واضح‌تر می‌دانید بنامید.
 
-React may [call your updaters twice](#my-initializer-or-updater-function-runs-twice) in development to verify that they are [pure.](/learn/keeping-components-pure)
+ری‌اکت ممکن است در محیط توسعه [توابع به‌روزرسانی شما را دو بار فراخوانی کند](#my-initializer-or-updater-function-runs-twice) تا تأیید کند که آن‌ها [خالص](/learn/keeping-components-pure) هستند.
 
 <DeepDive>
 
-#### Is using an updater always preferred? {/*is-using-an-updater-always-preferred*/}
+#### آیا استفاده از تابع به‌روزرسانی همیشه ترجیح داده می‌شود؟ {/*is-using-an-updater-always-preferred*/}
 
-You might hear a recommendation to always write code like `setAge(a => a + 1)` if the state you're setting is calculated from the previous state. There is no harm in it, but it is also not always necessary.
+ممکن است توصیه‌ای بشنوید که همیشه کدی مانند `setAge(a => a + 1)` را بنویسید اگر استیتی که تنظیم می‌کنید از استیت قبلی محاسبه می‌شود. هیچ ضرری در این کار نیست، اما همیشه ضروری هم نیست.
 
-In most cases, there is no difference between these two approaches. React always makes sure that for intentional user actions, like clicks, the `age` state variable would be updated before the next click. This means there is no risk of a click handler seeing a "stale" `age` at the beginning of the event handler.
+در اکثر موارد، بین این دو روش تفاوتی وجود ندارد. ری‌اکت همیشه مطمئن می‌شود که برای اقدامات عمدی کاربر، مانند کلیک‌ها، متغیر استیت `age` قبل از کلیک بعدی به‌روز می‌شود. این بدان معناست که خطر وجود ندارد که یک کنترل‌کنندهٔ رویداد در ابتدای کنترل‌کنندهٔ رویداد، `age` «قدیمی» را ببیند.
 
-However, if you do multiple updates within the same event, updaters can be helpful. They're also helpful if accessing the state variable itself is inconvenient (you might run into this when optimizing re-renders).
+با این حال، اگر چندین به‌روزرسانی در همان رویداد انجام می‌دهید، توابع به‌روزرسانی می‌توانند مفید باشند. اگر دسترسی به خود متغیر استیت ناپسند است نیز مفید هستند (ممکن است هنگام بهینه‌سازی رندرهای مجدد با این موضوع مواجه شوید).
 
-If you prefer consistency over slightly more verbose syntax, it's reasonable to always write an updater if the state you're setting is calculated from the previous state. If it's calculated from the previous state of some *other* state variable, you might want to combine them into one object and [use a reducer.](/learn/extracting-state-logic-into-a-reducer)
+اگر یکدستی را به نحوۀ کمی طولانی‌تر ترجیح می‌دهید، منطقی است که همیشه یک تابع به‌روزرسانی بنویسید اگر استیتی که تنظیم می‌کنید از استیت قبلی محاسبه می‌شود. اگر از استیت قبلی یک متغیر استیت *دیگر* محاسبه می‌شود، ممکن است بخواهید آن‌ها را در یک شیء ترکیب کنید و [از یک ردیوسر استفاده کنید.](/learn/extracting-state-logic-into-a-reducer)
 
 </DeepDive>
 
@@ -334,7 +334,7 @@ If you prefer consistency over slightly more verbose syntax, it's reasonable to 
 
 #### Passing the updater function {/*passing-the-updater-function*/}
 
-This example passes the updater function, so the "+3" button works.
+این مثال تابع به‌روزرسانی را ارسال می‌کند، بنابراین دکمهٔ «+3» کار می‌کند.
 
 <Sandpack>
 
@@ -375,7 +375,7 @@ h1 { display: block; margin: 10px; }
 
 #### Passing the next state directly {/*passing-the-next-state-directly*/}
 
-This example **does not** pass the updater function, so the "+3" button **doesn't work as intended**.
+این مثال تابع به‌روزرسانی را ارسال **نمی‌کند**، بنابراین دکمهٔ «+3» **همان‌طور که مورد نظر است کار نمی‌کند**.
 
 <Sandpack>
 
@@ -420,14 +420,14 @@ h1 { display: block; margin: 10px; }
 
 ### Updating objects and arrays in state {/*updating-objects-and-arrays-in-state*/}
 
-You can put objects and arrays into state. In React, state is considered read-only, so **you should *replace* it rather than *mutate* your existing objects**. For example, if you have a `form` object in state, don't mutate it:
+می‌توانید اشیاء و آرایه‌ها را در استیت قرار دهید. در ری‌اکت، استیت فقط‌خواندنی در نظر گرفته می‌شود، بنابراین **باید به جای *تغییر* اشیاء موجود، آن‌ها را *جایگزین* کنید**. مثلاً اگر یک شیء `form` در استیت دارید، آن را تغییر ندهید:
 
 ```js
 // 🚩 Don't mutate an object in state like this:
 form.firstName = 'Taylor';
 ```
 
-Instead, replace the whole object by creating a new one:
+در عوض، با ایجاد یک شیء جدید، کل شیء را جایگزین کنید:
 
 ```js
 // ✅ Replace state with a new object
@@ -437,13 +437,13 @@ setForm({
 });
 ```
 
-Read [updating objects in state](/learn/updating-objects-in-state) and [updating arrays in state](/learn/updating-arrays-in-state) to learn more.
+برای کسب اطلاعات بیشتر، [به‌روزرسانی اشیاء در استیت](/learn/updating-objects-in-state) و [به‌روزرسانی آرایه‌ها در استیت](/learn/updating-arrays-in-state) را بخوانید.
 
 <Recipes titleText="Examples of objects and arrays in state" titleId="examples-objects">
 
 #### Form (object) {/*form-object*/}
 
-In this example, the `form` state variable holds an object. Each input has a change handler that calls `setForm` with the next state of the entire form. The `{ ...form }` spread syntax ensures that the state object is replaced rather than mutated.
+در این مثال، متغیر استیت `form` یک شیء را نگه می‌دارد. هر ورودی یک کنترل‌کنندهٔ تغییر دارد که `setForm` را با استیت بعدی کل فرم فراخوانی می‌کند. دستور اسپرد `{ ...form }` تضمین می‌کند که شیء استیت جایگزین شود نه تغییر یابد.
 
 <Sandpack>
 
@@ -516,7 +516,7 @@ input { margin-left: 5px; }
 
 #### Form (nested object) {/*form-nested-object*/}
 
-In this example, the state is more nested. When you update nested state, you need to create a copy of the object you're updating, as well as any objects "containing" it on the way upwards. Read [updating a nested object](/learn/updating-objects-in-state#updating-a-nested-object) to learn more.
+در این مثال، استیت تودرتوتر است. وقتی استیت تودرتو را به‌روز می‌کنید، باید یک کپی از شیء‌ای که به‌روز می‌کنید، و همچنین هر اشیاء که در مسیر بالا آن را «شامل» می‌شوند، ایجاد کنید. برای کسب اطلاعات بیشتر [به‌روزرسانی یک شیء تودرتو](/learn/updating-objects-in-state#updating-a-nested-object) را بخوانید.
 
 <Sandpack>
 
@@ -628,7 +628,7 @@ img { width: 200px; height: 200px; }
 
 #### List (array) {/*list-array*/}
 
-In this example, the `todos` state variable holds an array. Each button handler calls `setTodos` with the next version of that array. The `[...todos]` spread syntax, `todos.map()` and `todos.filter()` ensure the state array is replaced rather than mutated.
+در این مثال، متغیر استیت `todos` یک آرایه را نگه می‌دارد. هر کنترل‌کنندهٔ دکمه، `setTodos` را با نسخهٔ بعدی آن آرایه فراخوانی می‌کند. دستورات اسپرد `[...todos]`، `todos.map()` و `todos.filter()` تضمین می‌کنند که آرایهٔ استیت جایگزین شود نه تغییر یابد.
 
 <Sandpack>
 
@@ -795,7 +795,7 @@ ul, li { margin: 0; padding: 0; }
 
 #### Writing concise update logic with Immer {/*writing-concise-update-logic-with-immer*/}
 
-If updating arrays and objects without mutation feels tedious, you can use a library like [Immer](https://github.com/immerjs/use-immer) to reduce repetitive code. Immer lets you write concise code as if you were mutating objects, but under the hood it performs immutable updates:
+اگر به‌روزرسانی آرایه‌ها و اشیاء بدون تغییر (mutation) خسته‌کننده به نظر می‌رسد، می‌توانید از کتابخانه‌ای مانند [Immer](https://github.com/immerjs/use-immer) برای کاهش کد تکراری استفاده کنید. Immer به شما اجازه می‌دهد کد مختصری بنویسید، گویی در حال تغییر اشیاء هستید، اما در پس‌زمینه به‌روزرسانی‌های تغییرناپذیر انجام می‌دهد:
 
 <Sandpack>
 
@@ -886,7 +886,7 @@ function ItemList({ artworks, onToggle }) {
 
 ### Avoiding recreating the initial state {/*avoiding-recreating-the-initial-state*/}
 
-React saves the initial state once and ignores it on the next renders.
+ری‌اکت استیت اولیه را یک بار ذخیره می‌کند و در رندرهای بعدی آن را نادیده می‌گیرد.
 
 ```js
 function TodoList() {
@@ -894,9 +894,9 @@ function TodoList() {
   // ...
 ```
 
-Although the result of `createInitialTodos()` is only used for the initial render, you're still calling this function on every render. This can be wasteful if it's creating large arrays or performing expensive calculations.
+اگرچه نتیجهٔ `createInitialTodos()` فقط برای رندر اولیه استفاده می‌شود، اما شما همچنان این تابع را در هر رندر فراخوانی می‌کنید. اگر آرایه‌های بزرگ ایجاد می‌کند یا محاسبات پرهزینه‌ای انجام می‌دهد، می‌تواند اتلاف منابع باشد.
 
-To solve this, you may **pass it as an _initializer_ function** to `useState` instead:
+برای حل این مشکل، می‌توانید **آن را به‌عنوان _تابع مقداردهی اولیه_** به `useState` ارسال کنید:
 
 ```js
 function TodoList() {
@@ -904,15 +904,15 @@ function TodoList() {
   // ...
 ```
 
-Notice that you’re passing `createInitialTodos`, which is the *function itself*, and not `createInitialTodos()`, which is the result of calling it. If you pass a function to `useState`, React will only call it during initialization.
+توجه کنید که `createInitialTodos` را ارسال می‌کنید، یعنی *خود تابع*، و نه `createInitialTodos()` که نتیجهٔ فراخوانی آن است. اگر تابعی را به `useState` ارسال کنید، ری‌اکت فقط در حین راه‌اندازی آن را فراخوانی می‌کند.
 
-React may [call your initializers twice](#my-initializer-or-updater-function-runs-twice) in development to verify that they are [pure.](/learn/keeping-components-pure)
+ری‌اکت ممکن است در محیط توسعه [توابع مقداردهی اولیهٔ شما را دو بار فراخوانی کند](#my-initializer-or-updater-function-runs-twice) تا تأیید کند که آن‌ها [خالص](/learn/keeping-components-pure) هستند.
 
 <Recipes titleText="The difference between passing an initializer and passing the initial state directly" titleId="examples-initializer">
 
 #### Passing the initializer function {/*passing-the-initializer-function*/}
 
-This example passes the initializer function, so the `createInitialTodos` function only runs during initialization. It does not run when component re-renders, such as when you type into the input.
+این مثال تابع مقداردهی اولیه را ارسال می‌کند، بنابراین تابع `createInitialTodos` فقط در حین راه‌اندازی اجرا می‌شود. وقتی کامپوننت دوباره رندر می‌شود، مثلاً وقتی در ورودی تایپ می‌کنید، اجرا نمی‌شود.
 
 <Sandpack>
 
@@ -965,7 +965,7 @@ export default function TodoList() {
 
 #### Passing the initial state directly {/*passing-the-initial-state-directly*/}
 
-This example **does not** pass the initializer function, so the `createInitialTodos` function runs on every render, such as when you type into the input. There is no observable difference in behavior, but this code is less efficient.
+این مثال تابع مقداردهی اولیه را ارسال **نمی‌کند**، بنابراین تابع `createInitialTodos` در هر رندر اجرا می‌شود، مثلاً وقتی در ورودی تایپ می‌کنید. تفاوت قابل مشاهده‌ای در رفتار وجود ندارد، اما این کد کارایی کمتری دارد.
 
 <Sandpack>
 
@@ -1022,11 +1022,11 @@ export default function TodoList() {
 
 ### Resetting state with a key {/*resetting-state-with-a-key*/}
 
-You'll often encounter the `key` attribute when [rendering lists.](/learn/rendering-lists) However, it also serves another purpose.
+شما اغلب ویژگی `key` را هنگام [رندر لیست‌ها](/learn/rendering-lists) مشاهده می‌کنید. با این حال، هدف دیگری هم دارد.
 
-You can **reset a component's state by passing a different `key` to a component.** In this example, the Reset button changes the `version` state variable, which we pass as a `key` to the `Form`. When the `key` changes, React re-creates the `Form` component (and all of its children) from scratch, so its state gets reset.
+می‌توانید **استیت کامپوننت را با ارسال `key` متفاوت به یک کامپوننت بازنشانی کنید.** در این مثال، دکمهٔ Reset متغیر استیت `version` را تغییر می‌دهد، که ما آن را به‌عنوان `key` به `Form` ارسال می‌کنیم. وقتی `key` تغییر می‌کند، ری‌اکت کامپوننت `Form` (و همهٔ فرزندانش) را از ابتدا دوباره ایجاد می‌کند، بنابراین استیت آن بازنشانی می‌شود.
 
-Read [preserving and resetting state](/learn/preserving-and-resetting-state) to learn more.
+برای کسب اطلاعات بیشتر [حفظ و بازنشانی استیت](/learn/preserving-and-resetting-state) را بخوانید.
 
 <Sandpack>
 
@@ -1073,17 +1073,17 @@ button { display: block; margin-bottom: 20px; }
 
 ### Storing information from previous renders {/*storing-information-from-previous-renders*/}
 
-Usually, you will update state in event handlers. However, in rare cases you might want to adjust state in response to rendering -- for example, you might want to change a state variable when a prop changes.
+معمولاً، استیت را در کنترل‌کننده‌های رویداد به‌روز می‌کنید. با این حال، در موارد نادر ممکن است بخواهید استیت را در پاسخ به رندر تنظیم کنید — مثلاً ممکن است بخواهید متغیر استیتی را هنگام تغییر یک پراپ تغییر دهید.
 
-In most cases, you don't need this:
+در اکثر موارد، به این کار نیاز ندارید:
 
-* **If the value you need can be computed entirely from the current props or other state, [remove that redundant state altogether.](/learn/choosing-the-state-structure#avoid-redundant-state)** If you're worried about recomputing too often, the [`useMemo` Hook](/reference/react/useMemo) can help.
-* If you want to reset the entire component tree's state, [pass a different `key` to your component.](#resetting-state-with-a-key)
-* If you can, update all the relevant state in the event handlers.
+* **اگر مقداری که نیاز دارید کاملاً از پراپس فعلی یا استیت دیگر قابل محاسبه است، [آن استیت افزوده را کاملاً حذف کنید.](/learn/choosing-the-state-structure#avoid-redundant-state)** اگر نگران محاسبهٔ مکرر هستید، [هوک `useMemo`](/reference/react/useMemo) می‌تواند کمک کند.
+* اگر می‌خواهید استیت کل درخت کامپوننت را بازنشانی کنید، [یک `key` متفاوت به کامپوننت خود ارسال کنید.](#resetting-state-with-a-key)
+* اگر ممکن است، همهٔ استیت مرتبط را در کنترل‌کننده‌های رویداد به‌روز کنید.
 
-In the rare case that none of these apply, there is a pattern you can use to update state based on the values that have been rendered so far, by calling a `set` function while your component is rendering.
+در مورد نادر که هیچ‌کدام از این موارد اعمال نمی‌شود، الگویی وجود دارد که می‌توانید برای به‌روزرسانی استیت بر اساس مقادیری که تاکنون رندر شده‌اند، با فراخوانی یک تابع `set` در حین رندر کامپوننت، استفاده کنید.
 
-Here's an example. This `CountLabel` component displays the `count` prop passed to it:
+در اینجا یک مثال آورده شده است. این کامپوننت `CountLabel` پراپ `count` ارسال‌شده به آن را نمایش می‌دهد:
 
 ```js src/CountLabel.js
 export default function CountLabel({ count }) {
@@ -1091,7 +1091,7 @@ export default function CountLabel({ count }) {
 }
 ```
 
-Say you want to show whether the counter has *increased or decreased* since the last change. The `count` prop doesn't tell you this -- you need to keep track of its previous value. Add the `prevCount` state variable to track it. Add another state variable called `trend` to hold whether the count has increased or decreased. Compare `prevCount` with `count`, and if they're not equal, update both `prevCount` and `trend`. Now you can show both the current count prop and *how it has changed since the last render*.
+فرض کنید می‌خواهید نشان دهید که آیا شمارنده از آخرین تغییر *افزایش یا کاهش* یافته است. پراپ `count` این را به شما نمی‌گوید — باید مقدار قبلی آن را پیگیری کنید. متغیر استیت `prevCount` را برای پیگیری آن اضافه کنید. یک متغیر استیت دیگر به نام `trend` اضافه کنید تا نگه دارد که آیا تعداد افزایش یافته یا کاهش. `prevCount` را با `count` مقایسه کنید، و اگر برابر نبودند، هم `prevCount` و هم `trend` را به‌روز کنید. اکنون می‌توانید هم پراپ count کنونی و هم *نحوهٔ تغییر آن از آخرین رندر* را نشان دهید.
 
 <Sandpack>
 
@@ -1140,9 +1140,9 @@ button { margin-bottom: 10px; }
 
 </Sandpack>
 
-Note that if you call a `set` function while rendering, it must be inside a condition like `prevCount !== count`, and there must be a call like `setPrevCount(count)` inside of the condition. Otherwise, your component would re-render in a loop until it crashes. Also, you can only update the state of the *currently rendering* component like this. Calling the `set` function of *another* component during rendering is an error. Finally, your `set` call should still [update state without mutation](#updating-objects-and-arrays-in-state) -- this doesn't mean you can break other rules of [pure functions.](/learn/keeping-components-pure)
+توجه کنید که اگر تابع `set` را در حین رندر فراخوانی می‌کنید، باید درون شرطی مانند `prevCount !== count` باشد، و باید فراخوانی مانند `setPrevCount(count)` درون آن شرط وجود داشته باشد. در غیر این صورت، کامپوننت شما در یک حلقه تا زمانی که کرش کند، دوباره رندر می‌شود. همچنین، فقط می‌توانید استیت کامپوننت *در حال رندر* را به این صورت به‌روز کنید. فراخوانی تابع `set` کامپوننت *دیگر* در حین رندر یک خطا است. در نهایت، فراخوانی `set` شما همچنان باید [استیت را بدون تغییر به‌روز کند](#updating-objects-and-arrays-in-state) — این بدان معنا نیست که می‌توانید سایر قوانین [توابع خالص](/learn/keeping-components-pure) را نقض کنید.
 
-This pattern can be hard to understand and is usually best avoided. However, it's better than updating state in an effect. When you call the `set` function during render, React will re-render that component immediately after your component exits with a `return` statement, and before rendering the children. This way, children don't need to render twice. The rest of your component function will still execute (and the result will be thrown away). If your condition is below all the Hook calls, you may add an early `return;` to restart rendering earlier.
+این الگو ممکن است درک آن دشوار باشد و معمولاً بهتر است از آن اجتناب شود. با این حال، از به‌روزرسانی استیت در یک افکت بهتر است. وقتی تابع `set` را در حین رندر فراخوانی می‌کنید، ری‌اکت آن کامپوننت را بلافاصله پس از خروج کامپوننت شما با یک عبارت `return` و قبل از رندر فرزندان، دوباره رندر می‌کند. به این ترتیب، فرزندان نیازی به دو بار رندر شدن ندارند. بقیهٔ تابع کامپوننت شما همچنان اجرا می‌شود (و نتیجه دور ریخته می‌شود). اگر شرط شما زیر همهٔ فراخوانی‌های هوک است، می‌توانید یک `return;` زودهنگام اضافه کنید تا رندر را زودتر ری‌استارت کنید.
 
 ---
 
@@ -1150,7 +1150,7 @@ This pattern can be hard to understand and is usually best avoided. However, it'
 
 ### I've updated the state, but logging gives me the old value {/*ive-updated-the-state-but-logging-gives-me-the-old-value*/}
 
-Calling the `set` function **does not change state in the running code**:
+فراخوانی تابع `set` **استیت را در کد در حال اجرا تغییر نمی‌دهد**:
 
 ```js {4,5,8}
 function handleClick() {
@@ -1165,9 +1165,9 @@ function handleClick() {
 }
 ```
 
-This is because [states behaves like a snapshot.](/learn/state-as-a-snapshot) Updating state requests another render with the new state value, but does not affect the `count` JavaScript variable in your already-running event handler.
+این به این دلیل است که [استیت‌ها مانند یک عکس‌الملی رفتار می‌کنند.](/learn/state-as-a-snapshot) به‌روزرسانی استیت یک رندر دیگر با مقدار استیت جدید درخواست می‌کند، اما بر متغیر جاوااسکریپتی `count` در کنترل‌کنندهٔ رویداد در حال اجرای شما تأثیری نمی‌گذارد.
 
-If you need to use the next state, you can save it in a variable before passing it to the `set` function:
+اگر نیاز به استفاده از استیت بعدی دارید، می‌توانید آن را قبل از ارسال به تابع `set` در یک متغیر ذخیره کنید:
 
 ```js
 const nextCount = count + 1;
@@ -1181,14 +1181,14 @@ console.log(nextCount); // 1
 
 ### I've updated the state, but the screen doesn't update {/*ive-updated-the-state-but-the-screen-doesnt-update*/}
 
-React will **ignore your update if the next state is equal to the previous state,** as determined by an [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. This usually happens when you change an object or an array in state directly:
+ری‌اکت **به‌روزرسانی شما را نادیده می‌گیرد اگر استیت بعدی با استیت قبلی برابر باشد،** همان‌طور که با مقایسهٔ [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) تعیین می‌شود. این معمولاً وقتی رخ می‌دهد که یک شیء یا آرایه در استیت را مستقیماً تغییر می‌دهید:
 
 ```js
 obj.x = 10;  // 🚩 Wrong: mutating existing object
 setObj(obj); // 🚩 Doesn't do anything
 ```
 
-You mutated an existing `obj` object and passed it back to `setObj`, so React ignored the update. To fix this, you need to ensure that you're always [_replacing_ objects and arrays in state instead of _mutating_ them](#updating-objects-and-arrays-in-state):
+شما یک شیء `obj` موجود را تغییر دادید و آن را به `setObj` برگرداندید، بنابراین ری‌اکت به‌روزرسانی را نادیده گرفت. برای رفع این مشکل، باید مطمئن شوید که همیشه [اشیاء و آرایه‌ها را در استیت _جایگزین_ می‌کنید به جای اینکه آن‌ها را _تغییر دهید_](#updating-objects-and-arrays-in-state):
 
 ```js
 // ✅ Correct: creating a new object
@@ -1202,7 +1202,7 @@ setObj({
 
 ### I'm getting an error: "Too many re-renders" {/*im-getting-an-error-too-many-re-renders*/}
 
-You might get an error that says: `Too many re-renders. React limits the number of renders to prevent an infinite loop.` Typically, this means that you're unconditionally setting state *during render*, so your component enters a loop: render, set state (which causes a render), render, set state (which causes a render), and so on. Very often, this is caused by a mistake in specifying an event handler:
+ممکن است خطایی دریافت کنید که می‌گوید: `Too many re-renders. React limits the number of renders to prevent an infinite loop.`. معمولاً، این بدان معناست که شما به‌طور بدون قید و شرط *در حین رندر* استیت را تنظیم می‌کنید، بنابراین کامپوننت شما وارد یک حلقه می‌شود: رندر، تنظیم استیت (که باعث رندر می‌شود)، رندر، تنظیم استیت (که باعث رندر می‌شود)، و غیره. بسیار اغلب، این به دلیل اشتباه در مشخص کردن یک کنترل‌کنندهٔ رویداد رخ می‌دهد:
 
 ```js {1-2}
 // 🚩 Wrong: calls the handler during render
@@ -1215,13 +1215,13 @@ return <button onClick={handleClick}>Click me</button>
 return <button onClick={(e) => handleClick(e)}>Click me</button>
 ```
 
-If you can't find the cause of this error, click on the arrow next to the error in the console and look through the JavaScript stack to find the specific `set` function call responsible for the error.
+اگر نمی‌توانید علت این خطا را پیدا کنید، روی فلش کنار خطا در کنسول کلیک کنید و از طریق پشتهٔ جاوااسکریپت عبور کنید تا فراخوانی تابع `set` خاصی که مسئول خطا است را پیدا کنید.
 
 ---
 
 ### My initializer or updater function runs twice {/*my-initializer-or-updater-function-runs-twice*/}
 
-In [Strict Mode](/reference/react/StrictMode), React will call some of your functions twice instead of once:
+در [حالت سخت‌گیرانه (Strict Mode)](/reference/react/StrictMode)، ری‌اکت برخی از توابع شما را به جای یک بار، دو بار فراخوانی می‌کند:
 
 ```js {2,5-6,11-12}
 function TodoList() {
@@ -1241,11 +1241,11 @@ function TodoList() {
   // ...
 ```
 
-This is expected and shouldn't break your code.
+این مورد انتظار می‌رود و نباید کد شما را خراب کند.
 
-This **development-only** behavior helps you [keep components pure.](/learn/keeping-components-pure) React uses the result of one of the calls, and ignores the result of the other call. As long as your component, initializer, and updater functions are pure, this shouldn't affect your logic. However, if they are accidentally impure, this helps you notice the mistakes.
+این رفتار **فقط مخصوص محیط توسعه** به شما کمک می‌کند [کامپوننت‌ها را خالص نگه دارید.](/learn/keeping-components-pure) ری‌اکت نتیجهٔ یکی از فراخوانی‌ها را استفاده می‌کند و نتیجهٔ فراخوانی دیگر را نادیده می‌گیرد. تا زمانی که کامپوننت، تابع مقداردهی اولیه، و توابع به‌روزرسانی شما خالص باشند، این نباید روی منطق شما تأثیر بگذارد. با این حال، اگر به‌طور تصادفی ناخالص باشند، این به شما کمک می‌کند اشتباهات را متوجه شوید.
 
-For example, this impure updater function mutates an array in state:
+مثلاً، این تابع به‌روزرسانی ناخالص یک آرایه در استیت را تغییر می‌دهد:
 
 ```js {2,3}
 setTodos(prevTodos => {
@@ -1254,7 +1254,7 @@ setTodos(prevTodos => {
 });
 ```
 
-Because React calls your updater function twice, you'll see the todo was added twice, so you'll know that there is a mistake. In this example, you can fix the mistake by [replacing the array instead of mutating it](#updating-objects-and-arrays-in-state):
+از آنجا که ری‌اکت تابع به‌روزرسانی شما را دو بار فراخوانی می‌کند، می‌بینید که todo دو بار اضافه شده است، بنابراین متوجه می‌شوید که اشتباهی وجود دارد. در این مثال، می‌توانید اشتباه را با [جایگزینی آرایه به جای تغییر آن](#updating-objects-and-arrays-in-state) اصلاح کنید:
 
 ```js {2,3}
 setTodos(prevTodos => {
@@ -1263,15 +1263,15 @@ setTodos(prevTodos => {
 });
 ```
 
-Now that this updater function is pure, calling it an extra time doesn't make a difference in behavior. This is why React calling it twice helps you find mistakes. **Only component, initializer, and updater functions need to be pure.** Event handlers don't need to be pure, so React will never call your event handlers twice.
+اکنون که این تابع به‌روزرسانی خالص است، فراخوانی آن یک بار اضافی تفاوتی در رفتار ایجاد نمی‌کند. به همین دلیل است که فراخوانی دو بار آن توسط ری‌اکت به شما کمک می‌کند اشتباهات را پیدا کنید. **فقط کامپوننت، تابع مقداردهی اولیه، و توابع به‌روزرسانی باید خالص باشند.** کنترل‌کننده‌های رویداد نیازی به خالص بودن ندارند، بنابراین ری‌اکت هرگز کنترل‌کننده‌های رویداد شما را دو بار فراخوانی نمی‌کند.
 
-Read [keeping components pure](/learn/keeping-components-pure) to learn more.
+برای کسب اطلاعات بیشتر [خالص نگه داشتن کامپوننت‌ها](/learn/keeping-components-pure) را بخوانید.
 
 ---
 
 ### I'm trying to set state to a function, but it gets called instead {/*im-trying-to-set-state-to-a-function-but-it-gets-called-instead*/}
 
-You can't put a function into state like this:
+نمی‌توانید تابعی را به این صورت در استیت قرار دهید:
 
 ```js
 const [fn, setFn] = useState(someFunction);
@@ -1281,7 +1281,7 @@ function handleClick() {
 }
 ```
 
-Because you're passing a function, React assumes that `someFunction` is an [initializer function](#avoiding-recreating-the-initial-state), and that `someOtherFunction` is an [updater function](#updating-state-based-on-the-previous-state), so it tries to call them and store the result. To actually *store* a function, you have to put `() =>` before them in both cases. Then React will store the functions you pass.
+از آنجا که در حال ارسال یک تابع هستید، ری‌اکت فرض می‌کند که `someFunction` یک [تابع مقداردهی اولیه](#avoiding-recreating-the-initial-state) است، و `someOtherFunction` یک [تابع به‌روزرسانی](#updating-state-based-on-the-previous-state) است، بنابراین سعی می‌کند آن‌ها را فراخوانی کرده و نتیجه را ذخیره کند. برای *ذخیرهٔ* واقعی یک تابع، باید `() =>` را در هر دو مورد قبل از آن‌ها قرار دهید. سپس ری‌اکت توابعی که ارسال می‌کنید را ذخیره خواهد کرد.
 
 ```js {1,4}
 const [fn, setFn] = useState(() => someFunction);

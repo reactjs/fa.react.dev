@@ -4,7 +4,7 @@ title: <Profiler>
 
 <Intro>
 
-`<Profiler>` lets you measure rendering performance of a React tree programmatically.
+`<Profiler>` به شما اجازه می‌دهد عملکرد رندر یک درخت ری‌اکت را به‌صورت برنامه‌نویسی اندازه‌گیری کنید.
 
 ```js
 <Profiler id="App" onRender={onRender}>
@@ -18,11 +18,11 @@ title: <Profiler>
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `<Profiler>` {/*profiler*/}
 
-Wrap a component tree in a `<Profiler>` to measure its rendering performance.
+یک درخت کامپوننت را در یک `<Profiler>` بپیچید تا عملکرد رندر آن را اندازه‌گیری کنید.
 
 ```js
 <Profiler id="App" onRender={onRender}>
@@ -30,20 +30,20 @@ Wrap a component tree in a `<Profiler>` to measure its rendering performance.
 </Profiler>
 ```
 
-#### Props {/*props*/}
+#### پراپس {/*props*/}
 
-* `id`: A string identifying the part of the UI you are measuring.
-* `onRender`: An [`onRender` callback](#onrender-callback) that React calls every time components within the profiled tree update. It receives information about what was rendered and how much time it took.
+* `id`: رشته‌ای که بخش رابط کاربریِ در حال اندازه‌گیری را شناسایی می‌کند.
+* `onRender`: یک [کالبک `onRender`](#onrender-callback) که ری‌اکت هر بار که کامپوننت‌های درون درخت پروفایل‌شده به‌روزرسانی می‌شوند، صدا می‌زند. این کالبک اطلاعاتی دربارهٔ آنچه رندر شده و چقدر زمان برده دریافت می‌کند.
 
-#### Caveats {/*caveats*/}
+#### نکات {/*caveats*/}
 
-* Profiling adds some additional overhead, so **it is disabled in the production build by default.** To opt into production profiling, you need to enable a [special production build with profiling enabled.](https://fb.me/react-profiling)
+* پروفایل‌کردن مقداری سربار اضافی ایجاد می‌کند، بنابراین **در build تولید به‌طور پیش‌فرض غیرفعال است.** برای فعال‌سازی پروفایل‌کردن در محیط تولید، باید یک [build تولید ویژه با پروفایل‌کردن فعال](https://fb.me/react-profiling) را فعال کنید.
 
 ---
 
-### `onRender` callback {/*onrender-callback*/}
+### کالبک `onRender` {/*onrender-callback*/}
 
-React will call your `onRender` callback with information about what was rendered.
+ری‌اکت کالبک `onRender` شما را با اطلاعاتی دربارهٔ آنچه رندر شده صدا می‌زند.
 
 ```js
 function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime) {
@@ -51,22 +51,22 @@ function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime
 }
 ```
 
-#### Parameters {/*onrender-parameters*/}
+#### پارامترها {/*onrender-parameters*/}
 
-* `id`: The string `id` prop of the `<Profiler>` tree that has just committed. This lets you identify which part of the tree was committed if you are using multiple profilers.
-* `phase`: `"mount"`, `"update"` or `"nested-update"`. This lets you know whether the tree has just been mounted for the first time or re-rendered due to a change in props, state, or Hooks.
-* `actualDuration`: The number of milliseconds spent rendering the `<Profiler>` and its descendants for the current update. This indicates how well the subtree makes use of memoization (e.g. [`memo`](/reference/react/memo) and [`useMemo`](/reference/react/useMemo)). Ideally this value should decrease significantly after the initial mount as many of the descendants will only need to re-render if their specific props change.
-* `baseDuration`: The number of milliseconds estimating how much time it would take to re-render the entire `<Profiler>` subtree without any optimizations. It is calculated by summing up the most recent render durations of each component in the tree. This value estimates a worst-case cost of rendering (e.g. the initial mount or a tree with no memoization). Compare `actualDuration` against it to see if memoization is working.
-* `startTime`: A numeric timestamp for when React began rendering the current update.
-* `commitTime`: A numeric timestamp for when React committed the current update. This value is shared between all profilers in a commit, enabling them to be grouped if desirable.
+* `id`: پراپ `id` به‌صورت رشته، مربوط به درخت `<Profiler>` که تازه commit شده است. این به شما اجازه می‌دهد در صورت استفاده از چندین پروفایلر، تشخیص دهید کدام بخش از درخت commit شده است.
+* `phase`: `"mount"`، `"update"` یا `"nested-update"`. این به شما می‌فهماند که آیا درخت تازه برای اولین بار mount شده یا به دلیل تغییر در پراپس، استیت یا هوک‌ها رندر مجدد شده است.
+* `actualDuration`: تعداد میلی‌ثانیه‌های صرف‌شده برای رندر `<Profiler>` و فرزندانش برای به‌روزرسانی فعلی. این نشان می‌دهد که زیردرخت چقدر خوب از مموری‌زیشن (مانند [`memo`](/reference/react/memo) و [`useMemo`](/reference/react/useMemo)) استفاده می‌کند. مقدار ایده‌آل این است که پس از mount اولیه به‌طور چشمگیری کاهش یابد، زیرا بسیاری از فرزندان تنها در صورتی نیاز به رندر مجدد دارند که پراپس خاص خودشان تغییر کند.
+* `baseDuration`: تعداد میلی‌ثانیه‌هایی که تخمین می‌زند چقدر طول می‌کشد تا کل زیردرخت `<Profiler>` بدون هیچ بهینه‌سازی رندر مجدد شود. این مقدار با جمع‌کردن جدیدترین مدت‌زمان‌های رندر هر کامپوننت در درخت محاسبه می‌شود. این مقدار، هزینهٔ بدترین حالت رندر را تخمین می‌زند (مانند mount اولیه یا یک درخت بدون مموری‌زیشن). `actualDuration` را با آن مقایسه کنید تا ببینید آیا مموری‌زیشن کار می‌کند یا نه.
+* `startTime`: یک مهر زمانی عددی برای زمانی که ری‌اکت شروع به رندر به‌روزرسانی فعلی کرده است.
+* `commitTime`: یک مهر زمانی عددی برای زمانی که ری‌اکت به‌روزرسانی فعلی را commit کرده است. این مقدار میان همهٔ پروفایلرها در یک commit مشترک است و در صورت تمایل امکان گروه‌بندی آن‌ها را فراهم می‌کند.
 
 ---
 
-## Usage {/*usage*/}
+## استفاده {/*usage*/}
 
-### Measuring rendering performance programmatically {/*measuring-rendering-performance-programmatically*/}
+### اندازه‌گیری برنامه‌نویسی‌شدهٔ عملکرد رندر {/*measuring-rendering-performance-programmatically*/}
 
-Wrap the `<Profiler>` component around a React tree to measure its rendering performance.
+کامپوننت `<Profiler>` را دور یک درخت ری‌اکت بپیچید تا عملکرد رندر آن را اندازه‌گیری کنید.
 
 ```js {2,4}
 <App>
@@ -77,25 +77,25 @@ Wrap the `<Profiler>` component around a React tree to measure its rendering per
 </App>
 ```
 
-It requires two props: an `id` (string) and an `onRender` callback (function) which React calls any time a component within the tree "commits" an update.
+این کامپوننت به دو پراپ نیاز دارد: یک `id` (رشته) و یک کالبک `onRender` (تابع) که ری‌اکت هر بار که کامپوننتی درون درخت یک به‌روزرسانی را «commit» می‌کند، آن را صدا می‌زند.
 
 <Pitfall>
 
-Profiling adds some additional overhead, so **it is disabled in the production build by default.** To opt into production profiling, you need to enable a [special production build with profiling enabled.](https://fb.me/react-profiling)
+پروفایل‌کردن مقداری سربار اضافی ایجاد می‌کند، بنابراین **در build تولید به‌طور پیش‌فرض غیرفعال است.** برای فعال‌سازی پروفایل‌کردن در محیط تولید، باید یک [build تولید ویژه با پروفایل‌کردن فعال](https://fb.me/react-profiling) را فعال کنید.
 
 </Pitfall>
 
 <Note>
 
-`<Profiler>` lets you gather measurements programmatically. If you're looking for an interactive profiler, try the Profiler tab in [React Developer Tools](/learn/react-developer-tools). It exposes similar functionality as a browser extension.
+`<Profiler>` به شما اجازه می‌دهد اندازه‌گیری‌ها را به‌صورت برنامه‌نویسی جمع‌آوری کنید. اگر به دنبال یک پروفایلر تعاملی هستید، زبانهٔ Profiler در [React Developer Tools](/learn/react-developer-tools) را امتحان کنید. این ابزار عملکرد مشابهی را به‌صورت یک افزونهٔ مرورگر در اختیار شما قرار می‌دهد.
 
 </Note>
 
 ---
 
-### Measuring different parts of the application {/*measuring-different-parts-of-the-application*/}
+### اندازه‌گیری بخش‌های مختلف برنامه {/*measuring-different-parts-of-the-application*/}
 
-You can use multiple `<Profiler>` components to measure different parts of your application:
+می‌توانید برای اندازه‌گیری بخش‌های مختلف برنامهٔ خود از چندین کامپوننت `<Profiler>` استفاده کنید:
 
 ```js {5,7}
 <App>
@@ -108,7 +108,7 @@ You can use multiple `<Profiler>` components to measure different parts of your 
 </App>
 ```
 
-You can also nest `<Profiler>` components:
+همچنین می‌توانید کامپوننت‌های `<Profiler>` را تودرتو کنید:
 
 ```js {5,7,9,12}
 <App>
@@ -126,7 +126,6 @@ You can also nest `<Profiler>` components:
 </App>
 ```
 
-Although `<Profiler>` is a lightweight component, it should be used only when necessary. Each use adds some CPU and memory overhead to an application.
+اگرچه `<Profiler>` یک کامپوننت سبک است، اما تنها در صورت لزوم باید از آن استفاده شود. هر استفاده، مقداری سربار CPU و حافظه به برنامه اضافه می‌کند.
 
 ---
-

@@ -1,10 +1,10 @@
 ---
-title: React Meetups
+title: ملاقات‌های ری‌اکت
 ---
 
 <Intro>
 
-Do you have a local React.js meetup? Add it here! (Please keep the list alphabetical)
+آیا ملاقات محلی React.js دارید؟ آن را اینجا اضافه کنید! (لطفاً فهرست را به ترتیب حروف الفبا نگه دارید)
 
 </Intro>
 
@@ -56,7 +56,7 @@ Do you have a local React.js meetup? Add it here! (Please keep the list alphabet
 
 ## England (UK) {/*england-uk*/}
 * [Manchester](https://www.meetup.com/Manchester-React-User-Group/)
-* [React.JS Girls London](https://www.meetup.com/ReactJS-Girls-London/)
+* [React.JS Girls london](https://www.meetup.com/ReactJS-Girls-London/)
 * [React Advanced London](https://guild.host/react-advanced-london)
 * [React Native Liverpool](https://www.meetup.com/react-native-liverpool/)
 * [React Native London](https://guild.host/RNLDN)

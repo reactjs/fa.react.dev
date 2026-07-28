@@ -4,7 +4,7 @@ link: "<link>"
 
 <Intro>
 
-The [built-in browser `<link>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link) lets you use external resources such as stylesheets or annotate the document with link metadata.
+[کامپوننت `<link>` داخلی مرورگر](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link) به شما اجازه می‌دهد از منابع خارجی مانند stylesheetها استفاده کنید یا سند را با متادادهٔ link annotate کنید.
 
 ```js
 <link rel="icon" href="favicon.ico" />
@@ -16,94 +16,94 @@ The [built-in browser `<link>` component](https://developer.mozilla.org/en-US/do
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `<link>` {/*link*/}
 
-To link to external resources such as stylesheets, fonts, and icons, or to annotate the document with link metadata, render the [built-in browser `<link>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link). You can render `<link>` from any component and React will [in most cases](#special-rendering-behavior) place the corresponding DOM element in the document head.
+برای link کردن به منابع خارجی مانند stylesheetها، فونت‌ها و آیکون‌ها، یا برای annotate کردن سند با متادادهٔ link، [کامپوننت `<link>` داخلی مرورگر](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link) را رندر کنید. می‌توانید `<link>` را از هر کامپوننتی رندر کنید و ری‌اکت [در بیشتر موارد](#special-rendering-behavior) المان DOM مربوطه را در head سند قرار خواهد داد.
 
 ```js
 <link rel="icon" href="favicon.ico" />
 ```
 
-[See more examples below.](#usage)
+[نمونه‌های بیشتر را در ادامه ببینید.](#usage)
 
-#### Props {/*props*/}
+#### پراپس‌ها {/*props*/}
 
-`<link>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+`<link>` از تمام [پراپس‌های رایج المان](/reference/react-dom/components/common#common-props) پشتیبانی می‌کند.
 
-* `rel`: a string, required. Specifies the [relationship to the resource](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel). React [treats links with `rel="stylesheet"` differently](#special-rendering-behavior) from other links.
+* `rel`: یک رشته، الزامی. [رابطه با منبع](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel) را مشخص می‌کند. ری‌اکت [linkها با `rel="stylesheet"` را متفاوت از](#special-rendering-behavior) سایر linkها رفتار می‌کند.
 
-These props apply when `rel="stylesheet"`:
+این پراپس‌ها وقتی `rel="stylesheet"` اعمال می‌شوند:
 
-* `precedence`: a string. Tells React where to rank the `<link>` DOM node relative to others in the document `<head>`, which determines which stylesheet can override the other. React will infer that precedence values it discovers first are "lower" and precedence values it discovers later are "higher". Many style systems can work fine using a single precedence value because style rules are atomic. Stylesheets with the same precedence go together whether they are `<link>` or inline `<style>` tags or loaded using [`preinit`](/reference/react-dom/preinit) functions.
-* `media`: a string. Restricts the stylesheet to a certain [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries).
-* `title`: a string. Specifies the name of an [alternative stylesheet](https://developer.mozilla.org/en-US/docs/Web/CSS/Alternative_style_sheets).
+* `precedence`: یک رشته. به ری‌اکت می‌گوید گرهٔ DOM `<link>` را نسبت به دیگران در `<head>` سند کجا رتبه‌بندی کند، که تعیین می‌کند کدام stylesheet می‌تواند دیگری را بازنویسی کند. ری‌اکت استنباط می‌کند که مقادیر precedence که ابتدا کشف می‌کند «پایین‌تر» و مقادیر precedence که بعداً کشف می‌کند «بالاتر» هستند. بسیاری از سیستم‌های استایل می‌توانند با استفاده از یک مقدار precedence منفرد به‌خوبی کار کنند زیرا قوانین استایل اتمی هستند. stylesheetهای با همان precedence با هم می‌روند چه `<link>` باشند چه تگ‌های `<style>` درون‌خطی چه با توابع [`preinit`](/reference/react-dom/preinit) بارگذاری شوند.
+* `media`: یک رشته. stylesheet را به یک [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries) خاص محدود می‌کند.
+* `title`: یک رشته. نام یک [stylesheet جایگزین](https://developer.mozilla.org/en-US/docs/Web/CSS/Alternative_style_sheets) را مشخص می‌کند.
 
-These props apply when `rel="stylesheet"` but disable React's [special treatment of stylesheets](#special-rendering-behavior):
+این پراپس‌ها وقتی `rel="stylesheet"` اعمال می‌شوند اما [رفتار ویژهٔ ری‌اکت با stylesheetها](#special-rendering-behavior) را غیرفعال می‌کنند:
 
-* `disabled`: a boolean. Disables the stylesheet.
-* `onError`: a function. Called when the stylesheet fails to load.
-* `onLoad`: a function. Called when the stylesheet finishes being loaded.
+* `disabled`: یک مقدار بولی. stylesheet را غیرفعال می‌کند.
+* `onError`: یک تابع. هنگام شکست بارگذاری stylesheet فراخوانی می‌شود.
+* `onLoad`: یک تابع. هنگام اتمام بارگذاری stylesheet فراخوانی می‌شود.
 
-These props apply when `rel="preload"` or `rel="modulepreload"`:
+این پراپس‌ها وقتی `rel="preload"` یا `rel="modulepreload"` اعمال می‌شوند:
 
-* `as`: a string. The type of resource. Its possible values are `audio`, `document`, `embed`, `fetch`, `font`, `image`, `object`, `script`, `style`, `track`, `video`, `worker`.
-* `imageSrcSet`: a string. Applicable only when `as="image"`. Specifies the [source set of the image](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images).
-* `imageSizes`: a string. Applicable only when `as="image"`. Specifies the [sizes of the image](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images).
+* `as`: یک رشته. نوع منبع. مقادیر ممکن آن `audio`، `document`، `embed`، `fetch`، `font`، `image`، `object`، `script`، `style`، `track`، `video`، `worker` هستند.
+* `imageSrcSet`: یک رشته. فقط وقتی `as="image"` قابل‌اعمال است. [مجموعهٔ منبع تصویر](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images) را مشخص می‌کند.
+* `imageSizes`: یک رشته. فقط وقتی `as="image"` قابل‌اعمال است. [اندازه‌های تصویر](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images) را مشخص می‌کند.
 
-These props apply when `rel="icon"` or `rel="apple-touch-icon"`:
+این پراپس‌ها وقتی `rel="icon"` یا `rel="apple-touch-icon"` اعمال می‌شوند:
 
-* `sizes`: a string. The [sizes of the icon](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images).
+* `sizes`: یک رشته. [اندازه‌های آیکون](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images).
 
-These props apply in all cases:
+این پراپس‌ها در همهٔ موارد اعمال می‌شوند:
 
-* `href`: a string. The URL of the linked resource.
-*  `crossOrigin`: a string. The [CORS policy](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) to use. Its possible values are `anonymous` and `use-credentials`. It is required when `as` is set to `"fetch"`.
-*  `referrerPolicy`: a string. The [Referrer header](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#referrerpolicy) to send when fetching. Its possible values are `no-referrer-when-downgrade` (the default), `no-referrer`, `origin`, `origin-when-cross-origin`, and `unsafe-url`.
-* `fetchPriority`: a string. Suggests a relative priority for fetching the resource. The possible values are `auto` (the default), `high`, and `low`.
-* `hrefLang`: a string. The language of the linked resource.
-* `integrity`: a string. A cryptographic hash of the resource, to [verify its authenticity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
-* `type`: a string. The MIME type of the linked resource.
+* `href`: یک رشته. URL منبع link‌شده.
+*  `crossOrigin`: یک رشته. [سیاست CORS](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) برای استفاده. مقادیر ممکن آن `anonymous` و `use-credentials` هستند. وقتی `as` روی `"fetch"` تنظیم شده الزامی است.
+*  `referrerPolicy`: یک رشته. [هدر Referrer](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#referrerpolicy) برای ارسال هنگام fetch. مقادیر ممکن آن `no-referrer-when-downgrade` (پیش‌فرض)، `no-referrer`، `origin`، `origin-when-cross-origin`، و `unsafe-url` هستند.
+* `fetchPriority`: یک رشته. اولویت نسبی برای fetch منبع را پیشنهاد می‌دهد. مقادیر ممکن `auto` (پیش‌فرض)، `high`، و `low` هستند.
+* `hrefLang`: یک رشته. زبان منبع link‌شده.
+* `integrity`: یک رشته. یک هش رمزنگاری منبع، برای [تأیید اصالت آن](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
+* `type`: یک رشته. نوع MIME منبع link‌شده.
 
-Props that are **not recommended** for use with React:
+پراپس‌هایی که استفاده از آن‌ها با ری‌اکت **توصیه نمی‌شود**:
 
-* `blocking`: a string. If set to `"render"`, instructs the browser not to render the page until the stylesheet is loaded. React provides more fine-grained control using Suspense.
+* `blocking`: یک رشته. اگر روی `"render"` تنظیم شود، به مرورگر دستور می‌دهد تا stylesheet بارگذاری نشده، صفحه را رندر نکند. ری‌اکت کنترل دقیق‌تری با استفاده از ساسپنس ارائه می‌دهد.
 
-#### Special rendering behavior {/*special-rendering-behavior*/}
+#### رفتار رندر ویژه {/*special-rendering-behavior*/}
 
-React will always place the DOM element corresponding to the `<link>` component within the document’s `<head>`, regardless of where in the React tree it is rendered. The `<head>` is the only valid place for `<link>` to exist within the DOM, yet it’s convenient and keeps things composable if a component representing a specific page can render `<link>` components itself.
+ری‌اکت همیشه المان DOM مربوط به کامپوننت `<link>` را در `<head>` سند قرار می‌دهد، بدون توجه به اینکه کجای درخت ری‌اکت رندر می‌شود. `<head>` تنها مکان معتبر برای وجود `<link>` در DOM است، با این حال مناسب و قابل‌ترکیب است اگر کامپوننتی که صفحهٔ خاصی را نمایش می‌دهد بتواند خودش کامپوننت‌های `<link>` را رندر کند.
 
-There are a few exceptions to this:
+چند استثنا برای این وجود دارد:
 
-* If the `<link>` has a `rel="stylesheet"` prop, then it has to also have a `precedence` prop to get this special behavior. This is because the order of stylesheets within the document is significant, so React needs to know how to order this stylesheet relative to others, which you specify using the `precedence` prop. If the `precedence` prop is omitted, there is no special behavior.
-* If the `<link>` has an [`itemProp`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemprop) prop, there is no special behavior, because in this case it doesn’t apply to the document but instead represents metadata about a specific part of the page.
-* If the `<link>` has an `onLoad` or `onError` prop, because in that case you are managing the loading of the linked resource manually within your React component.
+* اگر `<link>` یک پراپس `rel="stylesheet"` داشته باشد، باید یک پراپس `precedence` نیز داشته باشد تا این رفتار ویژه را دریافت کند. این به این دلیل است که ترتیب stylesheetها درون سند معنادار است، بنابراین ری‌اکت باید بداند چگونه این stylesheet را نسبت به دیگران مرتب کند، که با پراپس `precedence` مشخص می‌کنید. اگر پراپس `precedence` حذف شود، هیچ رفتار ویژه‌ای وجود ندارد.
+* اگر `<link>` یک پراپس [`itemProp`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemprop) داشته باشد، هیچ رفتار ویژه‌ای وجود ندارد، زیرا در این حالت به سند اعمال نمی‌شود بلکه متاداده‌ای دربارهٔ بخش خاصی از صفحه را نمایش می‌دهد.
+* اگر `<link>` یک پراپس `onLoad` یا `onError` داشته باشد، زیرا در آن حالت شما بارگذاری منبع link‌شده را به‌صورت دستی درون کامپوننت ری‌اکت خود مدیریت می‌کنید.
 
-#### Special behavior for stylesheets {/*special-behavior-for-stylesheets*/}
+#### رفتار ویژه برای stylesheetها {/*special-behavior-for-stylesheets*/}
 
-In addition, if the `<link>` is to a stylesheet (namely, it has `rel="stylesheet"` in its props), React treats it specially in the following ways:
+علاوه بر این، اگر `<link>` به یک stylesheet باشد (یعنی در پراپس‌هایش `rel="stylesheet"` دارد)، ری‌اکت به روش‌های زیر آن را ویژه رفتار می‌کند:
 
-* The component that renders `<link>` will [suspend](/reference/react/Suspense) while the stylesheet is loading.
-* If multiple components render links to the same stylesheet, React will de-duplicate them and only put a single link into the DOM. Two links are considered the same if they have the same `href` prop.
+* کامپوننتی که `<link>` را رندر می‌کند هنگام بارگذاری stylesheet [suspend](/reference/react/Suspense) خواهد شد.
+* اگر چندین کامپوننت linkهایی به همان stylesheet رندر کنند، ری‌اکت آن‌ها را de-duplicate کرده و فقط یک link را در DOM قرار می‌دهد. دو link اگر همان پراپس `href` را داشته باشند یکسان در نظر گرفته می‌شوند.
 
-There are two exception to this special behavior:
+دو استثنا برای این رفتار ویژه وجود دارد:
 
-* If the link doesn't have a `precedence` prop, there is no special behavior, because the order of stylesheets within the document is significant, so React needs to know how to order this stylesheet relative to others, which you specify using the `precedence` prop.
-* If you supply any of the `onLoad`, `onError`, or `disabled` props, there is no special behavior, because these props indicate that you are managing the loading of the stylesheet manually within your component.
+* اگر link پراپس `precedence` نداشته باشد، هیچ رفتار ویژه‌ای وجود ندارد، زیرا ترتیب stylesheetها درون سند معنادار است، بنابراین ری‌اکت باید بداند چگونه این stylesheet را نسبت به دیگران مرتب کند، که با پراپس `precedence` مشخص می‌کنید.
+* اگر هر یک از پراپس‌های `onLoad`، `onError`، یا `disabled` را ارائه کنید، هیچ رفتار ویژه‌ای وجود ندارد، زیرا این پراپس‌ها نشان می‌دهند که شما بارگذاری stylesheet را به‌صورت دستی درون کامپوننت خود مدیریت می‌کنید.
 
-This special treatment comes with two caveats:
+این رفتار ویژه با دو نکته همراه است:
 
-* React will ignore changes to props after the link has been rendered. (React will issue a warning in development if this happens.)
-* React may leave the link in the DOM even after the component that rendered it has been unmounted.
+* ری‌اکت تغییرات پراپس‌ها را پس از رندر شدن link نادیده می‌گیرد. (ری‌اکت در محیط توسعه اگر این اتفاق بیفتد هشدار می‌دهد.)
+* ری‌اکت ممکن است link را در DOM نگه دارد حتی پس از unmount شدن کامپوننتی که آن را رندر کرده است.
 
 ---
 
-## Usage {/*usage*/}
+## استفاده {/*usage*/}
 
-### Linking to related resources {/*linking-to-related-resources*/}
+### Link کردن به منابع مرتبط {/*linking-to-related-resources*/}
 
-You can annotate the document with links to related resources such as an icon, canonical URL, or pingback. React will place this metadata within the document `<head>` regardless of where in the React tree it is rendered.
+می‌توانید سند را با linkهایی به منابع مرتبط مانند یک آیکون، URL کانونیکال، یا pingback annotate کنید. ری‌اکت این متاداده را در `<head>` سند قرار می‌دهد بدون توجه به اینکه کجای درخت ری‌اکت رندر می‌شود.
 
 <SandpackWithHTMLOutput>
 
@@ -124,12 +124,12 @@ export default function BlogPage() {
 
 </SandpackWithHTMLOutput>
 
-### Linking to a stylesheet {/*linking-to-a-stylesheet*/}
+### Link کردن به یک stylesheet {/*linking-to-a-stylesheet*/}
 
-If a component depends on a certain stylesheet in order to be displayed correctly, you can render a link to that stylesheet within the component. Your component will [suspend](/reference/react/Suspense) while the stylesheet is loading. You must supply the `precedence` prop, which tells React where to place this stylesheet relative to others — stylesheets with higher precedence can override those with lower precedence.
+اگر کامپوننتی برای نمایش صحیح به یک stylesheet خاص وابسته است، می‌توانید یک link به آن stylesheet را درون کامپوننت رندر کنید. کامپوننت شما هنگام بارگذاری stylesheet [suspend](/reference/react/Suspense) خواهد شد. باید پراپس `precedence` را ارائه کنید، که به ری‌اکت می‌گوید این stylesheet را کجا نسبت به دیگران قرار دهد — stylesheetهای با precedence بالاتر می‌توانند آنهایی با precedence پایین‌تر را بازنویسی کنند.
 
 <Note>
-When you want to use a stylesheet, it can be beneficial to call the [preinit](/reference/react-dom/preinit) function. Calling this function may allow the browser to start fetching the stylesheet earlier than if you just render a `<link>` component, for example by sending an [HTTP Early Hints response](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/103).
+وقتی می‌خواهید از یک stylesheet استفاده کنید، می‌تواند مفید باشد تابع [preinit](/reference/react-dom/preinit) را فراخوانی کنید. فراخوانی این تابع ممکن است به مرورگر اجازه دهد بارگذاری stylesheet را زودتر از زمانی که فقط یک کامپوننت `<link>` رندر می‌کنید آغاز کند، مثلاً با ارسال یک [پاسخ HTTP Early Hints](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/103).
 </Note>
 
 <SandpackWithHTMLOutput>
@@ -149,9 +149,9 @@ export default function SiteMapPage() {
 
 </SandpackWithHTMLOutput>
 
-### Controlling stylesheet precedence {/*controlling-stylesheet-precedence*/}
+### کنترل precedence stylesheet {/*controlling-stylesheet-precedence*/}
 
-Stylesheets can conflict with each other, and when they do, the browser goes with the one that comes later in the document. React lets you control the order of stylesheets with the `precedence` prop. In this example, three components render stylesheets, and the ones with the same precedence are grouped together in the `<head>`. 
+stylesheetها می‌توانند با هم تداخل داشته باشند، و وقتی این کار را می‌کنند، مرورگر با آن یکی که دیرتر در سند می‌آید می‌رود. ری‌اکت به شما اجازه می‌دهد ترتیب stylesheetها را با پراپس `precedence` کنترل کنید. در این مثال، سه کامپوننت stylesheetها را رندر می‌کنند، و آنهایی با همان precedence در `<head>` گروه‌بندی می‌شوند. 
 
 <SandpackWithHTMLOutput>
 
@@ -185,11 +185,11 @@ function ThirdComponent() {
 
 </SandpackWithHTMLOutput>
 
-Note the `precedence` values themselves are arbitrary and their naming is up to you. React will infer that precedence values it discovers first are "lower" and precedence values it discovers later are "higher".
+توجه کنید خود مقادیر `precedence` دل‌خواه هستند و نام‌گذاری آن‌ها به شما بستگی دارد. ری‌اکت استنباط می‌کند که مقادیر precedence که ابتدا کشف می‌کند «پایین‌تر» و مقادیر precedence که بعداً کشف می‌کند «بالاتر» هستند.
 
-### Deduplicated stylesheet rendering {/*deduplicated-stylesheet-rendering*/}
+### رندر de-duplicate شدهٔ stylesheet {/*deduplicated-stylesheet-rendering*/}
 
-If you render the same stylesheet from multiple components, React will place only a single `<link>` in the document head.
+اگر همان stylesheet را از چندین کامپوننت رندر کنید، ری‌اکت فقط یک `<link>` در head سند قرار خواهد داد.
 
 <SandpackWithHTMLOutput>
 
@@ -213,9 +213,9 @@ function Component() {
 
 </SandpackWithHTMLOutput>
 
-### Annotating specific items within the document with links {/*annotating-specific-items-within-the-document-with-links*/}
+### Annotate کردن آیتم‌های خاص درون سند با linkها {/*annotating-specific-items-within-the-document-with-links*/}
 
-You can use the `<link>` component with the `itemProp` prop to annotate specific items within the document with links to related resources. In this case, React will *not* place these annotations within the document `<head>` but will place them like any other React component.
+می‌توانید از کامپوننت `<link>` با پراپس `itemProp` برای annotate کردن آیتم‌های خاص درون سند با linkهایی به منابع مرتبط استفاده کنید. در این حالت، ری‌اکت این annotationها را در `<head>` سند قرار *نمی‌دهد* بلکه آن‌ها را مانند هر کامپوننت ری‌اکت دیگری قرار می‌دهد.
 
 ```js
 <section itemScope>

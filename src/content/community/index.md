@@ -1,32 +1,32 @@
 ---
-title: React Community
+title: انجمن ری‌اکت
 ---
 
 <Intro>
 
-React has a community of millions of developers. On this page we've listed some React-related communities that you can be a part of; see the other pages in this section for additional online and in-person learning materials.
+ری‌اکت دارای انجمنی از میلیون‌ها توسعه‌دهنده است. در این صفحه، برخی از انجمن‌های مرتبط با ری‌اکت را فهرست کرده‌ایم که می‌توانید بخشی از آن‌ها باشید؛ برای مطالب آموزشی آنلاین و حضوری بیشتر، به سایر صفحات این بخش مراجعه کنید.
 
 </Intro>
 
-## Code of Conduct {/*code-of-conduct*/}
+## منشور رفتاری {/*code-of-conduct*/}
 
-Before participating in React's communities, [please read our Code of Conduct.](https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md) We have adopted the [Contributor Covenant](https://www.contributor-covenant.org/) and we expect that all community members adhere to the guidelines within.
+پیش از مشارکت در انجمن‌های ری‌اکت، [لطفاً منشور رفتاری ما را بخوانید.](https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md) ما [Contributor Covenant](https://www.contributor-covenant.org/) را پذیرفته‌ایم و انتظار داریم تمام اعضای انجمن به دستورالعمل‌های آن پایبند باشند.
 
 ## Stack Overflow {/*stack-overflow*/}
 
-Stack Overflow is a popular forum to ask code-level questions or if you're stuck with a specific error. Read through the [existing questions](https://stackoverflow.com/questions/tagged/reactjs) tagged with **reactjs** or [ask your own](https://stackoverflow.com/questions/ask?tags=reactjs)!
+Stack Overflow یک تالار گفتگوی محبوب برای پرسیدن سؤالات سطح کد یا زمانی است که با خطای خاصی گیر کرده‌اید. [سؤالات موجود](https://stackoverflow.com/questions/tagged/reactjs) که با برچسب **reactjs** tagging شده‌اند را مرور کنید یا [خودتان سؤال بپرسید](https://stackoverflow.com/questions/ask?tags=reactjs)!
 
-## Popular Discussion Forums {/*popular-discussion-forums*/}
+## تالارهای گفتگوی محبوب {/*popular-discussion-forums*/}
 
-There are many online forums which are a great place for discussion about best practices and application architecture as well as the future of React. If you have an answerable code-level question, Stack Overflow is usually a better fit.
+تالارهای گفتگوی آنلاین بسیاری وجود دارند که مکان مناسبی برای بحث دربارهٔ بهترین روش‌ها و معماری برنامه و همچنین آیندهٔ ری‌اکت هستند. اگر سؤال سطح کدی دارید که قابل پاسخگویی است، معمولاً Stack Overflow مناسب‌تر است.
 
-Each community consists of many thousands of React users.
+هر انجمن شامل هزاران کاربر ری‌اکت است.
 
-* [DEV's React community](https://dev.to/t/react)
-* [Hashnode's React community](https://hashnode.com/n/reactjs)
-* [Reactiflux online chat](https://discord.gg/reactiflux)
-* [Reddit's React community](https://www.reddit.com/r/reactjs/)
+* [انجمن ری‌اکت در DEV](https://dev.to/t/react)
+* [انجمن ری‌اکت در Hashnode](https://hashnode.com/n/reactjs)
+* [گفتگوی آنلاین Reactiflux](https://discord.gg/reactiflux)
+* [انجمن ری‌اکت در Reddit](https://www.reddit.com/r/reactjs/)
 
-## News {/*news*/}
+## اخبار {/*news*/}
 
-For the latest news about React, [follow **@reactjs** on Twitter](https://twitter.com/reactjs), [**@react.dev** on Bluesky](https://bsky.app/profile/react.dev) and the [official React blog](/blog/) on this website.
+برای آخرین اخبار دربارهٔ ری‌اکت، [**@reactjs** را در Twitter دنبال کنید](https://twitter.com/reactjs)، [**@react.dev** را در Bluesky](https://bsky.app/profile/react.dev) و [وبلاگ رسمی ری‌اکت](/blog/) را در این وب‌سایت.

@@ -4,7 +4,7 @@ title: "<title>"
 
 <Intro>
 
-The [built-in browser `<title>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title) lets you specify the title of the document.
+[کامپوننت `<title>` داخلی مرورگر](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title) به شما اجازه می‌دهد عنوان سند را مشخص کنید.
 
 ```js
 <title>My Blog</title>
@@ -16,45 +16,45 @@ The [built-in browser `<title>` component](https://developer.mozilla.org/en-US/d
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `<title>` {/*title*/}
 
-To specify the title of the document, render the [built-in browser `<title>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title). You can render `<title>` from any component and React will always place the corresponding DOM element in the document head.
+برای مشخص کردن عنوان سند، [کامپوننت `<title>` داخلی مرورگر](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title) را رندر کنید. می‌توانید `<title>` را از هر کامپوننتی رندر کنید و ری‌اکت همیشه عنصر DOM مربوطه را در head سند قرار می‌دهد.
 
 ```js
 <title>My Blog</title>
 ```
 
-[See more examples below.](#usage)
+[نمونه‌های بیشتر را در ادامه ببینید.](#usage)
 
-#### Props {/*props*/}
+#### پراپس {/*props*/}
 
-`<title>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+`<title>` از همهٔ [پراپس‌های رایج عنصر](/reference/react-dom/components/common#common-props) پشتیبانی می‌کند.
 
-* `children`: `<title>` accepts only text as a child. This text will become the title of the document. You can also pass your own components as long as they only render text.
+* `children`: `<title>` فقط متن را به‌عنوان فرزند می‌پذیرد. این متن عنوان سند خواهد شد. همچنین می‌توانید کامپوننت‌های خودتان را پاس دهید تا زمانی که فقط متن رندر کنند.
 
-#### Special rendering behavior {/*special-rendering-behavior*/}
+#### رفتار رندر ویژه {/*special-rendering-behavior*/}
 
-React will always place the DOM element corresponding to the `<title>` component within the document’s `<head>`, regardless of where in the React tree it is rendered. The `<head>` is the only valid place for `<title>` to exist within the DOM, yet it’s convenient and keeps things composable if a component representing a specific page can render its `<title>` itself. 
+ری‌اکت همیشه عنصر DOM مربوط به کامپوننت `<title>` را در `<head>` سند قرار می‌دهد، بدون توجه به اینکه کجای درخت ری‌اکت رندر شده است. `<head>` تنها مکان معتبر برای وجود `<title>` در DOM است، با این حال راحت‌تر است و قابلیت ترکیب‌پذیری را حفظ می‌کند اگر کامپوننتی که نمایانگر یک صفحهٔ خاص است بتواند `<title>` خودش را رندر کند.
 
-There are two exception to this:
-* If `<title>` is within an `<svg>` component, then there is no special behavior, because in this context it doesn’t represent the document’s title but rather is an [accessibility annotation for that SVG graphic](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title).
-* If the `<title>` has an [`itemProp`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemprop) prop, there is no special behavior, because in this case it doesn’t represent the document’s title but rather metadata about a specific part of the page. 
+دو استثنا وجود دارد:
+* اگر `<title>` درون یک کامپوننت `<svg>` باشد، رفتار ویژه‌ای وجود ندارد، زیرا در این کانتکست نمایانگر عنوان سند نیست بلکه یک [حاشیه‌نویسی دسترس‌پذیری برای آن گرافیک SVG](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title) است.
+* اگر `<title>` پراپ [`itemProp`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemprop) داشته باشد، رفتار ویژه‌ای وجود ندارد، زیرا در این حالت نمایانگر عنوان سند نیست بلکه متاداده دربارهٔ بخش خاصی از صفحه است.
 
 <Pitfall>
 
-Only render a single `<title>` at a time. If more than one component renders a `<title>` tag at the same time, React will place all of those titles in the document head. When this happens, the behavior of browsers and search engines is undefined.
+فقط یک `<title>` را در هر زمان رندر کنید. اگر بیش از یک کامپوننت به‌طور همزمان یک تگ `<title>` رندر کند، ری‌اکت همهٔ آن عناوین را در head سند قرار می‌دهد. هنگامی که این اتفاق می‌افتد، رفتار مرورگرها و موتورهای جستجو تعریف‌نشده است.
 
 </Pitfall>
 
 ---
 
-## Usage {/*usage*/}
+## نحوهٔ استفاده {/*usage*/}
 
-### Set the document title {/*set-the-document-title*/}
+### تنظیم عنوان سند {/*set-the-document-title*/}
 
-Render the `<title>` component from any component with text as its children. React will put a `<title>` DOM node in the document `<head>`.
+کامپوننت `<title>` را از هر کامپوننتی با متن به‌عنوان children آن رندر کنید. ری‌اکت یک نود DOM `<title>` در `<head>` سند قرار می‌دهد.
 
 <SandpackWithHTMLOutput>
 
@@ -74,17 +74,16 @@ export default function ContactUsPage() {
 
 </SandpackWithHTMLOutput>
 
-### Use variables in the title {/*use-variables-in-the-title*/}
+### استفاده از متغیرها در عنوان {/*use-variables-in-the-title*/}
 
-The children of the `<title>` component must be a single string of text. (Or a single number or a single object with a `toString` method.) It might not be obvious, but using JSX curly braces like this:
+children کامپوننت `<title>` باید یک رشتهٔ متن واحد باشد. (یا یک عدد واحد یا یک شیء واحد با متد `toString`.) ممکن است واضح نباشد، اما استفاده از کروشه‌های JSX مانند این:
 
 ```js
 <title>Results page {pageNumber}</title> // 🔴 Problem: This is not a single string
 ```
 
-... actually causes the `<title>` component to get a two-element array as its children (the string `"Results page"` and the value of `pageNumber`). This will cause an error. Instead, use string interpolation to pass `<title>` a single string:
+... در واقع باعث می‌شود کامپوننت `<title>` یک آرایهٔ دو عنصری به‌عنوان children خود بگیرد (رشتهٔ `"Results page"` و مقدار `pageNumber`). این کار باعث خطا می‌شود. به‌جای آن، از درج رشته‌ای (string interpolation) برای پاس دادن یک رشتهٔ واحد به `<title>` استفاده کنید:
 
 ```js
 <title>{`Results page ${pageNumber}`}</title>
 ```
-

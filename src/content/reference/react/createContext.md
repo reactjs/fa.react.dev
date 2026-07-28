@@ -4,7 +4,7 @@ title: createContext
 
 <Intro>
 
-`createContext` lets you create a [context](/learn/passing-data-deeply-with-context) that components can provide or read.
+`createContext` به شما اجازه می‌دهد یک [کانتکست](/learn/passing-data-deeply-with-context) ایجاد کنید که کامپوننت‌ها می‌توانند آن را فراهم یا بخوانند.
 
 ```js
 const SomeContext = createContext(defaultValue)
@@ -16,11 +16,11 @@ const SomeContext = createContext(defaultValue)
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `createContext(defaultValue)` {/*createcontext*/}
 
-Call `createContext` outside of any components to create a context.
+برای ایجاد یک کانتکست، `createContext` را خارج از هر کامپوننتی فراخوانی کنید.
 
 ```js
 import { createContext } from 'react';
@@ -28,27 +28,27 @@ import { createContext } from 'react';
 const ThemeContext = createContext('light');
 ```
 
-[See more examples below.](#usage)
+[مثال‌های بیشتر را در ادامه ببینید.](#usage)
 
-#### Parameters {/*parameters*/}
+#### پارامترها {/*parameters*/}
 
-* `defaultValue`: The value that you want the context to have when there is no matching context provider in the tree above the component that reads context. If you don't have any meaningful default value, specify `null`. The default value is meant as a "last resort" fallback. It is static and never changes over time.
+* `defaultValue`: مقداری که می‌خواهید کانتکست داشته باشد وقتی هیچ پروایدر کانتکست منطبقی در درخت بالای کامپوننتی که کانتکست را می‌خواند وجود ندارد. اگر هیچ مقدار پیش‌فرض معناداری ندارید، `null` تعیین کنید. مقدار پیش‌فرض به‌عنوان یک fallback «آخرین راه‌حل» در نظر گرفته می‌شود. این مقدار ایستا است و هرگز در طول زمان تغییر نمی‌کند.
 
-#### Returns {/*returns*/}
+#### مقادیر بازگشتی {/*returns*/}
 
-`createContext` returns a context object.
+`createContext` یک شیء کانتکست برمی‌گرداند.
 
-**The context object itself does not hold any information.** It represents _which_ context other components read or provide. Typically, you will use [`SomeContext`](#provider) in components above to specify the context value, and call [`useContext(SomeContext)`](/reference/react/useContext) in components below to read it. The context object has a few properties:
+**خود شیء کانتکست هیچ اطلاعاتی نگه نمی‌دارد.** این نشان می‌دهد کدام کانتکست را کامپوننت‌های دیگر می‌خوانند یا فراهم می‌کنند. معمولاً، شما از [`SomeContext`](#provider) در کامپوننت‌های بالاتر برای تعیین مقدار کانتکست استفاده می‌کنید، و [`useContext(SomeContext)`](/reference/react/useContext) را در کامپوننت‌های پایین‌تر برای خواندن آن فراخوانی می‌کنید. شیء کانتکست چند پراپرتی دارد:
 
-* `SomeContext` lets you provide the context value to components.
-* `SomeContext.Consumer` is an alternative and rarely used way to read the context value.
-* `SomeContext.Provider` is a legacy way to provide the context value before React 19.
+* `SomeContext` به شما اجازه می‌دهد مقدار کانتکست را به کامپوننت‌ها فراهم کنید.
+* `SomeContext.Consumer` روشی جایگزین و به‌ندرت استفاده‌شده برای خواندن مقدار کانتکست است.
+* `SomeContext.Provider` روشی قدیمی برای فراهم‌کردن مقدار کانتکست قبل از ری‌اکت ۱۹ است.
 
 ---
 
-### `SomeContext` Provider {/*provider*/}
+### پروایدر `SomeContext` {/*provider*/}
 
-Wrap your components into a context provider to specify the value of this context for all components inside:
+کامپوننت‌های خود را در یک پروایدر کانتکست بپیچید تا مقدار این کانتکست را برای همهٔ کامپوننت‌های درونش تعیین کنید:
 
 ```js
 function App() {
@@ -64,21 +64,21 @@ function App() {
 
 <Note>
 
-Starting in React 19, you can render `<SomeContext>` as a provider. 
+از ری‌اکت ۱۹، می‌توانید `<SomeContext>` را به‌عنوان یک پروایدر رندر کنید. 
 
-In older versions of React, use `<SomeContext.Provider>`.
+در نسخه‌های قدیمی‌تر ری‌اکت، از `<SomeContext.Provider>` استفاده کنید.
 
 </Note>
 
-#### Props {/*provider-props*/}
+#### پراپس {/*provider-props*/}
 
-* `value`: The value that you want to pass to all the components reading this context inside this provider, no matter how deep. The context value can be of any type. A component calling [`useContext(SomeContext)`](/reference/react/useContext) inside of the provider receives the `value` of the innermost corresponding context provider above it.
+* `value`: مقداری که می‌خواهید به همهٔ کامپوننت‌هایی که این کانتکست را درون این پروایدر می‌خوانند، بدون توجه به عمق، پاس بدهید. مقدار کانتکست می‌تواند از هر نوعی باشد. کامپوننتی که [`useContext(SomeContext)`](/reference/react/useContext) را درون پروایدر فراخوانی می‌کند، `value` نزدیک‌ترین پروایدر کانتکست منطبق بالای خود را دریافت می‌کند.
 
 ---
 
 ### `SomeContext.Consumer` {/*consumer*/}
 
-Before `useContext` existed, there was an older way to read context:
+قبل از آنکه `useContext` وجود داشته باشد، یک روش قدیمی‌تر برای خواندن کانتکست وجود داشت:
 
 ```js
 function Button() {
@@ -93,7 +93,7 @@ function Button() {
 }
 ```
 
-Although this older way still works, **newly written code should read context with [`useContext()`](/reference/react/useContext) instead:**
+اگرچه این روش قدیمی هنوز کار می‌کند، **کدهای تازه‌نوشته‌شده باید کانتکست را با [`useContext()`](/reference/react/useContext) بخوانند:**
 
 ```js
 function Button() {
@@ -103,19 +103,19 @@ function Button() {
 }
 ```
 
-#### Props {/*consumer-props*/}
+#### پراپس {/*consumer-props*/}
 
-* `children`: A function. React will call the function you pass with the current context value determined by the same algorithm as [`useContext()`](/reference/react/useContext) does, and render the result you return from this function. React will also re-run this function and update the UI whenever the context from the parent components changes.
+* `children`: یک تابع. ری‌اکت تابعی که پاس می‌دهید را با مقدار کانتکست فعلی که توسط همان الگوریتمی که [`useContext()`](/reference/react/useContext) استفاده می‌کند تعیین شده، فراخوانی می‌کند، و نتیجه‌ای که از این تابع برمی‌گردانید را رندر می‌کند. ری‌اکت همچنین هر زمان کانتکست از کامپوننت‌های والد تغییر کند، این تابع را دوباره اجرا کرده و UI را به‌روزرسانی می‌کند.
 
 ---
 
-## Usage {/*usage*/}
+## استفاده {/*usage*/}
 
-### Creating context {/*creating-context*/}
+### ایجاد کانتکست {/*creating-context*/}
 
-Context lets components [pass information deep down](/learn/passing-data-deeply-with-context) without explicitly passing props.
+کانتکست به کامپوننت‌ها اجازه می‌دهد [اطلاعاتی را عمیقاً پاس بدهند](/learn/passing-data-deeply-with-context) بدون آنکه پراپس را به‌صورت صریح پاس بدهند.
 
-Call `createContext` outside any components to create one or more contexts.
+برای ایجاد یک یا چند کانتکست، `createContext` را خارج از هر کامپوننتی فراخوانی کنید.
 
 ```js [[1, 3, "ThemeContext"], [1, 4, "AuthContext"], [3, 3, "'light'"], [3, 4, "null"]]
 import { createContext } from 'react';
@@ -124,7 +124,7 @@ const ThemeContext = createContext('light');
 const AuthContext = createContext(null);
 ```
 
-`createContext` returns a <CodeStep step={1}>context object</CodeStep>. Components can read context by passing it to [`useContext()`](/reference/react/useContext):
+`createContext` یک <CodeStep step={1}>شیء کانتکست</CodeStep> برمی‌گرداند. کامپوننت‌ها می‌توانند کانتکست را با پاس‌دادن آن به [`useContext()`](/reference/react/useContext) بخوانند:
 
 ```js [[1, 2, "ThemeContext"], [1, 7, "AuthContext"]]
 function Button() {
@@ -138,9 +138,9 @@ function Profile() {
 }
 ```
 
-By default, the values they receive will be the <CodeStep step={3}>default values</CodeStep> you have specified when creating the contexts. However, by itself this isn't useful because the default values never change.
+به‌طور پیش‌فرض، مقادیری که دریافت می‌کنند همان <CodeStep step={3}>مقادیر پیش‌فرض</CodeStep>ای خواهد بود که هنگام ایجاد کانتکست‌ها تعیین کرده‌اید. با این حال، این به‌تنهایی مفید نیست زیرا مقادیر پیش‌فرض هرگز تغییر نمی‌کنند.
 
-Context is useful because you can **provide other, dynamic values from your components:**
+کانتکست مفید است زیرا می‌توانید **مقادیر پویای دیگر را از کامپوننت‌های خود فراهم کنید:**
 
 ```js {8-9,11-12}
 function App() {
@@ -159,15 +159,15 @@ function App() {
 }
 ```
 
-Now the `Page` component and any components inside it, no matter how deep, will "see" the passed context values. If the passed context values change, React will re-render the components reading the context as well.
+اکنون کامپوننت `Page` و هر کامپوننتی درون آن، بدون توجه به عمق، مقادیر کانتکست پاس‌داده‌شده را «خواهند دید». اگر مقادیر کانتکست پاس‌داده‌شده تغییر کنند، ری‌اکت کامپوننت‌هایی که کانتکست را می‌خوانند نیز دوباره رندر می‌کند.
 
-[Read more about reading and providing context and see examples.](/reference/react/useContext)
+[دربارهٔ خواندن و فراهم‌کردن کانتکست بیشتر بخوانید و مثال‌ها را ببینید.](/reference/react/useContext)
 
 ---
 
-### Importing and exporting context from a file {/*importing-and-exporting-context-from-a-file*/}
+### ایمپورت و اکسپورت کانتکست از یک فایل {/*importing-and-exporting-context-from-a-file*/}
 
-Often, components in different files will need access to the same context. This is why it's common to declare contexts in a separate file. Then you can use the [`export` statement](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export) to make context available for other files:
+اغلب، کامپوننت‌هایی در فایل‌های مختلف نیاز به دسترسی به همان کانتکست دارند. به همین دلیل است که اعلان کانتکست‌ها در یک فایل جداگانه رایج است. سپس می‌توانید از عبارت [`export`](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export) برای در دسترس قرار دادن کانتکست برای فایل‌های دیگر استفاده کنید:
 
 ```js {4-5}
 // Contexts.js
@@ -177,7 +177,7 @@ export const ThemeContext = createContext('light');
 export const AuthContext = createContext(null);
 ```
 
-Components declared in other files can then use the [`import`](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/import) statement to read or provide this context:
+کامپوننت‌هایی که در فایل‌های دیگر اعلان شده‌اند سپس می‌توانند از عبارت [`import`](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/import) برای خواندن یا فراهم‌کردن این کانتکست استفاده کنند:
 
 ```js {2}
 // Button.js
@@ -205,21 +205,21 @@ function App() {
 }
 ```
 
-This works similar to [importing and exporting components.](/learn/importing-and-exporting-components)
+این مشابه [ایمپورت و اکسپورت کامپوننت‌ها](/learn/importing-and-exporting-components) کار می‌کند.
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-### I can't find a way to change the context value {/*i-cant-find-a-way-to-change-the-context-value*/}
+### راهی برای تغییر مقدار کانتکست پیدا نمی‌کنم {/*i-cant-find-a-way-to-change-the-context-value*/}
 
 
-Code like this specifies the *default* context value:
+کدی مانند این مقدار کانتکست *پیش‌فرض* را تعیین می‌کند:
 
 ```js
 const ThemeContext = createContext('light');
 ```
 
-This value never changes. React only uses this value as a fallback if it can't find a matching provider above.
+این مقدار هرگز تغییر نمی‌کند. ری‌اکت تنها در صورتی که نتواند پروایدر منطبقی در بالا پیدا کند، از این مقدار به‌عنوان fallback استفاده می‌کند.
 
-To make context change over time, [add state and wrap components in a context provider.](/reference/react/useContext#updating-data-passed-via-context)
+برای آنکه کانتکست در طول زمان تغییر کند، [استیت اضافه کنید و کامپوننت‌ها را در یک پروایدر کانتکست بپیچید.](/reference/react/useContext#updating-data-passed-via-context)

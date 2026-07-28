@@ -1,36 +1,36 @@
 ---
-title: Server React DOM APIs
+title: APIهای React DOM سرور
 ---
 
 <Intro>
 
-The `react-dom/server` APIs let you server-side render React components to HTML. These APIs are only used on the server at the top level of your app to generate the initial HTML. A [framework](/learn/start-a-new-react-project#full-stack-frameworks) may call them for you. Most of your components don't need to import or use them.
+APIهای `react-dom/server` به شما اجازه می‌دهند کامپوننت‌های ری‌اکت را به‌صورت سمت سرور به HTML رندر کنید. این APIها فقط روی سرور در سطح بالای اپلیکیشن شما برای تولید HTML اولیه استفاده می‌شوند. یک [فریم‌ورک](/learn/start-a-new-react-project#full-stack-frameworks) ممکن است آن‌ها را برای شما فراخوانی کند. بیشتر کامپوننت‌های شما نیازی به import یا استفاده از آن‌ها ندارند.
 
 </Intro>
 
 ---
 
-## Server APIs for Node.js Streams {/*server-apis-for-nodejs-streams*/}
+## APIهای سرور برای Node.js Streams {/*server-apis-for-nodejs-streams*/}
 
-These methods are only available in the environments with [Node.js Streams:](https://nodejs.org/api/stream.html)
+این متدها فقط در محیط‌هایی با [Node.js Streams](https://nodejs.org/api/stream.html) قابل دسترسی هستند:
 
-* [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) renders a React tree to a pipeable [Node.js Stream.](https://nodejs.org/api/stream.html)
-
----
-
-## Server APIs for Web Streams {/*server-apis-for-web-streams*/}
-
-These methods are only available in the environments with [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API), which includes browsers, Deno, and some modern edge runtimes:
-
-* [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream) renders a React tree to a [Readable Web Stream.](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
+* [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) یک درخت ری‌اکت را به یک [Node.js Stream](https://nodejs.org/api/stream.html) قابل pipe رندر می‌کند.
 
 ---
 
-## Legacy Server APIs for non-streaming environments {/*legacy-server-apis-for-non-streaming-environments*/}
+## APIهای سرور برای Web Streams {/*server-apis-for-web-streams*/}
 
-These methods can be used in the environments that don't support streams:
+این متدها فقط در محیط‌هایی با [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) قابل دسترسی هستند، که شامل مرورگرها، Deno، و برخی runtimeهای مرزی (edge) مدرن می‌شود:
 
-* [`renderToString`](/reference/react-dom/server/renderToString) renders a React tree to a string.
-* [`renderToStaticMarkup`](/reference/react-dom/server/renderToStaticMarkup) renders a non-interactive React tree to a string.
+* [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream) یک درخت ری‌اکت را به یک [Readable Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) رندر می‌کند.
 
-They have limited functionality compared to the streaming APIs.
+---
+
+## APIهای سرور قدیمی برای محیط‌های بدون استریم {/*legacy-server-apis-for-non-streaming-environments*/}
+
+این متدها می‌توانند در محیط‌هایی که از streamها پشتیبانی نمی‌کنند استفاده شوند:
+
+* [`renderToString`](/reference/react-dom/server/renderToString) یک درخت ری‌اکت را به یک رشته رندر می‌کند.
+* [`renderToStaticMarkup`](/reference/react-dom/server/renderToStaticMarkup) یک درخت غیرتعاملی ری‌اکت را به یک رشته رندر می‌کند.
+
+آن‌ها در مقایسه با APIهای استریمی، قابلیت‌های محدودی دارند.

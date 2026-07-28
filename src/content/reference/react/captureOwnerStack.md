@@ -4,7 +4,7 @@ title: captureOwnerStack
 
 <Intro>
 
-`captureOwnerStack` reads the current Owner Stack in development and returns it as a string if available.
+`captureOwnerStack` در محیط توسعه Owner Stack فعلی را می‌خواند و در صورت موجود بودن آن را به‌صورت رشته برمی‌گرداند.
 
 ```js
 const stack = captureOwnerStack();
@@ -16,11 +16,11 @@ const stack = captureOwnerStack();
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `captureOwnerStack()` {/*captureownerstack*/}
 
-Call `captureOwnerStack` to get the current Owner Stack.
+برای دریافت Owner Stack فعلی، `captureOwnerStack` را فراخوانی کنید.
 
 ```js {5,5}
 import * as React from 'react';
@@ -33,33 +33,33 @@ function Component() {
 }
 ```
 
-#### Parameters {/*parameters*/}
+#### پارامترها {/*parameters*/}
 
-`captureOwnerStack` does not take any parameters.
+`captureOwnerStack` هیچ پارامتری نمی‌پذیرد.
 
-#### Returns {/*returns*/}
+#### مقادیر بازگشتی {/*returns*/}
 
-`captureOwnerStack` returns `string | null`.
+`captureOwnerStack` مقدار `string | null` برمی‌گرداند.
 
-Owner Stacks are available in
-- Component render
-- Effects (e.g. `useEffect`)
-- React's event handlers (e.g. `<button onClick={...} />`)
-- React error handlers ([React Root options](/reference/react-dom/client/createRoot#parameters) `onCaughtError`, `onRecoverableError`, and `onUncaughtError`)
+Owner Stackها در موارد زیر موجود هستند:
+- رندر کامپوننت
+- افکت‌ها (مثلاً `useEffect`)
+- هندلرهای رویداد ری‌اکت (مثلاً `<button onClick={...} />`)
+- هندلرهای خطای ری‌اکت ([گزینه‌های React Root](/reference/react-dom/client/createRoot#parameters) `onCaughtError`، `onRecoverableError`، و `onUncaughtError`)
 
-If no Owner Stack is available, `null` is returned (see [Troubleshooting: The Owner Stack is `null`](#the-owner-stack-is-null)).
+اگر هیچ Owner Stackای موجود نباشد، `null` برگردانده می‌شود (به [رفع اشکال: Owner Stack مقدار `null` است](#the-owner-stack-is-null) مراجعه کنید).
 
-#### Caveats {/*caveats*/}
+#### موارد احتیاط {/*caveats*/}
 
-- Owner Stacks are only available in development. `captureOwnerStack` will always return `null` outside of development.
+- Owner Stackها فقط در محیط توسعه در دسترس هستند. `captureOwnerStack` خارج از محیط توسعه همیشه `null` برمی‌گرداند.
 
 <DeepDive>
 
-#### Owner Stack vs Component Stack {/*owner-stack-vs-component-stack*/}
+#### Owner Stack در مقابل Component Stack {/*owner-stack-vs-component-stack*/}
 
-The Owner Stack is different from the Component Stack available in React error handlers like [`errorInfo.componentStack` in `onUncaughtError`](/reference/react-dom/client/hydrateRoot#error-logging-in-production).
+Owner Stack با Component Stack موجود در هندلرهای خطای ری‌اکت مانند [`errorInfo.componentStack` در `onUncaughtError`](/reference/react-dom/client/hydrateRoot#error-logging-in-production) متفاوت است.
 
-For example, consider the following code:
+برای مثال، کد زیر را در نظر بگیرید:
 
 <Sandpack>
 
@@ -136,8 +136,8 @@ createRoot(document.createElement('div'), {
 
 </Sandpack>
 
-`SubComponent` would throw an error.
-The Component Stack of that error would be
+`SubComponent` خطایی پرتاب می‌کند.
+Component Stackِ آن خطا خواهد بود
 
 ```
 at SubComponent
@@ -148,23 +148,23 @@ at React.Suspense
 at App
 ```
 
-However, the Owner Stack would only read
+با این حال، Owner Stack تنها می‌خواند
 
 ```
 at Component
 ```
 
-Neither `App` nor the DOM components (e.g. `fieldset`) are considered Owners in this Stack since they didn't contribute to "creating" the node containing `SubComponent`. `App` and DOM components only forwarded the node. `App` just rendered the `children` node as opposed to `Component` which created a node containing `SubComponent` via `<SubComponent />`.
+نه `App` و نه کامپوننت‌های DOM (مثلاً `fieldset`) در این Stack به‌عنوان Owner در نظر گرفته نمی‌شوند زیرا در «ایجاد» نود حاوی `SubComponent` نقشی نداشتند. `App` و کامپوننت‌های DOM فقط نود را فوروارد کردند. `App` فقط نود `children` را رندر کرد، برخلاف `Component` که نودی حاوی `SubComponent` از طریق `<SubComponent />` ایجاد کرد.
 
-Neither `Navigation` nor `legend` are in the stack at all since it's only a sibling to a node containing `<SubComponent />`.
+نه `Navigation` و نه `legend` اصلاً در Stack نیستند زیرا فقط خواهر/برادر یک نود حاوی `<SubComponent />` هستند.
 
-`SubComponent` is omitted because it's already part of the callstack.
+`SubComponent` حذف شده زیرا از قبل بخشی از callstack است.
 
 </DeepDive>
 
-## Usage {/*usage*/}
+## استفاده {/*usage*/}
 
-### Enhance a custom error overlay {/*enhance-a-custom-error-overlay*/}
+### بهبود یک overlay خطای سفارشی {/*enhance-a-custom-error-overlay*/}
 
 ```js [[1, 5, "console.error"], [4, 7, "captureOwnerStack"]]
 import { captureOwnerStack } from "react";
@@ -183,7 +183,7 @@ console.error = function patchedConsoleError(...args) {
 };
 ```
 
-If you intercept <CodeStep step={1}>`console.error`</CodeStep> calls to highlight them in an error overlay, you can call <CodeStep step={2}>`captureOwnerStack`</CodeStep> to include the Owner Stack.
+اگر فراخوانی‌های <CodeStep step={1}>`console.error`</CodeStep> را برای هایلایت‌کردن آن‌ها در یک error overlay تله‌گذاری می‌کنید، می‌توانید <CodeStep step={2}>`captureOwnerStack`</CodeStep> را فراخوانی کنید تا Owner Stack را شامل شود.
 
 <Sandpack>
 
@@ -257,7 +257,7 @@ pre.nowrap {
 }
 
 .hidden {
- display: none;  
+  display: none;  
 }
 ```
 
@@ -347,13 +347,13 @@ export default function App() {
 
 </Sandpack>
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-### The Owner Stack is `null` {/*the-owner-stack-is-null*/}
+### Owner Stack مقدار `null` است {/*the-owner-stack-is-null*/}
 
-The call of `captureOwnerStack` happened outside of a React controlled function e.g. in a `setTimeout` callback, after a `fetch` call or in a custom DOM event handler. During render, Effects, React event handlers, and React error handlers (e.g. `hydrateRoot#options.onCaughtError`) Owner Stacks should be available.
+فراخوانی `captureOwnerStack` خارج از یک تابع کنترل‌شده توسط ری‌اکت رخ داده است، مثلاً در یک کالبک `setTimeout`، پس از یک فراخوانی `fetch` یا در یک هندلر رویداد DOM سفارشی. در طول رندر، افکت‌ها، هندلرهای رویداد ری‌اکت، و هندلرهای خطای ری‌اکت (مثلاً `hydrateRoot#options.onCaughtError`) Owner Stackها باید موجود باشند.
 
-In the example below, clicking the button will log an empty Owner Stack because `captureOwnerStack` was called during a custom DOM event handler. The Owner Stack must be captured earlier e.g. by moving the call of `captureOwnerStack` into the Effect body.
+در مثال زیر، کلیک روی دکمه یک Owner Stack خالی را لاگ می‌کند زیرا `captureOwnerStack` در طول یک هندلر رویداد DOM سفارشی فراخوانی شده است. Owner Stack باید زودتر ضبط شود، مثلاً با انتقال فراخوانی `captureOwnerStack` به بدنهٔ افکت.
 <Sandpack>
 
 ```js
@@ -381,9 +381,9 @@ export default function App() {
 
 </Sandpack>
 
-### `captureOwnerStack` is not available {/*captureownerstack-is-not-available*/}
+### `captureOwnerStack` در دسترس نیست {/*captureownerstack-is-not-available*/}
 
-`captureOwnerStack` is only exported in development builds. It will be `undefined` in production builds. If `captureOwnerStack` is used in files that are bundled for production and development, you should conditionally access it from a namespace import.
+`captureOwnerStack` فقط در buildهای توسعه صادر می‌شود. در buildهای production مقدار `undefined` خواهد بود. اگر `captureOwnerStack` در فایل‌هایی استفاده می‌شود که برای production و development باندل می‌شوند، باید به آن به‌صورت شرطی از طریق یک namespace import دسترسی پیدا کنید.
 
 ```js
 // Don't use named imports of `captureOwnerStack` in files that are bundled for development and production.

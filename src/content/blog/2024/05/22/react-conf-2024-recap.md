@@ -1,124 +1,124 @@
 ---
-title: "React Conf 2024 Recap"
+title: "خلاصهٔ React Conf 2024"
 author: Ricky Hanlon
 date: 2024/05/22
 description: Last week we hosted React Conf 2024, a two-day conference in Henderson, Nevada where 700+ attendees gathered in-person to discuss the latest in UI engineering. In this post, we'll summarize the talks and announcements from the event.
 ---
 
-May 22, 2024 by [Ricky Hanlon](https://twitter.com/rickhanlonii).
+22 مه 2024 توسط [Ricky Hanlon](https://twitter.com/rickhanlonii).
 
 ---
 
 <Intro>
 
-Last week we hosted React Conf 2024, a two-day conference in Henderson, Nevada where 700+ attendees gathered in-person to discuss the latest in UI engineering. This was our first in-person conference since 2019, and we were thrilled to be able to bring the community together again.
+هفتهٔ گذشته میزبان React Conf 2024 بودیم، کنفرانسی دو روزه در هندرسون، نوادا که بیش از 700 شرکت‌کننده به‌صورت حضوری گرد هم آمدند تا دربارهٔ جدیدترین اخبار مهندسی رابط کاربری بحث کنند. این نخستین کنفرانس حضوری ما از سال 2019 بود و هیجان‌زده بودیم که توانستیم جامعه را دوباره گرد هم بیاوریم.
 
 </Intro>
 
 ---
 
-At React Conf 2024, we announced the [React 19 RC](/blog/2024/12/05/react-19), the [React Native New Architecture Beta](https://github.com/reactwg/react-native-new-architecture/discussions/189), and an experimental release of the [React Compiler](/learn/react-compiler). The community also took the stage to announce [React Router v7](https://remix.run/blog/merging-remix-and-react-router), [Universal Server Components](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=20765s) in Expo Router, React Server Components in [RedwoodJS](https://redwoodjs.com/blog/rsc-now-in-redwoodjs), and much more.
+در React Conf 2024، ما [React 19 RC](/blog/2024/12/05/react-19)، [بتای معماری جدید React Native](https://github.com/reactwg/react-native-new-architecture/discussions/189) و یک انتشار آزمایشی از [کامپایلر ری‌اکت (React Compiler)](/learn/react-compiler) را اعلام کردیم. جامعه نیز صحنه را در دست گرفت تا [React Router v7](https://remix.run/blog/merging-remix-and-react-router)، [کامپوننت‌های سرور جهان‌شمول (Universal Server Components)](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=20765s) در Expo Router، کامپوننت‌های سرور ری‌اکت در [RedwoodJS](https://redwoodjs.com/blog/rsc-now-in-redwoodjs) و بسیاری موارد دیگر را اعلام کند.
 
-The entire [day 1](https://www.youtube.com/watch?v=T8TZQ6k4SLE) and [day 2](https://www.youtube.com/watch?v=0ckOUBiuxVY) streams are available online. In this post, we'll summarize the talks and announcements from the event.
+کل استریم‌های [روز اول](https://www.youtube.com/watch?v=T8TZQ6k4SLE) و [روز دوم](https://www.youtube.com/watch?v=0ckOUBiuxVY) به‌صورت آنلاین در دسترس هستند. در این پست، سخنرانی‌ها و اعلامیه‌های رویداد را خلاصه می‌کنیم.
 
-## Day 1 {/*day-1*/}
+## روز اول {/*day-1*/}
 
-_[Watch the full day 1 stream here.](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=973s)_
+_[استریم کامل روز اول را اینجا ببینید.](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=973s)_
 
-To kick off day 1, Meta CTO [Andrew "Boz" Bosworth](https://www.threads.net/@boztank) shared a welcome message followed by an introduction by [Seth Webster](https://twitter.com/sethwebster), who manages the React Org at Meta, and our MC [Ashley Narcisse](https://twitter.com/_darkfadr).
+برای آغاز روز اول، CTO متا [Andrew "Boz" Bosworth](https://www.threads.net/@boztank) پیامی خوش‌آمدگویی به اشتراک گذاشت و سپس [Seth Webster](https://twitter.com/sethwebster) — که سازمان ری‌اکت در متا را مدیریت می‌کند — و مجری ما [Ashley Narcisse](https://twitter.com/_darkfadr) معرفی شدند.
 
-In the day 1 keynote, [Joe Savona](https://twitter.com/en_JS) shared our goals and vision for React to make it easy for anyone to build great user experiences. [Lauren Tan](https://twitter.com/potetotes) followed with a State of React, where she shared that React was downloaded over 1 billion times in 2023, and that 37% of new developers learn to program with React. Finally, she highlighted the work of the React community to make React, React.
+در سخنرانی کلیدی روز اول، [Joe Savona](https://twitter.com/en_JS) اهداف و چشم‌انداز ری‌اکت را برای آسان‌سازیِ ساخت تجربه‌های کاربری عالی برای همه به اشتراک گذاشت. [Lauren Tan](https://twitter.com/potetotes) پس از او با «وضعیت ری‌اکت» ادامه داد و اعلام کرد ری‌اکت در سال 2023 بیش از 1 میلیارد بار دانلود شده است و 37% از توسعه‌دهندگان جدید برنامه‌نویسی را با ری‌اکت یاد می‌گیرند. در پایان، کار جامعهٔ ری‌اکت را برجسته کرد که ری‌اکت را به آن چیزی که هست تبدیل کرده است.
 
-For more, check out these talks from the community later in the conference:
+برای اطلاعات بیشتر، این سخنرانی‌های جامعه را در ادامهٔ کنفرانس ببینید:
 
-- [Vanilla React](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=5542s) by [Ryan Florence](https://twitter.com/ryanflorence)
-- [React Rhythm & Blues](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=12728s) by [Lee Robinson](https://twitter.com/leeerob)
-- [RedwoodJS, now with React Server Components](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=26815s) by [Amy Dutton](https://twitter.com/selfteachme)
-- [Introducing Universal React Server Components in Expo Router](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=20765s) by [Evan Bacon](https://twitter.com/Baconbrix)
+- [Vanilla React](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=5542s) از [Ryan Florence](https://twitter.com/ryanflorence)
+- [React Rhythm & Blues](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=12728s) از [Lee Robinson](https://twitter.com/leeerob)
+- [RedwoodJS, now with React Server Components](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=26815s) از [Amy Dutton](https://twitter.com/selfteachme)
+- [Introducing Universal React Server Components in Expo Router](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=20765s) از [Evan Bacon](https://twitter.com/Baconbrix)
 
-Next in the keynote, [Josh Story](https://twitter.com/joshcstory) and [Andrew Clark](https://twitter.com/acdlite) shared new features coming in React 19, and announced the React 19 RC which is ready for testing in production. Check out all the features in the [React 19 release post](/blog/2024/12/05/react-19), and see these talks for deep dives on the new features:
+در ادامهٔ سخنرانی کلیدی، [Josh Story](https://twitter.com/joshcstory) و [Andrew Clark](https://twitter.com/acdlite) قابلیت‌های جدید React 19 را به اشتراک گذاشتند و React 19 RC را که آمادهٔ آزمایش در محیط عملیاتی است اعلام کردند. همهٔ قابلیت‌ها را در [پست انتشار React 19](/blog/2024/12/05/react-19) ببینید، و برای بررسی عمیق قابلیت‌های جدید این سخنرانی‌ها را ببینید:
 
-- [What's new in React 19](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=8880s) by [Lydia Hallie](https://twitter.com/lydiahallie)
-- [React Unpacked: A Roadmap to React 19](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=10112s) by [Sam Selikoff](https://twitter.com/samselikoff)
-- [React 19 Deep Dive: Coordinating HTML](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=24916s) by [Josh Story](https://twitter.com/joshcstory)
-- [Enhancing Forms with React Server Components](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=25280s) by [Aurora Walberg Scharff](https://twitter.com/aurorascharff)
-- [React for Two Computers](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=18825s) by [Dan Abramov](https://bsky.app/profile/danabra.mov)
-- [And Now You Understand React Server Components](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=11256s) by [Kent C. Dodds](https://twitter.com/kentcdodds)
+- [What's new in React 19](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=8880s) از [Lydia Hallie](https://twitter.com/lydiahallie)
+- [React Unpacked: A Roadmap to React 19](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=10112s) از [Sam Selikoff](https://twitter.com/samselikoff)
+- [React 19 Deep Dive: Coordinating HTML](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=24916s) از [Josh Story](https://twitter.com/joshcstory)
+- [Enhancing Forms with React Server Components](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=25280s) از [Aurora Walberg Scharff](https://twitter.com/aurorascharff)
+- [React for Two Computers](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=18825s) از [Dan Abramov](https://bsky.app/profile/danabra.mov)
+- [And Now You Understand React Server Components](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=11256s) از [Kent C. Dodds](https://twitter.com/kentcdodds)
 
-Finally, we ended the keynote with [Joe Savona](https://twitter.com/en_JS), [Sathya Gunasekaran](https://twitter.com/_gsathya), and [Mofei Zhang](https://twitter.com/zmofei) announcing that the React Compiler is now [Open Source](https://github.com/facebook/react/pull/29061), and sharing an experimental version of the React Compiler to try out.
+در نهایت، سخنرانی کلیدی را با [Joe Savona](https://twitter.com/en_JS)، [Sathya Gunasekaran](https://twitter.com/_gsathya) و [Mofei Zhang](https://twitter.com/zmofei) به پایان رساندیم که اعلام کردند کامپایلر ری‌اکت اکنون [متن‌باز](https://github.com/facebook/react/pull/29061) شده است و یک نسخهٔ آزمایشی از کامپایلر ری‌اکت را برای امتحان به اشتراک گذاشتند.
 
-For more information on using the Compiler and how it works, check out [the docs](/learn/react-compiler) and these talks:
+برای اطلاعات بیشتر دربارهٔ استفاده از کامپایلر و نحوهٔ کار آن، [مستندات](/learn/react-compiler) و این سخنرانی‌ها را ببینید:
 
-- [Forget About Memo](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=12020s) by [Lauren Tan](https://twitter.com/potetotes)
-- [React Compiler Deep Dive](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=9313s) by [Sathya Gunasekaran](https://twitter.com/_gsathya) and [Mofei Zhang](https://twitter.com/zmofei)
+- [Forget About Memo](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=12020s) از [Lauren Tan](https://twitter.com/potetotes)
+- [React Compiler Deep Dive](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=9313s) از [Sathya Gunasekaran](https://twitter.com/_gsathya) و [Mofei Zhang](https://twitter.com/zmofei)
 
-Watch the full day 1 keynote here:
+کل سخنرانی کلیدی روز اول را اینجا ببینید:
 
 <YouTubeIframe src="https://www.youtube.com/embed/T8TZQ6k4SLE?t=973s" />
 
-## Day 2 {/*day-2*/}
+## روز دوم {/*day-2*/}
 
-_[Watch the full day 2 stream here.](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=1720s)_
+_[استریم کامل روز دوم را اینجا ببینید.](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=1720s)_
 
-To kick off day 2, [Seth Webster](https://twitter.com/sethwebster) shared a welcome message, followed by a Thank You from [Eli White](https://x.com/Eli_White) and an introduction by our Chief Vibes Officer [Ashley Narcisse](https://twitter.com/_darkfadr).
+برای آغاز روز دوم، [Seth Webster](https://twitter.com/sethwebster) پیامی خوش‌آمدگویی به اشتراک گذاشت، سپس تشکر از [Eli White](https://x.com/Eli_White) و معرفی توسط افسر ارشد ویبز (Vibes) ما [Ashley Narcisse](https://twitter.com/_darkfadr) انجام شد.
 
-In the day 2 keynote, [Nicola Corti](https://twitter.com/cortinico) shared the State of React Native, including 78 million downloads in 2023. He also highlighted apps using React Native including 2000+ screens used inside of Meta; the product details page in Facebook Marketplace, which is visited more than 2 billion times per day; and part of the Microsoft Windows Start Menu and some features in almost every Microsoft Office product across mobile and desktop.
+در سخنرانی کلیدی روز دوم، [Nicola Corti](https://twitter.com/cortinico) وضعیت React Native را به اشتراک گذاشت، از جمله 78 میلیون دانلود در سال 2023. او همچنین اپلیکیشن‌هایی که از React Native استفاده می‌کنند را برجسته کرد، از جمله بیش از 2000 صفحه استفاده‌شده در داخل متا؛ صفحهٔ جزئیات محصول در Facebook Marketplace که روزانه بیش از 2 میلیارد بار بازدید می‌شود؛ و بخشی از منوی استارت Microsoft Windows و برخی قابلیت‌ها در تقریباً هر محصول Microsoft Office در موبایل و دسکتاپ.
 
-Nicola also highlighted all the work the community does to support React Native including libraries, frameworks, and multiple platforms. For more, check out these talks from the community:
+نیکولا همچنین تمام کاری را که جامعه برای پشتیبانی از React Native انجام می‌دهد — از جمله کتابخانه‌ها، فریم‌ورک‌ها و پلتفرم‌های متعدد — برجسته کرد. برای اطلاعات بیشتر، این سخنرانی‌های جامعه را ببینید:
 
-- [Extending React Native beyond Mobile and Desktop Apps](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=5798s) by [Chris Traganos](https://twitter.com/chris_trag) and [Anisha Malde](https://twitter.com/anisha_malde)
-- [Spatial computing with React](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=22525s) by [Michał Pierzchała](https://twitter.com/thymikee)
+- [Extending React Native beyond Mobile and Desktop Apps](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=5798s) از [Chris Traganos](https://twitter.com/chris_trag) و [Anisha Malde](https://twitter.com/anisha_malde)
+- [Spatial computing with React](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=22525s) از [Michał Pierzchała](https://twitter.com/thymikee)
 
-[Riccardo Cipolleschi](https://twitter.com/cipolleschir) continued the day 2 keynote by announcing that the React Native New Architecture is now in Beta and ready for apps to adopt in production. He shared new features and improvements in the new architecture, and shared the roadmap for the future of React Native. For more check out:
+[Riccardo Cipolleschi](https://twitter.com/cipolleschir) سخنرانی کلیدی روز دوم را با اعلام اینکه معماری جدید React Native اکنون در فاز بتا است و آمادهٔ پذیرش در اپلیکیشن‌های عملیاتی است ادامه داد. او قابلیت‌ها و بهبودهای جدید در معماری جدید را به اشتراک گذاشت و نقشهٔ راه آیندهٔ React Native را بیان کرد. برای اطلاعات بیشتر ببینید:
 
-- [Cross Platform React](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=26569s) by [Olga Zinoveva](https://github.com/SlyCaptainFlint) and [Naman Goel](https://twitter.com/naman34)
+- [Cross Platform React](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=26569s) از [Olga Zinoveva](https://github.com/SlyCaptainFlint) و [Naman Goel](https://twitter.com/naman34)
 
-Next in the keynote, Nicola announced that we are now recommending starting with a framework like Expo for all new apps created with React Native. With the change, he also announced a new React Native homepage and new Getting Started docs. You can view the new Getting Started guide in the [React Native docs](https://reactnative.dev/docs/next/environment-setup).
+در ادامهٔ سخنرانی کلیدی، نیکولا اعلام کرد که اکنون برای همهٔ اپلیکیشن‌های جدید ایجادشده با React Native توصیه می‌کنیم با فریم‌ورکی مانند Expo آغاز کنید. همراه با این تغییر، او صفحهٔ اصلی جدید React Native و مستندات جدید شروع‌به‌کار را نیز اعلام کرد. می‌توانید راهنمای جدید شروع‌به‌کار را در [مستندات React Native](https://reactnative.dev/docs/next/environment-setup) ببینید.
 
-Finally, to end the keynote, [Kadi Kraman](https://twitter.com/kadikraman) shared the latest features and improvements in Expo, and how to get started developing with React Native using Expo.
+در نهایت، برای پایان سخنرانی کلیدی، [Kadi Kraman](https://twitter.com/kadikraman) آخرین قابلیت‌ها و بهبودهای Expo و نحوهٔ شروع توسعه با React Native با استفاده از Expo را به اشتراک گذاشت.
 
-Watch the full day 2 keynote here:
+کل سخنرانی کلیدی روز دوم را اینجا ببینید:
 
 <YouTubeIframe src="https://www.youtube.com/embed/0ckOUBiuxVY?t=1720s" />
 
-## Q&A {/*q-and-a*/}
+## پرسش و پاسخ {/*q-and-a*/}
 
-The React and React Native teams also ended each day with a Q&A session:
+تیم‌های ری‌اکت و React Native نیز هر روز را با یک جلسهٔ پرسش و پاسخ به پایان رساندند:
 
-- [React Q&A](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=27518s) hosted by [Michael Chan](https://twitter.com/chantastic)
-- [React Native Q&A](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=27935s) hosted by [Jamon Holmgren](https://twitter.com/jamonholmgren)
+- [React Q&A](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=27518s) با میزبانی [Michael Chan](https://twitter.com/chantastic)
+- [React Native Q&A](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=27935s) با میزبانی [Jamon Holmgren](https://twitter.com/jamonholmgren)
 
-## And more... {/*and-more*/}
+## و بیشتر... {/*and-more*/}
 
-We also heard talks on accessibility, error reporting, css, and more:
+ما همچنین سخنرانی‌هایی دربارهٔ دسترس‌پذیری، گزارش خطا، CSS و موارد دیگر شنیدیم:
 
-- [Demystifying accessibility in React apps](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=20655s) by [Kateryna Porshnieva](https://twitter.com/krambertech)
-- [Pigment CSS, CSS in the server component age](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=21696s) by [Olivier Tassinari](https://twitter.com/olivtassinari)
-- [Real-time React Server Components](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=24070s) by [Sunil Pai](https://twitter.com/threepointone)
-- [Let's break React Rules](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=25862s) by [Charlotte Isambert](https://twitter.com/c_isambert)
-- [Solve 100% of your errors](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=19881s) by [Ryan Albrecht](https://github.com/ryan953)
+- [Demystifying accessibility in React apps](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=20655s) از [Kateryna Porshnieva](https://twitter.com/krambertech)
+- [Pigment CSS, CSS in the server component age](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=21696s) از [Olivier Tassinari](https://twitter.com/olivtassinari)
+- [Real-time React Server Components](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=24070s) از [Sunil Pai](https://twitter.com/threepointone)
+- [Let's break React Rules](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=25862s) از [Charlotte Isambert](https://twitter.com/c_isambert)
+- [Solve 100% of your errors](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=19881s) از [Ryan Albrecht](https://github.com/ryan953)
 
-## Thank you {/*thank-you*/}
+## سپاسگزاریم {/*thank-you*/}
 
-Thank you to all the staff, speakers, and participants who made React Conf 2024 possible. There are too many to list, but we want to thank a few in particular.
+از همهٔ کارکنان، سخنرانان و شرکت‌کنندگانی که React Conf 2024 را ممکن کردند سپاسگزاریم. افراد بیش از حدی برای فهرست‌کردن وجود دارند، اما می‌خواهیم از چند نفر به‌طور خاص تشکر کنیم.
 
-Thank you to [Barbara Markiewicz](https://twitter.com/barbara_markie), the team at [Callstack](https://www.callstack.com/), and our React Team Developer Advocate [Matt Carroll](https://twitter.com/mattcarrollcode) for helping to plan the entire event; and to [Sunny Leggett](https://zeroslopeevents.com/about) and everyone from [Zero Slope](https://zeroslopeevents.com) for helping to organize the event.
+از [Barbara Markiewicz](https://twitter.com/barbara_markie)، تیم [Callstack](https://www.callstack.com/) و [Matt Carroll](https://twitter.com/mattcarrollcode) — مدیر حمایت توسعه‌دهندگان تیم ری‌اکت — برای کمک به برنامه‌ریزی کل رویداد سپاسگزاریم؛ و از [Sunny Leggett](https://zeroslopeevents.com/about) و همه از [Zero Slope](https://zeroslopeevents.com) برای کمک به سازماندهی رویداد.
 
-Thank you [Ashley Narcisse](https://twitter.com/_darkfadr) for being our MC and Chief Vibes Officer; and to [Michael Chan](https://twitter.com/chantastic) and [Jamon Holmgren](https://twitter.com/jamonholmgren) for hosting the Q&A sessions.
+از [Ashley Narcisse](https://twitter.com/_darkfadr) به‌خاطر مجری‌گری و افسر ارشد ویبز بودن سپاسگزاریم؛ و از [Michael Chan](https://twitter.com/chantastic) و [Jamon Holmgren](https://twitter.com/jamonholmgren) برای میزبانی جلسات پرسش و پاسخ.
 
-Thank you [Seth Webster](https://twitter.com/sethwebster) and [Eli White](https://x.com/Eli_White) for welcoming us each day and providing direction on structure and content; and to [Tom Occhino](https://twitter.com/tomocchino) for joining us with a special message during the after-party.
+از [Seth Webster](https://twitter.com/sethwebster) و [Eli White](https://x.com/Eli_White) به‌خاطر خوش‌آمدگویی هر روز و ارائهٔ جهت برای ساختار و محتوا سپاسگزاریم؛ و از [Tom Occhino](https://twitter.com/tomocchino) به‌خاطر پیوستن به ما با پیامی ویژه در جشن پایانی.
 
-Thank you [Ricky Hanlon](https://www.youtube.com/watch?v=FxTZL2U-uKg&t=1263s) for providing detailed feedback on talks, working on slide designs, and generally filling in the gaps to sweat the details.
+از [Ricky Hanlon](https://www.youtube.com/watch?v=FxTZL2U-uKg&t=1263s) به‌خاطر ارائهٔ بازخورد دقیق روی سخنرانی‌ها، کار روی طراحی اسلایدها و به‌طور کلی پر کردن شکاف‌ها و توجه به جزئیات سپاسگزاریم.
 
-Thank you [Callstack](https://www.callstack.com/) for building the conference website; and to [Kadi Kraman](https://twitter.com/kadikraman) and the [Expo](https://expo.dev/) team for building the conference mobile app.
+از [Callstack](https://www.callstack.com/) به‌خاطر ساخت وب‌سایت کنفرانس؛ و از [Kadi Kraman](https://twitter.com/kadikraman) و تیم [Expo](https://expo.dev/) به‌خاطر ساخت اپلیکیشن موبایل کنفرانس سپاسگزاریم.
 
-Thank you to all the sponsors who made the event possible: [Remix](https://remix.run/), [Amazon](https://developer.amazon.com/apps-and-games?cmp=US_2024_05_3P_React-Conf-2024&ch=prtnr&chlast=prtnr&pub=ref&publast=ref&type=org&typelast=org), [MUI](https://mui.com/), [Sentry](https://sentry.io/for/react/?utm_source=sponsored-conf&utm_medium=sponsored-event&utm_campaign=frontend-fy25q2-evergreen&utm_content=logo-reactconf2024-learnmore), [Abbott](https://www.jobs.abbott/software), [Expo](https://expo.dev/), [RedwoodJS](https://redwoodjs.com/), and [Vercel](https://vercel.com).
+از همهٔ حامیانی که این رویداد را ممکن کردند سپاسگزاریم: [Remix](https://remix.run/)، [Amazon](https://developer.amazon.com/apps-and-games?cmp=US_2024_05_3P_React-Conf-2024&ch=prtnr&chlast=prtnr&pub=ref&publast=ref&type=org&typelast=org)، [MUI](https://mui.com/)، [Sentry](https://sentry.io/for/react/?utm_source=sponsored-conf&utm_medium=sponsored-event&utm_campaign=frontend-fy25q2-evergreen&utm_content=logo-reactconf2024-learnmore)، [Abbott](https://www.jobs.abbott/software)، [Expo](https://expo.dev/)، [RedwoodJS](https://redwoodjs.com/) و [Vercel](https://vercel.com).
 
-Thank you to the AV Team for the visuals, stage, and sound; and to the Westin Hotel for hosting us.
+از تیم AV به‌خاطر تصاویر، صحنه و صدا؛ و از هتل Westin به‌خاطر میزبانی ما سپاسگزاریم.
 
-Thank you to all the speakers who shared their knowledge and experiences with the community.
+از همهٔ سخنرانانی که دانش و تجربیات خود را با جامعه به اشتراک گذاشتند سپاسگزاریم.
 
-Finally, thank you to everyone who attended in person and online to show what makes React, React. React is more than a library, it is a community, and it was inspiring to see everyone come together to share and learn together.
+در نهایت، از همهٔ کسانی که به‌صورت حضوری و آنلاین شرکت کردند تا نشان دهند چه چیزی ری‌اکت را به ری‌اکت تبدیل می‌کند سپاسگزاریم. ری‌اکت فراتر از یک کتابخانه است، یک جامعه است، و الهام‌بخش بود که ببینیم همه گرد هم می‌آیند تا با هم به اشتراک بگذارند و یاد بگیرند.
 
-See you next time!
+تا دفعهٔ بعد!
 

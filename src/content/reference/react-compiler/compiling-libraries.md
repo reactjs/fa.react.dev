@@ -1,30 +1,30 @@
 ---
-title: Compiling Libraries
+title: کامپایل کردن کتابخانه‌ها
 ---
 
 <Intro>
-This guide helps library authors understand how to use React Compiler to ship optimized library code to their users.
+این راهنما به نویسندگان کتابخانه کمک می‌کند تا درک کنند که چگونه از React Compiler برای ارسال کد کتابخانهٔ بهینه‌شده به کاربران خود استفاده کنند.
 </Intro>
 
 <InlineToc />
 
-## Why Ship Compiled Code? {/*why-ship-compiled-code*/}
+## چرا کد کامپایل‌شده ارسال کنیم؟ {/*why-ship-compiled-code*/}
 
-As a library author, you can compile your library code before publishing to npm. This provides several benefits:
+به‌عنوان یک نویسندهٔ کتابخانه، می‌توانید کد کتابخانهٔ خود را قبل از انتشار به npm کامپایل کنید. این کار چندین مزیت دارد:
 
-- **Performance improvements for all users** - Your library users get optimized code even if they aren't using React Compiler yet
-- **No configuration required by users** - The optimizations work out of the box
-- **Consistent behavior** - All users get the same optimized version regardless of their build setup
+- **بهبود عملکرد برای همهٔ کاربران** - کاربران کتابخانهٔ شما کد بهینه‌شده دریافت می‌کنند، حتی اگر هنوز از React Compiler استفاده نکرده‌اند
+- **بدون نیاز به پیکربندی توسط کاربران** - بهینه‌سازی‌ها به صورت پیش‌فرض کار می‌کنند
+- **رفتار یکسان** - همهٔ کاربران نسخهٔ بهینه‌شدهٔ یکسانی را دریافت می‌کنند، صرف‌نظر از تنظیمات build آن‌ها
 
-## Setting Up Compilation {/*setting-up-compilation*/}
+## راه‌اندازی کامپایل {/*setting-up-compilation*/}
 
-Add React Compiler to your library's build process:
+React Compiler را به فرآیند build کتابخانهٔ خود اضافه کنید:
 
 <TerminalBlock>
 npm install -D babel-plugin-react-compiler@rc
 </TerminalBlock>
 
-Configure your build tool to compile your library. For example, with Babel:
+ابزار build خود را برای کامپایل کتابخانه پیکربندی کنید. مثلاً با Babel:
 
 ```js
 // babel.config.js
@@ -36,13 +36,13 @@ module.exports = {
 };
 ```
 
-## Backwards Compatibility {/*backwards-compatibility*/}
+## سازگاری با نسخه‌های قبلی {/*backwards-compatibility*/}
 
-If your library supports React versions below 19, you'll need additional configuration:
+اگر کتابخانهٔ شما از نسخه‌های ری‌اکت پایین‌تر از ۱۹ پشتیبانی می‌کند، به پیکربندی اضافی نیاز دارید:
 
-### 1. Install the runtime package {/*install-runtime-package*/}
+### ۱. نصب پکیج runtime {/*install-runtime-package*/}
 
-We recommend installing react-compiler-runtime as a direct dependency:
+توصیه می‌کنیم react-compiler-runtime را به‌عنوان یک وابستگی مستقیم نصب کنید:
 
 <TerminalBlock>
 npm install react-compiler-runtime@rc
@@ -59,9 +59,9 @@ npm install react-compiler-runtime@rc
 }
 ```
 
-### 2. Configure the target version {/*configure-target-version*/}
+### ۲. پیکربندی نسخهٔ target {/*configure-target-version*/}
 
-Set the minimum React version your library supports:
+حداقل نسخهٔ ری‌اکتی که کتابخانهٔ شما پشتیبانی می‌کند را تعیین کنید:
 
 ```js
 {
@@ -69,38 +69,38 @@ Set the minimum React version your library supports:
 }
 ```
 
-## Testing Strategy {/*testing-strategy*/}
+## استراتژی تست {/*testing-strategy*/}
 
-Test your library both with and without compilation to ensure compatibility. Run your existing test suite against the compiled code, and also create a separate test configuration that bypasses the compiler. This helps catch any issues that might arise from the compilation process and ensures your library works correctly in all scenarios.
+کتابخانهٔ خود را هم با کامپایل و هم بدون کامپایل تست کنید تا از سازگاری مطمئن شوید. مجموعه تست موجود خود را روی کد کامپایل‌شده اجرا کنید، و همچنین یک پیکربندی تست جداگانه بسازید که از کامپایلر عبور کند. این کار به یافتن هر مشکلی که ممکن است از فرآیند کامپایل ناشی شود کمک می‌کند و تضمین می‌کند که کتابخانهٔ شما در همهٔ سناریوها به‌درستی کار می‌کند.
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-### Library doesn't work with older React versions {/*library-doesnt-work-with-older-react-versions*/}
+### کتابخانه با نسخه‌های قدیمی‌تر ری‌اکت کار نمی‌کند {/*library-doesnt-work-with-older-react-versions*/}
 
-If your compiled library throws errors in React 17 or 18:
+اگر کتابخانهٔ کامپایل‌شدهٔ شما در ری‌اکت ۱۷ یا ۱۸ خطا پرتاب می‌کند:
 
-1. Verify you've installed `react-compiler-runtime` as a dependency
-2. Check that your `target` configuration matches your minimum supported React version
-3. Ensure the runtime package is included in your published bundle
+1. مطمئن شوید `react-compiler-runtime` را به‌عنوان وابستگی نصب کرده‌اید
+2. بررسی کنید که پیکربندی `target` با حداقل نسخهٔ پشتیبانی‌شدهٔ ری‌اکت شما مطابقت دارد
+3. اطمینان حاصل کنید که پکیج runtime در باندل منتشرشدهٔ شما گنجانده شده است
 
-### Compilation conflicts with other Babel plugins {/*compilation-conflicts-with-other-babel-plugins*/}
+### تداخل کامپایل با سایر پلاگین‌های Babel {/*compilation-conflicts-with-other-babel-plugins*/}
 
-Some Babel plugins may conflict with React Compiler:
+برخی پلاگین‌های Babel ممکن است با React Compiler تداخل داشته باشند:
 
-1. Place `babel-plugin-react-compiler` early in your plugin list
-2. Disable conflicting optimizations in other plugins
-3. Test your build output thoroughly
+1. `babel-plugin-react-compiler` را در ابتدای فهرست پلاگین‌های خود قرار دهید
+2. بهینه‌سازی‌های متضاد را در پلاگین‌های دیگر غیرفعال کنید
+3. خروجی build خود را به‌طور کامل تست کنید
 
-### Runtime module not found {/*runtime-module-not-found*/}
+### ماژول runtime یافت نشد {/*runtime-module-not-found*/}
 
-If users see "Cannot find module 'react-compiler-runtime'":
+اگر کاربران "Cannot find module 'react-compiler-runtime'" را می‌بینند:
 
-1. Ensure the runtime is listed in `dependencies`, not `devDependencies`
-2. Check that your bundler includes the runtime in the output
-3. Verify the package is published to npm with your library
+1. اطمینان حاصل کنید runtime در `dependencies` فهرست شده، نه در `devDependencies`
+2. بررسی کنید که باندلر شما runtime را در خروجی گنجانده است
+3. تأیید کنید که پکیج به همراه کتابخانه‌تان در npm منتشر شده است
 
-## Next Steps {/*next-steps*/}
+## مراحل بعدی {/*next-steps*/}
 
-- Learn about [debugging techniques](/learn/react-compiler/debugging) for compiled code
-- Check the [configuration options](/reference/react-compiler/configuration) for all compiler options
-- Explore [compilation modes](/reference/react-compiler/compilationMode) for selective optimization
+- در مورد [تکنیک‌های دیباگ](/learn/react-compiler/debugging) برای کد کامپایل‌شده بیاموزید
+- [گزینه‌های پیکربندی](/reference/react-compiler/configuration) را برای همهٔ گزینه‌های کامپایلر بررسی کنید
+- [حالت‌های کامپایل](/reference/react-compiler/compilationMode) را برای بهینه‌سازی انتخابی بررسی کنید

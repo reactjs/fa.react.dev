@@ -4,7 +4,7 @@ title: useOptimistic
 
 <Intro>
 
-`useOptimistic` is a React Hook that lets you optimistically update the UI.
+`useOptimistic` یک هوک ری‌اکت است که به شما اجازه می‌دهد رابط کاربری را به‌صورت خوش‌بینانه (optimistic) به‌روزرسانی کنید.
 
 ```js
   const [optimisticState, addOptimistic] = useOptimistic(state, updateFn);
@@ -16,13 +16,13 @@ title: useOptimistic
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `useOptimistic(state, updateFn)` {/*use*/}
 
-`useOptimistic` is a React Hook that lets you show a different state while an async action is underway. It accepts some state as an argument and returns a copy of that state that can be different during the duration of an async action such as a network request. You provide a function that takes the current state and the input to the action, and returns the optimistic state to be used while the action is pending.
+`useOptimistic` یک هوک ری‌اکت است که به شما اجازه می‌دهد هنگام در حال انجام بودن یک اکشن ناهمگام، یک استیت متفاوت نمایش دهید. این هوک استایتی را به‌عنوان آرگومان می‌پذیرد و کپی‌ای از آن استیت را باز می‌گرداند که می‌تواند در طول یک اکشن ناهمگام (مانند یک درخواست شبکه) متفاوت باشد. شما تابعی ارائه می‌دهید که استیت فعلی و ورودیِ اکشن را می‌گیرد و استیت خوش‌بینانه‌ای که باید هنگام در حال انجام بودن اکشن استفاده شود را برمی‌گرداند.
 
-This state is called the "optimistic" state because it is usually used to immediately present the user with the result of performing an action, even though the action actually takes time to complete.
+این استیت «خوش‌بینانه» نامیده می‌شود زیرا معمولاً برای ارائهٔ فوری نتیجهٔ انجام یک اکشن به کاربر استفاده می‌شود، حتی اگر اکشن در واقع برای تکمیل شدن به زمان نیاز دارد.
 
 ```js
 import { useOptimistic } from 'react';
@@ -39,28 +39,28 @@ function AppContainer() {
 }
 ```
 
-[See more examples below.](#usage)
+[نمونه‌های بیشتر را در ادامه ببینید.](#usage)
 
-#### Parameters {/*parameters*/}
+#### پارامترها {/*parameters*/}
 
-* `state`: the value to be returned initially and whenever no action is pending.
-* `updateFn(currentState, optimisticValue)`: a function that takes the current state and the optimistic value passed to `addOptimistic` and returns the resulting optimistic state. It must be a pure function. `updateFn` takes in two parameters. The `currentState` and the `optimisticValue`. The return value will be the merged value of the `currentState` and `optimisticValue`.
+* `state`: مقداری که در ابتدا و هر زمان که هیچ اکشنی در حال انجام نیست بازگردانده می‌شود.
+* `updateFn(currentState, optimisticValue)`: تابعی که استیت فعلی و مقدار خوش‌بینانهٔ ارسال‌شده به `addOptimistic` را می‌گیرد و استیت خوش‌بینانهٔ حاصل را برمی‌گرداند. این باید یک تابع خالص (pure) باشد. `updateFn` دو پارامتر می‌گیرد: `currentState` و `optimisticValue`. مقدار بازگشتی، مقدار ادغام‌شدهٔ `currentState` و `optimisticValue` خواهد بود.
 
 
-#### Returns {/*returns*/}
+#### مقادیر بازگشتی {/*returns*/}
 
-* `optimisticState`: The resulting optimistic state. It is equal to `state` unless an action is pending, in which case it is equal to the value returned by `updateFn`.
-* `addOptimistic`: `addOptimistic` is the dispatching function to call when you have an optimistic update. It takes one argument, `optimisticValue`, of any type and will call the `updateFn` with `state` and `optimisticValue`.
+* `optimisticState`: استیت خوش‌بینانهٔ حاصل. این مقدار برابر `state` است مگر آنکه اکشنی در حال انجام باشد، که در این صورت برابر مقدار بازگشتی `updateFn` است.
+* `addOptimistic`: `addOptimistic` تابع اعمال‌کننده‌ای (dispatch) است که وقتی یک به‌روزرسانی خوش‌بینانه دارید آن را صدا می‌زنید. این تابع یک آرگومان `optimisticValue` از هر نوعی می‌گیرد و `updateFn` را با `state` و `optimisticValue` صدا می‌زند.
 
 ---
 
-## Usage {/*usage*/}
+## استفاده {/*usage*/}
 
-### Optimistically updating forms {/*optimistically-updating-with-forms*/}
+### به‌روزرسانی خوش‌بینانهٔ فرم‌ها {/*optimistically-updating-with-forms*/}
 
-The `useOptimistic` Hook provides a way to optimistically update the user interface before a background operation, like a network request, completes. In the context of forms, this technique helps to make apps feel more responsive. When a user submits a form, instead of waiting for the server's response to reflect the changes, the interface is immediately updated with the expected outcome.
+هوک `useOptimistic` راهی برای به‌روزرسانی خوش‌بینانهٔ رابط کاربری پیش از تکمیل یک عملیات پس‌زمینه، مانند یک درخواست شبکه، ارائه می‌دهد. در زمینهٔ فرم‌ها، این روش به واکنش‌گرا بودن برنامه‌ها کمک می‌کند. وقتی کاربر فرمی را ارسال می‌کند، به‌جای انتظار برای پاسخ سرور جهت بازتاب تغییرات، رابط کاربری بلافاصله با نتیجهٔ مورد انتظار به‌روزرسانی می‌شود.
 
-For example, when a user types a message into the form and hits the "Send" button, the `useOptimistic` Hook allows the message to immediately appear in the list with a "Sending..." label, even before the message is actually sent to a server. This "optimistic" approach gives the impression of speed and responsiveness. The form then attempts to truly send the message in the background. Once the server confirms the message has been received, the "Sending..." label is removed.
+به‌عنوان مثال، وقتی کاربر پیامی را در فرم تایپ می‌کند و دکمهٔ «Send» را می‌زند، هوک `useOptimistic` اجازه می‌دهد پیام بلافاصله با برچسب «Sending...» در فهرست ظاهر شود، حتی پیش از آنکه پیام واقعاً به سرور ارسال شود. این رویکرد «خوش‌بینانه» حس سرعت و واکنش‌گرایی می‌دهد. سپس فرم در پس‌زمینه تلاش می‌کند پیام را واقعاً ارسال کند. هنگامی که سرور تأیید کرد پیام دریافت شده است، برچسب «Sending...» حذف می‌شود.
 
 <Sandpack>
 

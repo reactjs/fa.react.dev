@@ -1,5 +1,5 @@
 ---
-title: "React Labs: What We've Been Working On – June 2022"
+title: "React Labs: روی چه چیزی کار کرده‌ایم – ژوئن ۲۰۲۲"
 author:  Andrew Clark, Dan Abramov, Jan Kassens, Joseph Savona, Josh Story, Lauren Tan, Luna Ruan, Mengdi Chen, Rick Hanlon, Robert Zhang, Sathya Gunasekaran, Sebastian Markbage, and Xuan Huang
 date: 2022/06/15
 description: React 18 was years in the making, and with it brought valuable lessons for the React team. Its release was the result of many years of research and exploring many paths. Some of those paths were successful; many more were dead-ends that led to new insights. One lesson we’ve learned is that it’s frustrating for the community to wait for new features without having insight into these paths that we’re exploring.
@@ -11,72 +11,72 @@ June 15, 2022 by [Andrew Clark](https://twitter.com/acdlite), [Dan Abramov](http
 
 <Intro>
 
-[React 18](/blog/2022/03/29/react-v18) was years in the making, and with it brought valuable lessons for the React team. Its release was the result of many years of research and exploring many paths. Some of those paths were successful; many more were dead-ends that led to new insights. One lesson we’ve learned is that it’s frustrating for the community to wait for new features without having insight into these paths that we’re exploring.
+[React 18](/blog/2022/03/29/react-v18) سال‌ها در دست ساخت بود، و با خود درس‌های ارزشمندی برای تیم ری‌اکت به همراه آورد. انتشار آن نتیجهٔ سال‌ها تحقیق و کاوش در مسیرهای زیادی بود. برخی از آن مسیرها موفق بودند؛ خیلی بیشتر آن‌ها بن‌بست بودند که به بینش‌های جدیدی منجر شدند. یکی از درس‌هایی که آموختیم این است که برای جامعه ناامیدکننده است که بدون داشتن بینشی نسبت به این مسیرهایی که در حال کاوش آن‌ها هستیم، منتظر قابلیت‌های جدید بماند.
 
 </Intro>
 
 ---
 
-We typically have a number of projects being worked on at any time, ranging from the more experimental to the clearly defined. Looking ahead, we’d like to start regularly sharing more about what we’ve been working on with the community across these projects.
+ما معمولاً در هر زمان پروژه‌های متعددی را در دست کار داریم، از آزمایشی‌تر تا کاملاً مشخص. با نگاه به آینده، دوست داریم شروع کنیم به اشتراک‌گذاری منظم درباره آنچه روی این پروژه‌ها کار کرده‌ایم با جامعه.
 
-To set expectations, this is not a roadmap with clear timelines. Many of these projects are under active research and are difficult to put concrete ship dates on. They may possibly never even ship in their current iteration depending on what we learn. Instead, we want to share with you the problem spaces we’re actively thinking about, and what we’ve learned so far.
+برای تنظیم انتظارات، این یک نقشه راه با زمان‌بندی واضح نیست. بسیاری از این پروژه‌ها در حال تحقیق فعال هستند و قرار دادن تاریخ انتشار مشخص روی آن‌ها دشوار است. ممکن است حتی هرگز در حالت فعلی خود منتشر نشوند بسته به آنچه می‌آموزیم. در عوض، ما می‌خواهیم فضاهای مسئله‌ای را که به‌طور فعال درباره‌شان فکر می‌کنیم، و آنچه تا کنون آموخته‌ایم با شما به اشتراک بگذاریم.
 
-## Server Components {/*server-components*/}
+## کامپوننت‌های سرور (Server Components) {/*server-components*/}
 
-We announced an [experimental demo of React Server Components](https://legacy.reactjs.org/blog/2020/12/21/data-fetching-with-react-server-components.html) (RSC) in December 2020. Since then we’ve been finishing up its dependencies in React 18, and working on changes inspired by experimental feedback.
+ما یک [دموی آزمایشی از کامپوننت‌های سرور ری‌اکت (React Server Components)](https://legacy.reactjs.org/blog/2020/12/21/data-fetching-with-react-server-components.html) (RSC) را در دسامبر ۲۰۲۰ اعلام کردیم. از آن زمان ما در حال تمام کردن وابستگی‌های آن در React 18 بوده‌ایم، و روی تغییراتی بر اساس بازخورد آزمایشی کار می‌کنیم.
 
-In particular, we’re abandoning the idea of having forked I/O libraries (eg react-fetch), and instead adopting an async/await model for better compatibility. This doesn’t technically block RSC’s release because you can also use routers for data fetching. Another change is that we’re also moving away from the file extension approach in favor of [annotating boundaries](https://github.com/reactjs/rfcs/pull/189#issuecomment-1116482278).
+به‌طور خاص، ما از ایدهٔ داشتن کتابخانه‌های I/O فورک‌شده (مانند react-fetch) صرف‌نظر می‌کنیم، و در عادل مدل async/await را برای سازگاری بهتر اتخاذ می‌کنیم. این از نظر فنی انتشار RSC را مسدود نمی‌کند زیرا شما همچنین می‌توانید از مسیریاب‌ها برای دریافت داده استفاده کنید. تغییر دیگر این است که ما از رویکرد پسوند فایل فاصله می‌گیریم و به نفع [حاشیه‌نویسی مرزها](https://github.com/reactjs/rfcs/pull/189#issuecomment-1116482278) پیش می‌رویم.
 
-We’re working together with Vercel and Shopify to unify bundler support for shared semantics in both webpack and Vite. Before launch, we want to make sure that the semantics of RSCs are the same across the whole React ecosystem. This is the major blocker for reaching stable.
+ما با Vercel و Shopify برای یکپارچه‌سازی پشتیبانی باندلر از معناشیات مشترک در هر دو webpack و Vite کار می‌کنیم. پیش از انتشار، ما می‌خواهیم مطمئن شویم که معناشیات RSCها در کل اکوسیستم ری‌اکت یکسان است. این مسدودکنندهٔ اصلی برای رسیدن به پایداری است.
 
-## Asset Loading {/*asset-loading*/}
+## بارگذاری دارایی‌ها (Asset Loading) {/*asset-loading*/}
 
-Currently, assets like scripts, external styles, fonts, and images are typically preloaded and loaded using external systems. This can make it tricky to coordinate across new environments like streaming, Server Components, and more.
-We’re looking at adding APIs to preload and load deduplicated external assets through React APIs that work in all React environments.
+در حال حاضر، دارایی‌هایی مانند اسکریپت‌ها، استایل‌های خارجی، فونت‌ها و تصاویر معمولاً با استفاده از سیستم‌های خارجی پیش‌بارگذاری و بارگذاری می‌شوند. این می‌تواند هماهنگ‌سازی در محیط‌های جدید مانند استریم، کامپوننت‌های سرور و بیشتر را دشوار کند.
+ما در حال بررسی افزودن APIهایی برای پیش‌بارگذاری و بارگذاری دارایی‌های خارجی deduplicate از طریق APIهای ری‌اکتی هستیم که در همهٔ محیط‌های ری‌اکت کار می‌کنند.
 
-We’re also looking at having these support Suspense so you can have images, CSS, and fonts that block display until they’re loaded but don’t block streaming and concurrent rendering. This can help avoid [“popcorning“](https://twitter.com/sebmarkbage/status/1516852731251724293) as the visuals pop and layout shifts.
+ما همچنین در حال بررسی این هستیم که این‌ها از ساسپنس (Suspense) پشتیبانی کنند تا بتوانید تصاویر، CSS و فونت‌هایی داشته باشید که نمایش را تا زمان بارگذاری مسدود می‌کنند اما استریم و رندر همزمان را مسدود نمی‌کنند. این می‌تواند به جلوگیری از [«پاپ‌کورن شدن»](https://twitter.com/sebmarkbage/status/1516852731251724293) هنگامی که عناصر بصری ظاهر می‌شوند و چیدمان جابه‌جا می‌شود کمک کند.
 
-## Static Server Rendering Optimizations {/*static-server-rendering-optimizations*/}
+## بهینه‌سازی رندر سرور استاتیک {/*static-server-rendering-optimizations*/}
 
-Static Site Generation (SSG) and Incremental Static Regeneration (ISR) are great ways to get performance for cacheable pages, but we think we can add features to improve performance of dynamic Server Side Rendering (SSR) – especially when most but not all of the content is cacheable. We're exploring ways to optimize server rendering utilizing compilation and static passes.
+تولید سایت استاتیک (SSG) و بازتولید استاتیک تدریجی (ISR) روش‌های عالی برای کسب کارایی برای صفحه‌های قابل‌کش هستند، اما ما فکر می‌کنیم می‌توانیم قابلیت‌هایی برای بهبود کارایی رندر سمت سرور پویا (SSR) اضافه کنیم – به‌خصوص هنگامی که بیشتر اما نه همهٔ محتوا قابل‌کش باشد. ما در حال کاوش روش‌هایی برای بهینه‌سازی رندر سرور با استفاده از کامپایل و پاس‌های استاتیک هستیم.
 
-## React Optimizing Compiler {/*react-compiler*/}
+## کامپایلر بهینه‌ساز ری‌اکت {/*react-compiler*/}
 
-We gave an [early preview](https://www.youtube.com/watch?v=lGEMwh32soc) of React Forget at React Conf 2021. It’s a compiler that automatically generates the equivalent of `useMemo` and `useCallback` calls to minimize the cost of re-rendering, while retaining React’s programming model.
+ما یک [پیش‌نمایش زودهنگام](https://www.youtube.com/watch?v=lGEMwh32soc) از React Forget را در React Conf 2021 دادیم. این یک کامپایلر است که به‌طور خودکار معادل فراخوانی‌های `useMemo` و `useCallback` را برای به حداقل رساندن هزینهٔ رندر مجدد تولید می‌کند، ضمن حفظ مدل برنامه‌نویسی ری‌اکت.
 
-Recently, we finished a rewrite of the compiler to make it more reliable and capable. This new architecture allows us to analyze and memoize more complex patterns such as the use of [local mutations](/learn/keeping-components-pure#local-mutation-your-components-little-secret), and opens up many new compile-time optimization opportunities beyond just being on par with memoization Hooks.
+اخیراً، ما یک بازنویسی از کامپایلر را برای قابل‌اعتمادتر و قادرتر بودن تمام کردیم. این معماری جدید به ما اجازه می‌دهد الگوهای پیچیده‌تری مانند استفاده از [جهش‌های محلی](/learn/keeping-components-pure#local-mutation-your-components-little-secret) را تحلیل و مموری‌زیشن کنیم، و فرصت‌های بهینه‌سازی زمان-کامپایل زیادی را فراتر از هم‌تراز بودن با هوک‌های مموری‌زیشن باز می‌کند.
 
-We’re also working on a playground for exploring many aspects of the compiler. While the goal of the playground is to make development of the compiler easier, we think that it will make it easier to try it out and build intuition for what the compiler does. It reveals various insights into how it works under the hood, and live renders the compiler’s outputs as you type. This will be shipped together with the compiler when it’s released.
+ما همچنین در حال کار بر یک playground برای کاوش جنبه‌های مختلف کامپایلر هستیم. در حالی که هدف playground آسان‌سازی توسعهٔ کامپایلر است، ما فکر می‌کنیم امتحان آن و ساخت شهود درباره کاری که کامپایلر انجام می‌دهد را آسان‌تر می‌کند. این بینش‌های مختلفی درباره نحوهٔ کار زیرپوست ارائه می‌دهد، و خروجی‌های کامپایلر را هنگام تایپ به‌صورت زنده رندر می‌کند. این همراه با کامپایلر هنگام انتشار منتشر خواهد شد.
 
 ## Offscreen {/*offscreen*/}
 
-Today, if you want to hide and show a component, you have two options. One is to add or remove it from the tree completely. The problem with this approach is that the state of your UI is lost each time you unmount, including state stored in the DOM, like scroll position.
+امروز، اگر بخواهید کامپوننتی را پنهان و نمایش دهید، دو گزینه دارید. یکی این است که آن را به‌طور کامل از درخت اضافه یا حذف کنید. مشکل این رویکرد این است که استیت رابط کاربری شما هر بار که unmount می‌کنید از دست می‌رود، از جمله استیت ذخیره‌شده در DOM، مانند موقعیت اسکرول.
 
-The other option is to keep the component mounted and toggle the appearance visually using CSS. This preserves the state of your UI, but it comes at a performance cost, because React must keep rendering the hidden component and all of its children whenever it receives new updates.
+گزینهٔ دیگر این است که کامپوننت را mount نگه دارید و ظاهر را به‌صورت بصری با CSS تغییر دهید. این استیت رابط کاربری شما را حفظ می‌کند، اما با هزینهٔ کارایی، زیرا ری‌اکت باید کامپوننت پنهان و همهٔ فرزندانش را هر بار که به‌روزرسانی جدیدی دریافت می‌کند رندر کند.
 
-Offscreen introduces a third option: hide the UI visually, but deprioritize its content. The idea is similar in spirit to the `content-visibility` CSS property: when content is hidden, it doesn't need to stay in sync with the rest of the UI. React can defer the rendering work until the rest of the app is idle, or until the content becomes visible again.
+Offscreen گزینهٔ سومی معرفی می‌کند: رابط کاربری را بصری پنهان کنید، اما محتوای آن را کم‌اولویت کنید. ایده از نظر روحی شبیه به ویژگی CSS `content-visibility` است: وقتی محتوا پنهان است، نیازی نیست با بقیهٔ رابط کاربری همگام بماند. ری‌اکت می‌تواند کار رندر را تا زمانی که بقیهٔ برنامه بیکار باشد، یا تا زمانی که محتوا دوباره قابل‌مشاهده شود به تعویق بیندازد.
 
-Offscreen is a low level capability that unlocks high level features. Similar to React's other concurrent features like `startTransition`, in most cases you won't interact with the Offscreen API directly, but instead via an opinionated framework to implement patterns like:
+Offscreen یک قابلیت سطح پایین است که قابلیت‌های سطح بالا را آزاد می‌کند. مشابه سایر قابلیت‌های همزمان ری‌اکت مانند `startTransition`، در بیشتر موارد شما با API Offscreen به‌طور مستقیم تعامل نخواهید داشت، بلکه از طریق یک فریم‌ورک opiniated برای پیاده‌سازی الگوهایی مانند:
 
-* **Instant transitions.** Some routing frameworks already prefetch data to speed up subsequent navigations, like when hovering over a link. With Offscreen, they'll also be able to prerender the next screen in the background.
-* **Reusable state.** Similarly, when navigating between routes or tabs, you can use Offscreen to preserve the state of the previous screen so you can switch back and pick up where you left off.
-* **Virtualized list rendering.** When displaying large lists of items, virtualized list frameworks will prerender more rows than are currently visible. You can use Offscreen to prerender the hidden rows at a lower priority than the visible items in the list.
-* **Backgrounded content.** We're also exploring a related feature for deprioritizing content in the background without hiding it, like when displaying a modal overlay.
+* **ترنزیشن‌های فوری.** برخی فریم‌ورک‌های مسیریاب از قبل داده‌ها را برای تسریع جابه‌جایی‌های بعدی prefetch می‌کنند، مانند هنگام hover روی یک لینک. با Offscreen، آن‌ها همچنین قادر خواهند بود صفحهٔ بعدی را در پس‌زمینه prerender کنند.
+* **استیت قابل‌استفادهٔ مجدد.** به‌طور مشابه، هنگام جابه‌جایی بین مسیرها یا تب‌ها، می‌توانید از Offscreen برای حفظ استیت صفحهٔ قبلی استفاده کنید تا بتوانید برگردید و از جایی که رها کردید ادامه دهید.
+* **رندر فهرست مجازی‌شده.** هنگام نمایش فهرست‌های بزرگ از آیتم‌ها، فریم‌ورک‌های فهرست مجازی‌شده ردیف‌های بیشتری را نسبت به آنچه در حال حاضر قابل‌مشاهده است prerender می‌کنند. می‌توانید از Offscreen برای prerender ردیف‌های پنهان با اولویت کمتری نسبت به آیتم‌های قابل‌مشاهده در فهرست استفاده کنید.
+* **محتوای پس‌زمینه‌شده.** ما همچنین در حال کاوش یک قابلیت مرتبط برای کم‌اولویت‌کردن محتوا در پس‌زمینه بدون پنهان کردن آن هستیم، مانند هنگام نمایش یک overlay مودال.
 
-## Transition Tracing {/*transition-tracing*/}
+## ردیابی ترنزیشن (Transition Tracing) {/*transition-tracing*/}
 
-Currently, React has two profiling tools. The [original Profiler](https://legacy.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html) shows an overview of all the commits in a profiling session. For each commit, it also shows all components that rendered and the amount of time it took for them to render. We also have a beta version of a [Timeline Profiler](https://github.com/reactwg/react-18/discussions/76) introduced in React 18 that shows when components schedule updates and when React works on these updates. Both of these profilers help developers identify performance problems in their code.
+در حال حاضر، ری‌اکت دو ابزار پروفایلینگ دارد. [پروفایلر اصلی](https://legacy.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html) مروری بر همهٔ commitها در یک نشست پروفایلینگ نشان می‌دهد. برای هر commit، همهٔ کامپوننت‌هایی که رندر شده‌اند و مقدار زمانی که برای رندر آن‌ها طول کشیده است را نیز نشان می‌دهد. ما همچنین یک نسخهٔ بتا از [Timeline Profiler](https://github.com/reactwg/react-18/discussions/76) داریم که در React 18 معرفی شده و نشان می‌دهد کدام کامپوننت‌ها به‌روزرسانی‌ها را زمان‌بندی می‌کنند و چه زمانی ری‌اکت روی این به‌روزرسانی‌ها کار می‌کند. هر دو این پروفایلرها به توسعه‌دهندگان کمک می‌کنند مشکلات کارایی را در کدشان شناسایی کنند.
 
-We’ve realized that developers don’t find knowing about individual slow commits or components out of context that useful. It’s more useful to know about what actually causes the slow commits. And that developers want to be able to track specific interactions (eg a button click, an initial load, or a page navigation) to watch for performance regressions and to understand why an interaction was slow and how to fix it.
+ما متوجه شده‌ایم که توسعه‌دهندگان دانستن درباره commitهای کند منفرد یا کامپوننت‌ها در خارج از متن را مفید نمی‌دانند. مفیدتر است که بدانیم چه چیزی در واقع باعث commitهای کند می‌شود. و اینکه توسعه‌دهندگان می‌خواهند بتوانند تعاملات خاصی (مثلاً کلیک یک دکمه، یک بارگذاری اولیه، یا جابه‌جایی صفحه) را پیگیری کنند تا برای رگرسیون‌های کارایی مراقب باشند و درک کنند که چرا یک تعامل کند بوده و چگونه آن را اصلاح کنند.
 
-We previously tried to solve this issue by creating an [Interaction Tracing API](https://gist.github.com/bvaughn/8de925562903afd2e7a12554adcdda16), but it had some fundamental design flaws that reduced the accuracy of tracking why an interaction was slow and sometimes resulted in interactions never ending. We ended up [removing this API](https://github.com/facebook/react/pull/20037) because of these issues.
+ما قبلاً سعی کردیم این مشکل را با ایجاد یک [Interaction Tracing API](https://gist.github.com/bvaughn/8de925562903afd2e7a12554adcdda16) حل کنیم، اما این دارای برخی نواقص طراحی بنیادین بود که دقت پیگیری چرایی کند بودن یک تعامل را کاهش می‌داد و گاهی منجر به تعاملاتی می‌شد که هرگز تمام نمی‌شدند. ما در نهایت این API را به‌دلیل این مشکلات [حذف کردیم](https://github.com/facebook/react/pull/20037).
 
-We are working on a new version for the Interaction Tracing API (tentatively called Transition Tracing because it is initiated via `startTransition`) that solves these problems.
+ما در حال کار بر یک نسخهٔ جدید برای Interaction Tracing API هستیم (که موقتاً Transition Tracing نامیده می‌شود زیرا با `startTransition` راه‌اندازی می‌شود) که این مشکلات را حل می‌کند.
 
-## New React Docs {/*new-react-docs*/}
+## مستندات جدید ری‌اکت {/*new-react-docs*/}
 
-Last year, we announced the beta version of the new React documentation website ([later shipped as react.dev](/blog/2023/03/16/introducing-react-dev)) of the new React documentation website. The new learning materials teach Hooks first and has new diagrams, illustrations, as well as many interactive examples and challenges. We took a break from that work to focus on the React 18 release, but now that React 18 is out, we’re actively working to finish and ship the new documentation.
+سال گذشته، ما نسخهٔ بتا وب‌سایت مستندات جدید ری‌اکت ([که بعداً به‌عنوان react.dev منتشر شد](/blog/2023/03/16/introducing-react-dev)) را از مستندات جدید ری‌اکت اعلام کردیم. مطالب یادگیری جدید ابتدا هوک‌ها را آموزش می‌دهد و دارای نمودارها، تصاویر و همچنین بسیاری مثال‌های تعاملی و چالش‌ها است. ما از این کار استراحت کردیم تا روی انتشار React 18 تمرکز کنیم، اما اکنون که React 18 منتشر شده، ما به‌طور فعال در حال کار برای تمام کردن و منتشر کردن مستندات جدید هستیم.
 
-We are currently writing a detailed section about effects, as we’ve heard that is one of the more challenging topics for both new and experienced React users. [Synchronizing with Effects](/learn/synchronizing-with-effects) is the first published page in the series, and there are more to come in the following weeks. When we first started writing a detailed section about effects, we’ve realized that many common effect patterns can be simplified by adding a new primitive to React. We’ve shared some initial thoughts on that in the [useEvent RFC](https://github.com/reactjs/rfcs/pull/220). It is currently in early research, and we are still iterating on the idea. We appreciate the community’s comments on the RFC so far, as well as the [feedback](https://github.com/reactjs/react.dev/issues/3308) and contributions to the ongoing documentation rewrite. We’d specifically like to thank [Harish Kumar](https://github.com/harish-sethuraman) for submitting and reviewing many improvements to the new website implementation.
+ما در حال حاضر در حال نوشتن بخشی دقیق درباره افکت‌ها هستیم، زیرا شنیده‌ایم که این یکی از موضوعات چالش‌برانگیزتر برای کاربران تازه‌کار و باتجربهٔ ری‌اکت است. [همگام‌سازی با افکت‌ها (Synchronizing with Effects)](/learn/synchronizing-with-effects) اولین صفحهٔ منتشرشده در این سری است، و صفحات بیشتری در هفته‌های آینده خواهند آمد. وقتی اولین بار شروع به نوشتن بخشی دقیق درباره افکت‌ها کردیم، متوجه شدیم که بسیاری از الگوهای رایج افکت را می‌توان با افزودن یک primitive جدید به ری‌اکت ساده کرد. ما برخی افکار اولیه را درباره آن در [useEvent RFC](https://github.com/reactjs/rfcs/pull/220) به اشتراک گذاشته‌ایم. این در حال حاضر در تحقیق اولیه است، و ما همچنان در حال تکرار روی ایده هستیم. ما از نظرات جامعه درباره RFC تا کنون، و همچنین [بازخورد](https://github.com/reactjs/react.dev/issues/3308) و مشارکت‌ها در بازنویسی مستندات در حال انجام سپاسگزاریم. ما به‌طور خاص دوست داریم از [Harish Kumar](https://github.com/harish-sethuraman) برای ارسال و بازبینی بسیاری از بهبودها در پیاده‌سازی وب‌سایت جدید تشکر کنیم.
 
-*Thanks to [Sophie Alpert](https://twitter.com/sophiebits) for reviewing this blog post!*
+*تشکر از [Sophie Alpert](https://twitter.com/sophiebits) برای بازبینی این پست بلاگ!*
