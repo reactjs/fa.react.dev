@@ -1,25 +1,25 @@
 ---
-title: JavaScript in JSX with Curly Braces
+title: جاوااسکریپت در JSX با آکولادها
 ---
 
 <Intro>
 
-JSX lets you write HTML-like markup inside a JavaScript file, keeping rendering logic and content in the same place. Sometimes you will want to add a little JavaScript logic or reference a dynamic property inside that markup. In this situation, you can use curly braces in your JSX to open a window to JavaScript.
+JSX به شما اجازه می‌دهد مارک‌آپی شبیه به HTML را داخل یک فایل جاوااسکریپت بنویسید و منطق رندر و محتوا را در یک جا نگه دارید. گاهی اوقات می‌خواهید کمی منطق جاوااسکریپت اضافه کنید یا به یک پراپرتی پویا درون آن مارک‌آپ ارجاع دهید. در این حالت، می‌توانید از آکولادها در JSX خود استفاده کنید تا پنجره‌ای به سمت جاوااسکریپت باز کنید.
 
 </Intro>
 
 <YouWillLearn>
 
-* How to pass strings with quotes
-* How to reference a JavaScript variable inside JSX with curly braces
-* How to call a JavaScript function inside JSX with curly braces
-* How to use a JavaScript object inside JSX with curly braces
+* چگونه رشته‌ها را با کوتیشن پاس بدهیم
+* چگونه به یک متغیر جاوااسکریپت داخل JSX با آکولادها ارجاع دهیم
+* چگونه یک تابع جاوااسکریپت را داخل JSX با آکولادها فراخوانی کنیم
+* چگونه از یک شیء جاوااسکریپت داخل JSX با آکولادها استفاده کنیم
 
 </YouWillLearn>
 
-## Passing strings with quotes {/*passing-strings-with-quotes*/}
+## پاس دادن رشته‌ها با کوتیشن {/*passing-strings-with-quotes*/}
 
-When you want to pass a string attribute to JSX, you put it in single or double quotes:
+وقتی می‌خواهید یک ویژگی رشته‌ای به JSX پاس بدهید، آن را در کوتیشن تکی یا جفتی قرار می‌دهید:
 
 <Sandpack>
 
@@ -41,9 +41,9 @@ export default function Avatar() {
 
 </Sandpack>
 
-Here, `"https://i.imgur.com/7vQD0fPs.jpg"` and `"Gregorio Y. Zara"` are being passed as strings.
+در اینجا، `"https://i.imgur.com/7vQD0fPs.jpg"` و `"Gregorio Y. Zara"` به‌عنوان رشته پاس داده می‌شوند.
 
-But what if you want to dynamically specify the `src` or `alt` text? You could **use a value from JavaScript by replacing `"` and `"` with `{` and `}`**:
+اما اگر بخواهید به‌صورت پویا `src` یا متن `alt` را مشخص کنید چه؟ می‌توانید **از یک مقدار جاوااسکریپت با جایگزینی `"` و `"` با `{` و `}` استفاده کنید**:
 
 <Sandpack>
 
@@ -67,11 +67,11 @@ export default function Avatar() {
 
 </Sandpack>
 
-Notice the difference between `className="avatar"`, which specifies an `"avatar"` CSS class name that makes the image round, and `src={avatar}` that reads the value of the JavaScript variable called `avatar`. That's because curly braces let you work with JavaScript right there in your markup!
+به تفاوت بین `className="avatar"`، که نام کلاس CSS `"avatar"` را مشخص می‌کند و تصویر را گرد می‌سازد، و `src={avatar}` که مقدار متغیر جاوااسکریپتی به نام `avatar` را می‌خواند، توجه کنید. این به‌این دلیل است که آکولادها به شما اجازه می‌دهند مستقیماً در مارک‌آپ خود با جاوااسکریپت کار کنید!
 
-## Using curly braces: A window into the JavaScript world {/*using-curly-braces-a-window-into-the-javascript-world*/}
+## استفاده از آکولادها: پنجره‌ای به سوی دنیای جاوااسکریپت {/*using-curly-braces-a-window-into-the-javascript-world*/}
 
-JSX is a special way of writing JavaScript. That means it’s possible to use JavaScript inside it—with curly braces `{ }`. The example below first declares a name for the scientist, `name`, then embeds it with curly braces inside the `<h1>`:
+JSX روشی ویژه برای نوشتن جاوااسکریپت است. این یعنی می‌توان از جاوااسکریپت درون آن استفاده کرد—با آکولادهای `{ }`. مثال زیر ابتدا یک نام برای دانشمند، `name`، تعریف می‌کند، سپس آن را با آکولادها درون `<h1>` قرار می‌دهد:
 
 <Sandpack>
 
@@ -86,9 +86,9 @@ export default function TodoList() {
 
 </Sandpack>
 
-Try changing the `name`'s value from `'Gregorio Y. Zara'` to `'Hedy Lamarr'`. See how the list title changes?
+مقدار `name` را از `'Gregorio Y. Zara'` به `'Hedy Lamarr'` تغییر دهید. ببینید عنوان لیست چگونه تغییر می‌کند؟
 
-Any JavaScript expression will work between curly braces, including function calls like `formatDate()`:
+هر عبارت جاوااسکریپتی بین آکولادها کار می‌کند، از جمله فراخوانی توابع مانند `formatDate()`:
 
 <Sandpack>
 
@@ -111,18 +111,18 @@ export default function TodoList() {
 
 </Sandpack>
 
-### Where to use curly braces {/*where-to-use-curly-braces*/}
+### کجا از آکولادها استفاده کنیم {/*where-to-use-curly-braces*/}
 
-You can only use curly braces in two ways inside JSX:
+از آکولادها در JSX فقط به دو روش می‌توان استفاده کرد:
 
-1. **As text** directly inside a JSX tag: `<h1>{name}'s To Do List</h1>` works, but `<{tag}>Gregorio Y. Zara's To Do List</{tag}>`  will not.
-2. **As attributes** immediately following the `=` sign: `src={avatar}` will read the `avatar` variable, but `src="{avatar}"` will pass the string `"{avatar}"`.
+1. **به‌عنوان متن** مستقیماً داخل یک تگ JSX: `<h1>{name}'s To Do List</h1>` کار می‌کند، اما `<{tag}>Gregorio Y. Zara's To Do List</{tag}>`  کار نخواهد کرد.
+2. **به‌عنوان ویژگی** بلافاصله پس از علامت `=`: `src={avatar}` متغیر `avatar` را می‌خواند، اما `src="{avatar}"` رشته‌ی `"{avatar}"` را پاس می‌دهد.
 
-## Using "double curlies": CSS and other objects in JSX {/*using-double-curlies-css-and-other-objects-in-jsx*/}
+## استفاده از «آکولاد دوتایی»: CSS و سایر اشیاء در JSX {/*using-double-curlies-css-and-other-objects-in-jsx*/}
 
-In addition to strings, numbers, and other JavaScript expressions, you can even pass objects in JSX. Objects are also denoted with curly braces, like `{ name: "Hedy Lamarr", inventions: 5 }`. Therefore, to pass a JS object in JSX, you must wrap the object in another pair of curly braces: `person={{ name: "Hedy Lamarr", inventions: 5 }}`.
+علاوه بر رشته‌ها، اعداد و سایر عبارات جاوااسکریپتی، می‌توانید حتی اشیاء را نیز در JSX پاس بدهید. اشیاء نیز با آکولاد نمایش داده می‌شوند، مانند `{ name: "Hedy Lamarr", inventions: 5 }`. بنابراین، برای پاس دادن یک شیء JS در JSX، باید آن شیء را در یک جفت آکولاد دیگر بپیچید: `person={{ name: "Hedy Lamarr", inventions: 5 }}`.
 
-You may see this with inline CSS styles in JSX. React does not require you to use inline styles (CSS classes work great for most cases). But when you need an inline style, you pass an object to the `style` attribute:
+ممکن است این را با استایل‌های درون‌خطی CSS در JSX ببینید. ری‌اکت از شما نمی‌خواهد که از استایل‌های درون‌خطی استفاده کنید (کلاس‌های CSS برای اکثر موارد عالی کار می‌کنند). اما وقتی به استایل درون‌خطی نیاز دارید، یک شیء به ویژگی `style` پاس می‌دهید:
 
 <Sandpack>
 
@@ -148,9 +148,9 @@ ul { padding: 20px 20px 20px 40px; margin: 0; }
 
 </Sandpack>
 
-Try changing the values of `backgroundColor` and `color`.
+مقادیر `backgroundColor` و `color` را تغییر دهید.
 
-You can really see the JavaScript object inside the curly braces when you write it like this:
+وقتی آن را به این شکل بنویسید، شیء جاوااسکریپت داخل آکولادها را واقعاً می‌بینید:
 
 ```js {2-5}
 <ul style={
@@ -161,17 +161,17 @@ You can really see the JavaScript object inside the curly braces when you write 
 }>
 ```
 
-The next time you see `{{` and `}}` in JSX, know that it's nothing more than an object inside the JSX curlies!
+دفعه‌ی بعد که `{{` و `}}` را در JSX دیدید، بدانید که این چیزی جز یک شیء داخل آکولادهای JSX نیست!
 
 <Pitfall>
 
-Inline `style` properties are written in camelCase. For example, HTML `<ul style="background-color: black">` would be written as `<ul style={{ backgroundColor: 'black' }}>`  in your component.
+پراپرتی‌های درون‌خطی `style` به‌صورت camelCase نوشته می‌شوند. برای مثال، HTML `<ul style="background-color: black">` در کامپوننت شما به‌صورت `<ul style={{ backgroundColor: 'black' }}>`  نوشته می‌شود.
 
 </Pitfall>
 
-## More fun with JavaScript objects and curly braces {/*more-fun-with-javascript-objects-and-curly-braces*/}
+## لذت بیشتر با اشیاء جاوااسکریپت و آکولادها {/*more-fun-with-javascript-objects-and-curly-braces*/}
 
-You can move several expressions into one object, and reference them in your JSX inside curly braces:
+می‌توانید چندین عبارت را در یک شیء قرار دهید و در JSX خود داخل آکولادها به آن‌ها ارجاع کنید:
 
 <Sandpack>
 
@@ -211,7 +211,7 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-In this example, the `person` JavaScript object contains a `name` string and a `theme` object:
+در این مثال، شیء جاوااسکریپتی `person` شامل یک رشته‌ی `name` و یک شیء `theme` است:
 
 ```js
 const person = {
@@ -223,31 +223,31 @@ const person = {
 };
 ```
 
-The component can use these values from `person` like so:
+کامپوننت می‌تواند از این مقادیر `person` به این شکل استفاده کند:
 
 ```js
 <div style={person.theme}>
   <h1>{person.name}'s Todos</h1>
 ```
 
-JSX is very minimal as a templating language because it lets you organize data and logic using JavaScript.
+JSX به‌عنوان یک زبان قالب‌بندی بسیار مینیمال است، زیرا به شما اجازه می‌دهد داده و منطق را با جاوااسکریپت سازماندهی کنید.
 
 <Recap>
 
-Now you know almost everything about JSX:
+اکنون تقریباً همه‌چیز درباره‌ی JSX را می‌دانید:
 
-* JSX attributes inside quotes are passed as strings.
-* Curly braces let you bring JavaScript logic and variables into your markup.
-* They work inside the JSX tag content or immediately after `=` in attributes.
-* `{{` and `}}` is not special syntax: it's a JavaScript object tucked inside JSX curly braces.
+* ویژگی‌های JSX داخل کوتیشن به‌عنوان رشته پاس داده می‌شوند.
+* آکولادها به شما اجازه می‌دهند منطق و متغیرهای جاوااسکریپت را وارد مارک‌آپ خود کنید.
+* آن‌ها در محتوای تگ JSX یا بلافاصله پس از `=` در ویژگی‌ها کار می‌کنند.
+* `{{` و `}}` نحو خاصی نیست: این یک شیء جاوااسکریپتی است که داخل آکولادهای JSX قرار گرفته.
 
 </Recap>
 
 <Challenges>
 
-#### Fix the mistake {/*fix-the-mistake*/}
+#### رفع اشتباه {/*fix-the-mistake*/}
 
-This code crashes with an error saying `Objects are not valid as a React child`:
+این کد با خطایی به این مضمون کرش می‌کند: `Objects are not valid as a React child`:
 
 <Sandpack>
 
@@ -287,15 +287,15 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-Can you find the problem?
+می‌توانید مشکل را پیدا کنید؟
 
-<Hint>Look for what's inside the curly braces. Are we putting the right thing there?</Hint>
+<Hint>ببینید چه چیزی داخل آکولادهاست. آیا چیز درستی را آنجا قرار می‌دهیم؟</Hint>
 
 <Solution>
 
-This is happening because this example renders *an object itself* into the markup rather than a string: `<h1>{person}'s Todos</h1>` is trying to render the entire `person` object! Including raw objects as text content throws an error because React doesn't know how you want to display them.
+این اتفاق می‌افتد چون این مثال *خودِ یک شیء* را به‌جای یک رشته در مارک‌آپ رندر می‌کند: `<h1>{person}'s Todos</h1>` سعی می‌کند کل شیء `person` را رندر کند! قرار دادن اشیاء خام به‌عنوان محتوای متنی خطایی تولید می‌کند چون ری‌اکت نمی‌داند شما چگونه می‌خواهید آن‌ها را نمایش دهید.
 
-To fix it, replace `<h1>{person}'s Todos</h1>` with `<h1>{person.name}'s Todos</h1>`:
+برای رفع آن، `<h1>{person}'s Todos</h1>` را با `<h1>{person.name}'s Todos</h1>` جایگزین کنید:
 
 <Sandpack>
 
@@ -337,9 +337,9 @@ body > div > div { padding: 20px; }
 
 </Solution>
 
-#### Extract information into an object {/*extract-information-into-an-object*/}
+#### استخراج اطلاعات به یک شیء {/*extract-information-into-an-object*/}
 
-Extract the image URL into the `person` object.
+URL تصویر را در شیء `person` استخراج کنید.
 
 <Sandpack>
 
@@ -381,7 +381,7 @@ body > div > div { padding: 20px; }
 
 <Solution>
 
-Move the image URL into a property called `person.imageUrl` and read it from the `<img>` tag using the curlies:
+URL تصویر را به یک پراپرتی به نام `person.imageUrl` منتقل کنید و آن را از تگ `<img>` با استفاده از آکولادها بخوانید:
 
 <Sandpack>
 
@@ -424,13 +424,13 @@ body > div > div { padding: 20px; }
 
 </Solution>
 
-#### Write an expression inside JSX curly braces {/*write-an-expression-inside-jsx-curly-braces*/}
+#### نوشتن یک عبارت داخل آکولادهای JSX {/*write-an-expression-inside-jsx-curly-braces*/}
 
-In the object below, the full image URL is split into four parts: base URL, `imageId`, `imageSize`, and file extension.
+در شیء زیر، URL کامل تصویر به چهار بخش تقسیم شده است: URL پایه، `imageId`، `imageSize` و پسوند فایل.
 
-We want the image URL to combine these attributes together: base URL (always `'https://i.imgur.com/'`), `imageId` (`'7vQD0fP'`), `imageSize` (`'s'`), and file extension (always `'.jpg'`). However, something is wrong with how the `<img>` tag specifies its `src`.
+می‌خواهیم URL تصویر این ویژگی‌ها را با هم ترکیب کند: URL پایه (همیشه `'https://i.imgur.com/'`)، `imageId` (`'7vQD0fP'`)، `imageSize` (`'s'`) و پسوند فایل (همیشه `'.jpg'`). با این حال، چیزی در نحوه‌ی مشخص کردن `src` در تگ `<img>` اشتباه است.
 
-Can you fix it?
+می‌توانید آن را اصلاح کنید؟
 
 <Sandpack>
 
@@ -474,15 +474,15 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-To check that your fix worked, try changing the value of `imageSize` to `'b'`. The image should resize after your edit.
+برای بررسی اینکه اصلاح شما کار کرده، مقدار `imageSize` را به `'b'` تغییر دهید. تصویر باید پس از ویرایش شما تغییر اندازه دهد.
 
 <Solution>
 
-You can write it as `src={baseUrl + person.imageId + person.imageSize + '.jpg'}`.
+می‌توانید آن را به‌صورت `src={baseUrl + person.imageId + person.imageSize + '.jpg'}` بنویسید.
 
-1. `{` opens the JavaScript expression
-2. `baseUrl + person.imageId + person.imageSize + '.jpg'` produces the correct URL string
-3. `}` closes the JavaScript expression
+1. `{` عبارت جاوااسکریپت را باز می‌کند
+2. `baseUrl + person.imageId + person.imageSize + '.jpg'` رشته‌ی URL صحیح را تولید می‌کند
+3. `}` عبارت جاوااسکریپت را می‌بندد
 
 <Sandpack>
 
@@ -525,7 +525,7 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-You can also move this expression into a separate function like `getImageUrl` below:
+همچنین می‌توانید این عبارت را به یک تابع جداگانه مانند `getImageUrl` در ادامه منتقل کنید:
 
 <Sandpack>
 
@@ -580,7 +580,7 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-Variables and functions can help you keep the markup simple!
+متغیرها و توابع می‌توانند به شما کمک کنند مارک‌آپ را ساده نگه دارید!
 
 </Solution>
 

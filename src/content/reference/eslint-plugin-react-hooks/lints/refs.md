@@ -4,47 +4,47 @@ title: refs
 
 <Intro>
 
-Validates correct usage of refs, not reading/writing during render. See the "pitfalls" section in [`useRef()` usage](/reference/react/useRef#usage).
+استفادهٔ صحیح از refها را اعتبارسنجی می‌کند، بدون خواندن/نوشتن در طول رندر. بخش «pitfalls» در [نحوهٔ استفاده از `useRef()`](/reference/react/useRef#usage) را ببینید.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## جزئیات قانون {/*rule-details*/}
 
-Refs hold values that aren't used for rendering. Unlike state, changing a ref doesn't trigger a re-render. Reading or writing `ref.current` during render breaks React's expectations. Refs might not be initialized when you try to read them, and their values can be stale or inconsistent.
+refها مقادیری را نگه می‌دارند که برای رندر استفاده نمی‌شوند. برخلاف استیت، تغییر یک ref رندر مجدد را تحریک نمی‌کند. خواندن یا نوشتن `ref.current` در طول رندر انتظارات ری‌اکت را می‌شکند. refها ممکن است هنگام تلاش برای خواندن آن‌ها مقداردهی اولیه نشده باشند، و مقادیرشان ممکن است قدیمی یا ناسازگار باشد.
 
-## How It Detects Refs {/*how-it-detects-refs*/}
+## چگونه refها را تشخیص می‌دهد {/*how-it-detects-refs*/}
 
-The lint only applies these rules to values it knows are refs. A value is inferred as a ref when the compiler sees any of the following patterns:
+لینت این قوانین را فقط روی مقادیری که می‌داند ref هستند اعمال می‌کند. یک مقدار زمانی به‌عنوان ref استنباط می‌شود که کامپایلر هر یک از الگوهای زیر را ببیند:
 
-- Returned from `useRef()` or `React.createRef()`.
+- برگردانده‌شده از `useRef()` یا `React.createRef()`.
 
   ```js
   const scrollRef = useRef(null);
   ```
 
-- An identifier named `ref` or ending in `Ref` that reads from or writes to `.current`.
+- یک شناسه با نام `ref` یا ختم‌شده به `Ref` که از `.current` می‌خواند یا به آن می‌نویسد.
 
   ```js
   buttonRef.current = node;
   ```
 
-- Passed through a JSX `ref` prop (for example `<div ref={someRef} />`).
+- پاس‌شده از طریق یک پراپ `ref` در JSX (مثلاً `<div ref={someRef} />`).
 
   ```jsx
   <input ref={inputRef} />
   ```
 
-Once something is marked as a ref, that inference follows the value through assignments, destructuring, or helper calls. This lets the lint surface violations even when `ref.current` is accessed inside another function that received the ref as an argument.
+وقتی چیزی به‌عنوان ref علامت‌گذاری شد، آن استنباط از طریق انتساب‌ها، destructuring، یا فراخوانی‌های کمکی با مقدار دنبال می‌شود. این به لینت اجازه می‌دهد نقض‌ها را حتی وقتی `ref.current` داخل تابع دیگری که ref را به‌عنوان آرگومان دریافت کرده است، دسترسی می‌شود، ظاهر کند.
 
-## Common Violations {/*common-violations*/}
+## نقض‌های رایج {/*common-violations*/}
 
-- Reading `ref.current` during render
-- Updating `refs` during render
-- Using `refs` for values that should be state
+- خواندن `ref.current` در طول رندر
+- به‌روزرسانی `refs` در طول رندر
+- استفاده از `refs` برای مقادیری که باید استیت باشند
 
-### Invalid {/*invalid*/}
+### نامعتبر {/*invalid*/}
 
-Examples of incorrect code for this rule:
+نمونه‌هایی از کد نادرست برای این قانون:
 
 ```js
 // ❌ Reading ref during render
@@ -62,9 +62,9 @@ function Component({value}) {
 }
 ```
 
-### Valid {/*valid*/}
+### معتبر {/*valid*/}
 
-Examples of correct code for this rule:
+نمونه‌هایی از کد درست برای این قانون:
 
 ```js
 // ✅ Read ref in effects/handlers
@@ -108,8 +108,8 @@ function Component() {
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-### The lint flagged my plain object with `.current` {/*plain-object-current*/}
+### لینتر object سادهٔ من با `.current` را علامت‌گذاری کرد {/*plain-object-current*/}
 
-The name heuristic intentionally treats `ref.current` and `fooRef.current` as real refs. If you're modeling a custom container object, pick a different name (for example, `box`) or move the mutable value into state. Renaming avoids the lint because the compiler stops inferring it as a ref.
+هیوریستیک نام به‌عمد `ref.current` و `fooRef.current` را به‌عنوان refهای واقعی در نظر می‌گیرد. اگر در حال مدل‌سازی یک object container سفارشی هستید، نام متفاوتی انتخاب کنید (مثلاً `box`) یا مقدار قابل تغییر را به استیت منتقل کنید. تغییر نام از لینت اجتناب می‌کند زیرا کامپایلر از استنباط آن به‌عنوان ref متوقف می‌شود.

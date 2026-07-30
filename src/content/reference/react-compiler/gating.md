@@ -4,7 +4,7 @@ title: gating
 
 <Intro>
 
-The `gating` option enables conditional compilation, allowing you to control when optimized code is used at runtime.
+گزینهٔ `gating` کامپایل شرطی را فعال می‌کند، و به شما اجازه می‌دهد کنترل کنید چه زمان از کد بهینه‌شده در runtime استفاده می‌شود.
 
 </Intro>
 
@@ -21,13 +21,13 @@ The `gating` option enables conditional compilation, allowing you to control whe
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `gating` {/*gating*/}
 
-Configures runtime feature flag gating for compiled functions.
+گیتینگ فلگ ویژگی runtime برای تابع‌های کامپایل‌شده را پیکربندی می‌کند.
 
-#### Type {/*type*/}
+#### نوع {/*type*/}
 
 ```
 {
@@ -36,28 +36,28 @@ Configures runtime feature flag gating for compiled functions.
 } | null
 ```
 
-#### Default value {/*default-value*/}
+#### مقدار پیش‌فرض {/*default-value*/}
 
 `null`
 
-#### Properties {/*properties*/}
+#### ویژگی‌ها {/*properties*/}
 
-- **`source`**: Module path to import the feature flag from
-- **`importSpecifierName`**: Name of the exported function to import
+- **`source`**: مسیر ماژول برای import کردن فلگ ویژگی
+- **`importSpecifierName`**: نام تابع export شده برای import
 
-#### Caveats {/*caveats*/}
+#### ملاحظات {/*caveats*/}
 
-- The gating function must return a boolean
-- Both compiled and original versions increase bundle size
-- The import is added to every file with compiled functions
+- تابع gating باید یک boolean برگرداند
+- هم نسخهٔ کامپایل‌شده و هم نسخهٔ اصلی اندازهٔ باندل را افزایش می‌دهند
+- import به هر فایل با تابع‌های کامپایل‌شده اضافه می‌شود
 
 ---
 
-## Usage {/*usage*/}
+## نحوهٔ استفاده {/*usage*/}
 
-### Basic feature flag setup {/*basic-setup*/}
+### راه‌اندازی اولیهٔ فلگ ویژگی {/*basic-setup*/}
 
-1. Create a feature flag module:
+1. یک ماژول فلگ ویژگی بسازید:
 
 ```js
 // src/utils/feature-flags.js
@@ -67,7 +67,7 @@ export function shouldUseCompiler() {
 }
 ```
 
-2. Configure the compiler:
+2. کامپایلر را پیکربندی کنید:
 
 ```js
 {
@@ -78,7 +78,7 @@ export function shouldUseCompiler() {
 }
 ```
 
-3. The compiler generates gated code:
+3. کامپایلر کد گیت‌شده تولید می‌کند:
 
 ```js
 // Input
@@ -94,15 +94,15 @@ const Button = shouldUseCompiler()
   : function Button_original(props) { /* original version */ };
 ```
 
-Note that the gating function is evaluated once at module time, so once the JS bundle has been parsed and evaluated the choice of component stays static for the rest of the browser session.
+توجه کنید که تابع gating یک‌بار در زمان ماژول ارزیابی می‌شود، بنابراین وقتی باندل JS تجزیه و ارزیابی شد، انتخاب کامپوننت برای بقیهٔ جلسهٔ مرورگر ثابت می‌ماند.
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-### Feature flag not working {/*flag-not-working*/}
+### فلگ ویژگی کار نمی‌کند {/*flag-not-working*/}
 
-Verify your flag module exports the correct function:
+تأیید کنید که ماژول فلگ شما تابع صحیح را export می‌کند:
 
 ```js
 // ❌ Wrong: Default export
@@ -116,9 +116,9 @@ export function shouldUseCompiler() {
 }
 ```
 
-### Import errors {/*import-errors*/}
+### خطاهای import {/*import-errors*/}
 
-Ensure the source path is correct:
+تأیید کنید که مسیر source صحیح است:
 
 ```js
 // ❌ Wrong: Relative to babel.config.js

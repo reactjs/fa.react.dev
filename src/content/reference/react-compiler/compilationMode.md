@@ -4,7 +4,7 @@ title: compilationMode
 
 <Intro>
 
-The `compilationMode` option controls how the React Compiler selects which functions to compile.
+گزینهٔ `compilationMode` کنترل می‌کند که React Compiler چگونه تابع‌هایی که باید کامپایل شوند را انتخاب می‌کند.
 
 </Intro>
 
@@ -18,48 +18,48 @@ The `compilationMode` option controls how the React Compiler selects which funct
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `compilationMode` {/*compilationmode*/}
 
-Controls the strategy for determining which functions the React Compiler will optimize.
+استراتژی تعیین اینکه کدام تابع‌ها توسط React Compiler بهینه‌سازی شوند را کنترل می‌کند.
 
-#### Type {/*type*/}
+#### نوع {/*type*/}
 
 ```
 'infer' | 'syntax' | 'annotation' | 'all'
 ```
 
-#### Default value {/*default-value*/}
+#### مقدار پیش‌فرض {/*default-value*/}
 
 `'infer'`
 
-#### Options {/*options*/}
+#### گزینه‌ها {/*options*/}
 
-- **`'infer'`** (default): The compiler uses intelligent heuristics to identify React components and hooks:
-  - Functions explicitly annotated with `"use memo"` directive
-  - Functions that are named like components (PascalCase) or hooks (`use` prefix) AND create JSX and/or call other hooks
+- **`'infer'`** (پیش‌فرض): کامپایلر از هیوریستیک‌های هوشمند برای شناسایی کامپوننت‌ها و هوک‌های ری‌اکت استفاده می‌کند:
+  - تابع‌هایی که صریحاً با دایرکتیو `"use memo"` علامت‌گذاری شده‌اند
+  - تابع‌هایی که نام‌گذاری کامپوننت (PascalCase) یا هوک (پیشوند `use`) دارند و JSX می‌سازند و/یا هوک‌های دیگر را فراخوانی می‌کنند
 
-- **`'annotation'`**: Only compile functions explicitly marked with the `"use memo"` directive. Ideal for incremental adoption.
+- **`'annotation'`**: فقط تابع‌هایی که صریحاً با دایرکتیو `"use memo"` علامت‌گذاری شده‌اند را کامپایل می‌کند. برای پذیرش تدریجی ایده‌آل است.
 
-- **`'syntax'`**: Only compile components and hooks that use Flow's [component](https://flow.org/en/docs/react/component-syntax/) and [hook](https://flow.org/en/docs/react/hook-syntax/) syntax.
+- **`'syntax'`**: فقط کامپوننت‌ها و هوک‌هایی که از سینتکس [component](https://flow.org/en/docs/react/component-syntax/) و [hook](https://flow.org/en/docs/react/hook-syntax/) فلو استفاده می‌کنند را کامپایل می‌کند.
 
-- **`'all'`**: Compile all top-level functions. Not recommended as it may compile non-React functions.
+- **`'all'`**: همهٔ تابع‌های سطح بالا را کامپایل می‌کند. توصیه نمی‌شود زیرا ممکن است تابع‌های غیر ری‌اکت را کامپایل کند.
 
-#### Caveats {/*caveats*/}
+#### ملاحظات {/*caveats*/}
 
-- The `'infer'` mode requires functions to follow React naming conventions to be detected
-- Using `'all'` mode may negatively impact performance by compiling utility functions
-- The `'syntax'` mode requires Flow and won't work with TypeScript
-- Regardless of mode, functions with `"use no memo"` directive are always skipped
+- حالت `'infer'` نیاز دارد که تابع‌ها از قراردادهای نام‌گذاری ری‌اکت پیروی کنند تا شناسایی شوند
+- استفاده از حالت `'all'` ممکن است با کامپایل کردن تابع‌های کمکی، به‌طور منفی بر عملکرد تأثیر بگذارد
+- حالت `'syntax'` نیاز به Flow دارد و با TypeScript کار نمی‌کند
+- صرف‌نظر از حالت، تابع‌هایی با دایرکتیو `"use no memo"` همیشه نادیده گرفته می‌شوند
 
 ---
 
-## Usage {/*usage*/}
+## نحوهٔ استفاده {/*usage*/}
 
-### Default inference mode {/*default-inference-mode*/}
+### حالت inference پیش‌فرض {/*default-inference-mode*/}
 
-The default `'infer'` mode works well for most codebases that follow React conventions:
+حالت پیش‌فرض `'infer'` برای بیشتر کدبیس‌هایی که از قراردادهای ری‌اکت پیروی می‌کنند به‌خوبی کار می‌کند:
 
 ```js
 {
@@ -67,7 +67,7 @@ The default `'infer'` mode works well for most codebases that follow React conve
 }
 ```
 
-With this mode, these functions will be compiled:
+با این حالت، این تابع‌ها کامپایل خواهند شد:
 
 ```js
 // ✅ Compiled: Named like a component + returns JSX
@@ -93,9 +93,9 @@ function calculateTotal(items) {
 }
 ```
 
-### Incremental adoption with annotation mode {/*incremental-adoption*/}
+### پذیرش تدریجی با حالت annotation {/*incremental-adoption*/}
 
-For gradual migration, use `'annotation'` mode to only compile marked functions:
+برای مهاجرت تدریجی، از حالت `'annotation'` استفاده کنید تا فقط تابع‌های علامت‌گذاری‌شده کامپایل شوند:
 
 ```js
 {
@@ -103,7 +103,7 @@ For gradual migration, use `'annotation'` mode to only compile marked functions:
 }
 ```
 
-Then explicitly mark functions to compile:
+سپس به‌صورت صریح تابع‌هایی را که باید کامپایل شوند علامت‌گذاری کنید:
 
 ```js
 // Only this function will be compiled
@@ -124,9 +124,9 @@ function NormalComponent(props) {
 }
 ```
 
-### Using Flow syntax mode {/*flow-syntax-mode*/}
+### استفاده از حالت سینتکس فلو {/*flow-syntax-mode*/}
 
-If your codebase uses Flow instead of TypeScript:
+اگر کدبیس شما به‌جای TypeScript از فلو استفاده می‌کند:
 
 ```js
 {
@@ -134,7 +134,7 @@ If your codebase uses Flow instead of TypeScript:
 }
 ```
 
-Then use Flow's component syntax:
+سپس از سینتکس کامپوننت فلو استفاده کنید:
 
 ```js
 // Compiled: Flow component syntax
@@ -154,9 +154,9 @@ function helper(data) {
 }
 ```
 
-### Opting out specific functions {/*opting-out*/}
+### خارج کردن تابع‌های خاص {/*opting-out*/}
 
-Regardless of compilation mode, use `"use no memo"` to skip compilation:
+صرف‌نظر از حالت کامپایل، از `"use no memo"` برای نادیده گرفتن کامپایل استفاده کنید:
 
 ```js
 function ComponentWithSideEffects() {
@@ -171,11 +171,11 @@ function ComponentWithSideEffects() {
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-### Component not being compiled in infer mode {/*component-not-compiled-infer*/}
+### کامپوننت در حالت infer کامپایل نمی‌شود {/*component-not-compiled-infer*/}
 
-In `'infer'` mode, ensure your component follows React conventions:
+در حالت `'infer'`، مطمئن شوید کامپوننت شما از قراردادهای ری‌اکت پیروی می‌کند:
 
 ```js
 // ❌ Won't be compiled: lowercase name

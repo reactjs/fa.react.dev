@@ -1,56 +1,56 @@
 ---
-title: React Reference Overview
+title: مرور مرجع ری‌اکت
 ---
 
 <Intro>
 
-This section provides detailed reference documentation for working with React. For an introduction to React, please visit the [Learn](/learn) section.
+این بخش، مستندات مرجع دقیقی برای کار با ری‌اکت ارائه می‌کند. برای آشنایی با ری‌اکت، لطفاً به بخش [یادگیری](/learn) مراجعه کنید.
 
 </Intro>
 
-The React reference documentation is broken down into functional subsections:
+مستندات مرجع ری‌اکت به زیربخش‌های کاربردی تقسیم شده است:
 
-## React {/*react*/}
+## ری‌اکت {/*react*/}
 
-Programmatic React features:
+ویژگی‌های برنامه‌نویسی ری‌اکت:
 
-* [Hooks](/reference/react/hooks) - Use different React features from your components.
-* [Components](/reference/react/components) - Built-in components that you can use in your JSX.
-* [APIs](/reference/react/apis) - APIs that are useful for defining components.
-* [Directives](/reference/rsc/directives) - Provide instructions to bundlers compatible with React Server Components.
+* [هوک‌ها](/reference/react/hooks) - استفاده از ویژگی‌های مختلف ری‌اکت در کامپوننت‌های شما.
+* [کامپوننت‌ها](/reference/react/components) - کامپوننت‌های پیش‌ساخته‌ای که می‌توانید در JSX خود استفاده کنید.
+* [APIها](/reference/react/apis) - APIهایی که برای تعریف کامپوننت‌ها مفید هستند.
+* [دایرکتیوها](/reference/rsc/directives) - ارائهٔ دستورالعمل‌ها به باندلرهای سازگار با React Server Components.
 
 ## React DOM {/*react-dom*/}
 
-React-dom contains features that are only supported for web applications (which run in the browser DOM environment). This section is broken into the following:
+React-dom شامل ویژگی‌هایی است که تنها برای برنامه‌های تحت وب (که در محیط DOM مرورگر اجرا می‌شوند) پشتیبانی می‌شوند. این بخش به موارد زیر تقسیم می‌شود:
 
-* [Hooks](/reference/react-dom/hooks) - Hooks for web applications which run in the browser DOM environment.
-* [Components](/reference/react-dom/components) - React supports all of the browser built-in HTML and SVG components.
-* [APIs](/reference/react-dom) - The `react-dom` package contains methods supported only in web applications.
-* [Client APIs](/reference/react-dom/client) - The `react-dom/client` APIs let you render React components on the client (in the browser).
-* [Server APIs](/reference/react-dom/server) - The `react-dom/server` APIs let you render React components to HTML on the server.
+* [هوک‌ها](/reference/react-dom/hooks) - هوک‌هایی برای برنامه‌های تحت وب که در محیط DOM مرورگر اجرا می‌شوند.
+* [کامپوننت‌ها](/reference/react-dom/components) - ری‌اکت از تمام کامپوننت‌های پیش‌ساختهٔ HTML و SVG مرورگر پشتیبانی می‌کند.
+* [APIها](/reference/react-dom) - پکیج `react-dom` شامل متدهایی است که تنها در برنامه‌های تحت وب پشتیبانی می‌شوند.
+* [APIهای کلاینت](/reference/react-dom/client) - APIهای `react-dom/client` به شما اجازه می‌دهند کامپوننت‌های ری‌اکت را در سمت کلاینت (در مرورگر) رندر کنید.
+* [APIهای سرور](/reference/react-dom/server) - APIهای `react-dom/server` به شما اجازه می‌دهند کامپوننت‌های ری‌اکت را در سمت سرور به HTML رندر کنید.
 
 ## React Compiler {/*react-compiler*/}
 
-The React Compiler is a build-time optimization tool that automatically memoizes your React components and values:
+React Compiler یک ابزار بهینه‌سازی در زمان build است که به‌طور خودکار کامپوننت‌ها و مقادیر ری‌اکت شما را مموریزه (memoize) می‌کند:
 
-* [Configuration](/reference/react-compiler/configuration) - Configuration options for React Compiler.
-* [Directives](/reference/react-compiler/directives) - Function-level directives to control compilation.
-* [Compiling Libraries](/reference/react-compiler/compiling-libraries) - Guide for shipping pre-compiled library code.
+* [پیکربندی](/reference/react-compiler/configuration) - گزینه‌های پیکربندی برای React Compiler.
+* [دایرکتیوها](/reference/react-compiler/directives) - دایرکتیوهای سطح تابع برای کنترل کامپایل.
+* [کامپایل کتابخانه‌ها](/reference/react-compiler/compiling-libraries) - راهنمایی برای انتشار کد کتابخانه‌ای از پیش کامپایل‌شده.
 
-## ESLint Plugin React Hooks {/*eslint-plugin-react-hooks*/}
+## افزونهٔ ESLint برای React Hooks {/*eslint-plugin-react-hooks*/}
 
-The [ESLint plugin for React Hooks](/reference/eslint-plugin-react-hooks) helps enforce the Rules of React:
+[افزونهٔ ESLint برای React Hooks](/reference/eslint-plugin-react-hooks) به اعمال قوانین ری‌اکت کمک می‌کند:
 
-* [Lints](/reference/eslint-plugin-react-hooks) - Detailed documentation for each lint with examples.
+* [Lintها](/reference/eslint-plugin-react-hooks) - مستندات دقیق هر lint همراه با مثال‌ها.
 
-## Rules of React {/*rules-of-react*/}
+## قوانین ری‌اکت {/*rules-of-react*/}
 
-React has idioms — or rules — for how to express patterns in a way that is easy to understand and yields high-quality applications:
+ری‌اکت اصطلاحات — یا قواعدی — برای نحوهٔ بیان الگوها به شکلی که درک آن آسان باشد و به برنامه‌های باکیفیت منجر شود دارد:
 
-* [Components and Hooks must be pure](/reference/rules/components-and-hooks-must-be-pure) – Purity makes your code easier to understand, debug, and allows React to automatically optimize your components and hooks correctly.
-* [React calls Components and Hooks](/reference/rules/react-calls-components-and-hooks) – React is responsible for rendering components and hooks when necessary to optimize the user experience.
-* [Rules of Hooks](/reference/rules/rules-of-hooks) – Hooks are defined using JavaScript functions, but they represent a special type of reusable UI logic with restrictions on where they can be called.
+* [کامپوننت‌ها و هوک‌ها باید خالص باشند](/reference/rules/components-and-hooks-must-be-pure) – خلوص (Purity) باعث می‌شود کد شما آسان‌تر قابل درک و دیباگ باشد و به ری‌اکت اجازه می‌دهد کامپوننت‌ها و هوک‌های شما را به‌درستی و به‌طور خودکار بهینه کند.
+* [ری‌اکت کامپوننت‌ها و هوک‌ها را صدا می‌زند](/reference/rules/react-calls-components-and-hooks) – ری‌اکت مسئول رندر کردن کامپوننت‌ها و هوک‌ها در زمان لازم برای بهینه‌سازی تجربهٔ کاربری است.
+* [قوانین هوک‌ها](/reference/rules/rules-of-hooks) – هوک‌ها با توابع جاوااسکریپت تعریف می‌شوند، اما نوع خاصی از منطق رابط کاربری قابل استفادهٔ مجدد را نمایندگی می‌کنند که محدودیت‌هایی روی محل فراخوانی آن‌ها وجود دارد.
 
-## Legacy APIs {/*legacy-apis*/}
+## APIهای قدیمی {/*legacy-apis*/}
 
-* [Legacy APIs](/reference/react/legacy) - Exported from the `react` package, but not recommended for use in newly written code.
+* [APIهای قدیمی](/reference/react/legacy) - از پکیج `react` صادر شده‌اند، اما برای استفاده در کدهای تازه‌نوشته‌شده توصیه نمی‌شوند.

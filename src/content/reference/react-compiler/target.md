@@ -4,7 +4,7 @@ title: target
 
 <Intro>
 
-The `target` option specifies which React version the compiler should generate code for.
+گزینهٔ `target` مشخص می‌کند که کامپایلر باید برای کدام نسخهٔ ری‌اکت کد تولید کند.
 
 </Intro>
 
@@ -18,42 +18,42 @@ The `target` option specifies which React version the compiler should generate c
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `target` {/*target*/}
 
-Configures the React version compatibility for the compiled output.
+سازگاری نسخهٔ ری‌اکت برای خروجی کامپایل‌شده را پیکربندی می‌کند.
 
-#### Type {/*type*/}
+#### نوع {/*type*/}
 
 ```
 '17' | '18' | '19'
 ```
 
-#### Default value {/*default-value*/}
+#### مقدار پیش‌فرض {/*default-value*/}
 
 `'19'`
 
-#### Valid values {/*valid-values*/}
+#### مقادیر معتبر {/*valid-values*/}
 
-- **`'19'`**: Target React 19 (default). No additional runtime required.
-- **`'18'`**: Target React 18. Requires `react-compiler-runtime` package.
-- **`'17'`**: Target React 17. Requires `react-compiler-runtime` package.
+- **`'19'`**: target ری‌اکت ۱۹ (پیش‌فرض). نیازی به runtime اضافی نیست.
+- **`'18'`**: target ری‌اکت ۱۸. نیاز به پکیج `react-compiler-runtime` دارد.
+- **`'17'`**: target ری‌اکت ۱۷. نیاز به پکیج `react-compiler-runtime` دارد.
 
-#### Caveats {/*caveats*/}
+#### ملاحظات {/*caveats*/}
 
-- Always use string values, not numbers (e.g., `'17'` not `17`)
-- Don't include patch versions (e.g., use `'18'` not `'18.2.0'`)
-- React 19 includes built-in compiler runtime APIs
-- React 17 and 18 require installing `react-compiler-runtime@rc`
+- همیشه از مقادیر رشته‌ای استفاده کنید، نه اعداد (مثلاً `'17'` نه `17`)
+- نسخه‌های patch را شامل نشوید (مثلاً `'18'` نه `'18.2.0'`)
+- ری‌اکت ۱۹ شامل APIهای runtime کامپایلر داخلی است
+- ری‌اکت ۱۷ و ۱۸ نیاز به نصب `react-compiler-runtime@rc` دارند
 
 ---
 
-## Usage {/*usage*/}
+## نحوهٔ استفاده {/*usage*/}
 
-### Targeting React 19 (default) {/*targeting-react-19*/}
+### هدف‌گیری ری‌اکت ۱۹ (پیش‌فرض) {/*targeting-react-19*/}
 
-For React 19, no special configuration is needed:
+برای ری‌اکت ۱۹، نیازی به پیکربندی خاصی نیست:
 
 ```js
 {
@@ -61,24 +61,24 @@ For React 19, no special configuration is needed:
 }
 ```
 
-The compiler will use React 19's built-in runtime APIs:
+کامپایلر از APIهای runtime داخلی ری‌اکت ۱۹ استفاده می‌کند:
 
 ```js
 // Compiled output uses React 19's native APIs
 import { c as _c } from 'react/compiler-runtime';
 ```
 
-### Targeting React 17 or 18 {/*targeting-react-17-or-18*/}
+### هدف‌گیری ری‌اکت ۱۷ یا ۱۸ {/*targeting-react-17-or-18*/}
 
-For React 17 and React 18 projects, you need two steps:
+برای پروژه‌های ری‌اکت ۱۷ و ری‌اکت ۱۸، به دو مرحله نیاز دارید:
 
-1. Install the runtime package:
+1. نصب پکیج runtime:
 
 ```bash
 npm install react-compiler-runtime@rc
 ```
 
-2. Configure the target:
+2. پیکربندی target:
 
 ```js
 // For React 18
@@ -92,7 +92,7 @@ npm install react-compiler-runtime@rc
 }
 ```
 
-The compiler will use the polyfill runtime for both versions:
+کامپایلر برای هر دو نسخه از runtime polyfill استفاده می‌کند:
 
 ```js
 // Compiled output uses the polyfill
@@ -101,41 +101,41 @@ import { c as _c } from 'react-compiler-runtime';
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-### Runtime errors about missing compiler runtime {/*missing-runtime*/}
+### خطاهای runtime دربارهٔ نبود runtime کامپایلر {/*missing-runtime*/}
 
-If you see errors like "Cannot find module 'react/compiler-runtime'":
+اگر خطاهایی مانند "Cannot find module 'react/compiler-runtime'" می‌بینید:
 
-1. Check your React version:
+1. نسخهٔ ری‌اکت خود را بررسی کنید:
    ```bash
    npm why react
    ```
 
-2. If using React 17 or 18, install the runtime:
+2. اگر از ری‌اکت ۱۷ یا ۱۸ استفاده می‌کنید، runtime را نصب کنید:
    ```bash
    npm install react-compiler-runtime@rc
    ```
 
-3. Ensure your target matches your React version:
+3. مطمئن شوید target با نسخهٔ ری‌اکت شما مطابقت دارد:
    ```js
    {
      target: '18' // Must match your React major version
    }
    ```
 
-### Runtime package not working {/*runtime-not-working*/}
+### پکیج runtime کار نمی‌کند {/*runtime-not-working*/}
 
-Ensure the runtime package is:
+مطمئن شوید پکیج runtime:
 
-1. Installed in your project (not globally)
-2. Listed in your `package.json` dependencies
-3. The correct version (`@rc` tag)
-4. Not in `devDependencies` (it's needed at runtime)
+1. در پروژهٔ شما نصب شده (نه به‌صورت سراسری)
+2. در وابستگی‌های `package.json` شما فهرست شده
+3. نسخهٔ صحیح است (تگ `@rc`)
+4. در `devDependencies` نیست (در runtime نیاز است)
 
-### Checking compiled output {/*checking-output*/}
+### بررسی خروجی کامپایل‌شده {/*checking-output*/}
 
-To verify the correct runtime is being used, note the different import (`react/compiler-runtime` for builtin, `react-compiler-runtime` standalone package for 17/18):
+برای تأیید اینکه runtime صحیح استفاده می‌شود، به import متفاوت توجه کنید (`react/compiler-runtime` برای داخلی، پکیج مستقل `react-compiler-runtime` برای ۱۷/۱۸):
 
 ```js
 // For React 19 (built-in runtime)

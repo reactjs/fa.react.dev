@@ -179,7 +179,7 @@ export default function Profile() {
 
 در مثال بالا، `style={{}}` نه نوعی دستور خاص است، بلکه یک شی `{}` معمولی درون کرلی بریسز JSX است. شما می‌توانید ویژگی `style` را استفاده کنید زمانی که استایل‌های شما به متغیرهای جاوااسکریپت وابسته هستند.
 
-## Conditional rendering {/*conditional-rendering*/}
+## رندر شرطی {/*conditional-rendering*/}
 
 در React، نه ترکیب نحوی خاصی برای نوشتن شرایط وجود دارد. به جای آن، شما از تکنیک‌های همانند نوشتن کد جاوااسکریپت عمومی استفاده می‌کنید. به عنوان مثال، می‌توانید از دستور [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) برای اضافه کردن JSX به صورت شرطی استفاده کنید:
 
@@ -417,13 +417,13 @@ button {
 
 <Diagram name="sharing_data_parent" height={385} width={410} alt="Diagram showing a tree of three components, one parent labeled MyApp and two children labeled MyButton. MyApp contains a count value of zero which is passed down to both of the MyButton components, which also show value zero." >
 
-Initially, `MyApp`'s `count` state is `0` and is passed down to both children
+در ابتدا، استیت `count` در `MyApp` برابر با `0` است و به هر دو کامپوننت فرزند منتقل می‌شود
 
 </Diagram>
 
 <Diagram name="sharing_data_parent_clicked" height={385} width={410} alt="The same diagram as the previous, with the count of the parent MyApp component highlighted indicating a click with the value incremented to one. The flow to both of the children MyButton components is also highlighted, and the count value in each child is set to one indicating the value was passed down." >
 
-On click, `MyApp` updates its `count` state to `1` and passes it down to both children
+هنگام کلیک، `MyApp` استیت `count` خود را به `1` به‌روزرسانی می‌کند و آن را به هر دو فرزند منتقل می‌کند
 
 </Diagram>
 
@@ -531,7 +531,7 @@ button {
 
 </Sandpack>
 
-## Next Steps {/*next-steps*/}
+## قدم‌های بعدی {/*next-steps*/}
 
 تا این لحظه، شما اصول اساسی نوشتن کد React را می‌شناسید!
 

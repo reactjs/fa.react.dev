@@ -1,22 +1,22 @@
 ---
-title: Directives
+title: دایرکتیوها
 ---
 
 <RSC>
 
-Directives are for use in [React Server Components](/reference/rsc/server-components).
+دایرکتیوها برای استفاده در [کامپوننت‌های سرور ری‌اکت](/reference/rsc/server-components) هستند.
 
 </RSC>
 
 <Intro>
 
-Directives provide instructions to [bundlers compatible with React Server Components](/learn/start-a-new-react-project#full-stack-frameworks).
+دایرکتیوها دستوراتی را به [باندلرهای سازگار با کامپوننت‌های سرور ری‌اکت](/learn/start-a-new-react-project#full-stack-frameworks) ارائه می‌کنند.
 
 </Intro>
 
 ---
 
-## Source code directives {/*source-code-directives*/}
+## دایرکتیوهای کد منبع {/*source-code-directives*/}
 
-* [`'use client'`](/reference/rsc/use-client) lets you mark what code runs on the client.
-* [`'use server'`](/reference/rsc/use-server) marks server-side functions that can be called from client-side code.
+* [`'use client'`](/reference/rsc/use-client) به شما اجازه می‌دهد کدی را که روی کلاینت اجرا می‌شود، علامت‌گذاری کنید.
+* [`'use server'`](/reference/rsc/use-server) تابع‌های سمت سرور را علامت‌گذاری می‌کند که می‌توانند از کد سمت کلاینت فراخوانی شوند.

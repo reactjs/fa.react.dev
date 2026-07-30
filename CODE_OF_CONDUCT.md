@@ -1,76 +1,48 @@
-# Code of Conduct
+# قوانین رفتاری
 
-## Our Pledge
+## عهد ما
 
-In the interest of fostering an open and welcoming environment, we as
-contributors and maintainers pledge to make participation in our project and
-our community a harassment-free experience for everyone, regardless of age, body
-size, disability, ethnicity, sex characteristics, gender identity and expression,
-level of experience, education, socio-economic status, nationality, personal
-appearance, race, religion, or sexual identity and orientation.
+ما به عنوان مشارکت‌کنندگان و نگه‌دارندگان پروژه، در راستای ایجاد محیطی باز و صمیمی، متعهد می‌شویم که مشارکت در پروژه و جامعه ما برای همه بدون آزار و اذیت باشد، صرف‌نظر از سن، اندازه بدن، ناتوانی، قومیت، ویژگی‌های جنسی، هویت و بیان جنسیتی، سطح تجربه، تحصیلات، وضعیت اقتصادی-اجتماعی، ملیت، ظاهر شخصی، نژاد، دین، یا هویت و گرایش جنسی.
 
-## Our Standards
+## استانداردهای ما
 
-Examples of behavior that contributes to creating a positive environment
-include:
+نمونه‌هایی از رفتارهایی که به ایجاد محیطی مثبت کمک می‌کنند:
 
-* Using welcoming and inclusive language
-* Being respectful of differing viewpoints and experiences
-* Gracefully accepting constructive criticism
-* Focusing on what is best for the community
-* Showing empathy towards other community members
+* استفاده از زبان خوشایند و فراگیر
+* احترام به دیدگاه‌ها و تجربیات متفاوت
+* پذیرش محترمانه انتقاد سازنده
+* تمرکز بر آنچه برای جامعه بهتر است
+* نشان دادن همدلی نسبت به سایر اعضای جامعه
 
-Examples of unacceptable behavior by participants include:
+نمونه‌هایی از رفتارهای غیرقابل قبول توسط شرکت‌کنندگان:
 
-* The use of sexualized language or imagery and unwelcome sexual attention or
-  advances
-* Trolling, insulting/derogatory comments, and personal or political attacks
-* Public or private harassment
-* Publishing others' private information, such as a physical or electronic
-  address, without explicit permission
-* Other conduct which could reasonably be considered inappropriate in a
-  professional setting
+* استفاده از زبان یا تصاویر جنسی و توجه یا پیشنهادهای جنسی ناخواسته
+* ترول، توهین/کامنت‌های تحقیرآمیز، و حملات شخصی یا سیاسی
+* آزار و اذیت عمومی یا خصوصی
+* انتشار اطلاعات خصوصی دیگران، مانند آدرس فیزیکی یا الکترونیکی، بدون اجازه صریح
+* سایر رفتارهایی که به طور معقولانه‌ای در محیط حرفه‌ای نامناسب تلقی می‌شوند
 
-## Our Responsibilities
+## مسئولیت‌های ما
 
-Project maintainers are responsible for clarifying the standards of acceptable
-behavior and are expected to take appropriate and fair corrective action in
-response to any instances of unacceptable behavior.
+نگه‌دارندگان پروژه مسئول شفاف‌سازی استانداردهای رفتار قابل قبول هستند و انتظار می‌رود در پاسخ به هرگونه رفتار غیرقابل قبول، اقدامات اصلاحی مناسب و منصفانه انجام دهند.
 
-Project maintainers have the right and responsibility to remove, edit, or
-reject comments, commits, code, wiki edits, issues, and other contributions
-that are not aligned to this Code of Conduct, or to ban temporarily or
-permanently any contributor for other behaviors that they deem inappropriate,
-threatening, offensive, or harmful.
+نگه‌دارندگان پروژه حق و مسئولیت دارند که نظرات، کامیت‌ها، کد، ویرایش‌های ویکی، issues و سایر مشارکت‌هایی که با این قوانین رفتاری همسو نیستند را حذف، ویرایش یا رد کنند، و یا هر مشارکت‌کننده‌ای را به طور موقت یا دائم برای رفتارهایی که نامناسب، تهدیدآمیز، توهین‌آمیز یا مضر می‌دانند مسدود کنند.
 
-## Scope
+## دامنه
 
-This Code of Conduct applies within all project spaces, and it also applies when
-an individual is representing the project or its community in public spaces.
-Examples of representing a project or community include using an official
-project e-mail address, posting via an official social media account, or acting
-as an appointed representative at an online or offline event. Representation of
-a project may be further defined and clarified by project maintainers.
+این قوانین رفتاری در تمام فضاهای پروژه اعمال می‌شود و همچنین زمانی اعمال می‌شود که یک فرد نماینده پروژه یا جامعه آن در فضاهای عمومی باشد. نمونه‌هایی از نمایندگی یک پروژه یا جامعه شامل استفاده از آدرس ایمیل رسمی پروژه، ارسال از طریق حساب رسمی شبکه اجتماعی، یا عمل به عنوان نماینده منصوب در یک رویداد آنلاین یا آفلاین است. نمایندگی یک پروژه ممکن است توسط نگه‌دارندگان پروژه بیشتر تعریف و شفاف شود.
 
-## Enforcement
+## اجرا
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported by contacting the project team at <opensource-conduct@fb.com>. All
-complaints will be reviewed and investigated and will result in a response that
-is deemed necessary and appropriate to the circumstances. The project team is
-obligated to maintain confidentiality with regard to the reporter of an incident.
-Further details of specific enforcement policies may be posted separately.
+موارد آزار، اذیت یا سایر رفتارهای غیرقابل قبول را می‌توانید از طریق تماس با تیم پروژه به آدرس <opensource-conduct@fb.com> گزارش دهید. تمام شکایات بررسی و بررسی خواهند شد و منجر به پاسخی خواهند شد که برای شرایط لازم و مناسب تلقی می‌شود. تیم پروژه موظف است محرمانگی گزارش‌دهنده یک حادثه را حفظ کند. جزئیات بیشتر سیاست‌های اجرایی خاص ممکن است به طور جداگانه منتشر شود.
 
-Project maintainers who do not follow or enforce the Code of Conduct in good
-faith may face temporary or permanent repercussions as determined by other
-members of the project's leadership.
+نگه‌دارندگان پروژه که این قوانین رفتاری را با حسن نیت دنبال یا اجرا نمی‌کنند، ممکن است با پیامدهای موقت یا دائمی مطابق با تصمیم سایر اعضای رهبری پروژه مواجه شوند.
 
-## Attribution
+## ارجاع
 
-This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 1.4,
-available at https://www.contributor-covenant.org/version/1/4/code-of-conduct.html
+این قوانین رفتاری از [Contributor Covenant][homepage]، نسخه 1.4، الگوبرداری شده است.
+نسخه اصلی در https://www.contributor-covenant.org/version/1/4/code-of-conduct.html موجود است.
 
 [homepage]: https://www.contributor-covenant.org
 
-For answers to common questions about this code of conduct, see
-https://www.contributor-covenant.org/faq
+برای پاسخ به سوالات متداول درباره این قوانین رفتاری، به https://www.contributor-covenant.org/faq مراجعه کنید.

@@ -4,13 +4,13 @@ title: createRef
 
 <Pitfall>
 
-`createRef` is mostly used for [class components.](/reference/react/Component) Function components typically rely on [`useRef`](/reference/react/useRef) instead.
+`createRef` بیشتر برای [کامپوننت‌های کلاسی](/reference/react/Component) استفاده می‌شود. کامپوننت‌های تابعی معمولاً به‌جای آن از [`useRef`](/reference/react/useRef) استفاده می‌کنند.
 
 </Pitfall>
 
 <Intro>
 
-`createRef` creates a [ref](/learn/referencing-values-with-refs) object which can contain arbitrary value.
+`createRef` یک آبجکت [رفرنس](/learn/referencing-values-with-refs) می‌سازد که می‌تواند هر مقدار دلخواهی را در خود نگه دارد.
 
 ```js
 class MyInput extends Component {
@@ -25,11 +25,11 @@ class MyInput extends Component {
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `createRef()` {/*createref*/}
 
-Call `createRef` to declare a [ref](/learn/referencing-values-with-refs) inside a [class component.](/reference/react/Component)
+`createRef` را فراخوانی کنید تا یک [رفرنس](/learn/referencing-values-with-refs) درون یک [کامپوننت کلاسی](/reference/react/Component) تعریف کنید.
 
 ```js
 import { createRef, Component } from 'react';
@@ -40,31 +40,31 @@ class MyComponent extends Component {
   // ...
 ```
 
-[See more examples below.](#usage)
+[نمونه‌های بیشتر را در ادامه ببینید.](#usage)
 
-#### Parameters {/*parameters*/}
+#### پارامترها {/*parameters*/}
 
-`createRef` takes no parameters.
+`createRef` هیچ پارامتری نمی‌گیرد.
 
-#### Returns {/*returns*/}
+#### مقادیر بازگشتی {/*returns*/}
 
-`createRef` returns an object with a single property:
+`createRef` یک آبجکت با یک ویژگی واحد باز می‌گرداند:
 
-* `current`: Initially, it's set to the `null`. You can later set it to something else. If you pass the ref object to React as a `ref` attribute to a JSX node, React will set its `current` property.
+* `current`: در ابتدا، روی `null` تنظیم می‌شود. بعداً می‌توانید آن را به چیز دیگری تنظیم کنید. اگر آبجکت رفرنس را به‌عنوان ویژگی `ref` به یک نُد JSX به ری‌اکت ارسال کنید، ری‌اکت ویژگی `current` آن را تنظیم می‌کند.
 
-#### Caveats {/*caveats*/}
+#### نکات {/*caveats*/}
 
-* `createRef` always returns a *different* object. It's equivalent to writing `{ current: null }` yourself.
-* In a function component, you probably want [`useRef`](/reference/react/useRef) instead which always returns the same object.
-* `const ref = useRef()` is equivalent to `const [ref, _] = useState(() => createRef(null))`.
+* `createRef` همیشه یک آبجکت *متفاوتی* باز می‌گرداند. این معادل است با اینکه خودتان `{ current: null }` را بنویسید.
+* در یک کامپوننت تابعی، احتمالاً به‌جای آن [`useRef`](/reference/react/useRef) را می‌خواهید که همیشه یک آبجکت یکسان را باز می‌گرداند.
+* `const ref = useRef()` معادل `const [ref, _] = useState(() => createRef(null))` است.
 
 ---
 
-## Usage {/*usage*/}
+## استفاده {/*usage*/}
 
-### Declaring a ref in a class component {/*declaring-a-ref-in-a-class-component*/}
+### تعریف یک رفرنس در یک کامپوننت کلاسی {/*declaring-a-ref-in-a-class-component*/}
 
-To declare a ref inside a [class component,](/reference/react/Component) call `createRef` and assign its result to a class field:
+برای تعریف یک رفرنس درون یک [کامپوننت کلاسی،](/reference/react/Component) `createRef` را فراخوانی کنید و نتیجهٔ آن را به یک فیلد کلاس اختصاص دهید:
 
 ```js {4}
 import { Component, createRef } from 'react';
@@ -76,7 +76,7 @@ class Form extends Component {
 }
 ```
 
-If you now pass `ref={this.inputRef}` to an `<input>` in your JSX, React will populate `this.inputRef.current` with the input DOM node. For example, here is how you make a button that focuses the input:
+اکنون اگر `ref={this.inputRef}` را به یک `<input>` در JSX خود ارسال کنید، ری‌اکت `this.inputRef.current` را با نُد DOM ورودی پر می‌کند. به‌عنوان مثال، در اینجا نحوهٔ ساخت دکمه‌ای که روی ورودی تمرکز (focus) می‌کند آمده است:
 
 <Sandpack>
 
@@ -107,17 +107,17 @@ export default class Form extends Component {
 
 <Pitfall>
 
-`createRef` is mostly used for [class components.](/reference/react/Component) Function components typically rely on [`useRef`](/reference/react/useRef) instead.
+`createRef` بیشتر برای [کامپوننت‌های کلاسی](/reference/react/Component) استفاده می‌شود. کامپوننت‌های تابعی معمولاً به‌جای آن از [`useRef`](/reference/react/useRef) استفاده می‌کنند.
 
 </Pitfall>
 
 ---
 
-## Alternatives {/*alternatives*/}
+## جایگزین‌ها {/*alternatives*/}
 
-### Migrating from a class with `createRef` to a function with `useRef` {/*migrating-from-a-class-with-createref-to-a-function-with-useref*/}
+### مهاجرت از یک کلاس با `createRef` به یک تابع با `useRef` {/*migrating-from-a-class-with-createref-to-a-function-with-useref*/}
 
-We recommend using function components instead of [class components](/reference/react/Component) in new code. If you have some existing class components using `createRef`, here is how you can convert them. This is the original code:
+پیشنهاد می‌کنیم در کدهای جدید به‌جای [کامپوننت‌های کلاسی](/reference/react/Component) از کامپوننت‌های تابعی استفاده کنید. اگر کامپوننت‌های کلاسی موجودی دارید که از `createRef` استفاده می‌کنند، در اینجا نحوهٔ تبدیل آن‌ها آمده است. این کد اصلی است:
 
 <Sandpack>
 
@@ -146,7 +146,7 @@ export default class Form extends Component {
 
 </Sandpack>
 
-When you [convert this component from a class to a function,](/reference/react/Component#alternatives) replace calls to `createRef` with calls to [`useRef`:](/reference/react/useRef)
+وقتی [این کامپوننت را از کلاس به تابع تبدیل می‌کنید،](/reference/react/Component#alternatives) فراخوانی‌های `createRef` را با فراخوانی‌های [`useRef`](/reference/react/useRef) جایگزین کنید:
 
 <Sandpack>
 

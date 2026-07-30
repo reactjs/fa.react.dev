@@ -4,7 +4,7 @@ title: useContext
 
 <Intro>
 
-`useContext` is a React Hook that lets you read and subscribe to [context](/learn/passing-data-deeply-with-context) from your component.
+`useContext` یک هوک ری‌اکت است که به شما اجازه می‌دهد [کانتکست](/learn/passing-data-deeply-with-context) را از کامپوننت خود بخوانید و در آن اشتراک کنید.
 
 ```js
 const value = useContext(SomeContext)
@@ -16,11 +16,11 @@ const value = useContext(SomeContext)
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `useContext(SomeContext)` {/*usecontext*/}
 
-Call `useContext` at the top level of your component to read and subscribe to [context.](/learn/passing-data-deeply-with-context)
+برای خواندن و اشتراک در [کانتکست](/learn/passing-data-deeply-with-context)، `useContext` را در سطح بالای کامپوننت خود فراخوانی کنید.
 
 ```js
 import { useContext } from 'react';
@@ -30,30 +30,30 @@ function MyComponent() {
   // ...
 ```
 
-[See more examples below.](#usage)
+[مثال‌های بیشتری را در ادامه ببینید.](#usage)
 
-#### Parameters {/*parameters*/}
+#### پارامترها {/*parameters*/}
 
-* `SomeContext`: The context that you've previously created with [`createContext`](/reference/react/createContext). The context itself does not hold the information, it only represents the kind of information you can provide or read from components.
+* `SomeContext`: کانتکستی که قبلاً با [`createContext`](/reference/react/createContext) ایجاد کرده‌اید. خود کانتکست اطلاعات را نگه نمی‌دارد، فقط نوع اطلاعاتی را که می‌توانید ارائه یا از کامپوننت‌ها بخوانید نشان می‌دهد.
 
-#### Returns {/*returns*/}
+#### مقدار بازگشتی {/*returns*/}
 
-`useContext` returns the context value for the calling component. It is determined as the `value` passed to the closest `SomeContext` above the calling component in the tree. If there is no such provider, then the returned value will be the `defaultValue` you have passed to [`createContext`](/reference/react/createContext) for that context. The returned value is always up-to-date. React automatically re-renders components that read some context if it changes.
+`useContext` مقدار کانتکست را برای کامپوننت فراخوانی‌کننده برمی‌گرداند. این مقدار به‌عنوان `value`ای که به نزدیک‌ترین `SomeContext` بالای کامپوننت فراخوانی‌کننده در درخت ارسال شده تعیین می‌شود. اگر چنین providerای وجود نداشته باشد، مقدار بازگشتی `defaultValue`ای خواهد بود که برای آن کانتکست به [`createContext`](/reference/react/createContext) ارسال کرده‌اید. مقدار بازگشتی همیشه به‌روز است. ری‌اکت به‌طور خودکار کامپوننت‌هایی که مقداری از کانتکست را می‌خوانند، اگر تغییر کند، دوباره رندر می‌کند.
 
-#### Caveats {/*caveats*/}
+#### نکات {/*caveats*/}
 
-* `useContext()` call in a component is not affected by providers returned from the *same* component. The corresponding `<Context>` **needs to be *above*** the component doing the `useContext()` call.
-* React **automatically re-renders** all the children that use a particular context starting from the provider that receives a different `value`. The previous and the next values are compared with the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. Skipping re-renders with [`memo`](/reference/react/memo) does not prevent the children receiving fresh context values.
-* If your build system produces duplicates modules in the output (which can happen with symlinks), this can break context. Passing something via context only works if `SomeContext` that you use to provide context and `SomeContext` that you use to read it are ***exactly* the same object**, as determined by a `===` comparison.
+* فراخوانی `useContext()` در یک کامپوننت تحت تأثیر provider‌هایی که از *همان* کامپوننت برگردانده شده‌اند قرار نمی‌گیرد. `<Context>` مربوطه **باید *بالای*** کامپوننتی باشد که `useContext()` را فراخوانی می‌کند.
+* ری‌اکت **به‌طور خودکار رندر مجدد می‌کند** تمام فرزندانی که از یک کانتکست خاص استفاده می‌کنند را، از provider‌ای که `value` متفاوتی دریافت کرده شروع می‌کند. مقادیر قبلی و بعدی با مقایسهٔ [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) مقایسه می‌شوند. رد کردن رندرهای مجدد با [`memo`](/reference/react/memo) مانع از دریافت مقادیر تازهٔ کانتکست توسط فرزندان نمی‌شود.
+* اگر سیستم build شما ماژول‌های تکراری در خروجی تولید می‌کند (که می‌تواند با symlinkها رخ دهد)، این می‌تواند کانتکست را خراب کند. ارسال چیزی از طریق کانتکست فقط در صورتی کار می‌کند که `SomeContext`‌ای که برای ارائهٔ کانتکست استفاده می‌کنید و `SomeContext`‌ای که برای خواندن آن استفاده می‌کنید ***دقیقاً* یک شیء یکسان** باشند، همان‌طور که با مقایسهٔ `===` تعیین می‌شود.
 
 ---
 
-## Usage {/*usage*/}
+## کاربرد {/*usage*/}
 
 
-### Passing data deeply into the tree {/*passing-data-deeply-into-the-tree*/}
+### ارسال داده به عمق درخت {/*passing-data-deeply-into-the-tree*/}
 
-Call `useContext` at the top level of your component to read and subscribe to [context.](/learn/passing-data-deeply-with-context)
+برای خواندن و اشتراک در [کانتکست](/learn/passing-data-deeply-with-context)، `useContext` را در سطح بالای کامپوننت خود فراخوانی کنید.
 
 ```js [[2, 4, "theme"], [1, 4, "ThemeContext"]]
 import { useContext } from 'react';
@@ -63,9 +63,9 @@ function Button() {
   // ... 
 ```
 
-`useContext` returns the <CodeStep step={2}>context value</CodeStep> for the <CodeStep step={1}>context</CodeStep> you passed. To determine the context value, React searches the component tree and finds **the closest context provider above** for that particular context.
+`useContext` <CodeStep step={2}>مقدار کانتکست</CodeStep> را برای <CodeStep step={1}>کانتکست</CodeStep>‌ای که ارسال کرده‌اید برمی‌گرداند. برای تعیین مقدار کانتکست، ری‌اکت درخت کامپوننت را جستجو می‌کند و **نزدیک‌ترین provider کانتکست در بالا** را برای آن کانتکست خاص پیدا می‌کند.
 
-To pass context to a `Button`, wrap it or one of its parent components into the corresponding context provider:
+برای ارسال کانتکست به یک `Button`، آن را یا یکی از کامپوننت‌های والدش را در provider کانتکست مربوطه بپیچید:
 
 ```js [[1, 3, "ThemeContext"], [2, 3, "\\"dark\\""], [1, 5, "ThemeContext"]]
 function MyPage() {
@@ -81,11 +81,11 @@ function Form() {
 }
 ```
 
-It doesn't matter how many layers of components there are between the provider and the `Button`. When a `Button` *anywhere* inside of `Form` calls `useContext(ThemeContext)`, it will receive `"dark"` as the value.
+مهم نیست چند لایه کامپوننت بین provider و `Button` وجود دارد. وقتی یک `Button` در *هر کجا* درون `Form`، `useContext(ThemeContext)` را فراخوانی می‌کند، `"dark"` را به‌عنوان مقدار دریافت خواهد کرد.
 
 <Pitfall>
 
-`useContext()` always looks for the closest provider *above* the component that calls it. It searches upwards and **does not** consider providers in the component from which you're calling `useContext()`.
+`useContext()` همیشه به دنبال نزدیک‌ترین provider *بالای* کامپوننتی که آن را فراخوانی می‌کند می‌گردد. این به سمت بالا جستجو می‌کند و provider‌ها در کامپوننتی که `useContext()` را از آن فراخوانی می‌کنید **در نظر نمی‌گیرد**.
 
 </Pitfall>
 
@@ -175,9 +175,9 @@ function Button({ children }) {
 
 ---
 
-### Updating data passed via context {/*updating-data-passed-via-context*/}
+### به‌روزرسانی دادهٔ ارسال‌شده از طریق کانتکست {/*updating-data-passed-via-context*/}
 
-Often, you'll want the context to change over time. To update context, combine it with [state.](/reference/react/useState) Declare a state variable in the parent component, and pass the current state down as the <CodeStep step={2}>context value</CodeStep> to the provider.
+اغلب، می‌خواهید کانتکست در طول زمان تغییر کند. برای به‌روزرسانی کانتکست، آن را با [استیت](/reference/react/useState) ترکیب کنید. یک متغیر استیت در کامپوننت والد تعریف کنید، و استیت کنونی را به‌عنوان <CodeStep step={2}>مقدار کانتکست</CodeStep> به provider ارسال کنید.
 
 ```js {2} [[1, 4, "ThemeContext"], [2, 4, "theme"], [1, 11, "ThemeContext"]]
 function MyPage() {
@@ -195,13 +195,13 @@ function MyPage() {
 }
 ```
 
-Now any `Button` inside of the provider will receive the current `theme` value. If you call `setTheme` to update the `theme` value that you pass to the provider, all `Button` components will re-render with the new `'light'` value.
+اکنون هر `Button`‌ای درون provider مقدار `theme` کنونی را دریافت خواهد کرد. اگر `setTheme` را برای به‌روزرسانی مقدار `theme`‌ای که به provider ارسال می‌کنید فراخوانی کنید، تمام کامپوننت‌های `Button` با مقدار جدید `'light'` رندر مجدد خواهند شد.
 
 <Recipes titleText="Examples of updating context" titleId="examples-basic">
 
-#### Updating a value via context {/*updating-a-value-via-context*/}
+#### به‌روزرسانی یک مقدار از طریق کانتکست {/*updating-a-value-via-context*/}
 
-In this example, the `MyApp` component holds a state variable which is then passed to the `ThemeContext` provider. Checking the "Dark mode" checkbox updates the state. Changing the provided value re-renders all the components using that context.
+در این مثال، کامپوننت `MyApp` یک متغیر استیت را نگه می‌دارد که سپس به provider `ThemeContext` ارسال می‌شود. تیک زدن چک‌باکس «Dark mode» استیت را به‌روز می‌کند. تغییر مقدار ارائه‌شده، تمام کامپوننت‌هایی که از آن کانتکست استفاده می‌کنند را دوباره رندر می‌کند.
 
 <Sandpack>
 
@@ -299,13 +299,13 @@ function Button({ children }) {
 
 </Sandpack>
 
-Note that `value="dark"` passes the `"dark"` string, but `value={theme}` passes the value of the JavaScript `theme` variable with [JSX curly braces.](/learn/javascript-in-jsx-with-curly-braces) Curly braces also let you pass context values that aren't strings.
+توجه کنید که `value="dark"` رشتهٔ `"dark"` را ارسال می‌کند، اما `value={theme}` مقدار متغیر `theme` جاوااسکریپتی را با [آکولادهای JSX](/learn/javascript-in-jsx-with-curly-braces) ارسال می‌کند. آکولادها همچنین به شما اجازه می‌دهند مقادیر کانتکستی که رشته نیستند ارسال کنید.
 
 <Solution />
 
-#### Updating an object via context {/*updating-an-object-via-context*/}
+#### به‌روزرسانی یک شیء از طریق کانتکست {/*updating-an-object-via-context*/}
 
-In this example, there is a `currentUser` state variable which holds an object. You combine `{ currentUser, setCurrentUser }` into a single object and pass it down through the context inside the `value={}`. This lets any component below, such as `LoginButton`, read both `currentUser` and `setCurrentUser`, and then call `setCurrentUser` when needed.
+در این مثال، یک متغیر استیت `currentUser` وجود دارد که یک شیء را نگه می‌دارد. شما `{ currentUser, setCurrentUser }` را در یک شیء واحد ترکیب می‌کنید و آن را از طریق کانتکست درون `value={}` ارسال می‌کنید. این به هر کامپوننت زیر، مانند `LoginButton`، اجازه می‌دهد هم `currentUser` و هم `setCurrentUser` را بخواند، و سپس در صورت نیاز `setCurrentUser` را فراخوانی کند.
 
 <Sandpack>
 
@@ -395,9 +395,9 @@ label {
 
 <Solution />
 
-#### Multiple contexts {/*multiple-contexts*/}
+#### کانتکست‌های متعدد {/*multiple-contexts*/}
 
-In this example, there are two independent contexts. `ThemeContext` provides the current theme, which is a string, while `CurrentUserContext` holds the object representing the current user.
+در این مثال، دو کانتکست مستقل وجود دارد. `ThemeContext` تم کنونی را که یک رشته است ارائه می‌کند، در حالی که `CurrentUserContext` شیءای که کاربر کنونی را نشان می‌دهد نگه می‌دارد.
 
 <Sandpack>
 
@@ -562,9 +562,9 @@ label {
 
 <Solution />
 
-#### Extracting providers to a component {/*extracting-providers-to-a-component*/}
+#### استخراج providerها به یک کامپوننت {/*extracting-providers-to-a-component*/}
 
-As your app grows, it is expected that you'll have a "pyramid" of contexts closer to the root of your app. There is nothing wrong with that. However, if you dislike the nesting aesthetically, you can extract the providers into a single component. In this example, `MyProviders` hides the "plumbing" and renders the children passed to it inside the necessary providers. Note that the `theme` and `setTheme` state is needed in `MyApp` itself, so `MyApp` still owns that piece of the state.
+با رشد برنامهٔ شما، انتظار می‌رود که یک «هرم» از کانتکست‌ها نزدیک به ریشهٔ برنامه‌تان داشته باشید. هیچ اشکالی در این وجود ندارد. با این حال، اگر از نظر زیبایی‌شناختی از تودرتو بودن خوشتان نمی‌آید، می‌توانید providerها را در یک کامپوننت واحد استخراج کنید. در این مثال، `MyProviders` «لوله‌کشی» را پنهان می‌کند و فرزندان ارسال‌شده به آن را درون providerهای لازم رندر می‌کند. توجه کنید که استیت `theme` و `setTheme` در خود `MyApp` نیاز است، بنابراین `MyApp` همچنان مالک آن قطعه از استیت است.
 
 <Sandpack>
 
@@ -737,11 +737,11 @@ label {
 
 <Solution />
 
-#### Scaling up with context and a reducer {/*scaling-up-with-context-and-a-reducer*/}
+#### مقیاس‌پذیری با کانتکست و یک ردیوسر {/*scaling-up-with-context-and-a-reducer*/}
 
-In larger apps, it is common to combine context with a [reducer](/reference/react/useReducer) to extract the logic related to some state out of components. In this example, all the "wiring" is hidden in the `TasksContext.js`, which contains a reducer and two separate contexts.
+در برنامه‌های بزرگ‌تر، رایج است که کانتکست را با یک [ردیوسر](/reference/react/useReducer) ترکیب کنید تا منطق مرتبط با استیت از کامپوننت‌ها خارج شود. در این مثال، تمام «اتصالات» در `TasksContext.js` پنهان شده‌اند، که شامل یک ردیوسر و دو کانتکست مجزا است.
 
-Read a [full walkthrough](/learn/scaling-up-with-reducer-and-context) of this example.
+یک [راهنمای کامل](/learn/scaling-up-with-reducer-and-context) از این مثال را بخوانید.
 
 <Sandpack>
 
@@ -947,25 +947,25 @@ ul, li { margin: 0; padding: 0; }
 
 ---
 
-### Specifying a fallback default value {/*specifying-a-fallback-default-value*/}
+### تعیین یک مقدار پیش‌فرض جایگزین {/*specifying-a-fallback-default-value*/}
 
-If React can't find any providers of that particular <CodeStep step={1}>context</CodeStep> in the parent tree, the context value returned by `useContext()` will be equal to the <CodeStep step={3}>default value</CodeStep> that you specified when you [created that context](/reference/react/createContext):
+اگر ری‌اکت نتواند هیچ provider‌ای از آن <CodeStep step={1}>کانتکست</CodeStep> خاص در درخت والد پیدا کند، مقدار کانتکست برگردانده‌شده توسط `useContext()` با <CodeStep step={3}>مقدار پیش‌فرض</CodeStep>‌ای که هنگام [ایجاد آن کانتکست](/reference/react/createContext) مشخص کرده‌اید برابر خواهد بود:
 
 ```js [[1, 1, "ThemeContext"], [3, 1, "null"]]
 const ThemeContext = createContext(null);
 ```
 
-The default value **never changes**. If you want to update context, use it with state as [described above.](#updating-data-passed-via-context)
+مقدار پیش‌فرض **هرگز تغییر نمی‌کند**. اگر می‌خواهید کانتکست را به‌روز کنید، آن را با استیت همان‌طور که [در بالا توضیح داده شد](#updating-data-passed-via-context) استفاده کنید.
 
-Often, instead of `null`, there is some more meaningful value you can use as a default, for example:
+اغلب، به جای `null`، مقدار معنادارتری وجود دارد که می‌توانید به‌عنوان پیش‌فرض استفاده کنید، مثلاً:
 
 ```js [[1, 1, "ThemeContext"], [3, 1, "light"]]
 const ThemeContext = createContext('light');
 ```
 
-This way, if you accidentally render some component without a corresponding provider, it won't break. This also helps your components work well in a test environment without setting up a lot of providers in the tests.
+به این ترتیب، اگر به‌طور تصادفی کامپوننتی را بدون provider مربوطه رندر کنید، خراب نمی‌شود. این همچنین به کامپوننت‌های شما کمک می‌کند تا در محیط تست بدون راه‌اندازی providerهای زیادی در تست‌ها خوب کار کنند.
 
-In the example below, the "Toggle theme" button is always light because it's **outside any theme context provider** and the default context theme value is `'light'`. Try editing the default theme to be `'dark'`.
+در مثال زیر، دکمهٔ «Toggle theme» همیشه روشن است زیرا **بیرون از هر provider کانتکست تمی** است و مقدار تم پیش‌فرض کانتکست `'light'` است. مقدار تم پیش‌فرض را به `'dark'` ویرایش کنید.
 
 <Sandpack>
 
@@ -1062,9 +1062,9 @@ function Button({ children, onClick }) {
 
 ---
 
-### Overriding context for a part of the tree {/*overriding-context-for-a-part-of-the-tree*/}
+### بازنویسی کانتکست برای بخشی از درخت {/*overriding-context-for-a-part-of-the-tree*/}
 
-You can override the context for a part of the tree by wrapping that part in a provider with a different value.
+می‌توانید کانتکست را برای بخشی از درخت با پیچیدن آن بخش در یک provider با مقدار متفاوت بازنویسی کنید.
 
 ```js {3,5}
 <ThemeContext value="dark">
@@ -1076,13 +1076,13 @@ You can override the context for a part of the tree by wrapping that part in a p
 </ThemeContext>
 ```
 
-You can nest and override providers as many times as you need.
+می‌توانید providerها را به هر تعداد که نیاز دارید تودرتو و بازنویسی کنید.
 
 <Recipes titleText="Examples of overriding context">
 
-#### Overriding a theme {/*overriding-a-theme*/}
+#### بازنویسی یک تم {/*overriding-a-theme*/}
 
-Here, the button *inside* the `Footer` receives a different context value (`"light"`) than the buttons outside (`"dark"`).
+در اینجا، دکمهٔ *درون* `Footer` مقدار کانتکست متفاوتی (`"light"`) نسبت به دکمه‌های بیرون (`"dark"`) دریافت می‌کند.
 
 <Sandpack>
 
@@ -1186,11 +1186,11 @@ footer {
 
 <Solution />
 
-#### Automatically nested headings {/*automatically-nested-headings*/}
+#### عناوین تودرتو به‌طور خودکار {/*automatically-nested-headings*/}
 
-You can "accumulate" information when you nest context providers. In this example, the `Section` component keeps track of the `LevelContext` which specifies the depth of the section nesting. It reads the `LevelContext` from the parent section, and provides the `LevelContext` number increased by one to its children. As a result, the `Heading` component can automatically decide which of the `<h1>`, `<h2>`, `<h3>`, ..., tags to use based on how many `Section` components it is nested inside of.
+می‌توانید هنگام تودرتو کردن providerهای کانتکست، اطلاعات را «انباشته» کنید. در این مثال، کامپوننت `Section` کانتکست `LevelContext` را که عمق تودرتوی بخش را مشخص می‌کند پیگیری می‌کند. این کانتکست `LevelContext` را از بخش والد می‌خواند، و `LevelContext` را با عددی یک بیشتر به فرزندانش ارائه می‌دهد. در نتیجه، کامپوننت `Heading` می‌تواند به‌طور خودکار بر اساس تعداد کامپوننت‌های `Section` که درون آن‌ها تودرتو شده تصمیم بگیرد که از کدام یک از تگ‌های `<h1>`، `<h2>`، `<h3>`، ... استفاده کند.
 
-Read a [detailed walkthrough](/learn/passing-data-deeply-with-context) of this example.
+یک [راهنمای دقیق](/learn/passing-data-deeply-with-context) از این مثال را بخوانید.
 
 <Sandpack>
 
@@ -1288,9 +1288,9 @@ export const LevelContext = createContext(0);
 
 ---
 
-### Optimizing re-renders when passing objects and functions {/*optimizing-re-renders-when-passing-objects-and-functions*/}
+### بهینه‌سازی رندرهای مجدد هنگام ارسال اشیاء و توابع {/*optimizing-re-renders-when-passing-objects-and-functions*/}
 
-You can pass any values via context, including objects and functions.
+می‌توانید هر مقداری را از طریق کانتکست ارسال کنید، از جمله اشیاء و توابع.
 
 ```js [[2, 10, "{ currentUser, login }"]] 
 function MyApp() {
@@ -1309,9 +1309,9 @@ function MyApp() {
 }
 ```
 
-Here, the <CodeStep step={2}>context value</CodeStep> is a JavaScript object with two properties, one of which is a function. Whenever `MyApp` re-renders (for example, on a route update), this will be a *different* object pointing at a *different* function, so React will also have to re-render all components deep in the tree that call `useContext(AuthContext)`.
+در اینجا، <CodeStep step={2}>مقدار کانتکست</CodeStep> یک شیء جاوااسکریپتی با دو ویژگی است که یکی از آن‌ها یک تابع است. هر بار که `MyApp` دوباره رندر می‌شود (مثلاً هنگام به‌روزرسانی مسیر)، این یک شیء *متفاوت* خواهد بود که به یک تابع *متفاوت* اشاره می‌کند، بنابراین ری‌اکت همچنین باید تمام کامپوننت‌های عمیق در درخت که `useContext(AuthContext)` را فراخوانی می‌کنند دوباره رندر کند.
 
-In smaller apps, this is not a problem. However, there is no need to re-render them if the underlying data, like `currentUser`, has not changed. To help React take advantage of that fact, you may wrap the `login` function with [`useCallback`](/reference/react/useCallback) and wrap the object creation into [`useMemo`](/reference/react/useMemo). This is a performance optimization:
+در برنامه‌های کوچک‌تر، این مشکل ایجاد نمی‌کند. با این حال، اگر داده‌های زیربنایی، مانند `currentUser`، تغییر نکرده است، نیازی به رندر مجدد آن‌ها نیست. برای کمک به ری‌اکت در بهره‌گیری از این واقعیت، می‌توانید تابع `login` را با [`useCallback`](/reference/react/useCallback) بپیچید و ایجاد شیء را در [`useMemo`](/reference/react/useMemo) بپیچید. این یک بهینه‌سازی عملکرد است:
 
 ```js {6,9,11,14,17}
 import { useCallback, useMemo } from 'react';
@@ -1337,25 +1337,25 @@ function MyApp() {
 }
 ```
 
-As a result of this change, even if `MyApp` needs to re-render, the components calling `useContext(AuthContext)` won't need to re-render unless `currentUser` has changed.
+در نتیجهٔ این تغییر، حتی اگر `MyApp` نیاز به رندر مجدد داشته باشد، کامپوننت‌هایی که `useContext(AuthContext)` را فراخوانی می‌کنند، مگر اینکه `currentUser` تغییر کرده باشد، نیازی به رندر مجدد نخواهند داشت.
 
-Read more about [`useMemo`](/reference/react/useMemo#skipping-re-rendering-of-components) and [`useCallback`.](/reference/react/useCallback#skipping-re-rendering-of-components)
+دربارهٔ [`useMemo`](/reference/react/useMemo#skipping-re-rendering-of-components) و [`useCallback`](/reference/react/useCallback#skipping-re-rendering-of-components) بیشتر بخوانید.
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-### My component doesn't see the value from my provider {/*my-component-doesnt-see-the-value-from-my-provider*/}
+### کامپوننت من مقدار provider مرا نمی‌بیند {/*my-component-doesnt-see-the-value-from-my-provider*/}
 
-There are a few common ways that this can happen:
+چند راه رایج وجود دارد که این می‌تواند رخ دهد:
 
-1. You're rendering `<SomeContext>` in the same component (or below) as where you're calling `useContext()`. Move `<SomeContext>` *above and outside* the component calling `useContext()`.
-2. You may have forgotten to wrap your component with `<SomeContext>`, or you might have put it in a different part of the tree than you thought. Check whether the hierarchy is right using [React DevTools.](/learn/react-developer-tools)
-3. You might be running into some build issue with your tooling that causes `SomeContext` as seen from the providing component and `SomeContext` as seen by the reading component to be two different objects. This can happen if you use symlinks, for example. You can verify this by assigning them to globals like `window.SomeContext1` and `window.SomeContext2` and then checking whether `window.SomeContext1 === window.SomeContext2` in the console. If they're not the same, fix that issue on the build tool level.
+1. شما `<SomeContext>` را در همان کامپوننت (یا پایین‌تر)‌ای رندر می‌کنید که `useContext()` را فراخوانی می‌کنید. `<SomeContext>` را *بالا و بیرون* کامپوننتی که `useContext()` را فراخوانی می‌کند منتقل کنید.
+2. ممکن است فراموش کرده باشید کامپوننت خود را با `<SomeContext>` بپیچید، یا ممکن است آن را در بخش متفاوتی از درخت نسبت به آنچه فکر می‌کردید قرار داده باشید. با استفاده از [React DevTools](/learn/react-developer-tools) بررسی کنید که آیا سلسله‌مراتب درست است.
+3. ممکن است با مشکل build در ابزار خود مواجه شوید که باعث می‌شود `SomeContext`‌ای که از کامپوننت ارائه‌دهنده دیده می‌شود و `SomeContext`‌ای که توسط کامپوننت خواننده دیده می‌شود دو شیء متفاوت باشند. این می‌تواند مثلاً اگر از symlinkها استفاده می‌کنید رخ دهد. می‌توانید این را با اختصاص دادن آن‌ها به globalهایی مانند `window.SomeContext1` و `window.SomeContext2` و سپس بررسی اینکه `window.SomeContext1 === window.SomeContext2` در کنسول تأیید کنید. اگر یکسان نیستند، آن مشکل را در سطح ابزار build برطرف کنید.
 
-### I am always getting `undefined` from my context although the default value is different {/*i-am-always-getting-undefined-from-my-context-although-the-default-value-is-different*/}
+### من همیشه `undefined` از کانتکستم دریافت می‌کنم با اینکه مقدار پیش‌فرض متفاوت است {/*i-am-always-getting-undefined-from-my-context-although-the-default-value-is-different*/}
 
-You might have a provider without a `value` in the tree:
+ممکن است یک provider بدون `value` در درخت داشته باشید:
 
 ```js {1,2}
 // 🚩 Doesn't work: no value prop
@@ -1364,9 +1364,9 @@ You might have a provider without a `value` in the tree:
 </ThemeContext>
 ```
 
-If you forget to specify `value`, it's like passing `value={undefined}`.
+اگر فراموش کنید `value` را مشخص کنید، مانند ارسال `value={undefined}` است.
 
-You may have also mistakingly used a different prop name by mistake:
+همچنین ممکن است به اشتباه از یک نام پراپ متفاوت به اشتباه استفاده کرده باشید:
 
 ```js {1,2}
 // 🚩 Doesn't work: prop should be called "value"
@@ -1375,7 +1375,7 @@ You may have also mistakingly used a different prop name by mistake:
 </ThemeContext>
 ```
 
-In both of these cases you should see a warning from React in the console. To fix them, call the prop `value`:
+در هر دو مورد باید یک هشدار از ری‌اکت در کنسول ببینید. برای رفع آن‌ها، پراپ را `value` بنامید:
 
 ```js {1,2}
 // ✅ Passing the value prop
@@ -1384,4 +1384,4 @@ In both of these cases you should see a warning from React in the console. To fi
 </ThemeContext>
 ```
 
-Note that the [default value from your `createContext(defaultValue)` call](#specifying-a-fallback-default-value) is only used **if there is no matching provider above at all.** If there is a `<SomeContext value={undefined}>` component somewhere in the parent tree, the component calling `useContext(SomeContext)` *will* receive `undefined` as the context value.
+توجه کنید که [مقدار پیش‌فرض از فراخوانی `createContext(defaultValue)` شما](#specifying-a-fallback-default-value) فقط **اگر هیچ provider منطبقی در بالا وجود نداشته باشد** استفاده می‌شود. اگر کامپوننت `<SomeContext value={undefined}>`‌ای در جایی از درخت والد وجود داشته باشد، کامپوننتی که `useContext(SomeContext)` را فراخوانی می‌کند `undefined` را *به‌عنوان* مقدار کانتکست دریافت خواهد کرد.

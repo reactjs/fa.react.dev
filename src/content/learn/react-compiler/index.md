@@ -1,33 +1,32 @@
 ---
-title: React Compiler
+title: کامپایلر ری‌اکت
 ---
 
-## Introduction {/*introduction*/}
+## مقدمه {/*introduction*/}
 
-Learn [what React Compiler does](/learn/react-compiler/introduction) and how it automatically optimizes your React application by handling memoization for you, eliminating the need for manual `useMemo`, `useCallback`, and `React.memo`.
+یاد بگیرید [کامپایلر ری‌اکت چه کاری انجام می‌دهد](/learn/react-compiler/introduction) و چگونه با انجام مموری‌زیشن به‌طور خودکار، اپلیکیشن ری‌اکت شما را بهینه می‌کند و نیاز به `useMemo`، `useCallback` و `React.memo` دستی را از بین می‌برد.
 
-## Installation {/*installation*/}
+## نصب {/*installation*/}
 
-Get started with [installing React Compiler](/learn/react-compiler/installation) and learn how to configure it with your build tools.
+با [نصب کامپایلر ری‌اکت](/learn/react-compiler/installation) شروع کنید و یاد بگیرید چگونه آن را با ابزارهای بیلد خود پیکربندی کنید.
 
 
-## Incremental Adoption {/*incremental-adoption*/}
+## اتخاذ تدریجی {/*incremental-adoption*/}
 
-Learn [strategies for gradually adopting React Compiler](/learn/react-compiler/incremental-adoption) in your existing codebase if you're not ready to enable it everywhere yet.
+اگر هنوز آماده نیستید که آن را همه‌جا فعال کنید، [استراتژی‌های اتخاذ تدریجی کامپایلر ری‌اکت](/learn/react-compiler/incremental-adoption) را در کدبیس موجود خود یاد بگیرید.
 
-## Debugging and Troubleshooting {/*debugging-and-troubleshooting*/}
+## دیباگ و رفع اشکال {/*debugging-and-troubleshooting*/}
 
-When things don't work as expected, use our [debugging guide](/learn/react-compiler/debugging) to understand the difference between compiler errors and runtime issues, identify common breaking patterns, and follow a systematic debugging workflow.
+وقتی چیزها همان‌طور که انتظار دارید کار نمی‌کنند، از [راهنمای دیباگ](/learn/react-compiler/debugging) ما استفاده کنید تا تفاوت بین خطاهای کامپایلر و مشکلات زمان اجرا را درک کنید، الگوهای رایجی که باعث شکست می‌شوند را شناسایی کنید و یک گردش‌کار دیباگ سیستماتیک را دنبال کنید.
 
-## Configuration and Reference {/*configuration-and-reference*/}
+## پیکربندی و مرجع {/*configuration-and-reference*/}
 
-For detailed configuration options and API reference:
+برای گزینه‌های پیکربندی دقیق و مرجع API:
 
-- [Configuration Options](/reference/react-compiler/configuration) - All compiler configuration options including React version compatibility
-- [Directives](/reference/react-compiler/directives) - Function-level compilation control
-- [Compiling Libraries](/reference/react-compiler/compiling-libraries) - Shipping pre-compiled libraries
+- [گزینه‌های پیکربندی](/reference/react-compiler/configuration) - همهٔ گزینه‌های پیکربندی کامپایلر از جمله سازگاری با نسخه‌های ری‌اکت
+- [دایرکتیوها](/reference/react-compiler/directives) - کنترل کامپایل در سطح تابع
+- [کامپایل کتابخانه‌ها](/reference/react-compiler/compiling-libraries) - انتشار کتابخانه‌های از پیش کامپایل‌شده
 
-## Additional resources {/*additional-resources*/}
+## منابع اضافی {/*additional-resources*/}
 
-In addition to these docs, we recommend checking the [React Compiler Working Group](https://github.com/reactwg/react-compiler) for additional information and discussion about the compiler.
-
+علاوه بر این مستندات، پیشنهاد می‌کنیم [گروه کاری کامپایلر ری‌اکت](https://github.com/reactwg/react-compiler) را برای اطلاعات بیشتر و بحث پیرامون کامپایلر بررسی کنید.

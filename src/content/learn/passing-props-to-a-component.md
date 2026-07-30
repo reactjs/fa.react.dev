@@ -1,26 +1,26 @@
 ---
-title: Passing Props to a Component
+title: پاس‌دادن پراپس‌ها به یک کامپوننت
 ---
 
 <Intro>
 
-React components use *props* to communicate with each other. Every parent component can pass some information to its child components by giving them props. Props might remind you of HTML attributes, but you can pass any JavaScript value through them, including objects, arrays, and functions.
+کامپوننت‌های ری‌اکت برای ارتباط با یکدیگر از *پراپس‌ها* استفاده می‌کنند. هر کامپوننت والد می‌تواند با دادن پراپس به کامپوننت‌های فرزند خود، اطلاعاتی را به آن‌ها منتقل کند. شاید پراپس‌ها شما را به ویژگی‌های HTML یادآوری کنند، اما می‌توانید هر مقدار جاوااسکریپتی را از طریق آن‌ها منتقل کنید، از جمله اشیاء، آرایه‌ها و توابع.
 
 </Intro>
 
 <YouWillLearn>
 
-* How to pass props to a component
-* How to read props from a component
-* How to specify default values for props
-* How to pass some JSX to a component
-* How props change over time
+* چگونه پراپس‌ها را به یک کامپوننت پاس دهید
+* چگونه پراپس‌ها را از یک کامپوننت بخوانید
+* چگونه مقادیر پیش‌فرض برای پراپس‌ها مشخص کنید
+* چگونه مقداری JSX را به یک کامپوننت پاس دهید
+* چگونه پراپس‌ها در طول زمان تغییر می‌کنند
 
 </YouWillLearn>
 
-## Familiar props {/*familiar-props*/}
+## پراپس‌های آشنا {/*familiar-props*/}
 
-Props are the information that you pass to a JSX tag. For example, `className`, `src`, `alt`, `width`, and `height` are some of the props you can pass to an `<img>`:
+پراپس‌ها اطلاعاتی هستند که شما به یک تگ JSX پاس می‌دهید. برای مثال، `className`، `src`، `alt`، `width` و `height` برخی از پراپس‌هایی هستند که می‌توانید به یک `<img>` پاس دهید:
 
 <Sandpack>
 
@@ -51,11 +51,11 @@ body { min-height: 120px; }
 
 </Sandpack>
 
-The props you can pass to an `<img>` tag are predefined (ReactDOM conforms to [the HTML standard](https://www.w3.org/TR/html52/semantics-embedded-content.html#the-img-element)). But you can pass any props to *your own* components, such as `<Avatar>`, to customize them. Here's how!
+پراپس‌هایی که می‌توانید به یک تگ `<img>` پاس دهید از پیش تعریف شده‌اند (ReactDOM از [استاندارد HTML](https://www.w3.org/TR/html52/semantics-embedded-content.html#the-img-element) پیروی می‌کند). اما می‌توانید هر پراپسی را به *کامپوننت‌های خودتان*، مانند `<Avatar>`، پاس دهید تا آن‌ها را سفارشی کنید. این‌طور!
 
-## Passing props to a component {/*passing-props-to-a-component*/}
+## پاس‌دادن پراپس‌ها به یک کامپوننت {/*passing-props-to-a-component*/}
 
-In this code, the `Profile` component isn't passing any props to its child component, `Avatar`:
+در این کد، کامپوننت `Profile` هیچ پراپسی را به کامپوننت فرزند خود، `Avatar`، پاس نمی‌دهد:
 
 ```js
 export default function Profile() {
@@ -65,11 +65,11 @@ export default function Profile() {
 }
 ```
 
-You can give `Avatar` some props in two steps.
+می‌توانید در دو مرحله به `Avatar` چند پراپس بدهید.
 
-### Step 1: Pass props to the child component {/*step-1-pass-props-to-the-child-component*/}
+### مرحلهٔ ۱: پاس‌دادن پراپس‌ها به کامپوننت فرزند {/*step-1-pass-props-to-the-child-component*/}
 
-First, pass some props to `Avatar`. For example, let's pass two props: `person` (an object), and `size` (a number):
+ابتدا، چند پراپس به `Avatar` پاس دهید. برای مثال، بیایید دو پراپس پاس دهیم: `person` (یک شیء) و `size` (یک عدد):
 
 ```js
 export default function Profile() {
@@ -84,15 +84,15 @@ export default function Profile() {
 
 <Note>
 
-If double curly braces after `person=` confuse you, recall [they're merely an object](/learn/javascript-in-jsx-with-curly-braces#using-double-curlies-css-and-other-objects-in-jsx) inside the JSX curlies.
+اگر آکولادهای دوتایی بعد از `person=` شما را گیج می‌کند، به یاد بیاورید که [آن‌ها فقط یک شیء](/learn/javascript-in-jsx-with-curly-braces#using-double-curlies-css-and-other-objects-in-jsx) درون آکولادهای JSX هستند.
 
 </Note>
 
-Now you can read these props inside the `Avatar` component.
+حالا می‌توانید این پراپس‌ها را درون کامپوننت `Avatar` بخوانید.
 
-### Step 2: Read props inside the child component {/*step-2-read-props-inside-the-child-component*/}
+### مرحلهٔ ۲: خواندن پراپس‌ها درون کامپوننت فرزند {/*step-2-read-props-inside-the-child-component*/}
 
-You can read these props by listing their names `person, size` separated by the commas inside `({` and `})` directly after `function Avatar`. This lets you use them inside the `Avatar` code, like you would with a variable.
+می‌توانید این پراپس‌ها را با فهرست کردن نام‌هایشان `person, size` که با کاما جدا شده‌اند درون `({` و `})` مستقیماً بعد از `function Avatar` می‌خوانید. این به شما اجازه می‌دهد از آن‌ها درون کد `Avatar` استفاده کنید، درست مانند یک متغیر.
 
 ```js
 function Avatar({ person, size }) {
@@ -100,9 +100,9 @@ function Avatar({ person, size }) {
 }
 ```
 
-Add some logic to `Avatar` that uses the `person` and `size` props for rendering, and you're done.
+مقداری منطق به `Avatar` اضافه کنید که از پراپس‌های `person` و `size` برای رندر استفاده کند، و کار تمام است.
 
-Now you can configure `Avatar` to render in many different ways with different props. Try tweaking the values!
+حالا می‌توانید `Avatar` را به روش‌های مختلفی با پراپس‌های متفاوت پیکربندی کنید تا رندر شود. امتحان کنید مقادیر را تغییر دهید!
 
 <Sandpack>
 
@@ -168,9 +168,9 @@ body { min-height: 120px; }
 
 </Sandpack>
 
-Props let you think about parent and child components independently. For example, you can change the `person` or the `size` props inside `Profile` without having to think about how `Avatar` uses them. Similarly, you can change how the `Avatar` uses these props, without looking at the `Profile`.
+پراپس‌ها به شما اجازه می‌دهند دربارهٔ کامپوننت‌های والد و فرزند به‌صورت مستقل فکر کنید. برای مثال، می‌توانید پراپس‌های `person` یا `size` را درون `Profile` تغییر دهید بدون اینکه نگران نحوهٔ استفادهٔ `Avatar` از آن‌ها باشید. به‌طور مشابه، می‌توانید نحوهٔ استفادهٔ `Avatar` از این پراپس‌ها را تغییر دهید، بدون اینکه به `Profile` نگاه کنید.
 
-You can think of props like "knobs" that you can adjust. They serve the same role as arguments serve for functions—in fact, props _are_ the only argument to your component! React component functions accept a single argument, a `props` object:
+می‌توانید پراپس‌ها را مانند «دکمه‌ها» (knobs)‌یی که می‌توانید تنظیم کنید در نظر بگیرید. آن‌ها همان نقشی را دارند که آرگومان‌ها برای توابع دارند — در واقع، پراپس‌ها _تنها_ آرگومان کامپوننت شما هستند! توابع کامپوننتی ری‌اکت یک آرگومان منفرد، یک شیء `props` را می‌پذیرند:
 
 ```js
 function Avatar(props) {
@@ -180,11 +180,11 @@ function Avatar(props) {
 }
 ```
 
-Usually you don't need the whole `props` object itself, so you destructure it into individual props.
+معمولاً به خود شیء `props` کامل نیاز ندارید، بنابراین آن را به پراپس‌های منفرد دیسترکچر (destructure) می‌کنید.
 
 <Pitfall>
 
-**Don't miss the pair of `{` and `}` curlies** inside of `(` and `)` when declaring props:
+**جفت آکولادهای `{` و `}`** درون `(` و `)` را هنگام تعریف پراپس‌ها فراموش نکنید:
 
 ```js
 function Avatar({ person, size }) {
@@ -192,7 +192,7 @@ function Avatar({ person, size }) {
 }
 ```
 
-This syntax is called ["destructuring"](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Unpacking_fields_from_objects_passed_as_a_function_parameter) and is equivalent to reading properties from a function parameter:
+این سینتکس ["destructuring"](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Unpacking_fields_from_objects_passed_as_a_function_parameter) نامیده می‌شود و معادل خواندن ویژگی‌ها از یک پارامتر تابع است:
 
 ```js
 function Avatar(props) {
@@ -204,9 +204,9 @@ function Avatar(props) {
 
 </Pitfall>
 
-## Specifying a default value for a prop {/*specifying-a-default-value-for-a-prop*/}
+## مشخص کردن یک مقدار پیش‌فرض برای یک پراپس {/*specifying-a-default-value-for-a-prop*/}
 
-If you want to give a prop a default value to fall back on when no value is specified, you can do it with the destructuring by putting `=` and the default value right after the parameter:
+اگر می‌خواهید به یک پراپس مقدار پیش‌فرضی بدهید تا در صورت مشخص نشدن مقدار به آن رجوع شود، می‌توانید این کار را با دیسترکچرینگ و قرار دادن `=` و مقدار پیش‌فرض بلافاصله بعد از پارامتر انجام دهید:
 
 ```js
 function Avatar({ person, size = 100 }) {
@@ -214,13 +214,13 @@ function Avatar({ person, size = 100 }) {
 }
 ```
 
-Now, if `<Avatar person={...} />` is rendered with no `size` prop, the `size` will be set to `100`.
+حالا، اگر `<Avatar person={...} />` بدون پراپس `size` رندر شود، `size` روی `100` تنظیم خواهد شد.
 
-The default value is only used if the `size` prop is missing or if you pass `size={undefined}`. But if you pass `size={null}` or `size={0}`, the default value will **not** be used.
+مقدار پیش‌فرض فقط زمانی استفاده می‌شود که پراپس `size` غایب باشد یا `size={undefined}` پاس دهید. اما اگر `size={null}` یا `size={0}` پاس دهید، مقدار پیش‌فرض استفاده **نخواهد شد**.
 
-## Forwarding props with the JSX spread syntax {/*forwarding-props-with-the-jsx-spread-syntax*/}
+## فوروارد کردن پراپس‌ها با سینتکس spread در JSX {/*forwarding-props-with-the-jsx-spread-syntax*/}
 
-Sometimes, passing props gets very repetitive:
+گاهی، پاس‌دادن پراپس‌ها بسیار تکراری می‌شود:
 
 ```js
 function Profile({ person, size, isSepia, thickBorder }) {
@@ -237,7 +237,7 @@ function Profile({ person, size, isSepia, thickBorder }) {
 }
 ```
 
-There's nothing wrong with repetitive code—it can be more legible. But at times you may value conciseness. Some components forward all of their props to their children, like how this `Profile` does with `Avatar`. Because they don't use any of their props directly, it can make sense to use a more concise "spread" syntax:
+هیچ اشکالی در کد تکراری وجود ندارد — می‌تواند خواناتر باشد. اما گاهی ممکن است به اختصار ارزش بدهید. برخی کامپوننت‌ها همهٔ پراپس‌هایشان را به فرزندانشان فوروارد می‌کنند، مانند نحوهٔ کار این `Profile` با `Avatar`. چون آن‌ها از هیچ‌کدام از پراپس‌هایشان مستقیماً استفاده نمی‌کنند، می‌تواند منطقی باشد که از یک سینتکس «spread» موج‌تر استفاده کنید:
 
 ```js
 function Profile(props) {
@@ -249,13 +249,13 @@ function Profile(props) {
 }
 ```
 
-This forwards all of `Profile`'s props to the `Avatar` without listing each of their names.
+این تمام پراپس‌های `Profile` را بدون فهرست کردن نام هر کدام به `Avatar` فوروارد می‌کند.
 
-**Use spread syntax with restraint.** If you're using it in every other component, something is wrong. Often, it indicates that you should split your components and pass children as JSX. More on that next!
+**از سینتکس spread با اعتدال استفاده کنید.** اگر در هر کامپوننت دیگر از آن استفاده می‌کنید، چیزی اشتباه است. اغلب، این نشان می‌دهد که باید کامپوننت‌هایتان را تقسیم کنید و children را به‌عنوان JSX پاس دهید. بیشتر دربارهٔ این در ادامه!
 
-## Passing JSX as children {/*passing-jsx-as-children*/}
+## پاس‌دادن JSX به‌عنوان children {/*passing-jsx-as-children*/}
 
-It is common to nest built-in browser tags:
+تودرتو کردن تگ‌های داخلی مرورگر رایج است:
 
 ```js
 <div>
@@ -263,7 +263,7 @@ It is common to nest built-in browser tags:
 </div>
 ```
 
-Sometimes you'll want to nest your own components the same way:
+گاهی می‌خواهید کامپوننت‌های خودتان را به همین روش تودرتو کنید:
 
 ```js
 <Card>
@@ -271,7 +271,7 @@ Sometimes you'll want to nest your own components the same way:
 </Card>
 ```
 
-When you nest content inside a JSX tag, the parent component will receive that content in a prop called `children`. For example, the `Card` component below will receive a `children` prop set to `<Avatar />` and render it in a wrapper div:
+وقتی محتوا را درون یک تگ JSX تودرتو می‌کنید، کامپوننت والد آن محتوا را در یک پراپس به نام `children` دریافت می‌کند. برای مثال، کامپوننت `Card` زیر پراپس `children` را با مقدار `<Avatar />` دریافت می‌کند و آن را در یک div پیچانده رندر می‌کند:
 
 <Sandpack>
 
@@ -347,17 +347,17 @@ export function getImageUrl(person, size = 's') {
 
 </Sandpack>
 
-Try replacing the `<Avatar>` inside `<Card>` with some text to see how the `Card` component can wrap any nested content. It doesn't need to "know" what's being rendered inside of it. You will see this flexible pattern in many places.
+امتحان کنید `<Avatar>` درون `<Card>` را با مقداری متن جایگزین کنید تا ببینید کامپوننت `Card` چگونه می‌تواند هر محتوای تودرتو را بپیچد. نیازی ندارد «بداند» چه چیزی درون آن رندر می‌شود. این الگوی انعطاف‌پذیر را در بسیاری از جاها خواهید دید.
 
-You can think of a component with a `children` prop as having a "hole" that can be "filled in" by its parent components with arbitrary JSX. You will often use the `children` prop for visual wrappers: panels, grids, etc.
+می‌توانید کامپوننتی با پراپس `children` را به این صورت در نظر بگیرید که یک «سوراخ» دارد که می‌تواند توسط کامپوننت‌های والد با JSX دلخواه «پر شود». اغلب از پراپس `children` برای پوشش‌های بصری استفاده خواهید کرد: پنل‌ها، گریدها و غیره.
 
 <Illustration src="/images/docs/illustrations/i_children-prop.png" alt='A puzzle-like Card tile with a slot for "children" pieces like text and Avatar' />
 
-## How props change over time {/*how-props-change-over-time*/}
+## چگونه پراپس‌ها در طول زمان تغییر می‌کنند {/*how-props-change-over-time*/}
 
-The `Clock` component below receives two props from its parent component: `color` and `time`. (The parent component's code is omitted because it uses [state](/learn/state-a-components-memory), which we won't dive into just yet.)
+کامپوننت `Clock` زیر دو پراپس از کامپوننت والد خود دریافت می‌کند: `color` و `time`. (کد کامپوننت والد حذف شده چون از [استیت](/learn/state-a-components-memory) استفاده می‌کند، که هنوز به آن نمی‌پردازیم.)
 
-Try changing the color in the select box below:
+امتحان کنید رنگ را در جعبهٔ انتخاب زیر تغییر دهید:
 
 <Sandpack>
 
@@ -407,21 +407,21 @@ export default function App() {
 
 </Sandpack>
 
-This example illustrates that **a component may receive different props over time.** Props are not always static! Here, the `time` prop changes every second, and the `color` prop changes when you select another color. Props reflect a component's data at any point in time, rather than only in the beginning.
+این مثال نشان می‌دهد که **یک کامپوننت ممکن است در طول زمان پراپس‌های متفاوتی دریافت کند.** پراپس‌ها همیشه ایستا نیستند! در اینجا، پراپس `time` هر ثانیه تغییر می‌کند، و پراپس `color` وقتی رنگ دیگری انتخاب می‌کنید تغییر می‌کند. پراپس‌ها دادهٔ یک کامپوننت را در هر نقطه از زمان منعکس می‌کنند، نه فقط در ابتدا.
 
-However, props are [immutable](https://en.wikipedia.org/wiki/Immutable_object)—a term from computer science meaning "unchangeable". When a component needs to change its props (for example, in response to a user interaction or new data), it will have to "ask" its parent component to pass it _different props_—a new object! Its old props will then be cast aside, and eventually the JavaScript engine will reclaim the memory taken by them.
+با این حال، پراپس‌ها [immutable](https://en.wikipedia.org/wiki/Immutable_object) (تغییرناپذیر) هستند — اصطلاحی از علوم کامپیوتر به معنای «تغییرناپذیر». وقتی یک کامپوننت نیاز به تغییر پراپس‌هایش دارد (برای مثال، در پاسخ به یک تعامل کاربر یا دادهٔ جدید)، باید از کامپوننت والد خود «بخواهد» که _پراپس‌های متفاوتی_ — یک شیء جدید! — به آن پاس دهد. پراپس‌های قدیمی‌اش سپس کنار گذاشته می‌شوند، و در نهایت موتور جاوااسکریپت حافظهٔ اشغال‌شده توسط آن‌ها را پس می‌گیرد.
 
-**Don't try to "change props".** When you need to respond to the user input (like changing the selected color), you will need to "set state", which you can learn about in [State: A Component's Memory.](/learn/state-a-components-memory)
+**سعی نکنید «پراپس‌ها را تغییر دهید».** وقتی نیاز به پاسخ به ورودی کاربر دارید (مانند تغییر رنگ انتخاب‌شده)، باید «استیت را تنظیم کنید»، که می‌توانید دربارهٔ آن در [استیت: حافظهٔ یک کامپوننت.](/learn/state-a-components-memory) یاد بگیرید.
 
 <Recap>
 
-* To pass props, add them to the JSX, just like you would with HTML attributes.
-* To read props, use the `function Avatar({ person, size })` destructuring syntax.
-* You can specify a default value like `size = 100`, which is used for missing and `undefined` props.
-* You can forward all props with `<Avatar {...props} />` JSX spread syntax, but don't overuse it!
-* Nested JSX like `<Card><Avatar /></Card>` will appear as `Card` component's `children` prop.
-* Props are read-only snapshots in time: every render receives a new version of props.
-* You can't change props. When you need interactivity, you'll need to set state.
+* برای پاس‌دادن پراپس‌ها، آن‌ها را به JSX اضافه کنید، درست مانند ویژگی‌های HTML.
+* برای خواندن پراپس‌ها، از سینتکس دیسترکچرینگ `function Avatar({ person, size })` استفاده کنید.
+* می‌توانید یک مقدار پیش‌فرض مانند `size = 100` مشخص کنید، که برای پراپس‌های غایب و `undefined` استفاده می‌شود.
+* می‌توانید همهٔ پراپس‌ها را با سینتکس spread در JSX یعنی `<Avatar {...props} />` فوروارد کنید، اما زیاده‌روی نکنید!
+* JSX تودرتویی مانند `<Card><Avatar /></Card>` به‌عنوان پراپس `children` کامپوننت `Card` ظاهر می‌شود.
+* پراپس‌ها اسنپ‌شات‌های فقط‌خواندنی در زمان هستند: هر رندر یک نسخهٔ جدید از پراپس‌ها دریافت می‌کند.
+* نمی‌توانید پراپس‌ها را تغییر دهید. وقتی به تعامل نیاز دارید، باید استیت را تنظیم کنید.
 
 </Recap>
 
@@ -429,9 +429,9 @@ However, props are [immutable](https://en.wikipedia.org/wiki/Immutable_object)�
 
 <Challenges>
 
-#### Extract a component {/*extract-a-component*/}
+#### استخراج یک کامپوننت {/*extract-a-component*/}
 
-This `Gallery` component contains some very similar markup for two profiles. Extract a `Profile` component out of it to reduce the duplication. You'll need to choose what props to pass to it.
+این کامپوننت `Gallery` شامل مقداری نشانه‌گذاری بسیار مشابه برای دو پروفایل است. یک کامپوننت `Profile` از آن استخراج کنید تا تکرار را کاهش دهید. باید انتخاب کنید چه پراپس‌هایی به آن پاس دهید.
 
 <Sandpack>
 
@@ -524,15 +524,15 @@ li { margin: 5px; }
 
 <Hint>
 
-Start by extracting the markup for one of the scientists. Then find the pieces that don't match it in the second example, and make them configurable by props.
+با استخراج نشانه‌گذاری برای یکی از دانشمندان شروع کنید. سپس تکه‌هایی که در مثال دوم با آن مطابقت ندارند را پیدا کنید، و آن‌ها را با پراپس‌ها قابل پیکربندی کنید.
 
 </Hint>
 
 <Solution>
 
-In this solution, the `Profile` component accepts multiple props: `imageId` (a string), `name` (a string), `profession` (a string), `awards` (an array of strings), `discovery` (a string), and `imageSize` (a number).
+در این راه‌حل، کامپوننت `Profile` چندین پراپس می‌پذیرد: `imageId` (یک رشته)، `name` (یک رشته)، `profession` (یک رشته)، `awards` (یک آرایه از رشته‌ها)، `discovery` (یک رشته)، و `imageSize` (یک عدد).
 
-Note that the `imageSize` prop has a default value, which is why we don't pass it to the component.
+توجه کنید که پراپس `imageSize` یک مقدار پیش‌فرض دارد، به همین دلیل آن را به کامپوننت پاس نمی‌دهیم.
 
 <Sandpack>
 
@@ -630,9 +630,9 @@ li { margin: 5px; }
 
 </Sandpack>
 
-Note how you don't need a separate `awardCount` prop if `awards` is an array. Then you can use `awards.length` to count the number of awards. Remember that props can take any values, and that includes arrays too!
+توجه کنید اگر `awards` یک آرایه باشد، به پراپس `awardCount` جداگانه نیاز ندارید. سپس می‌توانید از `awards.length` برای شمارش تعداد جوایز استفاده کنید. به یاد داشته باشید که پراپس‌ها می‌توانند هر مقداری بپذیرند، و این شامل آرایه‌ها هم می‌شود!
 
-Another solution, which is more similar to the earlier examples on this page, is to group all information about a person in a single object, and pass that object as one prop:
+یک راه‌حل دیگر، که شبیه‌تر به مثال‌های اولیهٔ این صفحه است، این است که همهٔ اطلاعات مربوط به یک شخص را در یک شیء منفرد گروه‌بندی کنید، و آن شیء را به‌عنوان یک پراپس پاس دهید:
 
 <Sandpack>
 
@@ -727,15 +727,15 @@ li { margin: 5px; }
 
 </Sandpack>
 
-Although the syntax looks slightly different because you're describing properties of a JavaScript object rather than a collection of JSX attributes, these examples are mostly equivalent, and you can pick either approach.
+اگرچه سینتکس کمی متفاوت به‌نظر می‌رسد زیرا شما ویژگی‌های یک شیء جاوااسکریپت را توصیف می‌کنید نه مجموعه‌ای از ویژگی‌های JSX، این مثال‌ها عمدتاً معادل هستند، و می‌توانید هر رویکردی را انتخاب کنید.
 
 </Solution>
 
-#### Adjust the image size based on a prop {/*adjust-the-image-size-based-on-a-prop*/}
+#### تنظیم اندازهٔ تصویر بر اساس یک پراپس {/*adjust-the-image-size-based-on-a-prop*/}
 
-In this example, `Avatar` receives a numeric `size` prop which determines the `<img>` width and height. The `size` prop is set to `40` in this example. However, if you open the image in a new tab, you'll notice that the image itself is larger (`160` pixels). The real image size is determined by which thumbnail size you're requesting.
+در این مثال، `Avatar` یک پراپس `size` عددی دریافت می‌کند که عرض و ارتفاع `<img>` را تعیین می‌کند. پراپس `size` در این مثال روی `40` تنظیم شده است. با این حال، اگر تصویر را در یک تب جدید باز کنید، متوجه می‌شوید که خود تصویر بزرگ‌تر است (`160` پیکسل). اندازهٔ واقعی تصویر با این که چه اندازهٔ تصویر بندانگشتی را درخواست می‌کنید تعیین می‌شود.
 
-Change the `Avatar` component to request the closest image size based on the `size` prop. Specifically, if the `size` is less than `90`, pass `'s'` ("small") rather than `'b'` ("big") to the `getImageUrl` function. Verify that your changes work by rendering avatars with different values of the `size` prop and opening images in a new tab.
+کامپوننت `Avatar` را تغییر دهید تا نزدیک‌ترین اندازهٔ تصویر را بر اساس پراپس `size` درخواست کند. به‌طور خاص، اگر `size` کمتر از `90` است، `'s'` («small») را به‌جای `'b'` («big») به تابع `getImageUrl` پاس دهید. با رندر کردن آواتارها با مقادیر متفاوت پراپس `size` و باز کردن تصاویر در یک تب جدید، تغییرات خود را بررسی کنید.
 
 <Sandpack>
 
@@ -786,7 +786,7 @@ export function getImageUrl(person, size) {
 
 <Solution>
 
-Here is how you could go about it:
+اینجا نحوهٔ انجام آن آمده است:
 
 <Sandpack>
 
@@ -798,6 +798,7 @@ function Avatar({ person, size }) {
   if (size > 90) {
     thumbnailSize = 'b';
   }
+
   return (
     <img
       className="avatar"
@@ -848,7 +849,7 @@ export function getImageUrl(person, size) {
 
 </Sandpack>
 
-You could also show a sharper image for high DPI screens by taking [`window.devicePixelRatio`](https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio) into account:
+همچنین می‌توانید با در نظر گرفتن [`window.devicePixelRatio`](https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio) برای صفحات با DPI بالا تصویر واضح‌تری نشان دهید:
 
 <Sandpack>
 
@@ -919,13 +920,13 @@ export function getImageUrl(person, size) {
 
 </Sandpack>
 
-Props let you encapsulate logic like this inside the `Avatar` component (and change it later if needed) so that everyone can use the `<Avatar>` component without thinking about how the images are requested and resized.
+پراپس‌ها به شما اجازه می‌دهند منطقی مانند این را درون کامپوننت `Avatar` کپسوله کنید (و بعداً در صورت نیاز تغییر دهید) تا همه بتوانند از کامپوننت `<Avatar>` استفاده کنند بدون اینکه نگران نحوهٔ درخواست و تغییر اندازهٔ تصاویر باشند.
 
 </Solution>
 
-#### Passing JSX in a `children` prop {/*passing-jsx-in-a-children-prop*/}
+#### پاس‌دادن JSX در یک پراپس `children` {/*passing-jsx-in-a-children-prop*/}
 
-Extract a `Card` component from the markup below, and use the `children` prop to pass different JSX to it:
+یک کامپوننت `Card` را از نشانه‌گذاری زیر استخراج کنید، و از پراپس `children` برای پاس‌دادن JSX متفاوت به آن استفاده کنید:
 
 <Sandpack>
 
@@ -983,13 +984,13 @@ h1 {
 
 <Hint>
 
-Any JSX you put inside of a component's tag will be passed as the `children` prop to that component.
+هر JSX که درون تگ یک کامپوننت قرار دهید به‌عنوان پراپس `children` به آن کامپوننت پاس داده می‌شود.
 
 </Hint>
 
 <Solution>
 
-This is how you can use the `Card` component in both places:
+این‌گونه می‌توانید از کامپوننت `Card` در هر دو جا استفاده کنید:
 
 <Sandpack>
 
@@ -1051,7 +1052,7 @@ h1 {
 
 </Sandpack>
 
-You can also make `title` a separate prop if you want every `Card` to always have a title:
+همچنین اگر می‌خواهید هر `Card` همیشه یک عنوان داشته باشد، می‌توانید `title` را یک پراپس جداگانه کنید:
 
 <Sandpack>
 

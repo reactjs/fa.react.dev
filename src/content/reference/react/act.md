@@ -4,7 +4,7 @@ title: act
 
 <Intro>
 
-`act` is a test helper to apply pending React updates before making assertions.
+`act` یک راهنمای تست است که به‌روزرسانی‌های در حال انتظار ری‌اکت را پیش از انجام assertionها اعمال می‌کند.
 
 ```js
 await act(async actFn)
@@ -12,10 +12,10 @@ await act(async actFn)
 
 </Intro>
 
-To prepare a component for assertions, wrap the code rendering it and performing updates inside an `await act()` call. This makes your test run closer to how React works in the browser.
+برای آماده‌سازی یک کامپوننت جهت انجام assertionها، کدی که آن را رندر می‌کند و به‌روزرسانی‌ها را انجام می‌دهد درون یک فراخوانی `await act()` بپیچید. این کار باعث می‌شود تست شما به نحوی که ری‌اکت در مرورگر کار می‌کند نزدیک‌تر اجرا شود.
 
 <Note>
-You might find using `act()` directly a bit too verbose. To avoid some of the boilerplate, you could use a library like [React Testing Library](https://testing-library.com/docs/react-testing-library/intro), whose helpers are wrapped with `act()`.
+ممکن است استفادهٔ مستقیم از `act()` کمی بیش از حد طولانی به نظر برسد. برای جلوگیری از برخی کدهای تکراری، می‌توانید از کتابخانه‌ای مانند [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) استفاده کنید که راهنماهای آن با `act()` پیچیده شده‌اند.
 </Note>
 
 
@@ -23,13 +23,13 @@ You might find using `act()` directly a bit too verbose. To avoid some of the bo
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `await act(async actFn)` {/*await-act-async-actfn*/}
 
-When writing UI tests, tasks like rendering, user events, or data fetching can be considered as “units” of interaction with a user interface. React provides a helper called `act()` that makes sure all updates related to these “units” have been processed and applied to the DOM before you make any assertions.
+هنگام نوشتن تست‌های رابط کاربری، وظایفی مانند رندر، رویدادهای کاربر، یا دریافت داده را می‌توان به‌عنوان «واحدهایی» از تعامل با یک رابط کاربری در نظر گرفت. ری‌اکت راهنمایی به نام `act()` ارائه می‌دهد که اطمینان حاصل می‌کند تمام به‌روزرسانی‌های مربوط به این «واحدها» پیش از انجام هر assertion، پردازش و به DOM اعمال شده‌اند.
 
-The name `act` comes from the [Arrange-Act-Assert](https://wiki.c2.com/?ArrangeActAssert) pattern.
+نام `act` از الگوی [Arrange-Act-Assert](https://wiki.c2.com/?ArrangeActAssert) آمده است.
 
 ```js {2,4}
 it ('renders with button disabled', async () => {
@@ -42,25 +42,25 @@ it ('renders with button disabled', async () => {
 
 <Note>
 
-We recommend using `act` with `await` and an `async` function. Although the sync version works in many cases, it doesn't work in all cases and due to the way React schedules updates internally, it's difficult to predict when you can use the sync version.
+پیشنهاد می‌کنیم از `act` به‌همراه `await` و یک تابع `async` استفاده کنید. اگرچه نسخهٔ همگام در بسیاری از موارد کار می‌کند، در همهٔ موارد کار نمی‌کند و به دلیل نحوهٔ زمان‌بندی به‌روزرسانی‌ها در ری‌اکت، پیش‌بینی زمانی که می‌توانید از نسخهٔ همگام استفاده کنید دشوار است.
 
-We will deprecate and remove the sync version in the future.
+در آینده نسخهٔ همگام را منسوخ کرده و حذف خواهیم کرد.
 
 </Note>
 
-#### Parameters {/*parameters*/}
+#### پارامترها {/*parameters*/}
 
-* `async actFn`: An async function wrapping renders or interactions for components being tested. Any updates triggered within the `actFn`, are added to an internal act queue, which are then flushed together to process and apply any changes to the DOM. Since it is async, React will also run any code that crosses an async boundary, and flush any updates scheduled.
+* `async actFn`: یک تابع ناهمگام که رندرها یا تعاملات مربوط به کامپوننت‌های در حال تست را می‌پیچد. هر به‌روزرسانی‌ای که درون `actFn` ایجاد می‌شود، به یک صف act درونی اضافه می‌شود که سپس برای پردازش و اعمال هرگونه تغییر به DOM با هم flush می‌شوند. از آنجا که این تابع ناهمگام است، ری‌اکت همچنین هر کدی که از مرز ناهمگام (async boundary) عبور می‌کند را اجرا کرده و هر به‌روزرسانی زمان‌بندی‌شده را flush می‌کند.
 
-#### Returns {/*returns*/}
+#### مقادیر بازگشتی {/*returns*/}
 
-`act` does not return anything.
+`act` چیزی باز نمی‌گرداند.
 
-## Usage {/*usage*/}
+## استفاده {/*usage*/}
 
-When testing a component, you can use `act` to make assertions about its output.
+هنگام تست یک کامپوننت، می‌توانید از `act` برای انجام assertion دربارهٔ خروجی آن استفاده کنید.
 
-For example, let’s say we have this `Counter` component, the usage examples below show how to test it:
+به‌عنوان مثال، فرض کنید این کامپوننت `Counter` را داریم؛ نمونه‌های استفادهٔ زیر نشان می‌دهند چگونه آن را تست کنید:
 
 ```js
 function Counter() {
@@ -84,9 +84,9 @@ function Counter() {
 }
 ```
 
-### Rendering components in tests {/*rendering-components-in-tests*/}
+### رندر کردن کامپوننت‌ها در تست‌ها {/*rendering-components-in-tests*/}
 
-To test the render output of a component, wrap the render inside `act()`:
+برای تست خروجی رندر یک کامپوننت، رندر را درون `act()` بپیچید:
 
 ```js  {10,12}
 import {act} from 'react';
@@ -109,13 +109,13 @@ it('can render and update a counter', async () => {
 });
 ```
 
-Here, we create a container, append it to the document, and render the `Counter` component inside `act()`. This ensures that the component is rendered and its effects are applied before making assertions.
+در اینجا یک کانتینر می‌سازیم، آن را به document اضافه می‌کنیم، و کامپوننت `Counter` را درون `act()` رندر می‌کنیم. این اطمینان حاصل می‌کند که کامپوننت پیش از انجام assertionها رندر شده و افکت‌های آن اعمال شده‌اند.
 
-Using `act` ensures that all updates have been applied before we make assertions.
+استفاده از `act` تضمین می‌کند که تمام به‌روزرسانی‌ها پیش از انجام assertionها اعمال شده‌اند.
 
-### Dispatching events in tests {/*dispatching-events-in-tests*/}
+### دیسپچ کردن رویدادها در تست‌ها {/*dispatching-events-in-tests*/}
 
-To test events, wrap the event dispatch inside `act()`:
+برای تست رویدادها، دیسپچ رویداد را درون `act()` بپیچید:
 
 ```js {14,16}
 import {act} from 'react';
@@ -142,21 +142,21 @@ it.only('can render and update a counter', async () => {
 });
 ```
 
-Here, we render the component with `act`, and then dispatch the event inside another `act()`. This ensures that all updates from the event are applied before making assertions.
+در اینجا کامپوننت را با `act` رندر می‌کنیم، و سپس رویداد را درون یک `act()` دیگر دیسپچ می‌کنیم. این اطمینان حاصل می‌کند که تمام به‌روزرسانی‌های ناشی از رویداد پیش از انجام assertionها اعمال شده‌اند.
 
 <Pitfall>
 
-Don’t forget that dispatching DOM events only works when the DOM container is added to the document. You can use a library like [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) to reduce the boilerplate code.
+فراموش نکنید که دیسپچ رویدادهای DOM تنها زمانی کار می‌کند که کانتینر DOM به document اضافه شده باشد. می‌توانید از کتابخانه‌ای مانند [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) برای کاهش کدهای تکراری استفاده کنید.
 
 </Pitfall>
 
-## Troubleshooting {/*troubleshooting*/}
+## عیب‌یابی {/*troubleshooting*/}
 
-### I'm getting an error: "The current testing environment is not configured to support act"(...)" {/*error-the-current-testing-environment-is-not-configured-to-support-act*/}
+### خطای «The current testing environment is not configured to support act»(...) را دریافت می‌کنم {/*error-the-current-testing-environment-is-not-configured-to-support-act*/}
 
-Using `act` requires setting `global.IS_REACT_ACT_ENVIRONMENT=true` in your test environment. This is to ensure that `act` is only used in the correct environment.
+استفاده از `act` نیازمند تنظیم `global.IS_REACT_ACT_ENVIRONMENT=true` در محیط تست شماست. این برای اطمینان از آن است که `act` تنها در محیط درست استفاده شود.
 
-If you don't set the global, you will see an error like this:
+اگر این مقدار سراسری را تنظیم نکنید، خطایی مانند زیر می‌بینید:
 
 <ConsoleBlock level="error">
 
@@ -164,7 +164,7 @@ Warning: The current testing environment is not configured to support act(...)
 
 </ConsoleBlock>
 
-To fix, add this to your global setup file for React tests:
+برای رفع این مشکل، این را به فایل راه‌اندازی سراسری (global setup) تست‌های ری‌اکت خود اضافه کنید:
 
 ```js
 global.IS_REACT_ACT_ENVIRONMENT=true
@@ -172,6 +172,6 @@ global.IS_REACT_ACT_ENVIRONMENT=true
 
 <Note>
 
-In testing frameworks like [React Testing Library](https://testing-library.com/docs/react-testing-library/intro), `IS_REACT_ACT_ENVIRONMENT` is already set for you.
+در چارچوب‌های تست مانند [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)، `IS_REACT_ACT_ENVIRONMENT` از قبل برای شما تنظیم شده است.
 
 </Note>

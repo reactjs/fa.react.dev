@@ -5,45 +5,45 @@ date: 2024/12/05
 description: React 19 is now available on npm! In this post, we'll give an overview of the new features in React 19, and how you can adopt them.
 ---
 
-December 05, 2024 by [The React Team](/community/team)
+05 دسامبر 2024 توسط [تیم ری‌اکت](/community/team)
 
 ---
 <Note>
 
-### React 19 is now stable! {/*react-19-is-now-stable*/}
+### React 19 اکنون پایدار است! {/*react-19-is-now-stable*/}
 
-Additions since this post was originally shared with the React 19 RC in April:
+افزوده‌ها از زمانی که این پست در ابتدا با React 19 RC در آوریل به اشتراک گذاشته شد:
 
-- **Pre-warming for suspended trees**: see [Improvements to Suspense](/blog/2024/04/25/react-19-upgrade-guide#improvements-to-suspense).
-- **React DOM static APIs**: see [New React DOM Static APIs](#new-react-dom-static-apis).
+- **پیش‌گرم‌کردن درخت‌های ساسپندشده**: [بهبودهای ساسپنس](/blog/2024/04/25/react-19-upgrade-guide#improvements-to-suspense) را ببینید.
+- **APIهای استاتیک React DOM**: [APIهای استاتیک جدید React DOM](#new-react-dom-static-apis) را ببینید.
 
-_The date for this post has been updated to reflect the stable release date._
+_تاریخ این پست برای بازتاب تاریخ انتشار پایدار به‌روزرسانی شده است._
 
 </Note>
 
 <Intro>
 
-React v19 is now available on npm!
+React v19 اکنون در npm در دسترس است!
 
 </Intro>
 
-In our [React 19 Upgrade Guide](/blog/2024/04/25/react-19-upgrade-guide), we shared step-by-step instructions for upgrading your app to React 19. In this post, we'll give an overview of the new features in React 19, and how you can adopt them.
+در [راهنمای ارتقا به React 19](/blog/2024/04/25/react-19-upgrade) ما، دستورالعمل‌های گام‌به‌گام برای ارتقای اپلیکیشن‌تان به React 19 را به اشتراک گذاشتیم. در این پست، نمای کلی از قابلیت‌های جدید React 19 و نحوهٔ پذیرش آن‌ها را ارائه می‌کنیم.
 
-- [What's new in React 19](#whats-new-in-react-19)
-- [Improvements in React 19](#improvements-in-react-19)
-- [How to upgrade](#how-to-upgrade)
+- [چه چیزهای جدیدی در React 19 وجود دارد](#whats-new-in-react-19)
+- [بهبودها در React 19](#improvements-in-react-19)
+- [نحوهٔ ارتقا](#how-to-upgrade)
 
-For a list of breaking changes, see the [Upgrade Guide](/blog/2024/04/25/react-19-upgrade-guide).
+برای فهرست تغییرات از بین‌برنده، [راهنمای ارتقا](/blog/2024/04/25/react-19-upgrade) را ببینید.
 
 ---
 
-## What's new in React 19 {/*whats-new-in-react-19*/}
+## چه چیزهای جدیدی در React 19 وجود دارد {/*whats-new-in-react-19*/}
 
-### Actions {/*actions*/}
+### اکشن‌ها {/*actions*/}
 
-A common use case in React apps is to perform a data mutation and then update state in response. For example, when a user submits a form to change their name, you will make an API request, and then handle the response. In the past, you would need to handle pending states, errors, optimistic updates, and sequential requests manually.
+یک مورد استفادهٔ رایج در اپلیکیشن‌های ری‌اکت، انجام یک جهش داده و سپس به‌روزرسانی استیت در پاسخ است. برای مثال، وقتی کاربر فرمی را برای تغییر نام خود ارسال می‌کند، یک درخواست API می‌دهید و سپس پاسخ را مدیریت می‌کنید. در گذشته، باید استیت‌های در حالت انتظار (pending)، خطاها، به‌روزرسانی‌های خوش‌بینانه و درخواست‌های متوالی را به‌صورت دستی مدیریت می‌کردید.
 
-For example, you could handle the pending and error state in `useState`:
+برای مثال، می‌توانستید استیت در حالت انتظار و خطا را در `useState` مدیریت کنید:
 
 ```js
 // Before Actions
@@ -75,9 +75,9 @@ function UpdateName({}) {
 }
 ```
 
-In React 19, we're adding support for using async functions in transitions to handle pending states, errors, forms, and optimistic updates automatically.
+در React 19، ما پشتیبانی از استفاده از توابع ناهمگام در ترنزیشن‌ها را برای مدیریت خودکار استیت‌های در حالت انتظار، خطاها، فرم‌ها و به‌روزرسانی‌های خوش‌بینانه اضافه می‌کنیم.
 
-For example, you can use `useTransition` to handle the pending state for you:
+برای مثال، می‌توانید از `useTransition` برای مدیریت استیت در حالت انتظار استفاده کنید:
 
 ```js
 // Using pending state from Actions
@@ -109,24 +109,24 @@ function UpdateName({}) {
 }
 ```
 
-The async transition will immediately set the `isPending` state to true, make the async request(s), and switch `isPending` to false after any transitions. This allows you to keep the current UI responsive and interactive while the data is changing.
+ترنزیشن ناهمگام بلافاصله استیت `isPending` را به true تنظیم می‌کند، درخواست(های) ناهمگام را انجام می‌دهد و `isPending` را پس از هر ترنزیشنی به false تغییر می‌دهد. این به شما اجازه می‌دهد رابط کاربری فعلی را پاسخگو و تعاملی نگه دارید در حالی که داده‌ها در حال تغییر هستند.
 
 <Note>
 
-#### By convention, functions that use async transitions are called "Actions". {/*by-convention-functions-that-use-async-transitions-are-called-actions*/}
+#### بر اساس قرارداد، توابعی که از ترنزیشن‌های ناهمگام استفاده می‌کنند «اکشن» (Actions) نامیده می‌شوند. {/*by-convention-functions-that-use-async-transitions-are-called-actions*/}
 
-Actions automatically manage submitting data for you:
+اکشن‌ها ارسال داده را به‌طور خودکار برای شما مدیریت می‌کنند:
 
-- **Pending state**: Actions provide a pending state that starts at the beginning of a request and automatically resets when the final state update is committed.
-- **Optimistic updates**: Actions support the new [`useOptimistic`](#new-hook-optimistic-updates) hook so you can show users instant feedback while the requests are submitting.
-- **Error handling**: Actions provide error handling so you can display Error Boundaries when a request fails, and revert optimistic updates to their original value automatically.
-- **Forms**: `<form>` elements now support passing functions to the `action` and `formAction` props. Passing functions to the `action` props use Actions by default and reset the form automatically after submission.
+- **استیت در حالت انتظار (Pending state)**: اکشن‌ها یک استیت در حالت انتظار فراهم می‌کنند که در ابتدای یک درخواست شروع می‌شود و به‌طور خودکار وقتی به‌روزرسانی استیت نهایی کامیت می‌شود بازنشانی می‌گردد.
+- **به‌روزرسانی‌های خوش‌بینانه (Optimistic updates)**: اکشن‌ها از هوک جدید [`useOptimistic`](#new-hook-optimistic-updates) پشتیبانی می‌کنند تا بتوانید به کاربران بازخورد فوری نمایش دهید در حالی که درخواست‌ها در حال ارسال هستند.
+- **مدیریت خطا**: اکشن‌ها مدیریت خطا فراهم می‌کنند تا بتوانید هنگام شکست یک درخواست Error Boundaryها را نمایش دهید و به‌روزرسانی‌های خوش‌بینانه را به‌طور خودکار به مقدار اصلی بازگردانید.
+- **فرم‌ها**: عناصر `<form>` اکنون از ارسال توابع به پراپسهای `action` و `formAction` پشتیبانی می‌کنند. ارسال توابع به پراپسهای `action` به‌طور پیش‌فرض از اکشن‌ها استفاده می‌کند و فرم را پس از ارسال به‌طور خودکار بازنشانی می‌کند.
 
 </Note>
 
-Building on top of Actions, React 19 introduces [`useOptimistic`](#new-hook-optimistic-updates) to manage optimistic updates, and a new hook [`React.useActionState`](#new-hook-useactionstate) to handle common cases for Actions. In `react-dom` we're adding [`<form>` Actions](#form-actions) to manage forms automatically and [`useFormStatus`](#new-hook-useformstatus) to support the common cases for Actions in forms.
+با تکیه بر اکشن‌ها، React 19 هوک [`useOptimistic`](#new-hook-optimistic-updates) را برای مدیریت به‌روزرسانی‌های خوش‌بینانه، و هوک جدید [`React.useActionState`](#new-hook-useactionstate) را برای مدیریت موارد رایج اکشن‌ها معرفی می‌کند. در `react-dom` نیز [`<form>` Actions](#form-actions) را برای مدیریت خودکار فرم‌ها و [`useFormStatus`](#new-hook-useformstatus) را برای پشتیبانی از موارد رایج اکشن‌ها در فرم‌ها اضافه می‌کنیم.
 
-In React 19, the above example can be simplified to:
+در React 19، مثال بالا می‌تواند به این شکل ساده شود:
 
 ```js
 // Using <form> Actions and useActionState
@@ -153,11 +153,11 @@ function ChangeName({ name, setName }) {
 }
 ```
 
-In the next section, we'll break down each of the new Action features in React 19.
+در بخش بعدی، هر یک از قابلیت‌های جدید اکشن در React 19 را بررسی می‌کنیم.
 
-### New hook: `useActionState` {/*new-hook-useactionstate*/}
+### هوک جدید: `useActionState` {/*new-hook-useactionstate*/}
 
-To make the common cases easier for Actions, we've added a new hook called `useActionState`:
+برای آسان‌سازی موارد رایج برای اکشن‌ها، هوک جدیدی به نام `useActionState` اضافه کرده‌ایم:
 
 ```js
 const [error, submitAction, isPending] = useActionState(
@@ -176,33 +176,33 @@ const [error, submitAction, isPending] = useActionState(
 );
 ```
 
-`useActionState` accepts a function (the "Action"), and returns a wrapped Action to call. This works because Actions compose. When the wrapped Action is called, `useActionState` will return the last result of the Action as `data`, and the pending state of the Action as `pending`. 
+`useActionState` یک تابع («اکشن») را می‌پذیرد و یک اکشن پیچیده‌شده برای فراخوانی بازمی‌گرداند. این کار می‌شود زیرا اکشن‌ها قابل ترکیب هستند. وقتی اکشن پیچیده‌شده فراخوانی می‌شود، `useActionState` آخرین نتیجهٔ اکشن را به‌عنوان `data` و استیت در حالت انتظار اکشن را به‌عنوان `pending` بازمی‌گرداند.
 
 <Note>
 
-`React.useActionState` was previously called `ReactDOM.useFormState` in the Canary releases, but we've renamed it and deprecated `useFormState`.
+`React.useActionState` در انتشارهای کاناری پیش‌تر `ReactDOM.useFormState` نامیده می‌شد، اما ما آن را تغییر نام داده‌ایم و `useFormState` را منسوخ کرده‌ایم.
 
-See [#28491](https://github.com/facebook/react/pull/28491) for more info.
+برای اطلاعات بیشتر [#28491](https://github.com/facebook/react/pull/28491) را ببینید.
 
 </Note>
 
-For more information, see the docs for [`useActionState`](/reference/react/useActionState).
+برای اطلاعات بیشتر، مستندات [`useActionState`](/reference/react/useActionState) را ببینید.
 
-### React DOM: `<form>` Actions {/*form-actions*/}
+### React DOM: اکشن‌های `<form>` {/*form-actions*/}
 
-Actions are also integrated with React 19's new `<form>` features for `react-dom`. We've added support for passing functions as the `action` and `formAction` props of `<form>`, `<input>`, and `<button>` elements to automatically submit forms with Actions:
+اکشن‌ها همچنین با قابلیت‌های جدید `<form>` در React 19 برای `react-dom` یکپارچه شده‌اند. ما پشتیبانی از ارسال توابع به‌عنوان پراپسهای `action` و `formAction` عناصر `<form>`، `<input>` و `<button>` را برای ارسال خودکار فرم‌ها با اکشن‌ها اضافه کرده‌ایم:
 
 ```js [[1,1,"actionFunction"]]
 <form action={actionFunction}>
 ```
 
-When a `<form>` Action succeeds, React will automatically reset the form for uncontrolled components. If you need to reset the `<form>` manually, you can call the new `requestFormReset` React DOM API.
+وقتی یک اکشن `<form>` موفق می‌شود، ری‌اکت به‌طور خودکار فرم را برای کامپوننت‌های uncontrolled بازنشانی می‌کند. اگر نیاز به بازنشانی دستی `<form>` دارید، می‌توانید API جدید `requestFormReset` در React DOM را فراخوانی کنید.
 
-For more information, see the `react-dom` docs for [`<form>`](/reference/react-dom/components/form), [`<input>`](/reference/react-dom/components/input), and `<button>`.
+برای اطلاعات بیشتر، مستندات `react-dom` برای [`<form>`](/reference/react-dom/components/form)، [`<input>`](/reference/react-dom/components/input) و `<button>` را ببینید.
 
-### React DOM: New hook: `useFormStatus` {/*new-hook-useformstatus*/}
+### React DOM: هوک جدید: `useFormStatus` {/*new-hook-useformstatus*/}
 
-In design systems, it's common to write design components that need access to information about the `<form>` they're in, without drilling props down to the component. This can be done via Context, but to make the common case easier, we've added a new hook `useFormStatus`:
+در سیستم‌های طراحی، رایج است که کامپوننت‌های طراحی نوشته می‌شوند که نیاز به دسترسی به اطلاعاتی دربارهٔ `<form>` که در آن قرار دارند دارند، بدون آنکه پراپسها را به کامپوننت پاس دهیم. این کار می‌تواند از طریق کانتکست انجام شود، اما برای آسان‌سازی مورد رایج، هوک جدید `useFormStatus` را اضافه کرده‌ایم:
 
 ```js [[1, 4, "pending"], [1, 5, "pending"]]
 import {useFormStatus} from 'react-dom';
@@ -213,13 +213,13 @@ function DesignButton() {
 }
 ```
 
-`useFormStatus` reads the status of the parent `<form>` as if the form was a Context provider.
+`useFormStatus` استیت `<form>` والد را می‌خواند، به‌گونه‌ای که انگار فرم یک ارائه‌دهندهٔ کانتکست (Context provider) است.
 
-For more information, see the `react-dom` docs for [`useFormStatus`](/reference/react-dom/hooks/useFormStatus).
+برای اطلاعات بیشتر، مستندات `react-dom` برای [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) را ببینید.
 
-### New hook: `useOptimistic` {/*new-hook-optimistic-updates*/}
+### هوک جدید: `useOptimistic` {/*new-hook-optimistic-updates*/}
 
-Another common UI pattern when performing a data mutation is to show the final state optimistically while the async request is underway. In React 19, we're adding a new hook called `useOptimistic` to make this easier:
+یک الگوی رایج دیگر رابط کاربری هنگام انجام یک جهش داده، نمایش خوش‌بینانهٔ استیت نهایی در حین انجام درخواست ناهمگام است. در React 19، هوک جدیدی به نام `useOptimistic` را برای آسان‌سازی این کار اضافه می‌کنیم:
 
 ```js {2,6,13,19}
 function ChangeName({currentName, onUpdateName}) {
@@ -248,15 +248,15 @@ function ChangeName({currentName, onUpdateName}) {
 }
 ```
 
-The `useOptimistic` hook will immediately render the `optimisticName` while the `updateName` request is in progress. When the update finishes or errors, React will automatically switch back to the `currentName` value.
+هوک `useOptimistic` بلافاصله `optimisticName` را در حالی که درخواست `updateName` در حال انجام است رندر می‌کند. وقتی به‌روزرسانی پایان می‌یابد یا خطا رخ می‌دهد، ری‌اکت به‌طور خودکار به مقدار `currentName` بازمی‌گردد.
 
-For more information, see the docs for [`useOptimistic`](/reference/react/useOptimistic).
+برای اطلاعات بیشتر، مستندات [`useOptimistic`](/reference/react/useOptimistic) را ببینید.
 
-### New API: `use` {/*new-feature-use*/}
+### API جدید: `use` {/*new-feature-use*/}
 
-In React 19 we're introducing a new API to read resources in render: `use`.
+در React 19 ما یک API جدید برای خواندن منابع در حین رندر معرفی می‌کنیم: `use`.
 
-For example, you can read a promise with `use`, and React will Suspend until the promise resolves:
+برای مثال، می‌توانید یک promise را با `use` بخوانید و ری‌اکت تا resolve شدن promise ساسپند می‌شود:
 
 ```js {1,5}
 import {use} from 'react';
@@ -280,9 +280,9 @@ function Page({commentsPromise}) {
 
 <Note>
 
-#### `use` does not support promises created in render. {/*use-does-not-support-promises-created-in-render*/}
+#### `use` از promiseهای ایجادشده در رندر پشتیبانی نمی‌کند. {/*use-does-not-support-promises-created-in-render*/}
 
-If you try to pass a promise created in render to `use`, React will warn:
+اگر سعی کنید یک promise ایجادشده در رندر را به `use` ارسال کنید، ری‌اکت هشدار می‌دهد:
 
 <ConsoleBlockMulti>
 
@@ -294,11 +294,11 @@ A component was suspended by an uncached promise. Creating promises inside a Cli
 
 </ConsoleBlockMulti>
 
-To fix, you need to pass a promise from a Suspense powered library or framework that supports caching for promises. In the future we plan to ship features to make it easier to cache promises in render.
+برای رفع این موضوع، باید یک promise از یک کتابخانه یا فریم‌ورک مبتنی بر ساسپنس که از کش کردن promiseها پشتیبانی می‌کند ارسال کنید. در آینده قصد داریم قابلیت‌هایی را منتشر کنیم که کش کردن promiseها در رندر را آسان‌تر می‌سازد.
 
 </Note>
 
-You can also read context with `use`, allowing you to read Context conditionally such as after early returns:
+همچنین می‌توانید کانتکست را با `use` بخوانید، که به شما اجازه می‌دهد کانتکست را به‌صورت شرطی — مثلاً پس از returnهای زودهنگام — بخوانید:
 
 ```js {1,11}
 import {use} from 'react';
@@ -320,17 +320,17 @@ function Heading({children}) {
 }
 ```
 
-The `use` API can only be called in render, similar to hooks. Unlike hooks, `use` can be called conditionally. In the future we plan to support more ways to consume resources in render with `use`.
+API `use` را فقط می‌توان در رندر فراخوانی کرد، مشابه هوک‌ها. برخلاف هوک‌ها، `use` می‌تواند به‌صورت شرطی فراخوانی شود. در آینده قصد داریم روش‌های بیشتری برای مصرف منابع در رندر با `use` را پشتیبانی کنیم.
 
-For more information, see the docs for [`use`](/reference/react/use).
+برای اطلاعات بیشتر، مستندات [`use`](/reference/react/use) را ببینید.
 
-## New React DOM Static APIs {/*new-react-dom-static-apis*/}
+## APIهای استاتیک جدید React DOM {/*new-react-dom-static-apis*/}
 
-We've added two new APIs to `react-dom/static` for static site generation:
+ما دو API جدید به `react-dom/static` برای تولید سایت استاتیک افزوده‌ایم:
 - [`prerender`](/reference/react-dom/static/prerender)
 - [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream)
 
-These new APIs improve on `renderToString` by waiting for data to load for static HTML generation. They are designed to work with streaming environments like Node.js Streams and Web Streams. For example, in a Web Stream environment, you can prerender a React tree to static HTML with `prerender`: 
+این APIهای جدید `renderToString` را با انتظار برای بارگذاری داده به‌منظور تولید HTML استاتیک بهبود می‌بخشند. آن‌ها برای کار با محیط‌های استریمی مانند Node.js Streams و Web Streams طراحی شده‌اند. برای مثال، در یک محیط Web Stream، می‌توانید یک درخت ری‌اکت را با `prerender` به HTML استاتیک pre-render کنید: 
 
 ```js
 import { prerender } from 'react-dom/static';
@@ -345,57 +345,57 @@ async function handler(request) {
 }
 ```
 
-Prerender APIs will wait for all data to load before returning the static HTML stream. Streams can be converted to strings, or sent with a streaming response. They do not support streaming content as it loads, which is supported by the existing [React DOM server rendering APIs](/reference/react-dom/server).
+APIهای Prerender پیش از بازگرداندن استریم HTML استاتیک، منتظر بارگذاری همهٔ داده‌ها می‌مانند. استریم‌ها می‌توانند به رشته تبدیل شوند، یا با یک پاسخ استریمی ارسال شوند. آن‌ها از محتوای استریمی هنگام بارگذاری پشتیبانی نمی‌کنند، که توسط [APIهای رندر سمت سرور موجود React DOM](/reference/react-dom/server) پشتیبانی می‌شود.
 
-For more information, see [React DOM Static APIs](/reference/react-dom/static).
+برای اطلاعات بیشتر، [APIهای استاتیک React DOM](/reference/react-dom/static) را ببینید.
 
-## React Server Components {/*react-server-components*/}
+## کامپوننت‌های سرور ری‌اکت {/*react-server-components*/}
 
-### Server Components {/*server-components*/}
+### کامپوننت‌های سرور {/*server-components*/}
 
-Server Components are a new option that allows rendering components ahead of time, before bundling, in an environment separate from your client application or SSR server. This separate environment is the "server" in React Server Components. Server Components can run once at build time on your CI server, or they can be run for each request using a web server.
+کامپوننت‌های سرور (Server Components) یک گزینهٔ جدید هستند که اجازه می‌دهند کامپوننت‌ها پیش از باندل‌شدن، در محیطی جدا از اپلیکیشن کلاینت یا سرور SSR شما، از پیش رندر شوند. این محیط جداگانه همان «سرور» در کامپوننت‌های سرور ری‌اکت است. کامپوننت‌های سرور می‌توانند یک‌بار در زمان build روی سرور CI شما اجرا شوند، یا می‌توانند برای هر درخواست با استفاده از یک وب‌سرور اجرا شوند.
 
-React 19 includes all of the React Server Components features included from the Canary channel. This means libraries that ship with Server Components can now target React 19 as a peer dependency with a `react-server` [export condition](https://github.com/reactjs/rfcs/blob/main/text/0227-server-module-conventions.md#react-server-conditional-exports) for use in frameworks that support the [Full-stack React Architecture](/learn/creating-a-react-app#which-features-make-up-the-react-teams-full-stack-architecture-vision). 
+React 19 شامل تمام قابلیت‌های کامپوننت‌های سرور ری‌اکت است که از کانال کاناری آمده‌اند. این بدان معناست که کتابخانه‌هایی که با کامپوننت‌های سرور منتشر می‌شوند اکنون می‌توانند React 19 را به‌عنوان یک peer dependency با یک [شرط export](https://github.com/reactjs/rfcs/blob/main/text/0227-server-module-conventions.md#react-server-conditional-exports) `react-server` هدف قرار دهند تا در فریم‌ورک‌هایی که از [معماری تمام‌استک ری‌اکت](/learn/creating-a-react-app#which-features-make-up-the-react-teams-full-stack-architecture-vision) پشتیبانی می‌کنند استفاده شوند.
 
 
 <Note>
 
-#### How do I build support for Server Components? {/*how-do-i-build-support-for-server-components*/}
+#### چگونه پشتیبانی از کامپوننت‌های سرور را بسازم؟ {/*how-do-i-build-support-for-server-components*/}
 
-While React Server Components in React 19 are stable and will not break between minor versions, the underlying APIs used to implement a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x. 
+در حالی که کامپوننت‌های سرور ری‌اکت در React 19 پایدارند و بین نسخه‌های ماینور نمی‌شکنند، APIهای زیرین استفاده‌شده برای پیاده‌سازی یک باندلر یا فریم‌ورک کامپوننت‌های سرور ری‌اکت از semver پیروی نمی‌کنند و ممکن است بین نسخه‌های ماینور در React 19.x بشکنند.
 
-To support React Server Components as a bundler or framework, we recommend pinning to a specific React version, or using the Canary release. We will continue working with bundlers and frameworks to stabilize the APIs used to implement React Server Components in the future.
+برای پشتیبانی از کامپوننت‌های سرور ری‌اکت به‌عنوان یک باندلر یا فریم‌ورک، توصیه می‌کنیم به یک نسخهٔ خاص ری‌اکت پین کنید، یا از انتشار کاناری استفاده کنید. ما به همکاری با باندلرها و فریم‌ورک‌ها برای پایدارسازی APIهای استفاده‌شده برای پیاده‌سازی کامپوننت‌های سرور ری‌اکت در آینده ادامه خواهیم داد.
 
 </Note>
 
 
-For more, see the docs for [React Server Components](/reference/rsc/server-components).
+برای اطلاعات بیشتر، مستندات [کامپوننت‌های سرور ری‌اکت](/reference/rsc/server-components) را ببینید.
 
-### Server Actions {/*server-actions*/}
+### اکشن‌های سرور {/*server-actions*/}
 
-Server Actions allow Client Components to call async functions executed on the server.
+اکشن‌های سرور (Server Actions) به کامپوننت‌های کلاینت اجازه می‌دهند توابع ناهمگام اجراشده روی سرور را فراخوانی کنند.
 
-When a Server Action is defined with the `"use server"` directive, your framework will automatically create a reference to the server function, and pass that reference to the Client Component. When that function is called on the client, React will send a request to the server to execute the function, and return the result.
+وقتی یک اکشن سرور با دستور `"use server"` تعریف می‌شود، فریم‌ورک شما به‌طور خودکار یک ارجاع به تابع سرور ایجاد می‌کند و آن ارجاع را به کامپوننت کلاینت ارسال می‌کند. وقتی آن تابع روی کلاینت فراخوانی می‌شود، ری‌اکت یک درخواست به سرور ارسال می‌کند تا تابع اجرا شود و نتیجه را بازمی‌گرداند.
 
 <Note>
 
-#### There is no directive for Server Components. {/*there-is-no-directive-for-server-components*/}
+#### هیچ دستوری برای کامپوننت‌های سرور وجود ندارد. {/*there-is-no-directive-for-server-components*/}
 
-A common misunderstanding is that Server Components are denoted by `"use server"`, but there is no directive for Server Components. The `"use server"` directive is used for Server Actions.
+یک سوءتفاهم رایج این است که کامپوننت‌های سرور با `"use server"` نشان داده می‌شوند، اما هیچ دستوری برای کامپوننت‌های سرور وجود ندارد. دستور `"use server"` برای اکشن‌های سرور استفاده می‌شود.
 
-For more info, see the docs for [Directives](/reference/rsc/directives).
+برای اطلاعات بیشتر، مستندات [دستورها (Directives)](/reference/rsc/directives) را ببینید.
 
 </Note>
 
-Server Actions can be created in Server Components and passed as props to Client Components, or they can be imported and used in Client Components.
+اکشن‌های سرور می‌توانند در کامپوننت‌های سرور ایجاد و به‌عنوان پراپس به کامپوننت‌های کلاینت ارسال شوند، یا می‌توانند در کامپوننت‌های کلاینت ایمپورت و استفاده شوند.
 
-For more, see the docs for [React Server Actions](/reference/rsc/server-functions).
+برای اطلاعات بیشتر، مستندات [اکشن‌های سرور ری‌اکت](/reference/rsc/server-functions) را ببینید.
 
-## Improvements in React 19 {/*improvements-in-react-19*/}
+## بهبودها در React 19 {/*improvements-in-react-19*/}
 
-### `ref` as a prop {/*ref-as-a-prop*/}
+### `ref` به‌عنوان پراپس {/*ref-as-a-prop*/}
 
-Starting in React 19, you can now access `ref` as a prop for function components:
+از React 19 به بعد، اکنون می‌توانید به `ref` به‌عنوان یک پراپس برای کامپوننت‌های تابعی دسترسی داشته باشید:
 
 ```js [[1, 1, "ref"], [1, 2, "ref", 45], [1, 6, "ref", 14]]
 function MyInput({placeholder, ref}) {
@@ -406,17 +406,17 @@ function MyInput({placeholder, ref}) {
 <MyInput ref={ref} />
 ```
 
-New function components will no longer need `forwardRef`, and we will be publishing a codemod to automatically update your components to use the new `ref` prop. In future versions we will deprecate and remove `forwardRef`.
+کامپوننت‌های تابعی جدید دیگر به `forwardRef` نیاز نخواهند داشت، و ما یک کدماد برای به‌روزرسانی خودکار کامپوننت‌هایتان جهت استفاده از پراپس `ref` جدید منتشر خواهیم کرد. در نسخه‌های آتی، `forwardRef` را منسوخ و حذف خواهیم کرد.
 
 <Note>
 
-`ref`s passed to classes are not passed as props since they reference the component instance.
+`ref`های ارسال‌شده به کلاس‌ها به‌عنوان پراپس ارسال نمی‌شوند زیرا به نمونهٔ کامپوننت ارجاع می‌دهند.
 
 </Note>
 
-### Diffs for hydration errors {/*diffs-for-hydration-errors*/}
+### Diff برای خطاهای hydration {/*diffs-for-hydration-errors*/}
 
-We also improved error reporting for hydration errors in `react-dom`. For example, instead of logging multiple errors in DEV without any information about the mismatch:
+ما همچنین گزارش خطا برای خطاهای hydration در `react-dom` را بهبود دادیم. برای مثال، به‌جای لاگ‌کردن چندین خطا در حالت DEV بدون هیچ اطلاعاتی دربارهٔ عدم تطابق:
 
 <ConsoleBlockMulti>
 
@@ -458,7 +458,7 @@ Uncaught Error: Text content does not match server-rendered HTML.
 
 </ConsoleBlockMulti>
 
-We now log a single message with a diff of the mismatch:
+ما اکنون یک پیام واحد با diffِ عدم تطابق لاگ می‌کنیم:
 
 
 <ConsoleBlockMulti>
@@ -484,9 +484,9 @@ https://react.dev/link/hydration-mismatch {'\n'}
 
 </ConsoleBlockMulti>
 
-### `<Context>` as a provider {/*context-as-a-provider*/}
+### `<Context>` به‌عنوان ارائه‌دهنده {/*context-as-a-provider*/}
 
-In React 19, you can render `<Context>` as a provider instead of `<Context.Provider>`:
+در React 19، می‌توانید `<Context>` را به‌عنوان یک ارائه‌دهنده به‌جای `<Context.Provider>` رندر کنید:
 
 
 ```js {5,7}
@@ -501,11 +501,11 @@ function App({children}) {
 }
 ```
 
-New Context providers can use `<Context>` and we will be publishing a codemod to convert existing providers. In future versions we will deprecate `<Context.Provider>`.
+ارائه‌دهنده‌های کانتکست جدید می‌توانند از `<Context>` استفاده کنند و ما یک کدماد برای تبدیل ارائه‌دهنده‌های موجود منتشر خواهیم کرد. در نسخه‌های آتی، `<Context.Provider>` را منسوخ خواهیم کرد.
 
-### Cleanup functions for refs {/*cleanup-functions-for-refs*/}
+### توابع پاکسازی برای رفرنس‌ها {/*cleanup-functions-for-refs*/}
 
-We now support returning a cleanup function from `ref` callbacks:
+ما اکنون از بازگرداندن یک تابع پاکسازی از کالبک‌های `ref` پشتیبانی می‌کنیم:
 
 ```js {7-9}
 <input
@@ -521,30 +521,30 @@ We now support returning a cleanup function from `ref` callbacks:
 />
 ```
 
-When the component unmounts, React will call the cleanup function returned from the `ref` callback. This works for DOM refs, refs to class components, and `useImperativeHandle`. 
+هنگام unmount شدن کامپوننت، ری‌اکت تابع پاکسازی بازگشت‌داده‌شده از کالبک `ref` را فراخوانی می‌کند. این برای رفرنس‌های DOM، رفرنس‌ها به کامپوننت‌های کلاسی، و `useImperativeHandle` کار می‌کند. 
 
 <Note>
 
-Previously, React would call `ref` functions with `null` when unmounting the component. If your `ref` returns a cleanup function, React will now skip this step.
+پیش‌تر، ری‌اکت توابع `ref` را هنگام unmount کردن کامپوننت با `null` فراخوانی می‌کرد. اگر `ref` شما یک تابع پاکسازی بازمی‌گرداند، ری‌اکت اکنون از این مرحله می‌گذرد.
 
-In future versions, we will deprecate calling refs with `null` when unmounting components.
+در نسخه‌های آتی، فراخوانی رفرنس‌ها با `null` هنگام unmount کردن کامپوننت‌ها را منسوخ خواهیم کرد.
 
 </Note>
 
-Due to the introduction of ref cleanup functions, returning anything else from a `ref` callback will now be rejected by TypeScript. The fix is usually to stop using implicit returns, for example:
+به‌دلیل معرفی توابع پاکسازی رفرنس، بازگرداندن هر چیز دیگری از یک کالبک `ref` اکنون توسط TypeScript رد خواهد شد. رفع معمولاً این است که استفاده از بازگشت‌های ضمنی را متوقف کنید، برای مثال:
 
 ```diff [[1, 1, "("], [1, 1, ")"], [2, 2, "{", 15], [2, 2, "}", 1]]
 - <div ref={current => (instance = current)} />
 + <div ref={current => {instance = current}} />
 ```
 
-The original code returned the instance of the `HTMLDivElement` and TypeScript wouldn't know if this was _supposed_ to be a cleanup function or if you didn't want to return a cleanup function.
+کد اصلی نمونهٔ `HTMLDivElement` را بازمی‌گرداند و TypeScript نمی‌دانست که آیا این _قرض_ است یک تابع پاکسازی باشد یا شما نمی‌خواسته‌اید تابع پاکسازی بازگردانید.
 
-You can codemod this pattern with [`no-implicit-ref-callback-return`](https://github.com/eps1lon/types-react-codemod/#no-implicit-ref-callback-return).
+می‌توانید این الگو را با [`no-implicit-ref-callback-return`](https://github.com/eps1lon/types-react-codemod/#no-implicit-ref-callback-return) کدماد کنید.
 
-### `useDeferredValue` initial value {/*use-deferred-value-initial-value*/}
+### مقدار اولیهٔ `useDeferredValue` {/*use-deferred-value-initial-value*/}
 
-We've added an `initialValue` option to `useDeferredValue`:
+ما یک گزینهٔ `initialValue` به `useDeferredValue` اضافه کرده‌ایم:
 
 ```js [[1, 1, "deferredValue"], [1, 4, "deferredValue"], [2, 4, "''"]]
 function Search({deferredValue}) {
@@ -558,15 +558,15 @@ function Search({deferredValue}) {
 }
 ````
 
-When <CodeStep step={2}>initialValue</CodeStep> is provided, `useDeferredValue` will return it as `value` for the initial render of the component, and schedules a re-render in the background with the <CodeStep step={1}>deferredValue</CodeStep> returned.
+وقتی <CodeStep step={2}>initialValue</CodeStep> ارائه شود، `useDeferredValue` آن را به‌عنوان `value` برای رندر اولیهٔ کامپوننت بازمی‌گرداند، و یک رندر مجدد در پس‌زمینه با <CodeStep step={1}>deferredValue</CodeStep> بازگشت‌داده‌شده زمان‌بندی می‌کند.
 
-For more, see [`useDeferredValue`](/reference/react/useDeferredValue).
+برای اطلاعات بیشتر، [`useDeferredValue`](/reference/react/useDeferredValue) را ببینید.
 
-### Support for Document Metadata {/*support-for-metadata-tags*/}
+### پشتیبانی از فرادادهٔ سند {/*support-for-metadata-tags*/}
 
-In HTML, document metadata tags like `<title>`, `<link>`, and `<meta>` are reserved for placement in the `<head>` section of the document. In React, the component that decides what metadata is appropriate for the app may be very far from the place where you render the `<head>` or React does not render the `<head>` at all. In the past, these elements would need to be inserted manually in an effect, or by libraries like [`react-helmet`](https://github.com/nfl/react-helmet), and required careful handling when server rendering a React application. 
+در HTML، تگ‌های فرادادهٔ سند مانند `<title>`، `<link>` و `<meta>` برای قرارگیری در بخش `<head>` سند رزرو شده‌اند. در ری‌اکت، ممکن است کامپوننتی که تصمیم می‌گیرد فرادادهٔ مناسب برای اپلیکیشن چیست، از محلی که `<head>` را رندر می‌کنید بسیار دور باشد، یا اصلاً ری‌اکت `<head>` را رندر نکند. در گذشته، این عناصر باید به‌صورت دستی در یک افکت، یا توسط کتابخانه‌هایی مانند [`react-helmet`](https://github.com/nfl/react-helmet) درج می‌شدند، و هنگام رندر سمت سرور یک اپلیکیشن ری‌اکت به مدیریت دقیقی نیاز داشتند. 
 
-In React 19, we're adding support for rendering document metadata tags in components natively:
+در React 19، ما پشتیبانی از رندر تگ‌های فرادادهٔ سند در کامپوننت‌ها را به‌صورت بومی اضافه می‌کنیم:
 
 ```js {5-8}
 function BlogPost({post}) {
@@ -585,23 +585,23 @@ function BlogPost({post}) {
 }
 ```
 
-When React renders this component, it will see the `<title>` `<link>` and `<meta>` tags, and automatically hoist them to the `<head>` section of document. By supporting these metadata tags natively, we're able to ensure they work with client-only apps, streaming SSR, and Server Components.
+هنگام رندر این کامپوننت، ری‌اکت تگ‌های `<title>`، `<link>` و `<meta>` را می‌بیند و به‌طور خودکار آن‌ها را به بخش `<head>` سند بالا می‌برد. با پشتیبانی بومی از این تگ‌های فراداده، می‌توانیم اطمینان حاصل کنیم که با اپلیکیشن‌های صرفاً کلاینت، SSR استریمی و کامپوننت‌های سرور کار می‌کنند.
 
 <Note>
 
-#### You may still want a Metadata library {/*you-may-still-want-a-metadata-library*/}
+#### ممکن است هنوز به یک کتابخانهٔ فراداده نیاز داشته باشید {/*you-may-still-want-a-metadata-library*/}
 
-For simple use cases, rendering Document Metadata as tags may be suitable, but libraries can offer more powerful features like overriding generic metadata with specific metadata based on the current route. These features make it easier for frameworks and libraries like [`react-helmet`](https://github.com/nfl/react-helmet) to support metadata tags, rather than replace them.
+برای موارد استفادهٔ ساده، رندر فرادادهٔ سند به‌عنوان تگ ممکن است مناسب باشد، اما کتابخانه‌ها می‌توانند قابلیت‌های قدرتمندتری مانند بازنویسی فرادادهٔ عمومی با فرادادهٔ خاص بر اساس مسیر فعلی ارائه دهند. این قابلیت‌ها کار را برای فریم‌ورک‌ها و کتابخانه‌هایی مانند [`react-helmet`](https://github.com/nfl/react-helmet) برای پشتیبانی از تگ‌های فرادوده آسان‌تر می‌کند، نه آنکه جایگزین آن‌ها شود.
 
 </Note>
 
-For more info, see the docs for [`<title>`](/reference/react-dom/components/title), [`<link>`](/reference/react-dom/components/link), and [`<meta>`](/reference/react-dom/components/meta).
+برای اطلاعات بیشتر، مستندات [`<title>`](/reference/react-dom/components/title)، [`<link>`](/reference/react-dom/components/link) و [`<meta>`](/reference/react-dom/components/meta) را ببینید.
 
-### Support for stylesheets {/*support-for-stylesheets*/}
+### پشتیبانی از استایل‌شیت‌ها {/*support-for-stylesheets*/}
 
-Stylesheets, both externally linked (`<link rel="stylesheet" href="...">`) and inline (`<style>...</style>`), require careful positioning in the DOM due to style precedence rules. Building a stylesheet capability that allows for composability within components is hard, so users often end up either loading all of their styles far from the components that may depend on them, or they use a style library which encapsulates this complexity.
+استایل‌شیت‌ها، چه به‌صورت خارجی (`<link rel="stylesheet" href="...">`) چه inline (`<style>...</style>`)، به‌دلیل قواعد تقدم استایل، نیازمند موقعیت‌یابی دقیقی در DOM هستند. ساخت یک قابلیت استایل‌شیت که اجازهٔ ترکیب‌پذیری درون کامپوننت‌ها را بدهد دشوار است، بنابراین کاربران اغلب یا تمام استایل‌های خود را در فاصله‌ای دور از کامپوننت‌هایی که ممکن است به آن‌ها وابسته باشند بارگذاری می‌کنند، یا از یک کتابخانهٔ استایل استفاده می‌کنند که این پیچیدگی را کپسوله می‌کند.
 
-In React 19, we're addressing this complexity and providing even deeper integration into Concurrent Rendering on the Client and Streaming Rendering on the Server with built in support for stylesheets. If you tell React the `precedence` of your stylesheet it will manage the insertion order of the stylesheet in the DOM and ensure that the stylesheet (if external) is loaded before revealing content that depends on those style rules.
+در React 19، ما این پیچیدگی را برطرف کرده و یکپارچه‌سازی عمیق‌تری با رندر همزمان (Concurrent Rendering) در کلاینت و رندر استریمی در سرور با پشتیبانی داخلی از استایل‌شیت‌ها ارائه می‌کنیم. اگر `precedence` استایل‌شیت خود را به ری‌اکت بگویید، ترتیب درج استایل‌شیت در DOM را مدیریت می‌کند و اطمینان حاصل می‌کند که استایل‌شیت (در صورت خارجی‌بودن) پیش از آشکارکردن محتوایی که به آن قواعد استایل وابسته است، بارگذاری شده است.
 
 ```js {4,5,17}
 function ComponentOne() {
@@ -626,9 +626,9 @@ function ComponentTwo() {
 }
 ```
 
-During Server Side Rendering React will include the stylesheet in the `<head>`, which ensures that the browser will not paint until it has loaded. If the stylesheet is discovered late after we've already started streaming, React will ensure that the stylesheet is inserted into the `<head>` on the client before revealing the content of a Suspense boundary that depends on that stylesheet.
+در حین رندر سمت سرور، ری‌اکت استایل‌شیت را در `<head>` قرار می‌دهد که اطمینان حاصل می‌کند مرورگر تا زمان بارگذاری، paint نخواهد کرد. اگر استایل‌شیت پس از آنکه از قبل استریم را آغاز کرده‌ایم، دیر کشف شود، ری‌اکت اطمینان حاصل می‌کند که استایل‌شیت در `<head>` کلاینت پیش از آشکارکردن محتوای یک مرز ساسپنس که به آن استایل‌شیت وابسته است، درج شود.
 
-During Client Side Rendering React will wait for newly rendered stylesheets to load before committing the render. If you render this component from multiple places within your application React will only include the stylesheet once in the document:
+در حین رندر سمت کلاینت، ری‌اکت پیش از کامیت رندر، منتظر بارگذاری استایل‌شیت‌های تازه رندرشده می‌ماند. اگر این کامپوننت را از چندین مکان در اپلیکیشن خود رندر کنید، ری‌اکت فقط یک‌بار استایل‌شیت را در سند درج می‌کند:
 
 ```js {5}
 function App() {
@@ -640,17 +640,17 @@ function App() {
 }
 ```
 
-For users accustomed to loading stylesheets manually this is an opportunity to locate those stylesheets alongside the components that depend on them allowing for better local reasoning and an easier time ensuring you only load the stylesheets that you actually depend on.
+برای کاربرانی که به بارگذاری دستی استایل‌شیت‌ها عادت دارند، این فرصتی است تا آن استایل‌شیت‌ها را در کنار کامپوننت‌هایی که به آن‌ها وابسته‌اند قرار دهید که امکان استدلال محلی بهتر و آسان‌تری برای اطمینان از بارگذاری فقط استایل‌شیت‌هایی که واقعاً به آن‌ها وابسته‌اید را فراهم می‌کند.
 
-Style libraries and style integrations with bundlers can also adopt this new capability so even if you don't directly render your own stylesheets, you can still benefit as your tools are upgraded to use this feature.
+کتابخانه‌های استایل و یکپارچه‌سازی‌های استایل با باندلرها نیز می‌توانند این قابلیت جدید را به کار بگیرند، بنابراین حتی اگر مستقیماً استایل‌شیت‌های خود را رندر نکنید، با ارتقای ابزارهایتان به استفاده از این قابلیت بهره خواهند برد.
 
-For more details, read the docs for [`<link>`](/reference/react-dom/components/link) and [`<style>`](/reference/react-dom/components/style).
+برای جزئیات بیشتر، مستندات [`<link>`](/reference/react-dom/components/link) و [`<style>`](/reference/react-dom/components/style) را بخوانید.
 
-### Support for async scripts {/*support-for-async-scripts*/}
+### پشتیبانی از اسکریپت‌های ناهمگام {/*support-for-async-scripts*/}
 
-In HTML normal scripts (`<script src="...">`) and deferred scripts (`<script defer="" src="...">`) load in document order which makes rendering these kinds of scripts deep within your component tree challenging. Async scripts (`<script async="" src="...">`) however will load in arbitrary order.
+در HTML، اسکریپت‌های معمولی (`<script src="...">`) و اسکریپت‌های معوق‌شده (`<script defer="" src="...">`) به ترتیب سند بارگذاری می‌شوند که رندر این نوع اسکریپت‌ها در عمق درخت کامپوننت‌تان را چالش‌برانگیز می‌کند. با این حال، اسکریپت‌های ناهمگام (`<script async="" src="...">`) به ترتیب دلخواه بارگذاری می‌شوند.
 
-In React 19 we've included better support for async scripts by allowing you to render them anywhere in your component tree, inside the components that actually depend on the script, without having to manage relocating and deduplicating script instances.
+در React 19 ما پشتیبانی بهتری برای اسکریپت‌های ناهمگام گنجانده‌ایم با اجازه به شما برای رندر آن‌ها در هر نقطه از درخت کامپوننت، درون کامپوننت‌هایی که واقعاً به اسکریپت وابسته‌اند، بدون نیاز به مدیریت جابجایی مجدد و حذف تکراری نمونه‌های اسکریپت.
 
 ```js {4,15}
 function MyComponent() {
@@ -673,17 +673,17 @@ function App() {
 }
 ```
 
-In all rendering environments, async scripts will be deduplicated so that React will only load and execute the script once even if it is rendered by multiple different components.
+در همهٔ محیط‌های رندر، اسکریپت‌های ناهمگام حذف تکراری می‌شوند تا ری‌اکت فقط یک‌بار اسکریپت را بارگذاری و اجرا کند حتی اگر توسط چندین کامپوننت متفاوت رندر شود.
 
-In Server Side Rendering, async scripts will be included in the `<head>` and prioritized behind more critical resources that block paint such as stylesheets, fonts, and image preloads.
+در رندر سمت سرور، اسکریپت‌های ناهمگام در `<head>` گنجانده می‌شوند و پشت منابع بحرانی‌تری که paint را مسدود می‌کنند مانند استایل‌شیت‌ها، فونت‌ها و پیش‌بارگذاری‌های تصویر اولویت‌بندی می‌شوند.
 
-For more details, read the docs for [`<script>`](/reference/react-dom/components/script).
+برای جزئیات بیشتر، مستندات [`<script>`](/reference/react-dom/components/script) را بخوانید.
 
-### Support for preloading resources {/*support-for-preloading-resources*/}
+### پشتیبانی از پیش‌بارگذاری منابع {/*support-for-preloading-resources*/}
 
-During initial document load and on client side updates, telling the Browser about resources that it will likely need to load as early as possible can have a dramatic effect on page performance.
+در حین بارگذاری اولیهٔ سند و در به‌روزرسانی‌های سمت کلاینت، آگاه‌کردن مرورگر از منابعی که احتمالاً باید در اولین فرصت بارگذاری شوند، می‌تواند تأثیر چشمگیری بر عملکرد صفحه داشته باشد.
 
-React 19 includes a number of new APIs for loading and preloading Browser resources to make it as easy as possible to build great experiences that aren't held back by inefficient resource loading.
+React 19 شامل تعدادی API جدید برای بارگذاری و پیش‌بارگذاری منابع مرورگر است تا ساخت تجربه‌های عالی که توسط بارگذاری ناکارآمد منابع محدود نمی‌شوند، تا حد ممکن آسان شود.
 
 ```js
 import { prefetchDNS, preconnect, preload, preinit } from 'react-dom'
@@ -712,23 +712,23 @@ function MyComponent() {
 </html>
 ```
 
-These APIs can be used to optimize initial page loads by moving discovery of additional resources like fonts out of stylesheet loading. They can also make client updates faster by prefetching a list of resources used by an anticipated navigation and then eagerly preloading those resources on click or even on hover.
+این APIها می‌توانند برای بهینه‌سازی بارگذاری‌های اولیهٔ صفحه با انتقال کشف منابع اضافی مانند فونت‌ها از بارگذاری استایل‌شیت استفاده شوند. همچنین می‌توانند به‌روزرسانی‌های کلاینت را با prefetch کردن فهرستی از منابع استفاده‌شده توسط یک ناوبری مورد انتظار و سپس پیش‌بارگذاری eager آن منابع هنگام کلیک یا حتی hover، سریع‌تر کنند.
 
-For more details see [Resource Preloading APIs](/reference/react-dom#resource-preloading-apis).
+برای جزئیات بیشتر، [APIهای پیش‌بارگذاری منابع](/reference/react-dom#resource-preloading-apis) را ببینید.
 
-### Compatibility with third-party scripts and extensions {/*compatibility-with-third-party-scripts-and-extensions*/}
+### سازگاری با اسکریپت‌ها و افزونه‌های شخص ثالث {/*compatibility-with-third-party-scripts-and-extensions*/}
 
-We've improved hydration to account for third-party scripts and browser extensions.
+ما hydration را برای در نظر گرفتن اسکریپت‌های شخص ثالث و افزونه‌های مرورگر بهبود داده‌ایم.
 
-When hydrating, if an element that renders on the client doesn't match the element found in the HTML from the server, React will force a client re-render to fix up the content. Previously, if an element was inserted by third-party scripts or browser extensions, it would trigger a mismatch error and client render.
+هنگام hydration، اگر عنصری که روی کلاینت رندر می‌شود با عنصر یافت‌شده در HTML از سرور تطابق نداشته باشد، ری‌اکت یک رندر مجدد کلاینت را برای رفع محتوا اجبار می‌کند. پیش‌تر، اگر عنصری توسط اسکریپت‌های شخص ثالث یا افزونه‌های مرورگر درج شده بود، یک خطای عدم تطابق و رندر کلاینت را ایجاد می‌کرد.
 
-In React 19, unexpected tags in the `<head>` and `<body>` will be skipped over, avoiding the mismatch errors. If React needs to re-render the entire document due to an unrelated hydration mismatch, it will leave in place stylesheets inserted by third-party scripts and browser extensions.
+در React 19، تگ‌های غیرمنتظره در `<head>` و `<body>` نادیده گرفته می‌شوند تا از خطاهای عدم تطابق جلوگیری شود. اگر ری‌اکت به‌دلیل یک عدم تطابق hydration نامرتبط نیاز به رندر مجدد کل سند داشته باشد، استایل‌شیت‌های درج‌شده توسط اسکریپت‌های شخص ثالث و افزونه‌های مرورگر را در جای خود نگه می‌دارد.
 
-### Better error reporting {/*error-handling*/}
+### گزارش خطای بهتر {/*error-handling*/}
 
-We improved error handling in React 19 to remove duplication and provide options for handling caught and uncaught errors. For example, when there's an error in render caught by an Error Boundary, previously React would throw the error twice (once for the original error, then again after failing to automatically recover), and then call `console.error` with info about where the error occurred. 
+ما مدیریت خطا در React 19 را بهبود دادیم تا از تکراری‌شدن جلوگیری شود و گزینه‌هایی برای مدیریت خطاهای دریافت‌شده و دریافت‌نشده ارائه شود. برای مثال، وقتی خطایی در رندر توسط یک Error Boundary دریافت می‌شود، پیش‌تر ری‌اکت خطا را دو بار پرتاب می‌کرد (یک‌بار برای خطای اصلی، سپس دوباره پس از شکست در بازیابی خودکار)، و سپس `console.error` را با اطلاعاتی دربارهٔ محل وقوع خطا فراخوانی می‌کرد. 
 
-This resulted in three errors for every caught error:
+این منجر به سه خطا برای هر خطای دریافت‌شده می‌شد:
 
 <ConsoleBlockMulti>
 
@@ -762,7 +762,7 @@ React will try to recreate this component tree from scratch using the error boun
 
 </ConsoleBlockMulti>
 
-In React 19, we log a single error with all the error information included:
+در React 19، ما یک خطای واحد با تمام اطلاعات خطا لاگ می‌کنیم:
 
 <ConsoleBlockMulti>
 
@@ -784,27 +784,27 @@ React will try to recreate this component tree from scratch using the error boun
 
 </ConsoleBlockMulti>
 
-Additionally, we've added two new root options to complement `onRecoverableError`:
+علاوه بر این، ما دو گزینهٔ ریشهٔ جدید برای تکمیل `onRecoverableError` اضافه کرده‌ایم:
 
-- `onCaughtError`: called when React catches an error in an Error Boundary.
-- `onUncaughtError`: called when an error is thrown and not caught by an Error Boundary.
-- `onRecoverableError`: called when an error is thrown and automatically recovered.
+- `onCaughtError`: هنگامی که ری‌اکت خطایی را در یک Error Boundary دریافت می‌کند فراخوانی می‌شود.
+- `onUncaughtError`: هنگامی که خطایی پرتاب می‌شود و توسط یک Error Boundary دریافت نمی‌شود فراخوانی می‌شود.
+- `onRecoverableError`: هنگامی که خطایی پرتاب می‌شود و به‌طور خودکار بازیابی می‌گردد فراخوانی می‌شود.
 
-For more info and examples, see the docs for [`createRoot`](/reference/react-dom/client/createRoot) and [`hydrateRoot`](/reference/react-dom/client/hydrateRoot).
+برای اطلاعات بیشتر و مثال‌ها، مستندات [`createRoot`](/reference/react-dom/client/createRoot) و [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) را ببینید.
 
-### Support for Custom Elements {/*support-for-custom-elements*/}
+### پشتیبانی از Custom Elements {/*support-for-custom-elements*/}
 
-React 19 adds full support for custom elements and passes all tests on [Custom Elements Everywhere](https://custom-elements-everywhere.com/).
+React 19 پشتیبانی کامل از custom elements اضافه می‌کند و تمام آزمون‌های [Custom Elements Everywhere](https://custom-elements-everywhere.com/) را با موفقیت گذرانده است.
 
-In past versions, using Custom Elements in React has been difficult because React treated unrecognized props as attributes rather than properties. In React 19, we've added support for properties that works on the client and during SSR with the following strategy:
+در نسخه‌های گذشته، استفاده از Custom Elements در ری‌اکت دشوار بود زیرا ری‌اکت پراپسهای تشخیص‌داده‌نشده را به‌عنوان attribute به‌جای property در نظر می‌گرفت. در React 19، ما پشتیبانی از propertyها را با استراتژی زیر اضافه کرده‌ایم که روی کلاینت و در حین SSR کار می‌کند:
 
-- **Server Side Rendering**: props passed to a custom element will render as attributes if their type is a primitive value like `string`, `number`, or the value is `true`. Props with non-primitive types like `object`, `symbol`, `function`, or value `false` will be omitted.
-- **Client Side Rendering**: props that match a property on the Custom Element instance will be assigned as properties, otherwise they will be assigned as attributes.
+- **رندر سمت سرور**: پراپسهای ارسال‌شده به یک custom element اگر نوعشان یک مقدار اولیه مانند `string`، `number` باشد، یا مقدار `true` باشد، به‌عنوان attribute رندر می‌شوند. پراپسهای با انواع غیراولیه مانند `object`، `symbol`، `function`، یا مقدار `false` حذف خواهند شد.
+- **رندر سمت کلاینت**: پراپسهایی که با یک property روی نمونهٔ Custom Element تطابق دارند به‌عنوان property اختصاص داده می‌شوند، در غیر این صورت به‌عنوان attribute اختصاص داده می‌شوند.
 
-Thanks to [Joey Arhar](https://github.com/josepharhar) for driving the design and implementation of Custom Element support in React.
+از [Joey Arhar](https://github.com/josepharhar) برای رهبری طراحی و پیاده‌سازی پشتیبانی از Custom Element در ری‌اکت سپاسگزاریم.
 
 
-#### How to upgrade {/*how-to-upgrade*/}
-See the [React 19 Upgrade Guide](/blog/2024/04/25/react-19-upgrade-guide) for step-by-step instructions and a full list of breaking and notable changes.
+#### نحوهٔ ارتقا {/*how-to-upgrade*/}
+برای دستورالعمل‌های گام‌به‌گام و فهرست کامل تغییرات از بین‌برنده و قابل‌توجه، [راهنمای ارتقا به React 19](/blog/2024/04/25/react-19-upgrade-guide) را ببینید.
 
-_Note: this post was originally published 04/25/2024 and has been updated to 12/05/2024 with the stable release._
+_یادداشت: این پست در ابتدا در 25/04/2024 منتشر شد و با انتشار پایدار به 05/12/2024 به‌روزرسانی شده است._

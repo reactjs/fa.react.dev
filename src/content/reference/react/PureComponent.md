@@ -4,13 +4,13 @@ title: PureComponent
 
 <Pitfall>
 
-We recommend defining components as functions instead of classes. [See how to migrate.](#alternatives)
+پیشنهاد می‌کنیم کامپوننت‌ها را به‌صورت تابع تعریف کنید، نه کلاس. [نحوهٔ مهاجرت را ببینید.](#alternatives)
 
 </Pitfall>
 
 <Intro>
 
-`PureComponent` is similar to [`Component`](/reference/react/Component) but it skips re-renders for same props and state. Class components are still supported by React, but we don't recommend using them in new code.
+`PureComponent` شبیه [`Component`](/reference/react/Component) است، اما برای پراپس و استیت یکسان از رندر مجدد می‌پرد. کامپوننت‌های کلاسی همچنان توسط ری‌اکت پشتیبانی می‌شوند، اما استفاده از آن‌ها در کدهای جدید را توصیه نمی‌کنیم.
 
 ```js
 class Greeting extends PureComponent {
@@ -26,11 +26,11 @@ class Greeting extends PureComponent {
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `PureComponent` {/*purecomponent*/}
 
-To skip re-rendering a class component for same props and state, extend `PureComponent` instead of [`Component`:](/reference/react/Component)
+برای نادیده گرفتن رندر مجدد یک کامپوننت کلاسی با پراپس و استیت یکسان، به‌جای [`Component`](/reference/react/Component) از `PureComponent` ارث ببرید:
 
 ```js
 import { PureComponent } from 'react';
@@ -42,18 +42,18 @@ class Greeting extends PureComponent {
 }
 ```
 
-`PureComponent` is a subclass of `Component` and supports [all the `Component` APIs.](/reference/react/Component#reference) Extending `PureComponent` is equivalent to defining a custom [`shouldComponentUpdate`](/reference/react/Component#shouldcomponentupdate) method that shallowly compares props and state.
+`PureComponent` یک زیرکلاس از `Component` است و [تمام APIهای `Component`](/reference/react/Component#reference) را پشتیبانی می‌کند. ارث بردن از `PureComponent` معادل تعریف یک متد سفارشی [`shouldComponentUpdate`](/reference/react/Component#shouldcomponentupdate) است که پراپس و استیت را به‌صورت سطحی (shallow) مقایسه می‌کند.
 
 
-[See more examples below.](#usage)
+[نمونه‌های بیشتر را در ادامه ببینید.](#usage)
 
 ---
 
-## Usage {/*usage*/}
+## استفاده {/*usage*/}
 
-### Skipping unnecessary re-renders for class components {/*skipping-unnecessary-re-renders-for-class-components*/}
+### نادیده گرفتن رندر مجدد غیرضروری برای کامپوننت‌های کلاسی {/*skipping-unnecessary-re-renders-for-class-components*/}
 
-React normally re-renders a component whenever its parent re-renders. As an optimization, you can create a component that React will not re-render when its parent re-renders so long as its new props and state are the same as the old props and state. [Class components](/reference/react/Component) can opt into this behavior by extending `PureComponent`:
+ری‌اکت معمولاً هر بار که والد یک کامپوننت دوباره رندر می‌شود، آن کامپوننت را دوباره رندر می‌کند. به‌عنوان یک بهینه‌سازی، می‌توانید کامپوننتی بسازید که ری‌اکت هنگامی که والد آن دوباره رندر می‌شود، آن را مجدداً رندر نکند، به‌شرطی که پراپس و استیت جدیدش با پراپس و استیت قدیمی یکسان باشد. [کامپوننت‌های کلاسی](/reference/react/Component) می‌توانند با ارث بردن از `PureComponent` به این رفتار opt-in کنند:
 
 ```js {1}
 class Greeting extends PureComponent {
@@ -63,9 +63,9 @@ class Greeting extends PureComponent {
 }
 ```
 
-A React component should always have [pure rendering logic.](/learn/keeping-components-pure) This means that it must return the same output if its props, state, and context haven't changed. By using `PureComponent`, you are telling React that your component complies with this requirement, so React doesn't need to re-render as long as its props and state haven't changed. However, your component will still re-render if a context that it's using changes.
+یک کامپوننت ری‌اکت همواره باید دارای [منطق رندر خالص](/learn/keeping-components-pure) باشد. این یعنی باید در صورتی که پراپس، استیت و کانتکست آن تغییر نکرده‌اند، خروجی یکسانی بازگرداند. با استفاده از `PureComponent`، به ری‌اکت می‌گویید که کامپوننت شما با این نیازمندی مطابقت دارد، بنابراین تا زمانی که پراپس و استیت آن تغییر نکرده‌اند، ری‌اکت نیازی به رندر مجدد ندارد. با این حال، اگر کانتکستی که کامپوننت از آن استفاده می‌کند تغییر کند، کامپوننت شما همچنان مجدداً رندر می‌شود.
 
-In this example, notice that the `Greeting` component re-renders whenever `name` is changed (because that's one of its props), but not when `address` is changed (because it's not passed to `Greeting` as a prop):
+در این نمونه، توجه کنید که کامپوننت `Greeting` هر بار که `name` تغییر می‌کند مجدداً رندر می‌شود (زیرا این یکی از پراپس‌های آن است)، اما هنگامی که `address` تغییر می‌کند، رندر مجدد نمی‌شود (زیرا به‌عنوان پراپس به `Greeting` ارسال نمی‌شود):
 
 <Sandpack>
 
@@ -109,17 +109,17 @@ label {
 
 <Pitfall>
 
-We recommend defining components as functions instead of classes. [See how to migrate.](#alternatives)
+پیشنهاد می‌کنیم کامپوننت‌ها را به‌صورت تابع تعریف کنید، نه کلاس. [نحوهٔ مهاجرت را ببینید.](#alternatives)
 
 </Pitfall>
 
 ---
 
-## Alternatives {/*alternatives*/}
+## جایگزین‌ها {/*alternatives*/}
 
-### Migrating from a `PureComponent` class component to a function {/*migrating-from-a-purecomponent-class-component-to-a-function*/}
+### مهاجرت از یک کامپوننت کلاسی `PureComponent` به یک تابع {/*migrating-from-a-purecomponent-class-component-to-a-function*/}
 
-We recommend using function components instead of [class components](/reference/react/Component) in new code. If you have some existing class components using `PureComponent`, here is how you can convert them. This is the original code:
+پیشنهاد می‌کنیم در کدهای جدید به‌جای [کامپوننت‌های کلاسی](/reference/react/Component) از کامپوننت‌های تابعی استفاده کنید. اگر کامپوننت‌های کلاسی موجودی دارید که از `PureComponent` استفاده می‌کنند، در اینجا نحوهٔ تبدیل آن‌ها آمده است. این کد اصلی است:
 
 <Sandpack>
 
@@ -161,7 +161,7 @@ label {
 
 </Sandpack>
 
-When you [convert this component from a class to a function,](/reference/react/Component#alternatives) wrap it in [`memo`:](/reference/react/memo)
+وقتی [این کامپوننت را از کلاس به تابع تبدیل می‌کنید،](/reference/react/Component#alternatives) آن را در [`memo`](/reference/react/memo) بپیچید:
 
 <Sandpack>
 
@@ -203,6 +203,6 @@ label {
 
 <Note>
 
-Unlike `PureComponent`, [`memo`](/reference/react/memo) does not compare the new and the old state. In function components, calling the [`set` function](/reference/react/useState#setstate) with the same state [already prevents re-renders by default,](/reference/react/memo#updating-a-memoized-component-using-state) even without `memo`.
+برخلاف `PureComponent`، [`memo`](/reference/react/memo) استیت جدید و قدیمی را مقایسه نمی‌کند. در کامپوننت‌های تابعی، صدا زدن [تابع `set`](/reference/react/useState#setstate) با همان استیت [به‌طور پیش‌فرض از رندر مجدد جلوگیری می‌کند،](/reference/react/memo#updating-a-memoized-component-using-state) حتی بدون `memo`.
 
 </Note>

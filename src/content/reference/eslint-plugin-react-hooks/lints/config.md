@@ -4,17 +4,17 @@ title: config
 
 <Intro>
 
-Validates the compiler [configuration options](/reference/react-compiler/configuration).
+[گزینه‌های پیکربندی](/reference/react-compiler/configuration) کامپایلر را اعتبارسنجی می‌کند.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## جزئیات قانون {/*rule-details*/}
 
-React Compiler accepts various [configuration options](/reference/react-compiler/configuration)  to control its behavior. This rule validates that your configuration uses correct option names and value types, preventing silent failures from typos or incorrect settings.
+React Compiler گزینه‌های پیکربندی مختلفی را برای کنترل رفتار خود می‌پذیرد. این قانون تأیید می‌کند که پیکربندی شما از نام‌های گزینه و انواع مقدار صحیح استفاده می‌کند، و از شکست‌های خامس به‌دلیل اشتباه تایپی یا تنظیمات نادرست جلوگیری می‌کند.
 
-### Invalid {/*invalid*/}
+### نامعتبر {/*invalid*/}
 
-Examples of incorrect code for this rule:
+نمونه‌هایی از کد نادرست برای این قانون:
 
 ```js
 // ❌ Unknown option name
@@ -36,9 +36,9 @@ module.exports = {
 };
 ```
 
-### Valid {/*valid*/}
+### معتبر {/*valid*/}
 
-Examples of correct code for this rule:
+نمونه‌هایی از کد درست برای این قانون:
 
 ```js
 // ✅ Valid compiler configuration
@@ -52,11 +52,11 @@ module.exports = {
 };
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-### Configuration not working as expected {/*config-not-working*/}
+### پیکربندی به‌طور مورد انتظار کار نمی‌کند {/*config-not-working*/}
 
-Your compiler configuration might have typos or incorrect values:
+ممکن است پیکربندی کامپایلر شما اشتباه تایپی یا مقادیر نادرست داشته باشد:
 
 ```js
 // ❌ Wrong: Common configuration mistakes
@@ -74,7 +74,7 @@ module.exports = {
 };
 ```
 
-Check the [configuration documentation](/reference/react-compiler/configuration) for valid options:
+برای گزینه‌های معتبر، [مستندات پیکربندی](/reference/react-compiler/configuration) را بررسی کنید:
 
 ```js
 // ✅ Better: Valid configuration

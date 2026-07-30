@@ -4,13 +4,13 @@ title: preloadModule
 
 <Note>
 
-[React-based frameworks](/learn/creating-a-react-app) frequently handle resource loading for you, so you might not have to call this API yourself. Consult your framework's documentation for details.
+[فریم‌ورک‌های مبتنی بر ری‌اکت](/learn/creating-a-react-app) اغلب بارگذاری منابع را برای شما مدیریت می‌کنند، بنابراین ممکن است لازم نباشد خودتان این API را فراخوانی کنید. برای جزئیات به مستندات فریم‌ورک خود مراجعه کنید.
 
 </Note>
 
 <Intro>
 
-`preloadModule` lets you eagerly fetch an ESM module that you expect to use.
+`preloadModule` به شما اجازه می‌دهد یک ماژول ESM که انتظار دارید استفاده کنید را به‌صورت eager بارگذاری کنید.
 
 ```js
 preloadModule("https://example.com/module.js", {as: "script"});
@@ -22,11 +22,11 @@ preloadModule("https://example.com/module.js", {as: "script"});
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `preloadModule(href, options)` {/*preloadmodule*/}
 
-To preload an ESM module, call the `preloadModule` function from `react-dom`.
+برای پیش‌بارگذاری (preload) یک ماژول ESM، تابع `preloadModule` را از `react-dom` فراخوانی کنید.
 
 ```js
 import { preloadModule } from 'react-dom';
@@ -38,37 +38,37 @@ function AppRoot() {
 
 ```
 
-[See more examples below.](#usage)
+[نمونه‌های بیشتر را در ادامه ببینید.](#usage)
 
-The `preloadModule` function provides the browser with a hint that it should start downloading the given module, which can save time.
+تابع `preloadModule` به مرورگر راهنمایی می‌دهد که باید دانلود ماژول داده‌شده را آغاز کند، که می‌تواند زمان را ذخیره کند.
 
-#### Parameters {/*parameters*/}
+#### پارامترها {/*parameters*/}
 
-* `href`: a string. The URL of the module you want to download.
-* `options`: an object. It contains the following properties:
-  *  `as`: a required string. It must be `'script'`.
-  *  `crossOrigin`: a string. The [CORS policy](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) to use. Its possible values are `anonymous` and `use-credentials`.
-  *  `integrity`: a string. A cryptographic hash of the module, to [verify its authenticity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
-  *  `nonce`: a string. A cryptographic [nonce to allow the module](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) when using a strict Content Security Policy. 
+* `href`: یک رشته. URL ماژولی که می‌خواهید دانلود کنید.
+* `options`: یک شیء. شامل پراپرتی‌های زیر است:
+  *  `as`: یک رشتهٔ الزامی. باید `'script'` باشد.
+  *  `crossOrigin`: یک رشته. [سیاست CORS](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) که باید استفاده شود. مقادیر ممکن آن `anonymous` و `use-credentials` هستند.
+  *  `integrity`: یک رشته. یک هش رمزنگاری‌شده از ماژول، برای [تأیید اصالت آن](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
+  *  `nonce`: یک رشته. یک [nonce رمزنگاری‌شده برای اجازه دادن به ماژول](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) هنگام استفاده از یک Content Security Policy سخت‌گیرانه.
 
 
-#### Returns {/*returns*/}
+#### مقدار برگشتی {/*returns*/}
 
-`preloadModule` returns nothing.
+`preloadModule` چیزی برنمی‌گرداند.
 
-#### Caveats {/*caveats*/}
+#### نکات {/*caveats*/}
 
-* Multiple calls to `preloadModule` with the same `href` have the same effect as a single call.
-* In the browser, you can call `preloadModule` in any situation: while rendering a component, in an Effect, in an event handler, and so on.
-* In server-side rendering or when rendering Server Components, `preloadModule` only has an effect if you call it while rendering a component or in an async context originating from rendering a component. Any other calls will be ignored.
+* چندین فراخوانی `preloadModule` با همان `href` همان اثر یک فراخوانی را دارد.
+* در مرورگر، می‌توانید `preloadModule` را در هر شرایطی فراخوانی کنید: هنگام رندر یک کامپوننت، در یک افکت، در یک رویداد، و غیره.
+* در رندر سمت سرور یا هنگام رندر کامپوننت‌های سرور، `preloadModule` فقط در صورتی اثر دارد که هنگام رندر یک کامپوننت یا در یک کانتکست ناهمگام (async) که از رندر یک کامپوننت نشئت گرفته فراخوانی شود. هر فراخوانی دیگر نادیده گرفته می‌شود.
 
 ---
 
-## Usage {/*usage*/}
+## نحوهٔ استفاده {/*usage*/}
 
-### Preloading when rendering {/*preloading-when-rendering*/}
+### پیش‌بارگذاری هنگام رندر {/*preloading-when-rendering*/}
 
-Call `preloadModule` when rendering a component if you know that it or its children will use a specific module.
+اگر می‌دانید که یک کامپوننت یا فرزندان آن از یک ماژول خاص استفاده خواهند کرد، هنگام رندر کامپوننت `preloadModule` را فراخوانی کنید.
 
 ```js
 import { preloadModule } from 'react-dom';
@@ -79,11 +79,11 @@ function AppRoot() {
 }
 ```
 
-If you want the browser to start executing the module immediately (rather than just downloading it), use [`preinitModule`](/reference/react-dom/preinitModule) instead. If you want to load a script that isn't an ESM module, use [`preload`](/reference/react-dom/preload).
+اگر می‌خواهید مرورگر بلافاصله اجرای ماژول را آغاز کند (به‌جای صرفاً دانلود آن)، از [`preinitModule`](/reference/react-dom/preinitModule) استفاده کنید. اگر می‌خواهید اسکریپتی را بارگذاری کنید که یک ماژول ESM نیست، از [`preload`](/reference/react-dom/preload) استفاده کنید.
 
-### Preloading in an event handler {/*preloading-in-an-event-handler*/}
+### پیش‌بارگذاری در یک رویداد {/*preloading-in-an-event-handler*/}
 
-Call `preloadModule` in an event handler before transitioning to a page or state where the module will be needed. This gets the process started earlier than if you call it during the rendering of the new page or state.
+`preloadModule` را در یک رویداد پیش از انتقال به صفحه یا استیتی که ماژول در آن لازم خواهد بود، فراخوانی کنید. این کار فرآیند را زودتر از زمانی که در حین رندر صفحه یا استیت جدید فراخوانی کنید، آغاز می‌کند.
 
 ```js
 import { preloadModule } from 'react-dom';

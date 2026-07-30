@@ -1,65 +1,65 @@
 ---
-title: "React Labs: View Transitions, Activity, and more"
+title: "ری‌اکت لبز: View Transitions، Activity و بیشتر"
 author: Ricky Hanlon
 date: 2025/04/23
 description: In React Labs posts, we write about projects in active research and development. In this post, we're sharing two new experimental features that are ready to try today, and updates on other areas we're working on now.
 ---
 
-April 23, 2025 by [Ricky Hanlon](https://twitter.com/rickhanlonii)
+23 آوریل 2025 توسط [Ricky Hanlon](https://twitter.com/rickhanlonii)
 
 ---
 
 <Intro>
 
-In React Labs posts, we write about projects in active research and development. In this post, we're sharing two new experimental features that are ready to try today, and updates on other areas we're working on now.
+در پست‌های ری‌اکت لبز، دربارهٔ پروژه‌هایی که در دست تحقیق و توسعهٔ فعال هستند می‌نویسیم. در این پست، دو قابلیت آزمایشی جدید که امروز آمادهٔ امتحان هستند، و به‌روزرسانی‌هایی دربارهٔ حوزه‌های دیگر که اکنون روی آن‌ها کار می‌کنیم را به اشتراک می‌گذاریم.
 
 </Intro>
 
 
 <Note>
 
-React Conf 2025 is scheduled for October 7–8 in Henderson, Nevada! 
+کنفرانس React Conf 2025 برای 7 تا 8 اکتبر در هندرسون، نوادا برنامه‌ریزی شده است! 
 
-We're looking for speakers to help us create talks about the features covered in this post. If you're interested in speaking at ReactConf, [please apply here](https://forms.reform.app/react-conf/call-for-speakers/) (no talk proposal required).
+ما به دنبال سخنرانانی هستیم تا به ما در ایجاد سخنرانی‌هایی دربارهٔ قابلیت‌های پوشش‌داده‌شده در این پست کمک کنند. اگر به سخنرانی در ReactConf علاقه‌مند هستید، [لطفاً اینجا درخواست دهید](https://forms.reform.app/react-conf/call-for-speakers/) (نیازی به پیشنهاد سخنرانی نیست).
 
-For more info on tickets, free streaming, sponsoring, and more, see [the React Conf website](https://conf.react.dev).
+برای اطلاعات بیشتر دربارهٔ بلیت‌ها، پخش رایگان، حمایت مالی و موارد دیگر، [وب‌سایت React Conf](https://conf.react.dev) را ببینید.
 
 </Note>
 
-Today, we're excited to release documentation for two new experimental features that are ready for testing:
+امروز، هیجان‌زده‌ایم که مستنداتی برای دو قابلیت آزمایشی جدید که آمادهٔ آزمایش هستند منتشر کنیم:
 
 - [View Transitions](#view-transitions)
 - [Activity](#activity)
 
-We're also sharing updates on new features currently in development:
-- [React Performance Tracks](#react-performance-tracks)
-- [Compiler IDE Extension](#compiler-ide-extension)
-- [Automatic Effect Dependencies](#automatic-effect-dependencies)
-- [Fragment Refs](#fragment-refs)
-- [Concurrent Stores](#concurrent-stores)
+ما همچنین به‌روزرسانی‌هایی دربارهٔ قابلیت‌های جدیدی که در حال حاضر در حال توسعه هستند به اشتراک می‌گذاریم:
+- [مسیرهای عملکرد ری‌اکت (React Performance Tracks)](#react-performance-tracks)
+- [افزونهٔ IDE کامپایلر (Compiler IDE Extension)](#compiler-ide-extension)
+- [وابستگی‌های خودکار افکت (Automatic Effect Dependencies)](#automatic-effect-dependencies)
+- [رفرنس‌های فرگمنت (Fragment Refs)](#fragment-refs)
+- [استورهای همزمان (Concurrent Stores)](#concurrent-stores)
 
 ---
 
-# New Experimental Features {/*new-experimental-features*/}
+# قابلیت‌های آزمایشی جدید {/*new-experimental-features*/}
 
-View Transitions and Activity are now ready for testing in `react@experimental`. These features have been tested in production and are stable, but the final API may still change as we incorporate feedback.
+View Transitions و Activity اکنون برای آزمایش در `react@experimental` آماده‌اند. این قابلیت‌ها در محیط عملیاتی آزمایش شده‌اند و پایدار هستند، اما API نهایی ممکن است همچنان با incorporate کردن بازخورد تغییر کند.
 
-You can try them by upgrading React packages to the most recent experimental version:
+می‌توانید با ارتقای بسته‌های ری‌اکت به آخرین نسخهٔ آزمایشی آن‌ها را امتحان کنید:
 
 - `react@experimental`
 - `react-dom@experimental`
 
-Read on to learn how to use these features in your app, or check out the newly published docs:
+برای یادگیری نحوهٔ استفاده از این قابلیت‌ها در اپلیکیشن خود به خواندن ادامه دهید، یا مستندات تازه‌منتشرشده را ببینید:
 
-- [`<ViewTransition>`](/reference/react/ViewTransition): A component that lets you activate an animation for a Transition.
-- [`addTransitionType`](/reference/react/addTransitionType): A function that allows you to specify the cause of a Transition.
-- [`<Activity>`](/reference/react/Activity): A component that lets you hide and show parts of the UI.
+- [`<ViewTransition>`](/reference/react/ViewTransition): کامپوننتی که به شما اجازه می‌دهد یک انیمیشن را برای یک ترنزیشن فعال کنید.
+- [`addTransitionType`](/reference/react/addTransitionType): تابعی که به شما اجازه می‌دهد علت یک ترنزیشن را مشخص کنید.
+- [`<Activity>`](/reference/react/Activity): کامپوننتی که به شما اجازه می‌دهد بخش‌هایی از رابط کاربری را پنهان و نمایش دهید.
 
 ## View Transitions {/*view-transitions*/}
 
-React View Transitions are a new experimental feature that makes it easier to add animations to UI transitions in your app. Under-the-hood, these animations use the new [`startViewTransition`](https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition) API available in most modern browsers.
+React View Transitions یک قابلیت آزمایشی جدید است که افزودن انیمیشن‌ها به ترنزیشن‌های رابط کاربری در اپلیکیشن شما را آسان‌تر می‌کند. در زیرساخت، این انیمیشن‌ها از API جدید [`startViewTransition`](https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition) که در اکثر مرورگرهای مدرن در دسترس است استفاده می‌کنند.
 
-To opt-in to animating an element, wrap it in the new `<ViewTransition>` component:
+برای opt-in کردن به انیمیت‌کردن یک عنصر، آن را در کامپوننت جدید `<ViewTransition>` بپیچید:
 
 ```js
 // "what" to animate.
@@ -68,9 +68,9 @@ To opt-in to animating an element, wrap it in the new `<ViewTransition>` compone
 </ViewTransition>
 ```
 
-This new component lets you declaratively define "what" to animate when an animation is activated. 
+این کامپوننت جدید به شما اجازه می‌دهد به‌صورت اعلانی «چه چیزی» را انیمیت کنید هنگامی که یک انیمیشن فعال می‌شود، تعریف کنید. 
 
-You can define "when" to animate by using one of these three triggers for a View Transition:
+می‌توانید «کی» را انیمیت کنید با استفاده از یکی از این سه راه‌انداز برای یک View Transition تعریف کنید:
 
 ```js
 // "when" to animate.
@@ -87,7 +87,7 @@ const deferred = useDeferredValue(value);
 </Suspense>
 ```
 
-By default, these animations use the [default CSS animations for View Transitions](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#customizing_your_animations) applied (typically a smooth cross-fade). You can use [view transition pseudo-selectors](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#the_view_transition_pseudo-element_tree) to define "how" the animation runs. For example, you can use `*` to change the default animation for all transitions:
+به‌طور پیش‌فرض، این انیمیشن‌ها از [انیمیشن‌های CSS پیش‌فرض برای View Transitions](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#customizing_your_animations) استفاده می‌کنند (معمولاً یک کراس‌فید نرم). می‌توانید از [شبه‌انتخابگرهای view transition](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#the_view_transition_pseudo-element_tree) برای تعریف «چگونگی» اجرای انیمیشن استفاده کنید. برای مثال، می‌توانید از `*` برای تغییر انیمیشن پیش‌فرض همهٔ ترنزیشن‌ها استفاده کنید:
 
 ```
 // "how" to animate.
@@ -99,16 +99,16 @@ By default, these animations use the [default CSS animations for View Transition
 }
 ```
 
-When the DOM updates due to an animation trigger&mdash;like `startTransition`, `useDeferredValue`, or a `Suspense` fallback switching to content&mdash;React will use [declarative heuristics](/reference/react/ViewTransition#viewtransition) to automatically determine which `<ViewTransition>` components to activate for the animation. The browser will then run the animation that's defined in CSS.
+هنگامی که DOM به‌دلیل یک راه‌انداز انیمیشن به‌روزرسانی می‌شود &mdash; مانند `startTransition`، `useDeferredValue`، یا یک fallback `Suspense` که به محتوا سوییچ می‌کند &mdash; ری‌اکت از [هیوریستیک‌های اعلانی](/reference/react/ViewTransition#viewtransition) برای تعیین خودکار این که کدام کامپوننت‌های `<ViewTransition>` برای انیمیشن فعال شوند استفاده می‌کند. سپس مرورگر انیمیشن تعریف‌شده در CSS را اجرا خواهد کرد.
 
-If you're familiar with the browser's View Transition API and want to know how React supports it, check out [How does `<ViewTransition>` Work](/reference/react/ViewTransition#how-does-viewtransition-work) in the docs. 
+اگر با API View Transition مرورگر آشنا هستید و می‌خواهید بدانید ری‌اکت چگونه از آن پشتیبانی می‌کند، [How does `<ViewTransition>` Work](/reference/react/ViewTransition#how-does-viewtransition-work) را در مستندات ببینید. 
 
-In this post, let's take a look at a few examples of how to use View Transitions. 
+در این پست، بیایید به چند نمونه از نحوهٔ استفاده از View Transitions نگاهی بیندازیم. 
 
-We'll start with this app, which doesn't animate any of the following interactions:
-- Click a video to view the details.
-- Click "back" to go back to the feed.
-- Type in the list to filter the videos.
+با این اپلیکیشن شروع می‌کنیم که هیچ‌یک از تعاملات زیر را انیمیت نمی‌کند:
+- روی یک ویدیو کلیک کنید تا جزئیات را ببینید.
+- روی «back» کلیک کنید تا به فید برگردید.
+- در فهرست تایپ کنید تا ویدیوها فیلتر شوند.
 
 <Sandpack>
 
@@ -1264,17 +1264,17 @@ root.render(
 
 <Note>
 
-#### View Transitions do not replace CSS and JS driven animations {/*view-transitions-do-not-replace-css-and-js-driven-animations*/}
+#### View Transitions جایگزین انیمیشن‌های مبتنی بر CSS و JS نمی‌شوند {/*view-transitions-do-not-replace-css-and-js-driven-animations*/}
 
-View Transitions are meant to be used for UI transitions such as navigation, expanding, opening, or re-ordering. They are not meant to replace all the animations in your app.
+View Transitions برای استفاده در ترنزیشن‌های رابط کاربری مانند ناوبری، گسترش، باز کردن یا مرتب‌سازی مجدد در نظر گرفته شده‌اند. آن‌ها برای جایگزینی همهٔ انیمیشن‌های اپلیکیشن شما در نظر گرفته نشده‌اند.
 
-In our example app above, notice that there are already animations when you click the "like" button and in the Suspense fallback glimmer. These are good use cases for CSS animations because they are animating a specific element.
+در اپلیکیشن نمونهٔ بالا، توجه کنید که هنگام کلیک روی دکمهٔ «like» و در درخشش fallback ساسپنس از قبل انیمیشن‌هایی وجود دارند. این موارد استفادهٔ خوبی برای انیمیشن‌های CSS هستند زیرا یک عنصر خاص را انیمیت می‌کنند.
 
 </Note>
 
-### Animating navigations {/*animating-navigations*/}
+### انیمیت‌کردن ناوبری‌ها {/*animating-navigations*/}
 
-Our app includes a Suspense-enabled router, with [page transitions already marked as Transitions](/reference/react/useTransition#building-a-suspense-enabled-router), which means navigations are performed with `startTransition`:
+اپلیکیشن ما شامل یک روتر مبتنی بر ساسپنس است، با [ترنزیشن‌های صفحه که از قبل به‌عنوان ترنزیشن علامت‌گذاری شده‌اند](/reference/react/useTransition#building-a-suspense-enabled-router)، که بدان معناست ناوبری‌ها با `startTransition` انجام می‌شوند:
 
 ```js
 function navigate(url) {
@@ -1284,7 +1284,7 @@ function navigate(url) {
 }
 ```
 
-`startTransition` is a View Transition trigger, so we can add `<ViewTransition>` to animate between pages:
+`startTransition` یک راه‌انداز View Transition است، بنابراین می‌توانیم `<ViewTransition>` را برای انیمیت‌کردن بین صفحات اضافه کنیم:
 
 ```js
 // "what" to animate
@@ -1293,10 +1293,10 @@ function navigate(url) {
 </ViewTransition>
 ```
 
-When the `url` changes, the `<ViewTransition>` and new route are rendered. Since the `<ViewTransition>` was updated inside of `startTransition`, the `<ViewTransition>` is activated for an animation.
+هنگامی که `url` تغییر می‌کند، `<ViewTransition>` و مسیر جدید رندر می‌شوند. از آنجا که `<ViewTransition>` درون `startTransition` به‌روزرسانی شده است، `<ViewTransition>` برای یک انیمیشن فعال می‌شود.
 
 
-By default, View Transitions include the browser default cross-fade animation. Adding this to our example, we now have a cross-fade whenever we navigate between pages: 
+به‌طور پیش‌فرض، View Transitions شامل انیمیشن کراس‌فید پیش‌فرض مرورگر هستند. با افزودن این به مثال خود، اکنون هرگاه بین صفحات ناوبری می‌کنیم یک کراس‌فید داریم: 
 
 <Sandpack>
 
@@ -2458,17 +2458,17 @@ root.render(
 
 </Sandpack>
 
-Since our router already updates the route using `startTransition`, this one line change to add `<ViewTransition>` activates with the default cross-fade animation. 
+از آنجا که روتر ما از قبل مسیر را با `startTransition` به‌روزرسانی می‌کند، این تغییر یک‌خطی برای افزودن `<ViewTransition>` با انیمیشن کراس‌فید پیش‌فرض فعال می‌شود. 
 
-If you're curious how this works, see the docs for [How does `<ViewTransition>` work?](/reference/react/ViewTransition#how-does-viewtransition-work)
+اگر کنجکاو هستید که این چگونه کار می‌کند، مستندات [How does `<ViewTransition>` work?](/reference/react/ViewTransition#how-does-viewtransition-work) را ببینید
 
 <Note>
 
-#### Opting out of `<ViewTransition>` animations {/*opting-out-of-viewtransition-animations*/}
+#### انصراف از انیمیشن‌های `<ViewTransition>` {/*opting-out-of-viewtransition-animations*/}
 
-In this example, we're wrapping the root of the app in `<ViewTransition>` for simplicity, but this means that all transitions in the app will be animated, which can lead to unexpected animations. 
+در این مثال، برای سادگی ریشهٔ اپلیکیشن را در `<ViewTransition>` می‌پیچیم، اما این بدان معناست که همهٔ ترنزیشن‌ها در اپلیکیشن انیمیت خواهند شد، که می‌تواند منجر به انیمیشن‌های غیرمنتظره شود. 
 
-To fix, we're wrapping route children with `"none"` so each page can control its own animation:
+برای رفع این موضوع، فرزندان مسیر را با `"none"` می‌پیچیم تا هر صفحه بتواند انیمیشن خود را کنترل کند:
 
 ```js
 // Layout.js
@@ -2477,17 +2477,17 @@ To fix, we're wrapping route children with `"none"` so each page can control its
 </ViewTransition>
 ```
 
-In practice, navigations should be done via "enter" and "exit" props, or by using Transition Types. 
+در عمل، ناوبری‌ها باید از طریق پراپسهای «enter» و «exit»، یا با استفاده از Transition Types انجام شوند. 
 
 </Note>
 
-### Customizing animations {/*customizing-animations*/}
+### سفارشی‌سازی انیمیشن‌ها {/*customizing-animations*/}
 
-By default, `<ViewTransition>` includes the default cross-fade from the browser.
+به‌طور پیش‌فرض، `<ViewTransition>` شامل کراس‌فید پیش‌فرض مرورگر است.
 
-To customize animations, you can provide props to the `<ViewTransition>` component to specify which animations to use, based on [how the `<ViewTransition>` activates](/reference/react/ViewTransition#props).
+برای سفارشی‌سازی انیمیشن‌ها، می‌توانید پراپسهایی را به کامپوننت `<ViewTransition>` ارائه کنید تا مشخص کنید از کدام انیمیشن‌ها استفاده شود، بر اساس [نحوهٔ فعال‌شدن `<ViewTransition>`](/reference/react/ViewTransition#props).
 
-For example, we can slow down the `default` cross fade animation:
+برای مثال، می‌توانیم انیمیشن کراس‌فید `default` را کُند کنیم:
 
 ```js
 <ViewTransition default="slow-fade">
@@ -2495,7 +2495,7 @@ For example, we can slow down the `default` cross fade animation:
 </ViewTransition>
 ```
 
-And define `slow-fade` in CSS using [view transition classes](/reference/react/ViewTransition#view-transition-class):
+و `slow-fade` را در CSS با استفاده از [کلاس‌های view transition](/reference/react/ViewTransition#view-transition-class) تعریف کنید:
 
 ```css
 ::view-transition-old(.slow-fade) {
@@ -2507,7 +2507,7 @@ And define `slow-fade` in CSS using [view transition classes](/reference/react/V
 }
 ```
 
-Now, the cross fade is slower:
+اکنون کراس‌فید کُندتر است:
 
 <Sandpack>
 
@@ -3686,13 +3686,13 @@ root.render(
 
 </Sandpack>
 
-See [Styling View Transitions](/reference/react/ViewTransition#styling-view-transitions) for a full guide on styling `<ViewTransition>`.
+[Styling View Transitions](/reference/react/ViewTransition#styling-view-transitions) را برای راهنمای کامل استایل‌دهی به `<ViewTransition>` ببینید.
 
-### Shared Element Transitions {/*shared-element-transitions*/}
+### ترنزیشن‌های عنصر مشترک {/*shared-element-transitions*/}
 
-When two pages include the same element, often you want to animate it from one page to the next.
+وقتی دو صفحه شامل همان عنصر هستند، اغلب می‌خواهید آن را از یک صفحه به صفحهٔ بعد انیمیت کنید.
 
-To do this you can add a unique `name` to the `<ViewTransition>`:
+برای این کار می‌توانید یک `name` یکتا به `<ViewTransition>` اضافه کنید:
 
 ```js
 <ViewTransition name={`video-${video.id}`}>
@@ -3700,7 +3700,7 @@ To do this you can add a unique `name` to the `<ViewTransition>`:
 </ViewTransition>
 ```
 
-Now the video thumbnail animates between the two pages:
+اکنون تصویر کوچک ویدیو بین دو صفحه انیمیت می‌شود:
 
 <Sandpack>
 
@@ -4895,13 +4895,13 @@ root.render(
 
 </Sandpack>
 
-By default, React automatically generates a unique `name` for each element activated for a transition (see [How does `<ViewTransition>` work](/reference/react/ViewTransition#how-does-viewtransition-work)). When React sees a transition where a `<ViewTransition>` with a `name` is removed and a new `<ViewTransition>` with the same `name` is added, it will activate a shared element transition.
+به‌طور پیش‌فرض، ری‌اکت به‌طور خودکار یک `name` یکتا برای هر عنصری که برای یک ترنزیشن فعال شده تولید می‌کند (به [How does `<ViewTransition>` work](/reference/react/ViewTransition#how-does-viewtransition-work) نگاه کنید). وقتی ری‌اکت ترنزیشنی را می‌بیند که در آن یک `<ViewTransition>` با یک `name` حذف می‌شود و یک `<ViewTransition>` جدید با همان `name` اضافه می‌شود، یک ترنزیشن عنصر مشترک را فعال خواهد کرد.
 
-For more info, see the docs for [Animating a Shared Element](/reference/react/ViewTransition#animating-a-shared-element).
+برای اطلاعات بیشتر، مستندات [Animating a Shared Element](/reference/react/ViewTransition#animating-a-shared-element) را ببینید.
 
-### Animating based on cause {/*animating-based-on-cause*/}
+### انیمیت‌کردن بر اساس علت {/*animating-based-on-cause*/}
 
-Sometimes, you may want elements to animate differently based on how it was triggered. For this use case, we've added a new API called `addTransitionType` to specify the cause of a transition:
+گاهی ممکن است بخواهید عناصر بر اساس نحوهٔ راه‌اندازی شدنشان متفاوت انیمیت شوند. برای این مورد استفاده، API جدیدی به نام `addTransitionType` برای مشخص‌کردن علت یک ترنزیشن اضافه کرده‌ایم:
 
 ```js {4,11}
 function navigate(url) {
@@ -4920,7 +4920,7 @@ function navigateBack(url) {
 }
 ```
 
-With transition types, you can provide custom animations via props to `<ViewTransition>`. Let's add a shared element transition to the header for "6 Videos" and "Back":
+با transition types، می‌توانید انیمیشن‌های سفارشی را از طریق پراپسها به `<ViewTransition>` ارائه کنید. بیایید یک ترنزیشن عنصر مشترک به سربرگ برای «6 Videos» و «Back» اضافه کنیم:
 
 ```js {4,5}
 <ViewTransition
@@ -4933,7 +4933,7 @@ With transition types, you can provide custom animations via props to `<ViewTran
 </ViewTransition>
 ```
 
-Here we pass a `share` prop to define how to animate based on the transition type. When the share transition activates from `nav-forward`, the view transition class `slide-forward` is applied. When it's from `nav-back`, the `slide-back` animation is activated. Let's define these animations in CSS:
+اینجا یک پراپس `share` را برای تعریف نحوهٔ انیمیت‌کردن بر اساس نوع ترنزیشن ارسال می‌کنیم. وقتی ترنزیشن share از `nav-forward` فعال می‌شود، کلاس view transition با نام `slide-forward` اعمال می‌شود. وقتی از `nav-back` باشد، انیمیشن `slide-back` فعال می‌شود. بیایید این انیمیشن‌ها را در CSS تعریف کنیم:
 
 ```css
 ::view-transition-old(.slide-forward) {
@@ -4957,7 +4957,7 @@ Here we pass a `share` prop to define how to animate based on the transition typ
 }
 ```
 
-Now we can animate the header along with thumbnail based on navigation type:
+اکنون می‌توانیم سربرگ را همراه با تصویر کوچک بر اساس نوع ناوبری انیمیت کنیم:
 
 <Sandpack>
 
@@ -6211,11 +6211,11 @@ root.render(
 
 </Sandpack>
 
-### Animating Suspense Boundaries {/*animating-suspense-boundaries*/}
+### انیمیت‌کردن مرزهای ساسپنس {/*animating-suspense-boundaries*/}
 
-Suspense will also activate View Transitions. 
+ساسپنس نیز View Transitions را فعال خواهد کرد. 
 
-To animate the fallback to content, we can wrap `Suspense` with `<ViewTranstion>`:
+برای انیمیت‌کردن fallback به محتوا، می‌توانیم `Suspense` را با `<ViewTranstion>` بپیچیم:
 
 ```js
 <ViewTransition>
@@ -6225,7 +6225,7 @@ To animate the fallback to content, we can wrap `Suspense` with `<ViewTranstion>
 </ViewTransition>
 ```
 
-By adding this, the fallback will cross-fade into the content. Click a video and see the video info animate in:
+با افزودن این، fallback در محتوا کراس‌فید می‌شود. روی یک ویدیو کلیک کنید و انیمیت‌شدن اطلاعات ویدیو را ببینید:
 
 <Sandpack>
 
@@ -7509,7 +7509,7 @@ root.render(
 
 </Sandpack>
 
-We can also provide custom animations using an `exit` on the fallback, and `enter` on the content:
+همچنین می‌توانیم با استفاده از یک `exit` روی fallback، و `enter` روی محتوا، انیمیشن‌های سفارشی ارائه کنیم:
 
 ```js {3,8}
 <Suspense
@@ -7525,7 +7525,7 @@ We can also provide custom animations using an `exit` on the fallback, and `ente
 </Suspense>
 ```
 
-Here's how we'll define `slide-down` and `slide-up` with CSS:
+در اینجا نحوهٔ تعریف `slide-down` و `slide-up` با CSS آمده است:
 
 ```css {1, 6}
 ::view-transition-old(.slide-down) { 
@@ -7539,7 +7539,7 @@ Here's how we'll define `slide-down` and `slide-up` with CSS:
 }
 ```
 
-Now, the Suspense content replaces the fallback with a sliding animation:
+اکنون محتوای ساسپنس fallback را با یک انیمیشن کشویی جایگزین می‌کند:
 
 <Sandpack>
 
@@ -8831,9 +8831,9 @@ root.render(
 </Sandpack>
 
 
-### Animating Lists {/*animating-lists*/}
+### انیمیت‌کردن فهرست‌ها {/*animating-lists*/}
 
-You can also use `<ViewTransition>` to animate lists of items as they re-order, like in a searchable list of items:
+همچنین می‌توانید از `<ViewTransition>` برای انیمیت‌کردن فهرست‌هایی از موارد هنگام مرتب‌سازی مجدد آن‌ها استفاده کنید، مانند یک فهرست قابل‌جستجوی موارد:
 
 ```js {3,5}
 <div className="videos">
@@ -8845,7 +8845,7 @@ You can also use `<ViewTransition>` to animate lists of items as they re-order, 
 </div>
 ```
 
-To activate the ViewTransition, we can use `useDeferredValue`:
+برای فعال‌سازی ViewTransition، می‌توانیم از `useDeferredValue` استفاده کنیم:
 
 ```js {2}
 const [searchText, setSearchText] = useState('');
@@ -8853,7 +8853,7 @@ const deferredSearchText = useDeferredValue(searchText);
 const filteredVideos = filterVideos(videos, deferredSearchText);
 ```
 
-Now the items animate as you type in the search bar:
+اکنون موارد هنگام تایپ در نوار جستجو انیمیت می‌شوند:
 
 <Sandpack>
 
@@ -10171,13 +10171,13 @@ root.render(
 
 </Sandpack>
 
-### Final result {/*final-result*/}
+### نتیجهٔ نهایی {/*final-result*/}
 
-By adding a few `<ViewTransition>` components and a few lines of CSS, we were able to add all the animations above into the final result.
+با افزودن چند کامپوننت `<ViewTransition>` و چند خط CSS، توانستیم همهٔ انیمیشن‌های بالا را به نتیجهٔ نهایی اضافه کنیم.
 
-We're excited about View Transitions and think they will level up the apps you're able to build. They're ready to start trying today in the experimental channel of React releases.
+ما از View Transitions هیجان‌زده‌ایم و فکر می‌کنیم اپلیکیشن‌هایی که می‌توانید بسازید را ارتقا خواهند داد. آن‌ها امروز آمادهٔ امتحان در کانال آزمایشی انتشارهای ری‌اکت هستند.
 
-Let's remove the slow fade, and take a look at the final result:
+بیایید slow fade را حذف کنیم، و نگاهی به نتیجهٔ نهایی بیندازیم:
 
 <Sandpack>
 
@@ -11457,9 +11457,9 @@ root.render(
 
 </Sandpack>
 
-If you're curious to know more about how they work, check out [How Does `<ViewTransition>` Work](/reference/react/ViewTransition#how-does-viewtransition-work) in the docs.
+اگر کنجکاو هستید بیشتر دربارهٔ نحوهٔ کار آن‌ها بدانید، [How Does `<ViewTransition>` Work](/reference/react/ViewTransition#how-does-viewtransition-work) را در مستندات ببینید.
 
-_For more background on how we built View Transitions, see: [#31975](https://github.com/facebook/react/pull/31975), [#32105](https://github.com/facebook/react/pull/32105), [#32041](https://github.com/facebook/react/pull/32041), [#32734](https://github.com/facebook/react/pull/32734), [#32797](https://github.com/facebook/react/pull/32797) [#31999](https://github.com/facebook/react/pull/31999), [#32031](https://github.com/facebook/react/pull/32031), [#32050](https://github.com/facebook/react/pull/32050), [#32820](https://github.com/facebook/react/pull/32820), [#32029](https://github.com/facebook/react/pull/32029), [#32028](https://github.com/facebook/react/pull/32028), and [#32038](https://github.com/facebook/react/pull/32038) by [@sebmarkbage](https://twitter.com/sebmarkbage) (thanks Seb!)._
+_برای اطلاعات بیشتر دربارهٔ نحوهٔ ساخت View Transitions، ببینید: [#31975](https://github.com/facebook/react/pull/31975)، [#32105](https://github.com/facebook/react/pull/32105)، [#32041](https://github.com/facebook/react/pull/32041)، [#32734](https://github.com/facebook/react/pull/32734)، [#32797](https://github.com/facebook/react/pull/32797) [#31999](https://github.com/facebook/react/pull/31999)، [#32031](https://github.com/facebook/react/pull/32031)، [#32050](https://github.com/facebook/react/pull/32050)، [#32820](https://github.com/facebook/react/pull/32820)، [#32029](https://github.com/facebook/react/pull/32029)، [#32028](https://github.com/facebook/react/pull/32028) و [#32038](https://github.com/facebook/react/pull/32038) توسط [@sebmarkbage](https://twitter.com/sebmarkbage) (سپاسگزاریم Seb!)._
 
 ---
 
@@ -11467,17 +11467,17 @@ _For more background on how we built View Transitions, see: [#31975](https://git
 
 <Note>
 
-**`<Activity />` is now available in React’s Canary channel.**
+**`<Activity />` اکنون در کانال Canary ری‌اکت در دسترس است.**
 
-[Learn more about React’s release channels here.](/community/versioning-policy#all-release-channels)
+[دربارهٔ کانال‌های انتشار ری‌اکت اینجا بیشتر بدانید.](/community/versioning-policy#all-release-channels)
 
 </Note>
 
-In [past](/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022#offscreen) [updates](/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024#offscreen-renamed-to-activity), we shared that we were researching an API to allow components to be visually hidden and deprioritized, preserving UI state with reduced performance costs relative to unmounting or hiding with CSS.
+در [به‌روزرسانی‌های](/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022#offscreen) [گذشته](/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024#offscreen-renamed-to-activity)، به اشتراک گذاشتیم که در حال تحقیق روی یک API بودیم تا اجازه دهد کامپوننت‌ها به‌صورت بصری پنهان و کم‌اولویت شوند، و استیت رابط کاربری را با هزینهٔ عملکرد کاهش‌یافته نسبت به unmount کردن یا پنهان‌کردن با CSS حفظ کنند.
 
-We're now ready to share the API and how it works, so you can start testing it in experimental React versions.
+ما اکنون آماده‌ایم API و نحوهٔ کار آن را به اشتراک بگذاریم، تا بتوانید آزمایش آن را در نسخه‌های آزمایشی ری‌اکت آغاز کنید.
 
-`<Activity>` is a new component to hide and show parts of the UI:
+`<Activity>` یک کامپوننت جدید برای پنهان و نمایش دادن بخش‌هایی از رابط کاربری است:
 
 ```js [[1, 1, "'visible'"], [2, 1, "'hidden'"]]
 <Activity mode={isVisible ? 'visible' : 'hidden'}>
@@ -11485,25 +11485,25 @@ We're now ready to share the API and how it works, so you can start testing it i
 </Activity>
 ```
 
-When an Activity is <CodeStep step={1}>visible</CodeStep> it's rendered as normal. When an Activity is <CodeStep step={2}>hidden</CodeStep> it is unmounted, but will save its state and continue to render at a lower priority than anything visible on screen.
+وقتی یک Activity <CodeStep step={1}>visible</CodeStep> است به‌طور عادی رندر می‌شود. وقتی یک Activity <CodeStep step={2}>hidden</CodeStep> است unmount می‌شود، اما استیت خود را ذخیره می‌کند و در اولویتی پایین‌تر از هر چیزی که روی صفحه قابل‌مشاهده است به رندر ادامه خواهد داد.
 
-You can use `Activity` to save state for parts of the UI the user isn't using, or pre-render parts that a user is likely to use next.
+می‌توانید از `Activity` برای ذخیرهٔ استیت برای بخش‌هایی از رابط کاربری که کاربر استفاده نمی‌کند استفاده کنید، یا بخش‌هایی را پیش‌رندر کنید که کاربر احتمالاً بعد از آن استفاده خواهد کرد.
 
-Let's look at some examples improving the View Transition examples above.
+بیایید به چند نمونه که مثال‌های View Transition بالا را بهبود می‌بخشند نگاهی بیندازیم.
 
 <Note>
 
-**Effects don’t mount when an Activity is hidden.**
+**افکت‌ها وقتی یک Activity پنهان است mount نمی‌شوند.**
 
-When an `<Activity>` is `hidden`, Effects are unmounted. Conceptually, the component is unmounted, but React saves the state for later.
+وقتی یک `<Activity>` `hidden` است، افکت‌ها unmount می‌شوند. از نظر مفهومی، کامپوننت unmount می‌شود، اما ری‌اکت استیت را برای بعد ذخیره می‌کند.
 
-In practice, this works as expected if you have followed the [You Might Not Need an Effect](/learn/you-might-not-need-an-effect) guide. To eagerly find problematic Effects, we recommend adding [`<StrictMode>`](/reference/react/StrictMode) which will eagerly perform Activity unmounts and mounts to catch any unexpected side effects.
+در عمل، اگر از راهنمای [You Might Not Need an Effect](/learn/you-might-not-need-an-effect) پیروی کرده باشید این همان‌طور که انتظار می‌رود کار می‌کند. برای یافتن eager افکت‌های مشکل‌دار، توصیه می‌کنیم [`<StrictMode>`](/reference/react/StrictMode) را اضافه کنید که به‌صورت eager unmountها و mountهای Activity را برای ردیابی هرگونه عارضهٔ جانبی غیرمنتظره انجام خواهد داد.
 
 </Note>
 
-### Restoring state with Activity {/*restoring-state-with-activity*/}
+### بازگرداندن استیت با Activity {/*restoring-state-with-activity*/}
 
-When a user navigates away from a page, it's common to stop rendering the old page:
+وقتی کاربر از یک صفحه دور می‌شود، رایج است که رندر صفحهٔ قدیمی متوقف شود:
 
 ```js {6,7}
 function App() {
@@ -11518,9 +11518,9 @@ function App() {
 }
 ```
 
-However, this means if the user goes back to the old page, all of the previous state is lost. For example, if the `<Home />` page has an `<input>` field, when the user leaves the page the `<input>` is unmounted, and all of the text they had typed is lost.
+با این حال، این بدان معناست که اگر کاربر به صفحهٔ قدیمی برگردد، همهٔ استیت قبلی از دست می‌رود. برای مثال، اگر صفحهٔ `<Home />` یک فیلد `<input>` داشته باشد، وقتی کاربر صفحه را ترک می‌کند `<input>` unmount می‌شود، و تمام متنی که تایپ کرده از دست می‌رود.
 
-Activity allows you to keep the state around as the user changes pages, so when they come back they can resume where they left off. This is done by wrapping part of the tree in `<Activity>` and toggling the `mode`:
+Activity به شما اجازه می‌دهد استیت را هنگام تغییر صفحه توسط کاربر نگه دارید، تا وقتی برمی‌گردند بتوانند از جایی که رها کرده بودند ادامه دهند. این کار با پیچیدن بخشی از درخت در `<Activity>` و تغییر `mode` انجام می‌شود:
 
 ```js {6-8}
 function App() {
@@ -11537,9 +11537,9 @@ function App() {
 }
 ```
 
-With this change, we can improve on our View Transitions example above. Before, when you searched for a video, selected one, and returned, your search filter was lost. With Activity, your search filter is restored and you can pick up where you left off.
+با این تغییر، می‌توانیم مثال View Transitions بالا را بهبود ببخشیم. پیش از این، وقتی برای یک ویدیو جستجو می‌کردید، یکی را انتخاب می‌کردید و برمی‌گردید، فیلتر جستجوی شما از دست می‌رفت. با Activity، فیلتر جستجوی شما بازگردانده می‌شود و می‌توانید از جایی که رها کرده بودید ادامه دهید.
 
-Try searching for a video, selecting it, and clicking "back":
+برای جستجوی یک ویدیو امتحان کنید، آن را انتخاب کنید، و روی «back» کلیک کنید:
 
 <Sandpack>
 
@@ -12856,11 +12856,11 @@ root.render(
 
 </Sandpack>
 
-### Pre-rendering with Activity {/*prerender-with-activity*/}
+### پیش‌رندر با Activity {/*prerender-with-activity*/}
 
-Sometimes, you may want to prepare the next part of the UI a user is likely to use ahead of time, so it's ready by the time they are ready to use it. This is especially useful if the next route needs to suspend on data it needs to render, because you can help ensure the data is already fetched before the user navigates.
+گاهی ممکن است بخواهید بخش بعدی رابط کاربری را که کاربر احتمالاً استفاده خواهد کرد از پیش آماده کنید، تا وقتی آمادهٔ استفاده از آن می‌شود آماده باشد. این به‌ویژه مفید است اگر مسیر بعدی نیاز به ساسپند روی داده‌ای که برای رندر نیاز دارد داشته باشد، زیرا می‌توانید کمک کنید اطمینان حاصل شود داده پیش از ناوبری کاربر از قبل fetch شده است.
 
-For example, our app currently needs to suspend to load the data for each video when you select one. We can improve this by rendering all of the pages in a hidden `<Activity>` until the user navigates:
+برای مثال، اپلیکیشن ما در حال حاضر هنگام انتخاب یک ویدیو نیاز به ساسپند برای بارگذاری دادهٔ هر ویدیو دارد. می‌توانیم این را با رندر کردن همهٔ صفحات در یک `<Activity>` پنهان تا زمانی که کاربر ناوبری کند، بهبود ببخشیم:
 
 ```js {2,5,8}
 <ViewTransition>
@@ -12876,7 +12876,7 @@ For example, our app currently needs to suspend to load the data for each video 
 <ViewTransition>
 ```
 
-With this update, if the content on the next page has time to pre-render, it will animate in without the Suspense fallback. Click a video, and notice that the video title and description on the Details page render immediately, without a fallback:
+با این به‌روزرسانی، اگر محتوای صفحهٔ بعد زمان برای پیش‌رندر داشته باشد، بدون fallback ساسپنس انیمیت می‌شود. روی یک ویدیو کلیک کنید و توجه کنید که عنوان و توضیحات ویدیو در صفحهٔ Details بلافاصله و بدون fallback رندر می‌شوند:
 
 <Sandpack>
 
@@ -14194,45 +14194,45 @@ root.render(
 
 </Sandpack>
 
-### Server-Side Rendering with Activity {/*server-side-rendering-with-activity*/}
+### رندر سمت سرور با Activity {/*server-side-rendering-with-activity*/}
 
-When using Activity on a page that uses server-side rendering (SSR), there are additional optimizations.
+هنگام استفاده از Activity روی صفحه‌ای که از رندر سمت سرور (SSR) استفاده می‌کند، بهینه‌سازی‌های اضافی وجود دارد.
 
-If part of the page is rendered with `mode="hidden"`, then it will not be included in the SSR response. Instead, React will schedule a client render for the content inside Activity while the rest of the page hydrates, prioritizing the visible content on screen.
+اگر بخشی از صفحه با `mode="hidden"` رندر شود، در پاسخ SSR گنجانده نخواهد شد. به‌جای آن، ری‌اکت یک رندر کلاینت برای محتوای درون Activity زمان‌بندی می‌کند در حالی که بقیهٔ صفحه hydration می‌شود، و به محتوای قابل‌مشاهده روی صفحه اولویت می‌دهد.
 
-For parts of the UI rendered with `mode="visible"`, React will de-prioritize hydration of content within Activity, similar to how Suspense content is hydrated at a lower priority. If the user interacts with the page, we'll prioritize hydration within the boundary if needed.
+برای بخش‌هایی از رابط کاربری که با `mode="visible"` رندر می‌شوند، ری‌اکت hydration محتوای درون Activity را کم‌اولویت می‌کند، مشابهِ نحوهٔ hydration محتوای ساسپنس در اولویت پایین‌تر. اگر کاربر با صفحه تعامل کند، در صورت نیاز hydration را درون مرز اولویت‌بندی خواهیم کرد.
 
-These are advanced use cases, but they show the additional benefits considered with Activity.
+این موارد استفادهٔ پیشرفته هستند، اما مزایای اضافی در نظر گرفته‌شده با Activity را نشان می‌دهند.
 
-### Future modes for Activity {/*future-modes-for-activity*/}
+### مُدهای آینده برای Activity {/*future-modes-for-activity*/}
 
-In the future, we may add more modes to Activity.
+در آینده، ممکن است مُدهای بیشتری به Activity اضافه کنیم.
 
-For example, a common use case is rendering a modal, where the previous "inactive" page is visible behind the "active" modal view. The "hidden" mode does not work for this use case because it's not visible and not included in SSR.
+برای مثال، یک مورد استفادهٔ رایج رندر یک مودال است، جایی که صفحهٔ «غیرفعال» قبلی پشت نمای مودال «فعال» قابل‌مشاهده است. مُد «hidden» برای این مورد استفاده کار نمی‌کند زیرا قابل‌مشاهده نیست و در SSR گنجانده نمی‌شود.
 
-Instead, we're considering a new mode that would keep the content visible&mdash;and included in SSR&mdash;but keep it unmounted and de-prioritize updates. This mode may also need to "pause" DOM updates, since it can be distracting to see backgrounded content updating while a modal is open.
+به‌جای آن، ما در حال بررسی یک مُد جدید هستیم که محتوا را قابل‌مشاهده نگه می‌دارد &mdash; و در SSR گنجانده می‌شود &mdash; اما آن را unmount نگه می‌دارد و به‌روزرسانی‌ها را کم‌اولویت می‌کند. این مُد همچنین ممکن است نیاز به «مکث‌کردن» به‌روزرسانی‌های DOM داشته باشد، زیرا دیدن محتوای پس‌زمینه که در حال به‌روزرسانی است در حالی که یک مودال باز است می‌تواند حواس‌پرت‌کننده باشد.
 
-Another mode we're considering for Activity is the ability to automatically destroy state for hidden Activities if there is too much memory being used. Since the component is already unmounted, it may be preferable to destroy state for the least recently used hidden parts of the app rather than consume too many resources.
+یک مُد دیگر که برای Activity در نظر داریم، توانایی از بین‌بردن خودکار استیت برای Activityهای پنهان است اگر حافظهٔ زیادی در حال استفاده باشد. از آنجا که کامپوننت از قبل unmount شده است، ممکن است ترجیح داده شود استیت برای کم‌اخیراً استفاده‌شده‌ترین بخش‌های پنهان اپلیکیشن از بین برود به‌جای اینکه منابع زیادی مصرف شود.
 
-These are areas we're still exploring, and we'll share more as we make progress. For more information on what Activity includes today, [check out the docs](/reference/react/Activity).
+این‌ها حوزه‌هایی هستند که همچنان در حال کاوش آن‌ها هستیم، و هرچه پیشرفت کنیم بیشتر به اشتراک خواهیم گذاشت. برای اطلاعات بیشتر دربارهٔ آنچه Activity امروز شامل می‌شود، [مستندات را ببینید](/reference/react/Activity).
 
 ---
 
-# Features in development {/*features-in-development*/}
+# قابلیت‌های در حال توسعه {/*features-in-development*/}
 
-We're also developing features to help solve the common problems below. 
+ما همچنین در حال توسعهٔ قابلیت‌هایی برای کمک به حل مشکلات رایج زیر هستیم. 
 
-As we iterate on possible solutions, you may see some potential APIs we're testing being shared based on the PRs we are landing. Please keep in mind that as we try different ideas, we often change or remove different solutions after trying them out. 
+هرچه روی راه‌حل‌های ممکن تکرار و توسعه می‌کنیم، ممکن است برخی APIهای بالقوه‌ای که آزمایش می‌کنیم بر اساس PRهایی که land می‌کنیم به اشتراک گذاشته شود ببینید. لطفاً در نظر داشته باشید که هنگام امتحان ایده‌های مختلف، اغلب راه‌حل‌های مختلف را پس از امتحان کردن تغییر می‌دهیم یا حذف می‌کنیم. 
 
-When the solutions we're working on are shared too early, it can create churn and confusion in the community. To balance being transparent and limiting confusion, we're sharing the problems we're currently developing solutions for, without sharing a particular solution we have in mind. 
+هنگامی که راه‌حل‌هایی که روی آن‌ها کار می‌کنیم بیش از حد زود به اشتراک گذاشته شوند، می‌تواند churn و سردرگمی در جامعه ایجاد کند. برای متعادل‌کردن شفاف‌بودن و محدودکردن سردرگمی، ما مشکلاتی را که در حال حاضر برای آن‌ها راه‌حل توسعه می‌دهیم به اشتراک می‌گذاریم، بدون آنکه یک راه‌حل خاصی که در نظر داریم را به اشتراک بگذاریم. 
 
-As these features progress, we'll announce them on the blog with docs included so you can try them out. 
+هرچه این قابلیت‌ها پیشرفت کنند، آن‌ها را در وبلاگ با مستندات گنجانده اعلام خواهیم کرد تا بتوانید آن‌ها را امتحان کنید. 
 
-## React Performance Tracks {/*react-performance-tracks*/}
+## مسیرهای عملکرد ری‌اکت (React Performance Tracks) {/*react-performance-tracks*/}
 
-We're working on a new set of custom tracks to performance profilers using browser APIs that [allow adding custom tracks](https://developer.chrome.com/docs/devtools/performance/extension) to provide more information about the performance of your React app.
+ما در حال کار روی یک مجموعهٔ جدید از مسیرهای سفارشی برای پروفایلرهای عملکرد با استفاده از APIهای مرورگر هستیم که [اجازهٔ افزودن مسیرهای سفارشی](https://developer.chrome.com/docs/devtools/performance/extension) را می‌دهند تا اطلاعات بیشتری دربارهٔ عملکرد اپلیکیشن ری‌اکت شما فراهم شود.
 
-This feature is still in progress, so we're not ready to publish docs to fully release it as an experimental feature yet. You can get a sneak preview when using an experimental version of React, which will automatically add the performance tracks to profiles:
+این قابلیت همچنان در حال انجام است، بنابراین هنوز آمادهٔ انتشار مستندات برای عرضهٔ کامل آن به‌عنوان یک قابلیت آزمایشی نیستیم. می‌توانید هنگام استفاده از یک نسخهٔ آزمایشی ری‌اکت یک پیش‌نمایش ببینید، که به‌طور خودکار مسیرهای عملکرد را به پروفایل‌ها اضافه می‌کند:
 
 <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
   <picture >
@@ -14245,31 +14245,31 @@ This feature is still in progress, so we're not ready to publish docs to fully r
   </picture>
 </div>
 
-There are a few known issues we plan to address such as performance, and the scheduler track not always "connecting" work across Suspended trees, so it's not quite ready to try. We're also still collecting feedback from early adopters to improve the design and usability of the tracks.
+چند مسئلهٔ شناخته‌شده وجود دارد که قصد داریم به آن‌ها بپردازیم مانند عملکرد، و مسیر scheduler که همیشه کار را در میان درخت‌های ساسپندشده «متصل» نمی‌کند، بنابراین هنوز کاملاً آمادهٔ امتحان نیست. ما همچنین همچنان در حال جمع‌آوری بازخورد از پذیرندگان زودهنگام برای بهبود طراحی و قابلیت استفادهٔ مسیرها هستیم.
 
-Once we solve those issues, we'll publish experimental docs and share that it's ready to try.
+هنگامی که آن مشکلات را حل کنیم، مستندات آزمایشی را منتشر خواهیم کرد و به اشتراک خواهیم گذاشت که آمادهٔ امتحان است.
 
 ---
 
-## Automatic Effect Dependencies {/*automatic-effect-dependencies*/}
+## وابستگی‌های خودکار افکت (Automatic Effect Dependencies) {/*automatic-effect-dependencies*/}
 
-When we released hooks, we had three motivations:
+وقتی هوک‌ها را منتشر کردیم، سه انگیزه داشتیم:
 
-- **Sharing code between components**: hooks replaced patterns like render props and higher-order components to allow you to reuse stateful logic without changing your component hierarchy.
-- **Think in terms of function, not lifecycles**: hooks let you split one component into smaller functions based on what pieces are related (such as setting up a subscription or fetching data), rather than forcing a split based on lifecycle methods.
-- **Support ahead-of-time compilation**: hooks were designed to support ahead-of-time compilation with less pitfalls causing unintentional de-optimizations caused by lifecycle methods, and limitations of classes.
+- **اشتراک‌گذاری کد میان کامپوننت‌ها**: هوک‌ها الگوهایی مانند render props و کامپوننت‌های مرتبه‌بالاتر (higher-order components) را جایگزین کردند تا بتوانید منطق استیت‌دار را بدون تغییر سلسله‌مراتب کامپوننت خود استفادهٔ مجدد کنید.
+- **تفکر بر حسب تابع، نه چرخهٔ حیات**: هوک‌ها به شما اجازه می‌دهند یک کامپوننت را بر اساس آنچه قطعات مرتبط هستند (مانند راه‌اندازی یک اشتراک یا fetch داده) به توابع کوچک‌تری تقسیم کنید، به‌جای آنکه تقسیم را بر اساس متدهای چرخهٔ حیات اجبار کنید.
+- **پشتیبانی از کامپایل پیش‌ازاجرا**: هوک‌ها برای پشتیبانی از کامپایل پیش‌ازاجرا با دام‌های کمتری که باعث بهینه‌سازی‌زدایی ناخواسته توسط متدهای چرخهٔ حیات، و محدودیت‌های کلاس‌ها می‌شد طراحی شده بودند.
 
-Since their release, hooks have been successful at *sharing code between components*. Hooks are now the favored way to share logic between components, and there are less use cases for render props and higher order components. Hooks have also been successful at supporting features like Fast Refresh that were not possible with class components. 
+از زمان انتشارشان، هوک‌ها در *اشتراک‌گذاری کد میان کامپوننت‌ها* موفق بوده‌اند. هوک‌ها اکنون روش مورد علاقه برای اشتراک‌گذاری منطق میان کامپوننت‌ها هستند، و موارد استفادهٔ کمتری برای render props و کامپوننت‌های مرتبه‌بالاتر وجود دارد. هوک‌ها همچنین در پشتیبانی از قابلیت‌هایی مانند Fast Refresh که با کامپوننت‌های کلاسی ممکن نبود موفق بوده‌اند. 
 
-### Effects can be hard {/*effects-can-be-hard*/}
+### افکت‌ها می‌توانند سخت باشند {/*effects-can-be-hard*/}
 
-Unfortunately, some hooks are still hard to think in terms of function instead of lifecycles. Effects specifically are still hard to understand and are the most common pain point we hear from developers. Last year, we spent a significant amount of time researching how Effects were used, and how those use cases could be simplified and easier to understand.
+متأسفانه، برخی هوک‌ها هنوز از نظر تابع به‌جای چرخهٔ حیات تفکر در موردشان دشوار است. به‌طور خاص افکت‌ها هنوز درکشان دشوار است و رایج‌ترین نقطهٔ دردناکی است که از توسعه‌دهندگان می‌شنویم. سال گذشته، زمان قابل‌توجهی را صرف تحقیق دربارهٔ نحوهٔ استفاده از افکت‌ها کردیم، و چگونگی ساده‌سازی و آسان‌تر شدن درک آن موارد استفاده.
 
-We found that often, the confusion is from using an Effect when you don't need to. The [You Might Not Need an Effect](/learn/you-might-not-need-an-effect) guide covers many cases for when Effects are not the right solution. However, even when an Effect is the right fit for a problem, Effects can still be harder to understand than class component lifecycles.
+ما متوجه شدیم اغلب، سردرگمی ناشی از استفاده از یک افکت هنگامی است که نیازی ندارید. راهنمای [You Might Not Need an Effect](/learn/you-might-not-need-an-effect) بسیاری از مواردی که افکت‌ها راه‌حل درستی نیستند را پوشش می‌دهد. با این حال، حتی وقتی یک افکت تناسب درستی برای یک مشکل است، افکت‌ها همچنان می‌توانند نسبت به چرخه‌های حیات کامپوننت‌های کلاسی سخت‌تر برای درک باشند.
 
-We believe one of the reasons for confusion is that developers to think of Effects from the _component's_ perspective (like a lifecycle), instead of the _Effects_ point of view (what the Effect does).
+ما معتقدیم یکی از دلایل سردرگمی این است که توسعه‌دهندگان از دیدگاه _کامپوننت_ (مانند یک چرخهٔ حیات) به افکت‌ها فکر می‌کنند، به‌جای دیدگاه _افکت_ (افکت چه کاری انجام می‌دهد).
 
-Let's look at an example [from the docs](/learn/lifecycle-of-reactive-effects#thinking-from-the-effects-perspective):
+بیایید به یک مثال [از مستندات](/learn/lifecycle-of-reactive-effects#thinking-from-the-effects-perspective) نگاهی بیندازیم:
 
 ```js
 useEffect(() => {
@@ -14283,15 +14283,15 @@ useEffect(() => {
 }, [roomId]);
 ```
 
-Many users would read this code as "on mount, connect to the roomId. whenever `roomId` changes, disconnect to the old room and re-create the connection". However, this is thinking from the component's lifecycle perspective, which means you will need to think of every component lifecycle state to write the Effect correctly. This can be difficult, so it's understandable that Effects seem harder than class lifecycles when using the component perspective.
+بسیاری از کاربران این کد را به این صورت می‌خوانند: «در mount، به roomId متصل شو. هرگاه `roomId` تغییر کرد، از اتاق قدیمی قطع شو و اتصال را دوباره ایجاد کن». با این حال، این تفکر از دیدگاه چرخهٔ حیات کامپوننت است، که بدان معناست برای نوشتن صحیح افکت باید به هر وضعیت چرخهٔ حیات کامپوننت فکر کنید. این می‌تواند دشوار باشد، بنابراین قابل‌فهم است که هنگام استفاده از دیدگاه کامپوننت، افکت‌ها سخت‌تر از چرخه‌های حیات کلاسی به نظر می‌رسند.
 
-### Effects without dependencies {/*effects-without-dependencies*/}
+### افکت‌ها بدون وابستگی‌ها {/*effects-without-dependencies*/}
 
-Instead, it's better to think from the Effect's perspective. The Effect doesn't know about the component lifecycles. It only describes how to start synchronization and how to stop it. When users think of Effects in this way, their Effects tend to be easier to write, and more resilient to being started and stopped as many times as is needed.
+به‌جای آن، بهتر است از دیدگاه افکت فکر کنید. افکت دربارهٔ چرخه‌های حیات کامپوننت نمی‌داند. او فقط توصیف می‌کند چگونه همگام‌سازی را شروع کند و چگونه آن را متوقف کند. وقتی کاربران به این روش به افکت‌ها فکر می‌کنند، افکت‌هایشان تمایل دارند آسان‌تر نوشته شوند، و در برابر شروع و توقف به تعداد دفعات لازم مقاوم‌تر باشند.
 
-We spent some time researching why Effects are thought of from the component perspective, and we think one of the reasons is the dependency array. Since you have to write it, it's right there and in your face reminding you of what you're "reacting" to and baiting you into the mental model of 'do this when these values change'.
+ما مدتی را صرف تحقیق دربارهٔ چرایی تفکر دربارهٔ افکت‌ها از دیدگاه کامپوننت کردیم، و فکر می‌کنیم یکی از دلایل، آرایهٔ وابستگی است. از آنجا که باید آن را بنویسید، آن همانجا و در مقابل چشم شماست و شما را به چیزی که به آن «واکنش» نشان می‌دهید یادآوری می‌کند و شما را به مدل ذهنی «این کار را انجام بده وقتی این مقادیر تغییر می‌کنند» ترغیب می‌کند.
 
-When we released hooks, we knew we could make them easier to use with ahead-of-time compilation. With the React Compiler, you're now able to avoid writing `useCallback` and `useMemo` yourself in most cases. For Effects, the compiler can insert the dependencies for you:
+وقتی هوک‌ها را منتشر کردیم، می‌دانستیم می‌توانیم با کامپایل پیش‌ازاجرا استفاده از آن‌ها را آسان‌تر کنیم. با کامپایلر ری‌اکت (React Compiler)، اکنون می‌توانید در بیشتر موارد از نوشتن `useCallback` و `useMemo` خودتان اجتناب کنید. برای افکت‌ها، کامپایلر می‌تواند وابستگی‌ها را برای شما درج کند:
 
 ```js
 useEffect(() => {
@@ -14303,64 +14303,64 @@ useEffect(() => {
 }); // compiler inserted dependencies. 
 ```
 
-With this code, the React Compiler can infer the dependencies for you and insert them automatically so you don't need to see or write them. With features like [the IDE extension](#compiler-ide-extension) and [`useEffectEvent`](/reference/react/experimental_useEffectEvent), we can provide a CodeLens to show you what the Compiler inserted for times you need to debug, or to optimize by removing a dependency. This helps reinforce the correct mental model for writing Effects, which can run at any time to synchronize your component or hook's state with something else.
+با این کد، کامپایلر ری‌اکت می‌تواند وابستگی‌ها را برای شما استنتاج کند و آن‌ها را به‌طور خودکار درج کند تا نیازی به دیدن یا نوشتن آن‌ها نداشته باشید. با قابلیت‌هایی مانند [افزونهٔ IDE](#compiler-ide-extension) و [`useEffectEvent`](/reference/react/experimental_useEffectEvent)، می‌توانیم یک CodeLens فراهم کنیم تا به شما نشان دهد کامپایلر چه چیزی را برای مواقعی که نیاز به دیباگ دارید، یا برای بهینه‌سازی با حذف یک وابستگی، درج کرده است. این به تقویت مدل ذهنی صحیح برای نوشتن افکت‌ها کمک می‌کند، که می‌توانند در هر زمان برای همگام‌سازی استیت کامپوننت یا هوک شما با چیز دیگری اجرا شوند.
 
-Our hope is that automatically inserting dependencies is not only easier to write, but that it also makes them easier to understand by forcing you to think in terms of what the Effect does, and not in component lifecycles. 
-
----
-
-## Compiler IDE Extension {/*compiler-ide-extension*/}
-
-Earlier this week [we shared](/blog/2025/04/21/react-compiler-rc) the React Compiler release candidate, and we're working towards shipping the first SemVer stable version of the compiler in the coming months.
-
-We've also begun exploring ways to use the React Compiler to provide information that can improve understanding and debugging your code. One idea we've started exploring is a new experimental LSP-based React IDE extension powered by React Compiler, similar to the extension used in [Lauren Tan's React Conf talk](https://conf2024.react.dev/talks/5).
-
-Our idea is that we can use the compiler's static analysis to provide more information, suggestions, and optimization opportunities directly in your IDE. For example, we can provide diagnostics for code breaking the Rules of React, hovers to show if components and hooks were optimized by the compiler, or a CodeLens to see [automatically inserted Effect dependencies](#automatic-effect-dependencies).
-
-The IDE extension is still an early exploration, but we'll share our progress in future updates.
+امید ما این است که درج خودکار وابستگی‌ها نه‌تنها آسان‌تر برای نوشتن باشد، بلکه با اجبار شما به تفکر بر حسب کاری که افکت انجام می‌دهد (و نه چرخه‌های حیات کامپوننت)، درک آن‌ها را نیز آسان‌تر کند. 
 
 ---
 
-## Fragment Refs {/*fragment-refs*/}
+## افزونهٔ IDE کامپایلر (Compiler IDE Extension) {/*compiler-ide-extension*/}
 
-Many DOM APIs like those for event management, positioning, and focus are difficult to compose when writing with React. This often leads developers to reach for Effects, managing multiple Refs, by using APIs like `findDOMNode` (removed in React 19).
+اوایل این هفته [ما به اشتراک گذاشتیم](/blog/2025/04/21/react-compiler-rc) release candidate کامپایلر ری‌اکت را، و به سوی انتشار اولین نسخهٔ پایدار SemVer کامپایلر در ماه‌های آینده کار می‌کنیم.
 
-We are exploring adding refs to Fragments that would point to a group of DOM elements, rather than just a single element. Our hope is that this will simplify managing multiple children and make it easier to write composable React code when calling DOM APIs.
+ما همچنین شروع به کاوش روش‌هایی برای استفاده از کامپایلر ری‌اکت برای ارائهٔ اطلاعاتی کرده‌ایم که می‌تواند درک و دیباگ کد شما را بهبود بخشد. یک ایده که شروع به کاوش آن کرده‌ایم یک افزونهٔ آزمایشی جدید IDE ری‌اکت مبتنی بر LSP و نیروگرفته از کامپایلر ری‌اکت است، مشابهِ افزونه‌ای که در [سخنرانی Lauren Tan در React Conf](https://conf2024.react.dev/talks/5) استفاده شد.
 
-Fragment refs are still being researched. We'll share more when we're closer to having the final API finished.
+ایدهٔ ما این است که می‌توانیم از تحلیل استاتیک کامپایلر برای ارائهٔ اطلاعات، پیشنهادها و فرصت‌های بهینه‌سازی بیشتر به‌طور مستقیم در IDE شما استفاده کنیم. برای مثال، می‌توانیم تشخیص‌هایی برای کدی که قواعد ری‌اکت را می‌شکند ارائه کنیم، hoverهایی تا نشان دهیم آیا کامپوننت‌ها و هوک‌ها توسط کامپایلر بهینه شده‌اند یا خیر، یا یک CodeLens برای دیدن [وابستگی‌های افکت به‌طور خودکار درج‌شده](#automatic-effect-dependencies).
 
----
-
-## Gesture Animations {/*gesture-animations*/}
-
-We're also researching ways to enhance View Transitions to support gesture animations such as swiping to open a menu, or scroll through a photo carousel. 
-
-Gestures present new challenges for a few reasons:
-
-- **Gestures are continuous**: as you swipe the animation is tied to your finger placement time, rather than triggering and running to completion.
-- **Gestures don't complete**: when you release your finger gesture animations can run to completion, or revert to their original state (like when you only partially open a menu) depending on how far you go.
-- **Gestures invert old and new**: while you're animating, you want the page you are animating from to stay "alive" and interactive. This inverts the browser View Transition model where the "old" state is a snapshot and the "new" state is the live DOM.
-
-We believe we’ve found an approach that works well and may introduce a new API for triggering gesture transitions. For now, we're focused on shipping `<ViewTransition>`, and will revisit gestures afterward.
+افزونهٔ IDE همچنان یک کاوش اولیه است، اما پیشرفت خود را در به‌روزرسانی‌های آینده به اشتراک خواهیم گذاشت.
 
 ---
 
-## Concurrent Stores {/*concurrent-stores*/}
+## رفرنس‌های فرگمنت (Fragment Refs) {/*fragment-refs*/}
 
-When we released React 18 with concurrent rendering, we also released `useSyncExternalStore` so external store libraries that did not use React state or context could [support concurrent rendering](https://github.com/reactwg/react-18/discussions/70) by forcing a synchronous render when the store is updated.
+بسیاری از APIهای DOM مانند آن‌هایی که برای مدیریت رویداد، موقعیت‌یابی و فوکس هستند هنگام نوشتن با ری‌اکت دشوار ترکیب می‌شوند. این اغلب توسعه‌دهندگان را به سمت افکت‌ها سوق می‌دهد، و مدیریت چندین رفرنس با استفاده از APIهایی مانند `findDOMNode` (که در React 19 حذف شده).
 
-Using `useSyncExternalStore` comes at a cost though, since it forces a bail out from concurrent features like transitions, and forces existing content to show Suspense fallbacks.
+ما در حال کاوش افزودن رفرنس‌ها به فرگمنت‌ها هستیم که به یک گروه از عناصر DOM اشاره می‌کنند، به‌جای فقط یک عنصر واحد. امید ما این است که این کار مدیریت چندین فرزند را ساده‌تر کند و نوشتن کد قابل ترکیب ری‌اکت هنگام فراخوانی APIهای DOM را آسان‌تر کند.
 
-Now that React 19 has shipped, we're revisiting this problem space to create a primitive to fully support concurrent external stores with the `use` API:
+رفرنس‌های فرگمنت همچنان در حال تحقیق هستند. هرچه به نهایی‌کردن API نهایی نزدیک‌تر شویم، بیشتر به اشتراک خواهیم گذاشت.
+
+---
+
+## انیمیشن‌های ژست (Gesture Animations) {/*gesture-animations*/}
+
+ما همچنین در حال تحقیق روش‌هایی برای بهبود View Transitions جهت پشتیبانی از انیمیشن‌های ژست مانند کشیدن برای باز کردن یک منو، یا اسکرول از میان یک کاروسل عکس هستیم. 
+
+ژست‌ها به چند دلیل چالش‌های جدیدی ارائه می‌کنند:
+
+- **ژست‌ها پیوسته هستند**: هنگام کشیدن، انیمیشن به زمان قرارگیری انگشت شما گره خورده است، به‌جای آنکه راه‌اندازی و تا تکمیل اجرا شود.
+- **ژست‌ها تکمیل نمی‌شوند**: وقتی انگشت خود را رها می‌کنید، انیمیشن‌های ژست می‌توانند تا تکمیل اجرا شوند، یا به وضعیت اصلی بازگردند (مانند وقتی فقط یک منو را به‌طور جزئی باز می‌کنید) بسته به اینکه چقدر پیش بروید.
+- **ژست‌ها قدیم و جدید را معکوس می‌کنند**: در حین انیمیت‌کردن، می‌خواهید صفحه‌ای که از آن انیمیت می‌کنید «زنده» و تعاملی بماند. این مدل View Transition مرورگر را معکوس می‌کند که در آن وضعیت «قدیم» یک snapshot و وضعیت «جدید» DOM زنده است.
+
+ما معتقدیم رویکردی یافته‌ایم که به‌خوبی کار می‌کند و ممکن است یک API جدید برای راه‌اندازی ترنزیشن‌های ژست معرفی کنیم. برای اکنون، بر انتشار `<ViewTransition>` متمرکز هستیم، و پس از آن به ژست‌ها بازخواهیم گشت.
+
+---
+
+## استورهای همزمان (Concurrent Stores) {/*concurrent-stores*/}
+
+وقتی React 18 را با رندر همزمان منتشر کردیم، `useSyncExternalStore` را نیز منتشر کردیم تا کتابخانه‌های استور خارجی که از استیت یا کانتکست ری‌اکت استفاده نمی‌کردند بتوانند با اجبار یک رندر همگام هنگام به‌روزرسانی استور از [رندر همزمان پشتیبانی کنند](https://github.com/reactwg/react-18/discussions/70).
+
+با این حال، استفاده از `useSyncExternalStore` هزینه‌ای دارد، زیرا یک خروج از قابلیت‌های همزمان مانند ترنزیشن‌ها را اجبار می‌کند، و محتوای موجود را مجبور می‌کند fallbackهای ساسپنس را نمایش دهند.
+
+اکنون که React 19 منتشر شده، ما در حال بازبینی این فضای مسئله برای ایجاد یک پریمیتیو برای پشتیبانی کامل از استورهای خارجی همزمان با API `use` هستیم:
 
 ```js
 const value = use(store);
 ```
 
-Our goal is to allow external state to be read during render without tearing, and to work seamlessly with all of the concurrent features React offers. 
+هدف ما این است که اجازه دهیم استیت خارجی در حین رندر بدون tearing خوانده شود، و به‌طور یکپارچه با همهٔ قابلیت‌های همزمانی که ری‌اکت ارائه می‌دهد کار کند. 
 
-This research is still early. We'll share more, and what the new APIs will look like, when we're further along. 
+این تحقیق هنوز در مراحل اولیه است. هرچه پیشرفت کنیم، بیشتر و اینکه APIهای جدید چگونه خواهند بود را به اشتراک خواهیم گذاشت. 
 
 ---
 
-_Thanks to [Aurora Scharff](https://bsky.app/profile/aurorascharff.no), [Dan Abramov](https://bsky.app/profile/danabra.mov), [Eli White](https://twitter.com/Eli_White), [Lauren Tan](https://bsky.app/profile/no.lol), [Luna Wei](https://github.com/lunaleaps), [Matt Carroll](https://twitter.com/mattcarrollcode), [Jack Pope](https://jackpope.me), [Jason Bonta](https://threads.net/someextent), [Jordan Brown](https://github.com/jbrown215), [Jordan Eldredge](https://bsky.app/profile/capt.dev), [Mofei Zhang](https://threads.net/z_mofei), [Sebastien Lorber](https://bsky.app/profile/sebastienlorber.com), [Sebastian Markbåge](https://bsky.app/profile/sebmarkbage.calyptus.eu), and [Tim Yung](https://github.com/yungsters) for reviewing this post._
+_از [Aurora Scharff](https://bsky.app/profile/aurorascharff.no)، [Dan Abramov](https://bsky.app/profile/danabra.mov)، [Eli White](https://twitter.com/Eli_White)، [Lauren Tan](https://bsky.app/profile/no.lol)، [Luna Wei](https://github.com/lunaleaps)، [Matt Carroll](https://twitter.com/mattcarrollcode)، [Jack Pope](https://jackpope.me)، [Jason Bonta](https://threads.net/someextent)، [Jordan Brown](https://github.com/jbrown215)، [Jordan Eldredge](https://bsky.app/profile/capt.dev)، [Mofei Zhang](https://threads.net/z_mofei)، [Sebastien Lorber](https://bsky.app/profile/sebastienlorber.com)، [Sebastian Markbåge](https://bsky.app/profile/sebmarkbage.calyptus.eu) و [Tim Yung](https://github.com/yungsters) برای بازبینی این پست سپاسگزاریم._

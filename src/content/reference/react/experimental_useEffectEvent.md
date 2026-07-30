@@ -5,22 +5,22 @@ version: experimental
 
 <Experimental>
 
-**This API is experimental and is not available in a stable version of React yet.**
+**این API آزمایشی است و هنوز در نسخهٔ پایدار ری‌اکت در دسترس نیست.**
 
-You can try it by upgrading React packages to the most recent experimental version:
+شما می‌توانید آن را با ارتقای پکیج‌های ری‌اکت به جدیدترین نسخهٔ آزمایشی امتحان کنید:
 
 - `react@experimental`
 - `react-dom@experimental`
 - `eslint-plugin-react-hooks@experimental`
 
-Experimental versions of React may contain bugs. Don't use them in production.
+نسخه‌های آزمایشی ری‌اکت ممکن است حاوی باگ باشند. از آن‌ها در محیط تولید استفاده نکنید.
 
 </Experimental>
 
 
 <Intro>
 
-`useEffectEvent` is a React Hook that lets you extract non-reactive logic into an [Effect Event.](/learn/separating-events-from-effects#declaring-an-effect-event)
+`useEffectEvent` یک هوک ری‌اکت است که به شما اجازه می‌دهد منطق غیر واکنش‌گرا (non-reactive) را در یک [افکت ایونت (Effect Event)](/learn/separating-events-from-effects#declaring-an-effect-event) استخراج کنید.
 
 ```js
 const onSomething = useEffectEvent(callback)

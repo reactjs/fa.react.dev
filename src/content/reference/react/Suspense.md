@@ -4,7 +4,7 @@ title: <Suspense>
 
 <Intro>
 
-`<Suspense>` lets you display a fallback until its children have finished loading.
+`<Suspense>` به شما اجازه می‌دهد یک fallback را تا زمانی که فرزندانش بارگذاری را تمام کرده‌اند نمایش دهید.
 
 
 ```js
@@ -19,28 +19,28 @@ title: <Suspense>
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `<Suspense>` {/*suspense*/}
 
-#### Props {/*props*/}
-* `children`: The actual UI you intend to render. If `children` suspends while rendering, the Suspense boundary will switch to rendering `fallback`.
-* `fallback`: An alternate UI to render in place of the actual UI if it has not finished loading. Any valid React node is accepted, though in practice, a fallback is a lightweight placeholder view, such as a loading spinner or skeleton. Suspense will automatically switch to `fallback` when `children` suspends, and back to `children` when the data is ready. If `fallback` suspends while rendering, it will activate the closest parent Suspense boundary.
+#### پراپس {/*props*/}
+* `children`: رابط کاربری واقعی که قصد دارید رندر کنید. اگر `children` در حین رندر suspend شود، مرز Suspense به رندر `fallback` سوییچ خواهد کرد.
+* `fallback`: یک رابط کاربری جایگزین برای رندر به‌جای رابط کاربری واقعی اگر هنوز بارگذاری آن تمام نشده است. هر نود معتبر ری‌اکت پذیرفته می‌شود، اگرچه در عمل، fallback یک view placeholder سبک‌وزن مانند یک loading spinner یا skeleton است. ساسپنس به‌طور خودکار به `fallback` سوییچ می‌کند وقتی `children` suspend می‌شود، و به `children` برمی‌گردد وقتی داده‌ها آماده هستند. اگر `fallback` در حین رندر suspend شود، نزدیک‌ترین مرز Suspense والد را فعال می‌کند.
 
-#### Caveats {/*caveats*/}
+#### نکات {/*caveats*/}
 
-- React does not preserve any state for renders that got suspended before they were able to mount for the first time. When the component has loaded, React will retry rendering the suspended tree from scratch.
-- If Suspense was displaying content for the tree, but then it suspended again, the `fallback` will be shown again unless the update causing it was caused by [`startTransition`](/reference/react/startTransition) or [`useDeferredValue`](/reference/react/useDeferredValue).
-- If React needs to hide the already visible content because it suspended again, it will clean up [layout Effects](/reference/react/useLayoutEffect) in the content tree. When the content is ready to be shown again, React will fire the layout Effects again. This ensures that Effects measuring the DOM layout don't try to do this while the content is hidden.
-- React includes under-the-hood optimizations like *Streaming Server Rendering* and *Selective Hydration* that are integrated with Suspense. Read [an architectural overview](https://github.com/reactwg/react-18/discussions/37) and watch [a technical talk](https://www.youtube.com/watch?v=pj5N-Khihgc) to learn more.
+- ری‌اکت هیچ استیتی را برای رندرهایی که قبل از توانایی mount برای اولین بار suspend شده‌اند، حفظ نمی‌کند. وقتی کامپوننت بارگذاری شد، ری‌اکت رندر درخت suspend شده را از ابتدا دوباره امتحان می‌کند.
+- اگر ساسپنس در حال نمایش محتوا برای درخت بود، اما سپس دوباره suspend شد، `fallback` دوباره نشان داده خواهد شد مگر اینکه به‌روزرسانی باعث آن توسط [`startTransition`](/reference/react/startTransition) یا [`useDeferredValue`](/reference/react/useDeferredValue) باشد.
+- اگر ری‌اکت نیاز داشته باشد محتوای از قبل قابل مشاهده را پنهان کند زیرا دوباره suspend شده، [layout Effect‌ها](/reference/react/useLayoutEffect) را در درخت محتوا پاک‌سازی می‌کند. وقتی محتوا آماده نمایش دوباره است، ری‌اکت layout Effect‌ها را دوباره فعال می‌کند. این تضمین می‌کند که Effect‌هایی که layout DOM را اندازه‌گیری می‌کنند سعی نمی‌کنند این کار را در حالی که محتوا پنهان است انجام دهند.
+- ری‌اکت شامل بهینه‌سازی‌های زیرساختی مانند *Streaming Server Rendering* و *Selective Hydration* است که با ساسپنس یکپارچه شده‌اند. برای کسب اطلاعات بیشتر [یک نمای کلی معماری](https://github.com/reactwg/react-18/discussions/37) را بخوانید و [یک گفتگوی فنی](https://www.youtube.com/watch?v=pj5N-Khihgc) را تماشا کنید.
 
 ---
 
-## Usage {/*usage*/}
+## استفاده {/*usage*/}
 
-### Displaying a fallback while content is loading {/*displaying-a-fallback-while-content-is-loading*/}
+### نمایش یک fallback در حالی که محتوا در حال بارگذاری است {/*displaying-a-fallback-while-content-is-loading*/}
 
-You can wrap any part of your application with a Suspense boundary:
+می‌توانید هر بخشی از اپلیکیشن خود را با یک مرز Suspense بپیچید:
 
 ```js [[1, 1, "<Loading />"], [2, 2, "<Albums />"]]
 <Suspense fallback={<Loading />}>
@@ -48,9 +48,9 @@ You can wrap any part of your application with a Suspense boundary:
 </Suspense>
 ```
 
-React will display your <CodeStep step={1}>loading fallback</CodeStep> until all the code and data needed by <CodeStep step={2}>the children</CodeStep> has been loaded.
+ری‌اکت <CodeStep step={1}>loading fallback</CodeStep> شما را تا زمانی که تمام کد و داده‌های مورد نیاز <CodeStep step={2}>فرزندان</CodeStep> بارگذاری شده باشند، نمایش می‌دهد.
 
-In the example below, the `Albums` component *suspends* while fetching the list of albums. Until it's ready to render, React switches the closest Suspense boundary above to show the fallback--your `Loading` component. Then, when the data loads, React hides the `Loading` fallback and renders the `Albums` component with data.
+در مثال زیر، کامپوننت `Albums` هنگام fetch لیست آلبوم‌ها *suspend* می‌شود. تا زمانی که آمادهٔ رندر باشد، ری‌اکت نزدیک‌ترین مرز Suspense بالاتر را سوییچ می‌کند تا fallback — کامپوننت `Loading` شما — را نمایش دهد. سپس، وقتی داده‌ها بارگذاری شدند، ری‌اکت fallback `Loading` را پنهان کرده و کامپوننت `Albums` را با داده‌ها رندر می‌کند.
 
 <Sandpack>
 
@@ -205,25 +205,25 @@ async function getAlbums() {
 
 <Note>
 
-**Only Suspense-enabled data sources will activate the Suspense component.** They include:
+**فقط منابع دادهٔ فعال‌شده با Suspense کامپوننت Suspense را فعال می‌کنند.** آن‌ها شامل:
 
-- Data fetching with Suspense-enabled frameworks like [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) and [Next.js](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#streaming-with-suspense)
-- Lazy-loading component code with [`lazy`](/reference/react/lazy)
-- Reading the value of a cached Promise with [`use`](/reference/react/use)
+- fetch داده‌ها با فریم‌ورک‌های فعال‌شده با Suspense مانند [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) و [Next.js](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#streaming-with-suspense)
+- بارگذاری تنبل (Lazy Loading) کد کامپوننت با [`lazy`](/reference/react/lazy)
+- خواندن مقدار یک Promise cache شده با [`use`](/reference/react/use)
 
-Suspense **does not** detect when data is fetched inside an Effect or event handler.
+ساسپنس **تشخیص نمی‌دهد** وقتی داده‌ها داخل یک افکت یا event handler fetch می‌شوند.
 
-The exact way you would load data in the `Albums` component above depends on your framework. If you use a Suspense-enabled framework, you'll find the details in its data fetching documentation.
+روش دقیق بارگذاری داده‌ها در کامپوننت `Albums` بالا به فریم‌ورک شما بستگی دارد. اگر از یک فریم‌ورک فعال‌شده با Suspense استفاده می‌کنید، جزئیات را در مستندات fetch دادهٔ آن پیدا خواهید کرد.
 
-Suspense-enabled data fetching without the use of an opinionated framework is not yet supported. The requirements for implementing a Suspense-enabled data source are unstable and undocumented. An official API for integrating data sources with Suspense will be released in a future version of React. 
+fetch دادهٔ فعال‌شده با Suspense بدون استفاده از یک فریم‌ورک opiniated هنوز پشتیبانی نمی‌شود. نیازمندی‌های پیاده‌سازی یک منبع دادهٔ فعال‌شده با Suspense ناپایدار و بدون مستند هستند. یک API رسمی برای یکپارچه‌سازی منابع داده با ساسپنس در یک نسخهٔ آیندهٔ ری‌اکت منتشر خواهد شد. 
 
 </Note>
 
 ---
 
-### Revealing content together at once {/*revealing-content-together-at-once*/}
+### نمایش محتوا با هم در یک لحظه {/*revealing-content-together-at-once*/}
 
-By default, the whole tree inside Suspense is treated as a single unit. For example, even if *only one* of these components suspends waiting for some data, *all* of them together will be replaced by the loading indicator:
+به‌طور پیش‌فرض، کل درخت داخل ساسپنس به‌عنوان یک واحد واحد در نظر گرفته می‌شود. برای مثال، حتی اگر *فقط یکی* از این کامپوننت‌ها در انتظار برخی داده‌ها suspend شود، *همه* آن‌ها با هم با loading indicator جایگزین می‌شوند:
 
 ```js {2-5}
 <Suspense fallback={<Loading />}>
@@ -234,9 +234,9 @@ By default, the whole tree inside Suspense is treated as a single unit. For exam
 </Suspense>
 ```
 
-Then, after all of them are ready to be displayed, they will all appear together at once.
+سپس، پس از آنکه همهٔ آن‌ها آمادهٔ نمایش شدند، همگی با هم در یک لحظه ظاهر می‌شوند.
 
-In the example below, both `Biography` and `Albums` fetch some data. However, because they are grouped under a single Suspense boundary, these components always "pop in" together at the same time.
+در مثال زیر، هم `Biography` و هم `Albums` برخی داده‌ها را fetch می‌کنند. با این حال، زیرا آن‌ها تحت یک مرز Suspense واحد گروه‌بندی شده‌اند، این کامپوننت‌ها همیشه با هم در یک زمان "pop in" می‌شوند.
 
 <Sandpack>
 
@@ -443,7 +443,7 @@ async function getAlbums() {
 
 </Sandpack>
 
-Components that load data don't have to be direct children of the Suspense boundary. For example, you can move `Biography` and `Albums` into a new `Details` component. This doesn't change the behavior. `Biography` and `Albums` share the same closest parent Suspense boundary, so their reveal is coordinated together.
+کامپوننت‌هایی که داده‌ها را بارگذاری می‌کنند لازم نیست فرزندان مستقیم مرز Suspense باشند. برای مثال، می‌توانید `Biography` و `Albums` را به یک کامپوننت جدید `Details` منتقل کنید. این رفتار را تغییر نمی‌دهد. `Biography` و `Albums` همان نزدیک‌ترین مرز Suspense والد را به اشتراک می‌گذارند، بنابراین نمایش آن‌ها با هم هماهنگ است.
 
 ```js {2,8-11}
 <Suspense fallback={<Loading />}>
@@ -464,9 +464,9 @@ function Details({ artistId }) {
 
 ---
 
-### Revealing nested content as it loads {/*revealing-nested-content-as-it-loads*/}
+### نمایش محتوای تودرتو هنگام بارگذاری {/*revealing-nested-content-as-it-loads*/}
 
-When a component suspends, the closest parent Suspense component shows the fallback. This lets you nest multiple Suspense components to create a loading sequence. Each Suspense boundary's fallback will be filled in as the next level of content becomes available. For example, you can give the album list its own fallback:
+وقتی یک کامپوننت suspend می‌شود، نزدیک‌ترین کامپوننت Suspense والد fallback را نمایش می‌دهد. این به شما اجازه می‌دهد چندین کامپوننت Suspense را تودرتو کنید تا یک دنبالهٔ بارگذاری ایجاد کنید. fallback هر مرز Suspense با در دسترس قرار گرفتن سطح بعدی محتوا پر خواهد شد. برای مثال، می‌توانید به لیست آلبوم fallback خودش را بدهید:
 
 ```js {3,7}
 <Suspense fallback={<BigSpinner />}>
@@ -479,14 +479,14 @@ When a component suspends, the closest parent Suspense component shows the fallb
 </Suspense>
 ```
 
-With this change, displaying the `Biography` doesn't need to "wait" for the `Albums` to load.
+با این تغییر، نمایش `Biography` نیازی به "منتظر ماندن" برای بارگذاری `Albums` ندارد.
 
-The sequence will be:
+دنباله خواهد بود:
 
-1. If `Biography` hasn't loaded yet, `BigSpinner` is shown in place of the entire content area.
-2. Once `Biography` finishes loading, `BigSpinner` is replaced by the content.
-3. If `Albums` hasn't loaded yet, `AlbumsGlimmer` is shown in place of `Albums` and its parent `Panel`.
-4. Finally, once `Albums` finishes loading, it replaces `AlbumsGlimmer`.
+1. اگر `Biography` هنوز بارگذاری نشده، `BigSpinner` به‌جای کل ناحیهٔ محتوا نمایش داده می‌شود.
+2. وقتی بارگذاری `Biography` تمام شد، `BigSpinner` با محتوا جایگزین می‌شود.
+3. اگر `Albums` هنوز بارگذاری نشده، `AlbumsGlimmer` به‌جای `Albums` و والد آن `Panel` نمایش داده می‌شود.
+4. در نهایت، وقتی بارگذاری `Albums` تمام شد، `AlbumsGlimmer` را جایگزین می‌کند.
 
 <Sandpack>
 
@@ -722,15 +722,15 @@ async function getAlbums() {
 
 </Sandpack>
 
-Suspense boundaries let you coordinate which parts of your UI should always "pop in" together at the same time, and which parts should progressively reveal more content in a sequence of loading states. You can add, move, or delete Suspense boundaries in any place in the tree without affecting the rest of your app's behavior.
+مرزهای Suspense به شما اجازه می‌دهند هماهنگ کنید کدام بخش‌های رابط کاربری شما همیشه باید با هم در یک زمان "pop in" کنند، و کدام بخش‌ها باید به‌تدریج محتوای بیشتری را در یک دنباله از استیت‌های بارگذاری نمایش دهند. می‌توانید مرزهای Suspense را در هر جایی از درخت اضافه، منتقل یا حذف کنید بدون تأثیر بر بقیهٔ رفتار اپلیکیشن شما.
 
-Don't put a Suspense boundary around every component. Suspense boundaries should not be more granular than the loading sequence that you want the user to experience. If you work with a designer, ask them where the loading states should be placed--it's likely that they've already included them in their design wireframes.
+مرز Suspense را دور هر کامپوننت قرار ندهید. مرزهای Suspense نباید از دنبالهٔ بارگذاری که می‌خواهید کاربر تجربه کند دانه‌دانه‌تر باشند. اگر با یک طراح کار می‌کنید، از او بپرسید استیت‌های بارگذاری باید کجا قرار گیرند — احتمالاً آن‌ها را از قبل در wireframeهای طراحی خود گنجانده است.
 
 ---
 
-### Showing stale content while fresh content is loading {/*showing-stale-content-while-fresh-content-is-loading*/}
+### نمایش محتوای قدیمی در حالی که محتوای جدید در حال بارگذاری است {/*showing-stale-content-while-fresh-content-is-loading*/}
 
-In this example, the `SearchResults` component suspends while fetching the search results. Type `"a"`, wait for the results, and then edit it to `"ab"`. The results for `"a"` will get replaced by the loading fallback.
+در این مثال، کامپوننت `SearchResults` هنگام fetch نتایج جستجو suspend می‌شود. `"a"` را تایپ کنید، برای نتایج منتظر بمانید، و سپس آن را به `"ab"` ویرایش کنید. نتایج برای `"a"` با loading fallback جایگزین خواهند شد.
 
 <Sandpack>
 
@@ -877,7 +877,7 @@ input { margin: 10px; }
 
 </Sandpack>
 
-A common alternative UI pattern is to *defer* updating the list and to keep showing the previous results until the new results are ready. The [`useDeferredValue`](/reference/react/useDeferredValue) Hook lets you pass a deferred version of the query down: 
+یک الگوی رابط کاربری جایگزین رایج این است که به‌روزرسانی لیست را *به تأخیر بیندازید* و نمایش نتایج قبلی را تا زمانی که نتایج جدید آماده شوند ادامه دهید. هوک [`useDeferredValue`](/reference/react/useDeferredValue) به شما اجازه می‌دهد یک نسخهٔ به تأخیر افتادهٔ query را پایین بفرستید: 
 
 ```js {3,11}
 export default function App() {
@@ -897,9 +897,9 @@ export default function App() {
 }
 ```
 
-The `query` will update immediately, so the input will display the new value. However, the `deferredQuery` will keep its previous value until the data has loaded, so `SearchResults` will show the stale results for a bit.
+`query` بلافاصله به‌روز می‌شود، بنابراین input مقدار جدید را نمایش خواهد داد. با این حال، `deferredQuery` مقدار قبلی خود را تا زمانی که داده‌ها بارگذاری شده باشند حفظ می‌کند، بنابراین `SearchResults` برای مدتی نتایج قدیمی را نشان می‌دهد.
 
-To make it more obvious to the user, you can add a visual indication when the stale result list is displayed:
+برای روشن‌تر کردن برای کاربر، می‌توانید یک نمایش بصری اضافه کنید وقتی لیست نتایج قدیمی نمایش داده می‌شود:
 
 ```js {2}
 <div style={{
@@ -909,7 +909,7 @@ To make it more obvious to the user, you can add a visual indication when the st
 </div>
 ```
 
-Enter `"a"` in the example below, wait for the results to load, and then edit the input to `"ab"`. Notice how instead of the Suspense fallback, you now see the dimmed stale result list until the new results have loaded:
+در مثال زیر `"a"` را وارد کنید، برای بارگذاری نتایج منتظر بمانید، و سپس input را به `"ab"` ویرایش کنید. توجه کنید چگونه به‌جای fallback ساسپنس، اکنون لیست نتایج قدیمی کم‌رنگ را تا زمانی که نتایج جدید بارگذاری شده‌اند می‌بینید:
 
 
 <Sandpack>
@@ -1063,15 +1063,15 @@ input { margin: 10px; }
 
 <Note>
 
-Both deferred values and [Transitions](#preventing-already-revealed-content-from-hiding) let you avoid showing Suspense fallback in favor of inline indicators. Transitions mark the whole update as non-urgent so they are typically used by frameworks and router libraries for navigation. Deferred values, on the other hand, are mostly useful in application code where you want to mark a part of UI as non-urgent and let it "lag behind" the rest of the UI.
+هم مقادیر به تأخیر افتاده و هم [ترنزیشن‌ها](#preventing-already-revealed-content-from-hiding) به شما اجازه می‌دهند از نمایش fallback ساسپنس به نفع indicatorهای inline اجتناب کنید. ترنزیشن‌ها کل به‌روزرسانی را به‌عنوان غیرفوری علامت‌گذاری می‌کنند بنابراین معمولاً توسط فریم‌ورک‌ها و کتابخانه‌های router برای navigation استفاده می‌شوند. مقادیر به تأخیر افتاده، از سوی دیگر، بیشتر در کد اپلیکیشن مفید هستند که می‌خواهید بخشی از رابط کاربری را به‌عنوان غیرفوری علامت‌گذاری کنید و اجازه دهید از بقیهٔ رابط کاربری "عقب‌تر" باشد.
 
 </Note>
 
 ---
 
-### Preventing already revealed content from hiding {/*preventing-already-revealed-content-from-hiding*/}
+### جلوگیری از پنهان شدن محتوای از قبل نمایش‌داده‌شده {/*preventing-already-revealed-content-from-hiding*/}
 
-When a component suspends, the closest parent Suspense boundary switches to showing the fallback. This can lead to a jarring user experience if it was already displaying some content. Try pressing this button:
+وقتی یک کامپوننت suspend می‌شود، نزدیک‌ترین مرز Suspense والد به نمایش fallback سوییچ می‌کند. این می‌تواند منجر به یک تجربهٔ کاربری ناخوشایند شود اگر در حال نمایش برخی محتوا بوده است. این دکمه را امتحان کنید:
 
 <Sandpack>
 
@@ -1365,9 +1365,9 @@ main {
 
 </Sandpack>
 
-When you pressed the button, the `Router` component rendered `ArtistPage` instead of `IndexPage`. A component inside `ArtistPage` suspended, so the closest Suspense boundary started showing the fallback. The closest Suspense boundary was near the root, so the whole site layout got replaced by `BigSpinner`.
+وقتی دکمه را فشار دادید، کامپوننت `Router` به‌جای `IndexPage`، `ArtistPage` را رندر کرد. یک کامپوننت داخل `ArtistPage` suspend شد، بنابراین نزدیک‌ترین مرز Suspense شروع به نمایش fallback کرد. نزدیک‌ترین مرز Suspense نزدیک root بود، بنابراین کل layout سایت با `BigSpinner` جایگزین شد.
 
-To prevent this, you can mark the navigation state update as a *Transition* with [`startTransition`:](/reference/react/startTransition)
+برای جلوگیری از این کار، می‌توانید به‌روزرسانی استیت navigation را به‌عنوان یک *ترنزیشن* با [`startTransition`:](/reference/react/startTransition) علامت‌گذاری کنید:
 
 ```js {5,7}
 function Router() {
@@ -1381,7 +1381,7 @@ function Router() {
   // ...
 ```
 
-This tells React that the state transition is not urgent, and it's better to keep showing the previous page instead of hiding any already revealed content. Now clicking the button "waits" for the `Biography` to load:
+این به ری‌اکت می‌گوید که ترنزیشن استیت فوری نیست، و بهتر است به‌جای پنهان کردن هر محتوای از قبل نمایش‌داده‌شده، صفحهٔ قبلی را نمایش دهیم. اکنون کلیک روی دکمه برای بارگذاری `Biography` "منتظر می‌ماند":
 
 <Sandpack>
 
@@ -1677,19 +1677,19 @@ main {
 
 </Sandpack>
 
-A Transition doesn't wait for *all* content to load. It only waits long enough to avoid hiding already revealed content. For example, the website `Layout` was already revealed, so it would be bad to hide it behind a loading spinner. However, the nested `Suspense` boundary around `Albums` is new, so the Transition doesn't wait for it.
+یک ترنزیشن برای بارگذاری *همه* محتوا منتظر نمی‌ماند. فقط به‌اندازهٔ کافی منتظر می‌ماند تا از پنهان شدن محتوای از قبل نمایش‌داده‌شده جلوگیری کند. برای مثال، `Layout` وب‌سایت از قبل نمایش داده شده بود، بنابراین پنهان کردن آن پشت یک loading spinner بد خواهد بود. با این حال، مرز `Suspense` تودرتو دور `Albums` جدید است، بنابراین ترنزیشن برای آن منتظر نمی‌ماند.
 
 <Note>
 
-Suspense-enabled routers are expected to wrap the navigation updates into Transitions by default.
+انتظار می‌رود routerهای فعال‌شده با Suspense به‌روزرسانی‌های navigation را به‌طور پیش‌فرض در ترنزیشن‌ها بپیچند.
 
 </Note>
 
 ---
 
-### Indicating that a Transition is happening {/*indicating-that-a-transition-is-happening*/}
+### نشان دادن اینکه یک ترنزیشن در حال انجام است {/*indicating-that-a-transition-is-happening*/}
 
-In the above example, once you click the button, there is no visual indication that a navigation is in progress. To add an indicator, you can replace [`startTransition`](/reference/react/startTransition) with [`useTransition`](/reference/react/useTransition) which gives you a boolean `isPending` value. In the example below, it's used to change the website header styling while a Transition is happening:
+در مثال بالا، وقتی روی دکمه کلیک می‌کنید، هیچ نمایش بصری وجود ندارد که نشان دهد یک navigation در حال انجام است. برای افزودن یک indicator، می‌توانید [`startTransition`](/reference/react/startTransition) را با [`useTransition`](/reference/react/useTransition) جایگزین کنید که به شما یک مقدار boolean `isPending` می‌دهد. در مثال زیر، برای تغییر استایل header وب‌سایت در حالی که یک ترنزیشن در حال انجام است استفاده می‌شود:
 
 <Sandpack>
 
@@ -1990,27 +1990,27 @@ main {
 
 ---
 
-### Resetting Suspense boundaries on navigation {/*resetting-suspense-boundaries-on-navigation*/}
+### بازنشانی مرزهای Suspense در navigation {/*resetting-suspense-boundaries-on-navigation*/}
 
-During a Transition, React will avoid hiding already revealed content. However, if you navigate to a route with different parameters, you might want to tell React it is *different* content. You can express this with a `key`:
+در طول یک ترنزیشن، ری‌اکت از پنهان کردن محتوای از قبل نمایش‌داده‌شده اجتناب می‌کند. با این حال، اگر به یک route با پارامترهای متفاوت navigation کنید، ممکن است بخواهید به ری‌اکت بگویید این محتوای *متفاوتی* است. می‌توانید این را با یک `key` بیان کنید:
 
 ```js
 <ProfilePage key={queryParams.id} />
 ```
 
-Imagine you're navigating within a user's profile page, and something suspends. If that update is wrapped in a Transition, it will not trigger the fallback for already visible content. That's the expected behavior.
+تصور کنید در حال navigation در صفحهٔ پروفایل یک کاربر هستید، و چیزی suspend می‌شود. اگر آن به‌روزرسانی در یک ترنزیشن پیچیده شده باشد، fallback را برای محتوای از قبل قابل مشاهده trigger نمی‌کند. این رفتار مورد انتظار است.
 
-However, now imagine you're navigating between two different user profiles. In that case, it makes sense to show the fallback. For example, one user's timeline is *different content* from another user's timeline. By specifying a `key`, you ensure that React treats different users' profiles as different components, and resets the Suspense boundaries during navigation. Suspense-integrated routers should do this automatically.
+با این حال، اکنون تصور کنید در حال navigation بین دو پروفایل کاربر متفاوت هستید. در آن حالت، نمایش fallback منطقی است. برای مثال، timeline یک کاربر *محتوای متفاوتی* از timeline کاربر دیگر است. با مشخص کردن یک `key`، اطمینان حاصل می‌کنید که ری‌اکت پروفایل‌های کاربران متفاوت را به‌عنوان کامپوننت‌های متفاوت در نظر می‌گیرد، و مرزهای Suspense را در طول navigation بازنشانی می‌کند. routerهای یکپارچه با Suspense باید این کار را به‌طور خودکار انجام دهند.
 
 ---
 
-### Providing a fallback for server errors and client-only content {/*providing-a-fallback-for-server-errors-and-client-only-content*/}
+### ارائهٔ fallback برای خطاهای سرور و محتوای فقط-کلاینت {/*providing-a-fallback-for-server-errors-and-client-only-content*/}
 
-If you use one of the [streaming server rendering APIs](/reference/react-dom/server) (or a framework that relies on them), React will also use your `<Suspense>` boundaries to handle errors on the server. If a component throws an error on the server, React will not abort the server render. Instead, it will find the closest `<Suspense>` component above it and include its fallback (such as a spinner) into the generated server HTML. The user will see a spinner at first.
+اگر از یکی از [APIهای streaming server rendering](/reference/react-dom/server) استفاده می‌کنید (یا یک فریم‌ورک که به آن‌ها وابسته است)، ری‌اکت همچنین از مرزهای `<Suspense>` شما برای مدیریت خطاها روی سرور استفاده می‌کند. اگر یک کامپوننت روی سرور خطایی پرتاب کند، ری‌اکت رندر سرور را قطع نمی‌کند. در عوض، نزدیک‌ترین کامپوننت `<Suspense>` بالاتر از آن را پیدا کرده و fallback آن (مانند یک spinner) را در HTML تولید‌شدهٔ سرور قرار می‌دهد. کاربر در ابتدا یک spinner خواهد دید.
 
-On the client, React will attempt to render the same component again. If it errors on the client too, React will throw the error and display the closest [error boundary.](/reference/react/Component#static-getderivedstatefromerror) However, if it does not error on the client, React will not display the error to the user since the content was eventually displayed successfully.
+روی کلاینت، ری‌اکت سعی می‌کند همان کامپوننت را دوباره رندر کند. اگر روی کلاینت نیز خطا دهد، ری‌اکت خطا را پرتاب کرده و نزدیک‌ترین [error boundary](/reference/react/Component#static-getderivedstatefromerror) را نمایش می‌دهد. با این حال، اگر روی کلاینت خطا ندهد، ری‌اکت خطا را به کاربر نمایش نمی‌دهد زیرا محتوا در نهایت با موفقیت نمایش داده شد.
 
-You can use this to opt out some components from rendering on the server. To do this, throw an error in the server environment and then wrap them in a `<Suspense>` boundary to replace their HTML with fallbacks:
+می‌توانید از این کار برای opt-out برخی کامپوننت‌ها از رندر روی سرور استفاده کنید. برای این کار، در محیط سرور خطا پرتاب کنید و سپس آن‌ها را در یک مرز `<Suspense>` بپیچید تا HTML آن‌ها با fallback جایگزین شود:
 
 ```js
 <Suspense fallback={<Loading />}>
@@ -2025,17 +2025,17 @@ function Chat() {
 }
 ```
 
-The server HTML will include the loading indicator. It will be replaced by the `Chat` component on the client.
+HTML سرور شامل loading indicator خواهد بود. این توسط کامپوننت `Chat` روی کلاینت جایگزین خواهد شد.
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## عیب‌یابی {/*troubleshooting*/}
 
-### How do I prevent the UI from being replaced by a fallback during an update? {/*preventing-unwanted-fallbacks*/}
+### چگونه از جایگزینی رابط کاربری با یک fallback در طول یک به‌روزرسانی جلوگیری کنم؟ {/*preventing-unwanted-fallbacks*/}
 
-Replacing visible UI with a fallback creates a jarring user experience. This can happen when an update causes a component to suspend, and the nearest Suspense boundary is already showing content to the user.
+جایگزینی رابط کاربری قابل مشاهده با یک fallback یک تجربهٔ کاربری ناخوشایند ایجاد می‌کند. این می‌تواند اتفاق بیفتد وقتی یک به‌روزرسانی باعث می‌شود یک کامپوننت suspend شود، و نزدیک‌ترین مرز Suspense در حال نمایش محتوا به کاربر است.
 
-To prevent this from happening, [mark the update as non-urgent using `startTransition`](#preventing-already-revealed-content-from-hiding). During a Transition, React will wait until enough data has loaded to prevent an unwanted fallback from appearing:
+برای جلوگیری از وقوع این کار، [به‌روزرسانی را با `startTransition` به‌عنوان غیرفوری علامت‌گذاری کنید](#preventing-already-revealed-content-from-hiding). در طول یک ترنزیشن، ری‌اکت تا زمانی که داده‌های کافی بارگذاری شده باشد منتظر می‌ماند تا از ظاهر شدن یک fallback ناخواسته جلوگیری کند:
 
 ```js {2-3,5}
 function handleNextPageClick() {
@@ -2046,8 +2046,8 @@ function handleNextPageClick() {
 }
 ```
 
-This will avoid hiding existing content. However, any newly rendered `Suspense` boundaries will still immediately display fallbacks to avoid blocking the UI and let the user see the content as it becomes available.
+این کار از پنهان کردن محتوای موجود جلوگیری می‌کند. با این حال، هر مرز `Suspense` تازه رندر شده همچنان بلافاصله fallback‌ها را نمایش می‌دهد تا از مسدود کردن رابط کاربری جلوگیری کند و به کاربر اجازه دهد محتوا را همان‌طور که در دسترس قرار می‌گیرد ببیند.
 
-**React will only prevent unwanted fallbacks during non-urgent updates**. It will not delay a render if it's the result of an urgent update. You must opt in with an API like [`startTransition`](/reference/react/startTransition) or [`useDeferredValue`](/reference/react/useDeferredValue).
+**ری‌اکت فقط در طول به‌روزرسانی‌های غیرفوری از fallback‌های ناخواسته جلوگیری می‌کند**. اگر نتیجهٔ یک به‌روزرسانی فوری باشد، رندر را به تأخیر نمی‌اندازد. باید با یک API مانند [`startTransition`](/reference/react/startTransition) یا [`useDeferredValue`](/reference/react/useDeferredValue) opt-in کنید.
 
-If your router is integrated with Suspense, it should wrap its updates into [`startTransition`](/reference/react/startTransition) automatically.
+اگر router شما با ساسپنس یکپارچه است، باید به‌روزرسانی‌های خود را به‌طور خودکار در [`startTransition`](/reference/react/startTransition) بپیچد.

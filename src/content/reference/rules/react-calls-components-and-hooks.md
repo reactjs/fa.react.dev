@@ -1,19 +1,19 @@
 ---
-title: React calls Components and Hooks
+title: ری‌اکت کامپوننت‌ها و هوک‌ها را فراخوانی می‌کند
 ---
 
 <Intro>
-React is responsible for rendering components and Hooks when necessary to optimize the user experience. It is declarative: you tell React what to render in your component’s logic, and React will figure out how best to display it to your user.
+ری‌اکت مسئول رندر کردن کامپوننت‌ها و هوک‌ها در صورت لزوم برای بهینه‌سازی تجربهٔ کاربری است. این به‌صورت اعلانی است: شما به ری‌اکت می‌گویید چه چیزی در منطق کامپوننت‌تان رندر شود، و ری‌اکت بهترین روش برای نمایش آن به کاربر را پیدا می‌کند.
 </Intro>
 
 <InlineToc />
 
 ---
 
-## Never call component functions directly {/*never-call-component-functions-directly*/}
-Components should only be used in JSX. Don't call them as regular functions. React should call it.
+## هرگز تابع‌های کامپوننت را مستقیماً فراخوانی نکنید {/*never-call-component-functions-directly*/}
+کامپوننت‌ها فقط باید در JSX استفاده شوند. آن‌ها را به‌عنوان تابع‌های معمولی فراخوانی نکنید. ری‌اکت باید آن را فراخوانی کند.
 
-React must decide when your component function is called [during rendering](/reference/rules/components-and-hooks-must-be-pure#how-does-react-run-your-code). In React, you do this using JSX.
+ری‌اکت باید تصمیم بگیرد چه زمان تابع کامپوننت شما [در طول رندر](/reference/rules/components-and-hooks-must-be-pure#how-does-react-run-your-code) فراخوانی شود. در ری‌اکت، شما این کار را با استفاده از JSX انجام می‌دهید.
 
 ```js {2}
 function BlogPost() {
@@ -27,29 +27,29 @@ function BlogPost() {
 }
 ```
 
-If a component contains Hooks, it's easy to violate the [Rules of Hooks](/reference/rules/rules-of-hooks) when components are called directly in a loop or conditionally.
+اگر یک کامپوننت حاوی هوک‌ها باشد، هنگامی که کامپوننت‌ها مستقیماً در یک حلقه یا به‌صورت شرطی فراخوانی می‌شوند، نقض [قوانین هوک‌ها](/reference/rules/rules-of-hooks) آسان است.
 
-Letting React orchestrate rendering also allows a number of benefits:
+اجازه دادن به ری‌اکت برای مدیریت رندر همچنین چندین مزیت فراهم می‌کند:
 
-* **Components become more than functions.** React can augment them with features like _local state_ through Hooks that are tied to the component's identity in the tree.
-* **Component types participate in reconciliation.** By letting React call your components, you also tell it more about the conceptual structure of your tree. For example, when you move from rendering `<Feed>` to the `<Profile>` page, React won’t attempt to re-use them.
-* **React can enhance your user experience.** For example, it can let the browser do some work between component calls so that re-rendering a large component tree doesn’t block the main thread.
-* **A better debugging story.** If components are first-class citizens that the library is aware of, we can build rich developer tools for introspection in development.
-* **More efficient reconciliation.** React can decide exactly which components in the tree need re-rendering and skip over the ones that don't. That makes your app faster and more snappy.
+* **کامپوننت‌ها بیشتر از تابع‌ها هستند.** ری‌اکت می‌تواند آن‌ها را با قابلیت‌هایی مانند _استیت محلی_ از طریق هوک‌هایی که به هویت کامپوننت در درخت متصل هستند، تقویت کند.
+* **انواع کامپوننت در هماهنگ‌سازی شرکت می‌کنند.** با اجازه دادن به ری‌اکت برای فراخوانی کامپوننت‌های شما، اطلاعات بیشتری دربارهٔ ساختار مفهومی درخت خود به آن می‌دهید. مثلاً وقتی از رندر `<Feed>` به صفحهٔ `<Profile>` منتقل می‌شوید، ری‌اکت تلاش نمی‌کند از آن‌ها دوباره استفاده کند.
+* **ری‌اکت می‌تواند تجربهٔ کاربری شما را بهبود بخشد.** مثلاً می‌تواند اجازه دهد مرورگر مقداری کار بین فراخوانی‌های کامپوننت انجام دهد تا رندر مجدد یک درخت کامپوننت بزرگ، main thread را مسدود نکند.
+* **یک روایت دیباگ بهتر.** اگر کامپوننت‌ها شهروندان درجه‌یک باشند که کتابخانه از آن‌ها آگاه است، می‌توانیم ابزارهای توسعه‌دهندهٔ غنی برای introspection در توسعه بسازیم.
+* **هماهنگ‌سازی کارآمدتر.** ری‌اکت می‌تواند دقیقاً تصمیم بگیرد کدام کامپوننت‌ها در درخت نیاز به رندر مجدد دارند و از آن‌هایی که نیاز ندارند عبور کند. این کار اپ شما را سریع‌تر و چابک‌تر می‌کند.
 
 ---
 
-## Never pass around Hooks as regular values {/*never-pass-around-hooks-as-regular-values*/}
+## هرگز هوک‌ها را به‌عنوان مقادیر معمولی منتقل نکنید {/*never-pass-around-hooks-as-regular-values*/}
 
-Hooks should only be called inside of components or Hooks. Never pass it around as a regular value.
+هوک‌ها فقط باید داخل کامپوننت‌ها یا هوک‌ها فراخوانی شوند. هرگز آن‌ها را به‌عنوان یک مقدار معمولی منتقل نکنید.
 
-Hooks allow you to augment a component with React features. They should always be called as a function, and never passed around as a regular value. This enables _local reasoning_, or the ability for developers to understand everything a component can do by looking at that component in isolation.
+هوک‌ها به شما اجازه می‌دهند یک کامپوننت را با قابلیت‌های ری‌اکت تقویت کنید. آن‌ها باید همیشه به‌عنوان یک تابع فراخوانی شوند، و هرگز به‌عنوان یک مقدار معمولی منتقل نشوند. این کار _استدلال محلی_، یا توانایی توسعه‌دهندگان برای درک همهٔ کارهایی که یک کامپوننت می‌تواند انجام دهد با نگاه کردن به آن کامپوننت به‌صورت ایزوله را ممکن می‌سازد.
 
-Breaking this rule will cause React to not automatically optimize your component.
+شکستن این قانون باعث می‌شود ری‌اکت کامپوننت شما را به‌طور خودکار بهینه‌سازی نکند.
 
-### Don't dynamically mutate a Hook {/*dont-dynamically-mutate-a-hook*/}
+### یک هوک را به‌صورت پویا تغییر ندهید {/*dont-dynamically-mutate-a-hook*/}
 
-Hooks should be as "static" as possible. This means you shouldn't dynamically mutate them. For example, this means you shouldn't write higher order Hooks:
+هوک‌ها باید تا حد امکان "استاتیک" باشند. این بدان معناست که نباید آن‌ها را به‌صورت پویا تغییر دهید. مثلاً این بدان معناست که نباید هوک‌های مرتبه بالاتر بنویسید:
 
 ```js {expectedErrors: {'react-compiler': [2, 3]}} {2}
 function ChatInput() {
@@ -58,7 +58,7 @@ function ChatInput() {
 }
 ```
 
-Hooks should be immutable and not be mutated. Instead of mutating a Hook dynamically, create a static version of the Hook with the desired functionality.
+هوک‌ها باید غیرقابل تغییر باشند و تغییر نکنند. به‌جای تغییر پویای یک هوک، یک نسخهٔ استاتیک از هوک با قابلیت دلخواه بسازید.
 
 ```js {2,6}
 function ChatInput() {
@@ -70,9 +70,9 @@ function useDataWithLogging() {
 }
 ```
 
-### Don't dynamically use Hooks {/*dont-dynamically-use-hooks*/}
+### از هوک‌ها به‌صورت پویا استفاده نکنید {/*dont-dynamically-use-hooks*/}
 
-Hooks should also not be dynamically used: for example, instead of doing dependency injection in a component by passing a Hook as a value:
+همچنین نباید از هوک‌ها به‌صورت پویا استفاده کرد: مثلاً به‌جای انجام dependency injection در یک کامپوننت با انتقال یک هوک به‌عنوان یک مقدار:
 
 ```js {expectedErrors: {'react-compiler': [2]}} {2}
 function ChatInput() {
@@ -80,7 +80,7 @@ function ChatInput() {
 }
 ```
 
-You should always inline the call of the Hook into that component and handle any logic in there.
+باید همیشه فراخوانی هوک را درون آن کامپوننت inline کنید و هر منطقی را در آنجا مدیریت کنید.
 
 ```js {6}
 function ChatInput() {
@@ -97,5 +97,5 @@ function useDataWithLogging() {
 }
 ```
 
-This way, `<Button />` is much easier to understand and debug. When Hooks are used in dynamic ways, it increases the complexity of your app greatly and inhibits local reasoning, making your team less productive in the long term. It also makes it easier to accidentally break the [Rules of Hooks](/reference/rules/rules-of-hooks) that Hooks should not be called conditionally. If you find yourself needing to mock components for tests, it's better to mock the server instead to respond with canned data. If possible, it's also usually more effective to test your app with end-to-end tests.
+به این ترتیب، `<Button />` بسیار آسان‌تر برای درک و دیباگ است. وقتی هوک‌ها به روش‌های پویا استفاده می‌شوند، پیچیدگی اپ شما را به‌شدت افزایش می‌دهد و استدلال محلی را مهار می‌کند، که تیم شما را در درازمدت کم‌بازده‌تر می‌کند. همچنین شکستن نادرست [قوانین هوک‌ها](/reference/rules/rules-of-hooks) که هوک‌ها نباید به‌صورت شرطی فراخوانی شوند را آسان‌تر می‌کند. اگر خودتان را در حال نیاز به mock کردن کامپوننت‌ها برای تست‌ها یافتید، بهتر است به‌جای آن سرور را mock کنید تا با داده‌های آماده پاسخ دهد. اگر ممکن است، معمولاً مؤثرتر است که اپ خود را با تست‌های end-to-end تست کنید.
 

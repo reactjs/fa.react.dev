@@ -4,23 +4,23 @@ title: exhaustive-deps
 
 <Intro>
 
-Validates that dependency arrays for React hooks contain all necessary dependencies.
+تأیید می‌کند که آرایه‌های وابستگی برای هوک‌های ری‌اکت شامل همهٔ وابستگی‌های لازم باشند.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## جزئیات قانون {/*rule-details*/}
 
-React hooks like `useEffect`, `useMemo`, and `useCallback` accept dependency arrays. When a value referenced inside these hooks isn't included in the dependency array, React won't re-run the effect or recalculate the value when that dependency changes. This causes stale closures where the hook uses outdated values.
+هوک‌های ری‌اکت مانند `useEffect`، `useMemo` و `useCallback` آرایه‌های وابستگی را می‌پذیرند. وقتی یک مقدار که داخل این هوک‌ها ارجاع داده شده در آرایهٔ وابستگی گنجانده نشده، ری‌اکت افکت را دوباره اجرا نمی‌کند یا وقتی آن وابستگی تغییر می‌کند مقدار را دوباره محاسبه نمی‌کند. این باعث closureهای قدیمی می‌شود که در آن هوک از مقادیر قدیمی استفاده می‌کند.
 
-## Common Violations {/*common-violations*/}
+## نقض‌های رایج {/*common-violations*/}
 
-This error often happens when you try to "trick" React about dependencies to control when an effect runs. Effects should synchronize your component with external systems. The dependency array tells React which values the effect uses, so React knows when to re-synchronize.
+این خطا اغلب زمانی رخ می‌دهد که سعی می‌کنید ری‌اکت را دربارهٔ وابستگی‌ها فریب دهید تا کنترل کنید چه زمان یک افکت اجرا شود. افکت‌ها باید کامپوننت شما را با سیستم‌های خارجی هماهنگ کنند. آرایهٔ وابستگی به ری‌اکت می‌گوید افکت از چه مقادیری استفاده می‌کند، بنابراین ری‌اکت می‌داند چه زمان دوباره هماهنگ‌سازی کند.
 
-If you find yourself fighting with the linter, you likely need to restructure your code. See [Removing Effect Dependencies](/learn/removing-effect-dependencies) to learn how.
+اگر خودتان را در حال مبارزه با لینتر یافتید، احتمالاً باید کد خود را بازسازی کنید. برای یادگیری نحوهٔ این کار، [حذف وابستگی‌های افکت](/learn/removing-effect-dependencies) را ببینید.
 
-### Invalid {/*invalid*/}
+### نامعتبر {/*invalid*/}
 
-Examples of incorrect code for this rule:
+نمونه‌هایی از کد نادرست برای این قانون:
 
 ```js
 // ❌ Missing dependency
@@ -39,9 +39,9 @@ useMemo(() => {
 }, [items]); // Missing 'sortOrder'
 ```
 
-### Valid {/*valid*/}
+### معتبر {/*valid*/}
 
-Examples of correct code for this rule:
+نمونه‌هایی از کد درست برای این قانون:
 
 ```js
 // ✅ All dependencies included
@@ -55,11 +55,11 @@ useEffect(() => {
 }, [userId]);
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-### Adding a function dependency causes infinite loops {/*function-dependency-loops*/}
+### افزودن یک وابستگی تابع باعث حلقه‌های بی‌نهایت می‌شود {/*function-dependency-loops*/}
 
-You have an effect, but you're creating a new function on every render:
+یک افکت دارید، اما در هر رندر یک تابع جدید ایجاد می‌کنید:
 
 ```js
 // ❌ Causes infinite loop
@@ -72,7 +72,7 @@ useEffect(() => {
 }, [logItems]); // Infinite loop!
 ```
 
-In most cases, you don't need the effect. Call the function where the action happens instead:
+در بیشتر موارد، نیازی به افکت ندارید. در عوض تابع را در جایی که عمل اتفاق می‌افتد فراخوانی کنید:
 
 ```js
 // ✅ Call it from the event handler
@@ -88,7 +88,7 @@ items.forEach(item => {
 });
 ```
 
-If you genuinely need the effect (for example, to subscribe to something external), make the dependency stable:
+اگر واقعاً به افکت نیاز دارید (مثلاً برای subscribe شدن به چیزی خارجی)، وابستگی را پایدار کنید:
 
 ```js
 // ✅ useCallback keeps the function reference stable
@@ -106,9 +106,9 @@ useEffect(() => {
 }, [items]);
 ```
 
-### Running an effect only once {/*effect-on-mount*/}
+### اجرای یک افکت فقط یک‌بار {/*effect-on-mount*/}
 
-You want to run an effect once on mount, but the linter complains about missing dependencies:
+می‌خواهید یک افکت را یک‌بار در mount اجرا کنید، اما لینتر دربارهٔ وابستگی‌های گمشده شکایت می‌کند:
 
 ```js
 // ❌ Missing dependency
@@ -117,7 +117,7 @@ useEffect(() => {
 }, []); // Missing 'userId'
 ```
 
-Either include the dependency (recommended) or use a ref if you truly need to run once:
+یا وابستگی را شامل کنید (توصیه‌شده) یا اگر واقعاً نیاز به اجرای یک‌بار دارید از یک ref استفاده کنید:
 
 ```js
 // ✅ Include dependency
@@ -138,9 +138,9 @@ useEffect(() => {
 }, [userId]);
 ```
 
-## Options {/*options*/}
+## گزینه‌ها {/*options*/}
 
-This rule accepts an options object:
+این قانون یک شیء گزینه‌ها را می‌پذیرد:
 
 ```js
 {
@@ -152,4 +152,4 @@ This rule accepts an options object:
 }
 ```
 
-- `additionalHooks`: Regex for hooks that should be checked for exhaustive dependencies
+- `additionalHooks`: Regex برای هوک‌هایی که باید برای وابستگی‌های جامع بررسی شوند

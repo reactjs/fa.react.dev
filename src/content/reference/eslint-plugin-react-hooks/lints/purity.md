@@ -4,26 +4,26 @@ title: purity
 
 <Intro>
 
-Validates that [components/hooks are pure](/reference/rules/components-and-hooks-must-be-pure) by checking that they do not call known-impure functions.
+با بررسی اینکه تابع‌های شناخته‌شدهٔ ناخالص را فراخوانی نمی‌کنند، تأیید می‌کند که [کامپوننت‌ها/هوک‌ها خالص هستند](/reference/rules/components-and-hooks-must-be-pure).
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## جزئیات قانون {/*rule-details*/}
 
-React components must be pure functions - given the same props, they should always return the same JSX. When components use functions like `Math.random()` or `Date.now()` during render, they produce different output each time, breaking React's assumptions and causing bugs like hydration mismatches, incorrect memoization, and unpredictable behavior.
+کامپوننت‌های ری‌اکت باید تابع‌های خالص باشند - با پراپس یکسان، همیشه باید همان JSX را برگردانند. وقتی کامپوننت‌ها در طول رندر از تابع‌هایی مانند `Math.random()` یا `Date.now()` استفاده می‌کنند، هر بار خروجی متفاوتی تولید می‌کنند، و فرضیات ری‌اکت را می‌شکنند و باعث باگ‌هایی مانند عدم تطابق hydration، memoization نادرست، و رفتار غیرقابل پیش‌بینی می‌شوند.
 
-## Common Violations {/*common-violations*/}
+## نقض‌های رایج {/*common-violations*/}
 
-In general, any API that returns a different value for the same inputs violates this rule. Usual examples include:
+به‌طور کلی، هر API که برای ورودی‌های یکسان مقدار متفاوتی برمی‌گرداند، این قانون را نقض می‌کند. نمونه‌های معمول شامل موارد زیر است:
 
 - `Math.random()`
 - `Date.now()` / `new Date()`
 - `crypto.randomUUID()`
 - `performance.now()`
 
-### Invalid {/*invalid*/}
+### نامعتبر {/*invalid*/}
 
-Examples of incorrect code for this rule:
+نمونه‌هایی از کد نادرست برای این قانون:
 
 ```js
 // ❌ Math.random() in render
@@ -39,9 +39,9 @@ function Component() {
 }
 ```
 
-### Valid {/*valid*/}
+### معتبر {/*valid*/}
 
-Examples of correct code for this rule:
+نمونه‌هایی از کد درست برای این قانون:
 
 ```js
 // ✅ Stable IDs from initial state
@@ -51,11 +51,11 @@ function Component() {
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-### I need to show the current time {/*current-time*/}
+### نیاز به نمایش زمان فعلی دارم {/*current-time*/}
 
-Calling `Date.now()` during render makes your component impure:
+فراخوانی `Date.now()` در طول رندر کامپوننت شما را ناخالص می‌کند:
 
 ```js {expectedErrors: {'react-compiler': [3]}}
 // ❌ Wrong: Time changes every render
@@ -64,7 +64,7 @@ function Clock() {
 }
 ```
 
-Instead, [move the impure function outside of render](/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent):
+در عوض، [تابع ناخالص را به خارج از رندر منتقل کنید](/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent):
 
 ```js
 function Clock() {

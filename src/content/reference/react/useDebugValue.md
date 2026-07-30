@@ -4,7 +4,7 @@ title: useDebugValue
 
 <Intro>
 
-`useDebugValue` is a React Hook that lets you add a label to a custom Hook in [React DevTools.](/learn/react-developer-tools)
+`useDebugValue` یک هوک ری‌اکت است که به شما اجازه می‌دهد برای یک هوک سفارشی، در [React DevTools](/learn/react-developer-tools) یک برچسب اضافه کنید.
 
 ```js
 useDebugValue(value, format?)
@@ -16,11 +16,11 @@ useDebugValue(value, format?)
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `useDebugValue(value, format?)` {/*usedebugvalue*/}
 
-Call `useDebugValue` at the top level of your [custom Hook](/learn/reusing-logic-with-custom-hooks) to display a readable debug value:
+`useDebugValue` را در سطح بالای [هوک سفارشی](/learn/reusing-logic-with-custom-hooks) خود فراخوانی کنید تا یک مقدار دیباگ قابل خواندن نمایش دهید:
 
 ```js
 import { useDebugValue } from 'react';
@@ -32,22 +32,22 @@ function useOnlineStatus() {
 }
 ```
 
-[See more examples below.](#usage)
+[نمونه‌های بیشتر را در ادامه ببینید.](#usage)
 
-#### Parameters {/*parameters*/}
+#### پارامترها {/*parameters*/}
 
-* `value`: The value you want to display in React DevTools. It can have any type.
-* **optional** `format`: A formatting function. When the component is inspected, React DevTools will call the formatting function with the `value` as the argument, and then display the returned formatted value (which may have any type). If you don't specify the formatting function, the original `value` itself will be displayed.
+* `value`: مقداری که می‌خواهید در React DevTools نمایش دهید. می‌تواند هر نوعی داشته باشد.
+* **اختیاری** `format`: یک تابع قالب‌بندی. هنگامی که کامپوننت بررسی (inspect) می‌شود، React DevTools تابع قالب‌بندی را با `value` به‌عنوان آرگومان فراخوانی می‌کند و سپس مقدار قالب‌بندی‌شدهٔ بازگشتی (که می‌تواند هر نوعی داشته باشد) را نمایش می‌دهد. اگر تابع قالب‌بندی را مشخص نکنید، خود `value` اصلی نمایش داده می‌شود.
 
-#### Returns {/*returns*/}
+#### مقادیر بازگشتی {/*returns*/}
 
-`useDebugValue` does not return anything.
+`useDebugValue` چیزی باز نمی‌گرداند.
 
-## Usage {/*usage*/}
+## استفاده {/*usage*/}
 
-### Adding a label to a custom Hook {/*adding-a-label-to-a-custom-hook*/}
+### افزودن برچسب به یک هوک سفارشی {/*adding-a-label-to-a-custom-hook*/}
 
-Call `useDebugValue` at the top level of your [custom Hook](/learn/reusing-logic-with-custom-hooks) to display a readable <CodeStep step={1}>debug value</CodeStep> for [React DevTools.](/learn/react-developer-tools)
+`useDebugValue` را در سطح بالای [هوک سفارشی](/learn/reusing-logic-with-custom-hooks) خود فراخوانی کنید تا یک <CodeStep step={1}>مقدار دیباگ</CodeStep> قابل خواندن برای [React DevTools](/learn/react-developer-tools) نمایش دهید.
 
 ```js [[1, 5, "isOnline ? 'Online' : 'Offline'"]]
 import { useDebugValue } from 'react';
@@ -59,11 +59,11 @@ function useOnlineStatus() {
 }
 ```
 
-This gives components calling `useOnlineStatus` a label like `OnlineStatus: "Online"` when you inspect them:
+این کار به کامپوننت‌هایی که `useOnlineStatus` را صدا می‌زنند، هنگام بررسی (inspect) کردن، برچسبی مانند `OnlineStatus: "Online"` می‌دهد:
 
-![A screenshot of React DevTools showing the debug value](/images/docs/react-devtools-usedebugvalue.png)
+![نما از React DevTools که مقدار دیباگ را نمایش می‌دهد](/images/docs/react-devtools-usedebugvalue.png)
 
-Without the `useDebugValue` call, only the underlying data (in this example, `true`) would be displayed.
+بدون فراخوانی `useDebugValue`، تنها داده‌های زیرین (در این مثال، `true`) نمایش داده می‌شد.
 
 <Sandpack>
 
@@ -103,20 +103,20 @@ function subscribe(callback) {
 
 <Note>
 
-Don't add debug values to every custom Hook. It's most valuable for custom Hooks that are part of shared libraries and that have a complex internal data structure that's difficult to inspect.
+به همهٔ هوک‌های سفارشی مقدار دیباگ اضافه نکنید. این کار بیشتر برای هوک‌های سفارشی که بخشی از کتابخانه‌های مشترک هستند و ساختار داده‌ای درونی پیچیده‌ای دارند که بررسی آن دشوار است، ارزشمند است.
 
 </Note>
 
 ---
 
-### Deferring formatting of a debug value {/*deferring-formatting-of-a-debug-value*/}
+### به تعویق انداختن قالب‌بندی یک مقدار دیباگ {/*deferring-formatting-of-a-debug-value*/}
 
-You can also pass a formatting function as the second argument to `useDebugValue`:
+همچنین می‌توانید یک تابع قالب‌بندی را به‌عنوان آرگومان دوم به `useDebugValue` ارسال کنید:
 
 ```js [[1, 1, "date", 18], [2, 1, "date.toDateString()"]]
 useDebugValue(date, date => date.toDateString());
 ```
 
-Your formatting function will receive the <CodeStep step={1}>debug value</CodeStep> as a parameter and should return a <CodeStep step={2}>formatted display value</CodeStep>. When your component is inspected, React DevTools will call this function and display its result.
+تابع قالب‌بندی شما <CodeStep step={1}>مقدار دیباگ</CodeStep> را به‌عنوان پارامتر دریافت می‌کند و باید یک <CodeStep step={2}>مقدار نمایشی قالب‌بندی‌شده</CodeStep> برگرداند. وقتی کامپوننت شما بررسی (inspect) می‌شود، React DevTools این تابع را فراخوانی کرده و نتیجهٔ آن را نمایش می‌دهد.
 
-This lets you avoid running potentially expensive formatting logic unless the component is actually inspected. For example, if `date` is a Date value, this avoids calling `toDateString()` on it for every render.
+این کار به شما اجازه می‌دهد از اجرای منطق قالب‌بندی که احتمالاً پرهزینه است، جلوگیری کنید، مگر اینکه کامپوننت واقعاً در حال بررسی باشد. به‌عنوان مثال، اگر `date` یک مقدار از نوع Date باشد، این کار مانع از فراخوانی `toDateString()` روی آن در هر رندر می‌شود.

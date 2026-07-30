@@ -4,17 +4,17 @@ title: immutability
 
 <Intro>
 
-Validates against mutating props, state, and other values that [are immutable](/reference/rules/components-and-hooks-must-be-pure#props-and-state-are-immutable).
+تغییر پراپس، استیت و سایر مقادیری که [غیرقابل تغییرند](/reference/rules/components-and-hooks-must-be-pure#props-and-state-are-immutable) را اعتبارسنجی می‌کند.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## جزئیات قانون {/*rule-details*/}
 
-A component’s props and state are immutable snapshots. Never mutate them directly. Instead, pass new props down, and use the setter function from `useState`.
+پراپس و استیت یک کامپوننت snapshotهای غیرقابل تغییر هستند. هرگز مستقیماً آن‌ها را تغییر ندهید. در عوض، پراپس‌های جدید را پایین بفرستید، و از تابع setter از `useState` استفاده کنید.
 
-## Common Violations {/*common-violations*/}
+## نقض‌های رایج {/*common-violations*/}
 
-### Invalid {/*invalid*/}
+### نامعتبر {/*invalid*/}
 
 ```js
 // ❌ Array push mutation
@@ -47,7 +47,7 @@ function Component() {
 }
 ```
 
-### Valid {/*valid*/}
+### معتبر {/*valid*/}
 
 ```js
 // ✅ Create new array
@@ -69,11 +69,11 @@ function Component() {
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-### I need to add items to an array {/*add-items-array*/}
+### نیاز به افزودن آیتم‌ها به یک آرایه دارم {/*add-items-array*/}
 
-Mutating arrays with methods like `push()` won't trigger re-renders:
+تغییر آرایه‌ها با متدهایی مانند `push()` رندر مجدد را تحریک نمی‌کند:
 
 ```js
 // ❌ Wrong: Mutating the array
@@ -93,7 +93,7 @@ function TodoList() {
 }
 ```
 
-Create a new array instead:
+به‌جای آن یک آرایهٔ جدید بسازید:
 
 ```js
 // ✅ Better: Create a new array
@@ -113,9 +113,9 @@ function TodoList() {
 }
 ```
 
-### I need to update nested objects {/*update-nested-objects*/}
+### نیاز به به‌روزرسانی objectهای تودرتو دارم {/*update-nested-objects*/}
 
-Mutating nested properties doesn't trigger re-renders:
+تغییر ویژگی‌های تودرتو رندر مجدد را تحریک نمی‌کند:
 
 ```js
 // ❌ Wrong: Mutating nested object
@@ -135,7 +135,7 @@ function UserProfile() {
 }
 ```
 
-Spread at each level that needs updating:
+در هر سطحی که نیاز به به‌روزرسانی دارد spread کنید:
 
 ```js
 // ✅ Better: Create new objects at each level

@@ -1,37 +1,37 @@
 ---
-title: 'Lifecycle of Reactive Effects'
+title: 'چرخهٔ حیات افکت‌های واکنشی'
 ---
 
 <Intro>
 
-Effects have a different lifecycle from components. Components may mount, update, or unmount. An Effect can only do two things: to start synchronizing something, and later to stop synchronizing it. This cycle can happen multiple times if your Effect depends on props and state that change over time. React provides a linter rule to check that you've specified your Effect's dependencies correctly. This keeps your Effect synchronized to the latest props and state.
+افکت‌ها چرخهٔ حیات متفاوتی نسبت به کامپوننت‌ها دارند. کامپوننت‌ها ممکن است مانت (mount) شوند، به‌روز شوند یا آنمانت (unmount) شوند. یک افکت تنها می‌تواند دو کار انجام دهد: شروع به همگام‌سازی چیزی کند، و سپس بعداً همگام‌سازی را متوقف کند. این چرخه می‌تواند چندین بار اتفاق بیفتد اگر افکت شما به پراپس و استیت‌ای که در طول زمان تغییر می‌کنند وابسته باشد. ری‌اکت یک قانون لینتر فراهم می‌کند تا بررسی کند که وابستگی‌های افکتتان را به‌درستی مشخص کرده‌اید. این کار باعث می‌شود افکت شما با آخرین پراپس و استیت همگام بماند.
 
 </Intro>
 
 <YouWillLearn>
 
-- How an Effect's lifecycle is different from a component's lifecycle
-- How to think about each individual Effect in isolation
-- When your Effect needs to re-synchronize, and why
-- How your Effect's dependencies are determined
-- What it means for a value to be reactive
-- What an empty dependency array means
-- How React verifies your dependencies are correct with a linter
-- What to do when you disagree with the linter
+- چرخهٔ حیات یک افکت چگونه با چرخهٔ حیات یک کامپوننت متفاوت است
+- چگونه دربارهٔ هر افکت به‌طور جداگانه و مستقل فکر کنید
+- چه زمانی افکت شما نیاز به همگام‌سازی مجدد دارد، و چرا
+- وابستگی‌های افکت شما چگونه تعیین می‌شوند
+- واکنشی (reactive) بودن یک مقدار به چه معناست
+- آرایهٔ وابستگیِ خالی به چه معناست
+- چگونه ری‌اکت با یک لینتر تأیید می‌کند که وابستگی‌هایتان درست هستند
+- وقتی با لینتر موافق نیستید چه کاری باید انجام دهید
 
 </YouWillLearn>
 
-## The lifecycle of an Effect {/*the-lifecycle-of-an-effect*/}
+## چرخهٔ حیات یک افکت {/*the-lifecycle-of-an-effect*/}
 
-Every React component goes through the same lifecycle:
+هر کامپوننت ری‌اکت از همان چرخهٔ حیات می‌گذرد:
 
-- A component _mounts_ when it's added to the screen.
-- A component _updates_ when it receives new props or state, usually in response to an interaction.
-- A component _unmounts_ when it's removed from the screen.
+- یک کامپوننت زمانی که به صفحه اضافه می‌شود _مانت_ می‌شود.
+- یک کامپوننت زمانی که پراپس یا استیت جدیدی دریافت می‌کند، _به‌روز_ می‌شود، معمولاً در پاسخ به یک تعامل.
+- یک کامپوننت زمانی که از صفحه حذف می‌شود _آنمانت_ می‌شود.
 
-**It's a good way to think about components, but _not_ about Effects.** Instead, try to think about each Effect independently from your component's lifecycle. An Effect describes how to [synchronize an external system](/learn/synchronizing-with-effects) to the current props and state. As your code changes, synchronization will need to happen more or less often.
+**این راه خوبی برای فکر کردن دربارهٔ کامپوننت‌هاست، اما درباره افکت‌ها _این‌طور نیست_.** در عوض، سعی کنید دربارهٔ هر افکت به‌صورت مستقل از چرخهٔ حیات کامپوننتتان فکر کنید. یک افکت توصیف می‌کند که چگونه یک [سیستم خارجی را همگام کنید](/learn/synchronizing-with-effects) با پراپس و استیت کنونی. هر کد تغییر می‌کند، همگام‌سازی باید کمتر یا بیشتر اتفاق بیفتد.
 
-To illustrate this point, consider this Effect connecting your component to a chat server:
+برای روشن کردن این نکته، به این افکت که کامپوننت شما را به یک سرور چت متصل می‌کند توجه کنید:
 
 ```js
 const serverUrl = 'https://localhost:1234';
@@ -48,7 +48,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-Your Effect's body specifies how to **start synchronizing:**
+بدنهٔ افکت شما مشخص می‌کند چگونه **شروع به همگام‌سازی کنید:**
 
 ```js {2-3}
     // ...
@@ -60,7 +60,7 @@ Your Effect's body specifies how to **start synchronizing:**
     // ...
 ```
 
-The cleanup function returned by your Effect specifies how to **stop synchronizing:**
+تابع پاک‌سازی‌ای که افکت شما برمی‌گرداند مشخص می‌کند چگونه **همگام‌سازی را متوقف کنید:**
 
 ```js {5}
     // ...
@@ -72,19 +72,19 @@ The cleanup function returned by your Effect specifies how to **stop synchronizi
     // ...
 ```
 
-Intuitively, you might think that React would **start synchronizing** when your component mounts and **stop synchronizing** when your component unmounts. However, this is not the end of the story! Sometimes, it may also be necessary to **start and stop synchronizing multiple times** while the component remains mounted.
+به‌طور شهودی، ممکن است فکر کنید ری‌اکت زمانی که کامپوننت مانت می‌شود **شروع به همگام‌سازی می‌کند** و زمانی که کامپوننت آنمانت می‌شود **همگام‌سازی را متوقف می‌کند**. اما این همهٔ ماجرا نیست! گاهی، ممکن است لازم باشد **همگام‌سازی را چندین بار شروع و متوقف کنید** در حالی که کامپوننت همچنان مانت باقی مانده است.
 
-Let's look at _why_ this is necessary, _when_ it happens, and _how_ you can control this behavior.
+ببینید _چرا_ این کار لازم است، _چه زمانی_ اتفاق می‌افتد، و _چگونه_ می‌توانید این رفتار را کنترل کنید.
 
 <Note>
 
-Some Effects don't return a cleanup function at all. [More often than not,](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development) you'll want to return one--but if you don't, React will behave as if you returned an empty cleanup function.
+برخی افکت‌ها اصلاً تابع پاک‌سازی برنمی‌گردانند. [بیشتر اوقات،](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development) می‌خواهید یکی را برگردانید — اما اگر برنگردانید، ری‌اکت طوری رفتار می‌کند که گویی یک تابع پاک‌سازی خالی برگردانده‌اید.
 
 </Note>
 
-### Why synchronization may need to happen more than once {/*why-synchronization-may-need-to-happen-more-than-once*/}
+### چرا همگام‌سازی ممکن است بیش از یک بار لازم باشد {/*why-synchronization-may-need-to-happen-more-than-once*/}
 
-Imagine this `ChatRoom` component receives a `roomId` prop that the user picks in a dropdown. Let's say that initially the user picks the `"general"` room as the `roomId`. Your app displays the `"general"` chat room:
+تصور کنید این کامپوننت `ChatRoom` یک پراپ `roomId` دریافت می‌کند که کاربر آن را در یک منوی کشویی انتخاب می‌کند. فرض کنید در ابتدا کاربر اتاق `"general"` را به‌عنوان `roomId` انتخاب می‌کند. اپلیکیشن شما اتاق چت `"general"` را نمایش می‌دهد:
 
 ```js {3}
 const serverUrl = 'https://localhost:1234';
@@ -95,7 +95,7 @@ function ChatRoom({ roomId /* "general" */ }) {
 }
 ```
 
-After the UI is displayed, React will run your Effect to **start synchronizing.** It connects to the `"general"` room:
+پس از نمایش رابط کاربری، ری‌اکت افکت شما را اجرا می‌کند تا **شروع به همگام‌سازی کند.** این افکت به اتاق `"general"` متصل می‌شود:
 
 ```js {3,4}
 function ChatRoom({ roomId /* "general" */ }) {
@@ -109,9 +109,9 @@ function ChatRoom({ roomId /* "general" */ }) {
   // ...
 ```
 
-So far, so good.
+تا اینجا همه‌چیز خوب است.
 
-Later, the user picks a different room in the dropdown (for example, `"travel"`). First, React will update the UI:
+بعداً، کاربر یک اتاق متفاوت در منوی کشویی انتخاب می‌کند (مثلاً `"travel"`). ابتدا، ری‌اکت رابط کاربری را به‌روز می‌کند:
 
 ```js {1}
 function ChatRoom({ roomId /* "travel" */ }) {
@@ -120,20 +120,20 @@ function ChatRoom({ roomId /* "travel" */ }) {
 }
 ```
 
-Think about what should happen next. The user sees that `"travel"` is the selected chat room in the UI. However, the Effect that ran the last time is still connected to the `"general"` room. **The `roomId` prop has changed, so what your Effect did back then (connecting to the `"general"` room) no longer matches the UI.**
+فکر کنید چه اتفاقی باید بعد بیفتد. کاربر می‌بیند که `"travel"` اتاق چت انتخاب‌شده در رابط کاربری است. اما افکتی که بار آخر اجرا شده همچنان به اتاق `"general"` متصل است. **پراپ `roomId` تغییر کرده، بنابراین کاری که افکت قبلاً انجام داده (اتصال به اتاق `"general"`) دیگر با رابط کاربری تطابق ندارد.**
 
-At this point, you want React to do two things:
+در این نقطه، می‌خواهید ری‌اکت دو کار انجام دهد:
 
-1. Stop synchronizing with the old `roomId` (disconnect from the `"general"` room)
-2. Start synchronizing with the new `roomId` (connect to the `"travel"` room)
+1. همگام‌سازی با `roomId` قدیمی را متوقف کند (قطع اتصال از اتاق `"general"`)
+2. همگام‌سازی با `roomId` جدید را شروع کند (اتصال به اتاق `"travel"`)
 
-**Luckily, you've already taught React how to do both of these things!** Your Effect's body specifies how to start synchronizing, and your cleanup function specifies how to stop synchronizing. All that React needs to do now is to call them in the correct order and with the correct props and state. Let's see how exactly that happens.
+**خوشبختانه، شما قبلاً به ری‌اکت یاد داده‌اید چگونه هر دوی این کارها را انجام دهد!** بدنهٔ افکت شما مشخص می‌کند چگونه شروع به همگام‌سازی کنید، و تابع پاک‌سازی شما مشخص می‌کند چگونه همگام‌سازی را متوقف کنید. تنها کاری که ری‌اکت اکنون باید بکند این است که آن‌ها را به‌ترتیب درست و با پراپس و استیت درست فراخوانی کند. ببینیم دقیقاً چگونه این اتفاق می‌افتد.
 
-### How React re-synchronizes your Effect {/*how-react-re-synchronizes-your-effect*/}
+### چگونه ری‌اکت افکت شما را مجدداً همگام می‌کند {/*how-react-re-synchronizes-your-effect*/}
 
-Recall that your `ChatRoom` component has received a new value for its `roomId` prop. It used to be `"general"`, and now it is `"travel"`. React needs to re-synchronize your Effect to re-connect you to a different room.
+به یاد بیاورید که کامپوننت `ChatRoom` شما مقدار جدیدی برای پراپ `roomId` خود دریافت کرده است. قبلاً `"general"` بود، و اکنون `"travel"` است. ری‌اکت باید افکت شما را مجدداً همگام کند تا شما را به یک اتاق متفاوت متصل کند.
 
-To **stop synchronizing,** React will call the cleanup function that your Effect returned after connecting to the `"general"` room. Since `roomId` was `"general"`, the cleanup function disconnects from the `"general"` room:
+برای **متوقف کردن همگام‌سازی،** ری‌اکت تابع پاک‌سازی‌ای را که افکت شما بعد از اتصال به اتاق `"general"` برگردانده فراخوانی می‌کند. از آنجا که `roomId` برابر `"general"` بود، تابع پاک‌سازی از اتاق `"general"` قطع اتصال می‌کند:
 
 ```js {6}
 function ChatRoom({ roomId /* "general" */ }) {
@@ -146,7 +146,7 @@ function ChatRoom({ roomId /* "general" */ }) {
     // ...
 ```
 
-Then React will run the Effect that you've provided during this render. This time, `roomId` is `"travel"` so it will **start synchronizing** to the `"travel"` chat room (until its cleanup function is eventually called too):
+سپس ری‌اکت افکتی را که در طول این رندر ارائه کرده‌اید اجرا می‌کند. این بار، `roomId` برابر `"travel"` است، پس **شروع به همگام‌سازی** با اتاق چت `"travel"` می‌کند (تا زمانی که تابع پاک‌سازی آن نیز در نهایت فراخوانی شود):
 
 ```js {3,4}
 function ChatRoom({ roomId /* "travel" */ }) {
@@ -156,29 +156,29 @@ function ChatRoom({ roomId /* "travel" */ }) {
     // ...
 ```
 
-Thanks to this, you're now connected to the same room that the user chose in the UI. Disaster averted!
+به‌لطف این، اکنون به همان اتاقی متصل هستید که کاربر در رابط کاربری انتخاب کرده است. فاجعه دفع شد!
 
-Every time after your component re-renders with a different `roomId`, your Effect will re-synchronize. For example, let's say the user changes `roomId` from `"travel"` to `"music"`. React will again **stop synchronizing** your Effect by calling its cleanup function (disconnecting you from the `"travel"` room). Then it will **start synchronizing** again by running its body with the new `roomId` prop (connecting you to the `"music"` room).
+هر بار بعد از اینکه کامپوننت شما با `roomId` متفاوتی مجدداً رندر می‌شود، افکت شما مجدداً همگام می‌شود. مثلاً، فرض کنید کاربر `roomId` را از `"travel"` به `"music"` تغییر می‌دهد. ری‌اکت دوباره با فراخوانی تابع پاک‌سازی افکت **همگام‌سازی افکت شما را متوقف می‌کند** (قطع اتصال شما از اتاق `"travel"`). سپس با اجرای بدنهٔ آن با پراپ `roomId` جدید، دوباره **شروع به همگام‌سازی می‌کند** (اتصال شما به اتاق `"music"`).
 
-Finally, when the user goes to a different screen, `ChatRoom` unmounts. Now there is no need to stay connected at all. React will **stop synchronizing** your Effect one last time and disconnect you from the `"music"` chat room.
+در نهایت، وقتی کاربر به یک صفحهٔ متفاوت می‌رود، `ChatRoom` آنمانت می‌شود. حالا اصلاً نیازی نیست متصل بمانید. ری‌اکت برای آخرین بار **همگام‌سازی افکت شما را متوقف می‌کند** و شما را از اتاق چت `"music"` قطع می‌کند.
 
-### Thinking from the Effect's perspective {/*thinking-from-the-effects-perspective*/}
+### فکر کردن از منظر افکت {/*thinking-from-the-effects-perspective*/}
 
-Let's recap everything that's happened from the `ChatRoom` component's perspective:
+بیایید همهٔ آنچه از منظر کامپوننت `ChatRoom` اتفاق افتاده را مرور کنیم:
 
-1. `ChatRoom` mounted with `roomId` set to `"general"`
-1. `ChatRoom` updated with `roomId` set to `"travel"`
-1. `ChatRoom` updated with `roomId` set to `"music"`
-1. `ChatRoom` unmounted
+1. `ChatRoom` با `roomId` تنظیم‌شده به `"general"` مانت شد
+1. `ChatRoom` با `roomId` تنظیم‌شده به `"travel"` به‌روز شد
+1. `ChatRoom` با `roomId` تنظیم‌شده به `"music"` به‌روز شد
+1. `ChatRoom` آنمانت شد
 
-During each of these points in the component's lifecycle, your Effect did different things:
+در طول هر یک از این نقاط در چرخهٔ حیات کامپوننت، افکت شما کارهای متفاوتی انجام داد:
 
-1. Your Effect connected to the `"general"` room
-1. Your Effect disconnected from the `"general"` room and connected to the `"travel"` room
-1. Your Effect disconnected from the `"travel"` room and connected to the `"music"` room
-1. Your Effect disconnected from the `"music"` room
+1. افکت شما به اتاق `"general"` متصل شد
+1. افکت شما از اتاق `"general"` قطع اتصال کرد و به اتاق `"travel"` متصل شد
+1. افکت شما از اتاق `"travel"` قطع اتصال کرد و به اتاق `"music"` متصل شد
+1. افکت شما از اتاق `"music"` قطع اتصال کرد
 
-Now let's think about what happened from the perspective of the Effect itself:
+حالا بیایید فکر کنیم چه اتفاقی از منظر خود افکت افتاده است:
 
 ```js
   useEffect(() => {
@@ -192,21 +192,21 @@ Now let's think about what happened from the perspective of the Effect itself:
   }, [roomId]);
 ```
 
-This code's structure might inspire you to see what happened as a sequence of non-overlapping time periods:
+ساختار این کد ممکن است شما را ترغیب کند تا آنچه رخ داده را به‌صورت توالیِ دوره‌های زمانیِ غیرهم‌پوشان ببینید:
 
-1. Your Effect connected to the `"general"` room (until it disconnected)
-1. Your Effect connected to the `"travel"` room (until it disconnected)
-1. Your Effect connected to the `"music"` room (until it disconnected)
+1. افکت شما به اتاق `"general"` متصل شد (تا زمانی که قطع اتصال کرد)
+1. افکت شما به اتاق `"travel"` متصل شد (تا زمانی که قطع اتصال کرد)
+1. افکت شما به اتاق `"music"` متصل شد (تا زمانی که قطع اتصال کرد)
 
-Previously, you were thinking from the component's perspective. When you looked from the component's perspective, it was tempting to think of Effects as "callbacks" or "lifecycle events" that fire at a specific time like "after a render" or "before unmount". This way of thinking gets complicated very fast, so it's best to avoid.
+قبلاً، از منظر کامپوننت فکر می‌کردید. وقتی از منظر کامپوننت نگاه می‌کردید، وسوسه‌انگیز بود که افکت‌ها را به‌عنوان «کالبک‌ها» یا «رویدادهای چرخهٔ حیات» بدانید که در یک زمان خاص، مثل «بعد از یک رندر» یا «قبل از آنمانت» اجرا می‌شوند. این روش تفکر خیلی سریع پیچیده می‌شود، بنابراین بهتر است از آن اجتناب کنید.
 
-**Instead, always focus on a single start/stop cycle at a time. It shouldn't matter whether a component is mounting, updating, or unmounting. All you need to do is to describe how to start synchronization and how to stop it. If you do it well, your Effect will be resilient to being started and stopped as many times as it's needed.**
+**در عوض، همیشه روی یک چرخهٔ شروع/تک‌تک در یک زمان تمرکز کنید. نباید مهم باشد که یک کامپوننت در حال مانت شدن، به‌روز شدن، یا آنمانت شدن است. تنها کاری که باید بکنید این است که توصیف کنید چگونه همگام‌سازی را شروع کنید و چگونه آن را متوقف کنید. اگر این کار را خوب انجام دهید، افکت شما در برابر شروع و توقف به هر تعداد بار که لازم است مقاوم خواهد بود.**
 
-This might remind you how you don't think whether a component is mounting or updating when you write the rendering logic that creates JSX. You describe what should be on the screen, and React [figures out the rest.](/learn/reacting-to-input-with-state)
+این ممکن است شما را یاد این بیندازد که وقتی منطق رندری را که JSX ایجاد می‌کند می‌نویسید، فکر نمی‌کنید که آیا کامپوننت در حال مانت یا به‌روز شدن است. شما توصیف می‌کنید چه چیزی باید روی صفحه باشد، و ری‌اکت [بقیه را تشخیص می‌دهد.](/learn/reacting-to-input-with-state)
 
-### How React verifies that your Effect can re-synchronize {/*how-react-verifies-that-your-effect-can-re-synchronize*/}
+### چگونه ری‌اکت تأیید می‌کند که افکت شما می‌تواند مجدداً همگام شود {/*how-react-verifies-that-your-effect-can-re-synchronize*/}
 
-Here is a live example that you can play with. Press "Open chat" to mount the `ChatRoom` component:
+در اینجا یک مثال زنده است که می‌توانید با آن کار کنید. دکمهٔ «Open chat» را بزنید تا کامپوننت `ChatRoom` مانت شود:
 
 <Sandpack>
 
@@ -272,23 +272,23 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-Notice that when the component mounts for the first time, you see three logs:
+توجه کنید وقتی کامپوننت برای بار اول مانت می‌شود، سه لاگ می‌بینید:
 
-1. `✅ Connecting to "general" room at https://localhost:1234...` *(development-only)*
-1. `❌ Disconnected from "general" room at https://localhost:1234.` *(development-only)*
+1. `✅ Connecting to "general" room at https://localhost:1234...` *(فقط در محیط توسعه)*
+1. `❌ Disconnected from "general" room at https://localhost:1234.` *(فقط در محیط توسعه)*
 1. `✅ Connecting to "general" room at https://localhost:1234...`
 
-The first two logs are development-only. In development, React always remounts each component once.
+دو لاگ اول فقط در محیط توسعه هستند. در محیط توسعه، ری‌اکت همیشه هر کامپوننت را یک بار مجدداً مانت می‌کند.
 
-**React verifies that your Effect can re-synchronize by forcing it to do that immediately in development.** This might remind you of opening a door and closing it an extra time to check if the door lock works. React starts and stops your Effect one extra time in development to check [you've implemented its cleanup well.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
+**ری‌اکت با اجبار افکت به انجام این کار بلافاصله در محیط توسعه، تأیید می‌کند که افکت شما می‌تواند مجدداً همگام شود.** این ممکن است شما را یاد این بیندازد که یک در را یک بار اضافه باز و بسته می‌کنید تا بررسی کنید قفل در کار می‌کند. ری‌اکت در محیط توسعه یک بار اضافه افکت شما را شروع و متوقف می‌کند تا بررسی کند [تابع پاک‌سازی آن را به‌خوبی پیاده‌سازی کرده‌اید.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
 
-The main reason your Effect will re-synchronize in practice is if some data it uses has changed. In the sandbox above, change the selected chat room. Notice how, when the `roomId` changes, your Effect re-synchronizes.
+دلیل اصلی اینکه افکت شما در عمل مجدداً همگام می‌شود این است که برخی داده‌هایی که استفاده می‌کند تغییر کرده‌اند. در سندباکس بالا، اتاق چت انتخاب‌شده را تغییر دهید. توجه کنید که وقتی `roomId` تغییر می‌کند، افکت شما چگونه مجدداً همگام می‌شود.
 
-However, there are also more unusual cases in which re-synchronization is necessary. For example, try editing the `serverUrl` in the sandbox above while the chat is open. Notice how the Effect re-synchronizes in response to your edits to the code. In the future, React may add more features that rely on re-synchronization.
+با این حال، موارد غیرعادی‌تری هم وجود دارد که در آن‌ها همگام‌سازی مجدد لازم است. مثلاً، در سندباکس بالا `serverUrl` را در حالی که چت باز است ویرایش کنید. توجه کنید افکت چگونه در پاسخ به ویرایش‌های شما در کد مجدداً همگام می‌شود. در آینده، ری‌اکت ممکن است ویژگی‌های بیشتری اضافه کند که به همگام‌سازی مجدد وابسته هستند.
 
-### How React knows that it needs to re-synchronize the Effect {/*how-react-knows-that-it-needs-to-re-synchronize-the-effect*/}
+### چگونه ری‌اکت می‌فهمد که باید افکت را مجدداً همگام کند {/*how-react-knows-that-it-needs-to-re-synchronize-the-effect*/}
 
-You might be wondering how React knew that your Effect needed to re-synchronize after `roomId` changes. It's because *you told React* that its code depends on `roomId` by including it in the [list of dependencies:](/learn/synchronizing-with-effects#step-2-specify-the-effect-dependencies)
+ممکن است تعجب کنید چگونه ری‌اکت فهمید که افکت شما پس از تغییر `roomId` نیاز به همگام‌سازی مجدد دارد. این به‌دلیل آن است که *شما به ری‌اکت گفته‌اید* که کد آن به `roomId` وابسته است، با قرار دادن آن در [فهرست وابستگی‌ها:](/learn/synchronizing-with-effects#step-2-specify-the-effect-dependencies)
 
 ```js {1,3,8}
 function ChatRoom({ roomId }) { // The roomId prop may change over time
@@ -302,19 +302,19 @@ function ChatRoom({ roomId }) { // The roomId prop may change over time
   // ...
 ```
 
-Here's how this works:
+نحوهٔ کار این‌طور است:
 
-1. You knew `roomId` is a prop, which means it can change over time.
-2. You knew that your Effect reads `roomId` (so its logic depends on a value that may change later).
-3. This is why you specified it as your Effect's dependency (so that it re-synchronizes when `roomId` changes).
+1. شما می‌دانستید `roomId` یک پراپ است، یعنی می‌تواند در طول زمان تغییر کند.
+2. شما می‌دانستید که افکت شما `roomId` را می‌خواند (بنابراین منطق آن به مقداری وابسته است که بعداً ممکن است تغییر کند).
+3. به همین دلیل آن را به‌عنوان وابستگی افکت خود مشخص کردید (تا وقتی `roomId` تغییر می‌کند، مجدداً همگام شود).
 
-Every time after your component re-renders, React will look at the array of dependencies that you have passed. If any of the values in the array is different from the value at the same spot that you passed during the previous render, React will re-synchronize your Effect.
+هر بار بعد از اینکه کامپوننت شما مجدداً رندر می‌شود، ری‌اکت به آرایهٔ وابستگی‌هایی که ارسال کرده‌اید نگاه می‌کند. اگر هر یک از مقادیر در آرایه با مقدار در همان مکان در رندر قبلی متفاوت باشد، ری‌اکت افکت شما را مجدداً همگام می‌کند.
 
-For example, if you passed `["general"]` during the initial render, and later you passed `["travel"]` during the next render, React will compare `"general"` and `"travel"`. These are different values (compared with [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)), so React will re-synchronize your Effect. On the other hand, if your component re-renders but `roomId` has not changed, your Effect will remain connected to the same room.
+مثلاً، اگر در طول رندر اول `["general"]` ارسال کرده باشید، و بعد در طول رندر بعدی `["travel"]` ارسال کنید، ری‌اکت `"general"` و `"travel"` را مقایسه می‌کند. این‌ها مقادیر متفاوتی هستند (با [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) مقایسه می‌شوند)، بنابراین ری‌اکت افکت شما را مجدداً همگام می‌کند. از طرف دیگر، اگر کامپوننت شما مجدداً رندر شود اما `roomId` تغییر نکرده باشد، افکت شما به همان اتاق متصل باقی می‌ماند.
 
-### Each Effect represents a separate synchronization process {/*each-effect-represents-a-separate-synchronization-process*/}
+### هر افکت یک فرآیند همگام‌سازی مجزا را نمایندگی می‌کند {/*each-effect-represents-a-separate-synchronization-process*/}
 
-Resist adding unrelated logic to your Effect only because this logic needs to run at the same time as an Effect you already wrote. For example, let's say you want to send an analytics event when the user visits the room. You already have an Effect that depends on `roomId`, so you might feel tempted to add the analytics call there:
+مقاومت کنید در برابر اضافه کردن منطق نامرتبط به افکتتان صرفاً به این دلیل که این منطق باید هم‌زمان با افکتی که قبلاً نوشته‌اید اجرا شود. مثلاً، فرض کنید می‌خواهید یک رویداد تحلیلی (analytics) را وقتی کاربر از اتاق بازدید می‌کند ارسال کنید. شما از قبل افکتی دارید که به `roomId` وابسته است، پس ممکن است وسوسه شوید که فراخوانی تحلیلی را آنجا اضافه کنید:
 
 ```js {3}
 function ChatRoom({ roomId }) {
@@ -330,7 +330,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-But imagine you later add another dependency to this Effect that needs to re-establish the connection. If this Effect re-synchronizes, it will also call `logVisit(roomId)` for the same room, which you did not intend. Logging the visit **is a separate process** from connecting. Write them as two separate Effects:
+اما تصور کنید بعداً یک وابستگی دیگر به این افکت اضافه می‌کنید که نیاز به برقراری مجدد اتصال دارد. اگر این افکت مجدداً همگام شود، برای همان اتاق `logVisit(roomId)` را هم فراخوانی می‌کند، که این را نخواسته بودید. ثبت بازدید **یک فرآیند مجزا** از اتصال است. آن‌ها را به‌عنوان دو افکت مجزا بنویسید:
 
 ```js {2-4}
 function ChatRoom({ roomId }) {
@@ -346,13 +346,13 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-**Each Effect in your code should represent a separate and independent synchronization process.**
+**هر افکت در کد شما باید یک فرآیند همگام‌سازی مجزا و مستقل را نمایندگی کند.**
 
-In the above example, deleting one Effect wouldn’t break the other Effect's logic. This is a good indication that they synchronize different things, and so it made sense to split them up. On the other hand, if you split up a cohesive piece of logic into separate Effects, the code may look "cleaner" but will be [more difficult to maintain.](/learn/you-might-not-need-an-effect#chains-of-computations) This is why you should think whether the processes are same or separate, not whether the code looks cleaner.
+در مثال بالا، حذف کردن یک افکت منطق افکت دیگر را خراب نمی‌کرد. این نشان خوبی است که آن‌ها چیزهای متفاوتی را همگام می‌کنند، و بنابراین جدا کردنشان معنا داشت. از طرف دیگر، اگر یک منطق منسجم را به افکت‌های مجزا تقسیم کنید، کد ممکن است «تمیزتر» به‌نظر برسد اما [سخت‌تر برای نگهداری](/learn/you-might-not-need-an-effect#chains-of-computations) خواهد بود. به همین دلیل باید فکر کنید که آیا فرآیندها یکسان یا مجزا هستند، نه اینکه آیا کد تمیزتر به‌نظر می‌رسد.
 
-## Effects "react" to reactive values {/*effects-react-to-reactive-values*/}
+## افکت‌ها به مقادیر واکنشی «واکنش» نشان می‌دهند {/*effects-react-to-reactive-values*/}
 
-Your Effect reads two variables (`serverUrl` and `roomId`), but you only specified `roomId` as a dependency:
+افکت شما دو متغیر (`serverUrl` و `roomId`) را می‌خواند، اما فقط `roomId` را به‌عنوان وابستگی مشخص کرده‌اید:
 
 ```js {5,10}
 const serverUrl = 'https://localhost:1234';
@@ -369,13 +369,13 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-Why doesn't `serverUrl` need to be a dependency?
+چرا `serverUrl` لازم نیست وابستگی باشد؟
 
-This is because the `serverUrl` never changes due to a re-render. It's always the same no matter how many times the component re-renders and why. Since `serverUrl` never changes, it wouldn't make sense to specify it as a dependency. After all, dependencies only do something when they change over time!
+این به‌دلیل آن است که `serverUrl` هرگز به‌دلیل یک رندر مجدد تغییر نمی‌کند. مهم نیست کامپوننت چند بار و چرا مجدداً رندر می‌شود، همیشه همان است. از آنجا که `serverUrl` هرگز تغییر نمی‌کند، مشخص کردن آن به‌عنوان وابستگی بی‌معناست. بعد از همه، وابستگی‌ها فقط وقتی کاری انجام می‌دهند که در طول زمان تغییر کنند!
 
-On the other hand, `roomId` may be different on a re-render. **Props, state, and other values declared inside the component are _reactive_ because they're calculated during rendering and participate in the React data flow.**
+از طرف دیگر، `roomId` ممکن است در یک رندر مجدد متفاوت باشد. **پراپس، استیت، و سایر مقادیر اعلام‌شده داخل کامپوننت _واکنشی_ هستند زیرا در طول رندر محاسبه می‌شوند و در جریان دادهٔ ری‌اکت مشارکت دارند.**
 
-If `serverUrl` was a state variable, it would be reactive. Reactive values must be included in dependencies:
+اگر `serverUrl` یک متغیر استیت بود، واکنشی می‌بود. مقادیر واکنشی باید در وابستگی‌ها گنجانده شوند:
 
 ```js {2,5,10}
 function ChatRoom({ roomId }) { // Props change over time
@@ -392,9 +392,9 @@ function ChatRoom({ roomId }) { // Props change over time
 }
 ```
 
-By including `serverUrl` as a dependency, you ensure that the Effect re-synchronizes after it changes.
+با گنجاندن `serverUrl` به‌عنوان وابستگی، اطمینان حاصل می‌کنید که افکت پس از تغییر آن مجدداً همگام می‌شود.
 
-Try changing the selected chat room or edit the server URL in this sandbox:
+در این سندباکس، اتاق چت انتخاب‌شده را تغییر دهید یا URL سرور را ویرایش کنید:
 
 <Sandpack>
 
@@ -468,11 +468,11 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-Whenever you change a reactive value like `roomId` or `serverUrl`, the Effect re-connects to the chat server.
+هر بار که یک مقدار واکنشی مثل `roomId` یا `serverUrl` را تغییر می‌دهید، افکت مجدداً به سرور چت متصل می‌شود.
 
-### What an Effect with empty dependencies means {/*what-an-effect-with-empty-dependencies-means*/}
+### افکت با وابستگی‌های خالی به چه معناست {/*what-an-effect-with-empty-dependencies-means*/}
 
-What happens if you move both `serverUrl` and `roomId` outside the component?
+اگر هم `serverUrl` و هم `roomId` را به‌بیرون از کامپوننت منتقل کنید چه اتفاقی می‌افتد؟
 
 ```js {1,2}
 const serverUrl = 'https://localhost:1234';
@@ -490,9 +490,9 @@ function ChatRoom() {
 }
 ```
 
-Now your Effect's code does not use *any* reactive values, so its dependencies can be empty (`[]`).
+حالا کد افکت شما از *هیچ* مقدار واکنشی استفاده نمی‌کند، بنابراین وابستگی‌هایش می‌توانند خالی باشند (`[]`).
 
-Thinking from the component's perspective, the empty `[]` dependency array means this Effect connects to the chat room only when the component mounts, and disconnects only when the component unmounts. (Keep in mind that React would still [re-synchronize it an extra time](#how-react-verifies-that-your-effect-can-re-synchronize) in development to stress-test your logic.)
+اگر از منظر کامپوننت فکر کنید، آرایهٔ وابستگی خالی `[]` به این معناست که این افکت فقط وقتی کامپوننت مانت می‌شود به اتاق چت متصل می‌شود، و فقط وقتی کامپوننت آنمانت می‌شود قطع اتصال می‌کند. (در نظر داشته باشید که ری‌اکت در محیط توسعه همچنان [آن را یک بار اضافه مجدداً همگام](#how-react-verifies-that-your-effect-can-re-synchronize) می‌کند تا منطق شما را تست استرس کند.)
 
 
 <Sandpack>
@@ -548,13 +548,13 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-However, if you [think from the Effect's perspective,](#thinking-from-the-effects-perspective) you don't need to think about mounting and unmounting at all. What's important is you've specified what your Effect does to start and stop synchronizing. Today, it has no reactive dependencies. But if you ever want the user to change `roomId` or `serverUrl` over time (and they would become reactive), your Effect's code won't change. You will only need to add them to the dependencies.
+با این حال، اگر [از منظر افکت فکر کنید،](#thinking-from-the-effects-perspective) اصلاً نیازی نیست دربارهٔ مانت و آنمانت شدن فکر کنید. آنچه مهم است این است که مشخص کرده‌اید افکتتان برای شروع و توقف همگام‌سازی چه می‌کند. امروز، هیچ وابستگی واکنشی ندارد. اما اگر تا به حال بخواهید کاربر در طول زمان `roomId` یا `serverUrl` را تغییر دهد (و آن‌ها واکنشی شوند)، کد افکت شما تغییر نخواهد کرد. فقط باید آن‌ها را به وابستگی‌ها اضافه کنید.
 
-### All variables declared in the component body are reactive {/*all-variables-declared-in-the-component-body-are-reactive*/}
+### تمام متغیرهای اعلام‌شده در بدنهٔ کامپوننت واکنشی هستند {/*all-variables-declared-in-the-component-body-are-reactive*/}
 
-Props and state aren't the only reactive values. Values that you calculate from them are also reactive. If the props or state change, your component will re-render, and the values calculated from them will also change. This is why all variables from the component body used by the Effect should be in the Effect dependency list.
+پراپس و استیت تنها مقادیر واکنشی نیستند. مقادیری که از آن‌ها محاسبه می‌کنید هم واکنشی هستند. اگر پراپس یا استیت تغییر کند، کامپوننت شما مجدداً رندر می‌شود، و مقادیری که از آن‌ها محاسبه شده‌اند هم تغییر می‌کنند. به همین دلیل است که تمام متغیرهای بدنهٔ کامپوننت که توسط افکت استفاده می‌شوند باید در فهرست وابستگی‌های افکت باشند.
 
-Let's say that the user can pick a chat server in the dropdown, but they can also configure a default server in settings. Suppose you've already put the settings state in a [context](/learn/scaling-up-with-reducer-and-context) so you read the `settings` from that context. Now you calculate the `serverUrl` based on the selected server from props and the default server:
+فرض کنید کاربر می‌تواند سرور چت را در منوی کشویی انتخاب کند، اما همچنین می‌تواند یک سرور پیش‌فرض را در تنظیمات پیکربندی کند. فرض کنید شما استیت تنظیمات را در یک [کانتکست](/learn/scaling-up-with-reducer-and-context) قرار داده‌اید، پس `settings` را از آن کانتکست می‌خوانید. حالا `serverUrl` را بر اساس سرور انتخاب‌شده از پراپس و سرور پیش‌فرض محاسبه می‌کنید:
 
 ```js {3,5,10}
 function ChatRoom({ roomId, selectedServerUrl }) { // roomId is reactive
@@ -571,29 +571,29 @@ function ChatRoom({ roomId, selectedServerUrl }) { // roomId is reactive
 }
 ```
 
-In this example, `serverUrl` is not a prop or a state variable. It's a regular variable that you calculate during rendering. But it's calculated during rendering, so it can change due to a re-render. This is why it's reactive.
+در این مثال، `serverUrl` نه یک پراپ است نه یک متغیر استیت. یک متغیر معمولی است که در طول رندر محاسبه می‌کنید. اما چون در طول رندر محاسبه می‌شود، می‌تواند به‌دلیل یک رندر مجدد تغییر کند. به همین دلیل است که واکنشی است.
 
-**All values inside the component (including props, state, and variables in your component's body) are reactive. Any reactive value can change on a re-render, so you need to include reactive values as Effect's dependencies.**
+**تمام مقادیر داخل کامپوننت (از جمله پراپس، استیت، و متغیرهای بدنهٔ کامپوننت) واکنشی هستند. هر مقدار واکنشی می‌تواند در یک رندر مجدد تغییر کند، بنابراین باید مقادیر واکنشی را به‌عنوان وابستگی‌های افکت وارد کنید.**
 
-In other words, Effects "react" to all values from the component body.
+به‌عبارت دیگر، افکت‌ها به تمام مقادیر از بدنهٔ کامپوننت «واکنش» نشان می‌دهند.
 
 <DeepDive>
 
-#### Can global or mutable values be dependencies? {/*can-global-or-mutable-values-be-dependencies*/}
+#### آیا مقادیر سراسری یا قابل‌تغییر می‌توانند وابستگی باشند؟ {/*can-global-or-mutable-values-be-dependencies*/}
 
-Mutable values (including global variables) aren't reactive.
+مقادیر قابل‌تغییر (از جمله متغیرهای سراسری) واکنشی نیستند.
 
-**A mutable value like [`location.pathname`](https://developer.mozilla.org/en-US/docs/Web/API/Location/pathname) can't be a dependency.** It's mutable, so it can change at any time completely outside of the React rendering data flow. Changing it wouldn't trigger a re-render of your component. Therefore, even if you specified it in the dependencies, React *wouldn't know* to re-synchronize the Effect when it changes. This also breaks the rules of React because reading mutable data during rendering (which is when you calculate the dependencies) breaks [purity of rendering.](/learn/keeping-components-pure) Instead, you should read and subscribe to an external mutable value with [`useSyncExternalStore`.](/learn/you-might-not-need-an-effect#subscribing-to-an-external-store)
+**یک مقدار قابل‌تغییر مثل [`location.pathname`](https://developer.mozilla.org/en-US/docs/Web/API/Location/pathname) نمی‌تواند وابستگی باشد.** این مقدار قابل‌تغییر است، پس می‌تواند در هر زمانی کاملاً خارج از جریان دادهٔ رندر ری‌اکت تغییر کند. تغییر آن باعث رندر مجدد کامپوننت شما نمی‌شود. بنابراین، حتی اگر آن را در وابستگی‌ها مشخص کنید، ری‌اکت *نمی‌فهمد* که باید افکت را وقتی تغییر می‌کند مجدداً همگام کند. این همچنین قوانین ری‌اکت را نقض می‌کند زیرا خواندن داده‌های قابل‌تغییر در طول رندر (که زمان محاسبهٔ وابستگی‌هاست) [خالص بودن رندر را](/learn/keeping-components-pure) نقض می‌کند. در عوض، باید یک مقدار قابل‌تغییر خارجی را با [`useSyncExternalStore`](/learn/you-might-not-need-an-effect#subscribing-to-an-external-store) بخوانید و در آن مشترک شوید.
 
-**A mutable value like [`ref.current`](/reference/react/useRef#reference) or things you read from it also can't be a dependency.** The ref object returned by `useRef` itself can be a dependency, but its `current` property is intentionally mutable. It lets you [keep track of something without triggering a re-render.](/learn/referencing-values-with-refs) But since changing it doesn't trigger a re-render, it's not a reactive value, and React won't know to re-run your Effect when it changes.
+**یک مقدار قابل‌تغییر مثل [`ref.current`](/reference/react/useRef#reference) یا چیزهایی که از آن می‌خوانید هم نمی‌توانند وابستگی باشند.** شیء رفرنس برگردانده‌شده توسط خود `useRef` می‌تواند وابستگی باشد، اما ویژگی `current` آن عمداً قابل‌تغییر است. این به شما اجازه می‌دهد [بدون ایجاد رندر مجدد چیزی را پیگیری کنید.](/learn/referencing-values-with-refs) اما چون تغییر آن باعث رندر مجدد نمی‌شود، یک مقدار واکنشی نیست، و ری‌اکت نمی‌فهمد که باید افکت شما را وقتی تغییر می‌کند مجدداً اجرا کند.
 
-As you'll learn below on this page, a linter will check for these issues automatically.
+همان‌طور که در ادامهٔ این صفحه خواهید آموخت، یک لینتر به‌طور خودکار این مشکلات را بررسی می‌کند.
 
 </DeepDive>
 
-### React verifies that you specified every reactive value as a dependency {/*react-verifies-that-you-specified-every-reactive-value-as-a-dependency*/}
+### ری‌اکت تأیید می‌کند که هر مقدار واکنشی را به‌عنوان وابستگی مشخص کرده‌اید {/*react-verifies-that-you-specified-every-reactive-value-as-a-dependency*/}
 
-If your linter is [configured for React,](/learn/editor-setup#linting) it will check that every reactive value used by your Effect's code is declared as its dependency. For example, this is a lint error because both `roomId` and `serverUrl` are reactive:
+اگر لینتر شما [برای ری‌اکت پیکربندی شده باشد،](/learn/editor-setup#linting) بررسی می‌کند که هر مقدار واکنشی که توسط کد افکت شما استفاده می‌شود به‌عنوان وابستگی آن اعلام شده باشد. مثلاً، این یک خطای لینت است زیرا هم `roomId` و هم `serverUrl` واکنشی هستند:
 
 <Sandpack>
 
@@ -667,9 +667,9 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-This may look like a React error, but really React is pointing out a bug in your code. Both `roomId` and `serverUrl` may change over time, but you're forgetting to re-synchronize your Effect when they change. You will remain connected to the initial `roomId` and `serverUrl` even after the user picks different values in the UI.
+این ممکن است شبیه یک خطای ری‌اکت به‌نظر برسد، اما در واقع ری‌اکت به یک باگ در کد شما اشاره می‌کند. هم `roomId` و هم `serverUrl` ممکن است در طول زمان تغییر کنند، اما شما فراموش می‌کنید افکت خود را وقتی تغییر می‌کنند مجدداً همگام کنید. شما حتی پس از اینکه کاربر مقادیر متفاوتی در رابط کاربری انتخاب می‌کند، به `roomId` و `serverUrl` اولیه متصل باقی می‌مانید.
 
-To fix the bug, follow the linter's suggestion to specify `roomId` and `serverUrl` as dependencies of your Effect:
+برای رفع باگ، پیشنهاد لینتر را دنبال کنید و `roomId` و `serverUrl` را به‌عنوان وابستگی‌های افکت خود مشخص کنید:
 
 ```js {9}
 function ChatRoom({ roomId }) { // roomId is reactive
@@ -685,19 +685,19 @@ function ChatRoom({ roomId }) { // roomId is reactive
 }
 ```
 
-Try this fix in the sandbox above. Verify that the linter error is gone, and the chat re-connects when needed.
+این رفع را در سندباکس بالا امتحان کنید. تأیید کنید که خطای لینتر از بین رفته، و چت وقتی لازم است مجدداً متصل می‌شود.
 
 <Note>
 
-In some cases, React *knows* that a value never changes even though it's declared inside the component. For example, the [`set` function](/reference/react/useState#setstate) returned from `useState` and the ref object returned by [`useRef`](/reference/react/useRef) are *stable*--they are guaranteed to not change on a re-render. Stable values aren't reactive, so you may omit them from the list. Including them is allowed: they won't change, so it doesn't matter.
+در برخی موارد، ری‌اکت *می‌داند* که یک مقدار هرگز تغییر نمی‌کند حتی اگر داخل کامپوننت اعلام شده باشد. مثلاً، [تابع `set`](/reference/react/useState#setstate) برگردانده‌شده از `useState` و شیء رفرنس برگردانده‌شده توسط [`useRef`](/reference/react/useRef) *پایدار* هستند — تضمین شده که در یک رندر مجدد تغییر نمی‌کنند. مقادیر پایدار واکنشی نیستند، پس می‌توانید آن‌ها را از فهرست حذف کنید. گنجاندن آن‌ها مجاز است: آن‌ها تغییر نمی‌کنند، پس فرقی نمی‌کند.
 
 </Note>
 
-### What to do when you don't want to re-synchronize {/*what-to-do-when-you-dont-want-to-re-synchronize*/}
+### وقتی نمی‌خواهید مجدداً همگام کنید چه کنید {/*what-to-do-when-you-dont-want-to-re-synchronize*/}
 
-In the previous example, you've fixed the lint error by listing `roomId` and `serverUrl` as dependencies.
+در مثال قبلی، خطای لینت را با فهرست کردن `roomId` و `serverUrl` به‌عنوان وابستگی رفع کردید.
 
-**However, you could instead "prove" to the linter that these values aren't reactive values,** i.e. that they *can't* change as a result of a re-render. For example, if `serverUrl` and `roomId` don't depend on rendering and always have the same values, you can move them outside the component. Now they don't need to be dependencies:
+**با این حال، می‌توانید در عوض به لینتر «ثابت کنید» که این مقادیر مقادیر واکنشی نیستند،** یعنی *نمی‌توانند* در نتیجهٔ یک رندر مجدد تغییر کنند. مثلاً، اگر `serverUrl` و `roomId` به رندر وابسته نیستند و همیشه مقادیر یکسانی دارند، می‌توانید آن‌ها را به‌بیرون از کامپوننت منتقل کنید. حالا نیازی ندارند وابستگی باشند:
 
 ```js {1,2,11}
 const serverUrl = 'https://localhost:1234'; // serverUrl is not reactive
@@ -715,7 +715,7 @@ function ChatRoom() {
 }
 ```
 
-You can also move them *inside the Effect.* They aren't calculated during rendering, so they're not reactive:
+همچنین می‌توانید آن‌ها را *داخل افکت* منتقل کنید. آن‌ها در طول رندر محاسبه نمی‌شوند، پس واکنشی نیستند:
 
 ```js {3,4,10}
 function ChatRoom() {
@@ -732,21 +732,21 @@ function ChatRoom() {
 }
 ```
 
-**Effects are reactive blocks of code.** They re-synchronize when the values you read inside of them change. Unlike event handlers, which only run once per interaction, Effects run whenever synchronization is necessary.
+**افکت‌ها بلوک‌های کد واکنشی هستند.** وقتی مقادیری که داخل آن‌ها می‌خوانید تغییر می‌کنند، مجدداً همگام می‌شوند. برخلاف مدیریت‌کننده‌های رویداد که فقط یک بار در هر تعامل اجرا می‌شوند، افکت‌ها هر بار که همگام‌سازی لازم است اجرا می‌شوند.
 
-**You can't "choose" your dependencies.** Your dependencies must include every [reactive value](#all-variables-declared-in-the-component-body-are-reactive) you read in the Effect. The linter enforces this. Sometimes this may lead to problems like infinite loops and to your Effect re-synchronizing too often. Don't fix these problems by suppressing the linter! Here's what to try instead:
+**شما نمی‌توانید وابستگی‌هایتان را «انتخاب» کنید.** وابستگی‌هایتان باید هر [مقدار واکنشی](#all-variables-declared-in-the-component-body-are-reactive) که در افکت می‌خوانید را شامل شوند. لینتر این را اجرا می‌کند. گاهی این ممکن است به مشکلاتی مثل حلقه‌های بی‌نهایت و همگام‌سازی بیش از حد افکت منجر شود. این مشکلات را با سرکوب لینتر رفع نکنید! در عوض، این کارها را امتحان کنید:
 
-* **Check that your Effect represents an independent synchronization process.** If your Effect doesn't synchronize anything, [it might be unnecessary.](/learn/you-might-not-need-an-effect) If it synchronizes several independent things, [split it up.](#each-effect-represents-a-separate-synchronization-process)
+* **بررسی کنید که افکت شما یک فرآیند همگام‌سازی مستقل را نمایندگی می‌کند.** اگر افکت شما چیزی را همگام نمی‌کند، [ممکن است غیرضروری باشد.](/learn/you-might-not-need-an-effect) اگر چند چیز مستقل را همگام می‌کند، [آن را تقسیم کنید.](#each-effect-represents-a-separate-synchronization-process)
 
-* **If you want to read the latest value of props or state without "reacting" to it and re-synchronizing the Effect,** you can split your Effect into a reactive part (which you'll keep in the Effect) and a non-reactive part (which you'll extract into something called an _Effect Event_). [Read about separating Events from Effects.](/learn/separating-events-from-effects)
+* **اگر می‌خواهید آخرین مقدار پراپس یا استیت را بدون «واکنش» به آن و همگام‌سازی مجدد افکت بخوانید،** می‌توانید افکت خود را به یک بخش واکنشی (که در افکت نگه می‌دارید) و یک بخش غیرواکنشی (که به چیزی به نام _Effect Event_ استخراج می‌کنید) تقسیم کنید. [دربارهٔ جدا کردن رویدادها از افکت‌ها بخوانید.](/learn/separating-events-from-effects)
 
-* **Avoid relying on objects and functions as dependencies.** If you create objects and functions during rendering and then read them from an Effect, they will be different on every render. This will cause your Effect to re-synchronize every time. [Read more about removing unnecessary dependencies from Effects.](/learn/removing-effect-dependencies)
+* **از تکیه بر اشیاء و توابع به‌عنوان وابستگی اجتناب کنید.** اگر اشیاء و توابع را در طول رندر ایجاد می‌کنید و سپس از یک افکت می‌خوانید، در هر رندر متفاوت خواهند بود. این باعث می‌شود افکت شما هر بار مجدداً همگام شود. [دربارهٔ حذف وابستگی‌های غیرضروری از افکت‌ها بیشتر بخوانید.](/learn/removing-effect-dependencies)
 
 <Pitfall>
 
-The linter is your friend, but its powers are limited. The linter only knows when the dependencies are *wrong*. It doesn't know *the best* way to solve each case. If the linter suggests a dependency, but adding it causes a loop, it doesn't mean the linter should be ignored. You need to change the code inside (or outside) the Effect so that that value isn't reactive and doesn't *need* to be a dependency.
+لینتر دوست شماست، اما قدرت‌هایش محدود است. لینتر فقط می‌داند چه زمانی وابستگی‌ها *اشتباه* هستند. او *بهترین* راه را برای حل هر مورد نمی‌داند. اگر لینتر یک وابستگی پیشنهاد می‌کند، اما اضافه کردن آن یک حلقه ایجاد می‌کند، این به این معنا نیست که باید لینتر را نادیده گرفت. باید کد داخل (یا خارج) افکت را تغییر دهید تا آن مقدار واکنشی نباشد و *نیازی* به وابستگی نباشد.
 
-If you have an existing codebase, you might have some Effects that suppress the linter like this:
+اگر یک کدبیس موجود دارید، ممکن است برخی افکت‌هایی داشته باشید که لینتر را به این شکل سرکوب می‌کنند:
 
 ```js {3-4}
 useEffect(() => {
@@ -756,34 +756,34 @@ useEffect(() => {
 }, []);
 ```
 
-On the [next](/learn/separating-events-from-effects) [pages](/learn/removing-effect-dependencies), you'll learn how to fix this code without breaking the rules. It's always worth fixing!
+در [صفحات](/learn/separating-events-from-effects) [بعدی](/learn/removing-effect-dependencies)، خواهید آموخت چگونه این کد را بدون نقض قوانین رفع کنید. همیشه ارزش رفع کردن دارد!
 
 </Pitfall>
 
 <Recap>
 
-- Components can mount, update, and unmount.
-- Each Effect has a separate lifecycle from the surrounding component.
-- Each Effect describes a separate synchronization process that can *start* and *stop*.
-- When you write and read Effects, think from each individual Effect's perspective (how to start and stop synchronization) rather than from the component's perspective (how it mounts, updates, or unmounts).
-- Values declared inside the component body are "reactive".
-- Reactive values should re-synchronize the Effect because they can change over time.
-- The linter verifies that all reactive values used inside the Effect are specified as dependencies.
-- All errors flagged by the linter are legitimate. There's always a way to fix the code to not break the rules.
+- کامپوننت‌ها می‌توانند مانت، به‌روز، و آنمانت شوند.
+- هر افکت چرخهٔ حیات مجزایی از کامپوننت اطرافش دارد.
+- هر افکت یک فرآیند همگام‌سازی مجزا را توصیف می‌کند که می‌تواند *شروع* و *توقف* شود.
+- وقتی افکت‌ها را می‌نویسید و می‌خوانید، از منظر هر افکت مجزا فکر کنید (چگونه همگام‌سازی را شروع و متوقف کنید) تا از منظر کامپوننت (چگونه مانت، به‌روز، یا آنمانت می‌شود).
+- مقادیر اعلام‌شده داخل بدنهٔ کامپوننت «واکنشی» هستند.
+- مقادیر واکنشی باید افکت را مجدداً همگام کنند زیرا می‌توانند در طول زمان تغییر کنند.
+- لینتر تأیید می‌کند که تمام مقادیر واکنشی استفاده‌شده داخل افکت به‌عنوان وابستگی مشخص شده‌اند.
+- تمام خطاهای اعلام‌شده توسط لینتر قانونی هستند. همیشه راهی برای رفع کد بدون نقض قوانین وجود دارد.
 
 </Recap>
 
 <Challenges>
 
-#### Fix reconnecting on every keystroke {/*fix-reconnecting-on-every-keystroke*/}
+#### رفع اتصال مجدد در هر فشردۀ کلید {/*fix-reconnecting-on-every-keystroke*/}
 
-In this example, the `ChatRoom` component connects to the chat room when the component mounts, disconnects when it unmounts, and reconnects when you select a different chat room. This behavior is correct, so you need to keep it working.
+در این مثال، کامپوننت `ChatRoom` وقتی کامپوننت مانت می‌شود به اتاق چت متصل می‌شود، وقتی آنمانت می‌شود قطع اتصال می‌کند، و وقتی اتاق چت متفاوتی انتخاب می‌کنید مجدداً متصل می‌شود. این رفتار درست است، پس باید آن را به کار وارده نگه دارید.
 
-However, there is a problem. Whenever you type into the message box input at the bottom, `ChatRoom` *also* reconnects to the chat. (You can notice this by clearing the console and typing into the input.) Fix the issue so that this doesn't happen.
+با این حال، یک مشکل وجود دارد. هر بار که در ورودی جعبهٔ پیام در پایین تایپ می‌کنید، `ChatRoom` *همچنین* مجدداً به چت متصل می‌شود. (می‌توانید این را با پاک کردن کنسول و تایپ در ورودی متوجه شوید.) مشکل را رفع کنید تا این اتفاق نیفتد.
 
 <Hint>
 
-You might need to add a dependency array for this Effect. What dependencies should be there?
+ممکن است لازم باشد یک آرایهٔ وابستگی برای این افکت اضافه کنید. چه وابستگی‌هایی باید آنجا باشند؟
 
 </Hint>
 
@@ -860,7 +860,7 @@ button { margin-left: 10px; }
 
 <Solution>
 
-This Effect didn't have a dependency array at all, so it re-synchronized after every re-render. First, add a dependency array. Then, make sure that every reactive value used by the Effect is specified in the array. For example, `roomId` is reactive (because it's a prop), so it should be included in the array. This ensures that when the user selects a different room, the chat reconnects. On the other hand, `serverUrl` is defined outside the component. This is why it doesn't need to be in the array.
+این افکت اصلاً آرایهٔ وابستگی نداشت، پس بعد از هر رندر مجدد، مجدداً همگام می‌شد. ابتدا، یک آرایهٔ وابستگی اضافه کنید. سپس، مطمئن شوید که هر مقدار واکنشی استفاده‌شده توسط افکت در آرایه مشخص شده است. مثلاً، `roomId` واکنشی است (زیرا یک پراپ است)، پس باید در آرایه گنجانده شود. این تضمین می‌کند که وقتی کاربر اتاق متفاوتی انتخاب می‌کند، چت مجدداً متصل می‌شود. از طرف دیگر، `serverUrl` خارج از کامپوننت تعریف شده است. به همین دلیل نیازی ندارد در آرایه باشد.
 
 <Sandpack>
 
@@ -935,15 +935,15 @@ button { margin-left: 10px; }
 
 </Solution>
 
-#### Switch synchronization on and off {/*switch-synchronization-on-and-off*/}
+#### روشن و خاموش کردن همگام‌سازی {/*switch-synchronization-on-and-off*/}
 
-In this example, an Effect subscribes to the window [`pointermove`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointermove_event) event to move a pink dot on the screen. Try hovering over the preview area (or touching the screen if you're on a mobile device), and see how the pink dot follows your movement.
+در این مثال، یک افکت به رویداد [`pointermove`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointermove_event) ویندو مشترک می‌شود تا یک نقطهٔ صورتی‌رنگ را روی صفحه حرکت دهد. نشانگر را روی ناحیهٔ پیش‌نمایش حرکت دهید (یا اگر روی دستگاه موبایل هستید صفحه را لمس کنید)، و ببینید چگونه نقطهٔ صورتی حرکت شما را دنبال می‌کند.
 
-There is also a checkbox. Ticking the checkbox toggles the `canMove` state variable, but this state variable is not used anywhere in the code. Your task is to change the code so that when `canMove` is `false` (the checkbox is ticked off), the dot should stop moving. After you toggle the checkbox back on (and set `canMove` to `true`), the box should follow the movement again. In other words, whether the dot can move or not should stay synchronized to whether the checkbox is checked.
+همچنین یک چک‌باکس وجود دارد. تیک زدن چک‌باکس متغیر استیت `canMove` را تغییر می‌دهد، اما این متغیر استیت در هیچ جای کد استفاده نمی‌شود. وظیفهٔ شما این است که کد را تغییر دهید تا وقتی `canMove` برابر `false` است (چک‌باکس تیک‌خورده نیست)، نقطه باید از حرکت متوقف شود. بعد از اینکه چک‌باکس را دوباره روشن کنید (و `canMove` را به `true` تنظیم کنید)، نقطه باید دوباره حرکت را دنبال کند. به‌عبارت دیگر، اینکه نقطه می‌تواند حرکت کند یا نه باید با این که چک‌باکس تیک‌خورده یا نه همگام بماند.
 
 <Hint>
 
-You can't declare an Effect conditionally. However, the code inside the Effect can use conditions!
+شما نمی‌توانید یک افکت را به‌صورت شرطی اعلام کنید. با این حال، کد داخل افکت می‌تواند از شرط‌ها استفاده کند!
 
 </Hint>
 
@@ -1001,7 +1001,7 @@ body {
 
 <Solution>
 
-One solution is to wrap the `setPosition` call into an `if (canMove) { ... }` condition:
+یک راه‌حل این است که فراخوانی `setPosition` را در یک شرط `if (canMove) { ... }` بپیچید:
 
 <Sandpack>
 
@@ -1057,7 +1057,7 @@ body {
 
 </Sandpack>
 
-Alternatively, you could wrap the *event subscription* logic into an `if (canMove) { ... }` condition:
+به‌عنوان جایگزین، می‌توانید منطق *اشتراک در رویداد* را در یک شرط `if (canMove) { ... }` بپیچید:
 
 <Sandpack>
 
@@ -1113,19 +1113,19 @@ body {
 
 </Sandpack>
 
-In both of these cases, `canMove` is a reactive variable that you read inside the Effect. This is why it must be specified in the list of Effect dependencies. This ensures that the Effect re-synchronizes after every change to its value.
+در هر دوی این موارد، `canMove` یک متغیر واکنشی است که داخل افکت می‌خوانید. به همین دلیل باید در فهرست وابستگی‌های افکت مشخص شود. این تضمین می‌کند که افکت بعد از هر تغییر در مقدارش مجدداً همگام شود.
 
 </Solution>
 
-#### Investigate a stale value bug {/*investigate-a-stale-value-bug*/}
+#### بررسی یک باگ مقدار کهنه {/*investigate-a-stale-value-bug*/}
 
-In this example, the pink dot should move when the checkbox is on, and should stop moving when the checkbox is off. The logic for this has already been implemented: the `handleMove` event handler checks the `canMove` state variable.
+در این مثال، نقطهٔ صورتی باید وقتی چک‌باکس روشن است حرکت کند، و وقتی چک‌باکس خاموش است متوقف شود. منطق این کار قبلاً پیاده‌سازی شده: مدیریت‌کنندهٔ رویداد `handleMove` متغیر استیت `canMove` را بررسی می‌کند.
 
-However, for some reason, the `canMove` state variable inside `handleMove` appears to be "stale": it's always `true`, even after you tick off the checkbox. How is this possible? Find the mistake in the code and fix it.
+با این حال، به‌نظر می‌رسد که متغیر استیت `canMove` داخل `handleMove` به‌نوعی «کهنه» است: همیشه `true` است، حتی بعد از اینکه چک‌باکس را خاموش می‌کنید. چگونه این ممکن است؟ اشتباه را در کد پیدا کنید و رفعش کنید.
 
 <Hint>
 
-If you see a linter rule being suppressed, remove the suppression! That's where the mistakes usually are.
+اگر می‌بینید یک قانون لینتر سرکوب شده، سرکوب را حذف کنید! اشتباهات معمولاً آنجا هستند.
 
 </Hint>
 
@@ -1187,13 +1187,13 @@ body {
 
 <Solution>
 
-The problem with the original code was suppressing the dependency linter. If you remove the suppression, you'll see that this Effect depends on the `handleMove` function. This makes sense: `handleMove` is declared inside the component body, which makes it a reactive value. Every reactive value must be specified as a dependency, or it can potentially get stale over time!
+مشکل کد اصلی سرکوب کردن لینتر وابستگی بود. اگر سرکوب را حذف کنید، خواهید دید که این افکت به تابع `handleMove` وابسته است. این منطقی است: `handleMove` داخل بدنهٔ کامپوننت اعلام شده، که آن را یک مقدار واکنشی می‌کند. هر مقدار واکنشی باید به‌عنوان وابستگی مشخص شود، وگرنه ممکن است در طول زمان کهنه شود!
 
-The author of the original code has "lied" to React by saying that the Effect does not depend (`[]`) on any reactive values. This is why React did not re-synchronize the Effect after `canMove` has changed (and `handleMove` with it). Because React did not re-synchronize the Effect, the `handleMove` attached as a listener is the `handleMove` function created during the initial render. During the initial render, `canMove` was `true`, which is why `handleMove` from the initial render will forever see that value.
+نویسندهٔ کد اصلی به ری‌اکت «دروغ گفته» با ادعا اینکه افکت به هیچ مقدار واکنشی وابسته نیست (`[]`). به همین دلیل ری‌اکت بعد از اینکه `canMove` تغییر کرد (و `handleMove` با آن)، افکت را مجدداً همگام نکرد. چون ری‌اکت افکت را مجدداً همگام نکرد، `handleMove` پیوست‌شده به‌عنوان شنونده همان تابع `handleMove` است که در طول رندر اول ایجاد شده بود. در طول رندر اول، `canMove` برابر `true` بود، به همین دلیل `handleMove` از رندر اول برای همیشه آن مقدار را خواهد دید.
 
-**If you never suppress the linter, you will never see problems with stale values.** There are a few different ways to solve this bug, but you should always start by removing the linter suppression. Then change the code to fix the lint error.
+**اگر هرگز لینتر را سرکوب نکنید، هرگز مشکلاتی با مقادیر کهنه نخواهید دید.** چند راه متفاوت برای حل این باگ وجود دارد، اما همیشه باید با حذف سرکوب لینتر شروع کنید. سپس کد را تغییر دهید تا خطای لینت رفع شود.
 
-You can change the Effect dependencies to `[handleMove]`, but since it's going to be a newly defined function for every render, you might as well remove dependencies array altogether. Then the Effect *will* re-synchronize after every re-render:
+می‌توانید وابستگی‌های افکت را به `[handleMove]` تغییر دهید، اما چون این یک تابع تازه‌تعریف‌شده برای هر رندر خواهد بود، بهتر است آرایهٔ وابستگی‌ها را کلاً حذف کنید. سپس افکت *بعد از هر رندر مجدد* مجدداً همگام خواهد شد:
 
 <Sandpack>
 
@@ -1250,9 +1250,9 @@ body {
 
 </Sandpack>
 
-This solution works, but it's not ideal. If you put `console.log('Resubscribing')` inside the Effect, you'll notice that it resubscribes after every re-render. Resubscribing is fast, but it would still be nice to avoid doing it so often.
+این راه‌حل کار می‌کند، اما ایده‌آل نیست. اگر `console.log('Resubscribing')` را داخل افکت قرار دهید، خواهید دید که بعد از هر رندر مجدد دوباره مشترک می‌شود. مشترک شدن مجدد سریع است، اما همچنان خوب بود که آن را این‌قدر زیاد انجام نمی‌دادید.
 
-A better fix would be to move the `handleMove` function *inside* the Effect. Then `handleMove` won't be a reactive value, and so your Effect won't depend on a function. Instead, it will need to depend on `canMove` which your code now reads from inside the Effect. This matches the behavior you wanted, since your Effect will now stay synchronized with the value of `canMove`:
+یک رفع بهتر این است که تابع `handleMove` را *داخل* افکت منتقل کنید. سپس `handleMove` یک مقدار واکنشی نخواهد بود، و افکت شما به یک تابع وابسته نخواهد بود. در عوض، به `canMove` وابسته خواهد بود که کد شما اکنون آن را از داخل افکت می‌خواند. این با رفتاری که می‌خواستید تطابق دارد، زیرا افکت شما اکنون با مقدار `canMove` همگام خواهد ماند:
 
 <Sandpack>
 
@@ -1309,21 +1309,21 @@ body {
 
 </Sandpack>
 
-Try adding `console.log('Resubscribing')` inside the Effect body and notice that now it only resubscribes when you toggle the checkbox (`canMove` changes) or edit the code. This makes it better than the previous approach that always resubscribed.
+اضافه کردن `console.log('Resubscribing')` به داخل بدنهٔ افکت را امتحان کنید و توجه کنید که اکنون فقط وقتی چک‌باکس را تغییر می‌دهید (`canMove` تغییر می‌کند) یا کد را ویرایش می‌کنید، دوباره مشترک می‌شود. این آن را بهتر از رویکرد قبلی می‌کند که همیشه دوباره مشترک می‌شد.
 
-You'll learn a more general approach to this type of problem in [Separating Events from Effects.](/learn/separating-events-from-effects)
+یک رویکرد عمومی‌تر برای این نوع مشکل را در [جدا کردن رویدادها از افکت‌ها](/learn/separating-events-from-effects) خواهید آموخت.
 
 </Solution>
 
-#### Fix a connection switch {/*fix-a-connection-switch*/}
+#### رفع یک سوییچ اتصال {/*fix-a-connection-switch*/}
 
-In this example, the chat service in `chat.js` exposes two different APIs: `createEncryptedConnection` and `createUnencryptedConnection`. The root `App` component lets the user choose whether to use encryption or not, and then passes down the corresponding API method to the child `ChatRoom` component as the `createConnection` prop.
+در این مثال، سرویس چت در `chat.js` دو API متفاوت را در اختیار می‌گذارد: `createEncryptedConnection` و `createUnencryptedConnection`. کامپوننت ریشهٔ `App` به کاربر اجازه می‌دهد انتخاب کند که از رمزنگاری استفاده کند یا نه، و سپس متد API متناظر را به کامپوننت فرزند `ChatRoom` به‌عنوان پراپ `createConnection` پاس می‌دهد.
 
-Notice that initially, the console logs say the connection is not encrypted. Try toggling the checkbox on: nothing will happen. However, if you change the selected room after that, then the chat will reconnect *and* enable encryption (as you'll see from the console messages). This is a bug. Fix the bug so that toggling the checkbox *also* causes the chat to reconnect.
+توجه کنید که در ابتدا، لاگ‌های کنسول می‌گویند اتصال رمزنگاری‌شده نیست. تیک چک‌باکس را روشن کنید: اتفاقی نمی‌افتد. با این حال، اگر بعد از آن اتاق انتخاب‌شده را تغییر دهید، چت مجدداً متصل می‌شود *و* رمزنگاری را فعال می‌کند (همان‌طور که از پیام‌های کنسول خواهید دید). این یک باگ است. باگ را رفع کنید تا تغییر چک‌باکس *همچنین* باعث شود چت مجدداً متصل شود.
 
 <Hint>
 
-Suppressing the linter is always suspicious. Could this be a bug?
+سرکوب کردن لینتر همیشه مشکوک است. آیا این می‌تواند یک باگ باشد؟
 
 </Hint>
 
@@ -1423,7 +1423,7 @@ label { display: block; margin-bottom: 10px; }
 
 <Solution>
 
-If you remove the linter suppression, you will see a lint error. The problem is that `createConnection` is a prop, so it's a reactive value. It can change over time! (And indeed, it should--when the user ticks the checkbox, the parent component passes a different value of the `createConnection` prop.) This is why it should be a dependency. Include it in the list to fix the bug:
+اگر سرکوب لینتر را حذف کنید، یک خطای لینت خواهید دید. مشکل این است که `createConnection` یک پراپ است، پس یک مقدار واکنشی است. این می‌تواند در طول زمان تغییر کند! (و واقعاً باید — وقتی کاربر چک‌باکس را تیک می‌زند، کامپوننت والد مقدار متفاوتی از پراپ `createConnection` را پاس می‌دهد.) به همین دلیل باید یک وابستگی باشد. آن را در فهرست وارد کنید تا باگ را رفع کنید:
 
 <Sandpack>
 
@@ -1518,7 +1518,7 @@ label { display: block; margin-bottom: 10px; }
 
 </Sandpack>
 
-It is correct that `createConnection` is a dependency. However, this code is a bit fragile because someone could edit the `App` component to pass an inline function as the value of this prop. In that case, its value would be different every time the `App` component re-renders, so the Effect might re-synchronize too often. To avoid this, you can pass `isEncrypted` down instead:
+این که `createConnection` یک وابستگی است درست است. با این حال، این کد کمی شکننده است زیرا کسی می‌تواند کامپوننت `App` را ویرایش کند تا یک تابع inline را به‌عنوان مقدار این پراپ پاس کند. در آن صورت، مقدار آن هر بار که کامپوننت `App` مجدداً رندر می‌شود متفاوت خواهد بود، پس افکت ممکن است بیش از حد مجدداً همگام شود. برای اجتناب از این کار، می‌توانید به‌جای آن `isEncrypted` را پاس دهید:
 
 <Sandpack>
 
@@ -1613,21 +1613,21 @@ label { display: block; margin-bottom: 10px; }
 
 </Sandpack>
 
-In this version, the `App` component passes a boolean prop instead of a function. Inside the Effect, you decide which function to use. Since both `createEncryptedConnection` and `createUnencryptedConnection` are declared outside the component, they aren't reactive, and don't need to be dependencies. You'll learn more about this in [Removing Effect Dependencies.](/learn/removing-effect-dependencies)
+در این نسخه، کامپوننت `App` یک پراپ بولین به‌جای یک تابع پاس می‌دهد. داخل افکت، تصمیم می‌گیرید از کدام تابع استفاده کنید. چون هم `createEncryptedConnection` و هم `createUnencryptedConnection` خارج از کامپوننت اعلام شده‌اند، واکنشی نیستند، و نیازی ندارند وابستگی باشند. بیشتر دربارهٔ این در [حذف وابستگی‌های افکت](/learn/removing-effect-dependencies) خواهید آموخت.
 
 </Solution>
 
-#### Populate a chain of select boxes {/*populate-a-chain-of-select-boxes*/}
+#### پر کردن یک زنجیره از جعبه‌های انتخاب {/*populate-a-chain-of-select-boxes*/}
 
-In this example, there are two select boxes. One select box lets the user pick a planet. Another select box lets the user pick a place *on that planet.* The second box doesn't work yet. Your task is to make it show the places on the chosen planet.
+در این مثال، دو جعبهٔ انتخاب وجود دارد. یک جعبهٔ انتخاب به کاربر اجازه می‌دهد یک سیاره انتخاب کند. جعبهٔ انتخاب دیگر به کاربر اجازه می‌دهد یک مکان *روی آن سیاره* را انتخاب کند. جعبهٔ دوم هنوز کار نمی‌کند. وظیفهٔ شما این است که آن را طوری بسازید که مکان‌های روی سیارهٔ انتخاب‌شده را نمایش دهد.
 
-Look at how the first select box works. It populates the `planetList` state with the result from the `"/planets"` API call. The currently selected planet's ID is kept in the `planetId` state variable. You need to find where to add some additional code so that the `placeList` state variable is populated with the result of the `"/planets/" + planetId + "/places"` API call.
+نگاه کنید چگونه جعبهٔ انتخاب اول کار می‌کند. این جعبه، استیت `planetList` را با نتیجهٔ فراخوانی API `"/planets"` پر می‌کند. شناسهٔ سیارهٔ انتخاب‌شدهٔ فعلی در متغیر استیت `planetId` نگهداری می‌شود. باید پیدا کنید کجا کمی کد اضافه کنید تا متغیر استیت `placeList` با نتیجهٔ فراخوانی API `"/planets/" + planetId + "/places"` پر شود.
 
-If you implement this right, selecting a planet should populate the place list. Changing a planet should change the place list.
+اگر این را درست پیاده‌سازی کنید، انتخاب یک سیاره باید فهرست مکان‌ها را پر کند. تغییر یک سیاره باید فهرست مکان‌ها را تغییر دهد.
 
 <Hint>
 
-If you have two independent synchronization processes, you need to write two separate Effects.
+اگر دو فرآیند همگام‌سازی مستقل دارید، باید دو افکت مجزا بنویسید.
 
 </Hint>
 
@@ -1773,12 +1773,12 @@ label { display: block; margin-bottom: 10px; }
 
 <Solution>
 
-There are two independent synchronization processes:
+دو فرآیند همگام‌سازی مستقل وجود دارد:
 
-- The first select box is synchronized to the remote list of planets.
-- The second select box is synchronized to the remote list of places for the current `planetId`.
+- جعبهٔ انتخاب اول با فهرست دور دست سیاره‌ها همگام است.
+- جعبهٔ انتخاب دوم با فهرست دور دست مکان‌ها برای `planetId` فعلی همگام است.
 
-This is why it makes sense to describe them as two separate Effects. Here's an example of how you could do this:
+به همین دلیل منطقی است که آن‌ها را به‌عنوان دو افکت مجزا توصیف کنید. در اینجا مثالی از نحوهٔ انجام این کار آمده است:
 
 <Sandpack>
 
@@ -1939,9 +1939,9 @@ label { display: block; margin-bottom: 10px; }
 
 </Sandpack>
 
-This code is a bit repetitive. However, that's not a good reason to combine it into a single Effect! If you did this, you'd have to combine both Effect's dependencies into one list, and then changing the planet would refetch the list of all planets. Effects are not a tool for code reuse.
+این کد کمی تکراری است. با این حال، این دلیل خوبی برای ترکیب آن در یک افکت واحد نیست! اگر این کار را می‌کردید، باید وابستگی‌های هر دو افکت را در یک فهرست ترکیب می‌کردید، و سپس تغییر سیاره باعث می‌شد فهرست تمام سیاره‌ها دوباره واکشی شود. افکت‌ها ابزاری برای استفادهٔ مجدد کد نیستند.
 
-Instead, to reduce repetition, you can extract some logic into a custom Hook like `useSelectOptions` below:
+در عوض، برای کاهش تکرار، می‌توانید بخشی از منطق را در یک هوک سفارشی مثل `useSelectOptions` زیر استخراج کنید:
 
 <Sandpack>
 
@@ -2102,7 +2102,7 @@ label { display: block; margin-bottom: 10px; }
 
 </Sandpack>
 
-Check the `useSelectOptions.js` tab in the sandbox to see how it works. Ideally, most Effects in your application should eventually be replaced by custom Hooks, whether written by you or by the community. Custom Hooks hide the synchronization logic, so the calling component doesn't know about the Effect. As you keep working on your app, you'll develop a palette of Hooks to choose from, and eventually you won't need to write Effects in your components very often.
+تبِ `useSelectOptions.js` را در سندباکس بررسی کنید تا ببینید چگونه کار می‌کند. به‌طور ایده‌آل، بیشتر افکت‌ها در اپلیکیشن شما در نهایت باید با هوک‌های سفارشی جایگزین شوند، چه توسط شما نوشته شوند چه توسط جامعه. هوک‌های سفارشی منطق همگام‌سازی را پنهان می‌کنند، تا کامپوننت فراخوان چیزی دربارهٔ افکت نداند. همان‌طور که به کار روی اپلیکیشن خود ادامه می‌دهید، مجموعه‌ای از هوک‌ها برای انتخاب توسعه خواهید داد، و در نهایت خیلی کم لازم باشد در کامپوننت‌هایتان افکت بنویسید.
 
 </Solution>
 

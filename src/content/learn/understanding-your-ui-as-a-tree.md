@@ -1,41 +1,41 @@
 ---
-title: Understanding Your UI as a Tree
+title: درک رابط کاربری به‌صورت یک درخت
 ---
 
 <Intro>
 
-Your React app is taking shape with many components being nested within each other. How does React keep track of your app's component structure?
+اپلیکیشن ری‌اکت شما با کامپوننت‌های زیادی که داخل هم تودرتو شده‌اند شکل می‌گیرد. ری‌اکت چگونه ساختار کامپوننتی اپلیکیشن شما را پیگیری می‌کند؟
 
-React, and many other UI libraries, model UI as a tree. Thinking of your app as a tree is useful for understanding the relationship between components. This understanding will help you debug future concepts like performance and state management.
+ری‌اکت، و بسیاری از کتابخانه‌های رابط کاربری دیگر، رابط کاربری را به‌صورت یک درخت مدل می‌کنند. فکر کردن به اپلیکیشن به‌صورت یک درخت برای درک رابطه‌ی بین کامپوننت‌ها مفید است. این درک به شما در رفع اشکال مفاهیم آینده مانند عملکرد و مدیریت استیت کمک می‌کند.
 
 </Intro>
 
 <YouWillLearn>
 
-* How React "sees" component structures
-* What a render tree is and what it is useful for
-* What a module dependency tree is and what it is useful for
+* ری‌اکت چگونه ساختارهای کامپوننتی را «می‌بیند»
+* درخت رندر چیست و برای چه چیزی مفید است
+* درخت وابستگی ماژول چیست و برای چه چیزی مفید است
 
 </YouWillLearn>
 
-## Your UI as a tree {/*your-ui-as-a-tree*/}
+## رابط کاربری شما به‌صورت یک درخت {/*your-ui-as-a-tree*/}
 
-Trees are a relationship model between items and UI is often represented using tree structures. For example, browsers use tree structures to model HTML ([DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction)) and CSS ([CSSOM](https://developer.mozilla.org/docs/Web/API/CSS_Object_Model)). Mobile platforms also use trees to represent their view hierarchy.
+درخت‌ها مدلی از رابطه‌ی بین آیتم‌ها هستند و رابط کاربری غالباً با ساختارهای درختی نمایش داده می‌شود. برای مثال، مرورگرها از ساختارهای درختی برای مدل‌سازی HTML ([DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction)) و CSS ([CSSOM](https://developer.mozilla.org/docs/Web/API/CSS_Object_Model)) استفاده می‌کنند. پلتفرم‌های موبایل نیز از درخت‌ها برای نمایش سلسله‌مراتب نما (view) خود استفاده می‌کنند.
 
 <Diagram name="preserving_state_dom_tree" height={193} width={864} alt="Diagram with three sections arranged horizontally. In the first section, there are three rectangles stacked vertically, with labels 'Component A', 'Component B', and 'Component C'. Transitioning to the next pane is an arrow with the React logo on top labeled 'React'. The middle section contains a tree of components, with the root labeled 'A' and two children labeled 'B' and 'C'. The next section is again transitioned using an arrow with the React logo on top labeled 'React DOM'. The third and final section is a wireframe of a browser, containing a tree of 8 nodes, which has only a subset highlighted (indicating the subtree from the middle section).">
 
-React creates a UI tree from your components. In this example, the UI tree is then used to render to the DOM.
+ری‌اکت از کامپوننت‌های شما یک درخت رابط کاربری می‌سازد. در این مثال، درخت رابط کاربری سپس برای رندر شدن به DOM استفاده می‌شود.
 </Diagram>
 
-Like browsers and mobile platforms, React also uses tree structures to manage and model the relationship between components in a React app. These trees are useful tools to understand how data flows through a React app and how to optimize rendering and app size.
+مانند مرورگرها و پلتفرم‌های موبایل، ری‌اکت نیز از ساختارهای درختی برای مدیریت و مدل‌سازی رابطه‌ی بین کامپوننت‌ها در یک اپلیکیشن ری‌اکت استفاده می‌کند. این درخت‌ها ابزارهای مفیدی برای درک نحوه‌ی جریان داده در یک اپلیکیشن ری‌اکت و نحوه‌ی بهینه‌سازی رندر و حجم اپلیکیشن هستند.
 
-## The Render Tree {/*the-render-tree*/}
+## درخت رندر {/*the-render-tree*/}
 
-A major feature of components is the ability to compose components of other components. As we [nest components](/learn/your-first-component#nesting-and-organizing-components), we have the concept of parent and child components, where each parent component may itself be a child of another component.
+یکی از ویژگی‌های اصلی کامپوننت‌ها، قابلیت ترکیب کامپوننت‌هایی از کامپوننت‌های دیگر است. همان‌طور که [کامپوننت‌ها را تودرتو می‌کنیم](/learn/your-first-component#nesting-and-organizing-components)، مفهوم کامپوننت‌های والد و فرزند را داریم، که در آن هر کامپوننت والد ممکن است خود فرزند کامپوننت دیگری باشد.
 
-When we render a React app, we can model this relationship in a tree, known as the render tree.
+هنگامی که یک اپلیکیشن ری‌اکت را رندر می‌کنیم، می‌توانیم این رابطه را در یک درخت مدل‌سازی کنیم که به آن درخت رندر می‌گویند.
 
-Here is a React app that renders inspirational quotes.
+در اینجا یک اپلیکیشن ری‌اکت آمده که نقل‌قول‌های الهام‌بخش رندر می‌کند.
 
 <Sandpack>
 
@@ -120,32 +120,32 @@ export default [
 
 <Diagram name="render_tree" height={250} width={500} alt="Tree graph with five nodes. Each node represents a component. The root of the tree is App, with two arrows extending from it to 'InspirationGenerator' and 'FancyText'. The arrows are labelled with the word 'renders'. 'InspirationGenerator' node also has two arrows pointing to nodes 'FancyText' and 'Copyright'.">
 
-React creates a *render tree*, a UI tree, composed of the rendered components.
+ری‌اکت یک *درخت رندر*، یعنی یک درخت رابط کاربری، از کامپوننت‌های رندرشده می‌سازد.
 
 
 </Diagram>
 
-From the example app, we can construct the above render tree.
+از اپلیکیشن نمونه، می‌توانیم درخت رندر بالا را بسازیم.
 
-The tree is composed of nodes, each of which represents a component. `App`, `FancyText`, `Copyright`, to name a few, are all nodes in our tree.
+این درخت از گره‌هایی تشکیل شده که هر کدام یک کامپوننت را نمایش می‌دهند. `App`, `FancyText`, `Copyright`، که نام بردیم، همگی گره‌هایی در درخت ما هستند.
 
-The root node in a React render tree is the [root component](/learn/importing-and-exporting-components#the-root-component-file) of the app. In this case, the root component is `App` and it is the first component React renders. Each arrow in the tree points from a parent component to a child component.
+گره ریشه در درخت رندر ری‌اکت، [کامپوننت ریشه](/learn/importing-and-exporting-components#the-root-component-file) اپلیکیشن است. در این حالت، کامپوننت ریشه `App` است و این اولین کامپوننتی است که ری‌اکت رندر می‌کند. هر فلش در درخت از یک کامپوننت والد به یک کامپوننت فرزند اشاره می‌کند.
 
 <DeepDive>
 
-#### Where are the HTML tags in the render tree? {/*where-are-the-html-elements-in-the-render-tree*/}
+#### تگ‌های HTML در درخت رندر کجا هستند؟ {/*where-are-the-html-elements-in-the-render-tree*/}
 
-You'll notice in the above render tree, there is no mention of the HTML tags that each component renders. This is because the render tree is only composed of React [components](learn/your-first-component#components-ui-building-blocks).
+متوجه خواهید شد که در درخت رندر بالا، اشاره‌ای به تگ‌های HTML که هر کامپوننت رندر می‌کند نشده است. این به‌این دلیل است که درخت رندر فقط از [کامپوننت‌های](learn/your-first-component#components-ui-building-blocks) ری‌اکت تشکیل شده است.
 
-React, as a UI framework, is platform agnostic. On react.dev, we showcase examples that render to the web, which uses HTML markup as its UI primitives. But a React app could just as likely render to a mobile or desktop platform, which may use different UI primitives like [UIView](https://developer.apple.com/documentation/uikit/uiview) or [FrameworkElement](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement?view=windowsdesktop-7.0).
+ری‌اکت، به‌عنوان یک فریم‌ورک رابط کاربری، مستقل از پلتفرم است. در react.dev، نمونه‌هایی را نشان می‌دهیم که به وب رندر می‌شوند، که از مارک‌آپ HTML به‌عنوان عناصر پایه‌ی رابط کاربری استفاده می‌کند. اما یک اپلیکیشن ری‌اکت می‌تواند به همان راحتی به یک پلتفرم موبایل یا دسکتاپ رندر شود، که ممکن است از عناصر پایه‌ی متفاوتی مانند [UIView](https://developer.apple.com/documentation/uikit/uiview) یا [FrameworkElement](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement?view=windowsdesktop-7.0) استفاده کند.
 
-These platform UI primitives are not a part of React. React render trees can provide insight to our React app regardless of what platform your app renders to.
+این عناصر پایه‌ی رابط کاربریِ پلتفرم، بخشی از ری‌اکت نیستند. درخت‌های رندر ری‌اکت می‌توانند بدون توجه به اینکه اپلیکیشن شما به چه پلتفرمی رندر می‌شود، بینشی درباره‌ی اپلیکیشن ری‌اکت ما ارائه کنند.
 
 </DeepDive>
 
-A render tree represents a single render pass of a React application. With [conditional rendering](/learn/conditional-rendering), a parent component may render different children depending on the data passed.
+یک درخت رندر نشان‌دهنده‌ی یک پاس رندر منفرد از یک اپلیکیشن ری‌اکت است. با [رندر شرطی](/learn/conditional-rendering)، یک کامپوننت والد ممکن است بسته به داده‌های پاس‌داده‌شده، فرزندان متفاوتی رندر کند.
 
-We can update the app to conditionally render either an inspirational quote or color.
+می‌توانیم اپلیکیشن را به‌روزرسانی کنیم تا به‌صورت شرطی یا یک نقل‌قول الهام‌بخش یا یک رنگ رندر کند.
 
 <Sandpack>
 
@@ -247,53 +247,53 @@ export default [
 
 <Diagram name="conditional_render_tree" height={250} width={561} alt="Tree graph with six nodes. The top node of the tree is labelled 'App' with two arrows extending to nodes labelled 'InspirationGenerator' and 'FancyText'. The arrows are solid lines and are labelled with the word 'renders'. 'InspirationGenerator' node also has three arrows. The arrows to nodes 'FancyText' and 'Color' are dashed and labelled with 'renders?'. The last arrow points to the node labelled 'Copyright' and is solid and labelled with 'renders'.">
 
-With conditional rendering, across different renders, the render tree may render different components.
+با رندر شرطی، در رندرهای مختلف، درخت رندر ممکن است کامپوننت‌های متفاوتی رندر کند.
 
 </Diagram>
 
-In this example, depending on what `inspiration.type` is, we may render `<FancyText>` or `<Color>`. The render tree may be different for each render pass.
+در این مثال، بسته به اینکه `inspiration.type` چیست، ممکن است `<FancyText>` یا `<Color>` را رندر کنیم. درخت رندر ممکن است برای هر پاس رندر متفاوت باشد.
 
-Although render trees may differ across render passes, these trees are generally helpful for identifying what the *top-level* and *leaf components* are in a React app. Top-level components are the components nearest to the root component and affect the rendering performance of all the components beneath them and often contain the most complexity. Leaf components are near the bottom of the tree and have no child components and are often frequently re-rendered.
+اگرچه درخت‌های رندر ممکن است در پاس‌های رندر متفاوت باشند، این درخت‌ها عموماً برای شناسایی اینکه *کامپوننت‌های سطح‌بالا* و *کامپوننت‌های برگ* در یک اپلیکیشن ری‌اکت کدام‌اند مفید هستند. کامپوننت‌های سطح‌بالا کامپوننت‌هایی هستند که به کامپوننت ریشه نزدیک‌ترند و بر عملکرد رندر همه‌ی کامپوننت‌های زیر خود تأثیر می‌گذارند و اغلب پیچیده‌ترین هستند. کامپوننت‌های برگ نزدیک پایین درخت هستند و فرزندی ندارند و غالباً به‌طور مکرر رندر می‌شوند.
 
-Identifying these categories of components are useful for understanding data flow and performance of your app.
+شناسایی این دسته‌بندی‌های کامپوننت‌ها برای درک جریان داده و عملکرد اپلیکیشن شما مفید است.
 
-## The Module Dependency Tree {/*the-module-dependency-tree*/}
+## درخت وابستگی ماژول {/*the-module-dependency-tree*/}
 
-Another relationship in a React app that can be modeled with a tree are an app's module dependencies. As we [break up our components](/learn/importing-and-exporting-components#exporting-and-importing-a-component) and logic into separate files, we create [JS modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) where we may export components, functions, or constants.
+رابطه‌ی دیگری که در یک اپلیکیشن ری‌اکت می‌توان با یک درخت آن را مدل کرد، وابستگی ماژول‌های یک اپلیکیشن است. همان‌طور که [کامپوننت‌ها و منطق خود را](/learn/importing-and-exporting-components#exporting-and-importing-a-component) در فایل‌های جداگانه تقسیم می‌کنیم، [ماژول‌های JS](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) می‌سازیم که ممکن است در آن‌ها کامپوننت، تابع یا ثابت اکسپورت کنیم.
 
-Each node in a module dependency tree is a module and each branch represents an `import` statement in that module.
+هر گره در درخت وابستگی ماژول یک ماژول است و هر شاخه نشان‌دهنده‌ی یک دستور `import` در آن ماژول است.
 
-If we take the previous Inspirations app, we can build a module dependency tree, or dependency tree for short.
+اگر اپلیکیشن الهام‌بخش قبلی را برداریم، می‌توانیم یک درخت وابستگی ماژول، یا به‌اختصار درخت وابستگی، بسازیم.
 
 <Diagram name="module_dependency_tree" height={250} width={658} alt="A tree graph with seven nodes. Each node is labelled with a module name. The top level node of the tree is labelled 'App.js'. There are three arrows pointing to the modules 'InspirationGenerator.js', 'FancyText.js' and 'Copyright.js' and the arrows are labelled with 'imports'. From the 'InspirationGenerator.js' node, there are three arrows that extend to three modules: 'FancyText.js', 'Color.js', and 'inspirations.js'. The arrows are labelled with 'imports'.">
 
-The module dependency tree for the Inspirations app.
+درخت وابستگی ماژول برای اپلیکیشن الهام‌بخش.
 
 </Diagram>
 
-The root node of the tree is the root module, also known as the entrypoint file. It often is the module that contains the root component.
+گره ریشه‌ی درخت، ماژول ریشه است، که به آن فایل نقطه‌ی ورود (entrypoint) نیز می‌گویند. این غالباً ماژیولی است که حاوی کامپوننت ریشه است.
 
-Comparing to the render tree of the same app, there are similar structures but some notable differences:
+در مقایسه با درخت رندر همان اپلیکیشن، ساختارهایی مشابه وجود دارد اما چند تفاوت قابل‌توجه هم هست:
 
-* The nodes that make-up the tree represent modules, not components.
-* Non-component modules, like `inspirations.js`, are also represented in this tree. The render tree only encapsulates components.
-* `Copyright.js` appears under `App.js` but in the render tree, `Copyright`, the component, appears as a child of `InspirationGenerator`. This is because `InspirationGenerator` accepts JSX as [children props](/learn/passing-props-to-a-component#passing-jsx-as-children), so it renders `Copyright` as a child component but does not import the module.
+* گره‌هایی که درخت را تشکیل می‌دهند، ماژول‌ها را نمایش می‌دهند، نه کامپوننت‌ها.
+* ماژول‌های غیرکامپوننتی، مانند `inspirations.js`، نیز در این درخت نمایش داده می‌شوند. درخت رندر فقط کامپوننت‌ها را پوشش می‌دهد.
+* `Copyright.js` زیر `App.js` قرار می‌گیرد اما در درخت رندر، `Copyright`، یعنی کامپوننت، به‌عنوان فرزند `InspirationGenerator` ظاهر می‌شود. این به‌این دلیل است که `InspirationGenerator` JSX را به‌عنوان [پراپس فرزندان](/learn/passing-props-to-a-component#passing-jsx-as-children) می‌پذیرد، بنابراین `Copyright` را به‌عنوان یک کامپوننت فرزند رندر می‌کند اما ماژول آن را ایمپورت نمی‌کند.
 
-Dependency trees are useful to determine what modules are necessary to run your React app. When building a React app for production, there is typically a build step that will bundle all the necessary JavaScript to ship to the client. The tool responsible for this is called a [bundler](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Overview#the_modern_tooling_ecosystem), and bundlers will use the dependency tree to determine what modules should be included.
+درخت‌های وابستگی برای تعیین اینکه چه ماژول‌هایی برای اجرای اپلیکیشن ری‌اکت شما ضروری هستند مفیدند. هنگام ساخت یک اپلیکیشن ری‌اکت برای پروداکشن، معمولاً یک مرحله‌ی بیلد وجود دارد که تمام جاوااسکریپت لازم را برای ارسال به کلاینت باندل می‌کند. ابزار مسئول این کار [باندلر](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Overview#the_modern_tooling_ecosystem) نامیده می‌شود، و باندلرها از درخت وابستگی استفاده می‌کنند تا تعیین کنند چه ماژول‌هایی باید گنجانده شوند.
 
-As your app grows, often the bundle size does too. Large bundle sizes are expensive for a client to download and run. Large bundle sizes can delay the time for your UI to get drawn. Getting a sense of your app's dependency tree may help with debugging these issues.
+هرچه اپلیکیشن شما رشد می‌کند، اغلب حجم باندل هم افزایش می‌یابد. حجم باندل بزرگ برای کلاینت دانلود و اجرا کردن پرهزینه است. حجم باندل بزرگ می‌تواند زمان رسم رابط کاربری شما را به‌تعویق بیندازد. درک درخت وابستگی اپلیکیشن شما می‌تواند در رفع اشکال این مسائل کمک کند.
 
 [comment]: <> (perhaps we should also deep dive on conditional imports)
 
 <Recap>
 
-* Trees are a common way to represent the relationship between entities. They are often used to model UI.
-* Render trees represent the nested relationship between React components across a single render.
-* With conditional rendering, the render tree may change across different renders. With different prop values, components may render different children components.
-* Render trees help identify what the top-level and leaf components are. Top-level components affect the rendering performance of all components beneath them and leaf components are often re-rendered frequently. Identifying them is useful for understanding and debugging rendering performance.
-* Dependency trees represent the module dependencies in a React app.
-* Dependency trees are used by build tools to bundle the necessary code to ship an app.
-* Dependency trees are useful for debugging large bundle sizes that slow time to paint and expose opportunities for optimizing what code is bundled.
+* درخت‌ها روشی رایج برای نمایش رابطه‌ی بین موجودیت‌ها هستند. آن‌ها غالباً برای مدل‌سازی رابط کاربری استفاده می‌شوند.
+* درخت‌های رندر، رابطه‌ی تودرتوی بین کامپوننت‌های ری‌اکت را در طول یک رندر منفرد نمایش می‌دهند.
+* با رندر شرطی، درخت رندر ممکن است در رندرهای مختلف تغییر کند. با مقادیر پراپس متفاوت، کامپوننت‌ها ممکن است کامپوننت‌های فرزند متفاوتی رندر کنند.
+* درخت‌های رندر کمک می‌کنند شناسایی کنیم کامپوننت‌های سطح‌بالا و برگ کدام‌اند. کامپوننت‌های سطح‌بالا بر عملکرد رندر همه‌ی کامپوننت‌های زیر خود تأثیر می‌گذارند و کامپوننت‌های برگ غالباً به‌طور مکرر رندر می‌شوند. شناسایی آن‌ها برای درک و رفع اشکال عملکرد رندر مفید است.
+* درخت‌های وابستگی، وابستگی‌های ماژول را در یک اپلیکیشن ری‌اکت نمایش می‌دهند.
+* درخت‌های وابستگی توسط ابزارهای بیلد برای باندل کردن کد لازم جهت ارسال اپلیکیشن استفاده می‌شوند.
+* درخت‌های وابستگی برای رفع اشکال حجم‌های باندل بزرگ که زمان رنگ‌آمیزی (paint) را کند می‌کنند و فراهم کردن فرصت‌هایی برای بهینه‌سازی کدی که باندل می‌شود، مفیدند.
 
 </Recap>
 

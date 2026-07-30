@@ -1,24 +1,24 @@
 ---
-title: Writing Markup with JSX
+title: نوشتن مارک‌آپ با JSX
 ---
 
 <Intro>
 
-*JSX* is a syntax extension for JavaScript that lets you write HTML-like markup inside a JavaScript file. Although there are other ways to write components, most React developers prefer the conciseness of JSX, and most codebases use it.
+*JSX* یک افزونه‌ی نحوی برای جاوااسکریپت است که به شما اجازه می‌دهد مارک‌آپی شبیه به HTML را درون یک فایل جاوااسکریپت بنویسید. اگرچه روش‌های دیگری برای نوشتن کامپوننت وجود دارد، اکثر توسعه‌دهندگان ری‌اکت اختصار JSX را ترجیح می‌دهند، و اکثر کدبیس‌ها از آن استفاده می‌کنند.
 
 </Intro>
 
 <YouWillLearn>
 
-* Why React mixes markup with rendering logic
-* How JSX is different from HTML
-* How to display information with JSX
+* چرا ری‌اکت مارک‌آپ را با منطق رندر ترکیب می‌کند
+* JSX چگونه از HTML متفاوت است
+* چگونه با JSX اطلاعات را نمایش دهیم
 
 </YouWillLearn>
 
-## JSX: Putting markup into JavaScript {/*jsx-putting-markup-into-javascript*/}
+## JSX: قرار دادن مارک‌آپ در جاوااسکریپت {/*jsx-putting-markup-into-javascript*/}
 
-The Web has been built on HTML, CSS, and JavaScript. For many years, web developers kept content in HTML, design in CSS, and logic in JavaScript—often in separate files! Content was marked up inside HTML while the page's logic lived separately in JavaScript:
+وب بر پایه‌ی HTML، CSS و جاوااسکریپت ساخته شده است. برای بسیاری از سال‌ها، توسعه‌دهندگان وب محتوا را در HTML، طراحی را در CSS و منطق را در جاوااسکریپت نگه می‌داشتند—اغلب در فایل‌های جداگانه! محتوا در HTML مارک‌آپ می‌شد در حالی که منطق صفحه جداگانه در جاوااسکریپت زندگی می‌کرد:
 
 <DiagramGroup>
 
@@ -30,43 +30,43 @@ HTML
 
 <Diagram name="writing_jsx_js" height={237} width={325} alt="Three JavaScript handlers with yellow background: onSubmit, onLogin, and onClick.">
 
-JavaScript
+جاوااسکریپت
 
 </Diagram>
 
 </DiagramGroup>
 
-But as the Web became more interactive, logic increasingly determined content. JavaScript was in charge of the HTML! This is why **in React, rendering logic and markup live together in the same place—components.**
+اما هرچه وب تعامل‌پذیرتر شد، منطق به‌طور فزاینده‌ای محتوا را تعیین می‌کرد. جاوااسکریپت مسئول HTML بود! به همین دلیل است که **در ری‌اکت، منطق رندر و مارک‌آپ در همان جا—کامپوننت‌ها—زندگی می‌کنند.**
 
 <DiagramGroup>
 
 <Diagram name="writing_jsx_sidebar" height={330} width={325} alt="React component with HTML and JavaScript from previous examples mixed. Function name is Sidebar which calls the function isLoggedIn, highlighted in yellow. Nested inside the function highlighted in purple is the p tag from before, and a Form tag referencing the component shown in the next diagram.">
 
-`Sidebar.js` React component
+کامپوننت ری‌اکت `Sidebar.js`
 
 </Diagram>
 
 <Diagram name="writing_jsx_form" height={330} width={325} alt="React component with HTML and JavaScript from previous examples mixed. Function name is Form containing two handlers onClick and onSubmit highlighted in yellow. Following the handlers is HTML highlighted in purple. The HTML contains a form element with a nested input element, each with an onClick prop.">
 
-`Form.js` React component
+کامپوننت ری‌اکت `Form.js`
 
 </Diagram>
 
 </DiagramGroup>
 
-Keeping a button's rendering logic and markup together ensures that they stay in sync with each other on every edit. Conversely, details that are unrelated, such as the button's markup and a sidebar's markup, are isolated from each other, making it safer to change either of them on their own.
+نگه‌داشتن منطق رندر و مارک‌آپ یک دکمه در کنار هم، تضمین می‌کند که آن‌ها در هر ویرایش با هم هماهنگ بمانند. در مقابل، جزئیات غیرمرتبط، مانند مارک‌آپ دکمه و مارک‌آپ یک نوار کناری، از یکدیگر ایزوله‌اند، که این کار را ایمن‌تر می‌سازد که هر کدام را به‌طور مستقل تغییر دهید.
 
-Each React component is a JavaScript function that may contain some markup that React renders into the browser. React components use a syntax extension called JSX to represent that markup. JSX looks a lot like HTML, but it is a bit stricter and can display dynamic information. The best way to understand this is to convert some HTML markup to JSX markup.
+هر کامپوننت ری‌اکت یک تابع جاوااسکریپت است که می‌تواند مقداری مارک‌آپ داشته باشد که ری‌اکت آن را در مرورگر رندر می‌کند. کامپوننت‌های ری‌اکت از یک افزونه‌ی نحوی به نام JSX برای نمایش آن مارک‌آپ استفاده می‌کنند. JSX خیلی شبیه HTML است، اما کمی سخت‌گیرانه‌تر است و می‌تواند اطلاعات پویا را نمایش دهد. بهترین راه برای درک این موضوع، تبدیل مقداری مارک‌آپ HTML به مارک‌آپ JSX است.
 
 <Note>
 
-JSX and React are two separate things. They're often used together, but you *can* [use them independently](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-a-jsx-transform) of each other. JSX is a syntax extension, while React is a JavaScript library.
+JSX و ری‌اکت دو چیز جداگانه هستند. آن‌ها اغلب با هم استفاده می‌شوند، اما شما *می‌توانید* [به‌طور مستقل](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-a-jsx-transform) از هم از آن‌ها استفاده کنید. JSX یک افزونه‌ی نحوی است، در حالی که ری‌اکت یک کتابخانه جاوااسکریپت است.
 
 </Note>
 
-## Converting HTML to JSX {/*converting-html-to-jsx*/}
+## تبدیل HTML به JSX {/*converting-html-to-jsx*/}
 
-Suppose that you have some (perfectly valid) HTML:
+فرض کنید مقداری HTML (کاملاً معتبر) دارید:
 
 ```html
 <h1>Hedy Lamarr's Todos</h1>
@@ -82,7 +82,7 @@ Suppose that you have some (perfectly valid) HTML:
 </ul>
 ```
 
-And you want to put it into your component:
+و می‌خواهید آن را در کامپوننت خود قرار دهید:
 
 ```js
 export default function TodoList() {
@@ -92,7 +92,7 @@ export default function TodoList() {
 }
 ```
 
-If you copy and paste it as is, it will not work:
+اگر آن را همان‌طور که هست کپی و جای‌گذاری کنید، کار نخواهد کرد:
 
 
 <Sandpack>
@@ -122,21 +122,21 @@ img { height: 90px }
 
 </Sandpack>
 
-This is because JSX is stricter and has a few more rules than HTML! If you read the error messages above, they'll guide you to fix the markup, or you can follow the guide below.
+این به‌این دلیل است که JSX سخت‌گیرانه‌تر است و چند قانون بیشتر نسبت به HTML دارد! اگر پیام‌های خطای بالا را بخوانید، شما را برای اصلاح مارک‌آپ راهنمایی می‌کنند، یا می‌توانید راهنمای زیر را دنبال کنید.
 
 <Note>
 
-Most of the time, React's on-screen error messages will help you find where the problem is. Give them a read if you get stuck!
+بیشتر اوقات، پیام‌های خطای روی‌صفحه‌ی ری‌اکت به شما کمک می‌کنند تا مشکل کجاست پیدا کنید. اگر گیر کردید آن‌ها را بخوانید!
 
 </Note>
 
-## The Rules of JSX {/*the-rules-of-jsx*/}
+## قوانین JSX {/*the-rules-of-jsx*/}
 
-### 1. Return a single root element {/*1-return-a-single-root-element*/}
+### ۱. یک عنصر ریشه‌ی منفرد برگردانید {/*1-return-a-single-root-element*/}
 
-To return multiple elements from a component, **wrap them with a single parent tag.**
+برای برگرداندن چند عنصر از یک کامپوننت، **آن‌ها را با یک تگ والد منفرد بپیچید.**
 
-For example, you can use a `<div>`:
+برای مثال، می‌توانید از یک `<div>` استفاده کنید:
 
 ```js {1,11}
 <div>
@@ -153,7 +153,7 @@ For example, you can use a `<div>`:
 ```
 
 
-If you don't want to add an extra `<div>` to your markup, you can write `<>` and `</>` instead:
+اگر نمی‌خواهید یک `<div>` اضافی به مارک‌آپ خود اضافه کنید، می‌توانید به‌جای آن `<>` و `</>` بنویسید:
 
 ```js {1,11}
 <>
@@ -169,21 +169,21 @@ If you don't want to add an extra `<div>` to your markup, you can write `<>` and
 </>
 ```
 
-This empty tag is called a *[Fragment.](/reference/react/Fragment)* Fragments let you group things without leaving any trace in the browser HTML tree.
+این تگ خالی *[فرگمنت](/reference/react/Fragment)* نامیده می‌شود. فرگمنت‌ها به شما اجازه می‌دهند چیزها را بدون اینکه هیچ اثری در درخت HTML مرورگر بگذارند گروه‌بندی کنید.
 
 <DeepDive>
 
-#### Why do multiple JSX tags need to be wrapped? {/*why-do-multiple-jsx-tags-need-to-be-wrapped*/}
+#### چرا چند تگ JSX باید بپیچانده شوند؟ {/*why-do-multiple-jsx-tags-need-to-be-wrapped*/}
 
-JSX looks like HTML, but under the hood it is transformed into plain JavaScript objects. You can't return two objects from a function without wrapping them into an array. This explains why you also can't return two JSX tags without wrapping them into another tag or a Fragment.
+JSX شبیه HTML به نظر می‌رسد، اما زیر کاپوت به اشیاء جاوااسکریپت ساده تبدیل می‌شود. نمی‌توانید از یک تابع دو شیء برگردانید مگر اینکه آن‌ها را در یک آرایه بپیچید. این توضیح می‌دهد که چرا نمی‌توانید دو تگ JSX را بدون اینکه در یک تگ دیگر یا یک فرگمنت بپیچید برگردانید.
 
 </DeepDive>
 
-### 2. Close all the tags {/*2-close-all-the-tags*/}
+### ۲. همه‌ی تگ‌ها را ببندید {/*2-close-all-the-tags*/}
 
-JSX requires tags to be explicitly closed: self-closing tags like `<img>` must become `<img />`, and wrapping tags like `<li>oranges` must be written as `<li>oranges</li>`.
+JSX نیازمند است که تگ‌ها به‌طور صریح بسته شوند: تگ‌های خودبسته مانند `<img>` باید به `<img />` تبدیل شوند، و تگ‌های پیچنده مانند `<li>oranges` باید به‌صورت `<li>oranges</li>` نوشته شوند.
 
-This is how Hedy Lamarr's image and list items look closed:
+این چگونگی بسته‌شدن تصویر و آیتم‌های لیست Hedy Lamarr است:
 
 ```js {2-6,8-10}
 <>
@@ -200,11 +200,11 @@ This is how Hedy Lamarr's image and list items look closed:
 </>
 ```
 
-### 3. camelCase <s>all</s> most of the things! {/*3-camelcase-salls-most-of-the-things*/}
+### ۳. camelCase <s>همه</s> بیشتر چیزها! {/*3-camelcase-salls-most-of-the-things*/}
 
-JSX turns into JavaScript and attributes written in JSX become keys of JavaScript objects. In your own components, you will often want to read those attributes into variables. But JavaScript has limitations on variable names. For example, their names can't contain dashes or be reserved words like `class`.
+JSX به جاوااسکریپت تبدیل می‌شود و ویژگی‌های نوشته‌شده در JSX به کلید اشیاء جاوااسکریپت تبدیل می‌شوند. در کامپوننت‌های خود، اغلب می‌خواهید آن ویژگی‌ها را در متغیرها بخوانید. اما جاوااسکریپت محدودیت‌هایی روی نام متغیرها دارد. برای مثال، نام آن‌ها نمی‌تواند شامل خط‌تیره باشد یا کلمات رزروشده مانند `class` باشد.
 
-This is why, in React, many HTML and SVG attributes are written in camelCase. For example, instead of `stroke-width` you use `strokeWidth`. Since `class` is a reserved word, in React you write `className` instead, named after the [corresponding DOM property](https://developer.mozilla.org/en-US/docs/Web/API/Element/className):
+به همین دلیل، در ری‌اکت، بسیاری از ویژگی‌های HTML و SVG به‌صورت camelCase نوشته می‌شوند. برای مثال، به‌جای `stroke-width` از `strokeWidth` استفاده می‌کنید. از آنجا که `class` یک کلمه‌ی رزروشده است، در ری‌اکت به‌جای آن `className` می‌نویسید، که نام‌گذاری شده طبق [پراپرتی DOM مربوطه](https://developer.mozilla.org/en-US/docs/Web/API/Element/className):
 
 ```js {4}
 <img 
@@ -214,19 +214,19 @@ This is why, in React, many HTML and SVG attributes are written in camelCase. Fo
 />
 ```
 
-You can [find all these attributes in the list of DOM component props.](/reference/react-dom/components/common) If you get one wrong, don't worry—React will print a message with a possible correction to the [browser console.](https://developer.mozilla.org/docs/Tools/Browser_Console)
+می‌توانید [همه‌ی این ویژگی‌ها را در فهرست پراپ‌های کامپوننت DOM پیدا کنید.](/reference/react-dom/components/common) اگر یکی را اشتباه نوشتید، نگران نباشید—ری‌اکت پیامی با اصلاح ممکن در [کنسول مرورگر](https://developer.mozilla.org/docs/Tools/Browser_Console) چاپ می‌کند.
 
 <Pitfall>
 
-For historical reasons, [`aria-*`](https://developer.mozilla.org/docs/Web/Accessibility/ARIA) and [`data-*`](https://developer.mozilla.org/docs/Learn/HTML/Howto/Use_data_attributes) attributes are written as in HTML with dashes.
+به دلایل تاریخی، ویژگی‌های [`aria-*`](https://developer.mozilla.org/docs/Web/Accessibility/ARIA) و [`data-*`](https://developer.mozilla.org/docs/Learn/HTML/Howto/Use_data_attributes) مانند HTML با خط‌تیره نوشته می‌شوند.
 
 </Pitfall>
 
-### Pro-tip: Use a JSX Converter {/*pro-tip-use-a-jsx-converter*/}
+### نکته‌ی حرفه‌ای: از یک مبدل JSX استفاده کنید {/*pro-tip-use-a-jsx-converter*/}
 
-Converting all these attributes in existing markup can be tedious! We recommend using a [converter](https://transform.tools/html-to-jsx) to translate your existing HTML and SVG to JSX. Converters are very useful in practice, but it's still worth understanding what is going on so that you can comfortably write JSX on your own.
+تبدیل همه‌ی این ویژگی‌ها در مارک‌آپ موجود می‌تواند خسته‌کننده باشد! پیشنهاد می‌کنیم از یک [مبدل](https://transform.tools/html-to-jsx) برای ترجمه‌ی HTML و SVG موجود به JSX استفاده کنید. مبدل‌ها در عمل بسیار مفیدند، اما همچنان ارزش دارد که بفهمید چه می‌گذرد تا بتوانید راحت به‌تنهایی JSX بنویسید.
 
-Here is your final result:
+در اینجا نتیجه‌ی نهایی شما آمده است:
 
 <Sandpack>
 
@@ -258,11 +258,11 @@ img { height: 90px }
 
 <Recap>
 
-Now you know why JSX exists and how to use it in components:
+اکنون می‌دانید چرا JSX وجود دارد و چگونه در کامپوننت‌ها از آن استفاده کنید:
 
-* React components group rendering logic together with markup because they are related.
-* JSX is similar to HTML, with a few differences. You can use a [converter](https://transform.tools/html-to-jsx) if you need to.
-* Error messages will often point you in the right direction to fixing your markup.
+* کامپوننت‌های ری‌اکت منطق رندر را همراه با مارک‌آپ گروه‌بندی می‌کنند چون آن‌ها مرتبط هستند.
+* JSX شبیه HTML است، با چند تفاوت. در صورت نیاز می‌توانید از یک [مبدل](https://transform.tools/html-to-jsx) استفاده کنید.
+* پیام‌های خطا اغلب شما را به جهت درست برای اصلاح مارک‌آپ هدایت می‌کنند.
 
 </Recap>
 
@@ -270,9 +270,9 @@ Now you know why JSX exists and how to use it in components:
 
 <Challenges>
 
-#### Convert some HTML to JSX {/*convert-some-html-to-jsx*/}
+#### مقداری HTML را به JSX تبدیل کنید {/*convert-some-html-to-jsx*/}
 
-This HTML was pasted into a component, but it's not valid JSX. Fix it:
+این HTML در یک کامپوننت جای‌گذاری شده، اما JSX معتبری نیست. آن را اصلاح کنید:
 
 <Sandpack>
 
@@ -308,7 +308,7 @@ export default function Bio() {
 
 </Sandpack>
 
-Whether to do it by hand or using the converter is up to you!
+اینکه این کار را دستی انجام دهید یا با استفاده از مبدل، به شما بستگی دارد!
 
 <Solution>
 

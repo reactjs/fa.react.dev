@@ -4,17 +4,17 @@ title: error-boundaries
 
 <Intro>
 
-Validates usage of Error Boundaries instead of try/catch for errors in child components.
+استفاده از Error Boundaryها به‌جای try/catch برای خطاهای کامپوننت‌های فرزند را اعتبارسنجی می‌کند.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## جزئیات قانون {/*rule-details*/}
 
-Try/catch blocks can't catch errors that happen during React's rendering process. Errors thrown in rendering methods or hooks bubble up through the component tree. Only [Error Boundaries](/reference/react/Component#catching-rendering-errors-with-an-error-boundary) can catch these errors.
+بلاک‌های try/catch نمی‌توانند خطاهایی که در طول فرآیند رندر ری‌اکت رخ می‌دهند را بگیرند. خطاهای پرتاب‌شده در متدهای رندر یا هوک‌ها از درخت کامپوننت بالا می‌روند. فقط [Error Boundaryها](/reference/react/Component#catching-rendering-errors-with-an-error-boundary) می‌توانند این خطاها را بگیرند.
 
-### Invalid {/*invalid*/}
+### نامعتبر {/*invalid*/}
 
-Examples of incorrect code for this rule:
+نمونه‌هایی از کد نادرست برای این قانون:
 
 ```js {expectedErrors: {'react-compiler': [4]}}
 // ❌ Try/catch won't catch render errors
@@ -27,9 +27,9 @@ function Parent() {
 }
 ```
 
-### Valid {/*valid*/}
+### معتبر {/*valid*/}
 
-Examples of correct code for this rule:
+نمونه‌هایی از کد درست برای این قانون:
 
 ```js
 // ✅ Using error boundary
@@ -42,11 +42,11 @@ function Parent() {
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-### Why is the linter telling me not to wrap `use` in `try`/`catch`? {/*why-is-the-linter-telling-me-not-to-wrap-use-in-trycatch*/}
+### چرا لینتر به من می‌گوید که `use` را در `try`/`catch` نپیچانم؟ {/*why-is-the-linter-telling-me-not-to-wrap-use-in-trycatch*/}
 
-The `use` hook doesn't throw errors in the traditional sense, it suspends component execution. When `use` encounters a pending promise, it suspends the component and lets React show a fallback. Only Suspense and Error Boundaries can handle these cases. The linter warns against `try`/`catch` around `use` to prevent confusion as the `catch` block would never run.
+هوک `use` در معنای سنتی خطا پرتاب نمی‌کند، بلکه اجرای کامپوننت را suspend می‌کند. وقتی `use` با یک promise در حالت pending مواجه می‌شود، کامپوننت را suspend می‌کند و به ری‌اکت اجازه می‌دهد یک fallback نمایش دهد. فقط ساسپنس و Error Boundaryها می‌توانند این موارد را مدیریت کنند. لینتر در مورد `try`/`catch` اطراف `use` هشدار می‌دهد تا از سردرگمی جلوگیری کند، زیرا بلاک `catch` هرگز اجرا نخواهد شد.
 
 ```js {expectedErrors: {'react-compiler': [5]}}
 // ❌ Try/catch around `use` hook

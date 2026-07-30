@@ -1,30 +1,30 @@
 ---
-title: "Built-in React APIs"
+title: "APIهای پیش‌ساختهٔ ری‌اکت"
 ---
 
 <Intro>
 
-In addition to [Hooks](/reference/react) and [Components](/reference/react/components), the `react` package exports a few other APIs that are useful for defining components. This page lists all the remaining modern React APIs.
+علاوه بر [هوک‌ها](/reference/react) و [کامپوننت‌ها](/reference/react/components)، پکیج `react` چند API دیگر نیز صادر می‌کند که برای تعریف کامپوننت‌ها مفید هستند. این صفحه تمام APIهای مدرن باقی‌ماندهٔ ری‌اکت را فهرست می‌کند.
 
 </Intro>
 
 ---
 
-* [`createContext`](/reference/react/createContext) lets you define and provide context to the child components. Used with [`useContext`.](/reference/react/useContext)
-* [`lazy`](/reference/react/lazy) lets you defer loading a component's code until it's rendered for the first time.
-* [`memo`](/reference/react/memo) lets your component skip re-renders with same props. Used with [`useMemo`](/reference/react/useMemo) and [`useCallback`.](/reference/react/useCallback)
-* [`startTransition`](/reference/react/startTransition) lets you mark a state update as non-urgent. Similar to [`useTransition`.](/reference/react/useTransition)
-* [`act`](/reference/react/act) lets you wrap renders and interactions in tests to ensure updates have processed before making assertions.
+* [`createContext`](/reference/react/createContext) به شما اجازه می‌دهد برای کامپوننت‌های فرزند کانتکست تعریف و ارائه کنید. به‌همراه [`useContext`](/reference/react/useContext) استفاده می‌شود.
+* [`lazy`](/reference/react/lazy) به شما اجازه می‌دهد بارگذاری کد یک کامپوننت را تا زمانی که برای اولین بار رندر شود، به تعویق بیندازید.
+* [`memo`](/reference/react/memo) به کامپوننت شما اجازه می‌دهد با پراپس یکسان از رندر مجدد بپردازد. به‌همراه [`useMemo`](/reference/react/useMemo) و [`useCallback`](/reference/react/useCallback) استفاده می‌شود.
+* [`startTransition`](/reference/react/startTransition) به شما اجازه می‌دهد یک به‌روزرسانی استیت را به‌عنوان غیر فوری علامت‌گذاری کنید. شبیه به [`useTransition`](/reference/react/useTransition) است.
+* [`act`](/reference/react/act) به شما اجازه می‌دهد رندرها و تعاملات را در تست‌ها بپیچید تا مطمئن شوید پیش از انجام assertionها، به‌روزرسانی‌ها پردازش شده‌اند.
 
 ---
 
-## Resource APIs {/*resource-apis*/}
+## APIهای منابع {/*resource-apis*/}
 
-*Resources* can be accessed by a component without having them as part of their state. For example, a component can read a message from a Promise or read styling information from a context.
+*منابع* (Resources) را می‌توان بدون اینکه بخشی از استیت کامپوننت باشند، توسط آن خواند. به‌عنوان مثال، یک کامپوننت می‌تواند پیامی را از یک Promise بخواند یا اطلاعات استایل‌دهی را از یک کانتکست بخواند.
 
-To read a value from a resource, use this API:
+برای خواندن مقداری از یک منبع، از این API استفاده کنید:
 
-* [`use`](/reference/react/use) lets you read the value of a resource like a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or [context](/learn/passing-data-deeply-with-context).
+* [`use`](/reference/react/use) به شما اجازه می‌دهد مقدار یک منبع مانند یک [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) یا [کانتکست](/learn/passing-data-deeply-with-context) را بخوانید.
 ```js
 function MessageComponent({ messagePromise }) {
   const message = use(messagePromise);

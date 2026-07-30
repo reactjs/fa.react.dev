@@ -1,9 +1,9 @@
 ---
-title: Directives
+title: دایرکتیوها
 ---
 
 <Intro>
-React Compiler directives are special string literals that control whether specific functions are compiled.
+دایرکتیوهای React Compiler لیترال‌های رشته‌ای خاصی هستند که کنترل می‌کنند آیا تابع‌های خاصی کامپایل می‌شوند یا نه.
 </Intro>
 
 ```js
@@ -17,29 +17,29 @@ function MyComponent() {
 
 ---
 
-## Overview {/*overview*/}
+## مرور کلی {/*overview*/}
 
-React Compiler directives provide fine-grained control over which functions are optimized by the compiler. They are string literals placed at the beginning of a function body or at the top of a module.
+دایرکتیوهای React Compiler کنترل دقیقی روی اینکه کدام تابع‌ها توسط کامپایلر بهینه‌سازی شوند، فراهم می‌کنند. آن‌ها لیترال‌های رشته‌ای هستند که در ابتدای بدنهٔ یک تابع یا در بالای یک ماژول قرار می‌گیرند.
 
-### Available directives {/*available-directives*/}
+### دایرکتیوهای موجود {/*available-directives*/}
 
-* **[`"use memo"`](/reference/react-compiler/directives/use-memo)** - Opts a function into compilation
-* **[`"use no memo"`](/reference/react-compiler/directives/use-no-memo)** - Opts a function out of compilation
+* **[`"use memo"`](/reference/react-compiler/directives/use-memo)** - یک تابع را برای کامپایل انتخاب می‌کند
+* **[`"use no memo"`](/reference/react-compiler/directives/use-no-memo)** - یک تابع را از کامپایل خارج می‌کند
 
-### Quick comparison {/*quick-comparison*/}
+### مقایسهٔ سریع {/*quick-comparison*/}
 
-| Directive | Purpose | When to use |
+| دایرکتیو | منظور | چه زمان استفاده کنید |
 |-----------|---------|-------------|
-| [`"use memo"`](/reference/react-compiler/directives/use-memo) | Force compilation | When using `annotation` mode or to override `infer` mode heuristics |
-| [`"use no memo"`](/reference/react-compiler/directives/use-no-memo) | Prevent compilation | Debugging issues or working with incompatible code |
+| [`"use memo"`](/reference/react-compiler/directives/use-memo) | اجبار به کامپایل | هنگام استفاده از حالت `annotation` یا برای نادیده گرفتن هیوریستیک‌های حالت `infer` |
+| [`"use no memo"`](/reference/react-compiler/directives/use-no-memo) | جلوگیری از کامپایل | دیباگ مشکلات یا کار با کد ناسازگار |
 
 ---
 
-## Usage {/*usage*/}
+## نحوهٔ استفاده {/*usage*/}
 
-### Function-level directives {/*function-level*/}
+### دایرکتیوهای سطح تابع {/*function-level*/}
 
-Place directives at the beginning of a function to control its compilation:
+دایرکتیوها را در ابتدای یک تابع قرار دهید تا کامپایل آن کنترل شود:
 
 ```js
 // Opt into compilation
@@ -55,9 +55,9 @@ function UnoptimizedComponent() {
 }
 ```
 
-### Module-level directives {/*module-level*/}
+### دایرکتیوهای سطح ماژول {/*module-level*/}
 
-Place directives at the top of a file to affect all functions in that module:
+دایرکتیوها را در بالای یک فایل قرار دهید تا بر همهٔ تابع‌های آن ماژول تأثیر بگذارد:
 
 ```js
 // At the very top of the file
@@ -79,21 +79,21 @@ function Component3() {
 }
 ```
 
-### Compilation modes interaction {/*compilation-modes*/}
+### تعامل با حالت‌های کامپایل {/*compilation-modes*/}
 
-Directives behave differently depending on your [`compilationMode`](/reference/react-compiler/compilationMode):
+دایرکتیوها بسته به [`compilationMode`](/reference/react-compiler/compilationMode) شما رفتار متفاوتی دارند:
 
-* **`annotation` mode**: Only functions with `"use memo"` are compiled
-* **`infer` mode**: Compiler decides what to compile, directives override decisions
-* **`all` mode**: Everything is compiled, `"use no memo"` can exclude specific functions
+* **حالت `annotation`**: فقط تابع‌های دارای `"use memo"` کامپایل می‌شوند
+* **حالت `infer`**: کامپایلر تصمیم می‌گیرد چه چیزی کامپایل شود، دایرکتیوها تصمیمات را نادیده می‌گیرند
+* **حالت `all`**: همه چیز کامپایل می‌شود، `"use no memo"` می‌تواند تابع‌های خاصی را مستثنی کند
 
 ---
 
-## Best practices {/*best-practices*/}
+## بهترین روش‌ها {/*best-practices*/}
 
-### Use directives sparingly {/*use-sparingly*/}
+### استفادهٔ کم از دایرکتیوها {/*use-sparingly*/}
 
-Directives are escape hatches. Prefer configuring the compiler at the project level:
+دایرکتیوها راه فرار هستند. پیکربندی کامپایلر در سطح پروژه را ترجیح دهید:
 
 ```js
 // ✅ Good - project-wide configuration
@@ -112,9 +112,9 @@ function SpecialCase() {
 }
 ```
 
-### Document directive usage {/*document-usage*/}
+### مستندسازی استفاده از دایرکتیو {/*document-usage*/}
 
-Always explain why a directive is used:
+همیشه توضیح دهید چرا از یک دایرکتیو استفاده شده:
 
 ```js
 // ✅ Good - clear explanation
@@ -130,14 +130,14 @@ function Mystery() {
 }
 ```
 
-### Plan for removal {/*plan-removal*/}
+### برنامه برای حذف {/*plan-removal*/}
 
-Opt-out directives should be temporary:
+دایرکتیوهای opt-out باید موقتی باشند:
 
-1. Add the directive with a TODO comment
-2. Create a tracking issue
-3. Fix the underlying problem
-4. Remove the directive
+1. دایرکتیو را با یک کامنت TODO اضافه کنید
+2. یک issue برای پیگیری بسازید
+3. مشکل زیرین را برطرف کنید
+4. دایرکتیو را حذف کنید
 
 ```js
 function TemporaryWorkaround() {
@@ -148,11 +148,11 @@ function TemporaryWorkaround() {
 
 ---
 
-## Common patterns {/*common-patterns*/}
+## الگوهای رایج {/*common-patterns*/}
 
-### Gradual adoption {/*gradual-adoption*/}
+### پذیرش تدریجی {/*gradual-adoption*/}
 
-When adopting the React Compiler in a large codebase:
+هنگام پذیرش React Compiler در یک کدبیس بزرگ:
 
 ```js
 // Start with annotation mode
@@ -176,23 +176,23 @@ function ProblematicComponent() {
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-For specific issues with directives, see the troubleshooting sections in:
+برای مشکلات خاص با دایرکتیوها، بخش‌های رفع اشکال را در:
 
-* [`"use memo"` troubleshooting](/reference/react-compiler/directives/use-memo#troubleshooting)
-* [`"use no memo"` troubleshooting](/reference/react-compiler/directives/use-no-memo#troubleshooting)
+* [`"use memo"` رفع اشکال](/reference/react-compiler/directives/use-memo#troubleshooting)
+* [`"use no memo"` رفع اشکال](/reference/react-compiler/directives/use-no-memo#troubleshooting)
 
-### Common issues {/*common-issues*/}
+### مشکلات رایج {/*common-issues*/}
 
-1. **Directive ignored**: Check placement (must be first) and spelling
-2. **Compilation still happens**: Check `ignoreUseNoForget` setting
-3. **Module directive not working**: Ensure it's before all imports
+1. **دایرکتیو نادیده گرفته می‌شود**: محل قرارگیری (باید اول باشد) و املای آن را بررسی کنید
+2. **کامپایل همچنان انجام می‌شود**: تنظیم `ignoreUseNoForget` را بررسی کنید
+3. **دایرکتیو ماژول کار نمی‌کند**: مطمئن شوید قبل از همهٔ importها است
 
 ---
 
-## See also {/*see-also*/}
+## همچنین ببینید {/*see-also*/}
 
-* [`compilationMode`](/reference/react-compiler/compilationMode) - Configure how the compiler chooses what to optimize
-* [`Configuration`](/reference/react-compiler/configuration) - Full compiler configuration options
-* [React Compiler documentation](https://react.dev/learn/react-compiler) - Getting started guide
+* [`compilationMode`](/reference/react-compiler/compilationMode) - پیکربندی چگونگی انتخاب کامپایلر برای بهینه‌سازی
+* [`پیکربندی`](/reference/react-compiler/configuration) - گزینه‌های کامل پیکربندی کامپایلر
+* [مستندات React Compiler](https://react.dev/learn/react-compiler) - راهنمای شروع به کار

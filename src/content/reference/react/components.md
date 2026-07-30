@@ -1,24 +1,24 @@
 ---
-title: "Built-in React Components"
+title: "کامپوننت‌های پیش‌ساختهٔ ری‌اکت"
 ---
 
 <Intro>
 
-React exposes a few built-in components that you can use in your JSX.
+ری‌اکت چند کامپوننت پیش‌ساخته را ارائه می‌کند که می‌توانید در JSX خود از آن‌ها استفاده کنید.
 
 </Intro>
 
 ---
 
-## Built-in components {/*built-in-components*/}
+## کامپوننت‌های پیش‌ساخته {/*built-in-components*/}
 
-* [`<Fragment>`](/reference/react/Fragment), alternatively written as `<>...</>`, lets you group multiple JSX nodes together.
-* [`<Profiler>`](/reference/react/Profiler) lets you measure rendering performance of a React tree programmatically.
-* [`<Suspense>`](/reference/react/Suspense) lets you display a fallback while the child components are loading.
-* [`<StrictMode>`](/reference/react/StrictMode) enables extra development-only checks that help you find bugs early.
+* [`<Fragment>`](/reference/react/Fragment)، که به‌صورت `<>...</>` نیز نوشته می‌شود، به شما اجازه می‌دهد چندین نُد JSX را در کنار هم گروه‌بندی کنید.
+* [`<Profiler>`](/reference/react/Profiler) به شما اجازه می‌دهد عملکرد رندر یک درخت ری‌اکت را به‌صورت برنامه‌نویسی اندازه‌گیری کنید.
+* [`<Suspense>`](/reference/react/Suspense) به شما اجازه می‌دهد هنگام بارگذاری کامپوننت‌های فرزند، یک محتوای جایگزین (fallback) نمایش دهید.
+* [`<StrictMode>`](/reference/react/StrictMode) بررسی‌های اضافیِ مخصوص زمان توسعه را فعال می‌کند که کمک می‌کند زودتر باگ‌ها را پیدا کنید.
 
 ---
 
-## Your own components {/*your-own-components*/}
+## کامپوننت‌های خودتان {/*your-own-components*/}
 
-You can also [define your own components](/learn/your-first-component) as JavaScript functions.
+همچنین می‌توانید [کامپوننت‌های خودتان را](/learn/your-first-component) به‌صورت توابع جاوااسکریپت تعریف کنید.

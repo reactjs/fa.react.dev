@@ -1,53 +1,53 @@
 ---
-title: React DOM APIs
+title: APIهای React DOM
 ---
 
 <Intro>
 
-The `react-dom` package contains methods that are only supported for the web applications (which run in the browser DOM environment). They are not supported for React Native.
+پکیج `react-dom` شامل متدهایی است که فقط برای اپلیکیشن‌های وب (که در محیط DOM مرورگر اجرا می‌شوند) پشتیبانی می‌شوند. این متدها برای React Native پشتیبانی نمی‌شوند.
 
 </Intro>
 
 ---
 
-## APIs {/*apis*/}
+## APIها {/*apis*/}
 
-These APIs can be imported from your components. They are rarely used:
+این APIها را می‌توانید از کامپوننت‌های خود import کنید. این‌ها به‌ندرت استفاده می‌شوند:
 
-* [`createPortal`](/reference/react-dom/createPortal) lets you render child components in a different part of the DOM tree.
-* [`flushSync`](/reference/react-dom/flushSync) lets you force React to flush a state update and update the DOM synchronously.
+* [`createPortal`](/reference/react-dom/createPortal) به شما اجازه می‌دهد کامپوننت‌های فرزند را در بخش متفاوتی از درخت DOM رندر کنید.
+* [`flushSync`](/reference/react-dom/flushSync) به شما اجازه می‌دهد ری‌اکت را مجبور کنید یک به‌روزرسانی استیت را اعمال کرده و DOM را به‌صورت همگام به‌روزرسانی کنید.
 
-## Resource Preloading APIs {/*resource-preloading-apis*/}
+## APIهای پیش‌بارگذاری منابع {/*resource-preloading-apis*/}
 
-These APIs can be used to make apps faster by pre-loading resources such as scripts, stylesheets, and fonts as soon as you know you need them, for example before navigating to another page where the resources will be used.
+از این APIها می‌توان برای سریع‌تر کردن اپلیکیشن‌ها با پیش‌بارگذاری منابعی مانند اسکریپت‌ها، stylesheetها و فونت‌ها به‌محض اینکه می‌دانید به آن‌ها نیاز دارید، استفاده کرد، مثلاً پیش از پیمایش به صفحه‌ای دیگر که منابع در آن استفاده خواهند شد.
 
-[React-based frameworks](/learn/creating-a-react-app) frequently handle resource loading for you, so you might not have to call these APIs yourself. Consult your framework's documentation for details.
+[فریم‌ورک‌های مبتنی بر ری‌اکت](/learn/creating-a-react-app) اغلب بارگذاری منابع را برای شما مدیریت می‌کنند، بنابراین ممکن است لازم نباشد خودتان این APIها را فراخوانی کنید. برای جزئیات به مستندات فریم‌ورک خود مراجعه کنید.
 
-* [`prefetchDNS`](/reference/react-dom/prefetchDNS) lets you prefetch the IP address of a DNS domain name that you expect to connect to.
-* [`preconnect`](/reference/react-dom/preconnect) lets you connect to a server you expect to request resources from, even if you don't know what resources you'll need yet.
-* [`preload`](/reference/react-dom/preload) lets you fetch a stylesheet, font, image, or external script that you expect to use.
-* [`preloadModule`](/reference/react-dom/preloadModule) lets you fetch an ESM module that you expect to use.
-* [`preinit`](/reference/react-dom/preinit) lets you fetch and evaluate an external script or fetch and insert a stylesheet.
-* [`preinitModule`](/reference/react-dom/preinitModule) lets you fetch and evaluate an ESM module.
-
----
-
-## Entry points {/*entry-points*/}
-
-The `react-dom` package provides two additional entry points:
-
-* [`react-dom/client`](/reference/react-dom/client) contains APIs to render React components on the client (in the browser).
-* [`react-dom/server`](/reference/react-dom/server) contains APIs to render React components on the server.
+* [`prefetchDNS`](/reference/react-dom/prefetchDNS) به شما اجازه می‌دهد آدرس IP یک نام دامنهٔ DNS را که انتظار دارید به آن متصل شوید، پیش‌بارگذاری کنید.
+* [`preconnect`](/reference/react-dom/preconnect) به شما اجازه می‌دهد به سروری که انتظار دارید منابعی را از آن درخواست کنید متصل شوید، حتی اگر هنوز نمی‌دانید به چه منابعی نیاز خواهید داشت.
+* [`preload`](/reference/react-dom/preload) به شما اجازه می‌دهد یک stylesheet، فونت، تصویر، یا اسکریپت خارجی را که انتظار دارید استفاده کنید، fetch کنید.
+* [`preloadModule`](/reference/react-dom/preloadModule) به شما اجازه می‌دهد یک ماژول ESM را که انتظار دارید استفاده کنید، fetch کنید.
+* [`preinit`](/reference/react-dom/preinit) به شما اجازه می‌دهد یک اسکریپت خارجی را fetch و ارزیابی کنید، یا یک stylesheet را fetch و در سند درج کنید.
+* [`preinitModule`](/reference/react-dom/preinitModule) به شما اجازه می‌دهد یک ماژول ESM را fetch و ارزیابی کنید.
 
 ---
 
-## Removed APIs {/*removed-apis*/}
+## نقاط ورود {/*entry-points*/}
 
-These APIs were removed in React 19:
+پکیج `react-dom` دو نقطهٔ ورود اضافی فراهم می‌کند:
 
-* [`findDOMNode`](https://18.react.dev/reference/react-dom/findDOMNode): see [alternatives](https://18.react.dev/reference/react-dom/findDOMNode#alternatives).
-* [`hydrate`](https://18.react.dev/reference/react-dom/hydrate): use [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) instead.
-* [`render`](https://18.react.dev/reference/react-dom/render): use [`createRoot`](/reference/react-dom/client/createRoot) instead.
-* [`unmountComponentAtNode`](https://18.react.dev/reference/react-dom/unmountComponentAtNode): use [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount) instead.
-* [`renderToNodeStream`](https://18.react.dev/reference/react-dom/server/renderToNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.
-* [`renderToStaticNodeStream`](https://18.react.dev/reference/react-dom/server/renderToStaticNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.
+* [`react-dom/client`](/reference/react-dom/client) شامل APIهایی برای رندر کامپوننت‌های ری‌اکت روی کلاینت (در مرورگر) است.
+* [`react-dom/server`](/reference/react-dom/server) شامل APIهایی برای رندر کامپوننت‌های ری‌اکت روی سرور است.
+
+---
+
+## APIهای حذف‌شده {/*removed-apis*/}
+
+این APIها در ری‌اکت ۱۹ حذف شده‌اند:
+
+* [`findDOMNode`](https://18.react.dev/reference/react-dom/findDOMNode): [جایگزین‌ها](https://18.react.dev/reference/react-dom/findDOMNode#alternatives) را ببینید.
+* [`hydrate`](https://18.react.dev/reference/react-dom/hydrate): به‌جای آن از [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) استفاده کنید.
+* [`render`](https://18.react.dev/reference/react-dom/render): به‌جای آن از [`createRoot`](/reference/react-dom/client/createRoot) استفاده کنید.
+* [`unmountComponentAtNode`](https://18.react.dev/reference/react-dom/unmountComponentAtNode): به‌جای آن از [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount) استفاده کنید.
+* [`renderToNodeStream`](https://18.react.dev/reference/react-dom/server/renderToNodeStream): به‌جای آن از APIهای [`react-dom/server`](/reference/react-dom/server) استفاده کنید.
+* [`renderToStaticNodeStream`](https://18.react.dev/reference/react-dom/server/renderToStaticNodeStream): به‌جای آن از APIهای [`react-dom/server`](/reference/react-dom/server) استفاده کنید.

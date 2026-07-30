@@ -1,41 +1,41 @@
 ---
-title: Keeping Components Pure
+title: خالص نگه‌داشتن کامپوننت‌ها
 ---
 
 <Intro>
 
-Some JavaScript functions are *pure.* Pure functions only perform a calculation and nothing more. By strictly only writing your components as pure functions, you can avoid an entire class of baffling bugs and unpredictable behavior as your codebase grows. To get these benefits, though, there are a few rules you must follow.
+برخی از توابع جاوااسکریپت *خالص (pure)* هستند. توابع خالص فقط یک محاسبه انجام می‌دهند و هیچ چیز بیشتر. با نوشتن سخت‌گیرانهٔ کامپوننت‌های خود به‌عنوان توابع خالص، می‌توانید از دسته‌ای کامل از باگ‌های گیج‌کننده و رفتار غیرقابل پیش‌بینی هنگام رشد پایگاه کد خود جلوگیری کنید. برای به‌دست آوردن این مزایا، با این حال، چند قانون وجود دارد که باید رعایت کنید.
 
 </Intro>
 
 <YouWillLearn>
 
-* What purity is and how it helps you avoid bugs
-* How to keep components pure by keeping changes out of the render phase
-* How to use Strict Mode to find mistakes in your components
+* خلوص چیست و چگونه به شما کمک می‌کند از باگ‌ها جلوگیری کنید
+* چگونه کامپوننت‌ها را با دور نگه‌داشتن تغییرات از مرحلهٔ رندر، خالص نگه دارید
+* چگونه از حالت سخت‌گیرانه (Strict Mode) برای یافتن اشتباهات در کامپوننت‌های خود استفاده کنید
 
 </YouWillLearn>
 
-## Purity: Components as formulas {/*purity-components-as-formulas*/}
+## خلوص: کامپوننت‌ها به‌عنوان فرمول {/*purity-components-as-formulas*/}
 
-In computer science (and especially the world of functional programming), [a pure function](https://wikipedia.org/wiki/Pure_function) is a function with the following characteristics:
+در علوم کامپیوتر (و به‌ویژه دنیای برنامه‌نویسی تابعی)، [یک تابع خالص](https://wikipedia.org/wiki/Pure_function) تابعی با ویژگی‌های زیر است:
 
-* **It minds its own business.** It does not change any objects or variables that existed before it was called.
-* **Same inputs, same output.** Given the same inputs, a pure function should always return the same result.
+* **فقط به کار خودش می‌پردازد.** هیچ شیء یا متغیری که قبل از فراخوانی‌اش وجود داشته را تغییر نمی‌دهد.
+* **ورودی یکسان، خروجی یکسان.** با توجه به ورودی‌های یکسان، یک تابع خالص باید همیشه همان نتیجه را برگرداند.
 
-You might already be familiar with one example of pure functions: formulas in math.
+شاید قبلاً با یک مثال از توابع خالص آشنا باشید: فرمول‌ها در ریاضی.
 
-Consider this math formula: <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math>.
+این فرمول ریاضی را در نظر بگیرید: <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math>.
 
-If <Math><MathI>x</MathI> = 2</Math> then <Math><MathI>y</MathI> = 4</Math>. Always. 
+اگر <Math><MathI>x</MathI> = 2</Math> آنگاه <Math><MathI>y</MathI> = 4</Math>. همیشه.
 
-If <Math><MathI>x</MathI> = 3</Math> then <Math><MathI>y</MathI> = 6</Math>. Always. 
+اگر <Math><MathI>x</MathI> = 3</Math> آنگاه <Math><MathI>y</MathI> = 6</Math>. همیشه.
 
-If <Math><MathI>x</MathI> = 3</Math>, <MathI>y</MathI> won't sometimes be <Math>9</Math> or <Math>–1</Math> or <Math>2.5</Math> depending on the time of day or the state of the stock market. 
+اگر <Math><MathI>x</MathI> = 3</Math>، <MathI>y</MathI> گاهی <Math>9</Math> یا <Math>–1</Math> یا <Math>2.5</Math> نخواهد بود بسته به زمان روز یا وضعیت بازار بورس.
 
-If <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> and <Math><MathI>x</MathI> = 3</Math>, <MathI>y</MathI> will _always_ be <Math>6</Math>. 
+اگر <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> و <Math><MathI>x</MathI> = 3</Math>، <MathI>y</MathI> _همیشه_ <Math>6</Math> خواهد بود.
 
-If we made this into a JavaScript function, it would look like this:
+اگر این را به یک تابع جاوااسکریپت تبدیل می‌کردیم، شبیه این می‌شد:
 
 ```js
 function double(number) {
@@ -43,9 +43,9 @@ function double(number) {
 }
 ```
 
-In the above example, `double` is a **pure function.** If you pass it `3`, it will return `6`. Always.
+در مثال بالا، `double` یک **تابع خالص** است. اگر `3` را به آن پاس دهید، `6` برمی‌گرداند. همیشه.
 
-React is designed around this concept. **React assumes that every component you write is a pure function.** This means that React components you write must always return the same JSX given the same inputs:
+ری‌اکت حول این مفهوم طراحی شده است. **ری‌اکت فرض می‌کند که هر کامپوننتی که می‌نویسید یک تابع خالص است.** این بدان معناست که کامپوننت‌های ری‌اکتی که می‌نویسید باید با توجه به ورودی‌های یکسان همیشه همان JSX را برگردانند:
 
 <Sandpack>
 
@@ -75,21 +75,21 @@ export default function App() {
 
 </Sandpack>
 
-When you pass `drinkers={2}` to `Recipe`, it will return JSX containing `2 cups of water`. Always. 
+وقتی `drinkers={2}` را به `Recipe` پاس می‌دهید، JSXی شامل `2 cups of water` برمی‌گرداند. همیشه.
 
-If you pass `drinkers={4}`, it will return JSX containing `4 cups of water`. Always.
+اگر `drinkers={4}` پاس دهید، JSXی شامل `4 cups of water` برمی‌گرداند. همیشه.
 
-Just like a math formula. 
+درست مانند یک فرمول ریاضی.
 
-You could think of your components as recipes: if you follow them and don't introduce new ingredients during the cooking process, you will get the same dish every time. That "dish" is the JSX that the component serves to React to [render.](/learn/render-and-commit)
+می‌توانید کامپوننت‌های خود را به‌عنوان دستور پخت در نظر بگیرید: اگر به آن‌ها پایبند باشید و در طول فرآیند پخت مواد جدیدی معرفی نکنید، هر بار همان غذا را دریافت می‌کنید. آن «غذا» همان JSX است که کامپوننت برای [رندر کردن](/learn/render-and-commit) به ری‌اکت ارائه می‌دهد.
 
 <Illustration src="/images/docs/illustrations/i_puritea-recipe.png" alt="A tea recipe for x people: take x cups of water, add x spoons of tea and 0.5x spoons of spices, and 0.5x cups of milk" />
 
-## Side Effects: (un)intended consequences {/*side-effects-unintended-consequences*/}
+## عوارض جانبی: پیامدهای (نا)خواسته {/*side-effects-unintended-consequences*/}
 
-React's rendering process must always be pure. Components should only *return* their JSX, and not *change* any objects or variables that existed before rendering—that would make them impure!
+فرآیند رندر ری‌اکت باید همیشه خالص باشد. کامپوننت‌ها باید فقط JSX خود را *برگردانند*، و نه *تغییر دهند* هیچ شیء یا متغیری که قبل از رندر وجود داشته — این کار آن‌ها را ناخالص می‌کند!
 
-Here is a component that breaks this rule:
+اینجا کامپوننتی است که این قانون را نقض می‌کند:
 
 <Sandpack>
 
@@ -115,11 +115,11 @@ export default function TeaSet() {
 
 </Sandpack>
 
-This component is reading and writing a `guest` variable declared outside of it. This means that **calling this component multiple times will produce different JSX!** And what's more, if _other_ components read `guest`, they will produce different JSX, too, depending on when they were rendered! That's not predictable.
+این کامپوننت یک متغیر `guest` که خارج از آن تعریف شده را می‌خواند و می‌نویسد. این بدان معناست که **فراخوانی این کامپوننت چندین بار JSX متفاوتی تولید می‌کند!** و علاوه بر این، اگر کامپوننت‌های _دیگری_ `guest` را بخوانند، آن‌ها هم بسته به اینکه کِی رندر شده‌اند، JSX متفاوتی تولید می‌کنند! این قابل پیش‌بینی نیست.
 
-Going back to our formula <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math>, now even if <Math><MathI>x</MathI> = 2</Math>, we cannot trust that <Math><MathI>y</MathI> = 4</Math>. Our tests could fail, our users would be baffled, planes would fall out of the sky—you can see how this would lead to confusing bugs!
+برگردیم به فرمول خودمان <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math>، حالا حتی اگر <Math><MathI>x</MathI> = 2</Math> باشد، نمی‌توانیم اعتماد کنیم که <Math><MathI>y</MathI> = 4</Math>. تست‌های ما ممکن است شکست بخورند، کاربران ما گیج می‌شوند، هواپیماها از آسمان می‌افتند — می‌توانید ببینید چگونه این به باگ‌های گیج‌کننده منجر می‌شود!
 
-You can fix this component by [passing `guest` as a prop instead](/learn/passing-props-to-a-component):
+می‌توانید این کامپوننت را با [پاس‌دادن `guest` به‌عنوان یک پراپس](/learn/passing-props-to-a-component) اصلاح کنید:
 
 <Sandpack>
 
@@ -141,31 +141,31 @@ export default function TeaSet() {
 
 </Sandpack>
 
-Now your component is pure, as the JSX it returns only depends on the `guest` prop.
+حالا کامپوننت شما خالص است، زیرا JSX که برمی‌گرداند فقط به پراپس `guest` وابسته است.
 
-In general, you should not expect your components to be rendered in any particular order. It doesn't matter if you call <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> before or after <Math><MathI>y</MathI> = 5<MathI>x</MathI></Math>: both formulas will resolve independently of each other. In the same way, each component should only "think for itself", and not attempt to coordinate with or depend upon others during rendering. Rendering is like a school exam: each component should calculate JSX on their own!
+به‌طور کلی، نباید انتظار داشته باشید که کامپوننت‌های شما به هر ترتیب خاصی رندر شوند. اهمیتی ندارد که <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> را قبل یا بعد از <Math><MathI>y</MathI> = 5<MathI>x</MathI></Math> فراخوانی کنید: هر دو فرمول مستقل از یکدیگر حل می‌شوند. به همان روش، هر کامپوننت باید فقط «به فکر خودش باشد»، و در طول رندر تلاش نکند با دیگران هماهنگ شود یا به آن‌ها وابسته باشد. رندر مانند یک امتحان مدرسه است: هر کامپوننت باید JSX را به‌تنهایی محاسبه کند!
 
 <DeepDive>
 
-#### Detecting impure calculations with StrictMode {/*detecting-impure-calculations-with-strict-mode*/}
+#### تشخیص محاسبات ناخالص با حالت سخت‌گیرانه {/*detecting-impure-calculations-with-strict-mode*/}
 
-Although you might not have used them all yet, in React there are three kinds of inputs that you can read while rendering: [props](/learn/passing-props-to-a-component), [state](/learn/state-a-components-memory), and [context.](/learn/passing-data-deeply-with-context) You should always treat these inputs as read-only.
+اگرچه ممکن است هنوز از همهٔ آن‌ها استفاده نکرده باشید، در ری‌اکت سه نوع ورودی وجود دارد که می‌توانید هنگام رندر بخوانید: [پراپس‌ها](/learn/passing-props-to-a-component)، [استیت](/learn/state-a-components-memory) و [کانتکست.](/learn/passing-data-deeply-with-context) همیشه باید با این ورودی‌ها به‌عنوان فقط‌خواندنی رفتار کنید.
 
-When you want to *change* something in response to user input, you should [set state](/learn/state-a-components-memory) instead of writing to a variable. You should never change preexisting variables or objects while your component is rendering.
+وقتی می‌خواهید در پاسخ به ورودی کاربر چیزی را *تغییر دهید*، باید به‌جای نوشتن در یک متغیر، [استیت را تنظیم کنید](/learn/state-a-components-memory). هرگز نباید هنگام رندر شدن کامپوننت، متغیرها یا اشیاء ازپیش‌موجود را تغییر دهید.
 
-React offers a "Strict Mode" in which it calls each component's function twice during development. **By calling the component functions twice, Strict Mode helps find components that break these rules.**
+ری‌اکت یک «حالت سخت‌گیرانه (Strict Mode)» ارائه می‌کند که در آن در طول توسعه، تابع هر کامپوننت را دو بار فراخوانی می‌کند. **با فراخوانی توابع کامپوننت دو بار، حالت سخت‌گیرانه کمک می‌کند کامپوننت‌هایی که این قوانین را نقض می‌کنند پیدا کند.**
 
-Notice how the original example displayed "Guest #2", "Guest #4", and "Guest #6" instead of "Guest #1", "Guest #2", and "Guest #3". The original function was impure, so calling it twice broke it. But the fixed pure version works even if the function is called twice every time. **Pure functions only calculate, so calling them twice won't change anything**--just like calling `double(2)` twice doesn't change what's returned, and solving <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> twice doesn't change what <MathI>y</MathI> is. Same inputs, same outputs. Always.
+توجه کنید که مثال اصلی به‌جای «Guest #1»، «Guest #2» و «Guest #3»، «Guest #2»، «Guest #4» و «Guest #6» را نمایش داد. تابع اصلی ناخالص بود، بنابراین فراخوانی دو بار آن را خراب کرد. اما نسخهٔ خالص اصلاح‌شده حتی اگر تابع هر بار دو بار فراخوانی شود هم کار می‌کند. **توابع خالص فقط محاسبه می‌کنند، بنابراین فراخوانی آن‌ها دو بار چیزی را تغییر نمی‌دهد** — درست مانند اینکه فراخوانی `double(2)` دو بار چیزی که برگردانده می‌شود را تغییر نمی‌دهد، و حل کردن <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> دو بار، <MathI>y</MathI> را تغییر نمی‌دهد. ورودی یکسان، خروجی یکسان. همیشه.
 
-Strict Mode has no effect in production, so it won't slow down the app for your users. To opt into Strict Mode, you can wrap your root component into `<React.StrictMode>`. Some frameworks do this by default.
+حالت سخت‌گیرانه در محیط تولید تأثیری ندارد، بنابراین برنامه را برای کاربران شما کند نمی‌کند. برای انتخاب حالت سخت‌گیرانه، می‌توانید کامپوننت ریشهٔ خود را در `<React.StrictMode>` بپیچید. برخی فریمورک‌ها این کار را به‌طور پیش‌فرض انجام می‌دهند.
 
 </DeepDive>
 
-### Local mutation: Your component's little secret {/*local-mutation-your-components-little-secret*/}
+### تغییر محلی: راز کوچک کامپوننت شما {/*local-mutation-your-components-little-secret*/}
 
-In the above example, the problem was that the component changed a *preexisting* variable while rendering. This is often called a **"mutation"** to make it sound a bit scarier. Pure functions don't mutate variables outside of the function's scope or objects that were created before the call—that makes them impure!
+در مثال بالا، مشکل این بود که کامپوننت هنگام رندر یک متغیر *ازپیش‌موجود* را تغییر داد. این اغلب **«mutation»** (جهش) نامیده می‌شود تا کمی ترسناک‌تر به‌نظر برسد. توابع خالص متغیرهای خارج از اسکوپ تابع یا اشیایی که قبل از فراخوانی ایجاد شده‌اند را تغییر نمی‌دهند — این کار آن‌ها را ناخالص می‌کند!
 
-However, **it's completely fine to change variables and objects that you've *just* created while rendering.** In this example, you create an `[]` array, assign it to a `cups` variable, and then `push` a dozen cups into it:
+با این حال، **تغییر دادن متغیرها و اشیایی که *هم‌اکنون* در طول رندر ایجاد کرده‌اید کاملاً مشکلی ندارد.** در این مثال، یک آرایه `[]` ایجاد می‌کنید، آن را به متغیر `cups` اختصاص می‌دهید، و سپس یک جفت فنجان را به آن `push` می‌کنید:
 
 <Sandpack>
 
@@ -185,43 +185,43 @@ export default function TeaGathering() {
 
 </Sandpack>
 
-If the `cups` variable or the `[]` array were created outside the `TeaGathering` function, this would be a huge problem! You would be changing a *preexisting* object by pushing items into that array.
+اگر متغیر `cups` یا آرایه `[]` خارج از تابع `TeaGathering` ایجاد شده بودند، این یک مشکل بزرگ می‌بود! شما با push کردن آیتم‌ها به آن آرایه، یک شیء *ازپیش‌موجود* را تغییر می‌دادید.
 
-However, it's fine because you've created them *during the same render*, inside `TeaGathering`. No code outside of `TeaGathering` will ever know that this happened. This is called **"local mutation"**—it's like your component's little secret.
+با این حال، مشکلی نیست زیرا آن‌ها را *در طول همان رندر*، درون `TeaGathering` ایجاد کرده‌اید. هیچ کد خارج از `TeaGathering` هرگز نخواهد فهمید که این اتفاق افتاده است. این **«local mutation» (تغییر محلی)** نامیده می‌شود — مانند راز کوچک کامپوننت شماست.
 
-## Where you _can_ cause side effects {/*where-you-_can_-cause-side-effects*/}
+## کجا می‌توانید عوارض جانبی ایجاد کنید {/*where-you-_can_-cause-side-effects*/}
 
-While functional programming relies heavily on purity, at some point, somewhere, _something_ has to change. That's kind of the point of programming! These changes—updating the screen, starting an animation, changing the data—are called **side effects.** They're things that happen _"on the side"_, not during rendering.
+با این که برنامه‌نویسی تابعی به‌شدت به خلوص تکیه می‌کند، در نهایت، در جایی، _چیزی_ باید تغییر کند. این تا حدودی هدف برنامه‌نویسی است! این تغییرات — به‌روزرسانی صفحه، شروع یک انیمیشن، تغییر داده‌ها — **عوارض جانبی (side effects)** نامیده می‌شوند. آن‌ها چیزهایی هستند که _«در کنار»_ اتفاق می‌افتند، نه در طول رندر.
 
-In React, **side effects usually belong inside [event handlers.](/learn/responding-to-events)** Event handlers are functions that React runs when you perform some action—for example, when you click a button. Even though event handlers are defined *inside* your component, they don't run *during* rendering! **So event handlers don't need to be pure.**
+در ری‌اکت، **عوارض جانبی معمولاً درون [مدیرکننده‌های رویداد](/learn/responding-to-events) جای می‌گیرند.** مدیرکننده‌های رویداد توابعی هستند که ری‌اکت هنگام انجام برخی اقدامات اجرا می‌کند — برای مثال، وقتی روی یک دکمه کلیک می‌کنید. حتی اگر مدیرکننده‌های رویداد درون کامپوننت شما تعریف می‌شوند، در طول رندر اجرا *نمی‌شوند*! **بنابراین مدیرکننده‌های رویداد نیازی ندارند خالص باشند.**
 
-If you've exhausted all other options and can't find the right event handler for your side effect, you can still attach it to your returned JSX with a [`useEffect`](/reference/react/useEffect) call in your component. This tells React to execute it later, after rendering, when side effects are allowed. **However, this approach should be your last resort.**
+اگر همهٔ گزینه‌های دیگر را امتحان کرده‌اید و نتوانسته‌اید مدیرکنندهٔ رویداد مناسبی برای عارضهٔ جانبی خود پیدا کنید، همچنان می‌توانید آن را به JSX برگردانده‌شده خود با یک فراخوانی [`useEffect`](/reference/react/useEffect) در کامپوننت خود متصل کنید. این به ری‌اکت می‌گوید که آن را بعداً، بعد از رندر، هنگامی که عوارض جانبی مجاز هستند اجرا کند. **با این حال، این رویکرد باید آخرین راه‌حل شما باشد.**
 
-When possible, try to express your logic with rendering alone. You'll be surprised how far this can take you!
+وقتی ممکن است، سعی کنید منطق خود را تنها با رندر بیان کنید. شگفت‌زده می‌شوید که این تا کجا می‌تواند شما را ببرد!
 
 <DeepDive>
 
-#### Why does React care about purity? {/*why-does-react-care-about-purity*/}
+#### چرا ری‌اکت به خلوص اهمیت می‌دهد؟ {/*why-does-react-care-about-purity*/}
 
-Writing pure functions takes some habit and discipline. But it also unlocks marvelous opportunities:
+نوشتن توابع خالص نیاز به مقداری عادت و نظم دارد. اما فرصت‌های شگفت‌انگیزی را نیز باز می‌کند:
 
-* Your components could run in a different environment—for example, on the server! Since they return the same result for the same inputs, one component can serve many user requests.
-* You can improve performance by [skipping rendering](/reference/react/memo) components whose inputs have not changed. This is safe because pure functions always return the same results, so they are safe to cache.
-* If some data changes in the middle of rendering a deep component tree, React can restart rendering without wasting time to finish the outdated render. Purity makes it safe to stop calculating at any time.
+* کامپوننت‌های شما می‌توانند در محیط متفاوتی اجرا شوند — برای مثال، روی سرور! چون برای ورودی‌های یکسان همان نتیجه را برمی‌گردانند، یک کامپوننت می‌تواند به درخواست‌های بسیاری از کاربران خدمت کند.
+* می‌توانید با [نادیده‌گرفتن رندر](/reference/react/memo) کامپوننت‌هایی که ورودی‌هایشان تغییر نکرده، عملکرد را بهبود ببخشید. این بی‌خطر است زیرا توابع خالص همیشه همان نتایج را برمی‌گردانند، بنابراین بی‌خطر است که آن‌ها را کش (cache) کنند.
+* اگر برخی داده‌ها در میانهٔ رندر یک درخت کامپوننتی عمیق تغییر کنند، ری‌اکت می‌تواند رندر را بدون اتلاف وقت برای اتمام رندر قدیمی دوباره شروع کند. خلوص این را بی‌خطر می‌کند که در هر زمان از محاسبه دست بکشید.
 
-Every new React feature we're building takes advantage of purity. From data fetching to animations to performance, keeping components pure unlocks the power of the React paradigm.
+هر قابلیت جدید ری‌اکت که می‌سازیم از خلوص بهره می‌برد. از fetch داده تا انیمیشن‌ها تا عملکرد، خالص نگه‌داشتن کامپوننت‌ها قدرت پارادایم ری‌اکت را باز می‌کند.
 
 </DeepDive>
 
 <Recap>
 
-* A component must be pure, meaning:
-  * **It minds its own business.** It should not change any objects or variables that existed before rendering.
-  * **Same inputs, same output.** Given the same inputs, a component should always return the same JSX. 
-* Rendering can happen at any time, so components should not depend on each others' rendering sequence.
-* You should not mutate any of the inputs that your components use for rendering. That includes props, state, and context. To update the screen, ["set" state](/learn/state-a-components-memory) instead of mutating preexisting objects.
-* Strive to express your component's logic in the JSX you return. When you need to "change things", you'll usually want to do it in an event handler. As a last resort, you can `useEffect`.
-* Writing pure functions takes a bit of practice, but it unlocks the power of React's paradigm.
+* یک کامپوننت باید خالص باشد، یعنی:
+  * **فقط به کار خودش می‌پردازد.** نباید هیچ شیء یا متغیری که قبل از رندر وجود داشته را تغییر دهد.
+  * **ورودی یکسان، خروجی یکسان.** با توجه به ورودی‌های یکسان، یک کامپوننت باید همیشه همان JSX را برگرداند.
+* رندر می‌تواند در هر زمان اتفاق بیفتد، بنابراین کامپوننت‌ها نباید به ترتیب رندر یکدیگر وابسته باشند.
+* نباید هیچ‌کدام از ورودی‌هایی که کامپوننت‌های شما برای رندر استفاده می‌کنند را تغییر دهید. این شامل پراپس‌ها، استیت و کانتکست می‌شود. برای به‌روزرسانی صفحه، به‌جای تغییر اشیاء ازپیش‌موجود، استیت را [«تنظیم»](/learn/state-a-components-memory) کنید.
+* تلاش کنید منطق کامپوننت خود را در JSX که برمی‌گردانید بیان کنید. وقتی نیاز به «تغییر دادن چیزها» دارید، معمولاً می‌خواهید این کار را در یک مدیرکنندهٔ رویداد انجام دهید. به‌عنوان آخرین راه‌حل، می‌توانید از `useEffect` استفاده کنید.
+* نوشتن توابع خالص کمی تمرین می‌برد، اما قدرت پارادایم ری‌اکت را باز می‌کند.
 
 </Recap>
 
@@ -229,15 +229,15 @@ Every new React feature we're building takes advantage of purity. From data fetc
   
 <Challenges>
 
-#### Fix a broken clock {/*fix-a-broken-clock*/}
+#### تعمیر یک ساعت خراب {/*fix-a-broken-clock*/}
 
-This component tries to set the `<h1>`'s CSS class to `"night"` during the time from midnight to six hours in the morning, and `"day"` at all other times. However, it doesn't work. Can you fix this component?
+این کامپوننت تلاش می‌کند کلاس CSS `<h1>` را در زمان بین نیمه‌شب تا شش ساعت اول صبح به `"night"` و در همهٔ زمان‌های دیگر به `"day"` تنظیم کند. با این حال، کار نمی‌کند. می‌توانید این کامپوننت را تعمیر کنید؟
 
-You can verify whether your solution works by temporarily changing the computer's timezone. When the current time is between midnight and six in the morning, the clock should have inverted colors!
+می‌توانید با تغییر موقت منطقهٔ زمانی کامپیوتر، تأیید کنید که راه‌حل شما کار می‌کند. وقتی زمان فعلی بین نیمه‌شب تا شش صبح است، ساعت باید رنگ‌های معکوس داشته باشد!
 
 <Hint>
 
-Rendering is a *calculation*, it shouldn't try to "do" things. Can you express the same idea differently?
+رندر یک *محاسبه* است، نباید تلاش کند چیزهایی را «انجام دهد». می‌توانید همان ایده را متفاوت بیان کنید؟
 
 </Hint>
 
@@ -301,7 +301,7 @@ body > * {
 
 <Solution>
 
-You can fix this component by calculating the `className` and including it in the render output:
+می‌توانید این کامپوننت را با محاسبهٔ `className` و گنجاندن آن در خروجی رندر تعمیر کنید:
 
 <Sandpack>
 
@@ -362,19 +362,19 @@ body > * {
 
 </Sandpack>
 
-In this example, the side effect (modifying the DOM) was not necessary at all. You only needed to return JSX.
+در این مثال، عارضهٔ جانبی (تغییر DOM) اصلاً ضروری نبود. فقط نیاز بود JSX برگردانید.
 
 </Solution>
 
-#### Fix a broken profile {/*fix-a-broken-profile*/}
+#### تعمیر یک پروفایل خراب {/*fix-a-broken-profile*/}
 
-Two `Profile` components are rendered side by side with different data. Press "Collapse" on the first profile, and then "Expand" it. You'll notice that both profiles now show the same person. This is a bug.
+دو کامپوننت `Profile` با داده‌های متفاوت کنار هم رندر می‌شوند. روی پروفایل اول «Collapse» و سپس «Expand» را بزنید. متوجه می‌شوید که هر دو پروفایل اکنون یک شخص را نشان می‌دهند. این یک باگ است.
 
-Find the cause of the bug and fix it.
+علت باگ را پیدا کنید و آن را تعمیر دهید.
 
 <Hint>
 
-The buggy code is in `Profile.js`. Make sure you read it all from top to bottom!
+کد باگ‌دار در `Profile.js` است. مطمئن شوید که آن را از بالا به پایین می‌خوانید!
 
 </Hint>
 
@@ -475,9 +475,9 @@ h1 { margin: 5px; font-size: 18px; }
 
 <Solution>
 
-The problem is that the `Profile` component writes to a preexisting variable called `currentPerson`, and the `Header` and `Avatar` components read from it. This makes *all three of them* impure and difficult to predict.
+مشکل این است که کامپوننت `Profile` در متغیر ازپیش‌موجودی به نام `currentPerson` می‌نویسد، و کامپوننت‌های `Header` و `Avatar` از آن می‌خوانند. این کار *هر سه* را ناخالص و دشوار برای پیش‌بینی می‌کند.
 
-To fix the bug, remove the `currentPerson` variable. Instead, pass all information from `Profile` to `Header` and `Avatar` via props. You'll need to add a `person` prop to both components and pass it all the way down.
+برای رفع باگ، متغیر `currentPerson` را حذف کنید. در عوض، تمام اطلاعات را از `Profile` به `Header` و `Avatar` از طریق پراپس‌ها منتقل کنید. باید یک پراپس `person` به هر دو کامپوننت اضافه کنید و آن را تا انتها پاس دهید.
 
 <Sandpack>
 
@@ -571,15 +571,15 @@ h1 { margin: 5px; font-size: 18px; }
 
 </Sandpack>
 
-Remember that React does not guarantee that component functions will execute in any particular order, so you can't communicate between them by setting variables. All communication must happen through props.
+به یاد داشته باشید که ری‌اکت تضمین نمی‌کند که توابع کامپوننت به هیچ ترتیب خاصی اجرا شوند، بنابراین نمی‌توانید با تنظیم متغیرها با آن‌ها ارتباط برقرار کنید. تمام ارتباط باید از طریق پراپس‌ها انجام شود.
 
 </Solution>
 
-#### Fix a broken story tray {/*fix-a-broken-story-tray*/}
+#### تعمیر یک سینی داستان خراب {/*fix-a-broken-story-tray*/}
 
-The CEO of your company is asking you to add "stories" to your online clock app, and you can't say no. You've written a `StoryTray` component that accepts a list of `stories`, followed by a "Create Story" placeholder.
+مدیرعامل شرکت شما از شما می‌خواهد «داستان‌هایی» به برنامهٔ ساعت آنلاین خود اضافه کنید، و نمی‌توانید نه بگویید. یک کامپوننت `StoryTray` نوشته‌اید که فهرستی از `stories` را می‌پذیرد، و به دنبال آن یک placeholder «Create Story» قرار می‌دهد.
 
-You implemented the "Create Story" placeholder by pushing one more fake story at the end of the `stories` array that you receive as a prop. But for some reason, "Create Story" appears more than once. Fix the issue.
+شما placeholder «Create Story» را با push کردن یک داستان جعلی دیگر به انتهای آرایه `stories` که به‌عنوان پراپس دریافت می‌کنید پیاده‌سازی کرده‌اید. اما به‌نوعی، «Create Story» بیش از یک بار ظاهر می‌شود. این مشکل را رفع کنید.
 
 <Sandpack>
 
@@ -675,11 +675,11 @@ li {
 
 <Solution>
 
-Notice how whenever the clock updates, "Create Story" is added *twice*. This serves as a hint that we have a mutation during rendering--Strict Mode calls components twice to make these issues more noticeable.
+توجه کنید که هر بار که ساعت به‌روزرسانی می‌شود، «Create Story» *دو بار* اضافه می‌شود. این به‌عنوان یک سرنخ به ما می‌گوید که در طول رندر یک mutation داشته‌ایم — حالت سخت‌گیرانه کامپوننت‌ها را دو بار فراخوانی می‌کند تا این مشکلات قابل‌توجه‌تر شوند.
 
-`StoryTray` function is not pure. By calling `push` on the received `stories` array (a prop!), it is mutating an object that was created *before* `StoryTray` started rendering. This makes it buggy and very difficult to predict.
+تابع `StoryTray` خالص نیست. با فراخوانی `push` روی آرایه `stories` دریافت‌شده (یک پراپس!)، شیئی را که *قبل از* شروع رندر `StoryTray` ایجاد شده تغییر می‌دهد. این کار آن را باگ‌دار و بسیار دشوار برای پیش‌بینی می‌کند.
 
-The simplest fix is to not touch the array at all, and render "Create Story" separately:
+ساده‌ترین راه‌حل این است که اصلاً به آرایه دست نزنید، و «Create Story» را جداگانه رندر کنید:
 
 <Sandpack>
 
@@ -763,7 +763,7 @@ li {
 
 </Sandpack>
 
-Alternatively, you could create a _new_ array (by copying the existing one) before you push an item into it:
+همچنین می‌توانید یک آرایه _جدید_ (با کپی کردن آرایهٔ موجود) قبل از push کردن یک آیتم به آن ایجاد کنید:
 
 <Sandpack>
 
@@ -855,9 +855,9 @@ li {
 
 </Sandpack>
 
-This keeps your mutation local and your rendering function pure. However, you still need to be careful: for example, if you tried to change any of the array's existing items, you'd have to clone those items too.
+این کار mutation شما را محلی نگه می‌دارد و تابع رندر شما را خالص. با این حال، همچنان باید مراقب باشید: برای مثال، اگر سعی می‌کردید هر یک از آیتم‌های موجود آرایه را تغییر دهید، باید آن آیتم‌ها را هم clone می‌کردید.
 
-It is useful to remember which operations on arrays mutate them, and which don't. For example, `push`, `pop`, `reverse`, and `sort` will mutate the original array, but `slice`, `filter`, and `map` will create a new one.
+مفید است که به یاد داشته باشید کدام عملیات روی آرایه‌ها آن‌ها را تغییر می‌دهند، و کدام نه. برای مثال، `push`، `pop`، `reverse` و `sort` آرایهٔ اصلی را تغییر می‌دهند، اما `slice`، `filter` و `map` یک آرایهٔ جدید ایجاد می‌کنند.
 
 </Solution>
 

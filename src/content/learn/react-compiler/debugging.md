@@ -1,60 +1,60 @@
 ---
-title: Debugging and Troubleshooting
+title: دیباگ و رفع اشکال
 ---
 
 <Intro>
-This guide helps you identify and fix issues when using React Compiler. Learn how to debug compilation problems and resolve common issues.
+این راهنما به شما کمک می‌کند تا هنگام استفاده از کامپایلر ری‌اکت مشکلات را شناسایی و رفع کنید. یاد بگیرید چگونه مشکلات کامپایل را دیباگ کنید و مسائل رایج را حل کنید.
 </Intro>
 
 <YouWillLearn>
 
-* The difference between compiler errors and runtime issues
-* Common patterns that break compilation
-* Step-by-step debugging workflow
+* تفاوت بین خطاهای کامپایلر و مشکلات زمان اجرا
+* الگوهای رایجی که کامپایل را می‌شکنند
+* گردش‌کار دیباگ گام‌به‌گام
 
 </YouWillLearn>
 
-## Understanding Compiler Behavior {/*understanding-compiler-behavior*/}
+## درک رفتار کامپایلر {/*understanding-compiler-behavior*/}
 
-React Compiler is designed to handle code that follows the [Rules of React](/reference/rules). When it encounters code that might break these rules, it safely skips optimization rather than risk changing your app's behavior.
+کامپایلر ری‌اکت طوری طراحی شده که با کدی که [قوانین ری‌اکت](/reference/rules) را رعایت می‌کند کار کند. وقتی با کدی مواجه می‌شود که ممکن است این قوانین را بشکند، به‌جای ریسک تغییر رفتار اپلیکیشن شما، با امنیت از بهینه‌سازی صرف‌نظر می‌کند.
 
-### Compiler Errors vs Runtime Issues {/*compiler-errors-vs-runtime-issues*/}
+### خطاهای کامپایلر در برابر مشکلات زمان اجرا {/*compiler-errors-vs-runtime-issues*/}
 
-**Compiler errors** occur at build time and prevent your code from compiling. These are rare because the compiler is designed to skip problematic code rather than fail.
+**خطاهای کامپایلر** در زمان بیلد رخ می‌دهند و مانع کامپایل کد شما می‌شوند. این موارد نادر هستند زیرا کامپایلر طوری طراحی شده که به‌جای شکست، از کد مشکل‌دار صرف‌نظر کند.
 
-**Runtime issues** occur when compiled code behaves differently than expected. Most of the time, if you encounter an issue with React Compiler, it's a runtime issue. This typically happens when your code violates the Rules of React in subtle ways that the compiler couldn't detect, and the compiler mistakenly compiled a component it should have skipped.
+**مشکلات زمان اجرا** وقتی رخ می‌دهند که کد کامپایل‌شده متفاوت از انتظار رفتار کند. بیشتر مواقع، اگر با کامپایلر ری‌اکت مشکلی مواجه شوید، یک مشکل زمان اجراست. این معمولاً وقتی اتفاق می‌افتد که کد شما به روش‌های ظریفی قوانین ری‌اکت را نقض می‌کند که کامپایلر نمی‌توانسته تشخیص دهد، و کامپایلر به‌اشتباه کامپوننتی را کامپایل کرده که باید از آن صرف‌نظر می‌کرد.
 
-When debugging runtime issues, focus your efforts on finding Rules of React violations in the affected components that were not detected by the ESLint rule. The compiler relies on your code following these rules, and when they're broken in ways it can't detect, that's when runtime problems occur.
+هنگام دیباگ مشکلات زمان اجرا، تلاش خود را روی یافتن نقض‌های قوانین ری‌اکت در کامپوننت‌های آسیب‌دیده متمرکز کنید که به‌وسیلهٔ قانون ESLint شناسایی نشده‌اند. کامپایلر به رعایت این قوانین توسط کد شما تکیه می‌کند، و وقتی این قوانین به روش‌هایی که قابل تشخیص نیست شکسته می‌شوند، مشکلات زمان اجرا رخ می‌دهد.
 
 
-## Common Breaking Patterns {/*common-breaking-patterns*/}
+## الگوهای رایج شکست {/*common-breaking-patterns*/}
 
-One of the main ways React Compiler can break your app is if your code was written to rely on memoization for correctness. This means your app depends on specific values being memoized to work properly. Since the compiler may memoize differently than your manual approach, this can lead to unexpected behavior like effects over-firing, infinite loops, or missing updates.
+یکی از روش‌های اصلی که کامپایلر ری‌اکت می‌تواند اپلیکیشن شما را بشکند این است که کد شما برای درست‌کارکردن به مموری‌زیشن وابسته نوشته شده باشد. این یعنی اپلیکیشن شما برای کارکرد درست به مموری‌زیشن مقادیر خاصی وابسته است. از آنجا که کامپایلر ممکن است متفاوت از رویکرد دستی شما مموری‌زیشن کند، این می‌تواند به رفتار غیرمنتظره‌ای مانند اجرای بیش‌ازحد افکت‌ها، حلقه‌های بی‌نهایت یا به‌روزرسانی‌های از دست‌رفته منجر شود.
 
-Common scenarios where this occurs:
+سناریوهای رایجی که در آن رخ می‌دهد:
 
-- **Effects that rely on referential equality** - When effects depend on objects or arrays maintaining the same reference across renders
-- **Dependency arrays that need stable references** - When unstable dependencies cause effects to fire too often or create infinite loops
-- **Conditional logic based on reference checks** - When code uses referential equality checks for caching or optimization
+- **افکت‌هایی که به برابری ارجاعی تکیه دارند** - وقتی افکت‌ها به حفظ همان ارجاع اشیاء یا آرایه‌ها در طول رندرها وابسته‌اند
+- **آرایه‌های وابستگی که نیاز به ارجاع‌های پایدار دارند** - وقتی وابستگی‌های ناپایدار باعث می‌شوند افکت‌ها بیش‌ازحد اجرا شوند یا حلقه‌های بی‌نهایت ایجاد کنند
+- **منطق شرطی مبتنی بر بررسی‌های ارجاعی** - وقتی کد از بررسی‌های برابری ارجاعی برای کش کردن یا بهینه‌سازی استفاده می‌کند
 
-## Debugging Workflow {/*debugging-workflow*/}
+## گردش‌کار دیباگ {/*debugging-workflow*/}
 
-Follow these steps when you encounter issues:
+هنگام مواجهه با مشکلات این مراحل را دنبال کنید:
 
-### Compiler Build Errors {/*compiler-build-errors*/}
+### خطاهای بیلد کامپایلر {/*compiler-build-errors*/}
 
-If you encounter a compiler error that unexpectedly breaks your build, this is likely a bug in the compiler. Report it to the [facebook/react](https://github.com/facebook/react/issues) repository with:
-- The error message
-- The code that caused the error
-- Your React and compiler versions
+اگر با خطای کامپایلری مواجه شدید که به‌طور غیرمنتظره‌ای بیلد شما را می‌شکند، این احتمالاً یک باگ در کامپایلر است. آن را به مخزن [facebook/react](https://github.com/facebook/react/issues) با موارد زیر گزارش کنید:
+- پیام خطا
+- کدی که باعث خطا شده است
+- نسخه‌های ری‌اکت و کامپایلر شما
 
-### Runtime Issues {/*runtime-issues*/}
+### مشکلات زمان اجرا {/*runtime-issues*/}
 
-For runtime behavior issues:
+برای مشکلات رفتار زمان اجرا:
 
-### 1. Temporarily Disable Compilation {/*temporarily-disable-compilation*/}
+### ۱. به‌طور موقت کامپایل را غیرفعال کنید {/*temporarily-disable-compilation*/}
 
-Use `"use no memo"` to isolate whether an issue is compiler-related:
+از `"use no memo"` برای جدا کردن اینکه آیا مشکل به کامپایلر مربوط است استفاده کنید:
 
 ```js
 function ProblematicComponent() {
@@ -63,31 +63,31 @@ function ProblematicComponent() {
 }
 ```
 
-If the issue disappears, it's likely related to a Rules of React violation.
+اگر مشکل ناپدید شد، احتمالاً به نقض قوانین ری‌اکت مربوط است.
 
-You can also try removing manual memoization (useMemo, useCallback, memo) from the problematic component to verify that your app works correctly without any memoization. If the bug still occurs when all memoization is removed, you have a Rules of React violation that needs to be fixed.
+همچنین می‌توانید مموری‌زیشن دستی (useMemo، useCallback، memo) را از کامپوننت مشکل‌ساز حذف کنید تا بررسی کنید اپلیکیشن شما بدون هیچ مموری‌زیشنی به‌درستی کار می‌کند. اگر باگ با حذف تمام مموری‌زیشن‌ها همچنان رخ می‌دهد، یک نقض قوانین ری‌اکت دارید که باید برطرف شود.
 
-### 2. Fix Issues Step by Step {/*fix-issues-step-by-step*/}
+### ۲. مشکلات را گام‌به‌گام برطرف کنید {/*fix-issues-step-by-step*/}
 
-1. Identify the root cause (often memoization-for-correctness)
-2. Test after each fix
-3. Remove `"use no memo"` once fixed
-4. Verify the component shows the ✨ badge in React DevTools
+1. علت ریشه‌ای را شناسایی کنید (اغلب مموری‌زیشن برای درست‌کارکردن)
+2. پس از هر رفع، آزمایش کنید
+3. پس از رفع، `"use no memo"` را حذف کنید
+4. بررسی کنید که کامپوننت نشان ✨ را در React DevTools نمایش دهد
 
-## Reporting Compiler Bugs {/*reporting-compiler-bugs*/}
+## گزارش باگ‌های کامپایلر {/*reporting-compiler-bugs*/}
 
-If you believe you've found a compiler bug:
+اگر باور دارید باگ کامپایلری پیدا کرده‌اید:
 
-1. **Verify it's not a Rules of React violation** - Check with ESLint
-2. **Create a minimal reproduction** - Isolate the issue in a small example
-3. **Test without the compiler** - Confirm the issue only occurs with compilation
-4. **File an [issue](https://github.com/facebook/react/issues/new?template=compiler_bug_report.yml)**:
-   - React and compiler versions
-   - Minimal reproduction code
-   - Expected vs actual behavior
-   - Any error messages
+1. **بررسی کنید که نقض قوانین ری‌اکت نیست** - با ESLint بررسی کنید
+2. **یک بازتولید کمینه ایجاد کنید** - مشکل را در یک مثال کوچک جدا کنید
+3. **بدون کامپایلر آزمایش کنید** - تأیید کنید که مشکل فقط با کامپایل رخ می‌دهد
+4. **یک [مسئله](https://github.com/facebook/react/issues/new?template=compiler_bug_report.yml) ثبت کنید**:
+   - نسخه‌های ری‌اکت و کامپایلر
+   - کد بازتولید کمینه
+   - رفتار مورد انتظار در برابر رفتار واقعی
+   - هرگونه پیام خطا
 
-## Next Steps {/*next-steps*/}
+## مراحل بعدی {/*next-steps*/}
 
-- Review the [Rules of React](/reference/rules) to prevent issues
-- Check the [incremental adoption guide](/learn/react-compiler/incremental-adoption) for gradual rollout strategies
+- [قوانین ری‌اکت](/reference/rules) را برای پیشگیری از مشکلات مرور کنید
+- [راهنمای اتخاذ تدریجی](/learn/react-compiler/incremental-adoption) را برای استراتژی‌های استقرار تدریجی بررسی کنید

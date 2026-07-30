@@ -5,7 +5,7 @@ title: <StrictMode>
 
 <Intro>
 
-`<StrictMode>` lets you find common bugs in your components early during development.
+`<StrictMode>` به شما اجازه می‌دهد اشکالات رایج در کامپوننت‌های خود را در اوایل توسعه پیدا کنید.
 
 
 ```js
@@ -20,11 +20,11 @@ title: <StrictMode>
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `<StrictMode>` {/*strictmode*/}
 
-Use `StrictMode` to enable additional development behaviors and warnings for the component tree inside:
+از `StrictMode` برای فعال‌سازی رفتارها و هشدارهای توسعهٔ اضافی برای درخت کامپوننت درون آن استفاده کنید:
 
 ```js
 import { StrictMode } from 'react';
@@ -38,33 +38,33 @@ root.render(
 );
 ```
 
-[See more examples below.](#usage)
+[مثال‌های بیشتری را در ادامه ببینید.](#usage)
 
-Strict Mode enables the following development-only behaviors:
+حالت سخت‌گیرانه (Strict Mode) رفتارهای زیر را که فقط مخصوص توسعه هستند فعال می‌کند:
 
-- Your components will [re-render an extra time](#fixing-bugs-found-by-double-rendering-in-development) to find bugs caused by impure rendering.
-- Your components will [re-run Effects an extra time](#fixing-bugs-found-by-re-running-effects-in-development) to find bugs caused by missing Effect cleanup.
-- Your components will [re-run refs callbacks an extra time](#fixing-bugs-found-by-re-running-ref-callbacks-in-development) to find bugs caused by missing ref cleanup.
-- Your components will [be checked for usage of deprecated APIs.](#fixing-deprecation-warnings-enabled-by-strict-mode)
+- کامپوننت‌های شما [یک بار اضافی رندر مجدد می‌شوند](#fixing-bugs-found-by-double-rendering-in-development) تا اشکالات ناشی از رندر ناخالص را پیدا کنند.
+- افکت‌های کامپوننت‌های شما [یک بار اضافی اجرا می‌شوند](#fixing-bugs-found-by-re-running-effects-in-development) تا اشکالات ناشی از پاکسازی نبودن افکت را پیدا کنند.
+- کالبک‌های رفرنس کامپوننت‌های شما [یک بار اضافی اجرا می‌شوند](#fixing-bugs-found-by-re-running-ref-callbacks-in-development) تا اشکالات ناشی از پاکسازی نبودن رفرنس را پیدا کنند.
+- کامپوننت‌های شما [برای استفاده از APIهای منسوخ بررسی می‌شوند.](#fixing-deprecation-warnings-enabled-by-strict-mode)
 
-#### Props {/*props*/}
+#### پراپس {/*props*/}
 
-`StrictMode` accepts no props.
+`StrictMode` هیچ پراپسی نمی‌پذیرد.
 
-#### Caveats {/*caveats*/}
+#### نکات {/*caveats*/}
 
-* There is no way to opt out of Strict Mode inside a tree wrapped in `<StrictMode>`. This gives you confidence that all components inside `<StrictMode>` are checked. If two teams working on a product disagree whether they find the checks valuable, they need to either reach consensus or move `<StrictMode>` down in the tree.
+* هیچ راهی برای خروج از حالت سخت‌گیرانه (Strict Mode) درون درختی که با `<StrictMode>` پیچیده شده وجود ندارد. این به شما اطمینان می‌دهد که تمام کامپوننت‌های درون `<StrictMode>` بررسی می‌شوند. اگر دو تیم که روی یک محصول کار می‌کنند در مورد ارزشمند بودن این بررسی‌ها توافق نداشته باشند، باید یا به توافق برسند یا `<StrictMode>` را در درخت پایین‌تر ببرند.
 
 ---
 
-## Usage {/*usage*/}
+## کاربرد {/*usage*/}
 
-### Enabling Strict Mode for entire app {/*enabling-strict-mode-for-entire-app*/}
+### فعال کردن حالت سخت‌گیرانه برای کل برنامه {/*enabling-strict-mode-for-entire-app*/}
 
-Strict Mode enables extra development-only checks for the entire component tree inside the `<StrictMode>` component. These checks help you find common bugs in your components early in the development process.
+حالت سخت‌گیرانه (Strict Mode) بررسی‌های اضافی مخصوص توسعه را برای کل درخت کامپوننت درون کامپوننت `<StrictMode>` فعال می‌کند. این بررسی‌ها به شما کمک می‌کنند اشکالات رایج در کامپوننت‌های خود را در اوایل فرآیند توسعه پیدا کنید.
 
 
-To enable Strict Mode for your entire app, wrap your root component with `<StrictMode>` when you render it:
+برای فعال‌سازی حالت سخت‌گیرانه برای کل برنامه‌تان، کامپوننت ریشهٔ خود را هنگام رندر کردن با `<StrictMode>` بپیچید:
 
 ```js {6,8}
 import { StrictMode } from 'react';
@@ -78,28 +78,28 @@ root.render(
 );
 ```
 
-We recommend wrapping your entire app in Strict Mode, especially for newly created apps. If you use a framework that calls [`createRoot`](/reference/react-dom/client/createRoot) for you, check its documentation for how to enable Strict Mode.
+توصیه می‌کنیم کل برنامهٔ خود را در حالت سخت‌گیرانه بپیچید، به‌ویژه برای برنامه‌های تازه ایجاد شده. اگر از فریم‌ورکی استفاده می‌کنید که [`createRoot`](/reference/react-dom/client/createRoot) را برای شما فراخوانی می‌کند، مستندات آن را برای نحوهٔ فعال‌سازی حالت سخت‌گیرانه بررسی کنید.
 
-Although the Strict Mode checks **only run in development,** they help you find bugs that already exist in your code but can be tricky to reliably reproduce in production. Strict Mode lets you fix bugs before your users report them.
+اگرچه بررسی‌های حالت سخت‌گیرانه **فقط در محیط توسعه اجرا می‌شوند**، اما به شما کمک می‌کنند اشکالاتی را که از قبل در کد شما وجود دارند اما تولید مجدد قابل اعتماد آن‌ها در محیط تولید دشوار است، پیدا کنید. حالت سخت‌گیرانه به شما اجازه می‌دهد اشکالات را قبل از اینکه کاربران گزارش دهند برطرف کنید.
 
 <Note>
 
-Strict Mode enables the following checks in development:
+حالت سخت‌گیرانه بررسی‌های زیر را در محیط توسعه فعال می‌کند:
 
-- Your components will [re-render an extra time](#fixing-bugs-found-by-double-rendering-in-development) to find bugs caused by impure rendering.
-- Your components will [re-run Effects an extra time](#fixing-bugs-found-by-re-running-effects-in-development) to find bugs caused by missing Effect cleanup.
-- Your components will [re-run ref callbacks an extra time](#fixing-bugs-found-by-re-running-ref-callbacks-in-development) to find bugs caused by missing ref cleanup.
-- Your components will [be checked for usage of deprecated APIs.](#fixing-deprecation-warnings-enabled-by-strict-mode)
+- کامپوننت‌های شما [یک بار اضافی رندر مجدد می‌شوند](#fixing-bugs-found-by-double-rendering-in-development) تا اشکالات ناشی از رندر ناخالص را پیدا کنند.
+- افکت‌های کامپوننت‌های شما [یک بار اضافی اجرا می‌شوند](#fixing-bugs-found-by-re-running-effects-in-development) تا اشکالات ناشی از پاکسازی نبودن افکت را پیدا کنند.
+- کالبک‌های رفرنس کامپوننت‌های شما [یک بار اضافی اجرا می‌شوند](#fixing-bugs-found-by-re-running-ref-callbacks-in-development) تا اشکالات ناشی از پاکسازی نبودن رفرنس را پیدا کنند.
+- کامپوننت‌های شما [برای استفاده از APIهای منسوخ بررسی می‌شوند.](#fixing-deprecation-warnings-enabled-by-strict-mode)
 
-**All of these checks are development-only and do not impact the production build.**
+**تمام این بررسی‌ها فقط مخصوص توسعه هستند و بر نسخهٔ تولید تأثیری ندارند.**
 
 </Note>
 
 ---
 
-### Enabling Strict Mode for a part of the app {/*enabling-strict-mode-for-a-part-of-the-app*/}
+### فعال کردن حالت سخت‌گیرانه برای بخشی از برنامه {/*enabling-strict-mode-for-a-part-of-the-app*/}
 
-You can also enable Strict Mode for any part of your application:
+همچنین می‌توانید حالت سخت‌گیرانه را برای هر بخشی از برنامه‌تان فعال کنید:
 
 ```js {7,12}
 import { StrictMode } from 'react';
@@ -120,31 +120,31 @@ function App() {
 }
 ```
 
-In this example, Strict Mode checks will not run against the `Header` and `Footer` components. However, they will run on `Sidebar` and `Content`, as well as all of the components inside them, no matter how deep.
+در این مثال، بررسی‌های حالت سخت‌گیرانه روی کامپوننت‌های `Header` و `Footer` اجرا نخواهند شد. با این حال، روی `Sidebar` و `Content`، و همچنین تمام کامپوننت‌های درون آن‌ها، فارغ از عمق، اجرا خواهند شد.
 
 <Note>
 
-When `StrictMode` is enabled for a part of the app, React will only enable behaviors that are possible in production. For example, if `<StrictMode>` is not enabled at the root of the app, it will not [re-run Effects an extra time](#fixing-bugs-found-by-re-running-effects-in-development) on initial mount, since this would cause child effects to double fire without the parent effects, which cannot happen in production.
+وقتی `StrictMode` برای بخشی از برنامه فعال است، ری‌اکت فقط رفتارهایی را فعال می‌کند که در محیط تولید ممکن هستند. مثلاً اگر `<StrictMode>` در ریشهٔ برنامه فعال نباشد، در mount اولیه [افکت‌ها را یک بار اضافی اجرا نخواهد کرد](#fixing-bugs-found-by-re-running-effects-in-development)، زیرا این کار باعث می‌شود افکت‌های فرزند بدون افکت‌های والد دو بار اجرا شوند، که در محیط تولید نمی‌تواند رخ دهد.
 
 </Note>
 
 ---
 
-### Fixing bugs found by double rendering in development {/*fixing-bugs-found-by-double-rendering-in-development*/}
+### رفع اشکالاتی که با رندر دوگانه در توسعه یافت شده‌اند {/*fixing-bugs-found-by-double-rendering-in-development*/}
 
-[React assumes that every component you write is a pure function.](/learn/keeping-components-pure) This means that React components you write must always return the same JSX given the same inputs (props, state, and context).
+[ری‌اکت فرض می‌کند که هر کامپوننتی که می‌نویسید یک تابع خالص است.](/learn/keeping-components-pure) این بدان معناست که کامپوننت‌های ری‌اکتی که می‌نویسید باید با توجه به ورودی‌های یکسان (پراپس، استیت، و کانتکست) همیشه همان JSX را برگردانند.
 
-Components breaking this rule behave unpredictably and cause bugs. To help you find accidentally impure code, Strict Mode calls some of your functions (only the ones that should be pure) **twice in development.** This includes:
+کامپوننت‌هایی که این قانون را نقض می‌کنند به‌طور غیرقابل پیش‌بینی رفتار می‌کنند و باعث اشکال می‌شوند. برای کمک به پیدا کردن کد ناخالص تصادفی، حالت سخت‌گیرانه برخی از توابع شما (فقط آن‌هایی که باید خالص باشند) را **در محیط توسعه دو بار فراخوانی می‌کند.** این شامل موارد زیر است:
 
-- Your component function body (only top-level logic, so this doesn't include code inside event handlers)
-- Functions that you pass to [`useState`](/reference/react/useState), [`set` functions](/reference/react/useState#setstate), [`useMemo`](/reference/react/useMemo), or [`useReducer`](/reference/react/useReducer)
-- Some class component methods like [`constructor`](/reference/react/Component#constructor), [`render`](/reference/react/Component#render), [`shouldComponentUpdate`](/reference/react/Component#shouldcomponentupdate) ([see the whole list](https://reactjs.org/docs/strict-mode.html#detecting-unexpected-side-effects))
+- بدنهٔ تابع کامپوننت شما (فقط منطق سطح بالا، بنابراین کد درون کنترل‌کننده‌های رویداد را شامل نمی‌شود)
+- توابعی که به [`useState`](/reference/react/useState)، [توابع `set`](/reference/react/useState#setstate)، [`useMemo`](/reference/react/useMemo)، یا [`useReducer`](/reference/react/useReducer) ارسال می‌کنید
+- برخی متدهای کامپوننت کلاسی مانند [`constructor`](/reference/react/Component#constructor)، [`render`](/reference/react/Component#render)، [`shouldComponentUpdate`](/reference/react/Component#shouldcomponentupdate) ([کل لیست را ببینید](https://reactjs.org/docs/strict-mode.html#detecting-unexpected-side-effects))
 
-If a function is pure, running it twice does not change its behavior because a pure function produces the same result every time. However, if a function is impure (for example, it mutates the data it receives), running it twice tends to be noticeable (that's what makes it impure!) This helps you spot and fix the bug early.
+اگر یک تابع خالص باشد، اجرای دو بار آن رفتارش را تغییر نمی‌دهد زیرا یک تابع خالص هر بار همان نتیجه را تولید می‌کند. با این حال، اگر یک تابع ناخالص باشد (مثلاً داده‌ای که دریافت می‌کند را تغییر می‌دهد)، اجرای دو بار آن معمولاً قابل توجه است (این همان چیزی است که آن را ناخالص می‌کند!) این به شما کمک می‌کند زودهنگام اشکال را پیدا و برطرف کنید.
 
-**Here is an example to illustrate how double rendering in Strict Mode helps you find bugs early.**
+**در اینجا مثالی برای نشان دادن اینکه چگونه رندر دوگانه در حالت سخت‌گیرانه به شما کمک می‌کند زودهنگام اشکالات را پیدا کنید، آورده شده است.**
 
-This `StoryTray` component takes an array of `stories` and adds one last "Create Story" item at the end:
+این کامپوننت `StoryTray` یک آرایه از `stories` می‌گیرد و یک آیتم «Create Story» در انتها اضافه می‌کند:
 
 <Sandpack>
 
@@ -222,9 +222,9 @@ li {
 
 </Sandpack>
 
-There is a mistake in the code above. However, it is easy to miss because the initial output appears correct.
+در کد بالا اشتباهی وجود دارد. با این حال، تشخیص آن آسان نیست زیرا خروجی اولیه درست به نظر می‌رسد.
 
-This mistake will become more noticeable if the `StoryTray` component re-renders multiple times. For example, let's make the `StoryTray` re-render with a different background color whenever you hover over it:
+اگر کامپوننت `StoryTray` چندین بار رندر مجدد شود، این اشتباه قابل توجه‌تر خواهد شد. مثلاً بیایید `StoryTray` را طوری بسازیم که هر بار که موس را روی آن می‌برید، با رنگ پس‌زمینهٔ متفاوتی رندر مجدد شود:
 
 <Sandpack>
 
@@ -311,9 +311,9 @@ li {
 
 </Sandpack>
 
-Notice how every time you hover over the `StoryTray` component, "Create Story" gets added to the list again. The intention of the code was to add it once at the end. But `StoryTray` directly modifies the `stories` array from the props. Every time `StoryTray` renders, it adds "Create Story" again at the end of the same array. In other words, `StoryTray` is not a pure function--running it multiple times produces different results.
+توجه کنید که هر بار که موس را روی کامپوننت `StoryTray` می‌برید، «Create Story» دوباره به لیست اضافه می‌شود. قصد کد این بود که یک بار در انتها اضافه شود. اما `StoryTray` مستقیماً آرایهٔ `stories` را از پراپس تغییر می‌دهد. هر بار که `StoryTray` رندر می‌شود، «Create Story» را دوباره در انتهای همان آرایه اضافه می‌کند. به عبارت دیگر، `StoryTray` یک تابع خالص نیست — اجرای چندبارهٔ آن نتایج متفاوتی تولید می‌کند.
 
-To fix this problem, you can make a copy of the array, and modify that copy instead of the original one:
+برای رفع این مشکل، می‌توانید یک کپی از آرایه تهیه کنید، و به جای اصل آن، آن کپی را تغییر دهید:
 
 ```js {2}
 export default function StoryTray({ stories }) {
@@ -322,9 +322,9 @@ export default function StoryTray({ stories }) {
   items.push({ id: 'create', label: 'Create Story' });
 ```
 
-This would [make the `StoryTray` function pure.](/learn/keeping-components-pure) Each time it is called, it would only modify a new copy of the array, and would not affect any external objects or variables. This solves the bug, but you had to make the component re-render more often before it became obvious that something is wrong with its behavior.
+این کار [تابع `StoryTray` را خالص می‌کند.](/learn/keeping-components-pure) هر بار که فراخوانی می‌شود، فقط یک کپی جدید از آرایه را تغییر می‌دهد، و بر هیچ شیء یا متغیر خارجی تأثیری نمی‌گذارد. این اشکال را حل می‌کند، اما باید کامپوننت را بیشتر رندر مجدد می‌کردید تا مشخص شود رفتارش مشکلی دارد.
 
-**In the original example, the bug wasn't obvious. Now let's wrap the original (buggy) code in `<StrictMode>`:**
+**در مثال اصلی، اشکال آشکار نبود. اکنون بیایید کد اصلی (دارای اشکال) را در `<StrictMode>` بپیچیم:**
 
 <Sandpack>
 
@@ -407,7 +407,7 @@ li {
 
 </Sandpack>
 
-**Strict Mode *always* calls your rendering function twice, so you can see the mistake right away** ("Create Story" appears twice). This lets you notice such mistakes early in the process. When you fix your component to render in Strict Mode, you *also* fix many possible future production bugs like the hover functionality from before:
+**حالت سخت‌گیرانه *همیشه* تابع رندر شما را دو بار فراخوانی می‌کند، بنابراین می‌توانید فوراً اشتباه را ببینید** («Create Story» دو بار ظاهر می‌شود). این به شما اجازه می‌دهد چنین اشتباهاتی را زود در فرآیند متوجه شوید. وقتی کامپوننت خود را برای رندر در حالت سخت‌گیرانه اصلاح می‌کنید، *همچنین* بسیاری از اشکالات احتمالی آینده در محیط تولید مانند قابلیت hover قبلی را نیز برطرف می‌کنید:
 
 <Sandpack>
 
@@ -499,29 +499,29 @@ li {
 
 </Sandpack>
 
-Without Strict Mode, it was easy to miss the bug until you added more re-renders. Strict Mode made the same bug appear right away. Strict Mode helps you find bugs before you push them to your team and to your users.
+بدون حالت سخت‌گیرانه، تشخیص اشکال تا زمانی که رندرهای مجدد بیشتری اضافه می‌کردید آسان نبود. حالت سخت‌گیرانه همان اشکال را فوراً آشکار کرد. حالت سخت‌گیرانه به شما کمک می‌کند اشکالات را قبل از اینکه آن‌ها را به تیم و کاربرانتان ببرید، پیدا کنید.
 
-[Read more about keeping components pure.](/learn/keeping-components-pure)
+[دربارهٔ خالص نگه داشتن کامپوننت‌ها بیشتر بخوانید.](/learn/keeping-components-pure)
 
 <Note>
 
-If you have [React DevTools](/learn/react-developer-tools) installed, any `console.log` calls during the second render call will appear slightly dimmed. React DevTools also offers a setting (off by default) to suppress them completely.
+اگر [React DevTools](/learn/react-developer-tools) را نصب کرده‌اید، هر فراخوانی `console.log` در حین فراخوانی رندر دوم کمی کم‌رنگ‌تر ظاهر خواهد شد. React DevTools همچنین تنظیمی (که به‌صورت پیش‌فرض خاموش است) برای سرکوب کامل آن‌ها ارائه می‌دهد.
 
 </Note>
 
 ---
 
-### Fixing bugs found by re-running Effects in development {/*fixing-bugs-found-by-re-running-effects-in-development*/}
+### رفع اشکالاتی که با اجرای مجدد افکت‌ها در توسعه یافت شده‌اند {/*fixing-bugs-found-by-re-running-effects-in-development*/}
 
-Strict Mode can also help find bugs in [Effects.](/learn/synchronizing-with-effects)
+حالت سخت‌گیرانه همچنین می‌تواند به پیدا کردن اشکالات در [افکت‌ها](/learn/synchronizing-with-effects) کمک کند.
 
-Every Effect has some setup code and may have some cleanup code. Normally, React calls setup when the component *mounts* (is added to the screen) and calls cleanup when the component *unmounts* (is removed from the screen). React then calls cleanup and setup again if its dependencies changed since the last render.
+هر افکت دارای مقداری کد راه‌اندازی است و ممکن است مقداری کد پاکسازی داشته باشد. معمولاً، ری‌اکت هنگام *mount* شدن کامپوننت (افزوده شدن به صفحه) راه‌اندازی را فراخوانی می‌کند و هنگام *unmount* شدن کامپوننت (حذف شدن از صفحه) پاکسازی را فراخوانی می‌کند. سپس ری‌اکت اگر وابستگی‌هایش از آخرین رندر تغییر کرده باشد، پاکسازی و راه‌اندازی را دوباره فراخوانی می‌کند.
 
-When Strict Mode is on, React will also run **one extra setup+cleanup cycle in development for every Effect.** This may feel surprising, but it helps reveal subtle bugs that are hard to catch manually.
+وقتی حالت سخت‌گیرانه روشن است، ری‌اکت همچنین **یک چرخهٔ اضافی setup+cleanup را در محیط توسعه برای هر افکت اجرا می‌کند.** این ممکن است تعجب‌آور به نظر برسد، اما به آشکار کردن اشکالات ظریفی که دستی گرفتن آن‌ها دشوار است کمک می‌کند.
 
-**Here is an example to illustrate how re-running Effects in Strict Mode helps you find bugs early.**
+**در اینجا مثالی برای نشان دادن اینکه چگونه اجرای مجدد افکت‌ها در حالت سخت‌گیرانه به شما کمک می‌کند زودهنگام اشکالات را پیدا کنید، آورده شده است.**
 
-Consider this example that connects a component to a chat:
+این مثالی را در نظر بگیرید که یک کامپوننت را به یک چت متصل می‌کند:
 
 <Sandpack>
 
@@ -578,9 +578,9 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-There is an issue with this code, but it might not be immediately clear.
+در این کد مشکلی وجود دارد، اما ممکن است بلافاصله مشخص نباشد.
 
-To make the issue more obvious, let's implement a feature. In the example below, `roomId` is not hardcoded. Instead, the user can select the `roomId` that they want to connect to from a dropdown. Click "Open chat" and then select different chat rooms one by one. Keep track of the number of active connections in the console:
+برای آشکارتر شدن مشکل، بیایید یک قابلیت پیاده‌سازی کنیم. در مثال زیر، `roomId` ثابت نیست. در عوض، کاربر می‌تواند `roomId` که می‌خواهد به آن متصل شود را از یک منوی کشویی انتخاب کند. روی «Open chat» کلیک کنید و سپس اتاق‌های چت مختلف را یکی‌یکی انتخاب کنید. تعداد اتصال‌های فعال را در کنسول پیگیری کنید:
 
 <Sandpack>
 
@@ -662,7 +662,7 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-You'll notice that the number of open connections always keeps growing. In a real app, this would cause performance and network problems. The issue is that [your Effect is missing a cleanup function:](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed)
+متوجه می‌شوید که تعداد اتصال‌های باز همیشه در حال افزایش است. در یک برنامهٔ واقعی، این باعث مشکلات عملکرد و شبکه می‌شود. مشکل این است که [افکت شما تابع پاکسازی ندارد:](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed)
 
 ```js {4}
   useEffect(() => {
@@ -672,9 +672,9 @@ You'll notice that the number of open connections always keeps growing. In a rea
   }, [roomId]);
 ```
 
-Now that your Effect "cleans up" after itself and destroys the outdated connections, the leak is solved. However, notice that the problem did not become visible until you've added more features (the select box).
+اکنون که افکت شما بعد از خود «پاکسازی» می‌کند و اتصال‌های قدیمی را تخریب می‌کند، نشت حل شد. با این حال، توجه کنید که مشکل تا زمانی که قابلیت‌های بیشتری (منوی کشویی) اضافه نکردید آشکار نشد.
 
-**In the original example, the bug wasn't obvious. Now let's wrap the original (buggy) code in `<StrictMode>`:**
+**در مثال اصلی، اشکال آشکار نبود. اکنون بیایید کد اصلی (دارای اشکال) را در `<StrictMode>` بپیچیم:**
 
 <Sandpack>
 
@@ -736,9 +736,9 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-**With Strict Mode, you immediately see that there is a problem** (the number of active connections jumps to 2). Strict Mode runs an extra setup+cleanup cycle for every Effect. This Effect has no cleanup logic, so it creates an extra connection but doesn't destroy it. This is a hint that you're missing a cleanup function.
+**با حالت سخت‌گیرانه، فوراً متوجه می‌شوید که مشکلی وجود دارد** (تعداد اتصال‌های فعال به ۲ می‌پرد). حالت سخت‌گیرانه یک چرخهٔ اضافی setup+cleanup را برای هر افکت اجرا می‌کند. این افکت هیچ منطق پاکسازی ندارد، بنابراین یک اتصال اضافی ایجاد می‌کند اما آن را تخریب نمی‌کند. این یک اشاره است که شما تابع پاکسازی را از قلم انداخته‌اید.
 
-Strict Mode lets you notice such mistakes early in the process. When you fix your Effect by adding a cleanup function in Strict Mode, you *also* fix many possible future production bugs like the select box from before:
+حالت سخت‌گیرانه به شما اجازه می‌دهد چنین اشتباهاتی را زود در فرآیند متوجه شوید. وقتی افکت خود را با افزودن تابع پاکسازی در حالت سخت‌گیرانه اصلاح می‌کنید، *همچنین* بسیاری از اشکالات احتمالی آینده در محیط تولید مانند منوی کشویی قبلی را نیز برطرف می‌کنید:
 
 <Sandpack>
 
@@ -826,22 +826,22 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-Notice how the active connection count in the console doesn't keep growing anymore.
+توجه کنید که تعداد اتصال‌های فعال در کنسول دیگر در حال افزایش نیست.
 
-Without Strict Mode, it was easy to miss that your Effect needed cleanup. By running *setup → cleanup → setup* instead of *setup* for your Effect in development, Strict Mode made the missing cleanup logic more noticeable.
+بدون حالت سخت‌گیرانه، تشخیص اینکه افکت شما نیاز به پاکسازی داشت آسان نبود. با اجرای *setup → cleanup → setup* به جای *setup* برای افکت شما در محیط توسعه، حالت سخت‌گیرانه منطق پاکسازی مفقود را قابل توجه‌تر کرد.
 
-[Read more about implementing Effect cleanup.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
+[دربارهٔ پیاده‌سازی پاکسازی افکت بیشتر بخوانید.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
 
 ---
-### Fixing bugs found by re-running ref callbacks in development {/*fixing-bugs-found-by-re-running-ref-callbacks-in-development*/}
+### رفع اشکالاتی که با اجرای مجدد کالبک‌های رفرنس در توسعه یافت شده‌اند {/*fixing-bugs-found-by-re-running-ref-callbacks-in-development*/}
 
-Strict Mode can also help find bugs in [callbacks refs.](/learn/manipulating-the-dom-with-refs)
+حالت سخت‌گیرانه همچنین می‌تواند به پیدا کردن اشکالات در [کالبک رفرنس](/learn/manipulating-the-dom-with-refs) کمک کند.
 
-Every callback `ref` has some setup code and may have some cleanup code. Normally, React calls setup when the element is *created* (is added to the DOM) and calls cleanup when the element is *removed* (is removed from the DOM).
+هر کالبک `ref` دارای مقداری کد راه‌اندازی است و ممکن است مقداری کد پاکسازی داشته باشد. معمولاً، ری‌اکت هنگام *ایجاد* المان (افزوده شدن به DOM) راه‌اندازی را فراخوانی می‌کند و هنگام *حذف* المان (حذف شدن از DOM) پاکسازی را فراخوانی می‌کند.
 
-When Strict Mode is on, React will also run **one extra setup+cleanup cycle in development for every callback `ref`.** This may feel surprising, but it helps reveal subtle bugs that are hard to catch manually.
+وقتی حالت سخت‌گیرانه روشن است، ری‌اکت همچنین **یک چرخهٔ اضافی setup+cleanup را در محیط توسعه برای هر کالبک `ref` اجرا می‌کند.** این ممکن است تعجب‌آور به نظر برسد، اما به آشکار کردن اشکالات ظریفی که دستی گرفتن آن‌ها دشوار است کمک می‌کند.
 
-Consider this example, which allows you to select an animal and then scroll to one of them. Notice when you switch from "Cats" to "Dogs", the console logs show that the number of animals in the list keeps growing, and the "Scroll to" buttons stop working:
+این مثال را در نظر بگیرید که به شما اجازه می‌دهد یک حیوان انتخاب کنید و سپس به یکی از آن‌ها اسکرول کنید. توجه کنید وقتی از «Cats» به «Dogs» سوییچ می‌کنید، لاگ‌های کنسول نشان می‌دهند که تعداد حیوانات در لیست همچنان در حال افزایش است، و دکمه‌های «Scroll to» کار نمی‌کنند:
 
 <Sandpack>
 
@@ -960,9 +960,9 @@ li {
 </Sandpack>
 
 
-**This is a production bug!** Since the ref callback doesn't remove animals from the list in the cleanup, the list of animals keeps growing. This is a memory leak that can cause performance problems in a real app, and breaks the behavior of the app.
+**این یک اشکال محیط تولید است!** از آنجا که کالبک رفرنس حیوانات را در پاکسازی از لیست حذف نمی‌کند، لیست حیوانات همچنان در حال افزایش است. این یک نشت حافظه است که می‌تواند در یک برنامهٔ واقعی باعث مشکلات عملکرد شود، و رفتار برنامه را خراب می‌کند.
 
-The issue is the ref callback doesn't cleanup after itself:
+مشکل این است که کالبک رفرنس بعد از خود پاکسازی نمی‌کند:
 
 ```js {6-8}
 <li
@@ -977,7 +977,7 @@ The issue is the ref callback doesn't cleanup after itself:
 </li>
 ```
 
-Now let's wrap the original (buggy) code in `<StrictMode>`:
+اکنون بیایید کد اصلی (دارای اشکال) را در `<StrictMode>` بپیچیم:
 
 <Sandpack>
 
@@ -1100,9 +1100,9 @@ li {
 
 </Sandpack>
 
-**With Strict Mode, you immediately see that there is a problem**. Strict Mode runs an extra setup+cleanup cycle for every callback ref. This callback ref has no cleanup logic, so it adds refs but doesn't remove them. This is a hint that you're missing a cleanup function.
+**با حالت سخت‌گیرانه، فوراً متوجه می‌شوید که مشکلی وجود دارد**. حالت سخت‌گیرانه یک چرخهٔ اضافی setup+cleanup را برای هر کالبک رفرنس اجرا می‌کند. این کالبک رفرنس هیچ منطق پاکسازی ندارد، بنابراین رفرنس‌ها را اضافه می‌کند اما آن‌ها را حذف نمی‌کند. این یک اشاره است که شما تابع پاکسازی را از قلم انداخته‌اید.
 
-Strict Mode lets you eagerly find mistakes in callback refs. When you fix your callback by adding a cleanup function in Strict Mode, you *also* fix many possible future production bugs like the "Scroll to" bug from before:
+حالت سخت‌گیرانه به شما اجازه می‌دهد زودهنگام اشتباهات در کالبک‌های رفرنس را پیدا کنید. وقتی کالبک خود را با افزودن تابع پاکسازی در حالت سخت‌گیرانه اصلاح می‌کنید، *همچنین* بسیاری از اشکالات احتمالی آینده در محیط تولید مانند اشکال «Scroll to» قبلی را نیز برطرف می‌کنید:
 
 <Sandpack>
 
@@ -1226,7 +1226,7 @@ li {
 
 </Sandpack>
 
-Now on inital mount in StrictMode, the ref callbacks are all setup, cleaned up, and setup again:
+اکنون در mount اولیه در StrictMode، کالبک‌های رفرنس همگی راه‌اندازی، پاکسازی، و دوباره راه‌اندازی می‌شوند:
 
 ```
 ...
@@ -1237,15 +1237,15 @@ Now on inital mount in StrictMode, the ref callbacks are all setup, cleaned up, 
 ✅ Adding animal to the map. Total animals: 10
 ```
 
-**This is expected.** Strict Mode confirms that the ref callbacks are cleaned up correctly, so the size never grows above the expected amount. After the fix, there are no memory leaks, and all the features work as expected.
+**این مورد انتظار می‌رود.** حالت سخت‌گیرانه تأیید می‌کند که کالبک‌های رفرنس به‌درستی پاکسازی می‌شوند، بنابراین اندازه هرگز از مقدار مورد انتظار فراتر نمی‌رود. پس از رفع اشکال، هیچ نشت حافظه‌ای وجود ندارد، و تمام قابلیت‌ها همان‌طور که انتظار می‌رود کار می‌کنند.
 
-Without Strict Mode, it was easy to miss the bug until you clicked around to app to notice broken features. Strict Mode made the bugs appear right away, before you push them to production.
+بدون حالت سخت‌گیرانه، تشخیص اشکال تا زمانی که در برنامه کلیک می‌کردید تا قابلیت‌های خراب را متوجه شوید آسان نبود. حالت سخت‌گیرانه اشکالات را فوراً، قبل از اینکه آن‌ها را به محیط تولید ببرید، آشکار کرد.
 
 ---
-### Fixing deprecation warnings enabled by Strict Mode {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
+### رفع هشدارهای منسوخ‌شدگی که توسط حالت سخت‌گیرانه فعال شده‌اند {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
 
-React warns if some component anywhere inside a `<StrictMode>` tree uses one of these deprecated APIs:
+ری‌اکت هشدار می‌دهد اگر کامپوننتی در هر کجای درخت `<StrictMode>` از یکی از این APIهای منسوخ استفاده کند:
 
-* `UNSAFE_` class lifecycle methods like [`UNSAFE_componentWillMount`](/reference/react/Component#unsafe_componentwillmount). [See alternatives.](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#migrating-from-legacy-lifecycles)
+* متدهای چرخهٔ حیات `UNSAFE_` کلاسی مانند [`UNSAFE_componentWillMount`](/reference/react/Component#unsafe_componentwillmount). [جایگزین‌ها را ببینید.](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#migrating-from-legacy-lifecycles)
 
-These APIs are primarily used in older [class components](/reference/react/Component) so they rarely appear in modern apps.
+این APIها عمدتاً در [کامپوننت‌های کلاسی](/reference/react/Component) قدیمی استفاده می‌شدند، بنابراین به‌ندرت در برنامه‌های مدرن ظاهر می‌شوند.

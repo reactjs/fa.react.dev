@@ -4,7 +4,7 @@ title: panicThreshold
 
 <Intro>
 
-The `panicThreshold` option controls how the React Compiler handles errors during compilation.
+گزینهٔ `panicThreshold` کنترل می‌کند که React Compiler چگونه با خطاها در طول کامپایل رفتار می‌کند.
 
 </Intro>
 
@@ -18,42 +18,42 @@ The `panicThreshold` option controls how the React Compiler handles errors durin
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `panicThreshold` {/*panicthreshold*/}
 
-Determines whether compilation errors should fail the build or skip optimization.
+تعیین می‌کند که آیا خطاهای کامپایل باید build را شکست دهند یا از بهینه‌سازی صرف‌نظر کنند.
 
-#### Type {/*type*/}
+#### نوع {/*type*/}
 
 ```
 'none' | 'critical_errors' | 'all_errors'
 ```
 
-#### Default value {/*default-value*/}
+#### مقدار پیش‌فرض {/*default-value*/}
 
 `'none'`
 
-#### Options {/*options*/}
+#### گزینه‌ها {/*options*/}
 
-- **`'none'`** (default, recommended): Skip components that can't be compiled and continue building
-- **`'critical_errors'`**: Fail the build only on critical compiler errors
-- **`'all_errors'`**: Fail the build on any compiler diagnostic
+- **`'none'`** (پیش‌فرض، توصیه‌شده): کامپوننت‌هایی که نمی‌توانند کامپایل شوند را نادیده بگیر و build را ادامه بده
+- **`'critical_errors'`**: build فقط در خطاهای بحرانی کامپایلر شکست بخورد
+- **`'all_errors'`**: build در هر تشخیص کامپایلر شکست بخورد
 
-#### Caveats {/*caveats*/}
+#### ملاحظات {/*caveats*/}
 
-- Production builds should always use `'none'`
-- Build failures prevent your application from building
-- The compiler automatically detects and skips problematic code with `'none'`
-- Higher thresholds are only useful during development for debugging
+- buildهای production همیشه باید از `'none'` استفاده کنند
+- شکست build از ساخته شدن اپلیکیشن شما جلوگیری می‌کند
+- کامپایلر با `'none'` به‌طور خودکار کد مشکل‌دار را شناسایی و نادیده می‌گیرد
+- آستانه‌های بالاتر فقط در طول توسعه برای دیباگ مفید هستند
 
 ---
 
-## Usage {/*usage*/}
+## نحوهٔ استفاده {/*usage*/}
 
-### Production configuration (recommended) {/*production-configuration*/}
+### پیکربندی production (توصیه‌شده) {/*production-configuration*/}
 
-For production builds, always use `'none'`. This is the default value:
+برای buildهای production، همیشه از `'none'` استفاده کنید. این مقدار پیش‌فرض است:
 
 ```js
 {
@@ -61,15 +61,15 @@ For production builds, always use `'none'`. This is the default value:
 }
 ```
 
-This ensures:
-- Your build never fails due to compiler issues
-- Components that can't be optimized run normally
-- Maximum components get optimized
-- Stable production deployments
+این تضمین می‌کند:
+- build شما هرگز به دلیل مشکلات کامپایلر شکست نمی‌خورد
+- کامپوننت‌هایی که نمی‌توانند بهینه شوند، به‌طور عادی اجرا می‌شوند
+- بیشترین تعداد کامپوننت‌ها بهینه می‌شوند
+- استقرارهای production پایدار
 
-### Development debugging {/*development-debugging*/}
+### دیباگ در توسعه {/*development-debugging*/}
 
-Temporarily use stricter thresholds to find issues:
+به‌طور موقت از آستانه‌های سخت‌گیرانه‌تر برای یافتن مشکلات استفاده کنید:
 
 ```js
 const isDevelopment = process.env.NODE_ENV === 'development';

@@ -1,37 +1,37 @@
 ---
-title: Server Components
+title: کامپوننت‌های سرور
 ---
 
 <RSC>
 
-Server Components are for use in [React Server Components](/learn/start-a-new-react-project#full-stack-frameworks).
+کامپوننت‌های سرور برای استفاده در [کامپوننت‌های سرور ری‌اکت](/learn/start-a-new-react-project#full-stack-frameworks) هستند.
 
 </RSC>
 
 <Intro>
 
-Server Components are a new type of Component that renders ahead of time, before bundling, in an environment separate from your client app or SSR server.
+کامپوننت‌های سرور نوع جدیدی از کامپوننت هستند که پیش از باندل شدن، در محیطی جدا از اپ کلاینت یا سرور SSR شما، رندر می‌شوند.
 
 </Intro>
 
-This separate environment is the "server" in React Server Components. Server Components can run once at build time on your CI server, or they can be run for each request using a web server.
+این محیط جداگانه، همان «سرور» در کامپوننت‌های سرور ری‌اکت است. کامپوننت‌های سرور می‌توانند یک‌بار در زمان build روی سرور CI شما اجرا شوند، یا می‌توانند برای هر درخواست با استفاده از یک وب‌سرور اجرا شوند.
 
 <InlineToc />
 
 <Note>
 
-#### How do I build support for Server Components? {/*how-do-i-build-support-for-server-components*/}
+#### چگونه می‌توانم پشتیبانی از کامپوننت‌های سرور را پیاده‌سازی کنم؟ {/*how-do-i-build-support-for-server-components*/}
 
-While React Server Components in React 19 are stable and will not break between minor versions, the underlying APIs used to implement a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x.
+در حالی که کامپوننت‌های سرور ری‌اکت در React 19 پایدار هستند و بین نسخه‌های minor شکسته نمی‌شوند، APIهای زیرین که برای پیاده‌سازی یک باندلر یا فریمورک کامپوننت سرور ری‌اکت استفاده می‌شوند، از semver پیروی نمی‌کنند و ممکن است بین نسخه‌های minor در React 19.x تغییر کنند.
 
-To support React Server Components as a bundler or framework, we recommend pinning to a specific React version, or using the Canary release. We will continue working with bundlers and frameworks to stabilize the APIs used to implement React Server Components in the future.
+برای پشتیبانی از کامپوننت‌های سرور ری‌اکت به‌عنوان یک باندلر یا فریمورک، توصیه می‌کنیم به یک نسخهٔ خاص از ری‌اکت پایبند باشید، یا از نسخهٔ Canary استفاده کنید. ما به همکاری با باندلرها و فریمورک‌ها برای پایدار کردن APIهای مورد استفاده در پیاده‌سازی کامپوننت‌های سرور ری‌اکت در آینده ادامه خواهیم داد.
 
 </Note>
 
-### Server Components without a Server {/*server-components-without-a-server*/}
-Server components can run at build time to read from the filesystem or fetch static content, so a web server is not required. For example, you may want to read static data from a content management system.
+### کامپوننت‌های سرور بدون سرور {/*server-components-without-a-server*/}
+کامپوننت‌های سرور می‌توانند در زمان build اجرا شوند تا از سیستم‌فایل بخوانند یا محتوای استاتیک را fetch کنند، بنابراین به وب‌سرور نیاز نیست. مثلاً ممکن است بخواهید داده‌های استاتیک را از یک سیستم مدیریت محتوا بخوانید.
 
-Without Server Components, it's common to fetch static data on the client with an Effect:
+بدون کامپوننت‌های سرور، معمول است که داده‌های استاتیک را در کلاینت با یک افکت fetch کنید:
 ```js
 // bundle.js
 import marked from 'marked'; // 35.9K (11.2K gzipped)
@@ -58,9 +58,9 @@ app.get(`/api/content/:page`, async (req, res) => {
 });
 ```
 
-This pattern means users need to download and parse an additional 75K (gzipped) of libraries, and wait for a second request to fetch the data after the page loads, just to render static content that will not change for the lifetime of the page.
+این الگو به این معناست که کاربران باید ۷۵ کیلوبایت (فشرده‌شده) کتابخانهٔ اضافی را دانلود و تجزیه کنند، و برای دریافت داده‌ها پس از بارگذاری صفحه منتظر یک درخواست دوم بمانند، فقط برای رندر کردن محتوای استاتیکی که در طول عمر صفحه تغییر نخواهد کرد.
 
-With Server Components, you can render these components once at build time:
+با کامپوننت‌های سرور، می‌توانید این کامپوننت‌ها را یک‌بار در زمان build رندر کنید:
 
 ```js
 import marked from 'marked'; // Not included in bundle
@@ -74,17 +74,17 @@ async function Page({page}) {
 }
 ```
 
-The rendered output can then be server-side rendered (SSR) to HTML and uploaded to a CDN. When the app loads, the client will not see the original `Page` component, or the expensive libraries for rendering the markdown. The client will only see the rendered output:
+سپس می‌توان خروجی رندرشده را به صورت سمت سرور (SSR) به HTML تبدیل کرد و در یک CDN بارگذاری نمود. وقتی اپ بارگذاری می‌شود، کلاینت کامپوننت `Page` اصلی، یا کتابخانه‌های سنگین برای رندر کردن markdown را نخواهد دید. کلاینت فقط خروجی رندرشده را می‌بیند:
 
 ```js
 <div><!-- html for markdown --></div>
 ```
 
-This means the content is visible during first page load, and the bundle does not include the expensive libraries needed to render the static content.
+این یعنی محتوا در طول اولین بارگذاری صفحه قابل مشاهده است، و باندل شامل کتابخانه‌های سنگین مورد نیاز برای رندر محتوای استاتیک نمی‌شود.
 
 <Note>
 
-You may notice that the Server Component above is an async function:
+ممکن است متوجه شوید که کامپوننت سرور بالا یک تابع async است:
 
 ```js
 async function Page({page}) {
@@ -92,16 +92,16 @@ async function Page({page}) {
 }
 ```
 
-Async Components are a new feature of Server Components that allow you to `await` in render.
+کامپوننت‌های Async یک قابلیت جدید کامپوننت‌های سرور هستند که به شما اجازه می‌دهند در حین رندر `await` کنید.
 
-See [Async components with Server Components](#async-components-with-server-components) below.
+بخش [کامپوننت‌های async با کامپوننت‌های سرور](#async-components-with-server-components) را در ادامه ببینید.
 
 </Note>
 
-### Server Components with a Server {/*server-components-with-a-server*/}
-Server Components can also run on a web server during a request for a page, letting you access your data layer without having to build an API. They are rendered before your application is bundled, and can pass data and JSX as props to Client Components.
+### کامپوننت‌های سرور با سرور {/*server-components-with-a-server*/}
+کامپوننت‌های سرور همچنین می‌توانند در طول درخواست یک صفحه روی یک وب‌سرور اجرا شوند، که به شما اجازه می‌دهد بدون نیاز به ساختن یک API به لایهٔ داده‌تان دسترسی داشته باشید. آن‌ها قبل از باندل شدن اپلیکیشن رندر می‌شوند، و می‌توانند داده و JSX را به عنوان پراپس به کامپوننت‌های کلاینت منتقل کنند.
 
-Without Server Components, it's common to fetch dynamic data on the client in an Effect:
+بدون کامپوننت‌های سرور، معمول است که داده‌های پویا را در کلاینت در یک افکت fetch کنید:
 
 ```js
 // bundle.js
@@ -150,7 +150,7 @@ app.get(`/api/authors/:id`, async (req, res) => {
 });
 ```
 
-With Server Components, you can read the data and render it in the component:
+با کامپوننت‌های سرور، می‌توانید داده‌ها را بخوانید و در کامپوننت رندر کنید:
 
 ```js
 import db from './database';
@@ -174,7 +174,7 @@ async function Author({id}) {
 }
 ```
 
-The bundler then combines the data, rendered Server Components and dynamic Client Components into a bundle. Optionally, that bundle can then be server-side rendered (SSR) to create the initial HTML for the page. When the page loads, the browser does not see the original `Note` and `Author` components; only the rendered output is sent to the client:
+سپس باندلر داده‌ها، کامپوننت‌های سرور رندرشده و کامپوننت‌های کلاینت پویا را در یک باندل ترکیب می‌کند. به صورت اختیاری، آن باندل می‌تواند به صورت سمت سرور (SSR) رندر شود تا HTML اولیه برای صفحه ساخته شود. وقتی صفحه بارگذاری می‌شود، مرورگر کامپوننت‌های اصلی `Note` و `Author` را نمی‌بیند؛ فقط خروجی رندرشده به کلاینت ارسال می‌شود:
 
 ```js
 <div>
@@ -183,24 +183,24 @@ The bundler then combines the data, rendered Server Components and dynamic Clien
 </div>
 ```
 
-Server Components can be made dynamic by re-fetching them from a server, where they can access the data and render again. This new application architecture combines the simple “request/response” mental model of server-centric Multi-Page Apps with the seamless interactivity of client-centric Single-Page Apps, giving you the best of both worlds.
+کامپوننت‌های سرور می‌توانند با re-fetch شدن از سرور، که در آنجا می‌توانند به داده‌ها دسترسی داشته و دوباره رندر شوند، پویا شوند. این معماری جدید اپلیکیشن، مدل ذهنی سادهٔ «درخواست/پاسخ» اپلیکیشن‌های چندصفحه‌ای مبتنی بر سرور را با تعامل روان اپلیکیشن‌های تک‌صفحه‌ای مبتنی بر کلاینت ترکیب می‌کند، و بهترین هر دو دنیا را در اختیار شما قرار می‌دهد.
 
-### Adding interactivity to Server Components {/*adding-interactivity-to-server-components*/}
+### افزودن تعامل به کامپوننت‌های سرور {/*adding-interactivity-to-server-components*/}
 
-Server Components are not sent to the browser, so they cannot use interactive APIs like `useState`. To add interactivity to Server Components, you can compose them with Client Component using the `"use client"` directive.
+کامپوننت‌های سرور به مرورگر ارسال نمی‌شوند، بنابراین نمی‌توانند از APIهای تعاملی مانند `useState` استفاده کنند. برای افزودن تعامل به کامپوننت‌های سرور، می‌توانید آن‌ها را با کامپوننت کلاینت با استفاده از دایرکتیو `"use client"` ترکیب کنید.
 
 <Note>
 
-#### There is no directive for Server Components. {/*there-is-no-directive-for-server-components*/}
+#### هیچ دایرکتیوی برای کامپوننت‌های سرور وجود ندارد. {/*there-is-no-directive-for-server-components*/}
 
-A common misunderstanding is that Server Components are denoted by `"use server"`, but there is no directive for Server Components. The `"use server"` directive is used for Server Functions.
+یک برداشت اشتباه رایج این است که کامپوننت‌های سرور با `"use server"` نشان داده می‌شوند، اما هیچ دایرکتیوی برای کامپوننت‌های سرور وجود ندارد. دایرکتیو `"use server"` برای تابع‌های سرور استفاده می‌شود.
 
-For more info, see the docs for [Directives](/reference/rsc/directives).
+برای اطلاعات بیشتر، مستندات [دایرکتیوها](/reference/rsc/directives) را ببینید.
 
 </Note>
 
 
-In the following example, the `Notes` Server Component imports an `Expandable` Client Component that uses state to toggle its `expanded` state:
+در مثال زیر، کامپوننت سرور `Notes` یک کامپوننت کلاینت `Expandable` را وارد می‌کند که از استیت برای تغییر استیت `expanded` خود استفاده می‌کند:
 ```js
 // Server Component
 import Expandable from './Expandable';
@@ -237,7 +237,7 @@ export default function Expandable({children}) {
 }
 ```
 
-This works by first rendering `Notes` as a Server Component, and then instructing the bundler to create a bundle for the Client Component `Expandable`. In the browser, the Client Components will see output of the Server Components passed as props:
+این کار با این روش انجام می‌شود که ابتدا `Notes` به‌عنوان یک کامپوننت سرور رندر می‌شود، و سپس به باندلر دستور داده می‌شود که یک باندل برای کامپوننت کلاینت `Expandable` بسازد. در مرورگر، کامپوننت‌های کلاینت خروجی کامپوننت‌های سرور را به‌عنوان پراپس دریافت می‌کنند:
 
 ```js
 <head>
@@ -257,11 +257,11 @@ This works by first rendering `Notes` as a Server Component, and then instructin
 </body>
 ```
 
-### Async components with Server Components {/*async-components-with-server-components*/}
+### کامپوننت‌های async با کامپوننت‌های سرور {/*async-components-with-server-components*/}
 
-Server Components introduce a new way to write Components using async/await. When you `await` in an async component, React will suspend and wait for the promise to resolve before resuming rendering. This works across server/client boundaries with streaming support for Suspense.
+کامپوننت‌های سرور روش جدیدی برای نوشتن کامپوننت‌ها با استفاده از async/await معرفی می‌کنند. وقتی در یک کامپوننت async عمل `await` انجام می‌دهید، ری‌اکت ساسپنس می‌شود و قبل از ادامهٔ رندر منتظر حلول promise می‌ماند. این کار با پشتیبانی از streaming برای ساسپنس، از مرزهای سرور/کلاینت عبور می‌کند.
 
-You can even create a promise on the server, and await it on the client:
+حتی می‌توانید یک promise روی سرور بسازید، و آن را روی کلاینت await کنید:
 
 ```js
 // Server Component
@@ -297,6 +297,6 @@ function Comments({commentsPromise}) {
 }
 ```
 
-The `note` content is important data for the page to render, so we `await` it on the server. The comments are below the fold and lower-priority, so we start the promise on the server, and wait for it on the client with the `use` API. This will Suspend on the client, without blocking the `note` content from rendering.
+محتوای `note` داده‌های مهمی برای رندر صفحه است، بنابراین آن را روی سرور `await` می‌کنیم. نظرات پایین صفحه‌اند و اولویت پایین‌تری دارند، بنابراین promise را روی سرور آغاز می‌کنیم، و روی کلاینت با API `use` منتظر آن می‌مانیم. این کار باعث ساسپنس روی کلاینت می‌شود، بدون اینکه رندر محتوای `note` را مسدود کند.
 
-Since async components are not supported on the client, we await the promise with `use`.
+از آنجا که کامپوننت‌های async روی کلاینت پشتیبانی نمی‌شوند، ما promise را با `use` await می‌کنیم.

@@ -1,18 +1,18 @@
 ---
-title: Server Functions
+title: تابع‌های سرور
 ---
 
 <RSC>
 
-Server Functions are for use in [React Server Components](/reference/rsc/server-components).
+تابع‌های سرور برای استفاده در [کامپوننت‌های سرور ری‌اکت](/reference/rsc/server-components) هستند.
 
-**Note:** Until September 2024, we referred to all Server Functions as "Server Actions". If a Server Function is passed to an action prop or called from inside an action then it is a Server Action, but not all Server Functions are Server Actions. The naming in this documentation has been updated to reflect that Server Functions can be used for multiple purposes.
+**نکته:** تا سپتامبر ۲۰۲۴، ما به همهٔ تابع‌های سرور می‌گفتیم «Server Actions». اگر یک تابع سرور به یک پراپ action پاس داده شود یا از داخل یک action فراخوانی شود، یک Server Action است، اما همهٔ تابع‌های سرور Server Action نیستند. نام‌گذاری در این مستندات به‌روزرسانی شده تا نشان دهد تابع‌های سرور می‌توانند برای چندین منظور استفاده شوند.
 
 </RSC>
 
 <Intro>
 
-Server Functions allow Client Components to call async functions executed on the server.
+تابع‌های سرور به کامپوننت‌های کلاینت اجازه می‌دهند تابع‌های async که روی سرور اجرا می‌شوند را فراخوانی کنند.
 
 </Intro>
 
@@ -20,23 +20,23 @@ Server Functions allow Client Components to call async functions executed on the
 
 <Note>
 
-#### How do I build support for Server Functions? {/*how-do-i-build-support-for-server-functions*/}
+#### چگونه می‌توانم پشتیبانی از تابع‌های سرور را پیاده‌سازی کنم؟ {/*how-do-i-build-support-for-server-functions*/}
 
-While Server Functions in React 19 are stable and will not break between minor versions, the underlying APIs used to implement Server Functions in a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x. 
+در حالی که تابع‌های سرور در React 19 پایدار هستند و بین نسخه‌های minor شکسته نمی‌شوند، APIهای زیرین که برای پیاده‌سازی تابع‌های سرور در یک باندلر یا فریمورک کامپوننت سرور ری‌اکت استفاده می‌شوند، از semver پیروی نمی‌کنند و ممکن است بین نسخه‌های minor در React 19.x تغییر کنند.
 
-To support Server Functions as a bundler or framework, we recommend pinning to a specific React version, or using the Canary release. We will continue working with bundlers and frameworks to stabilize the APIs used to implement Server Functions in the future.
+برای پشتیبانی از تابع‌های سرور به‌عنوان یک باندلر یا فریمورک، توصیه می‌کنیم به یک نسخهٔ خاص از ری‌اکت پایبند باشید، یا از نسخهٔ Canary استفاده کنید. ما به همکاری با باندلرها و فریمورک‌ها برای پایدار کردن APIهای مورد استفاده در پیاده‌سازی تابع‌های سرور در آینده ادامه خواهیم داد.
 
 </Note>
 
-When a Server Function is defined with the [`"use server"`](/reference/rsc/use-server) directive, your framework will automatically create a reference to the Server Function, and pass that reference to the Client Component. When that function is called on the client, React will send a request to the server to execute the function, and return the result.
+وقتی یک تابع سرور با دایرکتیو [`"use server"`](/reference/rsc/use-server) تعریف می‌شود، فریمورک شما به‌طور خودکار یک ارجاع به تابع سرور می‌سازد، و آن ارجاع را به کامپوننت کلاینت منتقل می‌کند. وقتی این تابع روی کلاینت فراخوانی می‌شود، ری‌اکت یک درخواست به سرور می‌فرستد تا تابع را اجرا کند، و نتیجه را برمی‌گرداند.
 
-Server Functions can be created in Server Components and passed as props to Client Components, or they can be imported and used in Client Components.
+تابع‌های سرور می‌توانند در کامپوننت‌های سرور ایجاد شوند و به‌عنوان پراپس به کامپوننت‌های کلاینت منتقل شوند، یا می‌توانند در کامپوننت‌های کلاینت وارد و استفاده شوند.
 
-## Usage {/*usage*/}
+## نحوهٔ استفاده {/*usage*/}
 
-### Creating a Server Function from a Server Component {/*creating-a-server-function-from-a-server-component*/}
+### ایجاد یک تابع سرور از یک کامپوننت سرور {/*creating-a-server-function-from-a-server-component*/}
 
-Server Components can define Server Functions with the `"use server"` directive:
+کامپوننت‌های سرور می‌توانند تابع‌های سرور را با دایرکتیو `"use server"` تعریف کنند:
 
 ```js [[2, 7, "'use server'"], [1, 5, "createNoteAction"], [1, 12, "createNoteAction"]]
 // Server Component
@@ -54,7 +54,7 @@ function EmptyNote () {
 }
 ```
 
-When React renders the `EmptyNote` Server Component, it will create a reference to the `createNoteAction` function, and pass that reference to the `Button` Client Component. When the button is clicked, React will send a request to the server to execute the `createNoteAction` function with the reference provided:
+وقتی ری‌اکت کامپوننت سرور `EmptyNote` را رندر می‌کند، یک ارجاع به تابع `createNoteAction` می‌سازد، و آن ارجاع را به کامپوننت کلاینت `Button` منتقل می‌کند. وقتی دکمه کلیک می‌شود، ری‌اکت یک درخواست به سرور می‌فرستد تا تابع `createNoteAction` را با ارجاع ارائه‌شده اجرا کند:
 
 ```js {5}
 "use client";
@@ -66,12 +66,12 @@ export default function Button({onClick}) {
 }
 ```
 
-For more, see the docs for [`"use server"`](/reference/rsc/use-server).
+برای اطلاعات بیشتر، مستندات [`"use server"`](/reference/rsc/use-server) را ببینید.
 
 
-### Importing Server Functions from Client Components {/*importing-server-functions-from-client-components*/}
+### وارد کردن تابع‌های سرور از کامپوننت‌های کلاینت {/*importing-server-functions-from-client-components*/}
 
-Client Components can import Server Functions from files that use the `"use server"` directive:
+کامپوننت‌های کلاینت می‌توانند تابع‌های سرور را از فایل‌هایی که از دایرکتیو `"use server"` استفاده می‌کنند، وارد کنند:
 
 ```js [[1, 3, "createNote"]]
 "use server";
@@ -82,7 +82,7 @@ export async function createNote() {
 
 ```
 
-When the bundler builds the `EmptyNote` Client Component, it will create a reference to the `createNote` function in the bundle. When the `button` is clicked, React will send a request to the server to execute the `createNote` function using the reference provided:
+وقتی باندلر کامپوننت کلاینت `EmptyNote` را می‌سازد، یک ارجاع به تابع `createNote` در باندل ایجاد می‌کند. وقتی `button` کلیک می‌شود، ری‌اکت یک درخواست به سرور می‌فرستد تا تابع `createNote` را با استفاده از ارجاع ارائه‌شده اجرا کند:
 
 ```js [[1, 2, "createNote"], [1, 5, "createNote"], [1, 7, "createNote"]]
 "use client";
@@ -95,11 +95,11 @@ function EmptyNote() {
 }
 ```
 
-For more, see the docs for [`"use server"`](/reference/rsc/use-server).
+برای اطلاعات بیشتر، مستندات [`"use server"`](/reference/rsc/use-server) را ببینید.
 
-### Server Functions with Actions {/*server-functions-with-actions*/}
+### تابع‌های سرور با اکشن‌ها {/*server-functions-with-actions*/}
 
-Server Functions can be called from Actions on the client:
+تابع‌های سرور می‌توانند از اکشن‌ها روی کلاینت فراخوانی شوند:
 
 ```js [[1, 3, "updateName"]]
 "use server";
@@ -143,15 +143,15 @@ function UpdateName() {
 }
 ```
 
-This allows you to access the `isPending` state of the Server Function by wrapping it in an Action on the client.
+این به شما اجازه می‌دهد با قرار دادن تابع سرور در یک اکشن روی کلاینت، به استیت `isPending` تابع سرور دسترسی پیدا کنید.
 
-For more, see the docs for [Calling a Server Function outside of `<form>`](/reference/rsc/use-server#calling-a-server-function-outside-of-form)
+برای اطلاعات بیشتر، مستندات [فراخوانی یک تابع سرور خارج از `<form>`](/reference/rsc/use-server#calling-a-server-function-outside-of-form) را ببینید.
 
-### Server Functions with Form Actions {/*using-server-functions-with-form-actions*/}
+### تابع‌های سرور با اکشن‌های فرم {/*using-server-functions-with-form-actions*/}
 
-Server Functions work with the new Form features in React 19.
+تابع‌های سرور با قابلیت‌های جدید فرم در React 19 کار می‌کنند.
 
-You can pass a Server Function to a Form to automatically submit the form to the server:
+می‌توانید یک تابع سرور را به یک فرم منتقل کنید تا فرم به‌طور خودکار به سرور ارسال شود:
 
 
 ```js [[1, 3, "updateName"], [1, 7, "updateName"]]
@@ -168,13 +168,13 @@ function UpdateName() {
 }
 ```
 
-When the Form submission succeeds, React will automatically reset the form. You can add `useActionState` to access the pending state, last response, or to support progressive enhancement.
+وقتی ارسال فرم موفق می‌شود، ری‌اکت به‌طور خودکار فرم را reset می‌کند. می‌توانید `useActionState` را اضافه کنید تا به استیت در حال انجام، آخرین پاسخ، یا برای پشتیبانی از progressive enhancement دسترسی داشته باشید.
 
-For more, see the docs for [Server Functions in Forms](/reference/rsc/use-server#server-functions-in-forms).
+برای اطلاعات بیشتر، مستندات [تابع‌های سرور در فرم‌ها](/reference/rsc/use-server#server-functions-in-forms) را ببینید.
 
-### Server Functions with `useActionState` {/*server-functions-with-use-action-state*/}
+### تابع‌های سرور با `useActionState` {/*server-functions-with-use-action-state*/}
 
-You can call Server Functions with `useActionState` for the common case where you just need access to the action pending state and last returned response:
+می‌توانید تابع‌های سرور را با `useActionState` برای حالت رایجی که فقط به استیت در حال انجام اکشن و آخرین پاسخ برگشتی نیاز دارید، فراخوانی کنید:
 
 ```js [[1, 3, "updateName"], [1, 6, "updateName"], [2, 6, "submitAction"], [2, 9, "submitAction"]]
 "use client";
@@ -193,13 +193,13 @@ function UpdateName() {
 }
 ```
 
-When using `useActionState` with Server Functions, React will also automatically replay form submissions entered before hydration finishes. This means users can interact with your app even before the app has hydrated.
+وقتی از `useActionState` با تابع‌های سرور استفاده می‌کنید، ری‌اکت همچنین به‌طور خودکار ارسال‌های فرمی را که قبل از پایان hydration وارد شده‌اند، بازپخش می‌کند. این یعنی کاربران می‌توانند حتی قبل از hydration اپ با آن تعامل داشته باشند.
 
-For more, see the docs for [`useActionState`](/reference/react/useActionState).
+برای اطلاعات بیشتر، مستندات [`useActionState`](/reference/react/useActionState) را ببینید.
 
-### Progressive enhancement with `useActionState` {/*progressive-enhancement-with-useactionstate*/}
+### ارتقای تدریجی با `useActionState` {/*progressive-enhancement-with-useactionstate*/}
 
-Server Functions also support progressive enhancement with the third argument of `useActionState`.
+تابع‌های سرور همچنین از progressive enhancement با آرگومان سوم `useActionState` پشتیبانی می‌کنند.
 
 ```js [[1, 3, "updateName"], [1, 6, "updateName"], [2, 6, "/name/update"], [3, 6, "submitAction"], [3, 9, "submitAction"]]
 "use client";
@@ -217,6 +217,6 @@ function UpdateName() {
 }
 ```
 
-When the <CodeStep step={2}>permalink</CodeStep> is provided to `useActionState`, React will redirect to the provided URL if the form is submitted before the JavaScript bundle loads.
+وقتی <CodeStep step={2}>permalink</CodeStep> به `useActionState` ارائه می‌شود، ری‌اکت در صورتی که فرم قبل از بارگذاری باندل JavaScript ارسال شود، به URL ارائه‌شده redirect می‌کند.
 
-For more, see the docs for [`useActionState`](/reference/react/useActionState).
+برای اطلاعات بیشتر، مستندات [`useActionState`](/reference/react/useActionState) را ببینید.

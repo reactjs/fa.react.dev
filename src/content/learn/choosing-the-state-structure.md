@@ -1,53 +1,53 @@
 ---
-title: Choosing the State Structure
+title: انتخاب ساختار استیت
 ---
 
 <Intro>
 
-Structuring state well can make a difference between a component that is pleasant to modify and debug, and one that is a constant source of bugs. Here are some tips you should consider when structuring state.
+ساختاردهی خوب استیت می‌تواند تفاوت میان کامپوننتی که اصلاح و دیباگ کردنش لذت‌بخش است و کامپوننتی که منبع دائمی باگ‌ها است را رقم بزند. در اینجا چند نکته وجود دارد که هنگام ساختاردهی استیت باید در نظر بگیرید.
 
 </Intro>
 
 <YouWillLearn>
 
-* When to use a single vs multiple state variables
-* What to avoid when organizing state
-* How to fix common issues with the state structure
+* چه زمانی از یک متغیر استیتِ واحد یا چند متغیر استیت استفاده کنید
+* چه چیزهایی را هنگام سازمان‌دهی استیت باید پرهیز کنید
+* چگونه مشکلات رایج ساختار استیت را برطرف کنید
 
 </YouWillLearn>
 
-## Principles for structuring state {/*principles-for-structuring-state*/}
+## اصول ساختاردهی استیت {/*principles-for-structuring-state*/}
 
-When you write a component that holds some state, you'll have to make choices about how many state variables to use and what the shape of their data should be. While it's possible to write correct programs even with a suboptimal state structure, there are a few principles that can guide you to make better choices:
+وقتی کامپوننتی می‌نویسید که استیت را نگه می‌دارد، باید دربارهٔ اینکه چند متغیر استیت استفاده کنید و شکل داده‌هایشان چه باشد تصمیم بگیرید. هرچند حتی با ساختار استیت نابهینه هم می‌توان برنامه‌های درستی نوشت، چند اصل وجود دارد که می‌تواند شما را در انتخاب‌های بهتر راهنمایی کند:
 
-1. **Group related state.** If you always update two or more state variables at the same time, consider merging them into a single state variable.
-2. **Avoid contradictions in state.** When the state is structured in a way that several pieces of state may contradict and "disagree" with each other, you leave room for mistakes. Try to avoid this.
-3. **Avoid redundant state.** If you can calculate some information from the component's props or its existing state variables during rendering, you should not put that information into that component's state.
-4. **Avoid duplication in state.** When the same data is duplicated between multiple state variables, or within nested objects, it is difficult to keep them in sync. Reduce duplication when you can.
-5. **Avoid deeply nested state.** Deeply hierarchical state is not very convenient to update. When possible, prefer to structure state in a flat way.
+1. **استیت‌های مرتبط را گروه کنید.** اگر همیشه دو یا چند متغیر استیت را همزمان به‌روزرسانی می‌کنید، ادغام کردن آن‌ها در یک متغیر استیتِ واحد را در نظر بگیرید.
+2. **از تناقض در استیت پرهیز کنید.** وقتی استیت به‌گونه‌ای ساختاردهی شده که چند بخش از استیت ممکن است با هم تناقض داشته و «مخالف» یکدیگر باشند، راه برای اشتباهات باز می‌ماند. سعی کنید از این کار پرهیز کنید.
+3. **از استیت اضافی پرهیز کنید.** اگر می‌توانید اطلاعاتی را حین رندر از پراپس کامپوننت یا متغیرهای استیت موجودش محاسبه کنید، نباید آن اطلاعات را در استیت کامپوننت قرار دهید.
+4. **از تکرار در استیت پرهیز کنید.** وقتی دادهٔ یکسانی در چند متغیر استیت یا درون اشیاء تودرتو تکرار می‌شود، همگام نگه‌داشتن آن‌ها دشوار است. هرجا که می‌توانید تکرار را کاهش دهید.
+5. **از استیت عمیقاً تودرتو پرهیز کنید.** استیت با سلسله‌مراتب عمیق برای به‌روزرسانی چندان مناسب نیست. هرگاه ممکن است، ساختاردهی مسطح استیت را ترجیح دهید.
 
-The goal behind these principles is to *make state easy to update without introducing mistakes*. Removing redundant and duplicate data from state helps ensure that all its pieces stay in sync. This is similar to how a database engineer might want to ["normalize" the database structure](https://docs.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description) to reduce the chance of bugs. To paraphrase Albert Einstein, **"Make your state as simple as it can be--but no simpler."**
+هدف پشت این اصول *آسان کردن به‌روزرسانی استیت بدون ایجاد اشتباه* است. حذف داده‌های اضافی و تکراری از استیت کمک می‌کند اطمینان حاصل شود که همهٔ بخش‌های آن همگام بمانند. این شبیه به این است که یک مهندس پایگاه داده ممکن است بخواهد برای کاهش احتمال باگ، ساختار پایگاه داده را [«نرمال‌سازی»](https://docs.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description) کند. به قول آلبرت اینشتین، **«استیت خود را تا حد ممکن ساده کنید — اما نه ساده‌تر.»**
 
-Now let's see how these principles apply in action.
+اکنون ببینیم این اصول چگونه در عمل به‌کار می‌روند.
 
-## Group related state {/*group-related-state*/}
+## استیت‌های مرتبط را گروه کنید {/*group-related-state*/}
 
-You might sometimes be unsure between using a single or multiple state variables.
+گاهی ممکن است بین استفاده از یک متغیر استیتِ واحد یا چند متغیر استیت مردد باشید.
 
-Should you do this?
+آیا باید این کار را انجام دهید؟
 
 ```js
 const [x, setX] = useState(0);
 const [y, setY] = useState(0);
 ```
 
-Or this?
+یا این کار؟
 
 ```js
 const [position, setPosition] = useState({ x: 0, y: 0 });
 ```
 
-Technically, you can use either of these approaches. But **if some two state variables always change together, it might be a good idea to unify them into a single state variable.** Then you won't forget to always keep them in sync, like in this example where moving the cursor updates both coordinates of the red dot:
+از نظر فنی، می‌توانید از هر رویکردی استفاده کنید. اما **اگر دو متغیر استیت همیشه با هم تغییر می‌کنند، می‌تواند ایدهٔ خوبی باشد که آن‌ها را در یک متغیر استیتِ واحد متحد کنید.** آن‌گاه فراموش نمی‌کنید که همیشه آن‌ها را همگام نگه دارید، مانند این مثال که حرکت نشانگر هر دو مختصات نقطهٔ قرمز را به‌روزرسانی می‌کند:
 
 <Sandpack>
 
@@ -93,17 +93,17 @@ body { margin: 0; padding: 0; height: 250px; }
 
 </Sandpack>
 
-Another case where you'll group data into an object or an array is when you don't know how many pieces of state you'll need. For example, it's helpful when you have a form where the user can add custom fields.
+مورد دیگری که در آن داده‌ها را در یک شیء یا آرایه گروه می‌کنید، زمانی است که نمی‌دانید به چند بخش استیت نیاز خواهید داشت. مثلاً وقتی فرمی دارید که کاربر می‌تواند فیلدهای سفارشی اضافه کند، مفید است.
 
 <Pitfall>
 
-If your state variable is an object, remember that [you can't update only one field in it](/learn/updating-objects-in-state) without explicitly copying the other fields. For example, you can't do `setPosition({ x: 100 })` in the above example because it would not have the `y` property at all! Instead, if you wanted to set `x` alone, you would either do `setPosition({ ...position, x: 100 })`, or split them into two state variables and do `setX(100)`.
+اگر متغیر استیت شما یک شیء است، به یاد داشته باشید که [نمی‌توانید فقط یک فیلد از آن را به‌روزرسانی کنید](/learn/updating-objects-in-state) بدون اینکه صریحاً سایر فیلدها را کپی کنید. مثلاً، در مثال بالا نمی‌توانید `setPosition({ x: 100 })` را انجام دهید چون اصلاً ویژگی `y` را نخواهد داشت! در عوض، اگر می‌خواهید فقط `x` را تنظیم کنید، یا `setPosition({ ...position, x: 100 })` را انجام دهید، یا آن‌ها را به دو متغیر استیت جداگانه تقسیم کنید و `setX(100)` را انجام دهید.
 
 </Pitfall>
 
-## Avoid contradictions in state {/*avoid-contradictions-in-state*/}
+## از تناقض در استیت پرهیز کنید {/*avoid-contradictions-in-state*/}
 
-Here is a hotel feedback form with `isSending` and `isSent` state variables:
+در اینجا یک فرم بازخورد هتل با متغیرهای استیت `isSending` و `isSent` آمده است:
 
 <Sandpack>
 
@@ -157,9 +157,9 @@ function sendMessage(text) {
 
 </Sandpack>
 
-While this code works, it leaves the door open for "impossible" states. For example, if you forget to call `setIsSent` and `setIsSending` together, you may end up in a situation where both `isSending` and `isSent` are `true` at the same time. The more complex your component is, the harder it is to understand what happened.
+اگرچه این کد کار می‌کند، راه را برای استیت‌های «غیرممکن» باز می‌گذارد. مثلاً، اگر فراموش کنید `setIsSent` و `setIsSending` را با هم فراخوانی کنید، ممکن است در وضعیتی قرار بگیرید که هم `isSending` و هم `isSent` همزمان `true` باشند. هرچه کامپوننت پیچیده‌تر باشد، فهمیدن اینکه چه اتفاقی افتاده سخت‌تر است.
 
-**Since `isSending` and `isSent` should never be `true` at the same time, it is better to replace them with one `status` state variable that may take one of *three* valid states:** `'typing'` (initial), `'sending'`, and `'sent'`:
+**از آنجا که `isSending` و `isSent` هرگز نباید همزمان `true` باشند، بهتر است آن‌ها را با یک متغیر استیتِ `status` جایگزین کنید که می‌تواند یکی از *سه* حالت معتبر را بپذیرد:** `'typing'` (اولیه)، `'sending'`، و `'sent'`:
 
 <Sandpack>
 
@@ -214,20 +214,20 @@ function sendMessage(text) {
 
 </Sandpack>
 
-You can still declare some constants for readability:
+برای خوانایی همچنان می‌توانید چند ثابت تعریف کنید:
 
 ```js
 const isSending = status === 'sending';
 const isSent = status === 'sent';
 ```
 
-But they're not state variables, so you don't need to worry about them getting out of sync with each other.
+اما آن‌ها متغیر استیت نیستند، پس نیازی نیست نگران ناهمگام شدنشان با یکدیگر باشید.
 
-## Avoid redundant state {/*avoid-redundant-state*/}
+## از استیت اضافی پرهیز کنید {/*avoid-redundant-state*/}
 
-If you can calculate some information from the component's props or its existing state variables during rendering, you **should not** put that information into that component's state.
+اگر می‌توانید اطلاعاتی را حین رندر از پراپس کامپوننت یا متغیرهای استیت موجودش محاسبه کنید، **نباید** آن اطلاعات را در استیت کامپوننت قرار دهید.
 
-For example, take this form. It works, but can you find any redundant state in it?
+مثلاً این فرم را ببینید. کار می‌کند، اما آیا می‌توانید استیت اضافی در آن پیدا کنید؟
 
 <Sandpack>
 
@@ -280,9 +280,9 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-This form has three state variables: `firstName`, `lastName`, and `fullName`. However, `fullName` is redundant. **You can always calculate `fullName` from `firstName` and `lastName` during render, so remove it from state.**
+این فرم سه متغیر استیت دارد: `firstName`، `lastName`، و `fullName`. با این حال، `fullName` اضافی است. **همیشه می‌توانید `fullName` را حین رندر از `firstName` و `lastName` محاسبه کنید، پس آن را از استیت حذف کنید.**
 
-This is how you can do it:
+به این شکل می‌توانید این کار را انجام دهید:
 
 <Sandpack>
 
@@ -334,37 +334,37 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-Here, `fullName` is *not* a state variable. Instead, it's calculated during render:
+اینجا `fullName` *متغیر استیت نیست*. بلکه حین رندر محاسبه می‌شود:
 
 ```js
 const fullName = firstName + ' ' + lastName;
 ```
 
-As a result, the change handlers don't need to do anything special to update it. When you call `setFirstName` or `setLastName`, you trigger a re-render, and then the next `fullName` will be calculated from the fresh data.
+در نتیجه، هندلرهای تغییر نیازی ندارند برای به‌روزرسانی آن کار خاصی انجام دهند. وقتی `setFirstName` یا `setLastName` را فراخوانی می‌کنید، رندر مجدد را تحریک می‌کنید و سپس `fullName` بعدی از داده‌های تازه محاسبه خواهد شد.
 
 <DeepDive>
 
-#### Don't mirror props in state {/*don-t-mirror-props-in-state*/}
+#### پراپس را در استیت انعکاس ندهید {/*don-t-mirror-props-in-state*/}
 
-A common example of redundant state is code like this:
+یک مثال رایج از استیت اضافی، کدی مثل این است:
 
 ```js
 function Message({ messageColor }) {
   const [color, setColor] = useState(messageColor);
 ```
 
-Here, a `color` state variable is initialized to the `messageColor` prop. The problem is that **if the parent component passes a different value of `messageColor` later (for example, `'red'` instead of `'blue'`), the `color` *state variable* would not be updated!** The state is only initialized during the first render.
+اینجا، متغیر استیت `color` با پراپ `messageColor` مقداردهی اولیه می‌شود. مشکل این است که **اگر کامپوننت والد بعداً مقدار متفاوتی برای `messageColor` بفرستد (مثلاً `'red'` به‌جای `'blue'`)، متغیر استیت `color` به‌روزرسانی نخواهد شد!** استیت فقط حین اولین رندر مقداردهی اولیه می‌شود.
 
-This is why "mirroring" some prop in a state variable can lead to confusion. Instead, use the `messageColor` prop directly in your code. If you want to give it a shorter name, use a constant:
+به همین دلیل «انعکاس دادن» پراپسی در یک متغیر استیت می‌تواند به سردرگمی منجر شود. در عوض، از پراپ `messageColor` مستقیماً در کدتان استفاده کنید. اگر می‌خواهید نام کوتاه‌تری به آن بدهید، از یک ثابت استفاده کنید:
 
 ```js
 function Message({ messageColor }) {
   const color = messageColor;
 ```
 
-This way it won't get out of sync with the prop passed from the parent component.
+این‌گونه با پراپس عبوری از کامپوننت والد ناهمگام نخواهد شد.
 
-"Mirroring" props into state only makes sense when you *want* to ignore all updates for a specific prop. By convention, start the prop name with `initial` or `default` to clarify that its new values are ignored:
+«انعکاس دادن» پراپس در استیت تنها زمانی معنا دارد که *می‌خواهید* همهٔ به‌روزرسانی‌ها برای یک پراپ خاص را نادیده بگیرید. قرارداداً، نام پراپ را با `initial` یا `default` آغاز کنید تا روشن شود که مقادیر جدید آن نادیده گرفته می‌شوند:
 
 ```js
 function Message({ initialColor }) {
@@ -375,9 +375,9 @@ function Message({ initialColor }) {
 
 </DeepDive>
 
-## Avoid duplication in state {/*avoid-duplication-in-state*/}
+## از تکرار در استیت پرهیز کنید {/*avoid-duplication-in-state*/}
 
-This menu list component lets you choose a single travel snack out of several:
+این کامپوننت فهرست منو به شما اجازه می‌دهد یک میان‌وعدهٔ سفر را از میان چند مورد انتخاب کنید:
 
 <Sandpack>
 
@@ -422,9 +422,9 @@ button { margin-top: 10px; }
 
 </Sandpack>
 
-Currently, it stores the selected item as an object in the `selectedItem` state variable. However, this is not great: **the contents of the `selectedItem` is the same object as one of the items inside the `items` list.** This means that the information about the item itself is duplicated in two places.
+در حال حاضر، آیتم انتخاب‌شده را به‌عنوان یک شیء در متغیر استیت `selectedItem` ذخیره می‌کند. با این حال، این خوب نیست: **محتوای `selectedItem` همان شیءِ یکی از آیتم‌های داخل فهرست `items` است.** این یعنی اطلاعات دربارهٔ خود آیتم در دو جای مختلف تکرار شده است.
 
-Why is this a problem? Let's make each item editable:
+چرا این یک مشکل است؟ بگذارید هر آیتم را قابل ویرایش کنیم:
 
 <Sandpack>
 
@@ -487,9 +487,9 @@ button { margin-top: 10px; }
 
 </Sandpack>
 
-Notice how if you first click "Choose" on an item and *then* edit it, **the input updates but the label at the bottom does not reflect the edits.** This is because you have duplicated state, and you forgot to update `selectedItem`.
+توجه کنید که اگر ابتدا روی یک آیتم «Choose» را بزنید و *سپس* آن را ویرایش کنید، **ورودی به‌روزرسانی می‌شود اما برچسب پایین ویرایش‌ها را منعکس نمی‌کند.** این به آن دلیل است که استیت را تکرار کرده‌اید و فراموش کرده‌اید `selectedItem` را به‌روزرسانی کنید.
 
-Although you could update `selectedItem` too, an easier fix is to remove duplication. In this example, instead of a `selectedItem` object (which creates a duplication with objects inside `items`), you hold the `selectedId` in state, and *then* get the `selectedItem` by searching the `items` array for an item with that ID:
+هرچند می‌توانستید `selectedItem` را هم به‌روزرسانی کنید، راه‌حل ساده‌تر حذف تکرار است. در این مثال، به‌جای یک شیء `selectedItem` (که با اشیاء داخل `items` تکرار ایجاد می‌کند)، `selectedId` را در استیت نگه دارید و *سپس* `selectedItem` را با جستجو در آرایهٔ `items` برای آیتمی با آن ID به‌دست آورید:
 
 <Sandpack>
 
@@ -554,23 +554,23 @@ button { margin-top: 10px; }
 
 </Sandpack>
 
-The state used to be duplicated like this:
+استیت قبلاً به این شکل تکرار می‌شد:
 
 * `items = [{ id: 0, title: 'pretzels'}, ...]`
 * `selectedItem = {id: 0, title: 'pretzels'}`
 
-But after the change it's like this:
+اما پس از تغییر به این شکل است:
 
 * `items = [{ id: 0, title: 'pretzels'}, ...]`
 * `selectedId = 0`
 
-The duplication is gone, and you only keep the essential state!
+تکرار از بین رفته و فقط استیت ضروری را نگه می‌دارید!
 
-Now if you edit the *selected* item, the message below will update immediately. This is because `setItems` triggers a re-render, and `items.find(...)` would find the item with the updated title. You didn't need to hold *the selected item* in state, because only the *selected ID* is essential. The rest could be calculated during render.
+اکنون اگر آیتم *انتخاب‌شده* را ویرایش کنید، پیام پایین بلافاصله به‌روزرسانی خواهد شد. این به آن دلیل است که `setItems` رندر مجدد را تحریک می‌کند و `items.find(...)` آیتم را با عنوان به‌روزرسانی‌شده پیدا خواهد کرد. نیازی نبود *آیتم انتخاب‌شده* را در استیت نگه دارید، چون فقط *شناسهٔ انتخاب‌شده (selected ID)* ضروری است. بقیه را می‌توان حین رندر محاسبه کرد.
 
-## Avoid deeply nested state {/*avoid-deeply-nested-state*/}
+## از استیت عمیقاً تودرتو پرهیز کنید {/*avoid-deeply-nested-state*/}
 
-Imagine a travel plan consisting of planets, continents, and countries. You might be tempted to structure its state using nested objects and arrays, like in this example:
+یک برنامهٔ سفر متشکل از سیارات، قاره‌ها و کشورها را تصور کنید. ممکن است وسوسه شوید که استیت آن را با اشیاء و آرایه‌های تودرتو ساختاردهی کنید، مانند این مثال:
 
 <Sandpack>
 
@@ -812,11 +812,11 @@ export const initialTravelPlan = {
 
 </Sandpack>
 
-Now let's say you want to add a button to delete a place you've already visited. How would you go about it? [Updating nested state](/learn/updating-objects-in-state#updating-a-nested-object) involves making copies of objects all the way up from the part that changed. Deleting a deeply nested place would involve copying its entire parent place chain. Such code can be very verbose.
+اکنون فرض کنید می‌خواهید دکمه‌ای اضافه کنید تا مکانی را که قبلاً دیده‌اید حذف کنید. چگونه این کار را انجام می‌دهید؟ [به‌روزرسانی استیت تودرتو](/learn/updating-objects-in-state#updating-a-nested-object) شامل ساختن کپی از اشیاء تا بالاترین سطح از بخشی که تغییر کرده است. حذف یک مکان عمیقاً تودرتو شامل کپی کردن تمام زنجیرهٔ مکان‌های والد آن می‌شود. چنین کدی می‌تواند بسیار طولانی باشد.
 
-**If the state is too nested to update easily, consider making it "flat".** Here is one way you can restructure this data. Instead of a tree-like structure where each `place` has an array of *its child places*, you can have each place hold an array of *its child place IDs*. Then store a mapping from each place ID to the corresponding place.
+**اگر استیت برای به‌روزرسانی آسان بیش از حد تودرتو است، «مسطح» کردن آن را در نظر بگیرید.** در اینجا یکی از راه‌هایی است که می‌توانید این داده‌ها را بازساختاردهی کنید. به‌جای ساختار درختی که در آن هر `place` آرایه‌ای از *مکان‌های فرزند خودش* دارد، می‌توانید هر مکان آرایه‌ای از *شناسهٔ مکان‌های فرزند خودش* داشته باشد. سپس یک نگاشت از هر شناسهٔ مکان به مکان مربوطه ذخیره کنید.
 
-This data restructuring might remind you of seeing a database table:
+این بازساختاردهی داده‌ها ممکن است شما را به دیدن یک جدول پایگاه داده یادآوری کند:
 
 <Sandpack>
 
@@ -1118,14 +1118,14 @@ export const initialTravelPlan = {
 
 </Sandpack>
 
-**Now that the state is "flat" (also known as "normalized"), updating nested items becomes easier.**
+**اکنون که استیت «مسطح» است (که به آن «نرمال‌سازی شده» هم گفته می‌شود)، به‌روزرسانی آیتم‌های تودرتو آسان‌تر می‌شود.**
 
-In order to remove a place now, you only need to update two levels of state:
+برای حذف یک مکان اکنون، فقط باید دو سطح از استیت را به‌روزرسانی کنید:
 
-- The updated version of its *parent* place should exclude the removed ID from its `childIds` array.
-- The updated version of the root "table" object should include the updated version of the parent place.
+- نسخهٔ به‌روزرسانی‌شدهٔ مکان *والد* آن باید شناسهٔ حذف‌شده را از آرایهٔ `childIds` خود حذف کند.
+- نسخهٔ به‌روزرسانی‌شدهٔ شیء «جدول» ریشه باید شامل نسخهٔ به‌روزرسانی‌شدهٔ مکان والد باشد.
 
-Here is an example of how you could go about it:
+در اینجا مثالی از نحوهٔ انجام این کار آمده است:
 
 <Sandpack>
 
@@ -1458,13 +1458,13 @@ button { margin: 10px; }
 
 </Sandpack>
 
-You can nest state as much as you like, but making it "flat" can solve numerous problems. It makes state easier to update, and it helps ensure you don't have duplication in different parts of a nested object.
+می‌توانید به هر اندازه که بخواهید استیت را تودرتو کنید، اما «مسطح» کردن آن می‌تواند مشکلات متعددی را حل کند. این کار به‌روزرسانی استیت را آسان‌تر می‌کند و کمک می‌کند مطمئن شوید در بخش‌های مختلف یک شیء تودرتو تکرار ندارید.
 
 <DeepDive>
 
-#### Improving memory usage {/*improving-memory-usage*/}
+#### بهبود مصرف حافظه {/*improving-memory-usage*/}
 
-Ideally, you would also remove the deleted items (and their children!) from the "table" object to improve memory usage. This version does that. It also [uses Immer](/learn/updating-objects-in-state#write-concise-update-logic-with-immer) to make the update logic more concise.
+در حال ایده‌آل، می‌توانستید آیتم‌های حذف‌شده (و فرزندانشان!) را از شیء «جدول» حذف کنید تا مصرف حافظه بهبود یابد. این نسخه این کار را انجام می‌دهد. همچنین [از Immer](/learn/updating-objects-in-state#write-concise-update-logic-with-immer) استفاده می‌کند تا منطق به‌روزرسانی مختصرتر شود.
 
 <Sandpack>
 
@@ -1817,25 +1817,25 @@ button { margin: 10px; }
 
 </DeepDive>
 
-Sometimes, you can also reduce state nesting by moving some of the nested state into the child components. This works well for ephemeral UI state that doesn't need to be stored, like whether an item is hovered.
+گاهی می‌توانید با منتقل کردن بخشی از استیت تودرتو به کامپوننت‌های فرزند، تودرتویی استیت را هم کاهش دهید. این برای استیت موقتی رابط کاربری که نیازی به ذخیره‌سازی ندارد، مانند اینکه آیا آیتمی هاور شده یا نه، خوب کار می‌کند.
 
 <Recap>
 
-* If two state variables always update together, consider merging them into one. 
-* Choose your state variables carefully to avoid creating "impossible" states.
-* Structure your state in a way that reduces the chances that you'll make a mistake updating it.
-* Avoid redundant and duplicate state so that you don't need to keep it in sync.
-* Don't put props *into* state unless you specifically want to prevent updates.
-* For UI patterns like selection, keep ID or index in state instead of the object itself.
-* If updating deeply nested state is complicated, try flattening it.
+* اگر دو متغیر استیت همیشه با هم به‌روزرسانی می‌شوند، ادغام آن‌ها در یکی را در نظر بگیرید.
+* متغیرهای استیت خود را با دقت انتخاب کنید تا از ایجاد استیت‌های «غیرممکن» پرهیز کنید.
+* استیت خود را به‌گونه‌ای ساختاردهی کنید که احتمال اشتباه کردن هنگام به‌روزرسانی آن را کاهش دهد.
+* از استیت اضافی و تکراری پرهیز کنید تا نیازی به همگام نگه‌داشتن آن نباشد.
+* پراپس را *در* استیت قرار ندهید مگر اینکه مخصوصاً بخواهید از به‌روزرسانی جلوگیری کنید.
+* برای الگوهای رابط کاربری مانند انتخاب، شناسه (ID) یا اندیس را به‌جای خود شیء در استیت نگه دارید.
+* اگر به‌روزرسانی استیت عمیقاً تودرتو پیچیده است، مسطح کردن آن را امتحان کنید.
 
 </Recap>
 
 <Challenges>
 
-#### Fix a component that's not updating {/*fix-a-component-thats-not-updating*/}
+#### رفع کامپوننتی که به‌روزرسانی نمی‌شود {/*fix-a-component-thats-not-updating*/}
 
-This `Clock` component receives two props: `color` and `time`. When you select a different color in the select box, the `Clock` component receives a different `color` prop from its parent component. However, for some reason, the displayed color doesn't update. Why? Fix the problem.
+این کامپوننت `Clock` دو پراپ دریافت می‌کند: `color` و `time`. وقتی رنگ متفاوتی را در کادر انتخاب انتخاب می‌کنید، کامپوننت `Clock` پراپ `color` متفاوتی از کامپوننت والدش دریافت می‌کند. با این حال، به دلیری خاص، رنگ نمایش‌داده‌شده به‌روزرسانی نمی‌شود. چرا؟ مشکل را برطرف کنید.
 
 <Sandpack>
 
@@ -1890,7 +1890,7 @@ export default function App() {
 
 <Solution>
 
-The issue is that this component has `color` state initialized with the initial value of the `color` prop. But when the `color` prop changes, this does not affect the state variable! So they get out of sync. To fix this issue, remove the state variable altogether, and use the `color` prop directly.
+مشکل این است که این کامپوننت استیت `color` دارد که با مقدار اولیهٔ پراپ `color` مقداردهی اولیه شده است. اما وقتی پراپ `color` تغییر می‌کند، این روی متغیر استیت تأثیر نمی‌گذارد! پس ناهمگام می‌شوند. برای رفع این مشکل، متغیر استیت را کلاً حذف کنید و از پراپ `color` مستقیماً استفاده کنید.
 
 <Sandpack>
 
@@ -1942,7 +1942,7 @@ export default function App() {
 
 </Sandpack>
 
-Or, using the destructuring syntax:
+یا با استفاده از سینتکس تخریب (destructuring):
 
 <Sandpack>
 
@@ -1996,13 +1996,13 @@ export default function App() {
 
 </Solution>
 
-#### Fix a broken packing list {/*fix-a-broken-packing-list*/}
+#### رفع فهرست بسته‌بندی خراب {/*fix-a-broken-packing-list*/}
 
-This packing list has a footer that shows how many items are packed, and how many items there are overall. It seems to work at first, but it is buggy. For example, if you mark an item as packed and then delete it, the counter will not be updated correctly. Fix the counter so that it's always correct.
+این فهرست بسته‌بندی پانویسی دارد که نشان می‌دهد چند آیتم بسته‌بندی شده و در مجموع چند آیتم وجود دارد. در ابتدا کار می‌کند، اما باگ دارد. مثلاً، اگر آیتمی را به‌عنوان بسته‌بندی‌شده علامت بزنید و سپس حذف کنید، شمارنده به‌درستی به‌روزرسانی نخواهد شد. شمارنده را طوری برطرف کنید که همیشه درست باشد.
 
 <Hint>
 
-Is any state in this example redundant?
+آیا در این مثال استیت اضافی وجود دارد؟
 
 </Hint>
 
@@ -2143,7 +2143,7 @@ ul, li { margin: 0; padding: 0; }
 
 <Solution>
 
-Although you could carefully change each event handler to update the `total` and `packed` counters correctly, the root problem is that these state variables exist at all. They are redundant because you can always calculate the number of items (packed or total) from the `items` array itself. Remove the redundant state to fix the bug:
+هرچند می‌توانستید با دقت هر هندلر رویداد را طوری تغییر دهید که شمارنده‌های `total` و `packed` را به‌درستی به‌روزرسانی کند، ریشهٔ مشکل این است که این متغیرهای استیت اصلاً وجود دارند. آن‌ها اضافی هستند چون همیشه می‌توانید تعداد آیتم‌ها (بسته‌بندی‌شده یا کل) را از خود آرایهٔ `items` محاسبه کنید. برای رفع باگ، استیت اضافی را حذف کنید:
 
 <Sandpack>
 
@@ -2276,15 +2276,15 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-Notice how the event handlers are only concerned with calling `setItems` after this change. The item counts are now calculated during the next render from `items`, so they are always up-to-date.
+توجه کنید که هندلرهای رویداد پس از این تغییر فقط نگران فراخوانی `setItems` هستند. شمارش آیتم‌ها اکنون حین رندر بعدی از `items` محاسبه می‌شود، پس همیشه به‌روز است.
 
 </Solution>
 
-#### Fix the disappearing selection {/*fix-the-disappearing-selection*/}
+#### رفع انتخاب ناپدیدشده {/*fix-the-disappearing-selection*/}
 
-There is a list of `letters` in state. When you hover or focus a particular letter, it gets highlighted. The currently highlighted letter is stored in the `highlightedLetter` state variable. You can "star" and "unstar" individual letters, which updates the `letters` array in state.
+فهرستی از `letters` در استیت وجود دارد. وقتی روی حرف خاصی هاور می‌کنید یا آن را فوکوس می‌کنید، برجسته می‌شود. حرف برجستهٔ فعلی در متغیر استیت `highlightedLetter` ذخیره شده است. می‌توانید حروف را «ستاره‌دار» و «بدون ستاره» کنید، که آرایهٔ `letters` در استیت را به‌روزرسانی می‌کند.
 
-This code works, but there is a minor UI glitch. When you press "Star" or "Unstar", the highlighting disappears for a moment. However, it reappears as soon as you move your pointer or switch to another letter with keyboard. Why is this happening? Fix it so that the highlighting doesn't disappear after the button click.
+این کد کار می‌کند، اما یک ایراد جزئی رابط کاربری وجود دارد. وقتی «Star» یا «Unstar» را فشار می‌دهید، برجسته‌سازی برای لحظه‌ای ناپدید می‌شود. با این حال، به‌محض اینکه نشانگر را حرکت دهید یا با کیبورد به حرف دیگری بروید، دوباره ظاهر می‌شود. چرا این اتفاق می‌افتد؟ آن را طوری برطرف کنید که برجسته‌سازی پس از کلیک دکمه ناپدید نشود.
 
 <Sandpack>
 
@@ -2391,9 +2391,9 @@ li { border-radius: 5px; }
 
 <Solution>
 
-The problem is that you're holding the letter object in `highlightedLetter`. But you're also holding the same information in the `letters` array. So your state has duplication! When you update the `letters` array after the button click, you create a new letter object which is different from `highlightedLetter`. This is why `highlightedLetter === letter` check becomes `false`, and the highlight disappears. It reappears the next time you call `setHighlightedLetter` when the pointer moves.
+مشکل این است که شما شیء letter را در `highlightedLetter` نگه می‌دارید. اما همین اطلاعات را در آرایهٔ `letters` هم نگه می‌دارید. پس استیت شما تکرار دارد! وقتی پس از کلیک دکمه آرایهٔ `letters` را به‌روزرسانی می‌کنید، یک شیء letter جدید می‌سازید که با `highlightedLetter` متفاوت است. به همین دلیل بررسی `highlightedLetter === letter` به `false` تبدیل می‌شود و برجسته‌سازی ناپدید می‌گردد. دفعهٔ بعد که نشانگر حرکت می‌کند و `setHighlightedLetter` را فراخوانی می‌کنید، دوباره ظاهر می‌شود.
 
-To fix the issue, remove the duplication from state. Instead of storing *the letter itself* in two places, store the `highlightedId` instead. Then you can check `isHighlighted` for each letter with `letter.id === highlightedId`, which will work even if the `letter` object has changed since the last render.
+برای رفع مشکل، تکرار را از استیت حذف کنید. به‌جای ذخیرهٔ *خود letter* در دو مکان، `highlightedId` را ذخیره کنید. سپس می‌توانید `isHighlighted` را برای هر حرف با `letter.id === highlightedId` بررسی کنید، که حتی اگر شیء `letter` از آخرین رندر تغییر کرده باشد هم کار خواهد کرد.
 
 <Sandpack>
 
@@ -2500,15 +2500,15 @@ li { border-radius: 5px; }
 
 </Solution>
 
-#### Implement multiple selection {/*implement-multiple-selection*/}
+#### پیاده‌سازی انتخاب چندگانه {/*implement-multiple-selection*/}
 
-In this example, each `Letter` has an `isSelected` prop and an `onToggle` handler that marks it as selected. This works, but the state is stored as a `selectedId` (either `null` or an ID), so only one letter can get selected at any given time.
+در این مثال، هر `Letter` یک پراپ `isSelected` و یک هندلر `onToggle` دارد که آن را به‌عنوان انتخاب‌شده علامت می‌زند. این کار می‌کند، اما استیت به‌صورت `selectedId` (یا `null` یا یک شناسه) ذخیره می‌شود، پس فقط یک حرف می‌تواند در هر زمان انتخاب شود.
 
-Change the state structure to support multiple selection. (How would you structure it? Think about this before writing the code.) Each checkbox should become independent from the others. Clicking a selected letter should uncheck it. Finally, the footer should show the correct number of the selected items.
+ساختار استیت را به‌گونه‌ای تغییر دهید که از انتخاب چندگانه پشتیبانی کند. (چگونه آن را ساختاردهی می‌کنید؟ قبل از نوشتن کد دربارهٔ این فکر کنید.) هر چک‌باکس باید از بقیه مستقل شود. کلیک روی یک حرف انتخاب‌شده باید آن را از تیک خارج کند. در نهایت، پانویس باید تعداد درست آیتم‌های انتخاب‌شده را نشان دهد.
 
 <Hint>
 
-Instead of a single selected ID, you might want to hold an array or a [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) of selected IDs in state.
+به‌جای یک شناسهٔ انتخاب‌شدهٔ واحد، شاید بخواهید یک آرایه یا یک [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) از شناسه‌های انتخاب‌شده را در استیت نگه دارید.
 
 </Hint>
 
@@ -2609,7 +2609,7 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 <Solution>
 
-Instead of a single `selectedId`, keep a `selectedIds` *array* in state. For example, if you select the first and the last letter, it would contain `[0, 2]`. When nothing is selected, it would be an empty `[]` array:
+به‌جای یک `selectedId` واحد، یک *آرایه* `selectedIds` را در استیت نگه دارید. مثلاً، اگر اولین و آخرین حرف را انتخاب کنید، شامل `[0, 2]` خواهد بود. وقتی چیزی انتخاب نشده باشد، یک آرایهٔ خالی `[]` خواهد بود:
 
 <Sandpack>
 
@@ -2715,9 +2715,9 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 </Sandpack>
 
-One minor downside of using an array is that for each item, you're calling `selectedIds.includes(letter.id)` to check whether it's selected. If the array is very large, this can become a performance problem because array search with [`includes()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes) takes linear time, and you're doing this search for each individual item.
+یک نقطه ضعف جزئی استفاده از آرایه این است که برای هر آیتم، `selectedIds.includes(letter.id)` را فراخوانی می‌کنید تا بررسی کنید آیا انتخاب شده است. اگر آرایه بسیار بزرگ باشد، این می‌تواند به مشکل عملکرد تبدیل شود چون جستجوی آرایه با [`includes()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes) زمان خطی می‌برد و شما این جستجو را برای هر آیتم جداگانه انجام می‌دهید.
 
-To fix this, you can hold a [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) in state instead, which provides a fast [`has()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/has) operation:
+برای رفع این موضوع، می‌توانید به‌جای آن یک [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) را در استیت نگه دارید که عملیات سریع [`has()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/has) را فراهم می‌کند:
 
 <Sandpack>
 
@@ -2820,9 +2820,9 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 </Sandpack>
 
-Now each item does a `selectedIds.has(letter.id)` check, which is very fast.
+اکنون هر آیتم یک بررسی `selectedIds.has(letter.id)` انجام می‌دهد که بسیار سریع است.
 
-Keep in mind that you [should not mutate objects in state](/learn/updating-objects-in-state), and that includes Sets, too. This is why the `handleToggle` function creates a *copy* of the Set first, and then updates that copy.
+در نظر داشته باشید که [نباید اشیاء در استیت را جهش (mutate) دهید](/learn/updating-objects-in-state)، و این شامل Setها هم می‌شود. به همین دلیل تابع `handleToggle` ابتدا یک *کپی* از Set می‌سازد و سپس آن کپی را به‌روزرسانی می‌کند.
 
 </Solution>
 

@@ -1,7 +1,7 @@
 ---
-title: Special Props Warning
+title: هشدار پراپ‌های ویژه
 ---
 
-Most props on a JSX element are passed on to the component, however, there are two special props (`ref` and `key`) which are used by React, and are thus not forwarded to the component.
+بیشتر پراپس روی یک عنصر JSX به کامپوننت پاس داده می‌شوند، با این حال، دو پراپ ویژه (`ref` و `key`) وجود دارند که توسط ری‌اکت استفاده می‌شوند و در نتیجه به کامپوننت پاس داده نمی‌شوند.
 
-For instance, you can't read `props.key` from a component. If you need to access the same value within the child component, you should pass it as a different prop (ex: `<ListItemWrapper key={result.id} id={result.id} />` and read `props.id`). While this may seem redundant, it's important to separate app logic from hints to React.
+برای مثال، نمی‌توانید `props.key` را از یک کامپوننت بخوانید. اگر نیاز به دسترسی به همان مقدار در داخل کامپوننت فرزند دارید، باید آن را به‌عنوان یک پراپ متفاوت پاس دهید (مثال: `<ListItemWrapper key={result.id} id={result.id} />` و `props.id` را بخوانید). با وجود اینکه این ممکن است زائد به نظر برسد، مهم است که منطق برنامه را از راهنمایی‌ها به ری‌اکت جدا کنید.

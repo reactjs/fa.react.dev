@@ -4,31 +4,31 @@ title: rules-of-hooks
 
 <Intro>
 
-Validates that components and hooks follow the [Rules of Hooks](/reference/rules/rules-of-hooks).
+تأیید می‌کند که کامپوننت‌ها و هوک‌ها از [قوانین هوک‌ها](/reference/rules/rules-of-hooks) پیروی می‌کنند.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## جزئیات قانون {/*rule-details*/}
 
-React relies on the order in which hooks are called to correctly preserve state between renders. Each time your component renders, React expects the exact same hooks to be called in the exact same order. When hooks are called conditionally or in loops, React loses track of which state corresponds to which hook call, leading to bugs like state mismatches and "Rendered fewer/more hooks than expected" errors.
+ری‌اکت برای حفظ صحیح استیت بین رندرها به ترتیبی که هوک‌ها فراخوانی می‌شوند تکیه می‌کند. هر بار که کامپوننت شما رندر می‌شود، ری‌اکت انتظار دارد دقیقاً همان هوک‌ها به‌دقیقاً همان ترتیب فراخوانی شوند. وقتی هوک‌ها به‌صورت شرطی یا در حلقه‌ها فراخوانی می‌شوند، ری‌اکت ردیابی اینکه کدام استیت به کدام فراخوانی هوک مربوط است را از دست می‌دهد، که منجر به باگ‌هایی مانند عدم تطابق استیت و خطاهای «Rendered fewer/more hooks than expected» می‌شود.
 
-## Common Violations {/*common-violations*/}
+## نقض‌های رایج {/*common-violations*/}
 
-These patterns violate the Rules of Hooks:
+این الگوها قوانین هوک‌ها را نقض می‌کنند:
 
-- **Hooks in conditions** (`if`/`else`, ternary, `&&`/`||`)
-- **Hooks in loops** (`for`, `while`, `do-while`)
-- **Hooks after early returns**
-- **Hooks in callbacks/event handlers**
-- **Hooks in async functions**
-- **Hooks in class methods**
-- **Hooks at module level**
+- **هوک‌ها در شرط‌ها** (`if`/`else`، سه‌تایی، `&&`/`||`)
+- **هوک‌ها در حلقه‌ها** (`for`، `while`، `do-while`)
+- **هوک‌ها بعد از return زودهنگام**
+- **هوک‌ها در callbackها/event handlerها**
+- **هوک‌ها در تابع‌های async**
+- **هوک‌ها در متدهای کلاس**
+- **هوک‌ها در سطح ماژول**
 
 <Note>
 
-### `use` hook {/*use-hook*/}
+### هوک `use` {/*use-hook*/}
 
-The `use` hook is different from other React hooks. You can call it conditionally and in loops:
+هوک `use` با سایر هوک‌های ری‌اکت متفاوت است. می‌توانید آن را به‌صورت شرطی و در حلقه‌ها فراخوانی کنید:
 
 ```js
 // ✅ `use` can be conditional
@@ -42,17 +42,17 @@ for (const promise of promises) {
 }
 ```
 
-However, `use` still has restrictions:
-- Can't be wrapped in try/catch
-- Must be called inside a component or hook
+با این حال، `use` همچنان محدودیت‌هایی دارد:
+- نمی‌تواند در try/catch پیچیده شود
+- باید داخل یک کامپوننت یا هوک فراخوانی شود
 
-Learn more: [`use` API Reference](/reference/react/use)
+بیشتر بدانید: [مرجع API `use`](/reference/react/use)
 
 </Note>
 
-### Invalid {/*invalid*/}
+### نامعتبر {/*invalid*/}
 
-Examples of incorrect code for this rule:
+نمونه‌هایی از کد نادرست برای این قانون:
 
 ```js
 // ❌ Hook in condition
@@ -80,9 +80,9 @@ try {
 const globalState = useState(0); // Outside component
 ```
 
-### Valid {/*valid*/}
+### معتبر {/*valid*/}
 
-Examples of correct code for this rule:
+نمونه‌هایی از کد درست برای این قانون:
 
 ```js
 function Component({ isSpecial, shouldFetch, fetchPromise }) {
@@ -104,11 +104,11 @@ function Component({ isSpecial, shouldFetch, fetchPromise }) {
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-### I want to fetch data based on some condition {/*conditional-data-fetching*/}
+### می‌خواهم داده‌ها را بر اساس برخی شرایط fetch کنم {/*conditional-data-fetching*/}
 
-You're trying to conditionally call useEffect:
+سعی می‌کنید useEffect را به‌صورت شرطی فراخوانی کنید:
 
 ```js
 // ❌ Conditional hook
@@ -119,7 +119,7 @@ if (isLoggedIn) {
 }
 ```
 
-Call the hook unconditionally, check condition inside:
+هوک را به‌صورت بدون قید و شرط فراخوانی کنید، شرط را داخل هوک بررسی کنید:
 
 ```js
 // ✅ Condition inside hook
@@ -132,15 +132,15 @@ useEffect(() => {
 
 <Note>
 
-There are better ways to fetch data rather than in a useEffect. Consider using React Query, useSWR, or React Router 6.4+ for data fetching. These solutions handle deduplicating requests, caching responses, and avoiding network waterfalls.
+روش‌های بهتری برای fetch داده‌ها نسبت به استفاده از useEffect وجود دارد. برای fetch داده‌ها React Query، useSWR یا React Router 6.4+ را در نظر بگیرید. این راه‌حل‌ها deduplication درخواست‌ها، caching پاسخ‌ها، و اجتناب از waterfallهای شبکه را مدیریت می‌کنند.
 
-Learn more: [Fetching Data](/learn/synchronizing-with-effects#fetching-data)
+بیشتر بدانید: [Fetch داده‌ها](/learn/synchronizing-with-effects#fetching-data)
 
 </Note>
 
-### I need different state for different scenarios {/*conditional-state-initialization*/}
+### برای سناریوهای مختلف به استیت متفاوتی نیاز دارم {/*conditional-state-initialization*/}
 
-You're trying to conditionally initialize state:
+سعی می‌کنید استیت را به‌صورت شرطی مقداردهی اولیه کنید:
 
 ```js
 // ❌ Conditional state
@@ -151,7 +151,7 @@ if (userType === 'admin') {
 }
 ```
 
-Always call useState, conditionally set the initial value:
+همیشه useState را فراخوانی کنید، مقدار اولیه را به‌صورت شرطی تنظیم کنید:
 
 ```js
 // ✅ Conditional initial value

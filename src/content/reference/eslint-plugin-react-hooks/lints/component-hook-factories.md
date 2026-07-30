@@ -4,17 +4,17 @@ title: component-hook-factories
 
 <Intro>
 
-Validates against higher order functions defining nested components or hooks. Components and hooks should be defined at the module level.
+تابع‌های مرتبه بالاتری که کامپوننت‌ها یا هوک‌های تودرتو تعریف می‌کنند را اعتبارسنجی می‌کند. کامپوننت‌ها و هوک‌ها باید در سطح ماژول تعریف شوند.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## جزئیات قانون {/*rule-details*/}
 
-Defining components or hooks inside other functions creates new instances on every call. React treats each as a completely different component, destroying and recreating the entire component tree, losing all state, and causing performance problems.
+تعریف کامپوننت‌ها یا هوک‌ها داخل تابع‌های دیگر در هر فراخوانی نمونه‌های جدیدی ایجاد می‌کند. ری‌اکت هر کدام را به‌عنوان یک کامپوننت کاملاً متفاوت در نظر می‌گیرد، و کل درخت کامپوننت را تخریب و دوباره ایجاد می‌کند، همهٔ استیت‌ها را از دست می‌دهد، و باعث مشکلات عملکردی می‌شود.
 
-### Invalid {/*invalid*/}
+### نامعتبر {/*invalid*/}
 
-Examples of incorrect code for this rule:
+نمونه‌هایی از کد نادرست برای این قانون:
 
 ```js {expectedErrors: {'react-compiler': [14]}}
 // ❌ Factory function creating components
@@ -41,9 +41,9 @@ function createCustomHook(endpoint) {
 }
 ```
 
-### Valid {/*valid*/}
+### معتبر {/*valid*/}
 
-Examples of correct code for this rule:
+نمونه‌هایی از کد درست برای این قانون:
 
 ```js
 // ✅ Component defined at module level
@@ -57,11 +57,11 @@ function useData(endpoint) {
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-### I need dynamic component behavior {/*dynamic-behavior*/}
+### به رفتار پویای کامپوننت نیاز دارم {/*dynamic-behavior*/}
 
-You might think you need a factory to create customized components:
+ممکن است فکر کنید به یک factory برای ایجاد کامپوننت‌های سفارشی‌شده نیاز دارید:
 
 ```js
 // ❌ Wrong: Factory pattern
@@ -79,7 +79,7 @@ const RedButton = makeButton('red');
 const BlueButton = makeButton('blue');
 ```
 
-Pass [JSX as children](/learn/passing-props-to-a-component#passing-jsx-as-children) instead:
+به‌جای آن [JSX را به‌عنوان فرزندان](/learn/passing-props-to-a-component#passing-jsx-as-children) پاس دهید:
 
 ```js
 // ✅ Better: Pass JSX as children

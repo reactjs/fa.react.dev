@@ -4,7 +4,7 @@ title: "<form>"
 
 <Intro>
 
-The [built-in browser `<form>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) lets you create interactive controls for submitting information.
+[کامپوننت `<form>` داخلی مرورگر](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) به شما اجازه می‌دهد کنترل‌های تعاملی برای ارسال اطلاعات ایجاد کنید.
 
 ```js
 <form action={search}>
@@ -19,11 +19,11 @@ The [built-in browser `<form>` component](https://developer.mozilla.org/en-US/do
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `<form>` {/*form*/}
 
-To create interactive controls for submitting information, render the [built-in browser `<form>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form).
+برای ایجاد کنترل‌های تعاملی جهت ارسال اطلاعات، [کامپوننت `<form>` داخلی مرورگر](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) را رندر کنید.
 
 ```js
 <form action={search}>
@@ -32,25 +32,25 @@ To create interactive controls for submitting information, render the [built-in 
 </form>
 ```
 
-[See more examples below.](#usage)
+[نمونه‌های بیشتر را در ادامه ببینید.](#usage)
 
-#### Props {/*props*/}
+#### پراپس‌ها {/*props*/}
 
-`<form>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+`<form>` از تمام [پراپس‌های رایج المان](/reference/react-dom/components/common#common-props) پشتیبانی می‌کند.
 
-[`action`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#action): a URL or function. When a URL is passed to `action` the form will behave like the HTML form component. When a function is passed to `action` the function will handle the form submission in a Transition following [the Action prop pattern](/reference/react/useTransition#exposing-action-props-from-components). The function passed to `action` may be async and will be called with a single argument containing the [form data](https://developer.mozilla.org/en-US/docs/Web/API/FormData) of the submitted form. The `action` prop can be overridden by a `formAction` attribute on a `<button>`, `<input type="submit">`, or `<input type="image">` component.
+[`action`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#action): یک URL یا تابع. وقتی یک URL به `action` پاس داده می‌شود، فرم مانند کامپوننت فرم HTML رفتار خواهد کرد. وقتی یک تابع به `action` پاس داده می‌شود، تابع ارسال فرم را در یک ترنزیشن مدیریت خواهد کرد که از [الگوی پراپس Action](/reference/react/useTransition#exposing-action-props-from-components) پیروی می‌کند. تابع پاس‌داده‌شده به `action` ممکن است async باشد و با یک آرگومان منفرد شامل [داده‌های فرم](https://developer.mozilla.org/en-US/docs/Web/API/FormData) فرم ارسالی فراخوانی می‌شود. پراپس `action` می‌تواند با ویژگی `formAction` روی یک کامپوننت `<button>`، `<input type="submit">` یا `<input type="image">` بازنویسی شود.
 
-#### Caveats {/*caveats*/}
+#### نکات {/*caveats*/}
 
-* When a function is passed to `action` or `formAction` the HTTP method will be POST regardless of value of the `method` prop.
+* وقتی یک تابع به `action` یا `formAction` پاس داده می‌شود، متد HTTP بدون توجه به مقدار پراپس `method` برابر POST خواهد بود.
 
 ---
 
-## Usage {/*usage*/}
+## استفاده {/*usage*/}
 
-### Handle form submission on the client {/*handle-form-submission-on-the-client*/}
+### مدیریت ارسال فرم در کلاینت {/*handle-form-submission-on-the-client*/}
 
-Pass a function to the `action` prop of form to run the function when the form is submitted. [`formData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) will be passed to the function as an argument so you can access the data submitted by the form. This differs from the conventional [HTML action](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#action), which only accepts URLs. After the `action` function succeeds, all uncontrolled field elements in the form are reset.
+یک تابع به پراپس `action` فرم پاس دهید تا تابع هنگام ارسال فرم اجرا شود. [`formData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) به‌عنوان آرگومان به تابع پاس داده می‌شود تا بتوانید به داده‌های ارسالی توسط فرم دسترسی داشته باشید. این با [action HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#action) معمول که فقط URL می‌پذیرد متفاوت است. پس از موفقیت تابع `action`، تمام المان‌های فیلد غیرکنترلی در فرم بازنشانی می‌شوند.
 
 <Sandpack>
 
@@ -71,13 +71,13 @@ export default function Search() {
 
 </Sandpack>
 
-### Handle form submission with a Server Function {/*handle-form-submission-with-a-server-function*/}
+### مدیریت ارسال فرم با یک Server Function {/*handle-form-submission-with-a-server-function*/}
 
-Render a `<form>` with an input and submit button. Pass a Server Function (a function marked with [`'use server'`](/reference/rsc/use-server)) to the `action` prop of form to run the function when the form is submitted.
+یک `<form>` با یک ورودی و دکمهٔ submit رندر کنید. یک Server Function (تابعی که با [`'use server'`](/reference/rsc/use-server) علامت‌گذاری شده) به پراپس `action` فرم پاس دهید تا تابع هنگام ارسال فرم اجرا شود.
 
-Passing a Server Function to `<form action>` allow users to submit forms without JavaScript enabled or before the code has loaded. This is beneficial to users who have a slow connection, device, or have JavaScript disabled and is similar to the way forms work when a URL is passed to the `action` prop.
+پاس‌دادن یک Server Function به `<form action>` به کاربران اجازه می‌دهد بدون فعال بودن JavaScript یا قبل از بارگذاری کد، فرم‌ها را ارسال کنند. این برای کاربرانی که اتصال یا دستگاه کندی دارند یا JavaScript را غیرفعال کرده‌اند مفید است و مشابه روش کار فرم‌ها وقتی یک URL به پراپس `action` پاس داده می‌شود است.
 
-You can use hidden form fields to provide data to the `<form>`'s action. The Server Function will be called with the hidden form field data as an instance of [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData).
+می‌توانید از فیلدهای فرم مخفی برای ارائهٔ داده‌ها به action `<form>` استفاده کنید. Server Function با داده‌های فیلد فرم مخفی به‌عنوان یک نمونه از [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) فراخوانی خواهد شد.
 
 ```jsx
 import { updateCart } from './lib.js';
@@ -98,7 +98,7 @@ function AddToCart({productId}) {
 }
 ```
 
-In lieu of using hidden form fields to provide data to the `<form>`'s action, you can call the <CodeStep step={1}>`bind`</CodeStep> method to supply it with extra arguments. This will bind a new argument (<CodeStep step={2}>`productId`</CodeStep>) to the function in addition to the <CodeStep step={3}>`formData`</CodeStep> that is passed as an argument to the function.
+به‌جای استفاده از فیلدهای فرم مخفی برای ارائهٔ داده‌ها به action `<form>`، می‌توانید متد <CodeStep step={1}>`bind`</CodeStep> را فراخوانی کنید تا آرگومان‌های اضافی به آن بدهید. این یک آرگومان جدید (<CodeStep step={2}>`productId`</CodeStep>) را به تابع علاوه بر <CodeStep step={3}>`formData`</CodeStep> که به‌عنوان آرگومان به تابع پاس داده می‌شود، bind می‌کند.
 
 ```jsx [[1, 8, "bind"], [2,8, "productId"], [2,4, "productId"], [3,4, "formData"]]
 import { updateCart } from './lib.js';
@@ -117,12 +117,12 @@ function AddToCart({productId}) {
 }
 ```
 
-When `<form>` is rendered by a [Server Component](/reference/rsc/use-client), and a [Server Function](/reference/rsc/server-functions) is passed to the `<form>`'s `action` prop, the form is [progressively enhanced](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement).
+وقتی `<form>` توسط یک [Server Component](/reference/rsc/use-client) رندر می‌شود، و یک [Server Function](/reference/rsc/server-functions) به پراپس `action` `<form>` پاس داده می‌شود، فرم به‌صورت [پیشرونده ارتقا یافته](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement) است.
 
-### Display a pending state during form submission {/*display-a-pending-state-during-form-submission*/}
-To display a pending state when a form is being submitted, you can call the `useFormStatus` Hook in a component rendered in a `<form>` and read the `pending` property returned.
+### نمایش یک حالت pending هنگام ارسال فرم {/*display-a-pending-state-during-form-submission*/}
+برای نمایش یک حالت pending هنگام ارسال یک فرم، می‌توانید هوک `useFormStatus` را در کامپوننتی که در یک `<form>` رندر می‌شود فراخوانی کنید و ویژگی `pending` برگشتی را بخوانید.
 
-Here, we use the `pending` property to indicate the form is submitting.
+در اینجا، ما از ویژگی `pending` برای نشان دادن اینکه فرم در حال ارسال است استفاده می‌کنیم.
 
 <Sandpack>
 
@@ -160,14 +160,15 @@ export async function submitForm(query) {
 
 </Sandpack>
 
-To learn more about the `useFormStatus` Hook see the [reference documentation](/reference/react-dom/hooks/useFormStatus).
+برای کسب اطلاعات بیشتر دربارهٔ هوک `useFormStatus` به [مستندات مرجع](/reference/react-dom/hooks/useFormStatus) مراجعه کنید.
 
-### Optimistically updating form data {/*optimistically-updating-form-data*/}
-The `useOptimistic` Hook provides a way to optimistically update the user interface before a background operation, like a network request, completes. In the context of forms, this technique helps to make apps feel more responsive. When a user submits a form, instead of waiting for the server's response to reflect the changes, the interface is immediately updated with the expected outcome.
+### به‌روزرسانی خوش‌بینانهٔ داده‌های فرم {/*optimistically-updating-form-data*/}
+هوک `useOptimistic` راهی برای به‌روزرسانی خوش‌بینانه (optimistic) رابط کاربری قبل از اتمام یک عملیات پس‌زمینه مانند یک درخواست شبکه فراهم می‌کند. در زمینهٔ فرم‌ها، این تکنیک به پاسخگوتر شدن اپلیکیشن‌ها کمک می‌کند. وقتی کاربر فرمی را ارسال می‌کند، به‌جای انتظار برای پاسخ سرور برای منعکس کردن تغییرات، رابط کاربری بلافاصله با نتیجهٔ مورد انتظار به‌روز می‌شود.
 
-For example, when a user types a message into the form and hits the "Send" button, the `useOptimistic` Hook allows the message to immediately appear in the list with a "Sending..." label, even before the message is actually sent to a server. This "optimistic" approach gives the impression of speed and responsiveness. The form then attempts to truly send the message in the background. Once the server confirms the message has been received, the "Sending..." label is removed.
+مثلاً، وقتی کاربر پیامی را در فرم تایپ می‌کند و دکمهٔ «Send» را می‌زند، هوک `useOptimistic` اجازه می‌دهد پیام بلافاصله با برچسب «Sending...» در فهرست ظاهر شود، حتی قبل از اینکه پیام واقعاً به سرور ارسال شود. این رویکرد «خوش‌بینانه» حس سرعت و پاسخگویی می‌دهد. سپس فرم سعی می‌کند پیام را در پس‌زمینه واقعاً ارسال کند. وقتی سرور تأیید کرد پیام دریافت شده است، برچسب «Sending...» حذف می‌شود.
 
 <Sandpack>
+
 
 
 ```js src/App.js
@@ -232,9 +233,9 @@ export async function deliverMessage(message) {
 [//]: # 'Uncomment the next line, and delete this line after the `useOptimistic` reference documentation page is published'
 [//]: # 'To learn more about the `useOptimistic` Hook see the [reference documentation](/reference/react/useOptimistic).'
 
-### Handling form submission errors {/*handling-form-submission-errors*/}
+### مدیریت خطاهای ارسال فرم {/*handling-form-submission-errors*/}
 
-In some cases the function called by a `<form>`'s `action` prop throws an error. You can handle these errors by wrapping `<form>` in an Error Boundary. If the function called by a `<form>`'s `action` prop throws an error, the fallback for the error boundary will be displayed.
+در برخی موارد تابع فراخوانی‌شده توسط پراپس `action` یک `<form>` خطا پرتاب می‌کند. می‌توانید این خطاها را با بپیچیدن `<form>` در یک Error Boundary مدیریت کنید. اگر تابع فراخوانی‌شده توسط پراپس `action` یک `<form>` خطا پرتاب کند، fallback برای error boundary نمایش داده خواهد شد.
 
 <Sandpack>
 
@@ -274,15 +275,15 @@ export default function Search() {
 
 </Sandpack>
 
-### Display a form submission error without JavaScript {/*display-a-form-submission-error-without-javascript*/}
+### نمایش خطای ارسال فرم بدون JavaScript {/*display-a-form-submission-error-without-javascript*/}
 
-Displaying a form submission error message before the JavaScript bundle loads for progressive enhancement requires that:
+نمایش پیام خطای ارسال فرم قبل از بارگذاری bundle JavaScript برای ارتقای پیشرونده نیازمند این است که:
 
-1. `<form>` be rendered by a [Server Component](/reference/rsc/use-client)
-1. the function passed to the `<form>`'s `action` prop be a [Server Function](/reference/rsc/server-functions)
-1. the `useActionState` Hook be used to display the error message
+1. `<form>` توسط یک [Server Component](/reference/rsc/use-client) رندر شود
+1. تابع پاس‌داده‌شده به پراپس `action` `<form>` یک [Server Function](/reference/rsc/server-functions) باشد
+1. از هوک `useActionState` برای نمایش پیام خطا استفاده شود
 
-`useActionState` takes two parameters: a [Server Function](/reference/rsc/server-functions) and an initial state. `useActionState` returns two values, a state variable and an action. The action returned by `useActionState` should be passed to the `action` prop of the form. The state variable returned by `useActionState` can be used to display an error message. The value returned by the Server Function passed to `useActionState` will be used to update the state variable.
+`useActionState` دو پارامتر می‌گیرد: یک [Server Function](/reference/rsc/server-functions) و یک استیت اولیه. `useActionState` دو مقدار برمی‌گرداند، یک متغیر استیت و یک action. action بازگشتی توسط `useActionState` باید به پراپس `action` فرم پاس داده شود. متغیر استیت بازگشتی توسط `useActionState` می‌تواند برای نمایش پیام خطا استفاده شود. مقدار بازگشتی توسط Server Function پاس‌داده‌شده به `useActionState` برای به‌روزرسانی متغیر استیت استفاده خواهد شد.
 
 <Sandpack>
 
@@ -330,13 +331,13 @@ export async function signUpNewUser(newEmail) {
 
 </Sandpack>
 
-Learn more about updating state from a form action with the [`useActionState`](/reference/react/useActionState) docs
+اطلاعات بیشتر دربارهٔ به‌روزرسانی استیت از یک action فرم را در مستندات [`useActionState`](/reference/react/useActionState) ببینید
 
-### Handling multiple submission types {/*handling-multiple-submission-types*/}
+### مدیریت انواع ارسال متعدد {/*handling-multiple-submission-types*/}
 
-Forms can be designed to handle multiple submission actions based on the button pressed by the user. Each button inside a form can be associated with a distinct action or behavior by setting the `formAction` prop.
+فرم‌ها می‌توانند طوری طراحی شوند که چندین action ارسال را بر اساس دکمه‌ای که کاربر فشار می‌دهد مدیریت کنند. هر دکمه درون یک فرم می‌تواند با یک action یا رفتار متمایز با تنظیم پراپس `formAction` مرتبط شود.
 
-When a user taps a specific button, the form is submitted, and a corresponding action, defined by that button's attributes and action, is executed. For instance, a form might submit an article for review by default but have a separate button with `formAction` set to save the article as a draft.
+وقتی کاربر یک دکمهٔ خاص را ضربه می‌زند، فرم ارسال می‌شود و یک action متناظر که توسط ویژگی‌ها و action آن دکمه تعریف شده اجرا می‌شود. مثلاً، یک فرم ممکن است به‌طور پیش‌فرض یک مقاله را برای بازبینی ارسال کند اما یک دکمهٔ جداگانه با `formAction` تنظیم‌شده برای ذخیرهٔ مقاله به‌عنوان پیش‌نویس داشته باشد.
 
 <Sandpack>
 

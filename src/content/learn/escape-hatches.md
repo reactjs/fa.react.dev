@@ -1,35 +1,35 @@
 ---
-title: Escape Hatches
+title: راه‌های فرار
 ---
 
 <Intro>
 
-Some of your components may need to control and synchronize with systems outside of React. For example, you might need to focus an input using the browser API, play and pause a video player implemented without React, or connect and listen to messages from a remote server. In this chapter, you'll learn the escape hatches that let you "step outside" React and connect to external systems. Most of your application logic and data flow should not rely on these features.
+برخی از کامپوننت‌های شما ممکن است نیاز داشته باشند با سیستم‌های خارج از ری‌اکت کنترل شوند و هم‌گام شوند. برای مثال، ممکن است بخواهید با استفاده از API مرورگر یک ورودی را فوکوس کنید، یک پخش‌کنندهٔ ویدیویی که بدون ری‌اکت پیاده‌سازی شده را پخش و متوقف کنید، یا به یک سرور راه‌دور متصل شوید و به پیام‌های آن گوش دهید. در این فصل، راه‌های فراری را یاد می‌گیرید که به شما اجازه می‌دهند از ری‌اکت «خارج شوید» و به سیستم‌های خارجی متصل شوید. بیشتر منطق برنامه و جریان دادهٔ شما نباید به این قابلیت‌ها تکیه کند.
 
 </Intro>
 
 <YouWillLearn isChapter={true}>
 
-* [How to "remember" information without re-rendering](/learn/referencing-values-with-refs)
-* [How to access DOM elements managed by React](/learn/manipulating-the-dom-with-refs)
-* [How to synchronize components with external systems](/learn/synchronizing-with-effects)
-* [How to remove unnecessary Effects from your components](/learn/you-might-not-need-an-effect)
-* [How an Effect's lifecycle is different from a component's](/learn/lifecycle-of-reactive-effects)
-* [How to prevent some values from re-triggering Effects](/learn/separating-events-from-effects)
-* [How to make your Effect re-run less often](/learn/removing-effect-dependencies)
-* [How to share logic between components](/learn/reusing-logic-with-custom-hooks)
+* [چگونه اطلاعات را بدون رندر مجدد «به خاطر بسپارید»](/learn/referencing-values-with-refs)
+* [چگونه به عناصر DOM مدیریت‌شده توسط ری‌اکت دسترسی پیدا کنید](/learn/manipulating-the-dom-with-refs)
+* [چگونه کامپوننت‌ها را با سیستم‌های خارجی هم‌گام کنید](/learn/synchronizing-with-effects)
+* [چگونه افکت‌های غیرضروری را از کامپوننت‌های خود حذف کنید](/learn/you-might-not-need-an-effect)
+* [چگونه چرخهٔ حیات یک افکت با چرخهٔ حیات یک کامپوننت متفاوت است](/learn/lifecycle-of-reactive-effects)
+* [چگونه از re-trigger شدن افکت‌ها توسط برخی مقادیر جلوگیری کنید](/learn/separating-events-from-effects)
+* [چگونه افکت خود را کم‌تر دوباره اجرا کنید](/learn/removing-effect-dependencies)
+* [چگونه منطق را بین کامپوننت‌ها به اشتراک بگذارید](/learn/reusing-logic-with-custom-hooks)
 
 </YouWillLearn>
 
-## Referencing values with refs {/*referencing-values-with-refs*/}
+## ارجاع به مقادیر با رفرنس‌ها {/*referencing-values-with-refs*/}
 
-When you want a component to "remember" some information, but you don't want that information to [trigger new renders](/learn/render-and-commit), you can use a *ref*:
+وقتی می‌خواهید یک کامپوننت مقداری اطلاعات را «به خاطر بسپارد»، اما نمی‌خواهید آن اطلاعات [رندرهای جدیدی را تحریک کند](/learn/render-and-commit)، می‌توانید از یک *رفرنس* استفاده کنید:
 
 ```js
 const ref = useRef(0);
 ```
 
-Like state, refs are retained by React between re-renders. However, setting state re-renders a component. Changing a ref does not! You can access the current value of that ref through the `ref.current` property.
+مانند استیت، رفرنس‌ها توسط ری‌اکت بین رندرهای مجدد نگه داشته می‌شوند. با این حال، تنظیم استیت یک کامپوننت را دوباره رندر می‌کند. تغییر دادن یک رفرنس این کار را نمی‌کند! می‌توانید از طریق ویژگی `ref.current` به مقدار فعلی آن رفرنس دسترسی داشته باشید.
 
 <Sandpack>
 
@@ -54,17 +54,17 @@ export default function Counter() {
 
 </Sandpack>
 
-A ref is like a secret pocket of your component that React doesn't track. For example, you can use refs to store [timeout IDs](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#return_value), [DOM elements](https://developer.mozilla.org/en-US/docs/Web/API/Element), and other objects that don't impact the component's rendering output.
+یک رفرنس مانند یک جیب مخفی از کامپوننت شماست که ری‌اکت آن را ردیابی نمی‌کند. برای مثال، می‌توانید از رفرنس‌ها برای ذخیرهٔ [timeout IDs](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#return_value)، [عناصر DOM](https://developer.mozilla.org/en-US/docs/Web/API/Element) و سایر اشیایی که بر خروجی رندر کامپوننت تأثیری ندارند استفاده کنید.
 
 <LearnMore path="/learn/referencing-values-with-refs">
 
-Read **[Referencing Values with Refs](/learn/referencing-values-with-refs)** to learn how to use refs to remember information.
+**[ارجاع به مقادیر با رفرنس‌ها](/learn/referencing-values-with-refs)** را بخوانید تا یاد بگیرید چگونه از رفرنس‌ها برای به خاطر سپردن اطلاعات استفاده کنید.
 
 </LearnMore>
 
-## Manipulating the DOM with refs {/*manipulating-the-dom-with-refs*/}
+## دستکاری DOM با رفرنس‌ها {/*manipulating-the-dom-with-refs*/}
 
-React automatically updates the DOM to match your render output, so your components won't often need to manipulate it. However, sometimes you might need access to the DOM elements managed by React—for example, to focus a node, scroll to it, or measure its size and position. There is no built-in way to do those things in React, so you will need a ref to the DOM node. For example, clicking the button will focus the input using a ref:
+ری‌اکت به‌طور خودکار DOM را به‌روزرسانی می‌کند تا با خروجی رندر شما مطابقت داشته باشد، بنابراین کامپوننت‌های شما اغلب نیازی به دستکاری آن نخواهند داشت. با این حال، گاهی ممکن است نیاز به دسترسی به عناصر DOM مدیریت‌شده توسط ری‌اکت داشته باشید — مثلاً برای فوکوس کردن یک نود، اسکرول به آن، یا اندازه‌گیری اندازه و موقعیتش. هیچ راه داخلی برای انجام این کارها در ری‌اکت وجود ندارد، بنابراین برای دسترسی به نود DOM به یک رفرنس نیاز دارید. برای مثال، کلیک روی دکمه، ورودی را با استفاده از یک رفرنس فوکوس می‌کند:
 
 <Sandpack>
 
@@ -93,15 +93,15 @@ export default function Form() {
 
 <LearnMore path="/learn/manipulating-the-dom-with-refs">
 
-Read **[Manipulating the DOM with Refs](/learn/manipulating-the-dom-with-refs)** to learn how to access DOM elements managed by React.
+**[دستکاری DOM با رفرنس‌ها](/learn/manipulating-the-dom-with-refs)** را بخوانید تا یاد بگیرید چگونه به عناصر DOM مدیریت‌شده توسط ری‌اکت دسترسی پیدا کنید.
 
 </LearnMore>
 
-## Synchronizing with Effects {/*synchronizing-with-effects*/}
+## هم‌گام‌سازی با افکت‌ها {/*synchronizing-with-effects*/}
 
-Some components need to synchronize with external systems. For example, you might want to control a non-React component based on the React state, set up a server connection, or send an analytics log when a component appears on the screen. Unlike event handlers, which let you handle particular events, *Effects* let you run some code after rendering. Use them to synchronize your component with a system outside of React.
+برخی کامپوننت‌ها نیاز دارند با سیستم‌های خارجی هم‌گام شوند. برای مثال، ممکن است بخواهید یک کامپوننت غیر ری‌اکتی را بر اساس استیت ری‌اکت کنترل کنید، یک اتصال سرور برقرار کنید، یا وقتی یک کامپوننت روی صفحه ظاهر می‌شود یک لاگ تحلیلی ارسال کنید. برخلاف مدیرکننده‌های رویداد، که به شما اجازه می‌دهند رویدادهای خاصی را مدیریت کنید، *افکت‌ها* به شما اجازه می‌دهند مقداری کد را بعد از رندر اجرا کنید. از آن‌ها برای هم‌گام‌سازی کامپوننت خود با یک سیستم خارج از ری‌اکت استفاده کنید.
 
-Press Play/Pause a few times and see how the video player stays synchronized to the `isPlaying` prop value:
+چند بار پخش/توقف را بزنید و ببینید چگونه پخش‌کنندهٔ ویدیو با مقدار پراپس `isPlaying` هم‌گام می‌ماند:
 
 <Sandpack>
 
@@ -145,7 +145,7 @@ video { width: 250px; }
 
 </Sandpack>
 
-Many Effects also "clean up" after themselves. For example, an Effect that sets up a connection to a chat server should return a *cleanup function* that tells React how to disconnect your component from that server:
+بسیاری از افکت‌ها همچنین بعد از خودشان «پاک‌سازی» می‌کنند. برای مثال، یک افکتی که یک اتصال به سرور چت برقرار می‌کند باید یک *تابع پاک‌سازی* برگرداند که به ری‌اکت می‌گوید چگونه کامپوننت شما را از آن سرور قطع کند:
 
 <Sandpack>
 
@@ -183,23 +183,23 @@ input { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-In development, React will immediately run and clean up your Effect one extra time. This is why you see `"✅ Connecting..."` printed twice. This ensures that you don't forget to implement the cleanup function.
+در محیط توسعه، ری‌اکت افکت شما را یک بار اضافی بلافاصله اجرا و پاک‌سازی می‌کند. به همین دلیل می‌بینید که `"✅ Connecting..."` دو بار چاپ می‌شود. این کار تضمین می‌کند که تابع پاک‌سازی را پیاده‌سازی کردن را فراموش نکنید.
 
 <LearnMore path="/learn/synchronizing-with-effects">
 
-Read **[Synchronizing with Effects](/learn/synchronizing-with-effects)** to learn how to synchronize components with external systems.
+**[هم‌گام‌سازی با افکت‌ها](/learn/synchronizing-with-effects)** را بخوانید تا یاد بگیرید چگونه کامپوننت‌ها را با سیستم‌های خارجی هم‌گام کنید.
 
 </LearnMore>
 
-## You Might Not Need An Effect {/*you-might-not-need-an-effect*/}
+## شاید به افکت نیاز نداشته باشید {/*you-might-not-need-an-effect*/}
 
-Effects are an escape hatch from the React paradigm. They let you "step outside" of React and synchronize your components with some external system. If there is no external system involved (for example, if you want to update a component's state when some props or state change), you shouldn't need an Effect. Removing unnecessary Effects will make your code easier to follow, faster to run, and less error-prone.
+افکت‌ها راهی برای خروج از پارادایم ری‌اکت هستند. آن‌ها به شما اجازه می‌دهند از ری‌اکت «خارج شوید» و کامپوننت‌هایتان را با یک سیستم خارجی هم‌گام کنید. اگر هیچ سیستم خارجی در کار نیست (برای مثال، اگر می‌خواهید هنگام تغییر برخی پراپس‌ها یا استیت‌ها، استیت یک کامپوننت را به‌روزرسانی کنید)، نباید به افکت نیاز داشته باشید. حذف افکت‌های غیرضروری کد شما را دنبال‌کردنی‌تر، سریع‌تر در اجرا و کم‌تر مستعد خطا می‌کند.
 
-There are two common cases in which you don't need Effects:
-- **You don't need Effects to transform data for rendering.**
-- **You don't need Effects to handle user events.**
+دو مورد رایج وجود دارد که در آن‌ها به افکت نیاز ندارید:
+- **برای تبدیل داده‌ها جهت رندر به افکت نیاز ندارید.**
+- **برای مدیریت رویدادهای کاربر به افکت نیاز ندارید.**
 
-For example, you don't need an Effect to adjust some state based on other state:
+برای مثال، برای تنظیم برخی استیت‌ها بر اساس استیت‌های دیگر به افکت نیاز ندارید:
 
 ```js {expectedErrors: {'react-compiler': [8]}} {5-9}
 function Form() {
@@ -215,7 +215,7 @@ function Form() {
 }
 ```
 
-Instead, calculate as much as you can while rendering:
+در عوض، تا جایی که می‌توانید هنگام رندر محاسبه کنید:
 
 ```js {4-5}
 function Form() {
@@ -227,19 +227,19 @@ function Form() {
 }
 ```
 
-However, you *do* need Effects to synchronize with external systems. 
+با این حال، برای هم‌گام‌سازی با سیستم‌های خارجی *به* افکت نیاز دارید.
 
 <LearnMore path="/learn/you-might-not-need-an-effect">
 
-Read **[You Might Not Need an Effect](/learn/you-might-not-need-an-effect)** to learn how to remove unnecessary Effects.
+**[شاید به افکت نیاز نداشته باشید](/learn/you-might-not-need-an-effect)** را بخوانید تا یاد بگیرید چگونه افکت‌های غیرضروری را حذف کنید.
 
 </LearnMore>
 
-## Lifecycle of reactive effects {/*lifecycle-of-reactive-effects*/}
+## چرخهٔ حیات افکت‌های واکنشی {/*lifecycle-of-reactive-effects*/}
 
-Effects have a different lifecycle from components. Components may mount, update, or unmount. An Effect can only do two things: to start synchronizing something, and later to stop synchronizing it. This cycle can happen multiple times if your Effect depends on props and state that change over time.
+افکت‌ها چرخهٔ حیات متفاوتی از کامپوننت‌ها دارند. کامپوننت‌ها ممکن است mount شوند، به‌روزرسانی شوند یا unmount شوند. یک افکت فقط می‌تواند دو کار انجام دهد: شروع به هم‌گام‌سازی چیزی کند، و بعداً هم‌گام‌سازی آن را متوقف کند. این چرخه می‌تواند چندین بار اتفاق بیفتد اگر افکت شما به پراپس‌ها و استیت‌هایی وابسته باشد که در طول زمان تغییر می‌کنند.
 
-This Effect depends on the value of the `roomId` prop. Props are *reactive values,* which means they can change on a re-render. Notice that the Effect *re-synchronizes* (and re-connects to the server) if `roomId` changes:
+این افکت به مقدار پراپس `roomId` وابسته است. پراپس‌ها *مقادیر واکنشی (reactive)* هستند، یعنی می‌توانند در یک رندر مجدد تغییر کنند. توجه کنید که افکت اگر `roomId` تغییر کند *دوباره هم‌گام‌سازی* می‌شود (و دوباره به سرور متصل می‌شود):
 
 <Sandpack>
 
@@ -302,25 +302,25 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-React provides a linter rule to check that you've specified your Effect's dependencies correctly. If you forget to specify `roomId` in the list of dependencies in the above example, the linter will find that bug automatically.
+ری‌اکت یک قانون linter فراهم می‌کند تا بررسی کند که وابستگی‌های افکت خود را به‌درستی مشخص کرده‌اید. اگر فراموش کنید `roomId` را در فهرست وابستگی‌ها در مثال بالا مشخص کنید، linter آن باگ را به‌طور خودکار پیدا می‌کند.
 
 <LearnMore path="/learn/lifecycle-of-reactive-effects">
 
-Read **[Lifecycle of Reactive Events](/learn/lifecycle-of-reactive-effects)** to learn how an Effect's lifecycle is different from a component's.
+**[چرخهٔ حیات افکت‌های واکنشی](/learn/lifecycle-of-reactive-effects)** را بخوانید تا یاد بگیرید چرخهٔ حیات یک افکت چگونه با چرخهٔ حیات یک کامپوننت متفاوت است.
 
 </LearnMore>
 
-## Separating events from Effects {/*separating-events-from-effects*/}
+## جدا کردن رویدادها از افکت‌ها {/*separating-events-from-effects*/}
 
 <Wip>
 
-This section describes an **experimental API that has not yet been released** in a stable version of React.
+این بخش یک **API آزمایشی است که هنوز در نسخهٔ پایدار ری‌اکت منتشر نشده است**.
 
 </Wip>
 
-Event handlers only re-run when you perform the same interaction again. Unlike event handlers, Effects re-synchronize if any of the values they read, like props or state, are different than during last render. Sometimes, you want a mix of both behaviors: an Effect that re-runs in response to some values but not others.
+مدیرکننده‌های رویداد فقط زمانی دوباره اجرا می‌شوند که همان تعامل را دوباره انجام دهید. برخلاف مدیرکننده‌های رویداد، افکت‌ها اگر هر یک از مقادیری که می‌خوانند، مانند پراپس‌ها یا استیت‌ها، با رندر قبلی متفاوت باشد، دوباره هم‌گام می‌شوند. گاهی، شما ترکیبی از هر دو رفتار را می‌خواهید: یک افکت که در پاسخ به برخی مقادیر دوباره اجرا شود اما نه دیگران.
 
-All code inside Effects is *reactive.* It will run again if some reactive value it reads has changed due to a re-render. For example, this Effect will re-connect to the chat if either `roomId` or `theme` have changed:
+تمام کد درون افکت‌ها *واکنشی* است. اگر مقدار واکنشی که می‌خواند به‌دلیل یک رندر مجدد تغییر کرده باشد، دوباره اجرا می‌شود. برای مثال، این افکت اگر `roomId` یا `theme` تغییر کرده باشد دوباره به چت متصل می‌شود:
 
 <Sandpack>
 
@@ -448,7 +448,7 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-This is not ideal. You want to re-connect to the chat only if the `roomId` has changed. Switching the `theme` shouldn't re-connect to the chat! Move the code reading `theme` out of your Effect into an *Effect Event*:
+این ایده‌آل نیست. می‌خواهید فقط در صورتی دوباره به چت متصل شوید که `roomId` تغییر کرده باشد. تغییر `theme` نباید باعث اتصال مجدد به چت شود! کد خواندن `theme` را از افکت خود به یک *Effect Event* منتقل کنید:
 
 <Sandpack>
 
@@ -581,19 +581,19 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-Code inside Effect Events isn't reactive, so changing the `theme` no longer makes your Effect re-connect.
+کد درون Effect Eventها واکنشی نیست، بنابراین تغییر `theme` دیگر باعث اتصال مجدد افکت شما نمی‌شود.
 
 <LearnMore path="/learn/separating-events-from-effects">
 
-Read **[Separating Events from Effects](/learn/separating-events-from-effects)** to learn how to prevent some values from re-triggering Effects.
+**[جدا کردن رویدادها از افکت‌ها](/learn/separating-events-from-effects)** را بخوانید تا یاد بگیرید چگونه از re-trigger شدن افکت‌ها توسط برخی مقادیر جلوگیری کنید.
 
 </LearnMore>
 
-## Removing Effect dependencies {/*removing-effect-dependencies*/}
+## حذف وابستگی‌های افکت {/*removing-effect-dependencies*/}
 
-When you write an Effect, the linter will verify that you've included every reactive value (like props and state) that the Effect reads in the list of your Effect's dependencies. This ensures that your Effect remains synchronized with the latest props and state of your component. Unnecessary dependencies may cause your Effect to run too often, or even create an infinite loop. The way you remove them depends on the case.
+وقتی یک افکت می‌نویسید، linter بررسی می‌کند که هر مقدار واکنشی (مانند پراپس‌ها و استیت‌ها) که افکت می‌خواند را در فهرست وابستگی‌های افکت خود قرار داده‌اید. این کار تضمین می‌کند که افکت شما با آخرین پراپس‌ها و استیت‌های کامپوننت هم‌گام بماند. وابستگی‌های غیرضروری ممکن است باعث شوند افکت شما خیلی زیاد اجرا شود، یا حتی یک حلقهٔ بی‌نهایت ایجاد کند. نحوهٔ حذف آن‌ها به مورد بستگی دارد.
 
-For example, this Effect depends on the `options` object which gets re-created every time you edit the input:
+برای مثال، این افکت به شیء `options` وابسته است که هر بار ورودی را ویرایش می‌کنید دوباره ساخته می‌شود:
 
 <Sandpack>
 
@@ -668,7 +668,7 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-You don't want the chat to re-connect every time you start typing a message in that chat. To fix this problem, move creation of the `options` object inside the Effect so that the Effect only depends on the `roomId` string:
+نمی‌خواهید هر بار که شروع به تایپ یک پیام در آن چت می‌کنید، چت دوباره متصل شود. برای رفع این مشکل، ایجاد شیء `options` را درون افکت منتقل کنید تا افکت فقط به رشتهٔ `roomId` وابسته باشد:
 
 <Sandpack>
 
@@ -742,19 +742,19 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-Notice that you didn't start by editing the dependency list to remove the `options` dependency. That would be wrong. Instead, you changed the surrounding code so that the dependency became *unnecessary.* Think of the dependency list as a list of all the reactive values used by your Effect's code. You don't intentionally choose what to put on that list. The list describes your code. To change the dependency list, change the code.
+توجه کنید که با ویرایش فهرست وابستگی برای حذف وابستگی `options` شروع نکردید. این اشتباه would بود. در عوض، کد اطراف را تغییر دادید تا وابستگی *غیرضروری* شود. فهرست وابستگی را به‌عنوان فهرستی از تمام مقادیر واکنشی که توسط کد افکت شما استفاده می‌شوند در نظر بگیرید. شما عمداً انتخاب نمی‌کنید که چه چیزی در آن فهرست قرار گیرد. فهرست کد شما را توصیف می‌کند. برای تغییر فهرست وابستگی، کد را تغییر دهید.
 
 <LearnMore path="/learn/removing-effect-dependencies">
 
-Read **[Removing Effect Dependencies](/learn/removing-effect-dependencies)** to learn how to make your Effect re-run less often.
+**[حذف وابستگی‌های افکت](/learn/removing-effect-dependencies)** را بخوانید تا یاد بگیرید چگونه افکت خود را کم‌تر دوباره اجرا کنید.
 
 </LearnMore>
 
-## Reusing logic with custom Hooks {/*reusing-logic-with-custom-hooks*/}
+## استفادهٔ مجدد از منطق با هوک‌های سفارشی {/*reusing-logic-with-custom-hooks*/}
 
-React comes with built-in Hooks like `useState`, `useContext`, and `useEffect`. Sometimes, you’ll wish that there was a Hook for some more specific purpose: for example, to fetch data, to keep track of whether the user is online, or to connect to a chat room. To do this, you can create your own Hooks for your application's needs.
+ری‌اکت با هوک‌های داخلی مانند `useState`، `useContext` و `useEffect` همراه می‌شود. گاهی، آرزو می‌کنید که هوکی برای هدفی خاص‌تر وجود داشت: برای مثال، برای fetch داده، برای پیگیری اینکه آیا کاربر آنلاین است یا خیر، یا برای اتصال به یک اتاق چت. برای این کار، می‌توانید هوک‌های خودتان را برای نیازهای برنامه‌تان ایجاد کنید.
 
-In this example, the `usePointerPosition` custom Hook tracks the cursor position, while `useDelayedValue` custom Hook returns a value that's "lagging behind" the value you passed by a certain number of milliseconds. Move the cursor over the sandbox preview area to see a moving trail of dots following the cursor:
+در این مثال، هوک سفارشی `usePointerPosition` موقعیت نشانگر را پیگیری می‌کند، در حالی که هوک سفارشی `useDelayedValue` مقداری را برمی‌گرداند که از مقداری که پاس داده‌اید به اندازهٔ تعداد معینی میلی‌ثانیه «عقب‌تر» است. نشانگر را روی ناحیهٔ پیش‌نمایش sandbox حرکت دهید تا یک مسیر متحرک از نقطه‌ها که نشانگر را دنبال می‌کنند ببینید:
 
 <Sandpack>
 
@@ -835,14 +835,14 @@ body { min-height: 300px; }
 
 </Sandpack>
 
-You can create custom Hooks, compose them together, pass data between them, and reuse them between components. As your app grows, you will write fewer Effects by hand because you'll be able to reuse custom Hooks you already wrote. There are also many excellent custom Hooks maintained by the React community.
+می‌توانید هوک‌های سفارشی ایجاد کنید، آن‌ها را با هم ترکیب کنید، داده‌ها را بین آن‌ها منتقل کنید، و از آن‌ها بین کامپوننت‌ها استفادهٔ مجدد کنید. با رشد برنامه‌تان، افکت‌های کمتری را به‌صورت دستی می‌نویسید زیرا می‌توانید از هوک‌های سفارشی که قبلاً نوشته‌اید استفادهٔ مجدد کنید. همچنین هوک‌های سفارشی عالی زیادی توسط جامعهٔ ری‌اکت نگهداری می‌شوند.
 
 <LearnMore path="/learn/reusing-logic-with-custom-hooks">
 
-Read **[Reusing Logic with Custom Hooks](/learn/reusing-logic-with-custom-hooks)** to learn how to share logic between components.
+**[استفادهٔ مجدد از منطق با هوک‌های سفارشی](/learn/reusing-logic-with-custom-hooks)** را بخوانید تا یاد بگیرید چگونه منطق را بین کامپوننت‌ها به اشتراک بگذارید.
 
 </LearnMore>
 
-## What's next? {/*whats-next*/}
+## گام بعدی چه هست؟ {/*whats-next*/}
 
-Head over to [Referencing Values with Refs](/learn/referencing-values-with-refs) to start reading this chapter page by page!
+به [ارجاع به مقادیر با رفرنس‌ها](/learn/referencing-values-with-refs) بروید تا خواندن این فصل را صفحه به صفحه شروع کنید!

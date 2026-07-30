@@ -1,38 +1,38 @@
 ---
-title: 'You Might Not Need an Effect'
+title: 'شاید به افکت نیاز نداشته باشید'
 ---
 
 <Intro>
 
-Effects are an escape hatch from the React paradigm. They let you "step outside" of React and synchronize your components with some external system like a non-React widget, network, or the browser DOM. If there is no external system involved (for example, if you want to update a component's state when some props or state change), you shouldn't need an Effect. Removing unnecessary Effects will make your code easier to follow, faster to run, and less error-prone.
+افکت‌ها یک راه فرار از پارادایم React هستند. آن‌ها به شما اجازه می‌دهند از React «بیرون بروید» و کامپوننت‌هایتان را با برخی سیستم‌های خارجی مانند یک ویجت غیر-React، شبکه، یا DOM مرورگر همگام کنید. اگر هیچ سیستم خارجی درگیر نیست (مثلاً اگر می‌خواهید وقتی برخی پراپس‌ها یا استیت تغییر می‌کنند استیت یک کامپوننت را به‌روزرسانی کنید)، نباید به افکت نیاز داشته باشید. حذف افکت‌های غیرضروری باعث می‌شود کد شما پیگیری آسان‌تر، اجرای سریع‌تر و کم‌تر مستعد خطا شود.
 
 </Intro>
 
 <YouWillLearn>
 
-* Why and how to remove unnecessary Effects from your components
-* How to cache expensive computations without Effects
-* How to reset and adjust component state without Effects
-* How to share logic between event handlers
-* Which logic should be moved to event handlers
-* How to notify parent components about changes
+* چرا و چگونه افکت‌های غیرضروری را از کامپوننت‌های خود حذف کنید
+* چگونه محاسبات پرهزینه را بدون افکت کش (cache) کنید
+* چگونه استیت کامپوننت را بدون افکت بازنشانی و تنظیم کنید
+* چگونه منطق را بین هندلرهای رویداد به اشتراک بگذارید
+* کدام منطق باید به هندلرهای رویداد منتقل شود
+* چگونه کامپوننت‌های والد را دربارهٔ تغییرات آگاه کنید
 
 </YouWillLearn>
 
-## How to remove unnecessary Effects {/*how-to-remove-unnecessary-effects*/}
+## نحوهٔ حذف افکت‌های غیرضروری {/*how-to-remove-unnecessary-effects*/}
 
-There are two common cases in which you don't need Effects:
+دو مورد رایج وجود دارد که در آن‌ها به افکت نیاز ندارید:
 
-* **You don't need Effects to transform data for rendering.** For example, let's say you want to filter a list before displaying it. You might feel tempted to write an Effect that updates a state variable when the list changes. However, this is inefficient. When you update the state, React will first call your component functions to calculate what should be on the screen. Then React will ["commit"](/learn/render-and-commit) these changes to the DOM, updating the screen. Then React will run your Effects. If your Effect *also* immediately updates the state, this restarts the whole process from scratch! To avoid the unnecessary render passes, transform all the data at the top level of your components. That code will automatically re-run whenever your props or state change.
-* **You don't need Effects to handle user events.** For example, let's say you want to send an `/api/buy` POST request and show a notification when the user buys a product. In the Buy button click event handler, you know exactly what happened. By the time an Effect runs, you don't know *what* the user did (for example, which button was clicked). This is why you'll usually handle user events in the corresponding event handlers.
+* **برای تبدیل داده‌ها جهت رندر به افکت نیاز ندارید.** مثلاً فرض کنید می‌خواهید پیش از نمایش، یک فهرست را فیلتر کنید. شاید وسوسه شوید افکتی بنویسید که وقتی فهرست تغییر می‌کند یک متغیر استیت را به‌روزرسانی کند. با این حال، این ناکارآمد است. وقتی استیت را به‌روزرسانی می‌کنید، React ابتدا توابع کامپوننت شما را فراخوانی می‌کند تا محاسبه کند چه چیزی باید روی صفحه باشد. سپس React این تغییرات را به DOM [«کامیت»](/learn/render-and-commit) می‌کند و صفحه را به‌روزرسانی می‌نماید. سپس React افکت‌های شما را اجرا می‌کند. اگر افکت شما *هم* بلافاصله استیت را به‌روزرسانی کند، این کل فرایند را از ابتدا دوباره آغاز می‌کند! برای پرهیز از پاس‌های رندر غیرضروری، تمام داده‌ها را در بالاترین سطح کامپوننت‌هایتان تبدیل کنید. آن کد هر زمان که پراپس یا استیت شما تغییر کند، به‌طور خودکار دوباره اجرا خواهد شد.
+* **برای مدیریت رویدادهای کاربر به افکت نیاز ندارید.** مثلاً فرض کنید می‌خواهید وقتی کاربر محصولی را می‌خرد، یک درخواست POST به `/api/buy` بفرستید و یک اعلان نمایش دهید. در هندلر رویداد کلیک دکمهٔ Buy، دقیقاً می‌دانید چه اتفاقی افتاده. تا زمانی که یک افکت اجرا می‌شود، نمی‌دانید کاربر *چه* کرده است (مثلاً کدام دکمه کلیک شده). به همین دلیل معمولاً رویدادهای کاربر را در هندلرهای رویداد مربوطه مدیریت می‌کنید.
 
-You *do* need Effects to [synchronize](/learn/synchronizing-with-effects#what-are-effects-and-how-are-they-different-from-events) with external systems. For example, you can write an Effect that keeps a jQuery widget synchronized with the React state. You can also fetch data with Effects: for example, you can synchronize the search results with the current search query. Keep in mind that modern [frameworks](/learn/start-a-new-react-project#full-stack-frameworks) provide more efficient built-in data fetching mechanisms than writing Effects directly in your components.
+شما *به* افکت‌ها نیاز دارید تا با سیستم‌های خارجی [همگام شوید](/learn/synchronizing-with-effects#what-are-effects-and-how-are-they-different-from-events). مثلاً می‌توانید افکتی بنویسید که یک ویجت jQuery را با استیت React همگام نگه دارد. همچنین می‌توانید با افکت‌ها داده fetch کنید: مثلاً می‌توانید نتایج جستجو را با کوئری جستجوی فعلی همگام کنید. در نظر داشته باشید که [فریم‌ورک‌های](/learn/start-a-new-react-project#full-stack-frameworks) مدرن مکانیزم‌های fetch دادهٔ داخلی کارآمدتری از نوشتن افکت مستقیم در کامپوننت‌ها ارائه می‌دهند.
 
-To help you gain the right intuition, let's look at some common concrete examples!
+برای کمک به کسب شهود درست، بیایید چند مثال عینی رایج را ببینیم!
 
-### Updating state based on props or state {/*updating-state-based-on-props-or-state*/}
+### به‌روزرسانی استیت بر اساس پراپس یا استیت {/*updating-state-based-on-props-or-state*/}
 
-Suppose you have a component with two state variables: `firstName` and `lastName`. You want to calculate a `fullName` from them by concatenating them. Moreover, you'd like `fullName` to update whenever `firstName` or `lastName` change. Your first instinct might be to add a `fullName` state variable and update it in an Effect:
+فرض کنید کامپوننتی با دو متغیر استیت دارید: `firstName` و `lastName`. می‌خواهید با اتصال آن‌ها یک `fullName` محاسبه کنید. علاوه بر این، می‌خواهید `fullName` هر زمان که `firstName` یا `lastName` تغییر می‌کنند به‌روزرسانی شود. اولین غریزهٔ شما ممکن است اضافه کردن یک متغیر استیت `fullName` و به‌روزرسانی آن در یک افکت باشد:
 
 ```js {expectedErrors: {'react-compiler': [8]}} {5-9}
 function Form() {
@@ -48,7 +48,7 @@ function Form() {
 }
 ```
 
-This is more complicated than necessary. It is inefficient too: it does an entire render pass with a stale value for `fullName`, then immediately re-renders with the updated value. Remove the state variable and the Effect:
+این از آنچه لازم است پیچیده‌تر است. همچنین ناکارآمد است: یک پاس رندر کامل با مقدار کهنهٔ `fullName` انجام می‌دهد، سپس بلافاصله با مقدار به‌روزرسانی‌شده دوباره رندر می‌کند. متغیر استیت و افکت را حذف کنید:
 
 ```js {4-5}
 function Form() {
@@ -60,11 +60,11 @@ function Form() {
 }
 ```
 
-**When something can be calculated from the existing props or state, [don't put it in state.](/learn/choosing-the-state-structure#avoid-redundant-state) Instead, calculate it during rendering.** This makes your code faster (you avoid the extra "cascading" updates), simpler (you remove some code), and less error-prone (you avoid bugs caused by different state variables getting out of sync with each other). If this approach feels new to you, [Thinking in React](/learn/thinking-in-react#step-3-find-the-minimal-but-complete-representation-of-ui-state) explains what should go into state.
+**وقتی چیزی را می‌توان از پراپس یا استیت موجود محاسبه کرد، [آن را در استیت قرار ندهید.](/learn/choosing-the-state-structure#avoid-redundant-state) در عوض، آن را حین رندر محاسبه کنید.** این کار کد شما را سریع‌تر (از به‌روزرسانی‌های «آبشاری» اضافی پرهیز می‌کنید)، ساده‌تر (برخی کد را حذف می‌کنید)، و کم‌تر مستعد خطا می‌کند (از باگ‌های ناشی از ناهمگام شدن متغیرهای استیت مختلف با یکدیگر پرهیز می‌کنید). اگر این رویکرد برایتان تازه است، [Thinking in React](/learn/thinking-in-react#step-3-find-the-minimal-but-complete-representation-of-ui-state) توضیح می‌دهد چه چیزی باید در استیت قرار گیرد.
 
-### Caching expensive calculations {/*caching-expensive-calculations*/}
+### کش کردن محاسبات پرهزینه {/*caching-expensive-calculations*/}
 
-This component computes `visibleTodos` by taking the `todos` it receives by props and filtering them according to the `filter` prop. You might feel tempted to store the result in state and update it from an Effect:
+این کامپوننت `visibleTodos` را با گرفتن `todos` که از پراپس دریافت می‌کند و فیلتر کردن آن‌ها بر اساس پراپ `filter` محاسبه می‌کند. ممکن است وسوسه شوید نتیجه را در استیت ذخیره و از یک افکت به‌روزرسانی کنید:
 
 ```js {expectedErrors: {'react-compiler': [7]}} {4-8}
 function TodoList({ todos, filter }) {
@@ -80,7 +80,7 @@ function TodoList({ todos, filter }) {
 }
 ```
 
-Like in the earlier example, this is both unnecessary and inefficient. First, remove the state and the Effect:
+مانند مثال قبلی، این هم غیرضروری و ناکارآمد است. ابتدا استیت و افکت را حذف کنید:
 
 ```js {3-4}
 function TodoList({ todos, filter }) {
@@ -91,13 +91,13 @@ function TodoList({ todos, filter }) {
 }
 ```
 
-Usually, this code is fine! But maybe `getFilteredTodos()` is slow or you have a lot of `todos`. In that case you don't want to recalculate `getFilteredTodos()` if some unrelated state variable like `newTodo` has changed.
+معمولاً این کد مشکلی ندارد! اما شاید `getFilteredTodos()` کند است یا `todos` زیادی دارید. در این صورت نمی‌خواهید `getFilteredTodos()` را دوباره محاسبه کنید اگر برخی متغیرهای استیت نامرتبط مانند `newTodo` تغییر کرده باشند.
 
-You can cache (or ["memoize"](https://en.wikipedia.org/wiki/Memoization)) an expensive calculation by wrapping it in a [`useMemo`](/reference/react/useMemo) Hook:
+می‌توانید یک محاسبهٔ پرهزینه را با پیچیدن آن در یک هوک [`useMemo`](/reference/react/useMemo) کش (یا [«مموری‌زیشن»](https://en.wikipedia.org/wiki/Memoization)) کنید:
 
 <Note>
 
-[React Compiler](/learn/react-compiler) can automatically memoize expensive calculations for you, eliminating the need for manual `useMemo` in many cases.
+[React Compiler](/learn/react-compiler) می‌تواند به‌طور خودکار محاسبات پرهزینه را برایتان مموری‌زیشن کند و نیاز به `useMemo` دستی را در بسیاری از موارد از بین ببرد.
 
 </Note>
 
@@ -114,7 +114,7 @@ function TodoList({ todos, filter }) {
 }
 ```
 
-Or, written as a single line:
+یا به‌صورت یک خط نوشته شود:
 
 ```js {5-6}
 import { useMemo, useState } from 'react';
@@ -127,15 +127,15 @@ function TodoList({ todos, filter }) {
 }
 ```
 
-**This tells React that you don't want the inner function to re-run unless either `todos` or `filter` have changed.** React will remember the return value of `getFilteredTodos()` during the initial render. During the next renders, it will check if `todos` or `filter` are different. If they're the same as last time, `useMemo` will return the last result it has stored. But if they are different, React will call the inner function again (and store its result).
+**این به React می‌گوید که نمی‌خواهید تابع درونی دوباره اجرا شود مگر اینکه `todos` یا `filter` تغییر کرده باشند.** React مقدار بازگشتی `getFilteredTodos()` را حین رندر اولیه به خاطر می‌سپارد. در رندرهای بعدی، بررسی می‌کند که آیا `todos` یا `filter` متفاوت هستند. اگر مثل دفعهٔ قبل باشند، `useMemo` آخرین نتیجه‌ای که ذخیره کرده را برمی‌گرداند. اما اگر متفاوت باشند، React تابع درونی را دوباره فراخوانی می‌کند (و نتیجه‌اش را ذخیره می‌نماید).
 
-The function you wrap in [`useMemo`](/reference/react/useMemo) runs during rendering, so this only works for [pure calculations.](/learn/keeping-components-pure)
+تابعی که در [`useMemo`](/reference/react/useMemo) می‌پیچید حین رندر اجرا می‌شود، پس این فقط برای [محاسبات خالص](/learn/keeping-components-pure) کار می‌کند.
 
 <DeepDive>
 
-#### How to tell if a calculation is expensive? {/*how-to-tell-if-a-calculation-is-expensive*/}
+#### چگونه بفهمیم یک محاسبه پرهزینه است؟ {/*how-to-tell-if-a-calculation-is-expensive*/}
 
-In general, unless you're creating or looping over thousands of objects, it's probably not expensive. If you want to get more confidence, you can add a console log to measure the time spent in a piece of code:
+به‌طور کلی، مگر اینکه هزاران شیء بسازید یا روی آن‌ها حلقه بزنید، احتمالاً پرهزینه نیست. اگر می‌خواهید مطمئن‌تر شوید، می‌توانید یک console log اضافه کنید تا زمان صرف‌شده در یک قطعه کد را اندازه بگیرید:
 
 ```js {1,3}
 console.time('filter array');
@@ -143,7 +143,7 @@ const visibleTodos = getFilteredTodos(todos, filter);
 console.timeEnd('filter array');
 ```
 
-Perform the interaction you're measuring (for example, typing into the input). You will then see logs like `filter array: 0.15ms` in your console. If the overall logged time adds up to a significant amount (say, `1ms` or more), it might make sense to memoize that calculation. As an experiment, you can then wrap the calculation in `useMemo` to verify whether the total logged time has decreased for that interaction or not:
+تعاملی که اندازه می‌گیرید را انجام دهید (مثلاً تایپ در ورودی). سپس لاگ‌هایی مانند `filter array: 0.15ms` را در کنسول می‌بینید. اگر کل زمان لاگ‌شده به مقدار قابل‌توجهی می‌رسد (مثلاً `1ms` یا بیشتر)، ممکن است مموری‌زیشن آن محاسبه منطقی باشد. به‌عنوان آزمایش، می‌توانید محاسبه را در `useMemo` بپیچید تا بررسی کنید آیا کل زمان لاگ‌شده برای آن تعامل کاهش یافته یا نه:
 
 ```js
 console.time('filter array');
@@ -153,17 +153,17 @@ const visibleTodos = useMemo(() => {
 console.timeEnd('filter array');
 ```
 
-`useMemo` won't make the *first* render faster. It only helps you skip unnecessary work on updates.
+`useMemo` *اولین* رندر را سریع‌تر نمی‌کند. فقط کمک می‌کند از کار غیرضروری در به‌روزرسانی‌ها پرهیز کنید.
 
-Keep in mind that your machine is probably faster than your users' so it's a good idea to test the performance with an artificial slowdown. For example, Chrome offers a [CPU Throttling](https://developer.chrome.com/blog/new-in-devtools-61/#throttling) option for this.
+در نظر داشته باشید که ماشین شما احتمالاً سریع‌تر از ماشین کاربرانتان است، پس ایدهٔ خوبی است که عملکرد را با کندسازی مصنوعی آزمایش کنید. مثلاً Chrome گزینهٔ [CPU Throttling](https://developer.chrome.com/blog/new-in-devtools-61/#throttling) را برای این کار ارائه می‌دهد.
 
-Also note that measuring performance in development will not give you the most accurate results. (For example, when [Strict Mode](/reference/react/StrictMode) is on, you will see each component render twice rather than once.) To get the most accurate timings, build your app for production and test it on a device like your users have.
+همچنین توجه داشته باشید که اندازه‌گیری عملکرد در توسعه دقیق‌ترین نتایج را نمی‌دهد. (مثلاً وقتی [حالت سخت‌گیرانه (Strict Mode)](/reference/react/StrictMode) روشن است، هر کامپوننت را دو بار به‌جای یک بار رندر می‌بینید.) برای گرفتن دقیق‌ترین زمان‌بندی‌ها، اپلیکیشن خود را برای پروداکشن build کنید و روی دستگاهی مانند دستگاه کاربران خود آزمایش کنید.
 
 </DeepDive>
 
-### Resetting all state when a prop changes {/*resetting-all-state-when-a-prop-changes*/}
+### بازنشانی کل استیت وقتی یک پراپ تغییر می‌کند {/*resetting-all-state-when-a-prop-changes*/}
 
-This `ProfilePage` component receives a `userId` prop. The page contains a comment input, and you use a `comment` state variable to hold its value. One day, you notice a problem: when you navigate from one profile to another, the `comment` state does not get reset. As a result, it's easy to accidentally post a comment on a wrong user's profile. To fix the issue, you want to clear out the `comment` state variable whenever the `userId` changes:
+این کامپوننت `ProfilePage` یک پراپ `userId` دریافت می‌کند. صفحه شامل یک ورودی کامنت است و از یک متغیر استیت `comment` برای نگه‌داشتن مقدارش استفاده می‌کنید. یک روز متوجه مشکل می‌شوید: وقتی از یک پروفایل به پروفایل دیگری می‌روید، استیت `comment` بازنشانی نمی‌شود. در نتیجه، به‌راحتی ممکن است به‌اشتباه روی پروفایل کاربر اشتباهی کامنت ثبت کنید. برای رفع مشکل، می‌خواهید متغیر استیت `comment` را هر زمان که `userId` تغییر می‌کند پاک کنید:
 
 ```js {expectedErrors: {'react-compiler': [6]}} {4-7}
 export default function ProfilePage({ userId }) {
@@ -177,9 +177,9 @@ export default function ProfilePage({ userId }) {
 }
 ```
 
-This is inefficient because `ProfilePage` and its children will first render with the stale value, and then render again. It is also complicated because you'd need to do this in *every* component that has some state inside `ProfilePage`. For example, if the comment UI is nested, you'd want to clear out nested comment state too.
+این ناکارآمد است زیرا `ProfilePage` و فرزندانش ابتدا با مقدار کهنه رندر می‌شوند، سپس دوباره رندر می‌شوند. همچنین پیچیده است زیرا باید این کار را در *هر* کامپوننتی که استیتی داخل `ProfilePage` دارد انجام دهید. مثلاً اگر رابط کاربری کامنت تودرتو باشد، می‌خواهید استیت کامنت تودرتو را هم پاک کنید.
 
-Instead, you can tell React that each user's profile is conceptually a _different_ profile by giving it an explicit key. Split your component in two and pass a `key` attribute from the outer component to the inner one:
+در عوض، می‌توانید با دادن یک کلید (key) صریح به React بگویید که پروفایل هر کاربر از نظر مفهومی یک پروفایل _متفاوت_ است. کامپوننت خود را به دو بخش تقسیم کنید و یک ویژگی `key` را از کامپوننت بیرونی به کامپوننت درونی عبور دهید:
 
 ```js {5,11-12}
 export default function ProfilePage({ userId }) {
@@ -198,15 +198,15 @@ function Profile({ userId }) {
 }
 ```
 
-Normally, React preserves the state when the same component is rendered in the same spot. **By passing `userId` as a `key` to the `Profile` component, you're asking React to treat two `Profile` components with different `userId` as two different components that should not share any state.** Whenever the key (which you've set to `userId`) changes, React will recreate the DOM and [reset the state](/learn/preserving-and-resetting-state#option-2-resetting-state-with-a-key) of the `Profile` component and all of its children. Now the `comment` field will clear out automatically when navigating between profiles.
+معمولاً React هنگام رندر شدن همان کامپوننت در همان نقطه استیت را حفظ می‌کند. **با عبور دادن `userId` به‌عنوان یک `key` به کامپوننت `Profile`، از React می‌خواهید دو کامپوننت `Profile` با `userId` متفاوت را به‌عنوان دو کامپوننت متفاوت در نظر بگیرد که نباید هیچ استیتی را به اشتراک بگذارند.** هر زمان که کلید (که آن را `userId` تنظیم کرده‌اید) تغییر کند، React دوباره DOM را بازسازی می‌کند و [استیت](/learn/preserving-and-resetting-state#option-2-resetting-state-with-a-key) کامپوننت `Profile` و تمام فرزندانش را بازنشانی می‌نماید. اکنون فیلد `comment` هنگام پیمایش بین پروفایل‌ها به‌طور خودکار پاک می‌شود.
 
-Note that in this example, only the outer `ProfilePage` component is exported and visible to other files in the project. Components rendering `ProfilePage` don't need to pass the key to it: they pass `userId` as a regular prop. The fact `ProfilePage` passes it as a `key` to the inner `Profile` component is an implementation detail.
+توجه کنید که در این مثال، فقط کامپوننت بیرونی `ProfilePage` export شده و برای سایر فایل‌های پروژه قابل‌مشاهده است. کامپوننت‌هایی که `ProfilePage` را رندر می‌کنند نیازی ندارد کلید را به آن عبور دهند: آن‌ها `userId` را به‌عنوان یک پراپ عادی عبور می‌دهند. این که `ProfilePage` آن را به‌عنوان یک `key` به کامپوننت درونی `Profile` عبور می‌دهد، یک جزئیات پیاده‌سازی است.
 
-### Adjusting some state when a prop changes {/*adjusting-some-state-when-a-prop-changes*/}
+### تنظیم بخشی از استیت وقتی یک پراپ تغییر می‌کند {/*adjusting-some-state-when-a-prop-changes*/}
 
-Sometimes, you might want to reset or adjust a part of the state on a prop change, but not all of it.
+گاهی ممکن است بخواهید هنگام تغییر یک پراپ، بخشی از استیت را بازنشانی یا تنظیم کنید، اما نه همهٔ آن.
 
-This `List` component receives a list of `items` as a prop, and maintains the selected item in the `selection` state variable. You want to reset the `selection` to `null` whenever the `items` prop receives a different array:
+این کامپوننت `List` فهرستی از `items` را به‌عنوان پراپ دریافت می‌کند و آیتم انتخاب‌شده را در متغیر استیت `selection` نگه می‌دارد. می‌خواهید `selection` را هر زمان که پراپ `items` آرایهٔ متفاوتی دریافت می‌کند به `null` بازنشانی کنید:
 
 ```js {expectedErrors: {'react-compiler': [7]}} {5-8}
 function List({ items }) {
@@ -221,9 +221,9 @@ function List({ items }) {
 }
 ```
 
-This, too, is not ideal. Every time the `items` change, the `List` and its child components will render with a stale `selection` value at first. Then React will update the DOM and run the Effects. Finally, the `setSelection(null)` call will cause another re-render of the `List` and its child components, restarting this whole process again.
+این هم ایده‌آل نیست. هر بار که `items` تغییر می‌کند، `List` و کامپوننت‌های فرزندش ابتدا با مقدار `selection` کهنه رندر می‌شوند. سپس React DOM را به‌روزرسانی می‌کند و افکت‌ها را اجرا می‌نماید. در نهایت، فراخوانی `setSelection(null)` باعث رندر مجدد دیگری از `List` و کامپوننت‌های فرزندش می‌شود و کل این فرایند را دوباره آغاز می‌کند.
 
-Start by deleting the Effect. Instead, adjust the state directly during rendering:
+ابتدا افکت را حذف کنید. در عوض، استیت را مستقیماً حین رندر تنظیم کنید:
 
 ```js {5-11}
 function List({ items }) {
@@ -240,11 +240,11 @@ function List({ items }) {
 }
 ```
 
-[Storing information from previous renders](/reference/react/useState#storing-information-from-previous-renders) like this can be hard to understand, but it’s better than updating the same state in an Effect. In the above example, `setSelection` is called directly during a render. React will re-render the `List` *immediately* after it exits with a `return` statement. React has not rendered the `List` children or updated the DOM yet, so this lets the `List` children skip rendering the stale `selection` value.
+[ذخیرهٔ اطلاعات از رندرهای قبلی](/reference/react/useState#storing-information-from-previous-renders) به این شکل می‌تواند درکش را سخت کند، اما از به‌روزرسانی همان استیت در یک افکت بهتر است. در مثال بالا، `setSelection` مستقیماً حین یک رندر فراخوانی می‌شود. React بلافاصله پس از خروج `List` با یک عبارت `return` دوباره آن را رندر می‌کند. React هنوز فرزندان `List` را رندر نکرده یا DOM را به‌روزرسانی نکرده است، پس این به فرزندان `List` اجازه می‌دهد از رندر مقدار `selection` کهنه پرهیز کنند.
 
-When you update a component during rendering, React throws away the returned JSX and immediately retries rendering. To avoid very slow cascading retries, React only lets you update the *same* component's state during a render. If you update another component's state during a render, you'll see an error. A condition like `items !== prevItems` is necessary to avoid loops. You may adjust state like this, but any other side effects (like changing the DOM or setting timeouts) should stay in event handlers or Effects to [keep components pure.](/learn/keeping-components-pure)
+وقتی حین رندر یک کامپوننت را به‌روزرسانی می‌کنید، React JSX بازگشتی را دور می‌ریزد و بلافاصله رندر را دوباره امتحان می‌کند. برای پرهیز از تلاش‌های مجدد آبشاری بسیار کند، React فقط به شما اجازه می‌دهد حین یک رندر استیت *همان* کامپوننت را به‌روزرسانی کنید. اگر حین یک رندر استیت کامپوننت دیگری را به‌روزرسانی کنید، خطا خواهید دید. شرطی مانند `items !== prevItems` برای پرهیز از حلقه‌ها ضروری است. می‌توانید استیت را به این شکل تنظیم کنید، اما هرگونه عوارض جانبی دیگر (مانند تغییر DOM یا تنظیم timeout) باید در هندلرهای رویداد یا افکت‌ها بماند تا [کامپوننت‌ها خالص بمانند.](/learn/keeping-components-pure)
 
-**Although this pattern is more efficient than an Effect, most components shouldn't need it either.** No matter how you do it, adjusting state based on props or other state makes your data flow more difficult to understand and debug. Always check whether you can [reset all state with a key](#resetting-all-state-when-a-prop-changes) or [calculate everything during rendering](#updating-state-based-on-props-or-state) instead. For example, instead of storing (and resetting) the selected *item*, you can store the selected *item ID:*
+**اگرچه این الگو از افکت کارآمدتر است، اکثر کامپوننت‌ها نباید به آن نیاز داشته باشند.** بدون توجه به اینکه چگونه انجامش می‌دهید، تنظیم استیت بر اساس پراپس یا استیت دیگر، جریان دادهٔ شما را برای فهمیدن و دیباگ کردن دشوارتر می‌کند. همیشه بررسی کنید آیا می‌توانید به‌جای آن [همهٔ استیت را با یک کلید بازنشانی کنید](#resetting-all-state-when-a-prop-changes) یا [همه را حین رندر محاسبه کنید](#updating-state-based-on-props-or-state). مثلاً به‌جای ذخیره (و بازنشانی) *آیتم* انتخاب‌شده، می‌توانید *شناسهٔ آیتم* انتخاب‌شده را ذخیره کنید:
 
 ```js {3-5}
 function List({ items }) {
@@ -256,11 +256,11 @@ function List({ items }) {
 }
 ```
 
-Now there is no need to "adjust" the state at all. If the item with the selected ID is in the list, it remains selected. If it's not, the `selection` calculated during rendering will be `null` because no matching item was found. This behavior is different, but arguably better because most changes to `items` preserve the selection.
+اکنون اصلاً نیازی به «تنظیم» استیت نیست. اگر آیتم با شناسهٔ انتخاب‌شده در فهرست باشد، انتخاب‌شده می‌ماند. اگر نباشد، `selection` محاسبه‌شده حین رندر `null` خواهد بود زیرا هیچ آیتم منطبقی پیدا نشد. این رفتار متفاوت است، اما می‌توان گفت بهتر است زیرا اکثر تغییرات `items` انتخاب را حفظ می‌کنند.
 
-### Sharing logic between event handlers {/*sharing-logic-between-event-handlers*/}
+### به اشتراک‌گذاری منطق بین هندلرهای رویداد {/*sharing-logic-between-event-handlers*/}
 
-Let's say you have a product page with two buttons (Buy and Checkout) that both let you buy that product. You want to show a notification whenever the user puts the product in the cart. Calling `showNotification()` in both buttons' click handlers feels repetitive so you might be tempted to place this logic in an Effect:
+فرض کنید صفحهٔ محصولی با دو دکمه (Buy و Checkout) دارید که هر دو به شما اجازه می‌دهند آن محصول را بخرید. می‌خواهید هر بار که کاربر محصول را در سبد قرار می‌دهد اعلانی نمایش دهید. فراخوانی `showNotification()` در هندلرهای کلیک هر دو دکمه تکراری به‌نظر می‌رسد پس شاید وسوسه شوید این منطق را در یک افکت قرار دهید:
 
 ```js {2-7}
 function ProductPage({ product, addToCart }) {
@@ -283,9 +283,9 @@ function ProductPage({ product, addToCart }) {
 }
 ```
 
-This Effect is unnecessary. It will also most likely cause bugs. For example, let's say that your app "remembers" the shopping cart between the page reloads. If you add a product to the cart once and refresh the page, the notification will appear again. It will keep appearing every time you refresh that product's page. This is because `product.isInCart` will already be `true` on the page load, so the Effect above will call `showNotification()`.
+این افکت غیرضروری است. همچنین به احتمال زیاد باعث باگ می‌شود. مثلاً فرض کنید اپلیکیشن شما سبد خرید را بین بارگذاری مجدد صفحه «به خاطر می‌سپارد». اگر یک محصول را به سبد اضافه کنید و صفحه را رفرش کنید، اعلان دوباره ظاهر می‌شود. هر بار که صفحهٔ آن محصول را رفرش می‌کنید ظاهر خواهد شد. این به آن دلیل است که `product.isInCart` هنگام بارگذاری صفحه قبلاً `true` خواهد بود، پس افکت بالا `showNotification()` را فراخوانی می‌کند.
 
-**When you're not sure whether some code should be in an Effect or in an event handler, ask yourself *why* this code needs to run. Use Effects only for code that should run *because* the component was displayed to the user.** In this example, the notification should appear because the user *pressed the button*, not because the page was displayed! Delete the Effect and put the shared logic into a function called from both event handlers:
+**وقتی مطمئن نیستید برخی کد باید در افکت باشد یا در هندلر رویداد، از خود بپرسید *چرا* این کد باید اجرا شود. از افکت‌ها فقط برای کدی استفاده کنید که *به این دلیل* که کامپوننت به کاربر نمایش داده شده باید اجرا شود.** در این مثال، اعلان باید ظاهر شود زیرا کاربر *دکمه را فشار داده*، نه به این دلیل که صفحه نمایش داده شده! افکت را حذف کنید و منطق مشترک را در تابعی قرار دهید که از هر دو هندلر رویداد فراخوانی می‌شود:
 
 ```js {2-6,9,13}
 function ProductPage({ product, addToCart }) {
@@ -307,11 +307,11 @@ function ProductPage({ product, addToCart }) {
 }
 ```
 
-This both removes the unnecessary Effect and fixes the bug.
+این هم افکت غیرضروری را حذف می‌کند و هم باگ را برطرف می‌سازد.
 
-### Sending a POST request {/*sending-a-post-request*/}
+### ارسال یک درخواست POST {/*sending-a-post-request*/}
 
-This `Form` component sends two kinds of POST requests. It sends an analytics event when it mounts. When you fill in the form and click the Submit button, it will send a POST request to the `/api/register` endpoint:
+این کامپوننت `Form` دو نوع درخواست POST ارسال می‌کند. هنگام mount شدن یک رویداد تحلیلی ارسال می‌کند. وقتی فرم را پر می‌کنید و دکمهٔ Submit را کلیک می‌کنید، یک درخواست POST به نقطهٔ پایانی `/api/register` ارسال خواهد شد:
 
 ```js {5-8,10-16}
 function Form() {
@@ -339,11 +339,11 @@ function Form() {
 }
 ```
 
-Let's apply the same criteria as in the example before.
+بیایید همان معیارهای مثال قبل را اعمال کنیم.
 
-The analytics POST request should remain in an Effect. This is because the _reason_ to send the analytics event is that the form was displayed. (It would fire twice in development, but [see here](/learn/synchronizing-with-effects#sending-analytics) for how to deal with that.)
+درخواست POST تحلیلی باید در یک افکت باقی بماند. این به این دلیل است که _دلیل_ ارسال رویداد تحلیلی این است که فرم نمایش داده شده. (در توسعه دو بار اجرا می‌شود، اما [اینجا را ببینید](/learn/synchronizing-with-effects#sending-analytics) برای نحوهٔ برخورد با آن.)
 
-However, the `/api/register` POST request is not caused by the form being _displayed_. You only want to send the request at one specific moment in time: when the user presses the button. It should only ever happen _on that particular interaction_. Delete the second Effect and move that POST request into the event handler:
+با این حال، درخواست POST به `/api/register` ناشی از _نمایش داده شدن_ فرم نیست. فقط می‌خواهید درخواست را در یک لحظهٔ خاص از زمان ارسال کنید: وقتی کاربر دکمه را فشار می‌دهد. باید فقط در _آن تعامل خاص_ اتفاق بیفتد. افکت دوم را حذف کنید و آن درخواست POST را به هندلر رویداد منتقل کنید:
 
 ```js {12-13}
 function Form() {
@@ -364,11 +364,11 @@ function Form() {
 }
 ```
 
-When you choose whether to put some logic into an event handler or an Effect, the main question you need to answer is _what kind of logic_ it is from the user's perspective. If this logic is caused by a particular interaction, keep it in the event handler. If it's caused by the user _seeing_ the component on the screen, keep it in the Effect.
+وقتی انتخاب می‌کنید برخی منطق را در هندلر رویداد یا افکت قرار دهید، سؤال اصلی که باید پاسخ دهید این است که از دید کاربر _چه نوع منطقی_ است. اگر این منطق ناشی از یک تعامل خاص است، آن را در هندلر رویداد نگه دارید. اگر ناشی از _دیدن_ کامپوننت روی صفحه توسط کاربر است، آن را در افکت نگه دارید.
 
-### Chains of computations {/*chains-of-computations*/}
+### زنجیره‌های محاسباتی {/*chains-of-computations*/}
 
-Sometimes you might feel tempted to chain Effects that each adjust a piece of state based on other state:
+گاهی ممکن است وسوسه شوید افکت‌هایی را زنجیر کنید که هرکدام بخشی از استیت را بر اساس استیت دیگر تنظیم می‌کنند:
 
 ```js {7-29}
 function Game() {
@@ -412,13 +412,13 @@ function Game() {
   // ...
 ```
 
-There are two problems with this code.
+دو مشکل با این کد وجود دارد.
 
-The first problem is that it is very inefficient: the component (and its children) have to re-render between each `set` call in the chain. In the example above, in the worst case (`setCard` → render → `setGoldCardCount` → render → `setRound` → render → `setIsGameOver` → render) there are three unnecessary re-renders of the tree below.
+مشکل اول این است که بسیار ناکارآمد است: کامپوننت (و فرزندانش) باید بین هر فراخوانی `set` در زنجیره دوباره رندر شوند. در مثال بالا، در بدترین حالت (`setCard` → رندر → `setGoldCardCount` → رندر → `setRound` → رندر → `setIsGameOver` → رندر) سه رندر مجدد غیرضروری از درخت زیرین وجود دارد.
 
-The second problem is that even if it weren't slow, as your code evolves, you will run into cases where the "chain" you wrote doesn't fit the new requirements. Imagine you are adding a way to step through the history of the game moves. You'd do it by updating each state variable to a value from the past. However, setting the `card` state to a value from the past would trigger the Effect chain again and change the data you're showing. Such code is often rigid and fragile.
+مشکل دوم این است که حتی اگر کند نباشد، با تکامل کد، با مواردی مواجه می‌شوید که «زنجیره‌ای» که نوشته‌اید با نیازمندی‌های جدید نمی‌سازد. تصور کنید در حال افزودن راهی برای پیمایش تاریخچهٔ حرکات بازی هستید. این کار را با به‌روزرسانی هر متغیر استیت به مقداری از گذشته انجام می‌دهید. با این حال، تنظیم استیت `card` به مقداری از گذشته زنجیرهٔ افکت را دوباره تحریک می‌کند و داده‌ای که نمایش می‌دهید را تغییر می‌دهد. چنین کدی اغلب خشک و شکننده است.
 
-In this case, it's better to calculate what you can during rendering, and adjust the state in the event handler:
+در این مورد، بهتر است آنچه را می‌توانید حین رندر محاسبه کنید، و استیت را در هندلر رویداد تنظیم کنید:
 
 ```js {6-7,14-26}
 function Game() {
@@ -452,17 +452,17 @@ function Game() {
   // ...
 ```
 
-This is a lot more efficient. Also, if you implement a way to view game history, now you will be able to set each state variable to a move from the past without triggering the Effect chain that adjusts every other value. If you need to reuse logic between several event handlers, you can [extract a function](#sharing-logic-between-event-handlers) and call it from those handlers.
+این بسیار کارآمدتر است. همچنین اگر راهی برای مشاهدهٔ تاریخچهٔ بازی پیاده‌سازی می‌کنید، اکنون می‌توانید هر متغیر استیت را به حرکتی از گذشته تنظیم کنید بدون زنجیرهٔ افکتی را تحریک کنید که هر مقدار دیگر را تنظیم می‌نماید. اگر نیاز به استفادهٔ مجدد از منطق بین چند هندلر رویداد دارید، می‌توانید یک [تابع استخراج کنید](#sharing-logic-between-event-handlers) و آن را از آن هندلرها فراخوانی کنید.
 
-Remember that inside event handlers, [state behaves like a snapshot.](/learn/state-as-a-snapshot) For example, even after you call `setRound(round + 1)`, the `round` variable will reflect the value at the time the user clicked the button. If you need to use the next value for calculations, define it manually like `const nextRound = round + 1`.
+به یاد داشته باشید که داخل هندلرهای رویداد، [استیت مانند یک عکس فوری رفتار می‌کند.](/learn/state-as-a-snapshot) مثلاً حتی بعد از فراخوانی `setRound(round + 1)`، متغیر `round` مقدار زمانی که کاربر دکمه را کلیک کرده را منعکس می‌کند. اگر نیاز به استفاده از مقدار بعدی برای محاسبات دارید، آن را به‌صورت دستی مانند `const nextRound = round + 1` تعریف کنید.
 
-In some cases, you *can't* calculate the next state directly in the event handler. For example, imagine a form with multiple dropdowns where the options of the next dropdown depend on the selected value of the previous dropdown. Then, a chain of Effects is appropriate because you are synchronizing with network.
+در برخی موارد، *نمی‌توانید* استیت بعدی را مستقیماً در هندلر رویداد محاسبه کنید. مثلاً فرمی با چند dropdown تصور کنید که گزینه‌های dropdown بعدی به مقدار انتخاب‌شدهٔ dropdown قبلی بستگی دارد. در این حالت، یک زنجیره از افکت‌ها مناسب است زیرا در حال همگام‌سازی با شبکه هستید.
 
-### Initializing the application {/*initializing-the-application*/}
+### مقداردهی اولیهٔ اپلیکیشن {/*initializing-the-application*/}
 
-Some logic should only run once when the app loads.
+برخی منطق فقط باید هنگام بارگذاری اپلیکیشن یک بار اجرا شود.
 
-You might be tempted to place it in an Effect in the top-level component:
+شاید وسوسه شوید آن را در افکتی در کامپوننت سطح بالا قرار دهید:
 
 ```js {2-6}
 function App() {
@@ -475,9 +475,9 @@ function App() {
 }
 ```
 
-However, you'll quickly discover that it [runs twice in development.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development) This can cause issues--for example, maybe it invalidates the authentication token because the function wasn't designed to be called twice. In general, your components should be resilient to being remounted. This includes your top-level `App` component.
+با این حال، به‌سرعت کشف خواهید کرد که [در توسعه دو بار اجرا می‌شود.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development) این می‌تواند باعث مشکلاتی شود — مثلاً شاید توکن احراز هویت را نامعتبر کند زیرا تابع برای دو بار فراخوانی طراحی نشده. به‌طور کلی، کامپوننت‌های شما باید در برابر mount مجدد مقاوم باشند. این شامل کامپوننت سطح بالای `App` شما هم می‌شود.
 
-Although it may not ever get remounted in practice in production, following the same constraints in all components makes it easier to move and reuse code. If some logic must run *once per app load* rather than *once per component mount*, add a top-level variable to track whether it has already executed:
+اگرچه در عمل در پروداکشن هرگز mount مجدد نمی‌شود، پیروی از همان محدودیت‌ها در همهٔ کامپوننت‌ها جابجایی و استفادهٔ مجدد از کد را آسان‌تر می‌کند. اگر برخی منطق باید *یک بار در هر بارگذاری اپلیکیشن* اجرا شود نه *یک بار در هر mount کامپوننت*، یک متغیر سطح بالا اضافه کنید تا پیگیری کند آیا قبلاً اجرا شده:
 
 ```js {1,5-6,10}
 let didInit = false;
@@ -495,7 +495,7 @@ function App() {
 }
 ```
 
-You can also run it during module initialization and before the app renders:
+همچنین می‌توانید آن را حین مقداردهی اولیهٔ ماژول و پیش از رندر اپلیکیشن اجرا کنید:
 
 ```js {1,5}
 if (typeof window !== 'undefined') { // Check if we're running in the browser.
@@ -509,11 +509,11 @@ function App() {
 }
 ```
 
-Code at the top level runs once when your component is imported--even if it doesn't end up being rendered. To avoid slowdown or surprising behavior when importing arbitrary components, don't overuse this pattern. Keep app-wide initialization logic to root component modules like `App.js` or in your application's entry point.
+کد در سطح بالا یک بار هنگام import شدن کامپوننت شما اجرا می‌شود — حتی اگر در نهایت رندر نشود. برای پرهیز از کندی یا رفتار غافلگیرکننده هنگام import کردن کامپوننت‌های دلخواه، از این الگو بیش‌از‌حد استفاده نکنید. منطق مقداردهی اولیهٔ اپلیکیشن‌گسترده را به ماژول‌های کامپوننت ریشه مانند `App.js` یا نقطهٔ ورود اپلیکیشن خود محدود کنید.
 
-### Notifying parent components about state changes {/*notifying-parent-components-about-state-changes*/}
+### آگاه کردن کامپوننت‌های والد دربارهٔ تغییرات استیت {/*notifying-parent-components-about-state-changes*/}
 
-Let's say you're writing a `Toggle` component with an internal `isOn` state which can be either `true` or `false`. There are a few different ways to toggle it (by clicking or dragging). You want to notify the parent component whenever the `Toggle` internal state changes, so you expose an `onChange` event and call it from an Effect:
+فرض کنید در حال نوشتن کامپوننت `Toggle` با یک استیت داخلی `isOn` هستید که می‌تواند `true` یا `false` باشد. چند راه مختلف برای toggle کردن آن وجود دارد (با کلیک یا کشیدن). می‌خواهید هر زمان که استیت داخلی `Toggle` تغییر می‌کند کامپوننت والد را آگاه کنید، پس یک رویداد `onChange` را نمایش می‌دهید و آن را از یک افکت فراخوانی می‌کنید:
 
 ```js {4-7}
 function Toggle({ onChange }) {
@@ -540,9 +540,9 @@ function Toggle({ onChange }) {
 }
 ```
 
-Like earlier, this is not ideal. The `Toggle` updates its state first, and React updates the screen. Then React runs the Effect, which calls the `onChange` function passed from a parent component. Now the parent component will update its own state, starting another render pass. It would be better to do everything in a single pass.
+مانند قبل، این ایده‌آل نیست. `Toggle` ابتدا استیت خود را به‌روزرسانی می‌کند، و React صفحه را به‌روزرسانی می‌نماید. سپس React افکت را اجرا می‌کند که تابع `onChange` عبور داده‌شده از یک کامپوننت والد را فراخوانی می‌کند. اکنون کامپوننت والد استیت خودش را به‌روزرسانی خواهد کرد و یک پاس رندر دیگر را آغاز می‌نماید. بهتر است همه‌چیز را در یک پاس انجام دهید.
 
-Delete the Effect and instead update the state of *both* components within the same event handler:
+افکت را حذف کنید و در عوض استیت *هر دو* کامپوننت را در همان هندلر رویداد به‌روزرسانی کنید:
 
 ```js {5-7,11,16,18}
 function Toggle({ onChange }) {
@@ -570,9 +570,9 @@ function Toggle({ onChange }) {
 }
 ```
 
-With this approach, both the `Toggle` component and its parent component update their state during the event. React [batches updates](/learn/queueing-a-series-of-state-updates) from different components together, so there will only be one render pass.
+با این رویکرد، هم کامپوننت `Toggle` و هم کامپوننت والدش استیت خود را حین رویداد به‌روزرسانی می‌کنند. React [به‌روزرسانی‌ها را از کامپوننت‌های مختلف دسته‌بندی (Batching) می‌کند](/learn/queueing-a-series-of-state-updates)، پس فقط یک پاس رندر خواهد بود.
 
-You might also be able to remove the state altogether, and instead receive `isOn` from the parent component:
+همچنین ممکن است بتوانید کلاً استیت را حذف کنید و در عوض `isOn` را از کامپوننت والد دریافت کنید:
 
 ```js {1,2}
 // ✅ Also good: the component is fully controlled by its parent
@@ -593,11 +593,11 @@ function Toggle({ isOn, onChange }) {
 }
 ```
 
-["Lifting state up"](/learn/sharing-state-between-components) lets the parent component fully control the `Toggle` by toggling the parent's own state. This means the parent component will have to contain more logic, but there will be less state overall to worry about. Whenever you try to keep two different state variables synchronized, try lifting state up instead!
+[«بالا بردن استیت»](/learn/sharing-state-between-components) به کامپوننت والد اجازه می‌دهد با toggle کردن استیت خودش، کنترل کاملی روی `Toggle` داشته باشد. این یعنی کامپوننت والد باید منطق بیشتری را در خود جای دهد، اما در مجموع استیت کمتری برای نگرانی خواهد بود. هر زمان که سعی می‌کنید دو متغیر استیت متفاوت را همگام نگه دارید، به‌جای آن بالا بردن استیت را امتحان کنید!
 
-### Passing data to the parent {/*passing-data-to-the-parent*/}
+### عبور دادن داده به والد {/*passing-data-to-the-parent*/}
 
-This `Child` component fetches some data and then passes it to the `Parent` component in an Effect:
+این کامپوننت `Child` برخی داده‌ها را fetch می‌کند و سپس آن‌ها را در یک افکت به کامپوننت `Parent` عبور می‌دهد:
 
 ```js {9-14}
 function Parent() {
@@ -618,7 +618,7 @@ function Child({ onFetched }) {
 }
 ```
 
-In React, data flows from the parent components to their children. When you see something wrong on the screen, you can trace where the information comes from by going up the component chain until you find which component passes the wrong prop or has the wrong state. When child components update the state of their parent components in Effects, the data flow becomes very difficult to trace. Since both the child and the parent need the same data, let the parent component fetch that data, and *pass it down* to the child instead:
+در React، داده‌ها از کامپوننت‌های والد به فرزندانشان جریان می‌یابند. وقتی چیزی اشتباه روی صفحه می‌بینید، می‌توانید با صعود در زنجیرهٔ کامپوننت ردیابی کنید که اطلاعات از کجا می‌آید تا زمانی که کامپوننتی را پیدا کنید که پراپ اشتباه عبور می‌دهد یا استیت اشتباه دارد. وقتی کامپوننت‌های فرزند استیت کامپوننت‌های والدشان را در افکت‌ها به‌روزرسانی می‌کنند، جریان داده بسیار دشوار برای ردیابی می‌شود. از آنجا که هم فرزند و هم والد به همان داده نیاز دارند، بگذارید کامپوننت والد آن داده را fetch کند و آن را *به پایین* به فرزند عبور دهد:
 
 ```js {4-5}
 function Parent() {
@@ -633,11 +633,11 @@ function Child({ data }) {
 }
 ```
 
-This is simpler and keeps the data flow predictable: the data flows down from the parent to the child.
+این ساده‌تر است و جریان داده را قابل پیش‌بینی نگه می‌دارد: داده از والد به فرزند پایین جریان می‌یابد.
 
-### Subscribing to an external store {/*subscribing-to-an-external-store*/}
+### اشتراک در یک فروشگاه خارجی {/*subscribing-to-an-external-store*/}
 
-Sometimes, your components may need to subscribe to some data outside of the React state. This data could be from a third-party library or a built-in browser API. Since this data can change without React's knowledge, you need to manually subscribe your components to it. This is often done with an Effect, for example:
+گاهی کامپوننت‌های شما ممکن است نیاز داشته باشند به برخی داده‌های خارج از استیت React مشترک شوند. این داده‌ها می‌توانند از یک کتابخانه شخص ثالث یا یک API داخلی مرورگر باشند. از آنجا که این داده‌ها می‌توانند بدون اطلاع React تغییر کنند، باید کامپوننت‌های خود را به‌صورت دستی در آن اشتراک کنید. این اغلب با یک افکت انجام می‌شود، مثلاً:
 
 ```js {2-17}
 function useOnlineStatus() {
@@ -666,9 +666,9 @@ function ChatIndicator() {
 }
 ```
 
-Here, the component subscribes to an external data store (in this case, the browser `navigator.onLine` API). Since this API does not exist on the server (so it can't be used for the initial HTML), initially the state is set to `true`. Whenever the value of that data store changes in the browser, the component updates its state.
+اینجا کامپوننت به یک فروشگاه دادهٔ خارجی (در این مورد، API مرورگر `navigator.onLine`) مشترک می‌شود. از آنجا که این API روی سرور وجود ندارد (پس نمی‌تواند برای HTML اولیه استفاده شود)، ابتدا استیت روی `true` تنظیم می‌شود. هر زمان که مقدار آن فروشگاه داده در مرورگر تغییر کند، کامپوننت استیت خود را به‌روزرسانی می‌کند.
 
-Although it's common to use Effects for this, React has a purpose-built Hook for subscribing to an external store that is preferred instead. Delete the Effect and replace it with a call to [`useSyncExternalStore`](/reference/react/useSyncExternalStore):
+اگرچه استفاده از افکت‌ها برای این کار رایج است، React یک هوک هدفمند برای اشتراک در یک فروشگاه خارجی دارد که به‌جای آن ترجیح داده می‌شود. افکت را حذف کنید و آن را با فراخوانی [`useSyncExternalStore`](/reference/react/useSyncExternalStore) جایگزین کنید:
 
 ```js {11-16}
 function subscribe(callback) {
@@ -695,11 +695,11 @@ function ChatIndicator() {
 }
 ```
 
-This approach is less error-prone than manually syncing mutable data to React state with an Effect. Typically, you'll write a custom Hook like `useOnlineStatus()` above so that you don't need to repeat this code in the individual components. [Read more about subscribing to external stores from React components.](/reference/react/useSyncExternalStore)
+این رویکرد کمتر مستعد خطا از همگام‌سازی دستی داده‌های قابل‌تغییر به استیت React با یک افکت است. معمولاً یک هوک سفارشی مانند `useOnlineStatus()` بالا را می‌نویسید تا نیازی نباشد این کد را در کامپوننت‌های جداگانه تکرار کنید. [دربارهٔ اشتراک در فروشگاه‌های خارجی از کامپوننت‌های React بیشتر بخوانید.](/reference/react/useSyncExternalStore)
 
-### Fetching data {/*fetching-data*/}
+### Fetch داده {/*fetching-data*/}
 
-Many apps use Effects to kick off data fetching. It is quite common to write a data fetching Effect like this:
+بسیاری از اپلیکیشن‌ها از افکت‌ها برای شروع fetch داده استفاده می‌کنند. نوشتن یک افکت fetch داده مانند این بسیار رایج است:
 
 ```js {5-10}
 function SearchResults({ query }) {
@@ -720,15 +720,15 @@ function SearchResults({ query }) {
 }
 ```
 
-You *don't* need to move this fetch to an event handler.
+شما *نمی‌خواهید* این fetch را به یک هندلر رویداد منتقل کنید.
 
-This might seem like a contradiction with the earlier examples where you needed to put the logic into the event handlers! However, consider that it's not *the typing event* that's the main reason to fetch. Search inputs are often prepopulated from the URL, and the user might navigate Back and Forward without touching the input.
+این ممکن است با مثال‌های قبلی که در آن‌ها باید منطق را در هندلرهای رویداد قرار می‌دادید در تناقض به‌نظر برسد! با این حال، در نظر بگیرید که *رویداد تایپ* دلیل اصلی fetch نیست. ورودی‌های جستجو اغلب از URL پر می‌شوند، و کاربر ممکن است بدون لمس ورودی به عقب و جلو برود.
 
-It doesn't matter where `page` and `query` come from. While this component is visible, you want to keep `results` [synchronized](/learn/synchronizing-with-effects) with data from the network for the current `page` and `query`. This is why it's an Effect.
+اهمیت ندارد که `page` و `query` از کجا می‌آیند. تا زمانی که این کامپوننت قابل‌مشاهده است، می‌خواهید `results` را با داده‌های شبکه برای `page` و `query` فعلی [همگام](/learn/synchronizing-with-effects) نگه دارید. به همین دلیل این یک افکت است.
 
-However, the code above has a bug. Imagine you type `"hello"` fast. Then the `query` will change from `"h"`, to `"he"`, `"hel"`, `"hell"`, and `"hello"`. This will kick off separate fetches, but there is no guarantee about which order the responses will arrive in. For example, the `"hell"` response may arrive *after* the `"hello"` response. Since it will call `setResults()` last, you will be displaying the wrong search results. This is called a ["race condition"](https://en.wikipedia.org/wiki/Race_condition): two different requests "raced" against each other and came in a different order than you expected.
+با این حال، کد بالا یک باگ دارد. تصور کنید `"hello"` را سریع تایپ می‌کنید. سپس `query` از `"h"` به `"he"`، `"hel"`، `"hell"`، و `"hello"` تغییر خواهد کرد. این fetch‌های جداگانه را آغاز می‌کند، اما هیچ تضمینی دربارهٔ ترتیب رسیدن پاسخ‌ها وجود ندارد. مثلاً ممکن است پاسخ `"hell"` *بعد از* پاسخ `"hello"` برسد. از آنجا که `setResults()` را آخر فراخوانی می‌کند، نتایج جستجوی اشتباه را نمایش خواهید داد. این یک [«شرط مسابقه» (Race Condition)](https://en.wikipedia.org/wiki/Race_condition) نامیده می‌شود: دو درخواست متفاوت با هم «مسابقه» دادند و به ترتیبی متفاوت از آنچه انتظار داشتید رسیدند.
 
-**To fix the race condition, you need to [add a cleanup function](/learn/synchronizing-with-effects#fetching-data) to ignore stale responses:**
+**برای رفع شرط مسابقه، باید [یک تابع پاکسازی اضافه کنید](/learn/synchronizing-with-effects#fetching-data) تا پاسخ‌های کهنه نادیده گرفته شوند:**
 
 ```js {5,7,9,11-13}
 function SearchResults({ query }) {
@@ -753,13 +753,13 @@ function SearchResults({ query }) {
 }
 ```
 
-This ensures that when your Effect fetches data, all responses except the last requested one will be ignored.
+این تضمین می‌کند که وقتی افکت شما داده fetch می‌کند، تمام پاسخ‌ها به‌جز آخرین درخواست نادیده گرفته خواهند شد.
 
-Handling race conditions is not the only difficulty with implementing data fetching. You might also want to think about caching responses (so that the user can click Back and see the previous screen instantly), how to fetch data on the server (so that the initial server-rendered HTML contains the fetched content instead of a spinner), and how to avoid network waterfalls (so that a child can fetch data without waiting for every parent).
+مدیریت شروط مسابقه تنها دشواری پیاده‌سازی fetch داده نیست. همچنین ممکن است بخواهید دربارهٔ کش کردن پاسخ‌ها (تا کاربر بتواند روی Back کلیک کند و صفحهٔ قبلی را بلافاصله ببیند)، نحوهٔ fetch داده روی سرور (تا HTML رندر‌شدهٔ اولیهٔ سرور شامل محتوای fetch‌شده به‌جای یک spinner باشد)، و نحوهٔ پرهیز از آبشارهای شبکه (تا یک فرزند بتواند داده fetch کند بدون منتظر ماندن برای هر والد) فکر کنید.
 
-**These issues apply to any UI library, not just React. Solving them is not trivial, which is why modern [frameworks](/learn/start-a-new-react-project#full-stack-frameworks) provide more efficient built-in data fetching mechanisms than fetching data in Effects.**
+**این مشکلات برای هر کتابخانهٔ UI اعمال می‌شود، نه فقط React. حل آن‌ها ساده نیست، به همین دلیل [فریم‌ورک‌های](/learn/start-a-new-react-project#full-stack-frameworks) مدرن مکانیزم‌های fetch دادهٔ داخلی کارآمدتری از fetch داده در افکت‌ها ارائه می‌دهند.**
 
-If you don't use a framework (and don't want to build your own) but would like to make data fetching from Effects more ergonomic, consider extracting your fetching logic into a custom Hook like in this example:
+اگر از فریم‌ورک استفاده نمی‌کنید (و نمی‌خواهید خودتان بسازید) اما می‌خواهید fetch داده از افکت‌ها را راحت‌تر کنید، استخراج منطق fetch خود را در یک هوک سفارشی مانند این مثال در نظر بگیرید:
 
 ```js {4}
 function SearchResults({ query }) {
@@ -792,30 +792,30 @@ function useData(url) {
 }
 ```
 
-You'll likely also want to add some logic for error handling and to track whether the content is loading. You can build a Hook like this yourself or use one of the many solutions already available in the React ecosystem. **Although this alone won't be as efficient as using a framework's built-in data fetching mechanism, moving the data fetching logic into a custom Hook will make it easier to adopt an efficient data fetching strategy later.**
+احتمالاً همچنین می‌خواهید مقداری منطق برای مدیریت خطا و پیگیری اینکه آیا محتوا در حال بارگذاری است اضافه کنید. می‌توانید چنین هوکی را خودتان بسازید یا از یکی از راه‌حل‌های فراوان موجود در اکوسیستم React استفاده کنید. **اگرچه این به‌تنهایی به‌اندازهٔ استفاده از مکانیزم fetch دادهٔ داخلی یک فریم‌ورک کارآمد نخواهد بود، انتقال منطق fetch داده به یک هوک سفارشی، اتخاذ یک استراتژی fetch دادهٔ کارآمد را بعداً آسان‌تر می‌کند.**
 
-In general, whenever you have to resort to writing Effects, keep an eye out for when you can extract a piece of functionality into a custom Hook with a more declarative and purpose-built API like `useData` above. The fewer raw `useEffect` calls you have in your components, the easier you will find to maintain your application.
+به‌طور کلی، هر زمان که مجبور به نوشتن افکت می‌شوید، مراقب باشید کی می‌توانید قطعه‌ای از قابلیت را در یک هوک سفارشی با API اعلامی‌تر و هدفمندتر مانند `useData` بالا استخراج کنید. هرچه فراخوانی `useEffect` خام کمتری در کامپوننت‌های خود داشته باشید، نگهداشت اپلیکیشن برایتان آسان‌تر خواهد بود.
 
 <Recap>
 
-- If you can calculate something during render, you don't need an Effect.
-- To cache expensive calculations, add `useMemo` instead of `useEffect`.
-- To reset the state of an entire component tree, pass a different `key` to it.
-- To reset a particular bit of state in response to a prop change, set it during rendering.
-- Code that runs because a component was *displayed* should be in Effects, the rest should be in events.
-- If you need to update the state of several components, it's better to do it during a single event.
-- Whenever you try to synchronize state variables in different components, consider lifting state up.
-- You can fetch data with Effects, but you need to implement cleanup to avoid race conditions.
+- اگر چیزی را می‌توانید حین رندر محاسبه کنید، به افکت نیاز ندارید.
+- برای کش محاسبات پرهزینه، به‌جای `useEffect` از `useMemo` استفاده کنید.
+- برای بازنشانی استیت کل درخت کامپوننت، یک `key` متفاوت به آن عبور دهید.
+- برای بازنشانی بخش خاصی از استیت در پاسخ به تغییر یک پراپ، آن را حین رندر تنظیم کنید.
+- کدی که *به این دلیل* که کامپوننت نمایش داده شده اجرا می‌شود باید در افکت‌ها باشد، بقیه باید در رویدادها باشد.
+- اگر نیاز به به‌روزرسانی استیت چندین کامپوننت دارید، بهتر است در یک رویداد واحد انجام شود.
+- هر زمان که سعی می‌کنید متغیرهای استیت را در کامپوننت‌های مختلف همگام کنید، بالا بردن استیت را در نظر بگیرید.
+- می‌توانید با افکت‌ها داده fetch کنید، اما باید پاکسازی را پیاده‌سازی کنید تا از شروط مسابقه پرهیز کنید.
 
 </Recap>
 
 <Challenges>
 
-#### Transform data without Effects {/*transform-data-without-effects*/}
+#### تبدیل داده بدون افکت {/*transform-data-without-effects*/}
 
-The `TodoList` below displays a list of todos. When the "Show only active todos" checkbox is ticked, completed todos are not displayed in the list. Regardless of which todos are visible, the footer displays the count of todos that are not yet completed.
+`TodoList` زیر فهرستی از todoها را نمایش می‌دهد. وقتی چک‌باکس «Show only active todos» تیک می‌خورد، todoهای تکمیل‌شده در فهرست نمایش داده نمی‌شوند. بدون توجه به اینکه کدام todoها قابل‌مشاهده هستند، پانویس تعداد todoهایی که هنوز تکمیل نشده‌اند را نمایش می‌دهد.
 
-Simplify this component by removing all the unnecessary state and Effects.
+این کامپوننت را با حذف تمام استیت و افکت‌های غیرضروری ساده کنید.
 
 <Sandpack>
 
@@ -915,15 +915,15 @@ input { margin-top: 10px; }
 
 <Hint>
 
-If you can calculate something during rendering, you don't need state or an Effect that updates it.
+اگر چیزی را می‌توانید حین رندر محاسبه کنید، به استیت یا افکتی که آن را به‌روزرسانی می‌کند نیاز ندارید.
 
 </Hint>
 
 <Solution>
 
-There are only two essential pieces of state in this example: the list of `todos` and the `showActive` state variable which represents whether the checkbox is ticked. All of the other state variables are [redundant](/learn/choosing-the-state-structure#avoid-redundant-state) and can be calculated during rendering instead. This includes the `footer` which you can move directly into the surrounding JSX.
+در این مثال فقط دو بخش استیت ضروری وجود دارد: فهرست `todos` و متغیر استیت `showActive` که نشان می‌دهد آیا چک‌باکس تیک خورده یا نه. تمام متغیرهای استیت دیگر [اضافی](/learn/choosing-the-state-structure#avoid-redundant-state) هستند و می‌توانند به‌جای آن حین رندر محاسبه شوند. این شامل `footer` می‌شود که می‌توانید مستقیماً آن را در JSX اطرافش قرار دهید.
 
-Your result should end up looking like this:
+نتیجهٔ شما باید در نهایت چیزی شبیه به این شود:
 
 <Sandpack>
 
@@ -1008,15 +1008,15 @@ input { margin-top: 10px; }
 
 </Solution>
 
-#### Cache a calculation without Effects {/*cache-a-calculation-without-effects*/}
+#### کش یک محاسبه بدون افکت {/*cache-a-calculation-without-effects*/}
 
-In this example, filtering the todos was extracted into a separate function called `getVisibleTodos()`. This function contains a `console.log()` call inside of it which helps you notice when it's being called. Toggle "Show only active todos" and notice that it causes `getVisibleTodos()` to re-run. This is expected because visible todos change when you toggle which ones to display.
+در این مثال، فیلتر کردن todoها در تابع جداگانه‌ای به نام `getVisibleTodos()` استخراج شده است. این تابع حاوی یک فراخوانی `console.log()` درون خود است که کمک می‌کند متوجه شوید کی فراخوانی می‌شود. «Show only active todos» را toggle کنید و توجه کنید که باعث می‌شود `getVisibleTodos()` دوباره اجرا شود. این مورد انتظار است زیرا todoهای قابل‌مشاهده وقتی toggle می‌کنید کدام را نمایش دهید تغییر می‌کنند.
 
-Your task is to remove the Effect that recomputes the `visibleTodos` list in the `TodoList` component. However, you need to make sure that `getVisibleTodos()` does *not* re-run (and so does not print any logs) when you type into the input.
+وظیفهٔ شما حذف افکتی است که فهرست `visibleTodos` را در کامپوننت `TodoList` دوباره محاسبه می‌کند. با این حال، باید مطمئن شوید که `getVisibleTodos()` *دوباره* اجرا نمی‌شود (و پس هیچ لاگی چاپ نمی‌کند) وقتی در ورودی تایپ می‌کنید.
 
 <Hint>
 
-One solution is to add a `useMemo` call to cache the visible todos. There is also another, less obvious solution.
+یک راه‌حل اضافه کردن فراخوانی `useMemo` برای کش کردن todoهای قابل‌مشاهده است. همچنین یک راه‌حل دیگر کم‌تر بدیهی وجود دارد.
 
 </Hint>
 
@@ -1102,7 +1102,7 @@ input { margin-top: 10px; }
 
 <Solution>
 
-Remove the state variable and the Effect, and instead add a `useMemo` call to cache the result of calling `getVisibleTodos()`:
+متغیر استیت و افکت را حذف کنید، و به‌جای آن یک فراخوانی `useMemo` برای کش کردن نتیجهٔ فراخوانی `getVisibleTodos()` اضافه کنید:
 
 <Sandpack>
 
@@ -1183,9 +1183,9 @@ input { margin-top: 10px; }
 
 </Sandpack>
 
-With this change, `getVisibleTodos()` will be called only if `todos` or `showActive` change. Typing into the input only changes the `text` state variable, so it does not trigger a call to `getVisibleTodos()`.
+با این تغییر، `getVisibleTodos()` فقط اگر `todos` یا `showActive` تغییر کنند فراخوانی می‌شود. تایپ در ورودی فقط متغیر استیت `text` را تغییر می‌دهد، پس فراخوانی `getVisibleTodos()` را تحریک نمی‌کند.
 
-There is also another solution which does not need `useMemo`. Since the `text` state variable can't possibly affect the list of todos, you can extract the `NewTodo` form into a separate component, and move the `text` state variable inside of it:
+همچنین راه‌حل دیگری وجود دارد که به `useMemo` نیاز ندارد. از آنجا که متغیر استیت `text` نمی‌تواند روی فهرست todoها تأثیر بگذارد، می‌توانید فرم `NewTodo` را در یک کامپوننت جداگانه استخراج کنید و متغیر استیت `text` را درون آن قرار دهید:
 
 <Sandpack>
 
@@ -1272,15 +1272,15 @@ input { margin-top: 10px; }
 
 </Sandpack>
 
-This approach satisfies the requirements too. When you type into the input, only the `text` state variable updates. Since the `text` state variable is in the child `NewTodo` component, the parent `TodoList` component won't get re-rendered. This is why `getVisibleTodos()` doesn't get called when you type. (It would still be called if the `TodoList` re-renders for another reason.)
+این رویکرد هم نیازمندی‌ها را برآورده می‌کند. وقتی در ورودی تایپ می‌کنید، فقط متغیر استیت `text` به‌روزرسانی می‌شود. از آنجا که متغیر استیت `text` در کامپوننت فرزند `NewTodo` است، کامپوننت والد `TodoList` دوباره رندر نمی‌شود. به همین دلیل `getVisibleTodos()` وقتی تایپ می‌کنید فراخوانی نمی‌شود. (اگر `TodoList` به دلیل دیگری دوباره رندر شود همچنان فراخوانی می‌شد.)
 
 </Solution>
 
-#### Reset state without Effects {/*reset-state-without-effects*/}
+#### بازنشانی استیت بدون افکت {/*reset-state-without-effects*/}
 
-This `EditContact` component receives a contact object shaped like `{ id, name, email }` as the `savedContact` prop. Try editing the name and email input fields. When you press Save, the contact's button above the form updates to the edited name. When you press Reset, any pending changes in the form are discarded. Play around with this UI to get a feel for it.
+این کامپوننت `EditContact` یک شیء تماس به شکل `{ id, name, email }` به‌عنوان پراپ `savedContact` دریافت می‌کند. فیلدهای ورودی نام و ایمیل را ویرایش کنید. وقتی Save را فشار می‌دهید، دکمهٔ تماس بالای فرم به نام ویرایش‌شده به‌روزرسانی می‌شود. وقتی Reset را فشار می‌دهید، هر تغییر معلق در فرم دور ریخته می‌شود. با این رابط کاربری کار کنید تا حس آن را دریافت کنید.
 
-When you select a contact with the buttons at the top, the form resets to reflect that contact's details. This is done with an Effect inside `EditContact.js`. Remove this Effect. Find another way to reset the form when `savedContact.id` changes.
+وقتی با دکمه‌های بالا تماسی را انتخاب می‌کنید، فرم بازنشانی می‌شود تا جزئیات آن تماس را منعکس کند. این با یک افکت داخل `EditContact.js` انجام می‌شود. این افکت را حذف کنید. راه دیگری برای بازنشانی فرم وقتی `savedContact.id` تغییر می‌کند پیدا کنید.
 
 <Sandpack>
 
@@ -1438,13 +1438,13 @@ button {
 
 <Hint>
 
-It would be nice if there was a way to tell React that when `savedContact.id` is different, the `EditContact` form is conceptually a _different contact's form_ and should not preserve state. Do you recall any such way?
+خوب می‌شد اگر راهی بود تا به React بگوییم وقتی `savedContact.id` متفاوت است، فرم `EditContact` از نظر مفهومی _فرم تماس متفاوتی_ است و نباید استیت را حفظ کند. آیا چنین راهی را به یاد می‌آورید؟
 
 </Hint>
 
 <Solution>
 
-Split the `EditContact` component in two. Move all the form state into the inner `EditForm` component. Export the outer `EditContact` component, and make it pass `savedContact.id` as the `key` to the inner `EditForm` component. As a result, the inner `EditForm` component resets all of the form state and recreates the DOM whenever you select a different contact.
+کامپوننت `EditContact` را به دو بخش تقسیم کنید. تمام استیت فرم را به کامپوننت درونی `EditForm` منتقل کنید. کامپوننت بیرونی `EditContact` را export کنید، و کاری کنید که `savedContact.id` را به‌عنوان `key` به کامپوننت درونی `EditForm` عبور دهد. در نتیجه، کامپوننت درونی `EditForm` هر بار که تماس متفاوتی انتخاب می‌کنید تمام استیت فرم را بازنشانی می‌کند و DOM را بازسازی می‌نماید.
 
 <Sandpack>
 
@@ -1606,17 +1606,17 @@ button {
 
 </Solution>
 
-#### Submit a form without Effects {/*submit-a-form-without-effects*/}
+#### ثبت یک فرم بدون افکت {/*submit-a-form-without-effects*/}
 
-This `Form` component lets you send a message to a friend. When you submit the form, the `showForm` state variable is set to `false`. This triggers an Effect calling `sendMessage(message)`, which sends the message (you can see it in the console). After the message is sent, you see a "Thank you" dialog with an "Open chat" button that lets you get back to the form.
+این کامپوننت `Form` به شما اجازه می‌دهد پیامی به دوستتان بفرستید. وقتی فرم را ثبت می‌کنید، متغیر استیت `showForm` روی `false` تنظیم می‌شود. این یک افکت فراخوانی `sendMessage(message)` را تحریک می‌کند که پیام را می‌فرستد (می‌توانید آن را در کنسول ببینید). پس از ارسال پیام، یک دیالوگ «Thank you» با دکمهٔ «Open chat» می‌بینید که به شما اجازه می‌دهد به فرم برگردید.
 
-Your app's users are sending way too many messages. To make chatting a little bit more difficult, you've decided to show the "Thank you" dialog *first* rather than the form. Change the `showForm` state variable to initialize to `false` instead of `true`. As soon as you make that change, the console will show that an empty message was sent. Something in this logic is wrong!
+کاربران اپلیکیشن شما پیام‌های بسیار زیادی می‌فرستند. برای سخت‌تر کردن چت کمی، تصمیم گرفته‌اید دیالوگ «Thank you» را *اول* به‌جای فرم نمایش دهید. متغیر استیت `showForm` را طوری تغییر دهید که به‌جای `true` روی `false` مقداردهی اولیه شود. به‌محض اینکه این تغییر را انجام می‌دهید، کنسول نشان می‌دهد که یک پیام خالی ارسال شده. چیزی در این منطق اشتباه است!
 
-What's the root cause of this problem? And how can you fix it?
+علت ریشه‌ای این مشکل چیست؟ و چگونه می‌توانید آن را برطرف کنید؟
 
 <Hint>
 
-Should the message be sent _because_ the user saw the "Thank you" dialog? Or is it the other way around?
+آیا پیام باید _به این دلیل_ که کاربر دیالوگ «Thank you» را دید ارسال شود؟ یا برعکس؟
 
 </Hint>
 
@@ -1681,7 +1681,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 <Solution>
 
-The `showForm` state variable determines whether to show the form or the "Thank you" dialog. However, you aren't sending the message because the "Thank you" dialog was _displayed_. You want to send the message because the user has _submitted the form._ Delete the misleading Effect and move the `sendMessage` call inside the `handleSubmit` event handler:
+متغیر استیت `showForm` تعیین می‌کند که آیا فرم نمایش داده شود یا دیالوگ «Thank you». با این حال، شما پیام را به این دلیل که دیالوگ «Thank you» _نمایش داده شد_ نمی‌فرستید. می‌خواهید پیام را بفرستید زیرا کاربر _فرم را ثبت کرده است._ افکت گمراه‌کننده را حذف کنید و فراخوانی `sendMessage` را درون هندلر رویداد `handleSubmit` منتقل کنید:
 
 <Sandpack>
 
@@ -1737,7 +1737,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 </Sandpack>
 
-Notice how in this version, only _submitting the form_ (which is an event) causes the message to be sent. It works equally well regardless of whether `showForm` is initially set to `true` or `false`. (Set it to `false` and notice no extra console messages.)
+توجه کنید که در این نسخه، فقط _ثبت فرم_ (که یک رویداد است) باعث می‌شود پیام ارسال شود. فارغ از اینکه `showForm` ابتدا روی `true` یا `false` تنظیم شده، به‌خوبی کار می‌کند. (آن را روی `false` تنظیم کنید و توجه کنید هیچ پیام اضافی در کنسول نیست.)
 
 </Solution>
 

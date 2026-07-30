@@ -4,13 +4,13 @@ title: useLayoutEffect
 
 <Pitfall>
 
-`useLayoutEffect` can hurt performance. Prefer [`useEffect`](/reference/react/useEffect) when possible.
+`useLayoutEffect` می‌تواند به عملکرد آسیب برساند. وقتی ممکن است [`useEffect`](/reference/react/useEffect) را ترجیح دهید.
 
 </Pitfall>
 
 <Intro>
 
-`useLayoutEffect` is a version of [`useEffect`](/reference/react/useEffect) that fires before the browser repaints the screen.
+`useLayoutEffect` نسخه‌ای از [`useEffect`](/reference/react/useEffect) است که قبل از اینکه مرورگر صفحه را repaint کند، فعال می‌شود.
 
 ```js
 useLayoutEffect(setup, dependencies?)
@@ -22,11 +22,11 @@ useLayoutEffect(setup, dependencies?)
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `useLayoutEffect(setup, dependencies?)` {/*useinsertioneffect*/}
 
-Call `useLayoutEffect` to perform the layout measurements before the browser repaints the screen:
+برای انجام اندازه‌گیری‌های layout قبل از اینکه مرورگر صفحه را repaint کند، `useLayoutEffect` را فراخوانی کنید:
 
 ```js
 import { useState, useRef, useLayoutEffect } from 'react';
@@ -43,49 +43,49 @@ function Tooltip() {
 ```
 
 
-[See more examples below.](#usage)
+[مثال‌های بیشتری را در ادامه ببینید.](#usage)
 
-#### Parameters {/*parameters*/}
+#### پارامترها {/*parameters*/}
 
-* `setup`: The function with your Effect's logic. Your setup function may also optionally return a *cleanup* function. Before your component is added to the DOM, React will run your setup function. After every re-render with changed dependencies, React will first run the cleanup function (if you provided it) with the old values, and then run your setup function with the new values. Before your component is removed from the DOM, React will run your cleanup function.
+* `setup`: تابع با منطق افکت شما. تابع setup شما همچنین به‌طور اختیاری می‌تواند یک تابع *پاکسازی* برگرداند. قبل از اینکه کامپوننت شما به DOM اضافه شود، ری‌اکت تابع setup شما را اجرا می‌کند. بعد از هر رندر مجدد با وابستگی‌های تغییر کرده، ری‌اکت ابتدا تابع پاکسازی را (اگر ارائه کرده‌اید) با مقادیر قدیمی اجرا می‌کند، و سپس تابع setup شما را با مقادیر جدید اجرا می‌کند. قبل از اینکه کامپوننت شما از DOM حذف شود، ری‌اکت تابع پاکسازی شما را اجرا می‌کند.
 
-* **optional** `dependencies`: The list of all reactive values referenced inside of the `setup` code. Reactive values include props, state, and all the variables and functions declared directly inside your component body. If your linter is [configured for React](/learn/editor-setup#linting), it will verify that every reactive value is correctly specified as a dependency. The list of dependencies must have a constant number of items and be written inline like `[dep1, dep2, dep3]`. React will compare each dependency with its previous value using the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. If you omit this argument, your Effect will re-run after every re-render of the component.
+* **اختیاری** `dependencies`: لیست تمام مقادیر واکنش‌گرا که درون کد `setup` به آن‌ها ارجاع شده است. مقادیر واکنش‌گرا شامل پراپس، استیت، و تمام متغیرها و توابعی است که مستقیماً در بدنهٔ کامپوننت شما تعریف شده‌اند. اگر لینتر شما [برای ری‌اکت پیکربندی شده](/learn/editor-setup#linting) باشد، تأیید می‌کند که هر مقدار واکنش‌گرا به‌درستی به‌عنوان یک وابستگی مشخص شده است. لیست وابستگی‌ها باید تعداد آیتم‌های ثابتی داشته باشد و به‌صورت inline مانند `[dep1, dep2, dep3]` نوشته شود. ری‌اکت هر وابستگی را با مقدار قبلی آن با استفاده از مقایسهٔ [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) مقایسه می‌کند. اگر این آرگومان را حذف کنید، افکت شما بعد از هر رندر مجدد کامپوننت دوباره اجرا می‌شود.
 
-#### Returns {/*returns*/}
+#### مقدار بازگشتی {/*returns*/}
 
-`useLayoutEffect` returns `undefined`.
+`useLayoutEffect` مقدار `undefined` برمی‌گرداند.
 
-#### Caveats {/*caveats*/}
+#### نکات {/*caveats*/}
 
-* `useLayoutEffect` is a Hook, so you can only call it **at the top level of your component** or your own Hooks. You can't call it inside loops or conditions. If you need that, extract a component and move the Effect there.
+* `useLayoutEffect` یک هوک است، بنابراین فقط می‌توانید آن را **در سطح بالای کامپوننت** یا هوک‌های خودتان فراخوانی کنید. نمی‌توانید آن را درون حلقه‌ها یا شرط‌ها فراخوانی کنید. اگر به این نیاز دارید، یک کامپوننت استخراج کنید و افکت را آنجا منتقل کنید.
 
-* When Strict Mode is on, React will **run one extra development-only setup+cleanup cycle** before the first real setup. This is a stress-test that ensures that your cleanup logic "mirrors" your setup logic and that it stops or undoes whatever the setup is doing. If this causes a problem, [implement the cleanup function.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
+* وقتی حالت سخت‌گیرانه (Strict Mode) روشن است، ری‌اکت **یک چرخهٔ اضافی setup+cleanup فقط مخصوص توسعه را قبل از اولین setup واقعی اجرا می‌کند.** این یک تست فشار است که تضمین می‌کند منطق پاکسازی شما منطق setup شما را «منعکس می‌کند» و هر کاری که setup در حال انجام آن است را متوقف یا برگشت می‌زند. اگر این باعث مشکل می‌شود، [تابع پاکسازی را پیاده‌سازی کنید.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
 
-* If some of your dependencies are objects or functions defined inside the component, there is a risk that they will **cause the Effect to re-run more often than needed.** To fix this, remove unnecessary [object](/reference/react/useEffect#removing-unnecessary-object-dependencies) and [function](/reference/react/useEffect#removing-unnecessary-function-dependencies) dependencies. You can also [extract state updates](/reference/react/useEffect#updating-state-based-on-previous-state-from-an-effect) and [non-reactive logic](/reference/react/useEffect#reading-the-latest-props-and-state-from-an-effect) outside of your Effect.
+* اگر برخی از وابستگی‌های شما اشیاء یا توابعی هستند که درون کامپوننت تعریف شده‌اند، این خطر وجود دارد که **باعث شوند افکت بیشتر از حد لازم دوباره اجرا شود.** برای رفع این مشکل، وابستگی‌های غیرضروری [شیء](/reference/react/useEffect#removing-unnecessary-object-dependencies) و [تابع](/reference/react/useEffect#removing-unnecessary-function-dependencies) را حذف کنید. همچنین می‌توانید [به‌روزرسانی‌های استیت](/reference/react/useEffect#updating-state-based-on-previous-state-from-an-effect) و [منطق غیر واکنش‌گرا](/reference/react/useEffect#reading-the-latest-props-and-state-from-an-effect) را بیرون افکت خود استخراج کنید.
 
-* Effects **only run on the client.** They don't run during server rendering.
+* افکت‌ها **فقط روی کلاینت اجرا می‌شوند.** آن‌ها در طول رندر سرور اجرا نمی‌شوند.
 
-* The code inside `useLayoutEffect` and all state updates scheduled from it **block the browser from repainting the screen.** When used excessively, this makes your app slow. When possible, prefer [`useEffect`.](/reference/react/useEffect)
+* کد درون `useLayoutEffect` و تمام به‌روزرسانی‌های استیت زمان‌بندی‌شده از آن **مرورگر را از repaint کردن صفحه مسدود می‌کنند.** وقتی به‌طور افراطی استفاده شود، این کار برنامهٔ شما را کند می‌کند. وقتی ممکن است، [`useEffect`](/reference/react/useEffect) را ترجیح دهید.
 
-* If you trigger a state update inside `useLayoutEffect`, React will execute all remaining Effects immediately including `useEffect`.
+* اگر یک به‌روزرسانی استیت را درون `useLayoutEffect` فعال کنید، ری‌اکت تمام افکت‌های باقیمانده از جمله `useEffect` را بلافاصله اجرا می‌کند.
 
 ---
 
-## Usage {/*usage*/}
+## کاربرد {/*usage*/}
 
-### Measuring layout before the browser repaints the screen {/*measuring-layout-before-the-browser-repaints-the-screen*/}
+### اندازه‌گیری layout قبل از repaint صفحه توسط مرورگر {/*measuring-layout-before-the-browser-repaints-the-screen*/}
 
-Most components don't need to know their position and size on the screen to decide what to render. They only return some JSX. Then the browser calculates their *layout* (position and size) and repaints the screen.
+اکثر کامپوننت‌ها برای تصمیم‌گیری دربارهٔ اینکه چه چیزی رندر کنند، نیازی ندارند موقعیت و اندازهٔ خود را روی صفحه بدانند. آنها فقط مقداری JSX برمی‌گردانند. سپس مرورگر *layout* (موقعیت و اندازه) آن‌ها را محاسبه می‌کند و صفحه را repaint می‌کند.
 
-Sometimes, that's not enough. Imagine a tooltip that appears next to some element on hover. If there's enough space, the tooltip should appear above the element, but if it doesn't fit, it should appear below. In order to render the tooltip at the right final position, you need to know its height (i.e. whether it fits at the top).
+گاهی، این کافی نیست. تصور کنید یک tooltip که هنگام hover در کنار برخی المان‌ها ظاهر می‌شود. اگر فضای کافی وجود داشته باشد، tooltip باید بالای المان ظاهر شود، اما اگر جا نشود، باید پایین ظاهر شود. برای رندر کردن tooltip در موقعیت نهایی درست، باید ارتفاع آن را بدانید (یعنی آیا در بالا جا می‌شود یا نه).
 
-To do this, you need to render in two passes:
+برای این کار، باید در دو پاس رندر کنید:
 
-1. Render the tooltip anywhere (even with a wrong position).
-2. Measure its height and decide where to place the tooltip.
-3. Render the tooltip *again* in the correct place.
+1. tooltip را در هر کجا (حتی با موقعیت اشتباه) رندر کنید.
+2. ارتفاع آن را اندازه بگیرید و تصمیم بگیرید tooltip را کجا قرار دهید.
+3. tooltip را *دوباره* در مکان درست رندر کنید.
 
-**All of this needs to happen before the browser repaints the screen.** You don't want the user to see the tooltip moving. Call `useLayoutEffect` to perform the layout measurements before the browser repaints the screen:
+**همهٔ این کارها باید قبل از اینکه مرورگر صفحه را repaint کند اتفاق بیفتد.** نمی‌خواهید کاربر حرکت tooltip را ببیند. `useLayoutEffect` را فراخوانی کنید تا اندازه‌گیری‌های layout را قبل از repaint صفحه توسط مرورگر انجام دهید:
 
 {/* TODO(@poteto) - fixed by https://github.com/facebook/react/pull/34462. need a new release */}
 ```js {expectedErrors: {'react-compiler': [7]}} {5-8}
@@ -102,15 +102,15 @@ function Tooltip() {
 }
 ```
 
-Here's how this works step by step:
+نحوهٔ کار این کار به این شکل است:
 
-1. `Tooltip` renders with the initial `tooltipHeight = 0`  (so the tooltip may be wrongly positioned).
-2. React places it in the DOM and runs the code in `useLayoutEffect`.
-3. Your `useLayoutEffect` [measures the height](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) of the tooltip content and triggers an immediate re-render.
-4. `Tooltip` renders again with the real `tooltipHeight` (so the tooltip is correctly positioned).
-5. React updates it in the DOM, and the browser finally displays the tooltip.
+1. `Tooltip` با `tooltipHeight = 0` اولیه رندر می‌شود (بنابراین tooltip ممکن است به‌اشتباه موقعیت‌دهی شود).
+2. ری‌اکت آن را در DOM قرار می‌دهد و کد در `useLayoutEffect` را اجرا می‌کند.
+3. `useLayoutEffect` شما [ارتفاع](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) محتوای tooltip را اندازه می‌گیرد و یک رندر مجدد فوری را فعال می‌کند.
+4. `Tooltip` دوباره با `tooltipHeight` واقعی رندر می‌شود (بنابراین tooltip به‌درستی موقعیت‌دهی می‌شود).
+5. ری‌اکت آن را در DOM به‌روز می‌کند، و مرورگر در نهایت tooltip را نمایش می‌دهد.
 
-Hover over the buttons below and see how the tooltip adjusts its position depending on whether it fits:
+روی دکمه‌های زیر hover کنید و ببینید چگونه tooltip موقعیت خود را بسته به اینکه جا می‌شود یا نه، تنظیم می‌کند:
 
 <Sandpack>
 
@@ -255,13 +255,13 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 </Sandpack>
 
-Notice that even though the `Tooltip` component has to render in two passes (first, with `tooltipHeight` initialized to `0` and then with the real measured height), you only see the final result. This is why you need `useLayoutEffect` instead of [`useEffect`](/reference/react/useEffect) for this example. Let's look at the difference in detail below.
+توجه کنید که حتی با اینکه کامپوننت `Tooltip` باید در دو پاس رندر شود (اولاً، با `tooltipHeight` مقداردهی‌شده به `0` و سپس با ارتفاع واقعی اندازه‌گیری‌شده)، فقط نتیجهٔ نهایی را می‌بینید. به همین دلیل است که برای این مثال به `useLayoutEffect` به جای [`useEffect`](/reference/react/useEffect) نیاز دارید. بیایید به تفاوت به‌طور دقیق در ادامه نگاه کنیم.
 
 <Recipes titleText="useLayoutEffect vs useEffect" titleId="examples">
 
-#### `useLayoutEffect` blocks the browser from repainting {/*uselayouteffect-blocks-the-browser-from-repainting*/}
+#### `useLayoutEffect` مرورگر را از repaint کردن مسدود می‌کند {/*uselayouteffect-blocks-the-browser-from-repainting*/}
 
-React guarantees that the code inside `useLayoutEffect` and any state updates scheduled inside it will be processed **before the browser repaints the screen.** This lets you render the tooltip, measure it, and re-render the tooltip again without the user noticing the first extra render. In other words, `useLayoutEffect` blocks the browser from painting.
+ری‌اکت تضمین می‌کند که کد درون `useLayoutEffect` و هر به‌روزرسانی استیتی که درون آن زمان‌بندی شده، **قبل از اینکه مرورگر صفحه را repaint کند** پردازش خواهد شد. این به شما اجازه می‌دهد tooltip را رندر کنید، آن را اندازه بگیرید، و tooltip را دوباره رندر کنید بدون اینکه کاربر رندر اضافی اول را متوجه شود. به عبارت دیگر، `useLayoutEffect` مرورگر را از نقاشی کردن مسدود می‌کند.
 
 <Sandpack>
 
@@ -407,9 +407,9 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 <Solution />
 
-#### `useEffect` does not block the browser {/*useeffect-does-not-block-the-browser*/}
+#### `useEffect` مرورگر را مسدود نمی‌کند {/*useeffect-does-not-block-the-browser*/}
 
-Here is the same example, but with [`useEffect`](/reference/react/useEffect) instead of `useLayoutEffect`. If you're on a slower device, you might notice that sometimes the tooltip "flickers" and you briefly see its initial position before the corrected position.
+در اینجا همان مثال است، اما با [`useEffect`](/reference/react/useEffect) به جای `useLayoutEffect`. اگر روی دستگاه کندتری هستید، ممکن است متوجه شوید که گاهی tooltip «چشمک می‌زند» و به‌طور خلاصه موقعیت اولیهٔ آن را قبل از موقعیت اصلاح‌شده می‌بینید.
 
 <Sandpack>
 
@@ -553,7 +553,7 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 </Sandpack>
 
-To make the bug easier to reproduce, this version adds an artificial delay during rendering. React will let the browser paint the screen before it processes the state update inside `useEffect`. As a result, the tooltip flickers:
+برای بازتولید راحت‌تر اشکال، این نسخه یک تأخیر مصنوعی در حین رندر اضافه می‌کند. ری‌اکت به مرورگر اجازه می‌دهد صفحه را قبل از پردازش به‌روزرسانی استیت درون `useEffect` نقاشی کند. در نتیجه، tooltip چشمک می‌زند:
 
 <Sandpack>
 
@@ -702,7 +702,7 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 </Sandpack>
 
-Edit this example to `useLayoutEffect` and observe that it blocks the paint even if rendering is slowed down.
+این مثال را به `useLayoutEffect` ویرایش کنید و مشاهده کنید که حتی اگر رندر کند شده باشد، نقاشی را مسدود می‌کند.
 
 <Solution />
 
@@ -710,36 +710,36 @@ Edit this example to `useLayoutEffect` and observe that it blocks the paint even
 
 <Note>
 
-Rendering in two passes and blocking the browser hurts performance. Try to avoid this when you can.
+رندر در دو پاس و مسدود کردن مرورگر به عملکرد آسیب می‌زند. سعی کنید وقتی می‌توانید از این کار اجتناب کنید.
 
 </Note>
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-### I'm getting an error: "`useLayoutEffect` does nothing on the server" {/*im-getting-an-error-uselayouteffect-does-nothing-on-the-server*/}
+### من خطایی دریافت می‌کنم: «`useLayoutEffect` روی سرور کاری نمی‌کند» {/*im-getting-an-error-uselayouteffect-does-nothing-on-the-server*/}
 
-The purpose of `useLayoutEffect` is to let your component [use layout information for rendering:](#measuring-layout-before-the-browser-repaints-the-screen)
+هدف `useLayoutEffect` این است که به کامپوننت شما اجازه دهد [از اطلاعات layout برای رندر استفاده کند:](#measuring-layout-before-the-browser-repaints-the-screen)
 
-1. Render the initial content.
-2. Measure the layout *before the browser repaints the screen.*
-3. Render the final content using the layout information you've read.
+1. محتوای اولیه را رندر کنید.
+2. layout را *قبل از repaint صفحه توسط مرورگر* اندازه بگیرید.
+3. محتوای نهایی را با استفاده از اطلاعاتی که خوانده‌اید رندر کنید.
 
-When you or your framework uses [server rendering](/reference/react-dom/server), your React app renders to HTML on the server for the initial render. This lets you show the initial HTML before the JavaScript code loads.
+وقتی شما یا فریم‌ورک شما از [رندر سرور](/reference/react-dom/server) استفاده می‌کند، برنامهٔ ری‌اکت شما برای رندر اولیه به HTML روی سرور رندر می‌شود. این به شما اجازه می‌دهد HTML اولیه را قبل از بارگذاری کد جاوااسکریپت نمایش دهید.
 
-The problem is that on the server, there is no layout information.
+مشکل این است که روی سرور، هیچ اطلاعات layoutی وجود ندارد.
 
-In the [earlier example](#measuring-layout-before-the-browser-repaints-the-screen), the `useLayoutEffect` call in the `Tooltip` component lets it position itself correctly (either above or below content) depending on the content height. If you tried to render `Tooltip` as a part of the initial server HTML, this would be impossible to determine. On the server, there is no layout yet! So, even if you rendered it on the server, its position would "jump" on the client after the JavaScript loads and runs.
+در [مثال قبلی](#measuring-layout-before-the-browser-repaints-the-screen)، فراخوانی `useLayoutEffect` در کامپوننت `Tooltip` به آن اجازه می‌دهد بسته به ارتفاع محتوا، خود را به‌درستی موقعیت‌دهی کند (یا بالای محتوا یا پایین آن). اگر سعی می‌کردید `Tooltip` را به‌عنوان بخشی از HTML اولیهٔ سرور رندر کنید، تعیین این غیرممکن بود. روی سرور، هنوز هیچ layoutی وجود ندارد! بنابراین، حتی اگر آن را روی سرور رندر می‌کردید، موقعیت آن بعد از بارگذاری و اجرای جاوااسکریپت روی کلاینت «می‌پرید».
 
-Usually, components that rely on layout information don't need to render on the server anyway. For example, it probably doesn't make sense to show a `Tooltip` during the initial render. It is triggered by a client interaction.
+معمولاً، کامپوننت‌هایی که به اطلاعات layout وابسته هستند، به هر حال نیازی ندارند روی سرور رندر شوند. مثلاً احتمالاً نمایش دادن یک `Tooltip` در طول رندر اولیه منطقی نیست. این توسط یک تعامل کلاینت فعال می‌شود.
 
-However, if you're running into this problem, you have a few different options:
+با این حال، اگر با این مشکل مواجه می‌شوید، چند گزینهٔ متفاوت دارید:
 
-- Replace `useLayoutEffect` with [`useEffect`.](/reference/react/useEffect) This tells React that it's okay to display the initial render result without blocking the paint (because the original HTML will become visible before your Effect runs).
+- `useLayoutEffect` را با [`useEffect`](/reference/react/useEffect) جایگزین کنید. این به ری‌اکت می‌گوید که نمایش نتیجهٔ رندر اولیه بدون مسدود کردن نقاشی اشکالی ندارد (زیرا HTML اصلی قبل از اجرای افکت شما قابل مشاهده خواهد شد).
 
-- Alternatively, [mark your component as client-only.](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-client-only-content) This tells React to replace its content up to the closest [`<Suspense>`](/reference/react/Suspense) boundary with a loading fallback (for example, a spinner or a glimmer) during server rendering.
+- همچنین، [کامپوننت خود را فقط کلاینت علامت بزنید.](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-client-only-content) این به ری‌اکت می‌گوید که محتوای آن را تا نزدیک‌ترین مرز [`<Suspense>`](/reference/react/Suspense) با یک fallback بارگذاری (مثلاً یک spinner یا یک glimmer) در طول رندر سرور جایگزین کند.
 
-- Alternatively, you can render a component with `useLayoutEffect` only after hydration. Keep a boolean `isMounted` state that's initialized to `false`, and set it to `true` inside a `useEffect` call. Your rendering logic can then be like `return isMounted ? <RealContent /> : <FallbackContent />`. On the server and during the hydration, the user will see `FallbackContent` which should not call `useLayoutEffect`. Then React will replace it with `RealContent` which runs on the client only and can include `useLayoutEffect` calls.
+- همچنین، می‌توانید یک کامپوننت با `useLayoutEffect` را فقط بعد از hydration رندر کنید. یک استیت بولین `isMounted` نگه دارید که با `false` مقداردهی اولیه شده، و آن را درون یک فراخوانی `useEffect` روی `true` تنظیم کنید. سپس منطق رندر شما می‌تواند مانند `return isMounted ? <RealContent /> : <FallbackContent />` باشد. روی سرور و در طول hydration، کاربر `FallbackContent` را خواهد دید که نباید `useLayoutEffect` را فراخوانی کند. سپس ری‌اکت آن را با `RealContent` جایگزین می‌کند که فقط روی کلاینت اجرا می‌شود و می‌تواند شامل فراخوانی‌های `useLayoutEffect` باشد.
 
-- If you synchronize your component with an external data store and rely on `useLayoutEffect` for different reasons than measuring layout, consider [`useSyncExternalStore`](/reference/react/useSyncExternalStore) instead which [supports server rendering.](/reference/react/useSyncExternalStore#adding-support-for-server-rendering)
+- اگر کامپوننت خود را با یک فروشگاه دادهٔ خارجی همگام می‌کنید و به دلایلی غیر از اندازه‌گیری layout به `useLayoutEffect` وابسته هستید، به [`useSyncExternalStore`](/reference/react/useSyncExternalStore) فکر کنید که [از رندر سرور پشتیبانی می‌کند.](/reference/react/useSyncExternalStore#adding-support-for-server-rendering)

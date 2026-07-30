@@ -1,24 +1,24 @@
 ---
-title: Unknown Prop Warning
+title: هشدار پراپ ناشناخته
 ---
 
-The unknown-prop warning will fire if you attempt to render a DOM element with a prop that is not recognized by React as a legal DOM attribute/property. You should ensure that your DOM elements do not have spurious props floating around.
+هشدار unknown-prop زمانی فعال می‌شود که تلاش کنید یک عنصر DOM را با پراپی رندر کنید که توسط ری‌اکت به‌عنوان یک ویژگی/صفت قانونی DOM شناخته نمی‌شود. باید مطمئن شوید که عناصر DOM شما پراپس کاذبی که پرسه می‌زنند ندارند.
 
-There are a couple of likely reasons this warning could be appearing:
+چند دلیل محتمل وجود دارد که این هشدار ممکن است ظاهر شود:
 
-1. Are you using `{...props}` or `cloneElement(element, props)`? When copying props to a child component, you should ensure that you are not accidentally forwarding props that were intended only for the parent component. See common fixes for this problem below.
+1. آیا از `{...props}` یا `cloneElement(element, props)` استفاده می‌کنید؟ هنگام کپی کردن پراپس به یک کامپوننت فرزند، باید مطمئن شوید که به‌طور تصادفی پراپسهایی که فقط برای کامپوننت والد در نظر گرفته شده بودند را پاس نمی‌کنید. راه‌حل‌های رایج برای این مشکل را در ادامه ببینید.
 
-2. You are using a non-standard DOM attribute on a native DOM node, perhaps to represent custom data. If you are trying to attach custom data to a standard DOM element, consider using a custom data attribute as described [on MDN](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes).
+2. شما در حال استفاده از یک صفت DOM غیر استاندارد روی یک نود DOM بومی هستید، شاید برای نمایش داده‌های سفارشی. اگر سعی می‌کنید داده‌های سفارشی را به یک عنصر DOM استاندارد ضمیمه کنید، در نظر بگیرید از یک صفت دادهٔ سفارشی (custom data attribute) استفاده کنید، همان‌طور که [روی MDN](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes) توضیح داده شده است.
 
-3. React does not yet recognize the attribute you specified. This will likely be fixed in a future version of React. React will allow you to pass it without a warning if you write the attribute name lowercase.
+3. ری‌اکت هنوز صفتی که مشخص کردید را تشخیص نمی‌دهد. این احتمالاً در نسخهٔ آیندهٔ ری‌اکت اصلاح خواهد شد. ری‌اکت به شما اجازه می‌دهد بدون هشدار آن را پاس دهید اگر نام صفت را با حروف کوچک بنویسید.
 
-4. You are using a React component without an upper case, for example `<myButton />`. React interprets it as a DOM tag because React JSX transform uses the upper vs. lower case convention to distinguish between user-defined components and DOM tags. For your own React components, use PascalCase. For example, write `<MyButton />` instead of `<myButton />`.
+4. شما در حال استفاده از یک کامپوننت ری‌اکت بدون حرف بزرگ هستید، برای مثال `<myButton />`. ری‌اکت آن را به‌عنوان یک تگ DOM تفسیر می‌کند زیرا تبدیل JSX ری‌اکت از قرارداد حروف بزرگ/کوچک برای تشخیص کامپوننت‌های تعریف‌شدهٔ کاربر از تگ‌های DOM استفاده می‌کند. برای کامپوننت‌های ری‌اکت خود، از PascalCase استفاده کنید. برای مثال، به جای `<myButton />` بنویسید `<MyButton />`.
 
 ---
 
-If you get this warning because you pass props like `{...props}`, your parent component needs to "consume" any prop that is intended for the parent component and not intended for the child component. Example:
+اگر این هشدار را به این دلیل می‌گیرید که پراپسهایی مانند `{...props}` پاس می‌دهید، کامپوننت والد شما باید هر پراپی که برای کامپوننت والد در نظر گرفته شده و نه برای کامپوننت فرزند در نظر گرفته شده را «مصرف» کند. مثال:
 
-**Bad:** Unexpected `layout` prop is forwarded to the `div` tag.
+**بد:** پراپ `layout` غیرمنتظره به تگ `div` پاس داده می‌شود.
 
 ```js
 function MyDiv(props) {
@@ -32,7 +32,7 @@ function MyDiv(props) {
 }
 ```
 
-**Good:** The spread syntax can be used to pull variables off props, and put the remaining props into a variable.
+**خوب:** از نحو spread می‌توان برای بیرون کشیدن متغیرها از پراپس استفاده کرد، و باقی‌ماندهٔ پراپس را در یک متغیر قرار داد.
 
 ```js
 function MyDiv(props) {
@@ -45,7 +45,7 @@ function MyDiv(props) {
 }
 ```
 
-**Good:** You can also assign the props to a new object and delete the keys that you're using from the new object. Be sure not to delete the props from the original `this.props` object, since that object should be considered immutable.
+**خوب:** همچنین می‌توانید پراپس را به یک شیء جدید تخصیص دهید و کلیدهایی که از آن‌ها استفاده می‌کنید را از شیء جدید حذف کنید. مطمئن شوید پراپس را از شیء `this.props` اصلی حذف نکنید، زیرا آن شیء باید غیرقابل‌تغییر در نظر گرفته شود.
 
 ```js
 function MyDiv(props) {

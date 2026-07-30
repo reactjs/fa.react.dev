@@ -1,169 +1,169 @@
 ---
-title: Versioning Policy
+title: سیاست نسخه‌گذاری
 ---
 
 <Intro>
 
-All stable builds of React go through a high level of testing and follow semantic versioning (semver). React also offers unstable release channels to encourage early feedback on experimental features. This page describes what you can expect from React releases.
+تمام نسخه‌های پایدار ری‌اکت از سطح بالایی از آزمایش عبور می‌کنند و از نسخه‌گذاری معنایی (semver) پیروی می‌کنند. ری‌اکت همچنین کانال‌های انتشار ناپایدار را برای تشویق به بازخورد زودهنگام دربارهٔ قابلیت‌های آزمایشی ارائه می‌دهد. این صفحه توصیف می‌کند که چه چیزی را می‌توانید از نسخه‌های ری‌اکت انتظار داشته باشید.
 
 </Intro>
 
-This versioning policy describes our approach to version numbers for packages such as `react` and `react-dom`. For a list of previous releases, see the [Versions](/versions) page.
+این سیاست نسخه‌گذاری رویکرد ما را برای شماره‌های نسخهٔ پکیج‌هایی مانند `react` و `react-dom` توصیف می‌کند. برای فهرست نسخه‌های پیشین، صفحهٔ [نسخه‌ها](/versions) را ببینید.
 
-## Stable releases {/*stable-releases*/}
+## نسخه‌های پایدار {/*stable-releases*/}
 
-Stable React releases (also known as "Latest" release channel) follow [semantic versioning (semver)](https://semver.org/) principles.
+نسخه‌های پایدار ری‌اکت (که همچنین به‌عنوان کانال انتشار «Latest» شناخته می‌شود) از اصول [نسخه‌گذاری معنایی (semver)](https://semver.org/) پیروی می‌کنند.
 
-That means that with a version number **x.y.z**:
+این بدان معناست که با شمارهٔ نسخهٔ **x.y.z**:
 
-* When releasing **critical bug fixes**, we make a **patch release** by changing the **z** number (ex: 15.6.2 to 15.6.3).
-* When releasing **new features** or **non-critical fixes**, we make a **minor release** by changing the **y** number (ex: 15.6.2 to 15.7.0).
-* When releasing **breaking changes**, we make a **major release** by changing the **x** number (ex: 15.6.2 to 16.0.0).
+* هنگام انتشار **رفع خطای حیاتی**، ما یک **انتشار patch** با تغییر عدد **z** انجام می‌دهیم (مثال: ۱۵.۶.۲ به ۱۵.۶.۳).
+* هنگام انتشار **قابلیت‌های جدید** یا **رفع‌های غیرحیاتی**، ما یک **انتشار minor** با تغییر عدد **y** انجام می‌دهیم (مثال: ۱۵.۶.۲ به ۱۵.۷.۰).
+* هنگام انتشار **تغییرات شکست‌آور**، ما یک **انتشار major** با تغییر عدد **x** انجام می‌دهیم (مثال: ۱۵.۶.۲ به ۱۶.۰.۰).
 
-Major releases can also contain new features, and any release can include bug fixes.
+انتشارهای major می‌توانند شامل قابلیت‌های جدید نیز باشند، و هر انتشار می‌تواند شامل رفع خطا باشد.
 
-Minor releases are the most common type of release.
+انتشارهای minor رایج‌ترین نوع انتشار هستند.
 
-We know our users continue to use old versions of React in production. If we learn of a security vulnerability in React, we release a backported fix for all major versions that are affected by the vulnerability.
+ما می‌دانیم کاربرانمان همچنان از نسخه‌های قدیمی ری‌اکت در تولید استفاده می‌کنند. اگر از آسیب‌پذیری امنیتی در ری‌اکت مطلع شویم، یک رفع backported برای تمام نسخه‌های major که تحت تأثیر آسیب‌پذیری هستند منتشر می‌کنیم.
 
-### Breaking changes {/*breaking-changes*/}
+### تغییرات شکست‌آور {/*breaking-changes*/}
 
-Breaking changes are inconvenient for everyone, so we try to minimize the number of major releases – for example, React 15 was released in April 2016 and React 16 was released in September 2017, and React 17 was released in October 2020.
+تغییرات شکست‌آور برای همه ناراحت‌کننده است، بنابراین تلاش می‌کنیم تعداد انتشارهای major را به حداقل برسانیم – برای مثال، ری‌اکت ۱۵ در آوریل ۲۰۱۶ منتشر شد، ری‌اکت ۱۶ در سپتامبر ۲۰۱۷ منتشر شد و ری‌اکت ۱۷ در اکتبر ۲۰۲۰ منتشر شد.
 
-Instead, we release new features in minor versions. That means that minor releases are often more interesting and compelling than majors, despite their unassuming name.
+در عوض، ما قابلیت‌های جدید را در نسخه‌های minor منتشر می‌کنیم. این بدان معناست است که انتشارهای minor اغلب جالب‌تر و جذاب‌تر از نسخه‌های major هستند، با وجود نام سادهٔ آن‌ها.
 
-### Commitment to stability {/*commitment-to-stability*/}
+### تعهد به پایداری {/*commitment-to-stability*/}
 
-As we change React over time, we try to minimize the effort required to take advantage of new features. When possible, we'll keep an older API working, even if that means putting it in a separate package. For example, [mixins have been discouraged for years](https://legacy.reactjs.org/blog/2016/07/13/mixins-considered-harmful.html) but they're supported to this day [via create-react-class](https://legacy.reactjs.org/docs/react-without-es6.html#mixins) and many codebases continue to use them in stable, legacy code.
+همان‌طور که ری‌اکت را در طول زمان تغییر می‌دهیم، تلاش می‌کنیم تلاش لازم برای بهره‌گیری از قابلیت‌های جدید را به حداقل برسانیم. وقتی ممکن باشد، یک API قدیمی را کارآمد نگه می‌داریم، حتی اگر به معنای قرار دادن آن در یک پکیج جداگانه باشد. برای مثال، [mixins برای سال‌ها منصرف‌شده توصیه شده‌اند](https://legacy.reactjs.org/blog/2016/07/13/mixins-considered-harmful.html) اما تا به امروز [از طریق create-react-class](https://legacy.reactjs.org/docs/react-without-es6.html#mixins) پشتیبانی می‌شوند و بسیاری از کدبیس‌ها همچنان از آن‌ها در کد پایدار و قدیمی استفاده می‌کنند.
 
-Over a million developers use React, collectively maintaining millions of components. The Facebook codebase alone has over 50,000 React components. That means we need to make it as easy as possible to upgrade to new versions of React; if we make large changes without a migration path, people will be stuck on old versions. We test these upgrade paths on Facebook itself – if our team of less than 10 people can update 50,000+ components alone, we hope the upgrade will be manageable for anyone using React. In many cases, we write [automated scripts](https://github.com/reactjs/react-codemod) to upgrade component syntax, which we then include in the open-source release for everyone to use.
+بیش از یک میلیون توسعه‌دهنده از ری‌اکت استفاده می‌کنند و در مجموع میلیون‌ها کامپوننت را نگهداری می‌کنند. کدبیس Facebook به‌تنهایی دارای بیش از ۵۰٬۰۰۰ کامپوننت ری‌اکت است. این بدان معناست است که باید ارتقا به نسخه‌های جدید ری‌اکت را تا حد امکان آسان کنیم؛ اگر تغییرات بزرگی بدون مسیر مهاجرت ایجاد کنیم، افراد در نسخه‌های قدیمی گیر می‌کنند. ما این مسیرهای ارتقا را روی خود Facebook آزمایش می‌کنیم – اگر تیم کمتر از ۱۰ نفرهٔ ما بتواند به‌تنهایی ۵۰٬۰۰۰+ کامپوننت را به‌روزرسانی کند، امیدواریم ارتقا برای هر کسی که از ری‌اکت استفاده می‌کند قابل‌مدیریت باشد. در بسیاری موارد، [اسکریپت‌های خودکار](https://github.com/reactjs/react-codemod) برای ارتقای نحو کامپوننت می‌نویسیم، که سپس آن‌ها را در انتشار متن‌باز برای استفادهٔ همه قرار می‌دهیم.
 
-### Gradual upgrades via warnings {/*gradual-upgrades-via-warnings*/}
+### ارتقای تدریجی از طریق هشدارها {/*gradual-upgrades-via-warnings*/}
 
-Development builds of React include many helpful warnings. Whenever possible, we add warnings in preparation for future breaking changes. That way, if your app has no warnings on the latest release, it will be compatible with the next major release. This allows you to upgrade your apps one component at a time.
+نسخه‌های توسعهٔ ری‌اکت شامل هشدارهای مفید زیادی هستند. هر زمان که ممکن باشد، هشدارهایی را در آماده‌سازی برای تغییرات شکست‌آور آینده اضافه می‌کنیم. به این ترتیب، اگر برنامهٔ شما در آخرین انتشار هشداری ندارد، با نسخهٔ major بعدی سازگار خواهد بود. این به شما امکان می‌دهد برنامه‌هایتان را یک کامپوننت در هر بار ارتقا دهید.
 
-Development warnings won't affect the runtime behavior of your app. That way, you can feel confident that your app will behave the same way between the development and production builds -- the only differences are that the production build won't log the warnings and that it is more efficient. (If you ever notice otherwise, please file an issue.)
+هشدارهای توسعه بر رفتار زمان اجرای برنامهٔ شما تأثیری ندارند. به این ترتیب، می‌توانید مطمئن باشید که برنامهٔ شما در نسخه‌های توسعه و تولید به یک شکل رفتار می‌کند -- تنها تفاوت‌ها این است که نسخهٔ تولید هشدارها را لاگ نمی‌کند و کارآمدتر است. (اگر هرگز متوجه غیر این شدید، لطفاً یک issue ثبت کنید.)
 
-### What counts as a breaking change? {/*what-counts-as-a-breaking-change*/}
+### چه چیزی به‌عنوان تغییر شکست‌آور محسوب می‌شود؟ {/*what-counts-as-a-breaking-change*/}
 
-In general, we *don't* bump the major version number for changes to:
+به‌طور کلی، ما شمارهٔ نسخهٔ major را برای تغییرات زیر *بالا نمی‌بریم*:
 
-* **Development warnings.** Since these don't affect production behavior, we may add new warnings or modify existing warnings in between major versions. In fact, this is what allows us to reliably warn about upcoming breaking changes.
-* **APIs starting with `unstable_`.** These are provided as experimental features whose APIs we are not yet confident in. By releasing these with an `unstable_` prefix, we can iterate faster and get to a stable API sooner.
-* **Alpha and Canary versions of React.** We provide alpha versions of React as a way to test new features early, but we need the flexibility to make changes based on what we learn in the alpha period. If you use these versions, note that APIs may change before the stable release.
-* **Undocumented APIs and internal data structures.** If you access internal property names like `__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED` or `__reactInternalInstance$uk43rzhitjg`, there is no warranty.  You are on your own.
+* **هشدارهای توسعه.** از آنجا که این‌ها بر رفتار تولید تأثیر ندارند، ممکن است هشدارهای جدیدی اضافه کنیم یا هشدارهای موجود را در بین نسخه‌های major تغییر دهیم. در واقع، این همان چیزی است که به ما امکان می‌دهد به‌طور قابل‌اطمینانی دربارهٔ تغییرات شکست‌آور پیش‌رو هشدار دهیم.
+* **APIهایی که با `unstable_` شروع می‌شوند.** این‌ها به‌عنوان قابلیت‌های آزمایشی ارائه می‌شوند که هنوز به APIهای آن‌ها مطمئن نیستیم. با انتشار این‌ها با پیشوند `unstable_`، می‌توانیم سریع‌تر تکرار کنیم و زودتر به یک API پایدار برسیم.
+* **نسخه‌های Alpha و Canary ری‌اکت.** ما نسخه‌های آلفای ری‌اکت را به‌عنوان راهی برای آزمایش زودهنگام قابلیت‌های جدید ارائه می‌کنیم، اما به انعطاف‌پذیری برای ایجاد تغییرات بر اساس آنچه در دورهٔ آلفا یاد می‌گیریم نیاز داریم. اگر از این نسخه‌ها استفاده می‌کنید، توجه داشته باشید که APIها ممکن است پیش از انتشار پایدار تغییر کنند.
+* **APIهای مستند‌نشده و ساختارهای دادهٔ داخلی.** اگر به نام‌های ویژگی داخلی مانند `__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED` یا `__reactInternalInstance$uk43rzhitjg` دسترسی پیدا می‌کنید، هیچ تضمینی وجود ندارد. خودتان تنها هستید.
 
-This policy is designed to be pragmatic: certainly, we don't want to cause headaches for you. If we bumped the major version for all of these changes, we would end up releasing more major versions and ultimately causing more versioning pain for the community. It would also mean that we can't make progress in improving React as fast as we'd like.
+این سیاست به‌صورت عمل‌گرایانه طراحی شده است: قطعاً، ما نمی‌خواهیم برای شما سردرد ایجاد کنیم. اگر شمارهٔ نسخهٔ major را برای تمام این تغییرات بالا می‌بردیم، در نهایت نسخه‌های major بیشتری منتشر می‌کردیم و در نهایت درد نسخه‌گذاری بیشتری برای انجمن ایجاد می‌کردیم. همچنین به این معنا بود که نمی‌توانستیم به‌سرعت مایلیم در بهبود ری‌اکت پیشرفت کنیم.
 
-That said, if we expect that a change on this list will cause broad problems in the community, we will still do our best to provide a gradual migration path.
+با این حال، اگر انتظار داریم تغییری در این فهرست مشکلات گسترده‌ای در انجمن ایجاد کند، همچنان بهترین تلاش خود را برای ارائهٔ مسیر مهاجرت تدریجی انجام می‌دهیم.
 
-### If a minor release includes no new features, why isn't it a patch? {/*if-a-minor-release-includes-no-new-features-why-isnt-it-a-patch*/}
+### اگر یک انتشار minor شامل قابلیت‌های جدیدی نیست، چرا patch نیست؟ {/*if-a-minor-release-includes-no-new-features-why-isnt-it-a-patch*/}
 
-It's possible that a minor release will not include new features. [This is allowed by semver](https://semver.org/#spec-item-7), which states **"[a minor version] MAY be incremented if substantial new functionality or improvements are introduced within the private code. It MAY include patch level changes."**
+ممکن است یک انتشار minor شامل قابلیت‌های جدید نباشد. [این توسط semver مجاز است](https://semver.org/#spec-item-7)، که بیان می‌کند **«[یک نسخهٔ minor] ممکن است افزایش یابد اگر عملکرد یا بهبودهای اساسی جدید در کد خصوصی معرفی شوند. ممکن است شامل تغییرات سطح patch باشد.»**
 
-However, it does raise the question of why these releases aren't versioned as patches instead.
+با این حال، این پرسش را پیش می‌آورد که چرا این انتشارها به‌جای patch نسخه‌گذاری نمی‌شوند.
 
-The answer is that any change to React (or other software) carries some risk of breaking in unexpected ways. Imagine a scenario where a patch release that fixes one bug accidentally introduces a different bug. This would not only be disruptive to developers, but also harm their confidence in future patch releases. It's especially regrettable if the original fix is for a bug that is rarely encountered in practice.
+پاسخ این است که هر تغییر در ری‌اکت (یا نرم‌افزار دیگر) مقداری خطر شکستن به‌طرز غیرمنتظره‌ای را به همراه دارد. سناریویی را تصور کنید که در آن انتشار patch که یک خطا را رفع می‌کند، به‌طور تصادفی خطای متفاوتی را معرفی می‌کند. این نه‌تنها برای توسعه‌دهندگان مخرب خواهد بود، بلکه اعتماد آن‌ها را به انتشارهای patch آینده نیز خدشه‌دار می‌کند. به‌ویژه اسف‌بار است اگر رفع اصلی برای خطایی باشد که به‌ندرت در عمل با آن مواجه می‌شود.
 
-We have a pretty good track record for keeping React releases free of bugs, but patch releases have an even higher bar for reliability because most developers assume they can be adopted without adverse consequences.
+ما سابقهٔ خوبی در نگه‌داشتن انتشارهای ری‌اکت بدون خطا داریم، اما انتشارهای patch معیار بالاتری برای قابلیت اطمینان دارند زیرا اکثر توسعه‌دهندگان فرض می‌کنند می‌توانند آن‌ها را بدون عواقب نامطلوب اتخاذ کنند.
 
-For these reasons, we reserve patch releases only for the most critical bugs and security vulnerabilities.
+به همین دلایل، ما انتشارهای patch را فقط برای حیاتی‌ترین خطاها و آسیب‌پذیری‌های امنیتی نگه می‌داریم.
 
-If a release includes non-essential changes — such as internal refactors, changes to implementation details, performance improvements, or minor bugfixes — we will bump the minor version even when there are no new features.
+اگر انتشار شامل تغییرات غیرضروری است — مانند بازساخت‌های داخلی، تغییرات در جزئیات پیاده‌سازی، بهبودهای عملکرد، یا رفع خطاهای جزئی — حتی زمانی که قابلیت‌های جدیدی وجود ندارد، نسخهٔ minor را بالا می‌بریم.
 
-## All release channels {/*all-release-channels*/}
+## تمام کانال‌های انتشار {/*all-release-channels*/}
 
-React relies on a thriving open source community to file bug reports, open pull requests, and [submit RFCs](https://github.com/reactjs/rfcs). To encourage feedback we sometimes share special builds of React that include unreleased features.
+ری‌اکت به انجمن متن‌باز پویا متکی است تا گزارش خطا ثبت کند، pull request باز کند و [RFCها را ارسال کند](https://github.com/reactjs/rfcs). برای تشویق بازخورد، گاهی نسخه‌های ویژه‌ای از ری‌اکت را به اشتراک می‌گذاریم که شامل قابلیت‌های منتشر‌نشده است.
 
 <Note>
 
-This section will be most relevant to developers who work on frameworks, libraries, or developer tooling. Developers who use React primarily to build user-facing applications should not need to worry about our prerelease channels.
+این بخش برای توسعه‌دهندگانی که روی فریمورک‌ها، کتابخانه‌ها یا ابزارهای توسعه‌دهنده کار می‌کنند مرتبط‌تر خواهد بود. توسعه‌دهندگانی که عمدتاً از ری‌اکت برای ساخت برنامه‌های رو به کاربر استفاده می‌کنند نباید نگران کانال‌های پیش‌انتشار ما باشند.
 
 </Note>
 
-Each of React's release channels is designed for a distinct use case:
+هر کانال انتشار ری‌اکت برای یک مورد استفادهٔ متمایز طراحی شده است:
 
-- [**Latest**](#latest-channel) is for stable, semver React releases. It's what you get when you install React from npm. This is the channel you're already using today. **User-facing applications that consume React directly use this channel.**
-- [**Canary**](#canary-channel) tracks the main branch of the React source code repository. Think of these as release candidates for the next semver release. **[Frameworks or other curated setups may choose to use this channel with a pinned version of React.](/blog/2023/05/03/react-canaries) You can also use Canaries for integration testing between React and third party projects.**
-- [**Experimental**](#experimental-channel) includes experimental APIs and features that aren't available in the stable releases. These also track the main branch, but with additional feature flags turned on. Use this to try out upcoming features before they are released.
+- [**Latest**](#latest-channel) برای انتشارهای پایدار و semver ری‌اکت است. این همان چیزی است که هنگام نصب ری‌اکت از npm دریافت می‌کنید. این همان کانالی است که امروز از آن استفاده می‌کنید. **برنامه‌های رو به کاربر که مستقیماً از ری‌اکت استفاده می‌کنند از این کانال استفاده می‌کنند.**
+- [**Canary**](#canary-channel) شاخهٔ اصلی مخزن کد منبع ری‌اکت را دنبال می‌کند. آن‌ها را به‌عنوان نامزدهای انتشار برای نسخهٔ semver بعدی در نظر بگیرید. **[فریمورک‌ها یا تنظیمات انتخاب‌شدهٔ دیگر ممکن است انتخاب کنند از این کانال با یک نسخهٔ پین‌شدهٔ ری‌اکت استفاده کنند.](/blog/2023/05/03/react-canaries) همچنین می‌توانید از Canaryها برای آزمایش یکپارچگی بین ری‌اکت و پروژه‌های شخص ثالث استفاده کنید.**
+- [**Experimental**](#experimental-channel) شامل APIها و قابلیت‌های آزمایشی است که در نسخه‌های پایدار در دسترس نیستند. این‌ها نیز شاخهٔ اصلی را دنبال می‌کنند، اما با پرچم‌های قابلیت اضافی روشن شده‌اند. از این برای امتحان قابلیت‌های پیش‌رو پیش از انتشار استفاده کنید.
 
-All releases are published to npm, but only Latest uses semantic versioning. Prereleases (those in the Canary and Experimental channels) have versions generated from a hash of their contents and the commit date, e.g. `18.3.0-canary-388686f29-20230503` for Canary and `0.0.0-experimental-388686f29-20230503` for Experimental.
+تمام انتشارها در npm منتشر می‌شوند، اما فقط Latest از نسخه‌گذاری معنایی استفاده می‌کند. پیش‌انتشارها (آن‌هایی که در کانال‌های Canary و Experimental هستند) نسخه‌هایی دارند که از هش محتویات و تاریخ commit تولید شده‌اند، مانند `18.3.0-canary-388686f29-20230503` برای Canary و `0.0.0-experimental-388686f29-20230503` برای Experimental.
 
-**Both Latest and Canary channels are officially supported for user-facing applications, but with different expectations**:
+**هم کانال Latest و هم کانال Canary به‌طور رسمی برای برنامه‌های رو به کاربر پشتیبانی می‌شوند، اما با انتظارات متفاوت**:
 
-* Latest releases follow the traditional semver model.
-* Canary releases [must be pinned](/blog/2023/05/03/react-canaries) and may include breaking changes. They exist for curated setups (like frameworks) that want to gradually release new React features and bugfixes on their own release schedule.
+* انتشارهای Latest از مدل سنتی semver پیروی می‌کنند.
+* انتشارهای Canary [باید پین شوند](/blog/2023/05/03/react-canaries) و ممکن است شامل تغییرات شکست‌آور باشند. آن‌ها برای تنظیمات انتخاب‌شده (مانند فریمورک‌ها) وجود دارند که می‌خواهند قابلیت‌ها و رفع خطاهای جدید ری‌اکت را به‌تدریج بر اساس زمان‌بندی انتشار خود منتشر کنند.
 
-The Experimental releases are provided for testing purposes only, and we provide no guarantees that behavior won't change between releases. They do not follow the semver protocol that we use for releases from Latest.
+انتشارهای Experimental برای اهداف آزمایشی ارائه شده‌اند، و هیچ تضمینی نمی‌دهیم که رفتار بین انتشارها تغییر نکند. آن‌ها از پروتکل semver که برای انتشارهای Latest استفاده می‌کنیم پیروی نمی‌کنند.
 
-By publishing prereleases to the same registry that we use for stable releases, we are able to take advantage of the many tools that support the npm workflow, like [unpkg](https://unpkg.com) and [CodeSandbox](https://codesandbox.io).
+با انتشار پیش‌انتشارها در همان رجیستری که برای انتشارهای پایدار استفاده می‌کنیم، می‌توانیم از ابزارهای بسیاری که از گردش‌کار npm پشتیبانی می‌کنند بهره‌مند شویم، مانند [unpkg](https://unpkg.com) و [CodeSandbox](https://codesandbox.io).
 
-### Latest channel {/*latest-channel*/}
+### کانال Latest {/*latest-channel*/}
 
-Latest is the channel used for stable React releases. It corresponds to the `latest` tag on npm. It is the recommended channel for all React apps that are shipped to real users.
+Latest کانالی است که برای انتشارهای پایدار ری‌اکت استفاده می‌شود. این با تگ `latest` در npm مطابقت دارد. این کانال توصیه‌شده برای تمام برنامه‌های ری‌اکت است که به کاربران واقعی تحویل داده می‌شوند.
 
-**If you're not sure which channel you should use, it's Latest.** If you're using React directly, this is what you're already using. You can expect updates to Latest to be extremely stable. Versions follow the semantic versioning scheme, as [described earlier.](#stable-releases)
+**اگر مطمئن نیستید از کدام کانال باید استفاده کنید، Latest است.** اگر مستقیماً از ری‌اکت استفاده می‌کنید، این همان چیزی است که از قبل استفاده می‌کنید. می‌توانید انتظار داشته باشید به‌روزرسانی‌های Latest بسیار پایدار باشند. نسخه‌ها از طرح نسخه‌گذاری معنایی پیروی می‌کنند، همان‌طور که [پیش‌تر توضیح داده شد.](#stable-releases)
 
-### Canary channel {/*canary-channel*/}
+### کانال Canary {/*canary-channel*/}
 
-The Canary channel is a prerelease channel that tracks the main branch of the React repository. We use prereleases in the Canary channel as release candidates for the Latest channel. You can think of Canary as a superset of Latest that is updated more frequently.
+کانال Canary یک کانال پیش‌انتشار است که شاخهٔ اصلی مخزن ری‌اکت را دنبال می‌کند. ما از پیش‌انتشارها در کانال Canary به‌عنوان نامزدهای انتشار برای کانال Latest استفاده می‌کنیم. می‌توانید Canary را به‌عنوان یک فوق‌مجموعه از Latest در نظر بگیرید که مکرر‌تر به‌روزرسانی می‌شود.
 
-The degree of change between the most recent Canary release and the most recent Latest release is approximately the same as you would find between two minor semver releases. However, **the Canary channel does not conform to semantic versioning.** You should expect occasional breaking changes between successive releases in the Canary channel.
+میزان تغییر بین آخرین انتشار Canary و آخرین انتشار Latest تقریباً همان‌اندازه است که بین دو انتشار minor semver انتظار دارید. با این حال، **کانال Canary از نسخه‌گذاری معنایی پیروی نمی‌کند.** باید انتظار تغییرات شکست‌آور گاه‌به‌گاه بین انتشارهای متوالی در کانال Canary را داشته باشید.
 
-**Do not use prereleases in user-facing applications directly unless you're following the [Canary workflow](/blog/2023/05/03/react-canaries).**
+**از پیش‌انتشارها در برنامه‌های رو به کاربر مستقیماً استفاده نکنید، مگر اینکه [گردش‌کار Canary](/blog/2023/05/03/react-canaries) را دنبال کنید.**
 
-Releases in Canary are published with the `canary` tag on npm. Versions are generated from a hash of the build's contents and the commit date, e.g. `18.3.0-canary-388686f29-20230503`.
+انتشارها در Canary با تگ `canary` در npm منتشر می‌شوند. نسخه‌ها از هش محتویات ساخت و تاریخ commit تولید شده‌اند، مانند `18.3.0-canary-388686f29-20230503`.
 
-#### Using the canary channel for integration testing {/*using-the-canary-channel-for-integration-testing*/}
+#### استفاده از کانال canary برای آزمایش یکپارچگی {/*using-the-canary-channel-for-integration-testing*/}
 
-The Canary channel also supports integration testing between React and other projects.
+کانال Canary همچنین از آزمایش یکپارچگی بین ری‌اکت و سایر پروژه‌ها پشتیبانی می‌کند.
 
-All changes to React go through extensive internal testing before they are released to the public. However, there are a myriad of environments and configurations used throughout the React ecosystem, and it's not possible for us to test against every single one.
+تمام تغییرات ری‌اکت پیش از آنکه به‌صورت عمومی منتشر شوند از آزمایش‌های داخلی گسترده عبور می‌کنند. با این حال، تعداد بی‌شماری محیط و پیکربندی در سراسر اکوسیستم ری‌اکت استفاده می‌شود، و برای ما امکان‌پذیر نیست که در برابر هر کدام آزمایش کنیم.
 
-If you're the author of a third party React framework, library, developer tool, or similar infrastructure-type project, you can help us keep React stable for your users and the entire React community by periodically running your test suite against the most recent changes. If you're interested, follow these steps:
+اگر نویسندهٔ یک فریمورک ری‌اکت شخص ثالث، کتابخانه، ابزار توسعه‌دهنده، یا پروژه‌ مشابه زیرساختی هستید، می‌توانید با اجرای دوره‌ای مجموعه تست خود در برابر آخرین تغییرات، به ما کمک کنید تا ری‌اکت را برای کاربران خود و کل انجمن ری‌اکت پایدار نگه دارید. اگر علاقه‌مند هستید، این مراحل را دنبال کنید:
 
-- Set up a cron job using your preferred continuous integration platform. Cron jobs are supported by both [CircleCI](https://circleci.com/docs/2.0/triggers/#scheduled-builds) and [Travis CI](https://docs.travis-ci.com/user/cron-jobs/).
-- In the cron job, update your React packages to the most recent React release in the Canary channel, using `canary` tag on npm. Using the npm cli:
+- یک cron job با استفاده از پلتفرم یکپارچه‌سازی پیوستهٔ مورد علاقهٔ خود راه‌اندازی کنید. cron jobها توسط هر دو [CircleCI](https://circleci.com/docs/2.0/triggers/#scheduled-builds) و [Travis CI](https://docs.travis-ci.com/user/cron-jobs/) پشتیبانی می‌شوند.
+- در cron job، پکیج‌های ری‌اکت خود را به آخرین انتشار ری‌اکت در کانال Canary به‌روزرسانی کنید، با استفاده از تگ `canary` در npm. با استفاده از CLI npm:
 
   ```console
   npm update react@canary react-dom@canary
   ```
 
-  Or yarn:
+  یا yarn:
 
   ```console
   yarn upgrade react@canary react-dom@canary
   ```
-- Run your test suite against the updated packages.
-- If everything passes, great! You can expect that your project will work with the next minor React release.
-- If something breaks unexpectedly, please let us know by [filing an issue](https://github.com/facebook/react/issues).
+- مجموعه تست خود را در برابر پکیج‌های به‌روزرسانی‌شده اجرا کنید.
+- اگر همه چیز موفق شد، عالی است! می‌توانید انتظار داشته باشید که پروژهٔ شما با انتشار minor بعدی ری‌اکت کار خواهد کرد.
+- اگر چیزی به‌طور غیرمنتظره‌ای شکست، لطفاً با [ثبت یک issue](https://github.com/facebook/react/issues) به ما اطلاع دهید.
 
-A project that uses this workflow is Next.js. You can refer to their [CircleCI configuration](https://github.com/zeit/next.js/blob/c0a1c0f93966fe33edd93fb53e5fafb0dcd80a9e/.circleci/config.yml) as an example.
+پروژه‌ای که از این گردش‌کار استفاده می‌کند Next.js است. می‌توانید به [پیکربندی CircleCI آن‌ها](https://github.com/zeit/next.js/blob/c0a1c0f93966fe33edd93fb53e5fafb0dcd80a9e/.circleci/config.yml) به‌عنوان نمونه مراجعه کنید.
 
-### Experimental channel {/*experimental-channel*/}
+### کانال Experimental {/*experimental-channel*/}
 
-Like Canary, the Experimental channel is a prerelease channel that tracks the main branch of the React repository. Unlike Canary, Experimental releases include additional features and APIs that are not ready for wider release.
+مانند Canary، کانال Experimental یک کانال پیش‌انتشار است که شاخهٔ اصلی مخزن ری‌اکت را دنبال می‌کند. برخلاف Canary، انتشارهای Experimental شامل قابلیت‌ها و APIهای اضافی هستند که برای انتشار گسترده‌تر آماده نیستند.
 
-Usually, an update to Canary is accompanied by a corresponding update to Experimental. They are based on the same source revision, but are built using a different set of feature flags.
+معمولاً، یک به‌روزرسانی Canary با یک به‌روزرسانی متناظر Experimental همراه است. آن‌ها بر اساس همان بازنگری منبع هستند، اما با مجموعهٔ متفاوتی از پرچم‌های قابلیت ساخته می‌شوند.
 
-Experimental releases may be significantly different than releases to Canary and Latest. **Do not use Experimental releases in user-facing applications.** You should expect frequent breaking changes between releases in the Experimental channel.
+انتشارهای Experimental ممکن است به‌طور قابل‌توجهی با انتشارهای Canary و Latest متفاوت باشند. **از انتشارهای Experimental در برنامه‌های رو به کاربر استفاده نکنید.** باید انتظار تغییرات شکست‌آور مکرر بین انتشارها در کانال Experimental را داشته باشید.
 
-Releases in Experimental are published with the `experimental` tag on npm. Versions are generated from a hash of the build's contents and the commit date, e.g. `0.0.0-experimental-68053d940-20210623`.
+انتشارها در Experimental با تگ `experimental` در npm منتشر می‌شوند. نسخه‌ها از هش محتویات ساخت و تاریخ commit تولید شده‌اند، مانند `0.0.0-experimental-68053d940-20210623`.
 
-#### What goes into an experimental release? {/*what-goes-into-an-experimental-release*/}
+#### چه چیزی وارد یک انتشار experimental می‌شود؟ {/*what-goes-into-an-experimental-release*/}
 
-Experimental features are ones that are not ready to be released to the wider public, and may change drastically before they are finalized. Some experiments may never be finalized -- the reason we have experiments is to test the viability of proposed changes.
+قابلیت‌های آزمایشی آن‌هایی هستند که برای انتشار به عموم آماده نیستند و ممکن است پیش از نهایی شدن به‌طور چشمگیری تغییر کنند. برخی آزمایش‌ها ممکن است هرگز نهایی نشوند -- دلیل اینکه آزمایش داریم آزمایش امکان‌سنجی تغییرات پیشنهادی است.
 
-For example, if the Experimental channel had existed when we announced Hooks, we would have released Hooks to the Experimental channel weeks before they were available in Latest.
+برای مثال، اگر کانال Experimental هنگام اعلام Hooks وجود داشت، ما هفته‌ها پیش از آنکه در Latest در دسترس باشند، Hooks را در کانال Experimental منتشر می‌کردیم.
 
-You may find it valuable to run integration tests against Experimental. This is up to you. However, be advised that Experimental is even less stable than Canary. **We do not guarantee any stability between Experimental releases.**
+ممکن است ارزشمند باشد که آزمایش‌های یکپارچگی را در برابر Experimental اجرا کنید. این به شما بستگی دارد. با این حال، توجه داشته باشید که Experimental حتی از Canary هم کمتر پایدار است. **ما هیچ پایداری بین انتشارهای Experimental تضمین نمی‌کنیم.**
 
-#### How can I learn more about experimental features? {/*how-can-i-learn-more-about-experimental-features*/}
+#### چگونه می‌توانم دربارهٔ قابلیت‌های آزمایشی بیشتر یاد بگیرم؟ {/*how-can-i-learn-more-about-experimental-features*/}
 
-Experimental features may or may not be documented. Usually, experiments aren't documented until they are close to shipping in Canary or Latest.
+قابلیت‌های آزمایشی ممکن است مستند شده باشند یا نباشند. معمولاً، آزمایش‌ها تا زمانی که نزدیک به انتشار در Canary یا Latest باشند، مستند نمی‌شوند.
 
-If a feature is not documented, they may be accompanied by an [RFC](https://github.com/reactjs/rfcs).
+اگر قابلیتی مستند نشده است، ممکن است با یک [RFC](https://github.com/reactjs/rfcs) همراه باشد.
 
-We will post to the [React blog](/blog) when we're ready to announce new experiments, but that doesn't mean we will publicize every experiment.
+ما در [وبلاگ ری‌اکت](/blog) پست می‌گذاریم وقتی آمادهٔ اعلام آزمایش‌های جدید هستیم، اما این به معنای آن نیست که هر آزمایشی را تبلیغ خواهیم کرد.
 
-You can always refer to our public GitHub repository's [history](https://github.com/facebook/react/commits/main) for a comprehensive list of changes.
+همیشه می‌توانید برای فهرست جامع تغییرات به [تاریخچه](https://github.com/facebook/react/commits/main) مخزن GitHub عمومی ما مراجعه کنید.

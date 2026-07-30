@@ -4,7 +4,7 @@ title: useCallback
 
 <Intro>
 
-`useCallback` is a React Hook that lets you cache a function definition between re-renders.
+`useCallback` یک هوک ری‌اکت است که به شما اجازه می‌دهد یک تعریف تابع را بین رندرهای مجدد کش کنید.
 
 ```js
 const cachedFn = useCallback(fn, dependencies)
@@ -14,7 +14,7 @@ const cachedFn = useCallback(fn, dependencies)
 
 <Note>
 
-[React Compiler](/learn/react-compiler) automatically memoizes values and functions, reducing the need for manual `useCallback` calls. You can use the compiler to handle memoization automatically.
+[React Compiler](/learn/react-compiler) به‌طور خودکار مقادیر و توابع را مموری‌زیشن می‌کند، و نیاز به فراخوانی‌های دستی `useCallback` را کاهش می‌دهد. می‌توانید از کامپایلر برای انجام مموری‌زیشن به‌طور خودکار استفاده کنید.
 
 </Note>
 
@@ -22,11 +22,11 @@ const cachedFn = useCallback(fn, dependencies)
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `useCallback(fn, dependencies)` {/*usecallback*/}
 
-Call `useCallback` at the top level of your component to cache a function definition between re-renders:
+برای کش کردن یک تعریف تابع بین رندرهای مجدد، `useCallback` را در سطح بالای کامپوننت خود فراخوانی کنید:
 
 ```js {4,9}
 import { useCallback } from 'react';
@@ -40,34 +40,34 @@ export default function ProductPage({ productId, referrer, theme }) {
   }, [productId, referrer]);
 ```
 
-[See more examples below.](#usage)
+[مثال‌های بیشتری را در ادامه ببینید.](#usage)
 
-#### Parameters {/*parameters*/}
+#### پارامترها {/*parameters*/}
 
-* `fn`: The function value that you want to cache. It can take any arguments and return any values. React will return (not call!) your function back to you during the initial render. On next renders, React will give you the same function again if the `dependencies` have not changed since the last render. Otherwise, it will give you the function that you have passed during the current render, and store it in case it can be reused later. React will not call your function. The function is returned to you so you can decide when and whether to call it.
+* `fn`: مقدار تابعی که می‌خواهید کش کنید. می‌تواند هر آرگومانی بگیرد و هر مقداری برگرداند. ری‌اکت در طول رندر اولیه تابع شما را برمی‌گرداند (نه فراخوانی می‌کند!). در رندرهای بعدی، اگر `dependencies` از آخرین رندر تغییر نکرده باشند، ری‌اکت دوباره همان تابع را به شما می‌دهد. در غیر این صورت، تابعی را که در طول رندر کنونی ارسال کرده‌اید به شما می‌دهد، و آن را در صورتی که بعداً بتواند دوباره استفاده شود ذخیره می‌کند. ری‌اکت تابع شما را فراخوانی نمی‌کند. تابع به شما برگردانده می‌شود تا خودتان تصمیم بگیرید چه زمانی و آیا آن را فراخوانی کنید یا نه.
 
-* `dependencies`: The list of all reactive values referenced inside of the `fn` code. Reactive values include props, state, and all the variables and functions declared directly inside your component body. If your linter is [configured for React](/learn/editor-setup#linting), it will verify that every reactive value is correctly specified as a dependency. The list of dependencies must have a constant number of items and be written inline like `[dep1, dep2, dep3]`. React will compare each dependency with its previous value using the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison algorithm.
+* `dependencies`: لیست تمام مقادیر واکنش‌گرا که درون کد `fn` به آن‌ها ارجاع شده است. مقادیر واکنش‌گرا شامل پراپس، استیت، و تمام متغیرها و توابعی است که مستقیماً در بدنهٔ کامپوننت شما تعریف شده‌اند. اگر لینتر شما [برای ری‌اکت پیکربندی شده](/learn/editor-setup#linting) باشد، تأیید می‌کند که هر مقدار واکنش‌گرا به‌درستی به‌عنوان یک وابستگی مشخص شده است. لیست وابستگی‌ها باید تعداد آیتم‌های ثابتی داشته باشد و به‌صورت inline مانند `[dep1, dep2, dep3]` نوشته شود. ری‌اکت هر وابستگی را با مقدار قبلی آن با استفاده از الگوریتم مقایسهٔ [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) مقایسه می‌کند.
 
-#### Returns {/*returns*/}
+#### مقدار بازگشتی {/*returns*/}
 
-On the initial render, `useCallback` returns the `fn` function you have passed.
+در رندر اولیه، `useCallback` تابع `fn`‌ای که ارسال کرده‌اید را برمی‌گرداند.
 
-During subsequent renders, it will either return an already stored `fn`  function from the last render (if the dependencies haven't changed), or return the `fn` function you have passed during this render.
+در رندرهای بعدی، یا یک تابع `fn` از قبل ذخیره‌شده از آخرین رندر را برمی‌گرداند (اگر وابستگی‌ها تغییر نکرده‌اند)، یا تابع `fn`‌ای را که در طول این رندر ارسال کرده‌اید برمی‌گرداند.
 
-#### Caveats {/*caveats*/}
+#### نکات {/*caveats*/}
 
-* `useCallback` is a Hook, so you can only call it **at the top level of your component** or your own Hooks. You can't call it inside loops or conditions. If you need that, extract a new component and move the state into it.
-* React **will not throw away the cached function unless there is a specific reason to do that.** For example, in development, React throws away the cache when you edit the file of your component. Both in development and in production, React will throw away the cache if your component suspends during the initial mount. In the future, React may add more features that take advantage of throwing away the cache--for example, if React adds built-in support for virtualized lists in the future, it would make sense to throw away the cache for items that scroll out of the virtualized table viewport. This should match your expectations if you rely on `useCallback` as a performance optimization. Otherwise, a [state variable](/reference/react/useState#im-trying-to-set-state-to-a-function-but-it-gets-called-instead) or a [ref](/reference/react/useRef#avoiding-recreating-the-ref-contents) may be more appropriate.
+* `useCallback` یک هوک است، بنابراین فقط می‌توانید آن را **در سطح بالای کامپوننت** یا هوک‌های خودتان فراخوانی کنید. نمی‌توانید آن را درون حلقه‌ها یا شرط‌ها فراخوانی کنید. اگر به این نیاز دارید، یک کامپوننت جدید استخراج کنید و استیت را به آن منتقل کنید.
+* ری‌اکت **تابع کش‌شده را دور نمی‌ریزد مگر اینکه دلیل خاصی برای این کار وجود داشته باشد.** مثلاً در محیط توسعه، ری‌اکت وقتی فایل کامپوننت خود را ویرایش می‌کنید، کش را دور می‌ریزد. هم در محیط توسعه و هم در محیط تولید، اگر کامپوننت شما در طول mount اولیه suspend شود، ری‌اکت کش را دور می‌ریزد. در آینده، ری‌اکت ممکن است ویژگی‌های بیشتری اضافه کند که از دور ریختن کش بهره می‌برند — مثلاً اگر ری‌اکت در آینده پشتیبانی داخلی از لیست‌های مجازی‌سازی‌شده را اضافه کند، منطقی خواهد بود که کش آیتم‌هایی که از viewport جدول مجازی‌سازی‌شده خارج می‌شوند را دور بریزد. این باید با انتظارات شما مطابقت داشته باشد اگر به `useCallback` به‌عنوان یک بهینه‌سازی عملکرد تکیه می‌کنید. در غیر این صورت، یک [متغیر استیت](/reference/react/useState#im-trying-to-set-state-to-a-function-but-it-gets-called-instead) یا یک [رفرنس](/reference/react/useRef#avoiding-recreating-the-ref-contents) ممکن است مناسب‌تر باشد.
 
 ---
 
-## Usage {/*usage*/}
+## کاربرد {/*usage*/}
 
-### Skipping re-rendering of components {/*skipping-re-rendering-of-components*/}
+### رد کردن رندر مجدد کامپوننت‌ها {/*skipping-re-rendering-of-components*/}
 
-When you optimize rendering performance, you will sometimes need to cache the functions that you pass to child components. Let's first look at the syntax for how to do this, and then see in which cases it's useful.
+هنگام بهینه‌سازی عملکرد رندر، گاهی نیاز دارید توابعی را که به کامپوننت‌های فرزند ارسال می‌کنید کش کنید. بیایید ابتدا به نحوهٔ انجام این کار نگاه کنیم، و سپس ببینیم در چه مواردی مفید است.
 
-To cache a function between re-renders of your component, wrap its definition into the `useCallback` Hook:
+برای کش کردن یک تابع بین رندرهای مجدد کامپوننت خود، تعریف آن را در هوک `useCallback` بپیچید:
 
 ```js [[3, 4, "handleSubmit"], [2, 9, "[productId, referrer]"]]
 import { useCallback } from 'react';
@@ -82,20 +82,20 @@ function ProductPage({ productId, referrer, theme }) {
   // ...
 ```
 
-You need to pass two things to `useCallback`:
+باید دو چیز را به `useCallback` ارسال کنید:
 
-1. A function definition that you want to cache between re-renders.
-2. A <CodeStep step={2}>list of dependencies</CodeStep> including every value within your component that's used inside your function.
+1. یک تعریف تابع که می‌خواهید بین رندرهای مجدد کش کنید.
+2. یک <CodeStep step={2}>لیست وابستگی‌ها</CodeStep> که شامل هر مقداری درون کامپوننت شما که درون تابع شما استفاده می‌شود.
 
-On the initial render, the <CodeStep step={3}>returned function</CodeStep> you'll get from `useCallback` will be the function you passed.
+در رندر اولیه، <CodeStep step={3}>تابع برگردانده‌شده</CodeStep>‌ای که از `useCallback` دریافت می‌کنید همان تابعی خواهد بود که ارسال کرده‌اید.
 
-On the following renders, React will compare the <CodeStep step={2}>dependencies</CodeStep> with the dependencies you passed during the previous render. If none of the dependencies have changed (compared with [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)), `useCallback` will return the same function as before. Otherwise, `useCallback` will return the function you passed on *this* render.
+در رندرهای بعدی، ری‌اکت <CodeStep step={2}>وابستگی‌ها</CodeStep> را با وابستگی‌هایی که در رندر قبلی ارسال کرده‌اید مقایسه می‌کند. اگر هیچ‌کدام از وابستگی‌ها تغییر نکرده باشند (مقایسه با [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is))، `useCallback` همان تابع قبلی را برمی‌گرداند. در غیر این صورت، `useCallback` تابعی را که در *این* رندر ارسال کرده‌اید برمی‌گرداند.
 
-In other words, `useCallback` caches a function between re-renders until its dependencies change.
+به عبارت دیگر، `useCallback` یک تابع را بین رندرهای مجدد تا زمانی که وابستگی‌هایش تغییر کنند کش می‌کند.
 
-**Let's walk through an example to see when this is useful.**
+**بیایید یک مثال را مرور کنیم تا ببینیم چه زمانی این مفید است.**
 
-Say you're passing a `handleSubmit` function down from the `ProductPage` to the `ShippingForm` component:
+فرض کنید یک تابع `handleSubmit` را از `ProductPage` به کامپوننت `ShippingForm` ارسال می‌کنید:
 
 ```js {5}
 function ProductPage({ productId, referrer, theme }) {
@@ -107,9 +107,9 @@ function ProductPage({ productId, referrer, theme }) {
   );
 ```
 
-You've noticed that toggling the `theme` prop freezes the app for a moment, but if you remove `<ShippingForm />` from your JSX, it feels fast. This tells you that it's worth trying to optimize the `ShippingForm` component.
+متوجه شده‌اید که تغییر پراپ `theme` برای لحظه‌ای برنامه را فریز می‌کند، اما اگر `<ShippingForm />` را از JSX خود حذف کنید، سریع به نظر می‌رسد. این به شما می‌گوید که امتحان کردن بهینه‌سازی کامپوننت `ShippingForm` ارزش دارد.
 
-**By default, when a component re-renders, React re-renders all of its children recursively.** This is why, when `ProductPage` re-renders with a different `theme`, the `ShippingForm` component *also* re-renders. This is fine for components that don't require much calculation to re-render. But if you verified a re-render is slow, you can tell `ShippingForm` to skip re-rendering when its props are the same as on last render by wrapping it in [`memo`:](/reference/react/memo)
+**به‌طور پیش‌فرض، وقتی یک کامپوننت دوباره رندر می‌شود، ری‌اکت تمام فرزندانش را به‌صورت بازگشتی دوباره رندر می‌کند.** به همین دلیل است که وقتی `ProductPage` با `theme` متفاوتی رندر مجدد می‌شود، کامپوننت `ShippingForm` *همچنین* رندر مجدد می‌شود. این برای کامپوننت‌هایی که نیاز به محاسبهٔ زیادی برای رندر مجدد ندارند مشکلی نیست. اما اگر تأیید کردید که رندر مجدد کند است، می‌توانید با پیچیدن `ShippingForm` در [`memo`](/reference/react/memo) به آن بگویید وقتی پراپس‌هایش با رندر قبلی یکسان هستند از رندر مجدد بپرد:
 
 ```js {3,5}
 import { memo } from 'react';
@@ -119,7 +119,7 @@ const ShippingForm = memo(function ShippingForm({ onSubmit }) {
 });
 ```
 
-**With this change, `ShippingForm` will skip re-rendering if all of its props are the *same* as on the last render.** This is when caching a function becomes important! Let's say you defined `handleSubmit` without `useCallback`:
+**با این تغییر، اگر تمام پراپس‌های `ShippingForm` با رندر قبلی *یکسان* باشند، از رندر مجدد می‌پرد.** اینجاست که کش کردن یک تابع مهم می‌شود! فرض کنید `handleSubmit` را بدون `useCallback` تعریف کردید:
 
 ```js {2,3,8,12-13}
 function ProductPage({ productId, referrer, theme }) {
@@ -140,7 +140,7 @@ function ProductPage({ productId, referrer, theme }) {
 }
 ```
 
-**In JavaScript, a `function () {}` or `() => {}` always creates a _different_ function,** similar to how the `{}` object literal always creates a new object. Normally, this wouldn't be a problem, but it means that `ShippingForm` props will never be the same, and your [`memo`](/reference/react/memo) optimization won't work. This is where `useCallback` comes in handy:
+**در جاوااسکریپت، یک `function () {}` یا `() => {}` همیشه یک تابع *متفاوت* ایجاد می‌کند،** مشابه به اینکه literal شیء `{}` همیشه یک شیء جدید ایجاد می‌کند. معمولاً این مشکل ایجاد نمی‌کند، اما به این معناست که پراپس‌های `ShippingForm` هرگز یکسان نخواهند بود، و بهینه‌سازی [`memo`](/reference/react/memo) شما کار نخواهد کرد. اینجاست که `useCallback` به کار می‌آید:
 
 ```js {2,3,8,12-13}
 function ProductPage({ productId, referrer, theme }) {
@@ -161,19 +161,19 @@ function ProductPage({ productId, referrer, theme }) {
 }
 ```
 
-**By wrapping `handleSubmit` in `useCallback`, you ensure that it's the *same* function between the re-renders** (until dependencies change). You don't *have to* wrap a function in `useCallback` unless you do it for some specific reason. In this example, the reason is that you pass it to a component wrapped in [`memo`,](/reference/react/memo) and this lets it skip re-rendering. There are other reasons you might need `useCallback` which are described further on this page.
+**با پیچیدن `handleSubmit` در `useCallback`، اطمینان حاصل می‌کنید که بین رندرهای مجدد *همان* تابع است** (تا زمانی که وابستگی‌ها تغییر کنند). *لازم نیست* تابعی را در `useCallback` بپیچید مگر اینکه به دلیل خاصی این کار را انجام دهید. در این مثال، دلیل این است که آن را به کامپوننتی که در [`memo`](/reference/react/memo) پیچیده شده ارسال می‌کنید، و این به آن اجازه می‌دهد از رندر مجدد بپرد. دلایل دیگری نیز وجود دارد که ممکن است به `useCallback` نیاز داشته باشید که در ادامهٔ این صفحه توضیح داده شده‌اند.
 
 <Note>
 
-**You should only rely on `useCallback` as a performance optimization.** If your code doesn't work without it, find the underlying problem and fix it first. Then you may add `useCallback` back.
+**فقط باید به `useCallback` به‌عنوان یک بهینه‌سازی عملکرد تکیه کنید.** اگر کد شما بدون آن کار نمی‌کند، مشکل زیربنایی را پیدا کنید و ابتدا آن را برطرف کنید. سپس می‌توانید `useCallback` را دوباره اضافه کنید.
 
 </Note>
 
 <DeepDive>
 
-#### How is useCallback related to useMemo? {/*how-is-usecallback-related-to-usememo*/}
+#### رابطهٔ `useCallback` با `useMemo` چگونه است؟ {/*how-is-usecallback-related-to-usememo*/}
 
-You will often see [`useMemo`](/reference/react/useMemo) alongside `useCallback`. They are both useful when you're trying to optimize a child component. They let you [memoize](https://en.wikipedia.org/wiki/Memoization) (or, in other words, cache) something you're passing down:
+اغلب [`useMemo`](/reference/react/useMemo) را در کنار `useCallback` می‌بینید. هر دو هنگام تلاش برای بهینه‌سازی یک کامپوننت فرزند مفید هستند. آن‌ها به شما اجازه می‌دهند چیزی را که ارسال می‌کنید [مموری‌زیشن](https://en.wikipedia.org/wiki/Memoization) (یا به عبارت دیگر، کش) کنید:
 
 ```js {6-8,10-15,19}
 import { useMemo, useCallback } from 'react';
@@ -200,12 +200,12 @@ function ProductPage({ productId, referrer }) {
 }
 ```
 
-The difference is in *what* they're letting you cache:
+تفاوت در *چیزی* است که اجازه می‌دهید کش کنید:
 
-* **[`useMemo`](/reference/react/useMemo) caches the *result* of calling your function.** In this example, it caches the result of calling `computeRequirements(product)` so that it doesn't change unless `product` has changed. This lets you pass the `requirements` object down without unnecessarily re-rendering `ShippingForm`. When necessary, React will call the function you've passed during rendering to calculate the result.
-* **`useCallback` caches *the function itself.*** Unlike `useMemo`, it does not call the function you provide. Instead, it caches the function you provided so that `handleSubmit` *itself* doesn't change unless `productId` or `referrer` has changed. This lets you pass the `handleSubmit` function down without unnecessarily re-rendering `ShippingForm`. Your code won't run until the user submits the form.
+* **[`useMemo`](/reference/react/useMemo) *نتیجهٔ* فراخوانی تابع شما را کش می‌کند.** در این مثال، نتیجهٔ فراخوانی `computeRequirements(product)` را کش می‌کند تا مگر اینکه `product` تغییر کرده باشد، تغییر نکند. این به شما اجازه می‌دهد شیء `requirements` را پایین ارسال کنید بدون اینکه `ShippingForm` به‌طور غیرضروری رندر مجدد شود. در صورت لزوم، ری‌اکت تابعی را که در طول رندر ارسال کرده‌اید فراخوانی می‌کند تا نتیجه را محاسبه کند.
+* **`useCallback` *خود تابع* را کش می‌کند.** برخلاف `useMemo`، تابعی که ارائه می‌کنید را فراخوانی نمی‌کند. در عوض، تابعی که ارائه کرده‌اید را کش می‌کند تا `handleSubmit` *خودش* مگر اینکه `productId` یا `referrer` تغییر کرده باشند، تغییر نکند. این به شما اجازه می‌دهد تابع `handleSubmit` را پایین ارسال کنید بدون اینکه `ShippingForm` به‌طور غیرضروری رندر مجدد شود. کد شما تا زمانی که کاربر فرم را ارسال نکند اجرا نخواهد شد.
 
-If you're already familiar with [`useMemo`,](/reference/react/useMemo) you might find it helpful to think of `useCallback` as this:
+اگر از قبل با [`useMemo`](/reference/react/useMemo) آشنا هستید، ممکن است کمک‌کننده باشد که `useCallback` را به این صورت در نظر بگیرید:
 
 ```js {expectedErrors: {'react-compiler': [3]}}
 // Simplified implementation (inside React)
@@ -214,46 +214,46 @@ function useCallback(fn, dependencies) {
 }
 ```
 
-[Read more about the difference between `useMemo` and `useCallback`.](/reference/react/useMemo#memoizing-a-function)
+[دربارهٔ تفاوت بین `useMemo` و `useCallback` بیشتر بخوانید.](/reference/react/useMemo#memoizing-a-function)
 
 </DeepDive>
 
 <DeepDive>
 
-#### Should you add useCallback everywhere? {/*should-you-add-usecallback-everywhere*/}
+#### آیا باید `useCallback` را همه‌جا اضافه کنید؟ {/*should-you-add-usecallback-everywhere*/}
 
-If your app is like this site, and most interactions are coarse (like replacing a page or an entire section), memoization is usually unnecessary. On the other hand, if your app is more like a drawing editor, and most interactions are granular (like moving shapes), then you might find memoization very helpful.
+اگر برنامهٔ شما مانند این سایت است، و اکثر تعاملات درشت هستند (مانند جایگزینی یک صفحه یا یک بخش کامل)، معمولاً مموری‌زیشن ضروری نیست. از سوی دیگر، اگر برنامهٔ شما بیشتر شبیه به یک ویرایشگر نقاشی است، و اکثر تعاملات دانه‌دانه هستند (مانند حرکت دادن شکل‌ها)، ممکن است متوجه شوید مموری‌زیشن بسیار مفید است.
 
-Caching a function with `useCallback`  is only valuable in a few cases:
+کش کردن یک تابع با `useCallback` فقط در چند مورد ارزشمند است:
 
-- You pass it as a prop to a component wrapped in [`memo`.](/reference/react/memo) You want to skip re-rendering if the value hasn't changed. Memoization lets your component re-render only if dependencies changed.
-- The function you're passing is later used as a dependency of some Hook. For example, another function wrapped in `useCallback` depends on it, or you depend on this function from [`useEffect.`](/reference/react/useEffect)
+- آن را به‌عنوان پراپ به کامپوننتی که در [`memo`](/reference/react/memo) پیچیده شده ارسال می‌کنید. می‌خواهید اگر مقدار تغییر نکرده از رندر مجدد بپرید. مموری‌زیشن اجازه می‌دهد کامپوننت شما فقط اگر وابستگی‌ها تغییر کرده باشند رندر مجدد شود.
+- تابعی که ارسال می‌کنید بعداً به‌عنوان وابستگی یک هوک استفاده می‌شود. مثلاً تابع دیگری که در `useCallback` پیچیده شده به آن وابسته است، یا شما از [`useEffect`](/reference/react/useEffect) به این تابع وابسته هستید.
 
-There is no benefit to wrapping a function in `useCallback` in other cases. There is no significant harm to doing that either, so some teams choose to not think about individual cases, and memoize as much as possible. The downside is that code becomes less readable. Also, not all memoization is effective: a single value that's "always new" is enough to break memoization for an entire component.
+هیچ فایده‌ای در پیچیدن یک تابع در `useCallback` در موارد دیگر وجود ندارد. هیچ ضرر قابل توجهی هم در انجام آن نیست، بنابراین برخی تیم‌ها انتخاب می‌کنند که به موارد فردی فکر نکنند، و تا حد ممکن مموری‌زیشن کنند. عیب آن این است که کد کمتر خوانا می‌شود. همچنین، نه همهٔ مموری‌زیشن‌ها مؤثرند: یک مقدار واحد که «همیشه جدید» است برای خراب کردن مموری‌زیشن کل کامپوننت کافی است.
 
-Note that `useCallback` does not prevent *creating* the function. You're always creating a function (and that's fine!), but React ignores it and gives you back a cached function if nothing changed.
+توجه کنید که `useCallback` از *ایجاد* تابع جلوگیری نمی‌کند. شما همیشه در حال ایجاد یک تابع هستید (و این مشکلی ندارد!)، اما ری‌اکت آن را نادیده می‌گیرد و اگر چیزی تغییر نکرده باشد یک تابع کش‌شده را به شما برمی‌گرداند.
 
-**In practice, you can make a lot of memoization unnecessary by following a few principles:**
+**در عمل، می‌توانید با پیروی از چند اصل، بسیاری از مموری‌زیشن‌ها را غیرضروری کنید:**
 
-1. When a component visually wraps other components, let it [accept JSX as children.](/learn/passing-props-to-a-component#passing-jsx-as-children) Then, if the wrapper component updates its own state, React knows that its children don't need to re-render.
-1. Prefer local state and don't [lift state up](/learn/sharing-state-between-components) any further than necessary. Don't keep transient state like forms and whether an item is hovered at the top of your tree or in a global state library.
-1. Keep your [rendering logic pure.](/learn/keeping-components-pure) If re-rendering a component causes a problem or produces some noticeable visual artifact, it's a bug in your component! Fix the bug instead of adding memoization.
-1. Avoid [unnecessary Effects that update state.](/learn/you-might-not-need-an-effect) Most performance problems in React apps are caused by chains of updates originating from Effects that cause your components to render over and over.
-1. Try to [remove unnecessary dependencies from your Effects.](/learn/removing-effect-dependencies) For example, instead of memoization, it's often simpler to move some object or a function inside an Effect or outside the component.
+1. وقتی یک کامپوننت از نظر بصری کامپوننت‌های دیگر را می‌پوشاند، اجازه دهید [JSX را به‌عنوان فرزند بپذیرد.](/learn/passing-props-to-a-component#passing-jsx-as-children) سپس، اگر کامپوننت پوشاننده استیت خودش را به‌روز کند، ری‌اکت می‌داند که فرزندانش نیازی به رندر مجدد ندارند.
+1. استیت محلی را ترجیح دهید و [استیت را بالاتر از حد لازم بالا نیاورید.](/learn/sharing-state-between-components) استیت گذرایی مانند فرم‌ها و اینکه آیا یک آیتم hover شده یا نه را در بالای درخت یا در یک کتابخانهٔ استیت سراسری نگه ندارید.
+1. [منطق رندر خود را خالص نگه دارید.](/learn/keeping-components-pure) اگر رندر مجدد یک کامپوننت باعث مشکل می‌شود یا برخی مصنوعات بصری قابل توجه تولید می‌کند، این یک اشکال در کامپوننت شماست! به جای اضافه کردن مموری‌زیشن، اشکال را برطرف کنید.
+1. از [افکت‌های غیرضروری که استیت را به‌روز می‌کنند](/learn/you-might-not-need-an-effect) اجتناب کنید. اکثر مشکلات عملکرد در برنامه‌های ری‌اکت ناشی از زنجیره‌هایی از به‌روزرسانی‌ها هستند که از افکت‌ها سرچشمه می‌گیرند و باعث می‌شوند کامپوننت‌های شما دوباره و دوباره رندر شوند.
+1. سعی کنید [وابستگی‌های غیرضروری را از افکت‌های خود حذف کنید.](/learn/removing-effect-dependencies) مثلاً به جای مموری‌زیشن، اغلب ساده‌تر است که یک شیء یا یک تابع را درون افکت یا بیرون کامپوننت منتقل کنید.
 
-If a specific interaction still feels laggy, [use the React Developer Tools profiler](https://legacy.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html) to see which components benefit the most from memoization, and add memoization where needed. These principles make your components easier to debug and understand, so it's good to follow them in any case. In long term, we're researching [doing memoization automatically](https://www.youtube.com/watch?v=lGEMwh32soc) to solve this once and for all.
+اگر یک تعامل خاص همچنان کند به نظر می‌رسد، از [React Developer Tools profiler](https://legacy.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html) استفاده کنید تا ببینید کدام کامپوننت‌ها بیشترین بهره را از مموری‌زیشن می‌برند، و در صورت نیاز مموری‌زیشن اضافه کنید. این اصول کامپوننت‌های شما را آسان‌تر برای دیباگ و درک می‌کند، بنابراین به هر حال خوب است که از آن‌ها پیروی کنید. در درازمدت، ما در حال تحقیق روی [انجام مموری‌زیشن به‌طور خودکار](https://www.youtube.com/watch?v=lGEMwh32soc) هستیم تا این مشکل را یک‌بار برای همیشه حل کنیم.
 
 </DeepDive>
 
 <Recipes titleText="The difference between useCallback and declaring a function directly" titleId="examples-rerendering">
 
-#### Skipping re-rendering with `useCallback` and `memo` {/*skipping-re-rendering-with-usecallback-and-memo*/}
+#### رد کردن رندر مجدد با `useCallback` و `memo` {/*skipping-re-rendering-with-usecallback-and-memo*/}
 
-In this example, the `ShippingForm` component is **artificially slowed down** so that you can see what happens when a React component you're rendering is genuinely slow. Try incrementing the counter and toggling the theme.
+در این مثال، کامپوننت `ShippingForm` **به‌طور مصنوعی کند شده است** تا بتوانید ببینید وقتی یک کامپوننت ری‌اکتی که رندر می‌کنید واقعاً کند است چه اتفاقی می‌افتد. شمارنده را افزایش دهید و تم را تغییر دهید.
 
-Incrementing the counter feels slow because it forces the slowed down `ShippingForm` to re-render. That's expected because the counter has changed, and so you need to reflect the user's new choice on the screen.
+افزایش شمارنده کند به نظر می‌رسد زیرا `ShippingForm` کندشده را مجبور به رندر مجدد می‌کند. این مورد انتظار می‌رود زیرا شمارنده تغییر کرده است، و بنابراین باید انتخاب جدید کاربر را روی صفحه منعکس کنید.
 
-Next, try toggling the theme. **Thanks to `useCallback` together with [`memo`](/reference/react/memo), it’s fast despite the artificial slowdown!** `ShippingForm` skipped re-rendering because the `handleSubmit` function has not changed. The `handleSubmit` function has not changed because both `productId` and `referrer` (your `useCallback` dependencies) haven't changed since last render.
+سپس، تغییر تم را امتحان کنید. **به لطف `useCallback` در کنار [`memo`](/reference/react/memo)، با وجود کندی مصنوعی سریع است!** `ShippingForm` از رندر مجدد پرهیز کرد زیرا تابع `handleSubmit` تغییر نکرده است. تابع `handleSubmit` تغییر نکرده زیرا هم `productId` و هم `referrer` (وابستگی‌های `useCallback` شما) از رندر قبلی تغییر نکرده‌اند.
 
 <Sandpack>
 
@@ -389,11 +389,11 @@ button[type="button"] {
 
 <Solution />
 
-#### Always re-rendering a component {/*always-re-rendering-a-component*/}
+#### رندر مجدد همیشگی یک کامپوننت {/*always-re-rendering-a-component*/}
 
-In this example, the `ShippingForm` implementation is also **artificially slowed down** so that you can see what happens when some React component you're rendering is genuinely slow. Try incrementing the counter and toggling the theme.
+در این مثال، پیاده‌سازی `ShippingForm` نیز **به‌طور مصنوعی کند شده است** تا بتوانید ببینید وقتی برخی کامپوننت‌های ری‌اکتی که رندر می‌کنید واقعاً کند هستند چه اتفاقی می‌افتد. شمارنده را افزایش دهید و تم را تغییر دهید.
 
-Unlike in the previous example, toggling the theme is also slow now! This is because **there is no `useCallback` call in this version,** so `handleSubmit` is always a new function, and the slowed down `ShippingForm` component can't skip re-rendering.
+برخلاف مثال قبلی، تغییر تم نیز اکنون کند است! این به این دلیل است که **در این نسخه هیچ فراخوانی `useCallback` وجود ندارد،** بنابراین `handleSubmit` همیشه یک تابع جدید است، و کامپوننت `ShippingForm` کندشده نمی‌تواند از رندر مجدد بپرد.
 
 <Sandpack>
 
@@ -527,7 +527,7 @@ button[type="button"] {
 </Sandpack>
 
 
-However, here is the same code **with the artificial slowdown removed.** Does the lack of `useCallback` feel noticeable or not?
+با این حال، در اینجا همان کد **با حذف کندی مصنوعی** آمده است. آیا نبود `useCallback` قابل توجه است یا نه؟
 
 <Sandpack>
 
@@ -656,9 +656,9 @@ button[type="button"] {
 </Sandpack>
 
 
-Quite often, code without memoization works fine. If your interactions are fast enough, you don't need memoization.
+اغلب، کد بدون مموری‌زیشن به‌خوبی کار می‌کند. اگر تعاملات شما به‌اندازهٔ کافی سریع هستند، به مموری‌زیشن نیاز ندارید.
 
-Keep in mind that you need to run React in production mode, disable [React Developer Tools](/learn/react-developer-tools), and use devices similar to the ones your app's users have in order to get a realistic sense of what's actually slowing down your app.
+در نظر داشته باشید که برای درک واقع‌بینانهٔ آنچه واقعاً برنامهٔ شما را کند می‌کند، باید ری‌اکت را در حالت تولید اجرا کنید، [React Developer Tools](/learn/react-developer-tools) را غیرفعال کنید، و از دستگاه‌هایی مشابه دستگاه‌های کاربران برنامه‌تان استفاده کنید.
 
 <Solution />
 
@@ -666,11 +666,11 @@ Keep in mind that you need to run React in production mode, disable [React Devel
 
 ---
 
-### Updating state from a memoized callback {/*updating-state-from-a-memoized-callback*/}
+### به‌روزرسانی استیت از یک کالبک مموری‌زیشن‌شده {/*updating-state-from-a-memoized-callback*/}
 
-Sometimes, you might need to update state based on previous state from a memoized callback.
+گاهی ممکن است نیاز داشته باشید استیت را بر اساس استیت قبلی از یک کالبک مموری‌زیشن‌شده به‌روز کنید.
 
-This `handleAddTodo` function specifies `todos` as a dependency because it computes the next todos from it:
+این تابع `handleAddTodo`، `todos` را به‌عنوان وابستگی مشخص می‌کند زیرا todos بعدی را از آن محاسبه می‌کند:
 
 ```js {6,7}
 function TodoList() {
@@ -683,7 +683,7 @@ function TodoList() {
   // ...
 ```
 
-You'll usually want memoized functions to have as few dependencies as possible. When you read some state only to calculate the next state, you can remove that dependency by passing an [updater function](/reference/react/useState#updating-state-based-on-the-previous-state) instead:
+معمولاً می‌خواهید توابع مموری‌زیشن‌شده تا حد امکان وابستگی‌های کمی داشته باشند. وقتی مقداری استیت را فقط برای محاسبهٔ استیت بعدی می‌خوانید، می‌توانید با ارسال یک [تابع به‌روزرسانی](/reference/react/useState#updating-state-based-on-the-previous-state) به جای آن، آن وابستگی را حذف کنید:
 
 ```js {6,7}
 function TodoList() {
@@ -696,13 +696,13 @@ function TodoList() {
   // ...
 ```
 
-Here, instead of making `todos` a dependency and reading it inside, you pass an instruction about *how* to update the state (`todos => [...todos, newTodo]`) to React. [Read more about updater functions.](/reference/react/useState#updating-state-based-on-the-previous-state)
+در اینجا، به جای اینکه `todos` را به‌عنوان وابستگی قرار دهید و درون آن را بخوانید، یک دستورالعمل دربارهٔ *نحوه* به‌روزرسانی استیت (`todos => [...todos, newTodo]`) به ری‌اکت ارسال می‌کنید. [دربارهٔ توابع به‌روزرسانی بیشتر بخوانید.](/reference/react/useState#updating-state-based-on-the-previous-state)
 
 ---
 
-### Preventing an Effect from firing too often {/*preventing-an-effect-from-firing-too-often*/}
+### جلوگیری از اجرای بیش از حد یک افکت {/*preventing-an-effect-from-firing-too-often*/}
 
-Sometimes, you might want to call a function from inside an [Effect:](/learn/synchronizing-with-effects)
+گاهی ممکن است بخواهید تابعی را از درون یک [افکت](/learn/synchronizing-with-effects) فراخوانی کنید:
 
 ```js {4-9,12}
 function ChatRoom({ roomId }) {
@@ -722,7 +722,7 @@ function ChatRoom({ roomId }) {
     // ...
 ```
 
-This creates a problem. [Every reactive value must be declared as a dependency of your Effect.](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency) However, if you declare `createOptions` as a dependency, it will cause your Effect to constantly reconnect to the chat room:
+این یک مشکل ایجاد می‌کند. [هر مقدار واکنش‌گرا باید به‌عنوان وابستگی افکت شما تعریف شود.](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency) با این حال، اگر `createOptions` را به‌عنوان وابستگی تعریف کنید، باعث می‌شود افکت شما دائماً به اتاق چت دوباره متصل شود:
 
 
 ```js {6}
@@ -735,7 +735,7 @@ This creates a problem. [Every reactive value must be declared as a dependency o
   // ...
 ```
 
-To solve this, you can wrap the function you need to call from an Effect into `useCallback`:
+برای حل این مشکل، می‌توانید تابعی که نیاز دارید از یک افکت فراخوانی کنید را در `useCallback` بپیچید:
 
 ```js {4-9,16}
 function ChatRoom({ roomId }) {
@@ -757,7 +757,7 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-This ensures that the `createOptions` function is the same between re-renders if the `roomId` is the same. **However, it's even better to remove the need for a function dependency.** Move your function *inside* the Effect:
+این تضمین می‌کند که تابع `createOptions` بین رندرهای مجدد اگر `roomId` یکسان باشد، یکسان باشد. **با این حال، بهتر است نیازی به وابستگی تابع را حذف کنید.** تابع خود را *درون* افکت منتقل کنید:
 
 ```js {5-10,16}
 function ChatRoom({ roomId }) {
@@ -779,13 +779,13 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-Now your code is simpler and doesn't need `useCallback`. [Learn more about removing Effect dependencies.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
+اکنون کد شما ساده‌تر است و به `useCallback` نیاز ندارد. [دربارهٔ حذف وابستگی‌های افکت بیشتر بدانید.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
 
 ---
 
-### Optimizing a custom Hook {/*optimizing-a-custom-hook*/}
+### بهینه‌سازی یک هوک سفارشی {/*optimizing-a-custom-hook*/}
 
-If you're writing a [custom Hook,](/learn/reusing-logic-with-custom-hooks) it's recommended to wrap any functions that it returns into `useCallback`:
+اگر در حال نوشتن یک [هوک سفارشی](/learn/reusing-logic-with-custom-hooks) هستید، توصیه می‌شود هر تابعی که برمی‌گرداند را در `useCallback` بپیچید:
 
 ```js {4-6,8-10}
 function useRouter() {
@@ -806,17 +806,17 @@ function useRouter() {
 }
 ```
 
-This ensures that the consumers of your Hook can optimize their own code when needed.
+این تضمین می‌کند که مصرف‌کنندگان هوک شما بتوانند در صورت نیاز کد خود را بهینه‌سازی کنند.
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## رفع اشکال {/*troubleshooting*/}
 
-### Every time my component renders, `useCallback` returns a different function {/*every-time-my-component-renders-usecallback-returns-a-different-function*/}
+### هر بار کامپوننت من رندر می‌شود، `useCallback` تابع متفاوتی برمی‌گرداند {/*every-time-my-component-renders-usecallback-returns-a-different-function*/}
 
-Make sure you've specified the dependency array as a second argument!
+مطمئن شوید آرایهٔ وابستگی را به‌عنوان آرگومان دوم مشخص کرده‌اید!
 
-If you forget the dependency array, `useCallback` will return a new function every time:
+اگر آرایهٔ وابستگی را فراموش کنید، `useCallback` هر بار یک تابع جدید برمی‌گرداند:
 
 ```js {7}
 function ProductPage({ productId, referrer }) {
@@ -829,7 +829,7 @@ function ProductPage({ productId, referrer }) {
   // ...
 ```
 
-This is the corrected version passing the dependency array as a second argument:
+این نسخهٔ اصلاح‌شده است که آرایهٔ وابستگی را به‌عنوان آرگومان دوم ارسال می‌کند:
 
 ```js {7}
 function ProductPage({ productId, referrer }) {
@@ -842,7 +842,7 @@ function ProductPage({ productId, referrer }) {
   // ...
 ```
 
-If this doesn't help, then the problem is that at least one of your dependencies is different from the previous render. You can debug this problem by manually logging your dependencies to the console:
+اگر این کمک نکرد، پس مشکل این است که حداقل یکی از وابستگی‌های شما با رندر قبلی متفاوت است. می‌توانید این مشکل را با لاگ کردن دستی وابستگی‌هایتان در کنسول دیباگ کنید:
 
 ```js {5}
   const handleSubmit = useCallback((orderDetails) => {
@@ -852,7 +852,7 @@ If this doesn't help, then the problem is that at least one of your dependencies
   console.log([productId, referrer]);
 ```
 
-You can then right-click on the arrays from different re-renders in the console and select "Store as a global variable" for both of them. Assuming the first one got saved as `temp1` and the second one got saved as `temp2`, you can then use the browser console to check whether each dependency in both arrays is the same:
+سپس می‌توانید روی آرایه‌ها از رندرهای مجدد مختلف در کنسول راست‌کلیک کنید و «Store as a global variable» را برای هر دو انتخاب کنید. با فرض اینکه اولی به‌عنوان `temp1` و دومی به‌عنوان `temp2` ذخیره شده است، می‌توانید سپس از کنسول مرورگر استفاده کنید تا بررسی کنید آیا هر وابستگی در هر دو آرایه یکسان است یا نه:
 
 ```js
 Object.is(temp1[0], temp2[0]); // Is the first dependency the same between the arrays?
@@ -860,13 +860,13 @@ Object.is(temp1[1], temp2[1]); // Is the second dependency the same between the 
 Object.is(temp1[2], temp2[2]); // ... and so on for every dependency ...
 ```
 
-When you find which dependency is breaking memoization, either find a way to remove it, or [memoize it as well.](/reference/react/useMemo#memoizing-a-dependency-of-another-hook)
+وقتی پیدا کردید کدام وابستگی مموری‌زیشن را خراب می‌کند، یا راهی برای حذف آن پیدا کنید، یا [آن را نیز مموری‌زیشن کنید.](/reference/react/useMemo#memoizing-a-dependency-of-another-hook)
 
 ---
 
-### I need to call `useCallback` for each list item in a loop, but it's not allowed {/*i-need-to-call-usememo-for-each-list-item-in-a-loop-but-its-not-allowed*/}
+### من باید برای هر آیتم لیست در یک حلقه `useCallback` را فراخوانی کنم، اما مجاز نیست {/*i-need-to-call-usememo-for-each-list-item-in-a-loop-but-its-not-allowed*/}
 
-Suppose the `Chart` component is wrapped in [`memo`](/reference/react/memo). You want to skip re-rendering every `Chart` in the list when the `ReportList` component re-renders. However, you can't call `useCallback` in a loop:
+فرض کنید کامپوننت `Chart` در [`memo`](/reference/react/memo) پیچیده شده است. می‌خواهید وقتی کامپوننت `ReportList` رندر مجدد می‌شود، رندر مجدد هر `Chart` در لیست را رد کنید. با این حال، نمی‌توانید `useCallback` را در یک حلقه فراخوانی کنید:
 
 ```js {expectedErrors: {'react-compiler': [6]}} {5-14}
 function ReportList({ items }) {
@@ -889,7 +889,7 @@ function ReportList({ items }) {
 }
 ```
 
-Instead, extract a component for an individual item, and put `useCallback` there:
+در عوض، برای یک آیتم منفرد یک کامپوننت استخراج کنید، و `useCallback` را آنجا قرار دهید:
 
 ```js {5,12-21}
 function ReportList({ items }) {
@@ -916,7 +916,7 @@ function Report({ item }) {
 }
 ```
 
-Alternatively, you could remove `useCallback` in the last snippet and instead wrap `Report` itself in [`memo`.](/reference/react/memo) If the `item` prop does not change, `Report` will skip re-rendering, so `Chart` will skip re-rendering too:
+همچنین می‌توانید در قطعهٔ کد آخر `useCallback` را حذف کنید و در عوض خود `Report` را در [`memo`](/reference/react/memo) بپیچید. اگر پراپ `item` تغییر نکند، `Report` از رندر مجدد می‌پرد، بنابراین `Chart` نیز از رندر مجدد می‌پرد:
 
 ```js {5,6-8,15}
 function ReportList({ items }) {

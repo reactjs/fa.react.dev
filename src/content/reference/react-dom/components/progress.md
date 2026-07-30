@@ -4,7 +4,7 @@ title: "<progress>"
 
 <Intro>
 
-The [built-in browser `<progress>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress) lets you render a progress indicator.
+[کامپوننت `<progress>` داخلی مرورگر](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress) به شما اجازه می‌دهد یک شاخص پیشرفت رندر کنید.
 
 ```js
 <progress value={0.5} />
@@ -16,36 +16,36 @@ The [built-in browser `<progress>` component](https://developer.mozilla.org/en-U
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `<progress>` {/*progress*/}
 
-To display a progress indicator, render the [built-in browser `<progress>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress) component.
+برای نمایش یک شاخص پیشرفت، [کامپوننت `<progress>` داخلی مرورگر](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress) را رندر کنید.
 
 ```js
 <progress value={0.5} />
 ```
 
-[See more examples below.](#usage)
+[نمونه‌های بیشتر را در ادامه ببینید.](#usage)
 
-#### Props {/*props*/}
+#### پراپس {/*props*/}
 
-`<progress>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+`<progress>` از همهٔ [پراپس‌های رایج عنصر](/reference/react-dom/components/common#common-props) پشتیبانی می‌کند.
 
-Additionally, `<progress>` supports these props:
+علاوه بر این، `<progress>` از این پراپس‌ها پشتیبانی می‌کند:
 
-* [`max`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#max): A number. Specifies the maximum `value`. Defaults to `1`.
-* [`value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#value): A number between `0` and `max`, or `null` for indeterminate progress. Specifies how much was done.
+* [`max`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#max): یک عدد. حداکثر `value` را مشخص می‌کند. پیش‌فرض `1` است.
+* [`value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#value): عددی بین `0` و `max`، یا `null` برای پیشرفت نامشخص. مشخص می‌کند چقدر کار انجام شده است.
 
 ---
 
-## Usage {/*usage*/}
+## نحوهٔ استفاده {/*usage*/}
 
-### Controlling a progress indicator {/*controlling-a-progress-indicator*/}
+### کنترل یک شاخص پیشرفت {/*controlling-a-progress-indicator*/}
 
-To display a progress indicator, render a `<progress>` component. You can pass a number `value` between `0` and the `max` value you specify. If you don't pass a `max` value, it will assumed to be `1` by default.
+برای نمایش یک شاخص پیشرفت، یک کامپوننت `<progress>` رندر کنید. می‌توانید یک عدد `value` بین `0` و مقدار `max` که مشخص کرده‌اید پاس دهید. اگر مقدار `max` پاس ندهید، به‌طور پیش‌فرض `1` فرض می‌شود.
 
-If the operation is not ongoing, pass `value={null}` to put the progress indicator into an indeterminate state.
+اگر عملیات در جریان نیست، `value={null}` را پاس دهید تا شاخص پیشرفت در یک استیت نامشخص قرار گیرد.
 
 <Sandpack>
 

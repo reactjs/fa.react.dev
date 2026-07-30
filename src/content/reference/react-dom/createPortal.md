@@ -4,7 +4,7 @@ title: createPortal
 
 <Intro>
 
-`createPortal` lets you render some children into a different part of the DOM.
+`createPortal` به شما اجازه می‌دهد برخی فرزندان را در بخش متفاوتی از DOM رندر کنید.
 
 
 ```js
@@ -20,11 +20,11 @@ title: createPortal
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `createPortal(children, domNode, key?)` {/*createportal*/}
 
-To create a portal, call `createPortal`, passing some JSX, and the DOM node where it should be rendered:
+برای ایجاد یک پورتال، `createPortal` را فراخوانی کنید، و برخی JSX و گرهٔ DOM که باید در آن رندر شود را پاس دهید:
 
 ```js
 import { createPortal } from 'react-dom';
@@ -40,35 +40,35 @@ import { createPortal } from 'react-dom';
 </div>
 ```
 
-[See more examples below.](#usage)
+[نمونه‌های بیشتر را در ادامه ببینید.](#usage)
 
-A portal only changes the physical placement of the DOM node. In every other way, the JSX you render into a portal acts as a child node of the React component that renders it. For example, the child can access the context provided by the parent tree, and events bubble up from children to parents according to the React tree.
+یک پورتال فقط قرارگیری فیزیکی گرهٔ DOM را تغییر می‌دهد. در هر طریق دیگر، JSX‌ای که در پورتال رندر می‌کنید به‌عنوان گرهٔ فرزند کامپوننت ری‌اکت که آن را رندر می‌کند عمل می‌کند. مثلاً، فرزند می‌تواند به کانتکست ارائه‌شده توسط درخت والد دسترسی داشته باشد، و رویدادها از فرزندان به والدین بر اساس درخت ری‌اکت بالا می‌روند.
 
-#### Parameters {/*parameters*/}
+#### پارامترها {/*parameters*/}
 
-* `children`: Anything that can be rendered with React, such as a piece of JSX (e.g. `<div />` or `<SomeComponent />`), a [Fragment](/reference/react/Fragment) (`<>...</>`), a string or a number, or an array of these.
+* `children`: هر چیزی که با ری‌اکت قابل رندر باشد، مانند یک تکه JSX (مثلاً `<div />` یا `<SomeComponent />`)، یک [فرگمنت](/reference/react/Fragment) (`<>...</>`)، یک رشته یا عدد، یا آرایه‌ای از این‌ها.
 
-* `domNode`: Some DOM node, such as those returned by `document.getElementById()`. The node must already exist. Passing a different DOM node during an update will cause the portal content to be recreated.
+* `domNode`: یک گرهٔ DOM، مانند آنهایی که توسط `document.getElementById()` برگردانده می‌شوند. گره باید از قبل وجود داشته باشد. پاس‌دادن گرهٔ DOM متفاوت در طول یک به‌روزرسانی باعث بازسازی محتوای پورتال می‌شود.
 
-* **optional** `key`: A unique string or number to be used as the portal's [key.](/learn/rendering-lists#keeping-list-items-in-order-with-key)
+* **اختیاری** `key`: یک رشته یا عدد یکتا که به‌عنوان [کلید](/learn/rendering-lists#keeping-list-items-in-order-with-key) پورتال استفاده می‌شود.
 
-#### Returns {/*returns*/}
+#### مقادیر بازگشتی {/*returns*/}
 
-`createPortal` returns a React node that can be included into JSX or returned from a React component. If React encounters it in the render output, it will place the provided `children` inside the provided `domNode`.
+`createPortal` یک گرهٔ ری‌اکت برمی‌گرداند که می‌تواند در JSX include شود یا از یک کامپوننت ری‌اکت بازگردانده شود. اگر ری‌اکت آن را در خروجی رندر پیدا کند، `children` ارائه‌شده را درون `domNode` ارائه‌شده قرار می‌دهد.
 
-#### Caveats {/*caveats*/}
+#### نکات {/*caveats*/}
 
-* Events from portals propagate according to the React tree rather than the DOM tree. For example, if you click inside a portal, and the portal is wrapped in `<div onClick>`, that `onClick` handler will fire. If this causes issues, either stop the event propagation from inside the portal, or move the portal itself up in the React tree.
+* رویدادها از پورتال‌ها بر اساس درخت ری‌اکت نه درخت DOM انتشار می‌یابند. مثلاً، اگر داخل یک پورتال کلیک کنید، و پورتال در `<div onClick>` بپیچیده شده باشد، آن هندلر `onClick` فعال خواهد شد. اگر این مشکل‌ساز می‌شود، یا انتشار رویداد را از درون پورتال متوقف کنید، یا خود پورتال را در درخت ری‌اکت به بالا منتقل کنید.
 
 ---
 
-## Usage {/*usage*/}
+## استفاده {/*usage*/}
 
-### Rendering to a different part of the DOM {/*rendering-to-a-different-part-of-the-dom*/}
+### رندر در بخش متفاوتی از DOM {/*rendering-to-a-different-part-of-the-dom*/}
 
-*Portals* let your components render some of their children into a different place in the DOM. This lets a part of your component "escape" from whatever containers it may be in. For example, a component can display a modal dialog or a tooltip that appears above and outside of the rest of the page.
+*پورتال‌ها* به کامپوننت‌های شما اجازه می‌دهند برخی از فرزندانشان را در مکان متفاوتی در DOM رندر کنند. این به بخشی از کامپوننت شما اجازه می‌دهد از هر کانتینری که ممکن است در آن باشد «فرار» کند. مثلاً، یک کامپوننت می‌تواند یک دیالوگ modal یا tooltipی را نمایش دهد که بالاتر و بیرون از بقیهٔ صفحه ظاهر می‌شود.
 
-To create a portal, render the result of `createPortal` with <CodeStep step={1}>some JSX</CodeStep> and the <CodeStep step={2}>DOM node where it should go</CodeStep>:
+برای ایجاد یک پورتال، نتیجهٔ `createPortal` را با <CodeStep step={1}>برخی JSX</CodeStep> و <CodeStep step={2}>گرهٔ DOM که باید در آن قرار گیرد</CodeStep> رندر کنید:
 
 ```js [[1, 8, "<p>This child is placed in the document body.</p>"], [2, 9, "document.body"]]
 import { createPortal } from 'react-dom';
@@ -86,9 +86,9 @@ function MyComponent() {
 }
 ```
 
-React will put the DOM nodes for <CodeStep step={1}>the JSX you passed</CodeStep> inside of the <CodeStep step={2}>DOM node you provided</CodeStep>.
+ری‌اکت گره‌های DOM برای <CodeStep step={1}>JSX‌ای که پاس داده‌اید</CodeStep> را درون <CodeStep step={2}>گرهٔ DOM که ارائه کرده‌اید</CodeStep> قرار می‌دهد.
 
-Without a portal, the second `<p>` would be placed inside the parent `<div>`, but the portal "teleported" it into the [`document.body`:](https://developer.mozilla.org/en-US/docs/Web/API/Document/body)
+بدون پورتال، دومین `<p>` درون `<div>` والد قرار می‌گرفت، اما پورتال آن را به [`document.body`](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) «دوربری» کرد:
 
 <Sandpack>
 
@@ -110,7 +110,7 @@ export default function MyComponent() {
 
 </Sandpack>
 
-Notice how the second paragraph visually appears outside the parent `<div>` with the border. If you inspect the DOM structure with developer tools, you'll see that the second `<p>` got placed directly into the `<body>`:
+توجه کنید که پاراگراف دوم چطور به‌صورت بصری بیرون از `<div>` والد با border ظاهر می‌شود. اگر ساختار DOM را با ابزارهای توسعه‌دهنده بررسی کنید، خواهید دید که دومین `<p>` مستقیماً درون `<body>` قرار گرفته است:
 
 ```html {4-6,9}
 <body>
@@ -125,15 +125,15 @@ Notice how the second paragraph visually appears outside the parent `<div>` with
 </body>
 ```
 
-A portal only changes the physical placement of the DOM node. In every other way, the JSX you render into a portal acts as a child node of the React component that renders it. For example, the child can access the context provided by the parent tree, and events still bubble up from children to parents according to the React tree.
+یک پورتال فقط قرارگیری فیزیکی گرهٔ DOM را تغییر می‌دهد. در هر طریق دیگر، JSX‌ای که در پورتال رندر می‌کنید به‌عنوان گرهٔ فرزند کامپوننت ری‌اکت که آن را رندر می‌کند عمل می‌کند. مثلاً، فرزند می‌تواند به کانتکست ارائه‌شده توسط درخت والد دسترسی داشته باشد، و رویدادها همچنان از فرزندان به والدین بر اساس درخت ری‌اکت بالا می‌روند.
 
 ---
 
-### Rendering a modal dialog with a portal {/*rendering-a-modal-dialog-with-a-portal*/}
+### رندر یک دیالوگ modal با یک پورتال {/*rendering-a-modal-dialog-with-a-portal*/}
 
-You can use a portal to create a modal dialog that floats above the rest of the page, even if the component that summons the dialog is inside a container with `overflow: hidden` or other styles that interfere with the dialog.
+می‌توانید از پورتال برای ایجاد یک دیالوگ modal که بالای بقیهٔ صفحه شناور است استفاده کنید، حتی اگر کامپوننتی که دیالوگ را احضار می‌کند داخل کانتینری با `overflow: hidden` یا سایر استایل‌هایی که با دیالوگ تداخل دارند باشد.
 
-In this example, the two containers have styles that disrupt the modal dialog, but the one rendered into a portal is unaffected because, in the DOM, the modal is not contained within the parent JSX elements.
+در این مثال، دو کانتینر استایل‌هایی دارند که دیالوگ modal را مختل می‌کنند، اما آن یکی که در پورتال رندر می‌شود تحت تأثیر قرار نمی‌گیرد زیرا، در DOM، modal درون المان‌های JSX والد قرار ندارد.
 
 <Sandpack>
 
@@ -238,17 +238,17 @@ export default function ModalContent({ onClose }) {
 
 <Pitfall>
 
-It's important to make sure that your app is accessible when using portals. For instance, you may need to manage keyboard focus so that the user can move the focus in and out of the portal in a natural way.
+مهم است مطمئن شوید که اپلیکیشن شما هنگام استفاده از پورتال‌ها دسترس‌پذیر است. مثلاً، ممکن است نیاز داشته باشید تمرکز صفحه‌کلید را مدیریت کنید تا کاربر بتواند به‌طور طبیعی تمرکز را به و از پورتال جابجا کند.
 
-Follow the [WAI-ARIA Modal Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal) when creating modals. If you use a community package, ensure that it is accessible and follows these guidelines.
+هنگام ایجاد modalها از [WAI-ARIA Modal Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal) پیروی کنید. اگر از یک پکیج community استفاده می‌کنید، اطمینان حاصل کنید که دسترس‌پذیر است و از این دستورالعمل‌ها پیروی می‌کند.
 
 </Pitfall>
 
 ---
 
-### Rendering React components into non-React server markup {/*rendering-react-components-into-non-react-server-markup*/}
+### رندر کامپوننت‌های ری‌اکت در markup سرور غیرری‌اکتی {/*rendering-react-components-into-non-react-server-markup*/}
 
-Portals can be useful if your React root is only part of a static or server-rendered page that isn't built with React. For example, if your page is built with a server framework like Rails, you can create areas of interactivity within static areas such as sidebars. Compared with having [multiple separate React roots,](/reference/react-dom/client/createRoot#rendering-a-page-partially-built-with-react) portals let you treat the app as a single React tree with shared state even though its parts render to different parts of the DOM.
+پورتال‌ها می‌توانند مفید باشند اگر root ری‌اکت شما فقط بخشی از یک صفحهٔ استاتیک یا server-rendered باشد که با ری‌اکت ساخته نشده. مثلاً، اگر صفحهٔ شما با یک فریم‌ورک سرور مانند Rails ساخته شده، می‌توانید در مناطق استاتیک مانند نوارهای کناری، مناطق تعاملی ایجاد کنید. در مقایسه با داشتن [چندین root ری‌اکت جداگانه](/reference/react-dom/client/createRoot#rendering-a-page-partially-built-with-react)، پورتال‌ها به شما اجازه می‌دهند اپلیکیشن را به‌عنوان یک درخت ری‌اکت منفرد با استیت مشترک در نظر بگیرید حتی اگر بخش‌های آن به بخش‌های متفاوتی از DOM رندر می‌شوند.
 
 <Sandpack>
 
@@ -342,15 +342,15 @@ p {
 
 ---
 
-### Rendering React components into non-React DOM nodes {/*rendering-react-components-into-non-react-dom-nodes*/}
+### رندر کامپوننت‌های ری‌اکت در گره‌های DOM غیرری‌اکتی {/*rendering-react-components-into-non-react-dom-nodes*/}
 
-You can also use a portal to manage the content of a DOM node that's managed outside of React. For example, suppose you're integrating with a non-React map widget and you want to render React content inside a popup. To do this, declare a `popupContainer` state variable to store the DOM node you're going to render into:
+شما همچنین می‌توانید از پورتال برای مدیریت محتوای یک گرهٔ DOM که بیرون از ری‌اکت مدیریت می‌شود استفاده کنید. مثلاً، فرض کنید در حال یکپارچه‌سازی با یک ویجت نقشهٔ غیرری‌اکتی هستید و می‌خواهید محتوای ری‌اکت را درون یک popup رندر کنید. برای این کار، یک متغیر استیت `popupContainer` را برای ذخیرهٔ گرهٔ DOM که قرار است در آن رندر کنید تعریف کنید:
 
 ```js
 const [popupContainer, setPopupContainer] = useState(null);
 ```
 
-When you create the third-party widget, store the DOM node returned by the widget so you can render into it:
+وقتی ویجت شخص ثالث را ایجاد می‌کنید، گرهٔ DOM برگردانده‌شده توسط ویجت را ذخیره کنید تا بتوانید در آن رندر کنید:
 
 ```js {5-6}
 useEffect(() => {
@@ -363,7 +363,7 @@ useEffect(() => {
 }, []);
 ```
 
-This lets you use `createPortal` to render React content into `popupContainer` once it becomes available:
+این به شما اجازه می‌دهد از `createPortal` برای رندر محتوای ری‌اکت در `popupContainer` استفاده کنید به‌محض اینکه در دسترس قرار گرفت:
 
 ```js {3-6}
 return (
@@ -376,7 +376,7 @@ return (
 );
 ```
 
-Here is a complete example you can play with:
+در اینجا یک مثال کامل وجود دارد که می‌توانید با آن کار کنید:
 
 <Sandpack>
 

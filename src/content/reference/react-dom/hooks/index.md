@@ -1,20 +1,20 @@
 ---
-title: "Built-in React DOM Hooks"
+title: "هوک‌های داخلی React DOM"
 ---
 
 <Intro>
 
-The `react-dom` package contains Hooks that are only supported for web applications (which run in the browser DOM environment). These Hooks are not supported in non-browser environments like iOS, Android, or Windows applications. If you are looking for Hooks that are supported in web browsers *and other environments* see [the React Hooks page](/reference/react). This page lists all the Hooks in the `react-dom` package.
+پکیج `react-dom` شامل هوک‌هایی است که فقط برای اپلیکیشن‌های وب (که در محیط DOM مرورگر اجرا می‌شوند) پشتیبانی می‌شوند. این هوک‌ها در محیط‌های غیر مرورگری مانند اپلیکیشن‌های iOS، Android یا Windows پشتیبانی نمی‌شوند. اگر به دنبال هوک‌هایی هستید که در مرورگرهای وب *و سایر محیط‌ها* پشتیبانی شوند، [صفحهٔ هوک‌های ری‌اکت](/reference/react) را ببینید. این صفحه همهٔ هوک‌های پکیج `react-dom` را فهرست می‌کند.
 
 </Intro>
 
 ---
 
-## Form Hooks {/*form-hooks*/}
+## هوک‌های فرم {/*form-hooks*/}
 
-*Forms* let you create interactive controls for submitting information.  To manage forms in your components, use one of these Hooks:
+*فرم‌ها* به شما اجازه می‌دهند کنترل‌های تعاملی برای ارسال اطلاعات ایجاد کنید. برای مدیریت فرم‌ها در کامپوننت‌های خود، از یکی از این هوک‌ها استفاده کنید:
 
-* [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) allows you to make updates to the UI based on the status of a form.
+* [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) به شما اجازه می‌دهد به‌روزرسانی‌هایی در رابط کاربری بر اساس وضعیت یک فرم انجام دهید.
 
 ```js
 function Form({ action }) {

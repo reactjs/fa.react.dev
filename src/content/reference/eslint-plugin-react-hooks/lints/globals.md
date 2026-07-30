@@ -4,17 +4,17 @@ title: globals
 
 <Intro>
 
-Validates against assignment/mutation of globals during render, part of ensuring that [side effects must run outside of render](/reference/rules/components-and-hooks-must-be-pure#side-effects-must-run-outside-of-render).
+انتساب/تغییر متغیرهای سراسری در طول رندر را اعتبارسنجی می‌کند، که بخشی از تضمین [اینکه عوارض جانبی باید خارج از رندر اجرا شوند](/reference/rules/components-and-hooks-must-be-pure#side-effects-must-run-outside-of-render) است.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## جزئیات قانون {/*rule-details*/}
 
-Global variables exist outside React's control. When you modify them during render, you break React's assumption that rendering is pure. This can cause components to behave differently in development vs production, break Fast Refresh, and make your app impossible to optimize with features like React Compiler.
+متغیرهای سراسری خارج از کنترل ری‌اکت وجود دارند. وقتی آن‌ها را در طول رندر تغییر می‌دهید، فرض ری‌اکت مبنی بر اینکه رندر خالص است را می‌شکنید. این می‌تواند باعث شود کامپوننت‌ها در توسعه در برابر production متفاوت رفتار کنند، Fast Refresh را بشکند، و اپ شما را برای بهینه‌سازی با قابلیت‌هایی مانند React Compiler غیرممکن سازد.
 
-### Invalid {/*invalid*/}
+### نامعتبر {/*invalid*/}
 
-Examples of incorrect code for this rule:
+نمونه‌هایی از کد نادرست برای این قانون:
 
 ```js
 // ❌ Global counter
@@ -47,9 +47,9 @@ function Component({id}) {
 }
 ```
 
-### Valid {/*valid*/}
+### معتبر {/*valid*/}
 
-Examples of correct code for this rule:
+نمونه‌هایی از کد درست برای این قانون:
 
 ```js
 // ✅ Use state for counters
