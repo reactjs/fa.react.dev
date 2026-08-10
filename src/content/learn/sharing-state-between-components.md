@@ -334,7 +334,11 @@ h3, p { margin: 5px 0px; }
 
 ####  ورودی های هماهنگ {/*synced-inputs*/}
 
+<<<<<<< HEAD
 این دو ورودی مستقل هستند. آنها را هماهنگ کنید: ویرایش یک ورودی باید ورودی دیگر را با همان متن به روز کند، و بالعکس.
+=======
+These two inputs are independent. Make them stay in sync: editing one input should update the other input with the same text, and vice versa.
+>>>>>>> c7d6b700038c63d1aaf2c649af1aefe01ebbacac
 
 <Hint>
 
@@ -582,7 +586,7 @@ function SearchBar({ query, onChange }) {
 function List({ items }) {
   return (
     <table>
-      <tbody> 
+      <tbody>
         {items.map(food => (
           <tr key={food.id}>
             <td>{food.name}</td>
