@@ -311,7 +311,11 @@ async function buildContributorMap() {
 async function fetchErrorCodes() {
   try {
     const response = await fetch(
+<<<<<<< HEAD
       'https://raw.githubusercontent.com/facebook/react/main/scripts/error-codes/codes.json'
+=======
+      'https://raw.githubusercontent.com/react/react/main/scripts/error-codes/codes.json'
+>>>>>>> c7d6b700038c63d1aaf2c649af1aefe01ebbacac
     );
     if (!response.ok) {
       throw new Error(`Failed to fetch error codes: ${response.status}`);
