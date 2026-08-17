@@ -31,7 +31,11 @@ title: تنظیم اولیه ویرایشگر
 
 ### Linting {/*linting*/}
 
+<<<<<<< HEAD
 بی شک linter های کد به شما در پیدا کردن خطاهایی که در کد ایجاد کرده‌اید و برطرف کردن آن‌ها کمک میکنند. [ESLint](https://eslint.org/) یک linter متن باز و محبوب برای جاوااسکریپت است.
+=======
+Code linters find problems in your code as you write, helping you fix them early. [ESLint](https://eslint.org/) is a popular, open source linter for JavaScript.
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 * [ESLint را با پیکربندی پیشنهادی برای ری‌اکت نصب کنید](https://www.npmjs.com/package/eslint-config-react-app) (مطمعن شوید که [Node نصب است!](https://nodejs.org/en/download/current/))
 * [ESLint را با افزونه‌ی رسمی به VSCode اضافه کنید](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
