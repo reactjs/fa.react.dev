@@ -177,7 +177,11 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 | "replace with `5`" | `0` (unused) | `5` |
 | `n => n + 1` | `5` | `5 + 1 = 6` |
 
+<<<<<<< HEAD
 ری&zwnj;اکت مقدار `6` را به عنوان نتیجه&zwnj;ی نهایی ذخیره می&zwnj;کند و آن را از `useState` بر می&zwnj;گرداند. 
+=======
+React stores `6` as the final result and returns it from `useState`.
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 <Note>
 
@@ -304,7 +308,7 @@ export default function RequestTracker() {
         Completed: {completed}
       </h3>
       <button onClick={handleClick}>
-        Buy     
+        Buy
       </button>
     </>
   );
@@ -348,7 +352,7 @@ export default function RequestTracker() {
         Completed: {completed}
       </h3>
       <button onClick={handleClick}>
-        Buy     
+        Buy
       </button>
     </>
   );

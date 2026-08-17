@@ -57,11 +57,16 @@
       ]
     },
     {
+<<<<<<< HEAD
       "title": "کامپایلر ری‌اکت",
+=======
+      "title": "React Compiler",
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
       "path": "/learn/react-compiler",
       "canary": true,
       "routes": [
         {
+<<<<<<< HEAD
           "title": "مقدمه",
           "path": "/learn/react-compiler/introduction"
         },
@@ -75,6 +80,21 @@
         },
         {
           "title": "دیباگ و رفع اشکال",
+=======
+          "title": "Introduction",
+          "path": "/learn/react-compiler/introduction"
+        },
+        {
+          "title": "Installation",
+          "path": "/learn/react-compiler/installation"
+        },
+        {
+          "title": "Incremental Adoption",
+          "path": "/learn/react-compiler/incremental-adoption"
+        },
+        {
+          "title": "Debugging and Troubleshooting",
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
           "path": "/learn/react-compiler/debugging"
         }
       ]
