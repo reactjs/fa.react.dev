@@ -130,7 +130,11 @@ module.exports = {
 Older React versions need the runtime package and target configuration:
 
 ```bash
+<<<<<<< HEAD
 npm install react-compiler-runtime@rc
+=======
+npm install react-compiler-runtime@latest
+>>>>>>> 7c36f7ac329fe3cf2e11222edce9a535158c2cab
 ```
 
 ```js
