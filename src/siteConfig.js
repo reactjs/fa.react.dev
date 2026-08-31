@@ -9,7 +9,7 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 exports.siteConfig = {
-  version: '19.1',
+  version: '19.2',
   // --------------------------------------
   // Translations should replace these lines:
   languageCode: 'en',
@@ -17,7 +17,7 @@ exports.siteConfig = {
   isRTL: true,
   // --------------------------------------
   copyright: `Copyright © ${new Date().getFullYear()} Facebook Inc. All Rights Reserved.`,
-  repoUrl: 'https://github.com/facebook/react',
+  repoUrl: 'https://github.com/react/react',
   twitterUrl: 'https://twitter.com/reactjs',
   algolia: {
     appId: '1FCF9AYYAT',
