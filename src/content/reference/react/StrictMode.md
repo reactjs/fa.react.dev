@@ -1170,7 +1170,11 @@ export default function CatFriends() {
                   console.log('❌ Too many cats in the list!');
                 }
                 return () => {
+<<<<<<< HEAD
                   list.splice(list.indexOf(item));
+=======
+                  list.splice(list.indexOf(item), 1);
+>>>>>>> f3d9794fc31f4a3faf7e863984d37f4ae86b3290
                   console.log(`❌ Removing cat from the map. Total cats: ${itemsRef.current.length}`);
                 }
               }}

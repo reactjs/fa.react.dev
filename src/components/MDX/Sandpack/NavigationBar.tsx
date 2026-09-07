@@ -48,7 +48,13 @@ const getFileName = (filePath: string): string => {
   return filePath.slice(lastIndexOfSlash + 1);
 };
 
-export function NavigationBar({providedFiles}: {providedFiles: Array<string>}) {
+export function NavigationBar({
+  providedFiles,
+  showOpenInCodeSandbox = true,
+}: {
+  providedFiles: Array<string>;
+  showOpenInCodeSandbox?: boolean;
+}) {
   const {sandpack} = useSandpack();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const tabsRef = useRef<HTMLDivElement | null>(null);
@@ -198,7 +204,11 @@ export function NavigationBar({providedFiles}: {providedFiles: Array<string>}) {
         <DownloadButton providedFiles={providedFiles} />
         <ReloadButton onReload={handleReload} />
         <ClearButton onClear={handleClear} />
+<<<<<<< HEAD
         <OpenInCodeSandboxButton />
+=======
+        {showOpenInCodeSandbox && <OpenInCodeSandboxButton />}
+>>>>>>> f3d9794fc31f4a3faf7e863984d37f4ae86b3290
         {activeFile.endsWith('.tsx') && (
           <OpenInTypeScriptPlaygroundButton
             content={sandpack.files[activeFile]?.code || ''}
