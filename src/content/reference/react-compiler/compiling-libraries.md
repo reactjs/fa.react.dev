@@ -21,7 +21,11 @@ As a library author, you can compile your library code before publishing to npm.
 Add React Compiler to your library's build process:
 
 <TerminalBlock>
+<<<<<<< HEAD
 npm install -D babel-plugin-react-compiler@rc
+=======
+npm install -D babel-plugin-react-compiler@latest
+>>>>>>> 44b0b5f10b7f6477bf146d26444717fb4930439f
 </TerminalBlock>
 
 Configure your build tool to compile your library. For example, with Babel:
@@ -45,13 +49,21 @@ If your library supports React versions below 19, you'll need additional configu
 We recommend installing react-compiler-runtime as a direct dependency:
 
 <TerminalBlock>
+<<<<<<< HEAD
 npm install react-compiler-runtime@rc
+=======
+npm install react-compiler-runtime@latest
+>>>>>>> 44b0b5f10b7f6477bf146d26444717fb4930439f
 </TerminalBlock>
 
 ```json
 {
   "dependencies": {
+<<<<<<< HEAD
     "react-compiler-runtime": "^19.1.0-rc.2"
+=======
+    "react-compiler-runtime": "^1.0.0"
+>>>>>>> 44b0b5f10b7f6477bf146d26444717fb4930439f
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0 || ^19.0.0"

@@ -36,6 +36,7 @@ They are special in React because passing the `value` prop to them makes them *[
 
 These built-in browser components let you load external resources or annotate the document with metadata:
 
+* [`<img>`](/reference/react-dom/components/img)
 * [`<link>`](/reference/react-dom/components/link)
 * [`<meta>`](/reference/react-dom/components/meta)
 * [`<script>`](/reference/react-dom/components/script)
@@ -91,7 +92,7 @@ React supports all built-in browser HTML components. This includes:
 * [`<html>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html)
 * [`<i>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i)
 * [`<iframe>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe)
-* [`<img>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)
+* [`<img>`](/reference/react-dom/components/img)
 * [`<input>`](/reference/react-dom/components/input)
 * [`<ins>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins)
 * [`<kbd>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd)
@@ -205,7 +206,11 @@ root.render(<App />);
 export class MyElement extends HTMLElement {
   constructor() {
     super();
+<<<<<<< HEAD
     // The value here will be overwritten by React 
+=======
+    // The value here will be overwritten by React
+>>>>>>> 44b0b5f10b7f6477bf146d26444717fb4930439f
     // when initialized as an element
     this.value = undefined;
   }
