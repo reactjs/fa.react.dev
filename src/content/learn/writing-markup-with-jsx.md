@@ -1,34 +1,34 @@
 ---
-title: Writing Markup with JSX
+title: نوشتن نشانه‌گذاری با JSX
 ---
 
 <Intro>
 
-*JSX* is a syntax extension for JavaScript that lets you write HTML-like markup inside a JavaScript file. Although there are other ways to write components, most React developers prefer the conciseness of JSX, and most codebases use it.
+*JSX* یک گسترش سینتکسی برای جاوااسکریپت است که به شما امکان می‌دهد مارکاپ شبه-HTML را داخل یک فایل جاوااسکریپت بنویسید. اگرچه راه‌های دیگری برای نوشتن کامپوننت‌ها وجود دارد، بیشتر توسعه‌دهندگان ری‌اکت ایجاز JSX را ترجیح می‌دهند و بیشتر کدبیس‌ها از آن استفاده می‌کنند.
 
 </Intro>
 
 <YouWillLearn>
 
-* Why React mixes markup with rendering logic
-* How JSX is different from HTML
-* How to display information with JSX
+* چرا ری‌اکت نشانه‌گذاری را با منطق رندر ترکیب می‌کند
+* تفاوت JSX با HTML در چیست
+* چگونه اطلاعات را با JSX نمایش دهید
 
 </YouWillLearn>
 
-## JSX: Putting markup into JavaScript {/*jsx-putting-markup-into-javascript*/}
+## JSX: قرار دادن نشانه‌گذاری در جاوااسکریپت {/*jsx-putting-markup-into-javascript*/}
 
-The Web has been built on HTML, CSS, and JavaScript. For many years, web developers kept content in HTML, design in CSS, and logic in JavaScript—often in separate files! Content was marked up inside HTML while the page's logic lived separately in JavaScript:
+وب بر پایه HTML، CSS و جاوااسکریپت ساخته شده است. سال‌ها توسعه‌دهندگان وب محتوا را در HTML، طراحی را در CSS و منطق را در جاوااسکریپت نگه می‌داشتند — که اغلب در فایل‌های جداگانه بود! محتوا داخل HTML نشانه‌گذاری می‌شد در حالی که منطق صفحه جداگانه در جاوااسکریپت زندگی می‌کرد:
 
 <DiagramGroup>
 
-<Diagram name="writing_jsx_html" height={237} width={325} alt="HTML markup with purple background and a div with two child tags: p and form. ">
+<Diagram name="writing_jsx_html" height={237} width={325} alt="نشانه‌گذاری HTML با پس‌زمینه بنفش و یک div با دو تگ فرزند: p و form.">
 
 HTML
 
 </Diagram>
 
-<Diagram name="writing_jsx_js" height={237} width={325} alt="Three JavaScript handlers with yellow background: onSubmit, onLogin, and onClick.">
+<Diagram name="writing_jsx_js" height={237} width={325} alt="سه هندلر جاوااسکریپت با پس‌زمینه زرد: onSubmit، onLogin و onClick.">
 
 JavaScript
 
@@ -36,17 +36,17 @@ JavaScript
 
 </DiagramGroup>
 
-But as the Web became more interactive, logic increasingly determined content. JavaScript was in charge of the HTML! This is why **in React, rendering logic and markup live together in the same place—components.**
+اما هرچه وب تعاملی‌تر شد، منطق به‌طور فزاینده‌ای محتوا را تعیین کرد. جاوااسکریپت مسئول HTML بود! به همین دلیل است که **در ری‌اکت، منطق رندر و نشانه‌گذاری در یک جا زندگی می‌کنند — کامپوننت‌ها.**
 
 <DiagramGroup>
 
-<Diagram name="writing_jsx_sidebar" height={330} width={325} alt="React component with HTML and JavaScript from previous examples mixed. Function name is Sidebar which calls the function isLoggedIn, highlighted in yellow. Nested inside the function highlighted in purple is the p tag from before, and a Form tag referencing the component shown in the next diagram.">
+<Diagram name="writing_jsx_sidebar" height={330} width={325} alt="کامپوننت ری‌اکت با HTML و جاوااسکریپت ترکیب‌شده از مثال‌های قبلی. نام تابع Sidebar است که تابع isLoggedIn را صدا می‌زند که به رنگ زرد هایلایت شده. داخل تابع که به رنگ بنفش هایلایت شده، تگ p از قبل و یک تگ Form که به کامپوننت نشان‌داده‌شده در نمودار بعدی ارجاع می‌دهد قرار دارد.">
 
 `Sidebar.js` React component
 
 </Diagram>
 
-<Diagram name="writing_jsx_form" height={330} width={325} alt="React component with HTML and JavaScript from previous examples mixed. Function name is Form containing two handlers onClick and onSubmit highlighted in yellow. Following the handlers is HTML highlighted in purple. The HTML contains a form element with a nested input element, each with an onClick prop.">
+<Diagram name="writing_jsx_form" height={330} width={325} alt="کامپوننت ری‌اکت با HTML و جاوااسکریپت ترکیب‌شده از مثال‌های قبلی. نام تابع Form است که شامل دو هندلر onClick و onSubmit هایلایت‌شده به رنگ زرد است. بعد از هندلرها HTML هایلایت‌شده به رنگ بنفش قرار دارد. HTML شامل یک المنت form با یک المنت input تودرتو است که هر کدام یک پراپ onClick دارند.">
 
 `Form.js` React component
 
@@ -54,19 +54,19 @@ But as the Web became more interactive, logic increasingly determined content. J
 
 </DiagramGroup>
 
-Keeping a button's rendering logic and markup together ensures that they stay in sync with each other on every edit. Conversely, details that are unrelated, such as the button's markup and a sidebar's markup, are isolated from each other, making it safer to change either of them on their own.
+نگه داشتن منطق رندر یک دکمه و نشانه‌گذاری آن در کنار هم تضمین می‌کند که در هر ویرایش با هم همگام بمانند. در مقابل، جزئیاتی که نامرتبط‌اند، مثل نشانه‌گذاری دکمه و نشانه‌گذاری سایدبار، از هم جدا هستند و تغییر هر کدام به‌تنهایی امن‌تر می‌شود.
 
-Each React component is a JavaScript function that may contain some markup that React renders into the browser. React components use a syntax extension called JSX to represent that markup. JSX looks a lot like HTML, but it is a bit stricter and can display dynamic information. The best way to understand this is to convert some HTML markup to JSX markup.
+هر کامپوننت ری‌اکت یک تابع جاوااسکریپت است که ممکن است مقداری نشانه‌گذاری داشته باشد که ری‌اکت آن را در مرورگر رندر می‌کند. کامپوننت‌های ری‌اکت از یک گسترش سینتکسی به نام JSX برای نمایش آن نشانه‌گذاری استفاده می‌کنند. JSX خیلی شبیه HTML به نظر می‌رسد، اما کمی سخت‌گیرانه‌تر است و می‌تواند اطلاعات پویا را نمایش دهد. بهترین راه برای درک این موضوع، تبدیل مقداری نشانه‌گذاری HTML به نشانه‌گذاری JSX است.
 
 <Note>
 
-JSX and React are two separate things. They're often used together, but you *can* [use them independently](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-a-jsx-transform) of each other. JSX is a syntax extension, while React is a JavaScript library.
+JSX و ری‌اکت دو چیز جداگانه هستند. آن‌ها اغلب با هم استفاده می‌شوند، اما شما *می‌توانید* [از آن‌ها مستقل از هم استفاده کنید](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-a-jsx-transform) .JSX یک گسترش سینتکسی است، در حالی که ری‌اکت یک کتابخانه جاوااسکریپت است.
 
 </Note>
 
-## Converting HTML to JSX {/*converting-html-to-jsx*/}
+## تبدیل HTML به JSX {/*converting-html-to-jsx*/}
 
-Suppose that you have some (perfectly valid) HTML:
+فرض کنید مقداری HTML (کاملاً معتبر) دارید:
 
 ```html
 <h1>Hedy Lamarr's Todos</h1>
@@ -82,17 +82,17 @@ Suppose that you have some (perfectly valid) HTML:
 </ul>
 ```
 
-And you want to put it into your component:
+و می‌خواهید آن را داخل کامپوننت خود بگذارید:
 
 ```js
 export default function TodoList() {
   return (
-    // ???
+    // ؟؟؟
   )
 }
 ```
 
-If you copy and paste it as is, it will not work:
+اگر آن را همان‌طور کپی و پیست کنید، کار نخواهد کرد:
 
 
 <Sandpack>
@@ -100,7 +100,7 @@ If you copy and paste it as is, it will not work:
 ```js
 export default function TodoList() {
   return (
-    // This doesn't quite work!
+    // این خیلی درست کار نمی‌کند!
     <h1>Hedy Lamarr's Todos</h1>
     <img 
       src="https://i.imgur.com/yXOvdOSs.jpg" 
@@ -122,21 +122,21 @@ img { height: 90px }
 
 </Sandpack>
 
-This is because JSX is stricter and has a few more rules than HTML! If you read the error messages above, they'll guide you to fix the markup, or you can follow the guide below.
+دلیلش این است که JSX سخت‌گیرانه‌تر است و چند قانون بیشتر از HTML دارد! اگر پیام‌های خطای بالا را بخوانید، شما را به سمت رفع نشانه‌گذاری هدایت می‌کنند، یا می‌توانید راهنمای زیر را دنبال کنید.
 
 <Note>
 
-Most of the time, React's on-screen error messages will help you find where the problem is. Give them a read if you get stuck!
+بیشتر اوقات، پیام‌های خطای روی صفحه ری‌اکت به شما کمک می‌کنند مشکل را پیدا کنید. اگر گیر کردید، آن‌ها را بخوانید!
 
 </Note>
 
-## The Rules of JSX {/*the-rules-of-jsx*/}
+## قوانین JSX {/*the-rules-of-jsx*/}
 
-### 1. Return a single root element {/*1-return-a-single-root-element*/}
+### ۱. یک المنت ریشه واحد برگردانید {/*1-return-a-single-root-element*/}
 
-To return multiple elements from a component, **wrap them with a single parent tag.**
+برای برگرداندن چند المنت از یک کامپوننت، **آن‌ها را با یک تگ والد واحد بپیچید.**
 
-For example, you can use a `<div>`:
+برای مثال، می‌توانید از یک `<div>` استفاده کنید:
 
 ```js {1,11}
 <div>
@@ -153,7 +153,7 @@ For example, you can use a `<div>`:
 ```
 
 
-If you don't want to add an extra `<div>` to your markup, you can write `<>` and `</>` instead:
+اگر نمی‌خواهید یک `<div>` اضافه به نشانه‌گذاری خود اضافه کنید، می‌توانید به‌جای آن `<>` و `</>` بنویسید:
 
 ```js {1,11}
 <>
@@ -169,21 +169,21 @@ If you don't want to add an extra `<div>` to your markup, you can write `<>` and
 </>
 ```
 
-This empty tag is called a *[Fragment.](/reference/react/Fragment)* Fragments let you group things without leaving any trace in the browser HTML tree.
+این تگ خالی *[فرگمنت](/reference/react/Fragment)* نامیده می‌شود. فرگمنت‌ها به شما امکان می‌دهند چیزها را گروه‌بندی کنید بدون اینکه ردی در درخت HTML مرورگر باقی بگذارند.
 
 <DeepDive>
 
-#### Why do multiple JSX tags need to be wrapped? {/*why-do-multiple-jsx-tags-need-to-be-wrapped*/}
+#### چرا چند تگ JSX باید پیچیده شوند؟ {/*why-do-multiple-jsx-tags-need-to-be-wrapped*/}
 
-JSX looks like HTML, but under the hood it is transformed into plain JavaScript objects. You can't return two objects from a function without wrapping them into an array. This explains why you also can't return two JSX tags without wrapping them into another tag or a Fragment.
+JSX شبیه HTML به نظر می‌رسد، اما در پس‌زمینه به آبجکت‌های ساده جاوااسکریپت تبدیل می‌شود. نمی‌توانید دو آبجکت را از یک تابع برگردانید مگر اینکه آن‌ها را در یک آرایه بپیچید. این توضیح می‌دهد که چرا نمی‌توانید دو تگ JSX را هم بدون پیچیدن در یک تگ دیگر یا یک فرگمنت برگردانید.
 
 </DeepDive>
 
-### 2. Close all the tags {/*2-close-all-the-tags*/}
+### ۲. همه تگ‌ها را ببندید {/*2-close-all-the-tags*/}
 
-JSX requires tags to be explicitly closed: self-closing tags like `<img>` must become `<img />`, and wrapping tags like `<li>oranges` must be written as `<li>oranges</li>`.
+JSX نیاز دارد تگ‌ها به‌صراحت بسته شوند: تگ‌های خودبسته‌شونده مثل `<img>` باید به `<img />` تبدیل شوند و تگ‌های پوشاننده مثل `<li>oranges` باید به‌صورت `<li>oranges</li>` نوشته شوند.
 
-This is how Hedy Lamarr's image and list items look closed:
+تصویر هدی لامار و آیتم‌های فهرست به‌صورت بسته‌شده این‌طور به نظر می‌رسند:
 
 ```js {2-6,8-10}
 <>
@@ -200,11 +200,11 @@ This is how Hedy Lamarr's image and list items look closed:
 </>
 ```
 
-### 3. camelCase <s>all</s> most of the things! {/*3-camelcase-salls-most-of-the-things*/}
+### ۳. camelCase کردن <s>همه</s> بیشتر چیزها! {/*3-camelcase-salls-most-of-the-things*/}
 
-JSX turns into JavaScript and attributes written in JSX become keys of JavaScript objects. In your own components, you will often want to read those attributes into variables. But JavaScript has limitations on variable names. For example, their names can't contain dashes or be reserved words like `class`.
+JSX به جاوااسکریپت تبدیل می‌شود و صفت‌های نوشته‌شده در JSX به کلیدهای آبجکت‌های جاوااسکریپت تبدیل می‌شوند. در کامپوننت‌های خودتان، اغلب می‌خواهید آن صفت‌ها را در متغیرها بخوانید. اما جاوااسکریپت روی نام متغیرها محدودیت دارد. برای مثال، نام آن‌ها نمی‌تواند خط تیره داشته باشد یا کلمات رزرو شده مثل `class` باشد.
 
-This is why, in React, many HTML and SVG attributes are written in camelCase. For example, instead of `stroke-width` you use `strokeWidth`. Since `class` is a reserved word, in React you write `className` instead, named after the [corresponding DOM property](https://developer.mozilla.org/en-US/docs/Web/API/Element/className):
+به همین دلیل است که در ری‌اکت، بسیاری از صفت‌های HTML و SVG به‌صورت camelCase نوشته می‌شوند. برای مثال، به‌جای `stroke-width` از `strokeWidth` استفاده می‌کنید. چون `class` یک کلمه رزرو شده است، در ری‌اکت به‌جای آن `className` می‌نویسید که از [پراپرتی متناظر DOM](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) نام گرفته است:
 
 ```js {4}
 <img 
@@ -214,19 +214,19 @@ This is why, in React, many HTML and SVG attributes are written in camelCase. Fo
 />
 ```
 
-You can [find all these attributes in the list of DOM component props.](/reference/react-dom/components/common) If you get one wrong, don't worry—React will print a message with a possible correction to the [browser console.](https://developer.mozilla.org/docs/Tools/Browser_Console)
+می‌توانید همه این صفت‌ها را در [فهرست پراپ‌های کامپوننت DOM](/reference/react-dom/components/common) پیدا کنید. اگر یکی را اشتباه نوشتید، نگران نباشید — ری‌اکت پیامی با اصلاح احتمالی در [کنسول مرورگر](https://developer.mozilla.org/docs/Tools/Browser_Console) چاپ می‌کند.
 
 <Pitfall>
 
-For historical reasons, [`aria-*`](https://developer.mozilla.org/docs/Web/Accessibility/ARIA) and [`data-*`](https://developer.mozilla.org/docs/Learn/HTML/Howto/Use_data_attributes) attributes are written as in HTML with dashes.
+به دلایل تاریخی، صفت‌های [`aria-*`](https://developer.mozilla.org/docs/Web/Accessibility/ARIA) و [`data-*`](https://developer.mozilla.org/docs/Learn/HTML/Howto/Use_data_attributes) مثل HTML با خط تیره نوشته می‌شوند.
 
 </Pitfall>
 
-### Pro-tip: Use a JSX Converter {/*pro-tip-use-a-jsx-converter*/}
+### نکته حرفه‌ای: از مبدل JSX استفاده کنید {/*pro-tip-use-a-jsx-converter*/}
 
-Converting all these attributes in existing markup can be tedious! We recommend using a [converter](https://transform.tools/html-to-jsx) to translate your existing HTML and SVG to JSX. Converters are very useful in practice, but it's still worth understanding what is going on so that you can comfortably write JSX on your own.
+تبدیل همه این صفت‌ها در نشانه‌گذاری موجود می‌تواند خسته‌کننده باشد! توصیه می‌کنیم از یک [مبدل](https://transform.tools/html-to-jsx) برای ترجمه HTML و SVG موجود خود به JSX استفاده کنید. مبدل‌ها در عمل خیلی مفیدند، اما باز هم ارزش دارد بدانید چه اتفاقی می‌افتد تا بتوانید خودتان راحت JSX بنویسید.
 
-Here is your final result:
+نتیجه نهایی شما اینجاست:
 
 <Sandpack>
 
@@ -258,11 +258,11 @@ img { height: 90px }
 
 <Recap>
 
-Now you know why JSX exists and how to use it in components:
+حالا می‌دانید چرا JSX وجود دارد و چگونه از آن در کامپوننت‌ها استفاده کنید:
 
-* React components group rendering logic together with markup because they are related.
-* JSX is similar to HTML, with a few differences. You can use a [converter](https://transform.tools/html-to-jsx) if you need to.
-* Error messages will often point you in the right direction to fixing your markup.
+* کامپوننت‌های ری‌اکت منطق رندر را همراه با نشانه‌گذاری گروه‌بندی می‌کنند چون به هم مرتبط‌اند.
+* JSX شبیه HTML است، با چند تفاوت. اگر نیاز داشتید می‌توانید از یک [مبدل](https://transform.tools/html-to-jsx) استفاده کنید.
+* پیام‌های خطا اغلب شما را در مسیر درست برای رفع نشانه‌گذاری‌تان قرار می‌دهند.
 
 </Recap>
 
@@ -270,9 +270,9 @@ Now you know why JSX exists and how to use it in components:
 
 <Challenges>
 
-#### Convert some HTML to JSX {/*convert-some-html-to-jsx*/}
+#### تبدیل مقداری HTML به JSX {/*convert-some-html-to-jsx*/}
 
-This HTML was pasted into a component, but it's not valid JSX. Fix it:
+این HTML داخل یک کامپوننت پیست شده، اما JSX معتبری نیست. آن را رفع کنید:
 
 <Sandpack>
 
@@ -308,7 +308,7 @@ export default function Bio() {
 
 </Sandpack>
 
-Whether to do it by hand or using the converter is up to you!
+این کار را دستی انجام دهید یا با مبدل، با خودتان است!
 
 <Solution>
 
