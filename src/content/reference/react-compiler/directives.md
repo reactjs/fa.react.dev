@@ -195,4 +195,8 @@ For specific issues with directives, see the troubleshooting sections in:
 
 * [`compilationMode`](/reference/react-compiler/compilationMode) - Configure how the compiler chooses what to optimize
 * [`Configuration`](/reference/react-compiler/configuration) - Full compiler configuration options
+<<<<<<< HEAD
 * [React Compiler documentation](https://react.dev/learn/react-compiler) - Getting started guide
+=======
+* [React Compiler documentation](/learn/react-compiler) - Getting started guide
+>>>>>>> 8c68ae8d2410abe59f351195780c6f8ea9f50904

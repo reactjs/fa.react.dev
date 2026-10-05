@@ -16,6 +16,10 @@ const {parseFenceMetadata} = require('./metadata');
  * @property {{lineIndex: number, rawText: string, metaText: string, range: [number, number]}} fence
  * @property {string} filePath
  * @property {string} lang
+<<<<<<< HEAD
+=======
+ * @property {string} meta
+>>>>>>> 8c68ae8d2410abe59f351195780c6f8ea9f50904
  * @property {import('./metadata').FenceMetadata} metadata
  */
 
@@ -76,6 +80,10 @@ function parseMarkdownFile(content, filePath) {
 
       blocks.push({
         lang: rawLang || normalizedLang,
+<<<<<<< HEAD
+=======
+        meta: node.meta || metaText.trim(),
+>>>>>>> 8c68ae8d2410abe59f351195780c6f8ea9f50904
         metadata,
         filePath,
         code: node.value || '',
