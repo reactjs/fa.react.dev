@@ -4,7 +4,11 @@ title: Client React DOM APIs
 
 <Intro>
 
+<<<<<<< HEAD
 The `react-dom/client` APIs let you render React components on the client (in the browser). These APIs are typically used at the top level of your app to initialize your React tree. A [framework](/learn/start-a-new-react-project#full-stack-frameworks) may call them for you. Most of your components don't need to import or use them.
+=======
+The `react-dom/client` APIs let you render React components on the client (in the browser). These APIs are typically used at the top level of your app to initialize your React tree. A [framework](/learn/creating-a-react-app#full-stack-frameworks) may call them for you. Most of your components don't need to import or use them.
+>>>>>>> 8c68ae8d2410abe59f351195780c6f8ea9f50904
 
 </Intro>
 
