@@ -29,10 +29,17 @@ function Parent() {
 
 // ❌ Dynamic component creation
 function Parent({type}) {
+<<<<<<< HEAD
   const Component = type === 'button' 
     ? () => <button>Click</button>
     : () => <div>Text</div>;
   
+=======
+  const Component = type === 'button'
+    ? () => <button>Click</button>
+    : () => <div>Text</div>;
+
+>>>>>>> 046f17d04295ba047bb5739026b4ac3110f17028
   return <Component />;
 }
 ```
@@ -47,10 +54,17 @@ const ButtonComponent = () => <button>Click</button>;
 const TextComponent = () => <div>Text</div>;
 
 function Parent({type}) {
+<<<<<<< HEAD
   const Component = type === 'button' 
     ? ButtonComponent  // Reference existing component
     : TextComponent;
   
+=======
+  const Component = type === 'button'
+    ? ButtonComponent  // Reference existing component
+    : TextComponent;
+
+>>>>>>> 046f17d04295ba047bb5739026b4ac3110f17028
   return <Component />;
 }
 ```
@@ -65,7 +79,11 @@ You might define components inside to access local state:
 // ❌ Wrong: Inner component to access parent state
 function Parent() {
   const [theme, setTheme] = useState('light');
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 046f17d04295ba047bb5739026b4ac3110f17028
   function ThemedButton() { // Recreated every render!
     return (
       <button className={theme}>
@@ -73,7 +91,11 @@ function Parent() {
       </button>
     );
   }
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 046f17d04295ba047bb5739026b4ac3110f17028
   return <ThemedButton />;
 }
 ```
