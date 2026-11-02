@@ -64,7 +64,11 @@ function App() {
 
 <Note>
 
+<<<<<<< HEAD
 Starting in React 19, you can render `<SomeContext>` as a provider. 
+=======
+Starting in React 19, you can render `<SomeContext>` as a provider.
+>>>>>>> 0821e7d9428a6c58c922765b891bbffba9ed6249
 
 In older versions of React, use `<SomeContext.Provider>`.
 
