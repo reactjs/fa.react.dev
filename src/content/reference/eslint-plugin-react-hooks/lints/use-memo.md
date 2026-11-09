@@ -4,7 +4,11 @@ title: use-memo
 
 <Intro>
 
+<<<<<<< HEAD
 Validates usage of the `useMemo` hook without a return value. See [`useMemo` docs](/reference/react/useMemo) for more information.
+=======
+Validates that the `useMemo` hook is used with a return value. See [`useMemo` docs](/reference/react/useMemo) for more information.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 </Intro>
 
@@ -79,7 +83,11 @@ function Component({user}) {
 }
 ```
 
+<<<<<<< HEAD
 If the side effect sychronizes React state with some external state (or vice versa), use `useEffect`:
+=======
+If the side effect synchronizes React state with some external state (or vice versa), use `useEffect`:
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 ```js
 // ✅ Good: Synchronization in useEffect

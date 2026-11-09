@@ -15,7 +15,7 @@ import {useRouter} from 'next/router';
 import {SidebarNav} from './SidebarNav';
 import {Footer} from './Footer';
 import {Toc} from './Toc';
-import SocialBanner from '../SocialBanner';
+// import SocialBanner from '../SocialBanner';
 import {DocsPageFooter} from 'components/DocsFooter';
 import {Seo} from 'components/Seo';
 import PageHeading from 'components/PageHeading';
@@ -129,7 +129,18 @@ export function Page({
         title={title}
         titleForTitleTag={meta.titleForTitleTag}
         isHomePage={isHomePage}
-        image={`/images/og-` + section + '.png'}
+        image={
+          // OG images are generated per page at build time by
+          // scripts/generateOgImages.mjs. Pages without a generated
+          // card (home, errors, 404, 500) use the static section image.
+          isHomePage ||
+          !title ||
+          cleanedPath.startsWith('/errors') ||
+          cleanedPath === '/404' ||
+          cleanedPath === '/500'
+            ? `/images/og-${section ?? 'unknown'}.png`
+            : `/images/og/${cleanedPath.slice(1).replace(/\//g, '-')}.png`
+        }
         searchOrder={searchOrder}
       />
       {(isHomePage || isBlogIndex) && (
@@ -142,7 +153,7 @@ export function Page({
           />
         </Head>
       )}
-      <SocialBanner />
+      {/* <SocialBanner /> */}
       <TopNav
         section={section}
         routeTree={routeTree}
