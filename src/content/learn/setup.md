@@ -17,7 +17,11 @@ title: راه‌اندازی
 
 ## ابزارهای توسعه ری‌اکت {/*react-developer-tools*/}
 
+<<<<<<< HEAD
 ابزارهای توسعه ری‌اکت یک افزونه مرورگر است که می‌تواند کامپوننت‌های ری‌اکت را بررسی کند، props و state را ویرایش کند و مشکلات عملکردی را شناسایی کند. برای نصب آن [اینجا](/learn/react-developer-tools) را ببینید.
+=======
+React Developer Tools is a browser extension that can inspect React components, edit props and state, and identify performance problems. Learn how to install it [here](/learn/react-developer-tools).
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 ## کامپایلر ری‌اکت {/*react-compiler*/}
 

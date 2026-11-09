@@ -16,6 +16,10 @@ const {
   setCompilerExpectedLines,
 } = require('./metadata');
 const {normalizeDiagnostics} = require('./diagnostics');
+<<<<<<< HEAD
+=======
+const {validateInlineHighlights} = require('./inline-highlights');
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 const {parseMarkdownFile} = require('./markdown');
 const {runReactCompiler} = require('./react-compiler');
 
@@ -23,7 +27,11 @@ module.exports = {
   meta: {
     type: 'problem',
     docs: {
+<<<<<<< HEAD
       description: 'Run React Compiler on markdown code blocks',
+=======
+      description: 'Validate and compile markdown code blocks',
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
       category: 'Possible Errors',
     },
     fixable: 'code',
@@ -43,6 +51,20 @@ module.exports = {
         const {blocks} = parseMarkdownFile(sourceCode.text, filename);
         // For each supported code block, run the compiler and reconcile metadata.
         for (const block of blocks) {
+<<<<<<< HEAD
+=======
+          for (const message of validateInlineHighlights(
+            block.meta,
+            block.code
+          )) {
+            context.report({
+              node,
+              loc: block.position,
+              message,
+            });
+          }
+
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
           const compilerResult = runReactCompiler(
             block.code,
             `${filename}#codeblock`

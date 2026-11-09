@@ -143,7 +143,7 @@ return (
 ```js
 const user = {
   name: 'Hedy Lamarr',
-  imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
+  imageUrl: 'https://react.dev/images/docs/scientists/yXOvdOSs.jpg',
   imageSize: 90,
 };
 
@@ -336,7 +336,11 @@ function MyButton() {
 }
 ```
 
+<<<<<<< HEAD
 React تابع مؤلفه شما را دوباره فراخوانی خواهد کرد. این بار، `count` برابر با `1` خواهد بود. سپس به `2` خواهد رسید و به همین ترتیب.
+=======
+Calling `setCount` tells React to call your component function again. This is called a *re-render*. This time, `count` will be `1`. Then it will be `2`. And so on.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 اگر شما چندین بار همان مؤلفه را رندر کنید، هر کدام وضعیت خود را خواهند داشت. هر دکمه را به تنهایی کلیک کنید:
 
