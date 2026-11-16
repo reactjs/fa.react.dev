@@ -279,17 +279,17 @@ export default function PackingList() {
     <section>
       <h1>Sally Ride's Packing List</h1>
       <ul>
-        <Item 
-          isPacked={true} 
-          name="Space suit" 
+        <Item
+          isPacked={true}
+          name="Space suit"
         />
-        <Item 
-          isPacked={true} 
-          name="Helmet with a golden leaf" 
+        <Item
+          isPacked={true}
+          name="Helmet with a golden leaf"
         />
-        <Item 
-          isPacked={false} 
-          name="Photo of Tam" 
+        <Item
+          isPacked={false}
+          name="Photo of Tam"
         />
       </ul>
     </section>
@@ -317,17 +317,17 @@ export default function PackingList() {
     <section>
       <h1>Sally Ride's Packing List</h1>
       <ul>
-        <Item 
-          isPacked={true} 
-          name="Space suit" 
+        <Item
+          isPacked={true}
+          name="Space suit"
         />
-        <Item 
-          isPacked={true} 
-          name="Helmet with a golden leaf" 
+        <Item
+          isPacked={true}
+          name="Helmet with a golden leaf"
         />
-        <Item 
-          isPacked={false} 
-          name="Photo of Tam" 
+        <Item
+          isPacked={false}
+          name="Photo of Tam"
         />
       </ul>
     </section>
@@ -365,17 +365,17 @@ export default function PackingList() {
     <section>
       <h1>Sally Ride's Packing List</h1>
       <ul>
-        <Item 
-          importance={9} 
-          name="Space suit" 
+        <Item
+          importance={9}
+          name="Space suit"
         />
-        <Item 
-          importance={0} 
-          name="Helmet with a golden leaf" 
+        <Item
+          importance={0}
+          name="Helmet with a golden leaf"
         />
-        <Item 
-          importance={6} 
-          name="Photo of Tam" 
+        <Item
+          importance={6}
+          name="Photo of Tam"
         />
       </ul>
     </section>
@@ -409,17 +409,17 @@ export default function PackingList() {
     <section>
       <h1>Sally Ride's Packing List</h1>
       <ul>
-        <Item 
-          importance={9} 
-          name="Space suit" 
+        <Item
+          importance={9}
+          name="Space suit"
         />
-        <Item 
-          importance={0} 
-          name="Helmet with a golden leaf" 
+        <Item
+          importance={0}
+          name="Helmet with a golden leaf"
         />
-        <Item 
-          importance={6} 
-          name="Photo of Tam" 
+        <Item
+          importance={6}
+          name="Photo of Tam"
         />
       </ul>
     </section>
@@ -462,7 +462,7 @@ In the [API Reference](/reference/react), every React API now has a dedicated pa
 - Built-in Hooks like [`useState`](/reference/react/useState).
 - Built-in components like [`<Suspense>`](/reference/react/Suspense).
 - Built-in browser components like [`<input>`](/reference/react-dom/components/input).
-- Framework-oriented APIs like [`renderToPipeableStream`](/reference/react-dom/server/renderToReadableStream).
+- Framework-oriented APIs like [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream).
 - Other React APIs like [`memo`](/reference/react/memo).
 
 You'll notice that every API page is split into at least two segments: *Reference* and *Usage*.
