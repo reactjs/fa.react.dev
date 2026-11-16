@@ -21,7 +21,15 @@
   ببینید.
 </p>
 
+<<<<<<< HEAD
 <h2 dir="rtl">چگونه مشارکت کنم؟</h2>
+=======
+1. Git
+1. Node: v24 or greater
+1. Yarn Classic: See [Yarn website for installation instructions](https://classic.yarnpkg.com/en/docs/install/)
+1. A fork of the repo (for any contributions)
+1. A clone of the [react.dev repo](https://github.com/reactjs/react.dev) on your local machine
+>>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
 
 <p dir="rtl">پیشنهاد می‌شود به‌ترتیب از لینک‌های زیر شروع کنید:</p>
 <ul dir="rtl">
@@ -47,7 +55,13 @@
   </li>
 </ul>
 
+<<<<<<< HEAD
 <h2 dir="rtl">دریافت کد</h2>
+=======
+1. `cd react.dev` to go into the project root
+2. `git remote add my-fork-name https://github.com/YOUR_USERNAME/react.dev.git` to add your fork as a remote. Replace `YOUR_USERNAME` with your GitHub username. You only need to do this once.
+3. `yarn` to install the website's npm dependencies
+>>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
 
 <h3 dir="rtl">پیش‌نیازها</h3>
 
@@ -81,7 +95,15 @@ https://github.com/reactjs/fa.react.dev
 git clone https://github.com/reactjs/fa.react.dev.git
 ```
 
+<<<<<<< HEAD
 # ۳. به شاخه اصلی پروژه بروید
+=======
+1. Follow the ["Running locally"](#running-locally) instructions
+1. Save the files and check in the browser
+  1. Changes to React components in `src` will hot-reload
+  1. Changes to markdown files in `src/content` will hot-reload
+  1. If working with plugins, you may need to remove the `node_modules/.cache/react-docs-mdx` directory and restart the server
+>>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
 
 ```bash
 cd fa.react.dev
@@ -97,9 +119,13 @@ yarn
 
 # سرور توسعه با قابلیت بارگذاری خودکار را اجرا کنید (قدرت گرفته از Gatsby)
 
+<<<<<<< HEAD
 ```bash
 yarn dev
 ```
+=======
+If you are interested in translating `react.dev`, please see the current translation efforts [here](https://react.dev/community/translations).
+>>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
 
 <p dir="rtl">
   حالا آدرس <a href="http://localhost:3000">http://localhost:3000</a> را در
